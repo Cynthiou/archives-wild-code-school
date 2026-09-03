@@ -1,0 +1,28 @@
+{
+  "id": 292,
+  "titre": "Initiation au terminal : Premiers pas",
+  "titres": {
+    "fr": "Initiation au terminal : Premiers pas"
+  },
+  "theme": {
+    "id": 3,
+    "slug": "code",
+    "nom": "Terminal"
+  },
+  "creeLe": "2018-08-24T09:46:18.904+02:00",
+  "difficulte": "",
+  "dureeEstimee": null,
+  "modeValidation": "self",
+  "chapitres": [
+    {
+      "id": 16958,
+      "type": "content",
+      "langue": "fr",
+      "majLe": "2025-03-06T15:03:49.026+01:00",
+      "caracteres": 7179
+    }
+  ],
+  "ressources": [],
+  "urlOrigine": "https://odyssey.wildcodeschool.com/quests/292",
+  "archiveLe": "2026-09-02T20:53:28.476Z"
+}

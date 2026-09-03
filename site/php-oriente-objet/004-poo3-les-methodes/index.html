@@ -1,0 +1,157 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>POO3 - Les méthodes — Archives WCS</title>
+<link rel="stylesheet" href="../../assets/style.css">
+</head>
+<body style="--teinte:#464985">
+<header class="entete">
+  <a class="entete__marque" href="../../index.html">Archives Wild Code School</a>
+</header>
+<main class="contenu">
+<nav class="ariane"><a href="../../index.html">Accueil</a><span class="ariane__sep">›</span><a href="../../php-oriente-objet/index.html">PHP Orienté Objet</a><span class="ariane__sep">›</span><span aria-current="page">POO3 - Les méthodes</span></nav>
+
+<article class="quete">
+  <header class="quete__entete">
+    <a class="pastille pastille--teintee" href="../../php-oriente-objet/index.html">PHP Orienté Objet</a>
+    <h1>POO3 - Les méthodes</h1>
+    <p class="quete__meta">Quête 4 sur 11 · 2 images archivées</p>
+  </header>
+  <div class="cours">
+<h1>Prérequis</h1>
+<div class="renvois"><div class="renvois__titre">Quêtes liées</div><ul><li><a href="../../php-oriente-objet/003-poo2-les-proprietes/index.html">Quête 2241</a></li></ul></div>
+<div class="bloc-code"><div class="bloc-code__langue">title-book</div><pre><code class="hljs language-title-book">Introduction
+</code></pre></div>
+<div class="encadre encadre--story"><div class="encadre__titre">Le récit</div><div class="encadre__corps"><p>Un objet a des caractéristiques (les propriétés), mais peut également effectuer des actions. Un animal pourra se déplacer, manger, se laver, parler, <em>etc.</em> Ces actions vont être définies dans des <strong>méthodes</strong>, qui permettent notamment de manipuler les propriétés de l'objet.</p>
+<p><img src="images/001-wash-parrot.gif" alt="wash parrot" loading="lazy"></p>
+<p>Pour démarrer, place toi sur la branche <strong>poo3</strong> du repository <a href="https://github.com/WildCodeSchool/php-wildzoo" target="_blank" rel="noopener noreferrer">WildZoo</a>.</p>
+</div></div>
+<h2>🤓 À la fin de cette quête, tu seras capable de :</h2>
+<ul>
+<li>✅ Comprendre le concept de méthode</li>
+<li>✅ Créer une méthode</li>
+<li>✅ Accéder aux propriétés depuis une méthode</li>
+<li>✅ Utiliser une méthode</li>
+</ul>
+<h1>La bonne méthode</h1>
+<p>En plus des propriétés qui la caractérisent, une classe est dotée de <strong>fonctions</strong>, appelées <strong>méthodes</strong> dans le contexte objet. Celles-ci vont lui permettre d'effectuer des actions, comme modifier des propriétés, ou retourner des informations.
+La logique de notre code va se retrouver dans ces méthodes. Les méthodes s'écrivent exactement comme des fonctions, avec un nom, des paramètres obligatoires ou optionnels, des accolades contenant le corps de la fonction. Les paramètres et la valeur de sortie seront typés.</p>
+<p>Commençons par créer une première méthode afin de faire parler notre animal</p>
+<div class="bloc-code"><div class="bloc-code__langue">php</div><pre><code class="hljs language-php"><span class="hljs-meta">&lt;?php</span>
+
+<span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Animal</span>
+</span>{
+    <span class="hljs-keyword">public</span> <span class="hljs-keyword">string</span> <span class="hljs-variable">$name</span>;
+    <span class="hljs-keyword">public</span> <span class="hljs-keyword">float</span> <span class="hljs-variable">$size</span> = <span class="hljs-number">100</span>;
+    <span class="hljs-keyword">public</span> <span class="hljs-keyword">bool</span> <span class="hljs-variable">$carnivorous</span> = <span class="hljs-literal">false</span>;
+    <span class="hljs-keyword">public</span> <span class="hljs-keyword">int</span> <span class="hljs-variable">$pawNumber</span>;
+    <span class="hljs-keyword">public</span> <span class="hljs-keyword">string</span> <span class="hljs-variable">$threatenedLevel</span> = <span class="hljs-string">&#x27;NE&#x27;</span>;
+
+    <span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">speak</span>(<span class="hljs-params"></span>): <span class="hljs-title">string</span>
+    </span>{
+        <span class="hljs-keyword">return</span> <span class="hljs-string">&#x27;Welcome to the zoo&#x27;</span>;
+    }
+}
+</code></pre></div>
+<p>Tu vois que la méthode <code>speak()</code> s'écrit à l'intérieur des accolades de la classe. Pour garder le code lisible, écris toutes tes propriétés en premier, puis toutes tes méthodes en dessous.</p>
+<p>La classe défini maintenant des propriétés <strong>et</strong> des actions, les méthodes. Ici, la méthode ne fait que renvoyer un texte, qui sera le même pour tous les animaux.</p>
+<div class="encadre encadre--info"><div class="encadre__titre">Info</div><div class="encadre__corps"><p>Comme pour les propriétés, tu vois le mot-clé &quot;public&quot; juste avant &quot;function&quot;. Nous parlerons de sa signification dans la prochaine quête lorsque nous aborderons le concept de visibilité.</p>
+</div></div>
+<p>🖥️ Ajoute la méthode <code>speak()</code> dans le fichier <em>Animal.php</em>. Sur l'interface web, tu dois voir maintenant le texte 'Welcome to the zoo' lorsque tu survoles un animal.</p>
+<h1>Utiliser une méthode</h1>
+<p>Ici le code fourni appelle la méthode <code>speak()</code>, mais si tu veux l'utiliser toi même il suffit de l'appeler à partir d'un objet.</p>
+<p>🖥️ Dans <em>index.php</em>, ajoute la ligne :</p>
+<div class="bloc-code"><div class="bloc-code__langue">php</div><pre><code class="hljs language-php"><span class="hljs-variable">$lion</span> = <span class="hljs-keyword">new</span> <span class="hljs-title class_">Animal</span>();
+<span class="hljs-variable">$lion</span>-&gt;name = <span class="hljs-string">&#x27;lion&#x27;</span>;
+<span class="hljs-variable">$lion</span>-&gt;pawNumber = <span class="hljs-number">4</span>;
+<span class="hljs-variable">$lion</span>-&gt;carnivorous = <span class="hljs-literal">true</span>;
+<span class="hljs-variable">$lion</span>-&gt;size = <span class="hljs-number">70</span>;
+<span class="hljs-variable">$lion</span>-&gt;threatenedLevel = <span class="hljs-string">&#x27;VU&#x27;</span>;
+
+<span class="hljs-keyword">echo</span> <span class="hljs-variable">$lion</span>-&gt;<span class="hljs-title function_ invoke__">speak</span>();
+</code></pre></div>
+<p>tu devrais voir la phrase apparaître en haut de ta page. Côté syntaxe, tu retrouves quelque chose de similaire à l'utilisation des propriétés, tu pars d'un objet instancié, ici <code>$lion</code>, tu ajoutes la flèche <code>-&gt;</code> puis le nom de la méthode avec ses parenthèses, ici <code>speak()</code>.</p>
+<p><img src="images/002-image.gif" alt="image" loading="lazy"></p>
+<h1>Accéder aux propriétés avec $this</h1>
+<p>Une méthode permet de manipuler les <em>propriétés</em> de l'objet. Tu as vu jusqu'à présent qu'une variable définie en dehors d'une fonction n'était pas accessible à l'intérieur d'une fonction et <em>vice versa</em>, les portées sont limitées.
+C'est un peu différent à l'intérieur d'une classe ! Les méthodes d'une classe ont la possibilité d'accéder aux propriétés de la classe, ce qui s'avère très pratique. Pour cela, tu vas utiliser le mot clé <code>$this</code> dans ta méthode.</p>
+<div class="bloc-code"><div class="bloc-code__langue">php</div><pre><code class="hljs language-php"><span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">speak</span>(<span class="hljs-params"></span>): <span class="hljs-title">string</span>
+</span>{
+    <span class="hljs-keyword">return</span> <span class="hljs-string">&#x27;Welcome to the zoo, I am a &#x27;</span> . <span class="hljs-variable language_">$this</span>-&gt;name;
+}
+</code></pre></div>
+<p>La méthode <code>speak()</code> a été modifiée afin d'utiliser la propriété <code>$name</code>, via la syntaxe <code>$this-&gt;name</code>.</p>
+<p>🖥️ Modifie la méthode et survole les animaux sur ton interface. Tu vois maintenant que chaque animal affiche son nom, le lion dit &quot;I am a lion&quot; et le perroquet &quot;I am a parrot&quot;.</p>
+<p>Mais c'est quoi ce <code>$this</code> ?
+Lorsque tu veux utiliser le nom du lion depuis ton fichier <em>index.php</em>, on a vu qu'il fallait faire <code>$lion-&gt;name</code>, ce qui va récupérer la valeur associée à cette propriété pour cet objet, ici la chaîne de caractère &quot;lion&quot;. Chaque animal représenté est une <strong>instance différente et unique</strong> de la classe Animal.</p>
+<p>Dans la méthode <code>speak()</code>, tu veux utiliser la propriété <code>$name</code> depuis <strong>l'intérieur de ta classe</strong> (tu es dans le fichier <em>Animal.php</em>). Tu ne peux pas faire <code>$lion-&gt;name</code> ou <code>$parrot-&gt;name</code> car la classe n'a pas &quot;connaissance&quot; du nom de ses éventuelles instances.
+Quand tu fais <code>$lion-&gt;speak()</code> dans <em>index.php</em>, le code dans la méthode est exécuté et tu souhaites accéder à la propriété associé à cet objet <code>$lion</code>.  Ici <code>$this</code> représente donc <strong>l'instance en cours d'utilisation</strong>. Si tu appelles la méthode sur l'objet <code>$lion</code>, <code>$this</code> correspond à <code>$lion</code> et donc <code>$name</code> vaut 'lion' pour cet objet.
+De même si tu fait <code>$parrot-&gt;speak()</code>, le <code>$this</code> correspondra à l'instance <code>$parrot</code> et le <code>$name</code> pour cet objet sera alors &quot;Parrot&quot;.</p>
+<h1>Des paramètres</h1>
+<p>Une méthode est une fonction de classe, elle a le même fonctionnement, elle peut donc prendre des paramètres. Ceux-ci ont la même portée que pour des fonctions classiques. Tu ne dois pas confondre ces variables &quot;paramètres&quot; avec les propriétés accessible via <code>$this</code>.</p>
+<p>Pour le moment tes animaux parlent uniquement l'anglais. Nous allons faire en sorte de gérer aussi le français. Au moment d'appeler la méthode, tu pourras spécifier la langue. Les paramètres peuvent prendre des valeurs par défaut, ici &quot;fr&quot; :</p>
+<div class="bloc-code"><div class="bloc-code__langue">php</div><pre><code class="hljs language-php"><span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">speak</span>(<span class="hljs-params"><span class="hljs-keyword">string</span> <span class="hljs-variable">$lang</span> = <span class="hljs-string">&#x27;fr&#x27;</span></span>): <span class="hljs-title">string</span>
+</span>{
+    <span class="hljs-keyword">if</span>(<span class="hljs-variable">$lang</span> === <span class="hljs-string">&#x27;fr&#x27;</span>) {
+        <span class="hljs-variable">$message</span> = <span class="hljs-string">&#x27;Bienvenue au zoo, je suis un &#x27;</span>;
+    } <span class="hljs-keyword">else</span> {
+        <span class="hljs-variable">$message</span> = <span class="hljs-string">&#x27;Welcome to the zoo, I am a &#x27;</span>;
+    }
+    
+    <span class="hljs-keyword">return</span> <span class="hljs-variable">$message</span> . <span class="hljs-variable language_">$this</span>-&gt;name;
+}
+</code></pre></div>
+<p>Dans la méthode, on mélange un paramètre externe <code>$lang</code> (qui n'est pas une propriété de ton animal et n'est accessible que dans cette méthode) avec <code>$name</code> qui lui une propriété et s'appelle donc via la syntaxe <code>$this-&gt;name</code>.</p>
+<p>🖥️ Met à jour la méthode <code>speak()</code> dans la classe Animal, puis ajoute ces lignes dans <em>index.php</em></p>
+<div class="bloc-code"><div class="bloc-code__langue">php</div><pre><code class="hljs language-php"><span class="hljs-keyword">echo</span> <span class="hljs-variable">$lion</span>-&gt;<span class="hljs-title function_ invoke__">speak</span>(<span class="hljs-string">&#x27;fr&#x27;</span>);
+<span class="hljs-keyword">echo</span> <span class="hljs-variable">$lion</span>-&gt;<span class="hljs-title function_ invoke__">speak</span>(<span class="hljs-string">&#x27;en&#x27;</span>);
+<span class="hljs-keyword">echo</span> <span class="hljs-variable">$lion</span>-&gt;<span class="hljs-title function_ invoke__">speak</span>();
+</code></pre></div>
+<ul>
+<li>Sur le premier appel, tu demandes au lion de parler en français.</li>
+<li>Sur le second, tu lui demandes de parler en anglais.</li>
+<li>Sur le troisième, tu n'indiques pas d'argument, la valeur par défaut &quot;fr&quot; va donc s'appliquer et le texte sera de nouveau en français.</li>
+</ul>
+<p>Au survol des images, c'est la langue par défaut qui s'applique maintenant et tu as donc également du français.</p>
+<h3>Challenge</h3>
+<p>À toi de créer ta méthode. Dans le zoo certains animaux sont plus dangereux que d'autres et il est intéressant de l'indiquer pour que les visiteurs soient vigilants. Nous allons partir de critères très simples, un animal sera considéré dangereux si sa taille ($size) est supérieure à 50 ET s'il est carnivore. C'est par exemple le cas du lion.</p>
+<p>🖥️ Créé une méthode appelée <code>isDangerous()</code>. Elle ne prends pas de paramètre. Elle doit cependant renvoyer un booléen indiquant si l'animal est dangereux ou non, en fonction des critères de taille et de régime alimentaire explicité juste au dessus.
+Une fois défini, vérifie sur ton interface web qu'une nouvelle icône apparaît bien, indiquant si l'animal est dangereux ou non. N'hésite pas à faire varier les propriétés de tes animaux pour t'assurer que le comportement de la méthode est correct.</p>
+<p>Poste le code de ta méthode <code>isDangerous()</code> en solution.</p>
+<h3>Critères de validation</h3>
+<ul>
+<li>La méthode est correctement typée et retourne bien un booléen</li>
+<li>La méthode renvoie <code>true</code> si l'animal à une taille &gt; 50 et est carnivore, sinon elle renvoie <code>false</code>.</li>
+</ul>
+<p>==$==</p>
+<div class="bloc-code"><div class="bloc-code__langue">php</div><pre><code class="hljs language-php"><span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">isDangerous</span>(<span class="hljs-params"></span>): <span class="hljs-title">bool</span>
+</span>{
+    <span class="hljs-keyword">return</span> <span class="hljs-variable language_">$this</span>-&gt;size &gt; <span class="hljs-number">50</span> &amp;&amp; <span class="hljs-variable language_">$this</span>-&gt;carnivorous === <span class="hljs-literal">true</span>;        
+}
+</code></pre></div>
+
+  </div>
+  
+</article>
+
+<nav class="nav-quete">
+  <a class="nav-quete__lien nav-quete__lien--prec" href="../../php-oriente-objet/003-poo2-les-proprietes/index.html">
+           <span class="nav-quete__sens">← Précédent</span>
+           <span class="nav-quete__titre">POO2 - Les propriétés</span>
+         </a>
+  <a class="nav-quete__lien nav-quete__lien--suiv" href="../../php-oriente-objet/005-poo4-constructeur-et-visibilite/index.html">
+           <span class="nav-quete__sens">Suivant →</span>
+           <span class="nav-quete__titre">POO4 - Constructeur et visibilité</span>
+         </a>
+</nav>
+</main>
+<footer class="pied">
+  <p>Archive personnelle des cours suivis à la Wild Code School. Copie hors ligne à usage strictement privé.</p>
+</footer>
+
+<script src="../../assets/copie-code.js"></script>
+<script src="../../assets/progression.js"></script>
+</body>
+</html>

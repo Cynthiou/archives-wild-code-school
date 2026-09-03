@@ -1,0 +1,28 @@
+{
+  "id": 1798,
+  "titre": "✏️ Exercise 1 - Naming Variables",
+  "titres": {
+    "en": "✏️ Exercise 1 - Naming Variables"
+  },
+  "theme": {
+    "id": 25,
+    "slug": "php",
+    "nom": "PHP"
+  },
+  "creeLe": "2021-09-07T14:21:13.856+02:00",
+  "difficulte": "1",
+  "dureeEstimee": null,
+  "modeValidation": "self",
+  "chapitres": [
+    {
+      "id": 4412,
+      "type": "content",
+      "langue": "en",
+      "majLe": "2021-09-07T14:21:13.858+02:00",
+      "caracteres": 2191
+    }
+  ],
+  "ressources": [],
+  "urlOrigine": "https://odyssey.wildcodeschool.com/quests/1798",
+  "archiveLe": "2026-09-02T20:52:30.822Z"
+}

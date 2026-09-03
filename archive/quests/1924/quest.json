@@ -1,0 +1,54 @@
+{
+  "id": 1924,
+  "titre": "👩‍🏫 CSS 1 : Introduction",
+  "titres": {
+    "en": "👩‍🏫 CSS 1: Introduction",
+    "fr": "👩‍🏫 CSS 1 : Introduction"
+  },
+  "theme": {
+    "id": 12,
+    "slug": "html",
+    "nom": "CSS"
+  },
+  "creeLe": "2022-01-21T18:32:26.134+01:00",
+  "difficulte": "0",
+  "dureeEstimee": null,
+  "modeValidation": "self",
+  "chapitres": [
+    {
+      "id": 12609,
+      "type": "content",
+      "langue": "fr",
+      "majLe": "2024-11-09T14:21:48.002+01:00",
+      "caracteres": 15528
+    }
+  ],
+  "ressources": [
+    {
+      "link": "https://code.tutsplus.com/fr/tutorials/the-30-css-selectors-you-must-memorize--net-16048",
+      "description": "Elle regroupe 30 sélecteurs CSS importants !"
+    },
+    {
+      "link": "https://www.amazon.fr/HTML-CSS-Design-Build-Websites/dp/1118008189",
+      "description": "Livre bien expliqué pour le HTML et le CSS (j'ai la version anglaise)"
+    },
+    {
+      "link": "https://specificity.keegan.st/",
+      "description": "Calculer et comparer la spécificité de règles CSS"
+    },
+    {
+      "link": "https://www.amazon.fr/Head-First-JavaScript-Programming-Morrison/dp/144934013X/ref=sr_1_1?__mk_fr_FR=%C3%85M%C3%85%C5%BD%C3%95%C3%91&crid=3CM0763GARKJ5&keywords=javascript+first&qid=1670582425&sprefix=javascript+fisrt%2Caps%2C127&sr=8-1",
+      "description": "Head First JavaScript Programming"
+    },
+    {
+      "link": "https://www.zonecss.fr/bugs-css/bug-first-child-selector-css.html",
+      "description": "Doc sur un bug détecté à l'utilisation du sélecteur (:first-child) sur certain navigateur"
+    },
+    {
+      "link": "https://scrapfly.io/blog/css-selector-cheatsheet/",
+      "description": "Parfait pour ne pas apprendre les sélecteurs les plus courants ! TRES UTILES !"
+    }
+  ],
+  "urlOrigine": "https://odyssey.wildcodeschool.com/quests/1924",
+  "archiveLe": "2026-09-02T20:52:39.479Z"
+}

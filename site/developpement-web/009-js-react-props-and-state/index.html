@@ -1,0 +1,779 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>JS - React - Props and State — Archives WCS</title>
+<link rel="stylesheet" href="../../assets/style.css">
+</head>
+<body style="--teinte:#000000">
+<header class="entete">
+  <a class="entete__marque" href="../../index.html">Archives Wild Code School</a>
+</header>
+<main class="contenu">
+<nav class="ariane"><a href="../../index.html">Accueil</a><span class="ariane__sep">›</span><a href="../../developpement-web/index.html">Développement Web</a><span class="ariane__sep">›</span><span aria-current="page">JS - React - Props and State</span></nav>
+
+<article class="quete">
+  <header class="quete__entete">
+    <a class="pastille pastille--teintee" href="../../developpement-web/index.html">Développement Web</a>
+    <h1>JS - React - Props and State</h1>
+    <p class="quete__meta">Quête 9 sur 11 · 4 images archivées</p>
+  </header>
+  <div class="cours">
+<h2>Objectifs</h2>
+<ul>
+<li>Découvrir la bibliothèque React</li>
+<li>Développer une interface web dynamique avec React</li>
+</ul>
+<h2>Pré-requis</h2>
+<ol class="etapes"><li class="etape"><div class="etape__puce">1</div><div class="etape__contenu"><h4 class="etape__titre">Connaitre les bases avancées du JS</h4><div class="bloc-code"><div class="bloc-code__langue">javascript</div><pre><code class="hljs language-javascript"><span class="hljs-keyword">function</span> <span class="hljs-title function_">say</span>(<span class="hljs-params">{ word, name }</span>) {
+  <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(<span class="hljs-string">`<span class="hljs-subst">${word}</span> <span class="hljs-subst">${name}</span>!`</span>);
+}
+
+<span class="hljs-title function_">say</span>({ <span class="hljs-attr">word</span>: <span class="hljs-string">&quot;Hello&quot;</span>, <span class="hljs-attr">name</span>: <span class="hljs-string">&quot;World&quot;</span>});
+</code></pre></div>
+</div></li><li class="etape"><div class="etape__puce">2</div><div class="etape__contenu"><h4 class="etape__titre">Être à l'aise avec les méthodes fonctionnelles des tableaux</h4><div class="bloc-code"><div class="bloc-code__langue">javascript</div><pre><code class="hljs language-javascript"><span class="hljs-keyword">const</span> numbers = [<span class="hljs-number">1</span>, <span class="hljs-number">56</span>, <span class="hljs-number">35</span>, <span class="hljs-number">23</span>, <span class="hljs-number">45</span>];
+
+<span class="hljs-keyword">const</span> halfNumbers = numbers.<span class="hljs-title function_">map</span>(<span class="hljs-function"><span class="hljs-params">number</span> =&gt;</span> number / <span class="hljs-number">2</span>);
+
+<span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(halfNumbers);
+
+<span class="hljs-comment">// Expected output : [0.5, 28, 17.5, 11.5, 22.5]</span>
+
+<span class="hljs-keyword">const</span> numbers = [<span class="hljs-number">1</span>, <span class="hljs-number">2</span>, <span class="hljs-number">3</span>, <span class="hljs-number">4</span>, <span class="hljs-number">5</span>];
+<span class="hljs-keyword">const</span> evenNumbers = numbers.<span class="hljs-title function_">filter</span>(<span class="hljs-function"><span class="hljs-params">number</span> =&gt;</span> number % <span class="hljs-number">2</span> === <span class="hljs-number">0</span>);
+
+<span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(evenNumbers); 
+
+<span class="hljs-comment">// Expected output : [2, 4]</span>
+</code></pre></div>
+</div></li></ol>
+<h2>Introduction</h2>
+<p>React est une bibliothèque JavaScript <strong>open-source</strong>, principalement utilisée pour construire des <strong>interfaces utilisateurs (UI)</strong>. Créée par Facebook en 2013, elle permet de développer des applications web interactives et performantes.</p>
+<p>Dans cette quête, tu vas découvrir les concepts fondamentaux de React : les composants, les props, les states. Tu vas apprendre à manipuler ces concepts jusqu'à construire une application &quot;simple&quot;.</p>
+<h2>Sommaire</h2>
+<h2>Le brief</h2>
+<div class="encadre encadre--note encadre--story"><div class="encadre__corps"><p>Hello 👋,</p>
+<p>Notre restaurant local préféré, <strong>MarmiWild</strong>, a demandé notre aide pour son menu en ligne ! Nous avons pensé à toi pour relever le défi.</p>
+<p><img src="images/001-le-brief.png" alt="" loading="lazy"></p>
+<p>Une précision : tu dois utiliser React pour rendre l'interface web du menu dynamique. C'est l'occasion pour toi d'apprendre un nouvel outil. Tu trouveras une base de code en pièce jointe.</p>
+<p>Bon courage et bonne journée 🙂,</p>
+<p>L'équipe front.</p>
+</div></div>
+<div class="encadre encadre--note encadre--callout"><div class="encadre__corps"><div class="bloc-code"><div class="bloc-code__langue">jsx</div><pre><code class="hljs language-jsx">!--- <span class="hljs-title class_">App</span>.<span class="hljs-property">js</span>
+<span class="hljs-keyword">import</span> <span class="hljs-title class_">MenuList</span> <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;./components/MenuList&#x27;</span>;
+
+<span class="hljs-keyword">import</span> <span class="hljs-string">&#x27;./App.css&#x27;</span>;
+
+<span class="hljs-keyword">const</span> foodItems = [
+  {
+    <span class="hljs-attr">id</span>: <span class="hljs-number">1</span>,
+    <span class="hljs-attr">itemName</span>: <span class="hljs-string">&quot;Caesar&#x27;s Salad&quot;</span>,
+    <span class="hljs-attr">description</span>: <span class="hljs-string">&quot;The original Caesar&#x27;s Salad recipe&quot;</span>,
+    <span class="hljs-attr">foodImage</span>: <span class="hljs-string">&#x27;https://cdn.britannica.com/14/234014-050-CB842159/Caesar-salad-side-view.jpg&#x27;</span>,
+    <span class="hljs-attr">price</span>: <span class="hljs-number">12</span>,
+    <span class="hljs-attr">isFavorite</span>: <span class="hljs-literal">false</span>,
+  },
+  {
+    <span class="hljs-attr">id</span>: <span class="hljs-number">2</span>,
+    <span class="hljs-attr">itemName</span>: <span class="hljs-string">&#x27;Spaghetti Carbonara&#x27;</span>,
+    <span class="hljs-attr">description</span>: <span class="hljs-string">&quot;Better than your nonna&#x27;s! All local and fresh ingredients&quot;</span>,
+    <span class="hljs-attr">foodImage</span>: <span class="hljs-string">&#x27;https://cdn.britannica.com/96/238196-050-C5560987/Plate-of-traditional-Italian-spaghetti-carbonara-surrounded-by-the-ingredients-use-to-make-it.jpg&#x27;</span>,
+    <span class="hljs-attr">price</span>: <span class="hljs-number">15</span>,
+    <span class="hljs-attr">isFavorite</span>: <span class="hljs-literal">true</span>,
+  },
+  {
+    <span class="hljs-attr">id</span>: <span class="hljs-number">3</span>,
+    <span class="hljs-attr">itemName</span>: <span class="hljs-string">&#x27;Grilled Fish&#x27;</span>,
+    <span class="hljs-attr">description</span>: <span class="hljs-string">&#x27;Fish of the day, grilled with a side of vegetables&#x27;</span>,
+    <span class="hljs-attr">foodImage</span>: <span class="hljs-string">&#x27;https://cdn.britannica.com/38/235438-050-08E3AE20/Grilled-barramundi-steak-on-a-bed-of-vegetables.jpg&#x27;</span>,
+    <span class="hljs-attr">price</span>: <span class="hljs-number">20</span>,
+    <span class="hljs-attr">isFavorite</span>: <span class="hljs-literal">false</span>,
+  },
+  {
+    <span class="hljs-attr">id</span>: <span class="hljs-number">4</span>,
+    <span class="hljs-attr">itemName</span>: <span class="hljs-string">&#x27;Steak&#x27;</span>,
+    <span class="hljs-attr">description</span>: <span class="hljs-string">&#x27;Meat!&#x27;</span>,
+    <span class="hljs-attr">foodImage</span>: <span class="hljs-string">&#x27;https://cdn.britannica.com/70/189770-050-AA419662/New-York-City-steak-Delmonico-rib-eyes.jpg&#x27;</span>,
+    <span class="hljs-attr">price</span>: <span class="hljs-number">30</span>,
+    <span class="hljs-attr">isFavorite</span>: <span class="hljs-literal">false</span>,
+  }
+];
+
+<span class="hljs-keyword">function</span> <span class="hljs-title function_">App</span>(<span class="hljs-params"></span>) {
+  <span class="hljs-keyword">return</span> (
+    <span class="language-xml"><span class="hljs-tag">&lt;<span class="hljs-name">main</span>&gt;</span>
+      <span class="hljs-tag">&lt;<span class="hljs-name">h1</span>&gt;</span>MarmiWild<span class="hljs-tag">&lt;/<span class="hljs-name">h1</span>&gt;</span>
+      {/* pass the variable foodItems as props to MenuList component */}
+      <span class="hljs-tag">&lt;<span class="hljs-name">MenuList</span> /&gt;</span>
+    <span class="hljs-tag">&lt;/<span class="hljs-name">main</span>&gt;</span></span>
+  );
+};
+
+<span class="hljs-keyword">export</span> <span class="hljs-keyword">default</span> <span class="hljs-title class_">App</span>;
+!--- <span class="hljs-title class_">App</span>.<span class="hljs-property">css</span>
+body {
+  max-<span class="hljs-attr">width</span>: 800px;
+  <span class="hljs-attr">margin</span>: auto;
+  <span class="hljs-attr">padding</span>: 1rem;
+  font-<span class="hljs-attr">family</span>: <span class="hljs-string">&quot;Grandstander&quot;</span>, cursive;
+}
+
+h1 {
+  text-<span class="hljs-attr">align</span>: center;
+}
+
+figure {
+  <span class="hljs-attr">margin</span>: <span class="hljs-number">0</span>;
+  grid-<span class="hljs-attr">row</span>: <span class="hljs-number">1</span> / -<span class="hljs-number">1</span>;
+  place-<span class="hljs-attr">self</span>: stretch;
+  <span class="hljs-attr">display</span>: flex;
+}
+
+figure img {
+  <span class="hljs-attr">width</span>: 120px;
+  <span class="hljs-attr">height</span>: <span class="hljs-number">100</span>%;
+  object-<span class="hljs-attr">fit</span>: cover;
+}
+
+figure figcaption {
+  padding-<span class="hljs-attr">left</span>: 15px;
+}
+
+.<span class="hljs-property">itemContainer</span> {
+  <span class="hljs-attr">display</span>: grid;
+  grid-template-<span class="hljs-attr">columns</span>: 1fr auto;
+  grid-template-<span class="hljs-attr">rows</span>: <span class="hljs-title function_">repeat</span>(<span class="hljs-number">2</span>, auto);
+  place-<span class="hljs-attr">items</span>: center;
+  <span class="hljs-attr">border</span>: 1px solid lightgrey;
+  margin-<span class="hljs-attr">top</span>: 25px;
+  padding-<span class="hljs-attr">right</span>: 1rem;
+}
+!--- components/<span class="hljs-title class_">MenuList</span>.<span class="hljs-property">js</span>
+<span class="hljs-keyword">import</span> <span class="hljs-title class_">MenuItem</span> <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;./MenuItem&#x27;</span>;
+
+<span class="hljs-keyword">function</span> <span class="hljs-title function_">MenuList</span>(<span class="hljs-params">{ foodItems }</span>) {
+  <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(foodItems);
+
+  <span class="hljs-keyword">return</span> (
+    <span class="language-xml"><span class="hljs-tag">&lt;&gt;</span>
+      {/* render a MenuItem component for each element of the foodItems array */}
+    <span class="hljs-tag">&lt;/&gt;</span></span>
+  );
+}
+
+<span class="hljs-keyword">export</span> <span class="hljs-keyword">default</span> <span class="hljs-title class_">MenuList</span>;
+!--- components/<span class="hljs-title class_">MenuItem</span>.<span class="hljs-property">js</span>
+<span class="hljs-keyword">function</span> <span class="hljs-title function_">MenuItem</span>(<span class="hljs-params">props</span>) {
+  <span class="hljs-comment">//create a state isFavorite that has the inital value of isFavorite that comes from the props</span>
+
+  <span class="hljs-keyword">return</span> (
+    <span class="language-xml"><span class="hljs-tag">&lt;<span class="hljs-name">section</span> <span class="hljs-attr">className</span>=<span class="hljs-string">&quot;itemContainer&quot;</span>&gt;</span>
+      <span class="hljs-tag">&lt;<span class="hljs-name">figure</span> <span class="hljs-attr">className</span>=<span class="hljs-string">&quot;imgContainer&quot;</span>&gt;</span>
+        {/* the image will receive the url src from the props */}
+        <span class="hljs-tag">&lt;<span class="hljs-name">img</span> <span class="hljs-attr">src</span>=<span class="hljs-string">&quot;&quot;</span> <span class="hljs-attr">alt</span>=<span class="hljs-string">&quot;&quot;</span> /&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">figcaption</span>&gt;</span>
+          {/* the h2 will receive the item name from the props */}
+          <span class="hljs-tag">&lt;<span class="hljs-name">h2</span>&gt;</span>{}<span class="hljs-tag">&lt;/<span class="hljs-name">h2</span>&gt;</span>
+          {/* the p will receive the item description from the props */}
+          <span class="hljs-tag">&lt;<span class="hljs-name">p</span>&gt;</span>{}<span class="hljs-tag">&lt;/<span class="hljs-name">p</span>&gt;</span>
+        <span class="hljs-tag">&lt;/<span class="hljs-name">figcaption</span>&gt;</span>
+      <span class="hljs-tag">&lt;/<span class="hljs-name">figure</span>&gt;</span>
+      {/* the span will receive the item price from the props */}
+      <span class="hljs-tag">&lt;<span class="hljs-name">aside</span>&gt;</span>{} EUR<span class="hljs-tag">&lt;/<span class="hljs-name">aside</span>&gt;</span>
+
+      {/* the button to play with the isFavorite state:
+              - onClick, will toggle the isFavorite state,
+              - content will be conditionally rendered as &quot;❤️&quot; or &quot;🖤&quot;, depending on the value of isFavorite
+          */}
+      <span class="hljs-tag">&lt;<span class="hljs-name">button</span> <span class="hljs-attr">type</span>=<span class="hljs-string">&quot;button&quot;</span>&gt;</span>{}<span class="hljs-tag">&lt;/<span class="hljs-name">button</span>&gt;</span>
+    <span class="hljs-tag">&lt;/<span class="hljs-name">section</span>&gt;</span></span>
+  );
+}
+
+<span class="hljs-keyword">export</span> <span class="hljs-keyword">default</span> <span class="hljs-title class_">MenuItem</span>;
+</code></pre></div>
+</div></div>
+<h2>Une interface web dynamique</h2>
+<p>Une interface web dynamique est une interface qui s’adapte en temps réel à ce que fait l’utilisateur. Elle réagit instantanément sans devoir recharger toute la page, rendant l'expérience beaucoup plus fluide et agréable.</p>
+<p>Dans les exemples qui vont suivre, nous allons interagir avec un bouton pour ajouter des articles à un panier et ainsi changer l’état de notre panier.</p>
+<h3>Mais c’est quoi un état ?</h3>
+<p>Un état, c'est l'information qu'un composant garde en mémoire et qui peut changer au fil du temps : l'état &quot;coché&quot; d'une case à cocher par exemple. Dans un panier, l'état pourrait être le nombre de fois où un article a été ajouté. Chaque fois que cet état change, l'affichage du composant se met à jour pour montrer la nouvelle valeur.</p>
+<div class="bloc-code"><div class="bloc-code__langue">js</div><pre><code class="hljs language-js">!---index.<span class="hljs-property">js</span>
+<span class="hljs-keyword">let</span> counter = <span class="hljs-number">0</span>;
+
+<span class="hljs-keyword">function</span> <span class="hljs-title function_">onButtonClick</span>(<span class="hljs-params">event</span>) {
+  counter++;
+
+  <span class="hljs-keyword">const</span> button = event.<span class="hljs-property">target</span>;
+  button.<span class="hljs-property">innerHTML</span> = <span class="hljs-string">&quot;Nombre d&#x27;articles : &quot;</span> + counter;
+}
+
+<span class="hljs-keyword">const</span> button = <span class="hljs-variable language_">document</span>.<span class="hljs-title function_">querySelector</span>(<span class="hljs-string">&quot;button&quot;</span>)
+button.<span class="hljs-title function_">addEventListener</span>(<span class="hljs-string">&quot;click&quot;</span>, onButtonClick);
+!---index.<span class="hljs-property">html</span>
+&lt;!<span class="hljs-variable constant_">DOCTYPE</span> html&gt;
+<span class="language-xml"><span class="hljs-tag">&lt;<span class="hljs-name">html</span> <span class="hljs-attr">lang</span>=<span class="hljs-string">&quot;en&quot;</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">head</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">title</span>&gt;</span>WildShop<span class="hljs-tag">&lt;/<span class="hljs-name">title</span>&gt;</span>
+  <span class="hljs-tag">&lt;/<span class="hljs-name">head</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">body</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">p</span>&gt;</span>Panier<span class="hljs-tag">&lt;/<span class="hljs-name">p</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">button</span> <span class="hljs-attr">type</span>=<span class="hljs-string">&quot;button&quot;</span>&gt;</span>Nombre d&#x27;articles : 0<span class="hljs-tag">&lt;/<span class="hljs-name">button</span>&gt;</span>
+  <span class="hljs-tag">&lt;/<span class="hljs-name">body</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">html</span>&gt;</span></span>
+</code></pre></div>
+<div class="encadre encadre--note encadre--arrow"><div class="encadre__corps"><p>Le document HTML contient un bouton et le code JS stocke un code à exécuter à chaque clic sur ce bouton : la fonction <code>onButtonClick</code>. La fonction <code>onButtonClick</code> incrémente la variable <code>counter</code> qui représente l'état du panier, et met à jour l'affichage du bouton.</p>
+</div></div>
+<p>J'ai tenté d'ajouter un système de &quot;wishlist&quot;, mais quelque chose ne marche pas : si tu cliques sur tous les boutons, les états ont l'air de se mélanger...</p>
+<div class="bloc-code"><div class="bloc-code__langue">js</div><pre><code class="hljs language-js">!---index.<span class="hljs-property">js</span>
+<span class="hljs-keyword">let</span> counter = <span class="hljs-number">0</span>;
+
+<span class="hljs-keyword">const</span> <span class="hljs-title function_">onButtonClick</span> = (<span class="hljs-params">event</span>) =&gt; {
+  counter++;
+
+  <span class="hljs-keyword">const</span> button = event.<span class="hljs-property">target</span>;
+  button.<span class="hljs-property">innerHTML</span> = <span class="hljs-string">&quot;Nombre d&#x27;articles : &quot;</span> + counter;
+}
+
+<span class="hljs-keyword">for</span> (<span class="hljs-keyword">const</span> button <span class="hljs-keyword">of</span> <span class="hljs-variable language_">document</span>.<span class="hljs-title function_">querySelectorAll</span>(<span class="hljs-string">&quot;button&quot;</span>)) {
+  button.<span class="hljs-title function_">addEventListener</span>(<span class="hljs-string">&quot;click&quot;</span>, onButtonClick);
+}
+!---index.<span class="hljs-property">html</span>
+&lt;!<span class="hljs-variable constant_">DOCTYPE</span> html&gt;
+<span class="language-xml"><span class="hljs-tag">&lt;<span class="hljs-name">html</span> <span class="hljs-attr">lang</span>=<span class="hljs-string">&quot;en&quot;</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">head</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">title</span>&gt;</span>WildShop<span class="hljs-tag">&lt;/<span class="hljs-name">title</span>&gt;</span>
+  <span class="hljs-tag">&lt;/<span class="hljs-name">head</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">body</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">p</span>&gt;</span>Panier<span class="hljs-tag">&lt;/<span class="hljs-name">p</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">button</span> <span class="hljs-attr">type</span>=<span class="hljs-string">&quot;button&quot;</span>&gt;</span>Nombre d&#x27;articles : 0<span class="hljs-tag">&lt;/<span class="hljs-name">button</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">p</span>&gt;</span>Liste de souhaits<span class="hljs-tag">&lt;/<span class="hljs-name">p</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">button</span> <span class="hljs-attr">type</span>=<span class="hljs-string">&quot;button&quot;</span>&gt;</span>Nombre d&#x27;articles : 0<span class="hljs-tag">&lt;/<span class="hljs-name">button</span>&gt;</span>
+  <span class="hljs-tag">&lt;/<span class="hljs-name">body</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">html</span>&gt;</span></span>
+</code></pre></div>
+<p>Est-ce que tu vois mon erreur ?</p>
+<details class="solution"><summary>Voir la solution</summary><div class="solution__corps"><p>Le code déclare une seule fonction <code>onButtonClick</code> et l'utilise avec tous les boutons. Cette fonction <code>onButtonClick</code> modifie toujours la même variable <code>counter</code>, peu importe le bouton que tu cliques : l'état <code>counter</code> est partagé par tous les boutons.</p>
+<p><img src="images/002-plusieurs-boutons-mais-1-seul-etat.png" alt="plusieurs boutons mais 1 seul état" loading="lazy"></p>
+<p>Voici une bonne version du code :</p>
+<div class="bloc-code"><div class="bloc-code__langue">js</div><pre><code class="hljs language-js">!---index.<span class="hljs-property">js</span>
+<span class="hljs-keyword">for</span> (<span class="hljs-keyword">const</span> button <span class="hljs-keyword">of</span> <span class="hljs-variable language_">document</span>.<span class="hljs-title function_">querySelectorAll</span>(<span class="hljs-string">&quot;button&quot;</span>)) {
+  <span class="hljs-keyword">let</span> counter = <span class="hljs-number">0</span>;
+
+  <span class="hljs-keyword">const</span> <span class="hljs-title function_">onButtonClick</span> = (<span class="hljs-params"></span>) =&gt; {
+    counter++;
+
+    button.<span class="hljs-property">innerHTML</span> = <span class="hljs-string">&quot;Nombre d&#x27;articles : &quot;</span> + counter;
+  }
+
+  button.<span class="hljs-title function_">addEventListener</span>(<span class="hljs-string">&quot;click&quot;</span>, onButtonClick);
+}
+!---index.<span class="hljs-property">html</span>
+&lt;!<span class="hljs-variable constant_">DOCTYPE</span> html&gt;
+<span class="language-xml"><span class="hljs-tag">&lt;<span class="hljs-name">html</span> <span class="hljs-attr">lang</span>=<span class="hljs-string">&quot;en&quot;</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">head</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">title</span>&gt;</span>WildShop<span class="hljs-tag">&lt;/<span class="hljs-name">title</span>&gt;</span>
+  <span class="hljs-tag">&lt;/<span class="hljs-name">head</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">body</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">p</span>&gt;</span>Panier<span class="hljs-tag">&lt;/<span class="hljs-name">p</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">button</span> <span class="hljs-attr">type</span>=<span class="hljs-string">&quot;button&quot;</span>&gt;</span>Nombre d&#x27;articles : 0<span class="hljs-tag">&lt;/<span class="hljs-name">button</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">p</span>&gt;</span>Liste de souhaits<span class="hljs-tag">&lt;/<span class="hljs-name">p</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">button</span> <span class="hljs-attr">type</span>=<span class="hljs-string">&quot;button&quot;</span>&gt;</span>Nombre d&#x27;articles : 0<span class="hljs-tag">&lt;/<span class="hljs-name">button</span>&gt;</span>
+  <span class="hljs-tag">&lt;/<span class="hljs-name">body</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">html</span>&gt;</span></span>
+</code></pre></div>
+<p>Ici, les déclarations de <code>counter</code> et de <code>onButtonClick</code> sont <em>dans la boucle</em> : elles sont répétées à chaque passage dans la boucle, donc une fois pour chaque bouton. De cette manière, chaque bouton a sa propre variable <code>counter</code> et sa propre fonction <code>onButtonClick</code>.</p>
+<p><img src="images/003-1-etat-pour-chaque-bouton.png" alt="1 état pour chaque bouton" loading="lazy"></p>
+</div></details>
+<p>C'est ainsi que tu dois commencer à penser tes applications : comme des &quot;briques&quot; d'affichage, où chaque brique est associée à une logique (les instructions de <code>onButtonClick</code>) et à un état (la variable <code>counter</code>).</p>
+<p>Dans notre exemple, chaque bouton gère son propre état <code>counter</code>, et chaque mise à jour de cet état se répercute sur l'affichage du bouton. Actuellement, le code du <code>&lt;button&gt;</code> dans <code>index.html</code> est séparé de sa logique et de son état dans <code>index.js</code> : avec React, tu peux créer des <em>composants</em> qui regroupent l'affichage, la logique et l'état dans une même &quot;capsule&quot;. Cela simplifie la gestion pour une application complexe.</p>
+<div class="encadre encadre--note encadre--story"><div class="encadre__corps"><p><strong>React</strong> (aussi appelé <strong>React.js</strong> ou <strong>ReactJS</strong>) est une <strong>bibliothèque open source JavaScript</strong> pour créer des interfaces utilisateurs. Elle est maintenue par <strong>Meta</strong> (anciennement <strong>Facebook</strong>) ainsi que par une communauté de développeurs individuels et d'entreprises <strong>depuis 2013</strong>.</p>
+<p>Le but principal de cette bibliothèque est de faciliter la création d'application web monopage, via la création de composants dépendant d'un état et générant une page (ou portion) HTML à chaque changement d'état.</p>
+<p>React est une bibliothèque qui ne gère que l'interface de l'application [...]</p>
+</div></div>
+<p>Source : <a href="https://fr.m.wikipedia.org/wiki/React" target="_blank" rel="noopener noreferrer">https://fr.m.wikipedia.org/wiki/React</a></p>
+<h3>Démarrer avec React</h3>
+<p>La meilleure façon de démarrer avec React est de parcourir la <strong>documentation officielle</strong>. Tu y trouveras tout ce que tu dois savoir, expliqué par l'équipe de développement de React elle-même, et — chose rare — traduit en français par la communauté :</p>
+<a class="ressource" href="https://fr.react.dev/learn" target="_blank" rel="noopener noreferrer">
+  <div class="ressource__icone">↗</div>
+  <div class="ressource__texte">
+    <div class="ressource__titre">Best. Doc. Ever.</div>
+    
+    <div class="ressource__hote">fr.react.dev</div>
+  </div>
+</a>
+<p>Pour mettre en pratique ce que tu liras dans la doc de React, nous te proposons un parcours de quêtes pour réaliser pas à pas une application. Le parcours commence avec cette quête :</p>
+<div class="renvois"><div class="renvois__titre">Quêtes liées</div><ul><li><a href="../../react-bases/001-react-basics-01-pokedex-introduction/index.html">Quête 2328</a></li></ul></div>
+<h3>Composer ton interface</h3>
+<p>Les composants sont les briques de base dans React. Je te conseille ces chapitres de la doc pour te familiariser avec le concept, avec notre quête dédiée :</p>
+<div class="colonnes"><div class="colonne"><a class="ressource" href="https://fr.react.dev/learn/your-first-component" target="_blank" rel="noopener noreferrer">
+  <div class="ressource__icone">↗</div>
+  <div class="ressource__texte">
+    <div class="ressource__titre">https://fr.react.dev/learn/your-first-component</div>
+    <div class="ressource__desc"><p>Votre premier composant</p>
+</div>
+    <div class="ressource__hote">fr.react.dev</div>
+  </div>
+</a>
+<a class="ressource" href="https://fr.react.dev/learn/importing-and-exporting-components" target="_blank" rel="noopener noreferrer">
+  <div class="ressource__icone">↗</div>
+  <div class="ressource__texte">
+    <div class="ressource__titre">https://fr.react.dev/learn/importing-and-exporting-components</div>
+    <div class="ressource__desc"><p>Importer et exporter des composants</p>
+</div>
+    <div class="ressource__hote">fr.react.dev</div>
+  </div>
+</a>
+</div><div class="colonne"><div class="renvois"><div class="renvois__titre">Quêtes liées</div><ul><li><a href="../../react-bases/002-react-basics-02-pokedex-ton-premier-composant/index.html">Quête 2332</a></li></ul></div>
+</div></div>
+<p>Pour continuer, tu dois apprendre à utiliser la syntaxe JSX :</p>
+<div class="colonnes"><div class="colonne"><a class="ressource" href="https://fr.react.dev/learn/writing-markup-with-jsx" target="_blank" rel="noopener noreferrer">
+  <div class="ressource__icone">↗</div>
+  <div class="ressource__texte">
+    <div class="ressource__titre">https://fr.react.dev/learn/writing-markup-with-jsx</div>
+    <div class="ressource__desc"><p>Écrire du balisage avec JSX</p>
+</div>
+    <div class="ressource__hote">fr.react.dev</div>
+  </div>
+</a>
+<a class="ressource" href="https://fr.react.dev/learn/javascript-in-jsx-with-curly-braces" target="_blank" rel="noopener noreferrer">
+  <div class="ressource__icone">↗</div>
+  <div class="ressource__texte">
+    <div class="ressource__titre">https://fr.react.dev/learn/javascript-in-jsx-with-curly-braces</div>
+    <div class="ressource__desc"><p>JavaScript dans JSX grâce aux accolades</p>
+</div>
+    <div class="ressource__hote">fr.react.dev</div>
+  </div>
+</a>
+</div><div class="colonne"><div class="renvois"><div class="renvois__titre">Quêtes liées</div><ul><li><a href="../../react-bases/003-react-basics-03-pokedex-afficher-des-donnees-dans-un/index.html">Quête 2336</a></li></ul></div>
+</div></div>
+<h3>Props and State</h3>
+<p>Les <em>props</em> et le <em>state</em> sont les outils principaux pour dynamiser ton affichage.</p>
+<p>Regarde ce code HTML :</p>
+<div class="bloc-code"><div class="bloc-code__langue">html</div><pre><code class="hljs language-html"><span class="hljs-tag">&lt;<span class="hljs-name">img</span> <span class="hljs-attr">src</span>=<span class="hljs-string">&quot;images/004-chien-trop-mignon.jpg&quot;</span> <span class="hljs-attr">alt</span>=<span class="hljs-string">&quot;chien trop mignon&quot;</span> /&gt;</span>
+</code></pre></div>
+<p>Que se passe-t-il en interne dans la balise <code>img</code> ? Si tu devais coder un composant <code>Img</code> en React, le code ressemblerait à ceci :</p>
+<div class="bloc-code"><div class="bloc-code__langue">jsx</div><pre><code class="hljs language-jsx"><span class="hljs-keyword">function</span> <span class="hljs-title function_">Img</span>(<span class="hljs-params"><span class="hljs-comment">/* src et alt seraient accessibles ici */</span></span>) {
+  <span class="hljs-keyword">return</span> (
+    <span class="hljs-comment">// ton affichage en fonction de src et alt</span>
+  );
+}
+</code></pre></div>
+<p>Pour s'afficher, ton composant a besoin de <em>recevoir</em> des valeurs pour les attributs <code>src</code> et <code>alt</code> : c'est le système des <strong>props</strong>. Plus d'informations par ici :</p>
+<div class="colonnes"><div class="colonne"><a class="ressource" href="https://fr.react.dev/learn/passing-props-to-a-component" target="_blank" rel="noopener noreferrer">
+  <div class="ressource__icone">↗</div>
+  <div class="ressource__texte">
+    <div class="ressource__titre">https://fr.react.dev/learn/passing-props-to-a-component</div>
+    <div class="ressource__desc"><p>Passer des props à un composant</p>
+</div>
+    <div class="ressource__hote">fr.react.dev</div>
+  </div>
+</a>
+</div><div class="colonne"><div class="renvois"><div class="renvois__titre">Quêtes liées</div><ul><li><a href="../../react-bases/004-react-basics-04-pokedex-passer-des-props/index.html">Quête 2374</a></li><li><a href="../../react-bases/005-react-basics-05-pokedex-typer-les-props-avec-typescript/index.html">Quête 2375</a></li></ul></div>
+</div></div>
+<p>Maintenant, regardons ensemble un autre code HTML :</p>
+<div class="bloc-code"><div class="bloc-code__langue">html</div><pre><code class="hljs language-html"><span class="hljs-tag">&lt;<span class="hljs-name">input</span> <span class="hljs-attr">type</span>=<span class="hljs-string">&quot;checkbox&quot;</span> <span class="hljs-attr">checked</span> /&gt;</span>
+</code></pre></div>
+<p>La balise <code>input</code> qui s'afficherait avec ce code recevrait un type <code>checkbox</code> pour déterminer le type d'affichage du champs. L'attribut <code>checked</code> cocherait la case par défaut pour le <em>premier affichage</em>. Ensuite, une personne pourrait cliquer sur la case pour la décocher/recocher. Ta case à cocher garde en mémoire un <em>état</em> qui dépend des actions de l'utilisateur.</p>
+<p>Un composant <code>Input</code> en React pourrait ressembler à ceci :</p>
+<div class="bloc-code"><div class="bloc-code__langue">jsx</div><pre><code class="hljs language-jsx"><span class="hljs-keyword">function</span> <span class="hljs-title function_">Input</span>(<span class="hljs-params">{ type, checked: initialValue }</span>) {
+  <span class="hljs-comment">// utilse un state à l&#x27;intérieur du composant</span>
+
+  <span class="hljs-keyword">return</span> (
+    <span class="hljs-comment">// ton affichage en fonction du state</span>
+  );
+}
+</code></pre></div>
+<p>À toi d'explorer le sujet :</p>
+<div class="colonnes"><div class="colonne"><a class="ressource" href="https://fr.react.dev/learn/state-a-components-memory" target="_blank" rel="noopener noreferrer">
+  <div class="ressource__icone">↗</div>
+  <div class="ressource__texte">
+    <div class="ressource__titre">https://fr.react.dev/learn/state-a-components-memory</div>
+    <div class="ressource__desc"><p>L'état : la mémoire d'un composant</p>
+</div>
+    <div class="ressource__hote">fr.react.dev</div>
+  </div>
+</a>
+</div><div class="colonne"><div class="renvois"><div class="renvois__titre">Quêtes liées</div><ul><li><a href="../../react-bases/006-react-basics-06-pokedex-utiliser-un-state/index.html">Quête 2376</a></li></ul></div>
+</div></div>
+<h3>Répéter avec .map()</h3>
+<p>Dans une application, tu pourras répéter un composant avec des données différentes envoyées dans les props :</p>
+<div class="bloc-code"><div class="bloc-code__langue">jsx</div><pre><code class="hljs language-jsx"><span class="hljs-keyword">const</span> pokemonList = [<span class="hljs-comment">/* ... */</span>];
+
+<span class="hljs-keyword">function</span> <span class="hljs-title function_">App</span>(<span class="hljs-params"></span>) {
+  <span class="hljs-keyword">return</span> (
+    <span class="language-xml"><span class="hljs-tag">&lt;&gt;</span>
+      <span class="hljs-tag">&lt;<span class="hljs-name">Pokemon</span> <span class="hljs-attr">data</span>=<span class="hljs-string">{pokemonList[0]}</span> /&gt;</span>
+      <span class="hljs-tag">&lt;<span class="hljs-name">Pokemon</span> <span class="hljs-attr">data</span>=<span class="hljs-string">{pokemonList[1]}</span> /&gt;</span>
+      <span class="hljs-tag">&lt;<span class="hljs-name">Pokemon</span> <span class="hljs-attr">data</span>=<span class="hljs-string">{pokemonList[2]}</span> /&gt;</span>
+      <span class="hljs-tag">&lt;<span class="hljs-name">Pokemon</span> <span class="hljs-attr">data</span>=<span class="hljs-string">{pokemonList[3]}</span> /&gt;</span>
+      <span class="hljs-tag">&lt;<span class="hljs-name">Pokemon</span> <span class="hljs-attr">data</span>=<span class="hljs-string">{pokemonList[4]}</span> /&gt;</span>
+    <span class="hljs-tag">&lt;/&gt;</span></span>
+  );
+}
+</code></pre></div>
+<p>Pour ce genre de code, tu peux avoir envie d'utiliser une boucle. Quelque chose comme ça :</p>
+<div class="bloc-code"><div class="bloc-code__langue">jsx</div><pre><code class="hljs language-jsx"><span class="hljs-keyword">const</span> pokemonList = [<span class="hljs-comment">/* ... */</span>];
+
+<span class="hljs-keyword">function</span> <span class="hljs-title function_">App</span>(<span class="hljs-params"></span>) {
+  <span class="hljs-keyword">return</span> (
+    <span class="language-xml"><span class="hljs-tag">&lt;&gt;</span>
+      for (const pokemon of pokemonList) {
+        <span class="hljs-tag">&lt;<span class="hljs-name">Pokemon</span> <span class="hljs-attr">data</span>=<span class="hljs-string">{pokemon}</span> /&gt;</span>
+      }
+    <span class="hljs-tag">&lt;/&gt;</span></span>
+  );
+}
+</code></pre></div>
+<div class="encadre encadre--note encadre--arrow"><div class="encadre__corps"><p>MAIS derrière le mot-clé <code>return</code> tu dois écrire une <em>expression</em> : quelque chose qui peut être remplacé par une <em>valeur</em>. Le mot-clé <code>for</code> est une <em>instruction</em> : dans ce contexte, disons que c'est le contraire d'une expression. Bref, la construction <code>return for</code> est impossible en JS.</p>
+</div></div>
+<p>Alors comment répéter un morceau d'affichage sans instruction, uniquement avec des expressions ? De base, JS fournit des outils que tu peux utiliser pour afficher des listes dans un composant React :</p>
+<div class="colonnes"><div class="colonne"><a class="ressource" href="https://fr.react.dev/learn/rendering-lists" target="_blank" rel="noopener noreferrer">
+  <div class="ressource__icone">↗</div>
+  <div class="ressource__texte">
+    <div class="ressource__titre">https://fr.react.dev/learn/rendering-lists</div>
+    <div class="ressource__desc"><p>Afficher des listes</p>
+</div>
+    <div class="ressource__hote">fr.react.dev</div>
+  </div>
+</a>
+</div><div class="colonne"><div class="renvois"><div class="renvois__titre">Quêtes liées</div><ul><li><a href="../../react-bases/007-react-basics-07-pokedex-repeter-un-bloc-d-affichage-avec-map/index.html">Quête 2378</a></li></ul></div>
+</div></div>
+<h3>Aller plus loin</h3>
+<p>Si tu as un peu de temps libre, tu peux compléter ton pokédex en étudiant les différentes manières d'utiliser du CSS avec React :</p>
+<div class="renvois"><div class="renvois__titre">Quêtes liées</div><ul><li><a href="../../react-bases/008-react-basics-08-pokedex-le-css-dans-react/index.html">Quête 1795</a></li></ul></div>
+<h2>Challenge</h2>
+<div class="encadre encadre--warning"><div class="encadre__titre">Attention</div><div class="encadre__corps"><p>Le codesandbox que tu as reçu est en JS, pas en TS : tu n'auras pas à typer les choses, mais c'est toi qui devras vérifier la cohérence de ton code.</p>
+</div></div>
+<p>Tout d'abord, fork la base de code que tu as reçue :</p>
+<div class="bloc-code"><div class="bloc-code__langue">jsx</div><pre><code class="hljs language-jsx">!--- <span class="hljs-title class_">App</span>.<span class="hljs-property">js</span>
+<span class="hljs-keyword">import</span> <span class="hljs-title class_">MenuList</span> <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;./components/MenuList&#x27;</span>;
+
+<span class="hljs-keyword">import</span> <span class="hljs-string">&#x27;./App.css&#x27;</span>;
+
+<span class="hljs-keyword">const</span> foodItems = [
+  {
+    <span class="hljs-attr">id</span>: <span class="hljs-number">1</span>,
+    <span class="hljs-attr">itemName</span>: <span class="hljs-string">&quot;Caesar&#x27;s Salad&quot;</span>,
+    <span class="hljs-attr">description</span>: <span class="hljs-string">&quot;The original Caesar&#x27;s Salad recipe&quot;</span>,
+    <span class="hljs-attr">foodImage</span>: <span class="hljs-string">&#x27;https://cdn.britannica.com/14/234014-050-CB842159/Caesar-salad-side-view.jpg&#x27;</span>,
+    <span class="hljs-attr">price</span>: <span class="hljs-number">12</span>,
+    <span class="hljs-attr">isFavorite</span>: <span class="hljs-literal">false</span>,
+  },
+  {
+    <span class="hljs-attr">id</span>: <span class="hljs-number">2</span>,
+    <span class="hljs-attr">itemName</span>: <span class="hljs-string">&#x27;Spaghetti Carbonara&#x27;</span>,
+    <span class="hljs-attr">description</span>: <span class="hljs-string">&quot;Better than your nonna&#x27;s! All local and fresh ingredients&quot;</span>,
+    <span class="hljs-attr">foodImage</span>: <span class="hljs-string">&#x27;https://cdn.britannica.com/96/238196-050-C5560987/Plate-of-traditional-Italian-spaghetti-carbonara-surrounded-by-the-ingredients-use-to-make-it.jpg&#x27;</span>,
+    <span class="hljs-attr">price</span>: <span class="hljs-number">15</span>,
+    <span class="hljs-attr">isFavorite</span>: <span class="hljs-literal">true</span>,
+  },
+  {
+    <span class="hljs-attr">id</span>: <span class="hljs-number">3</span>,
+    <span class="hljs-attr">itemName</span>: <span class="hljs-string">&#x27;Grilled Fish&#x27;</span>,
+    <span class="hljs-attr">description</span>: <span class="hljs-string">&#x27;Fish of the day, grilled with a side of vegetables&#x27;</span>,
+    <span class="hljs-attr">foodImage</span>: <span class="hljs-string">&#x27;https://cdn.britannica.com/38/235438-050-08E3AE20/Grilled-barramundi-steak-on-a-bed-of-vegetables.jpg&#x27;</span>,
+    <span class="hljs-attr">price</span>: <span class="hljs-number">20</span>,
+    <span class="hljs-attr">isFavorite</span>: <span class="hljs-literal">false</span>,
+  },
+  {
+    <span class="hljs-attr">id</span>: <span class="hljs-number">4</span>,
+    <span class="hljs-attr">itemName</span>: <span class="hljs-string">&#x27;Steak&#x27;</span>,
+    <span class="hljs-attr">description</span>: <span class="hljs-string">&#x27;Meat!&#x27;</span>,
+    <span class="hljs-attr">foodImage</span>: <span class="hljs-string">&#x27;https://cdn.britannica.com/70/189770-050-AA419662/New-York-City-steak-Delmonico-rib-eyes.jpg&#x27;</span>,
+    <span class="hljs-attr">price</span>: <span class="hljs-number">30</span>,
+    <span class="hljs-attr">isFavorite</span>: <span class="hljs-literal">false</span>,
+  }
+];
+
+<span class="hljs-keyword">function</span> <span class="hljs-title function_">App</span>(<span class="hljs-params"></span>) {
+  <span class="hljs-keyword">return</span> (
+    <span class="language-xml"><span class="hljs-tag">&lt;<span class="hljs-name">main</span>&gt;</span>
+      <span class="hljs-tag">&lt;<span class="hljs-name">h1</span>&gt;</span>MarmiWild<span class="hljs-tag">&lt;/<span class="hljs-name">h1</span>&gt;</span>
+      {/* pass the variable foodItems as props to MenuList component */}
+      <span class="hljs-tag">&lt;<span class="hljs-name">MenuList</span> /&gt;</span>
+    <span class="hljs-tag">&lt;/<span class="hljs-name">main</span>&gt;</span></span>
+  );
+};
+
+<span class="hljs-keyword">export</span> <span class="hljs-keyword">default</span> <span class="hljs-title class_">App</span>;
+!--- <span class="hljs-title class_">App</span>.<span class="hljs-property">css</span>
+body {
+  max-<span class="hljs-attr">width</span>: 800px;
+  <span class="hljs-attr">margin</span>: auto;
+  <span class="hljs-attr">padding</span>: 1rem;
+  font-<span class="hljs-attr">family</span>: <span class="hljs-string">&quot;Grandstander&quot;</span>, cursive;
+}
+
+h1 {
+  text-<span class="hljs-attr">align</span>: center;
+}
+
+figure {
+  <span class="hljs-attr">margin</span>: <span class="hljs-number">0</span>;
+  grid-<span class="hljs-attr">row</span>: <span class="hljs-number">1</span> / -<span class="hljs-number">1</span>;
+  place-<span class="hljs-attr">self</span>: stretch;
+  <span class="hljs-attr">display</span>: flex;
+}
+
+figure img {
+  <span class="hljs-attr">width</span>: 120px;
+  <span class="hljs-attr">height</span>: <span class="hljs-number">100</span>%;
+  object-<span class="hljs-attr">fit</span>: cover;
+}
+
+figure figcaption {
+  padding-<span class="hljs-attr">left</span>: 15px;
+}
+
+.<span class="hljs-property">itemContainer</span> {
+  <span class="hljs-attr">display</span>: grid;
+  grid-template-<span class="hljs-attr">columns</span>: 1fr auto;
+  grid-template-<span class="hljs-attr">rows</span>: <span class="hljs-title function_">repeat</span>(<span class="hljs-number">2</span>, auto);
+  place-<span class="hljs-attr">items</span>: center;
+  <span class="hljs-attr">border</span>: 1px solid lightgrey;
+  margin-<span class="hljs-attr">top</span>: 25px;
+  padding-<span class="hljs-attr">right</span>: 1rem;
+}
+!--- components/<span class="hljs-title class_">MenuList</span>.<span class="hljs-property">js</span>
+<span class="hljs-keyword">import</span> <span class="hljs-title class_">MenuItem</span> <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;./MenuItem&#x27;</span>;
+
+<span class="hljs-keyword">function</span> <span class="hljs-title function_">MenuList</span>(<span class="hljs-params">{ foodItems }</span>) {
+  <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(foodItems);
+
+  <span class="hljs-keyword">return</span> (
+    <span class="language-xml"><span class="hljs-tag">&lt;&gt;</span>
+      {/* render a MenuItem component for each element of the foodItems array */}
+    <span class="hljs-tag">&lt;/&gt;</span></span>
+  );
+}
+
+<span class="hljs-keyword">export</span> <span class="hljs-keyword">default</span> <span class="hljs-title class_">MenuList</span>;
+!--- components/<span class="hljs-title class_">MenuItem</span>.<span class="hljs-property">js</span>
+<span class="hljs-keyword">function</span> <span class="hljs-title function_">MenuItem</span>(<span class="hljs-params">props</span>) {
+  <span class="hljs-comment">//create a state isFavorite that has the inital value of isFavorite that comes from the props</span>
+
+  <span class="hljs-keyword">return</span> (
+    <span class="language-xml"><span class="hljs-tag">&lt;<span class="hljs-name">section</span> <span class="hljs-attr">className</span>=<span class="hljs-string">&quot;itemContainer&quot;</span>&gt;</span>
+      <span class="hljs-tag">&lt;<span class="hljs-name">figure</span> <span class="hljs-attr">className</span>=<span class="hljs-string">&quot;imgContainer&quot;</span>&gt;</span>
+        {/* the image will receive the url src from the props */}
+        <span class="hljs-tag">&lt;<span class="hljs-name">img</span> <span class="hljs-attr">src</span>=<span class="hljs-string">&quot;&quot;</span> <span class="hljs-attr">alt</span>=<span class="hljs-string">&quot;&quot;</span> /&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">figcaption</span>&gt;</span>
+          {/* the h2 will receive the item name from the props */}
+          <span class="hljs-tag">&lt;<span class="hljs-name">h2</span>&gt;</span>{}<span class="hljs-tag">&lt;/<span class="hljs-name">h2</span>&gt;</span>
+          {/* the p will receive the item description from the props */}
+          <span class="hljs-tag">&lt;<span class="hljs-name">p</span>&gt;</span>{}<span class="hljs-tag">&lt;/<span class="hljs-name">p</span>&gt;</span>
+        <span class="hljs-tag">&lt;/<span class="hljs-name">figcaption</span>&gt;</span>
+      <span class="hljs-tag">&lt;/<span class="hljs-name">figure</span>&gt;</span>
+      {/* the span will receive the item price from the props */}
+      <span class="hljs-tag">&lt;<span class="hljs-name">aside</span>&gt;</span>{} EUR<span class="hljs-tag">&lt;/<span class="hljs-name">aside</span>&gt;</span>
+
+      {/* the button to play with the isFavorite state:
+              - onClick, will toggle the isFavorite state,
+              - content will be conditionally rendered as &quot;❤️&quot; or &quot;🖤&quot;, depending on the value of isFavorite
+          */}
+      <span class="hljs-tag">&lt;<span class="hljs-name">button</span> <span class="hljs-attr">type</span>=<span class="hljs-string">&quot;button&quot;</span>&gt;</span>{}<span class="hljs-tag">&lt;/<span class="hljs-name">button</span>&gt;</span>
+    <span class="hljs-tag">&lt;/<span class="hljs-name">section</span>&gt;</span></span>
+  );
+}
+
+<span class="hljs-keyword">export</span> <span class="hljs-keyword">default</span> <span class="hljs-title class_">MenuItem</span>;
+</code></pre></div>
+<p>Ensuite, suis ces étapes :</p>
+<ol class="etapes"><li class="etape"><div class="etape__puce">1</div><div class="etape__contenu"><h4 class="etape__titre">Dans le composant App</h4><p>Passe la variable <code>foodItems</code> en props à <code>MenuList</code>.</p>
+</div></li><li class="etape"><div class="etape__puce">2</div><div class="etape__contenu"><h4 class="etape__titre">Dans le composant MenuList</h4><p>Affiche un composant <code>MenuItem</code> pour chaque élément du tableau et transmets toutes les propriétés de l'objet en tant que props.</p>
+</div></li><li class="etape"><div class="etape__puce">3</div><div class="etape__contenu"><h4 class="etape__titre">Dans le composant MenuItem</h4><p>Accède à chaque <em>props</em> pour afficher le nom, l'image, la description et le prix de l'item.</p>
+</div></li><li class="etape"><div class="etape__puce">4</div><div class="etape__contenu"><h4 class="etape__titre">Dans le composant MenuItem</h4><p>Crée un état <code>isFavorite</code> qui aura une valeur initiale définie sur <code>props.isFavorite</code>.</p>
+</div></li><li class="etape"><div class="etape__puce">5</div><div class="etape__contenu"><h4 class="etape__titre">Dans le composant MenuItem</h4><p>Crée une fonction <code>handleClickFavorite</code> qui fera passer l'état <code>isFavorite</code> de vrai à faux.</p>
+</div></li><li class="etape"><div class="etape__puce">6</div><div class="etape__contenu"><h4 class="etape__titre">Dans le composant MenuItem</h4><p>À l'intérieur du <code>button</code> favori, appelle la méthode <code>handleClickFavorite</code> lorsqu'un événement de clic se produit.</p>
+</div></li><li class="etape"><div class="etape__puce">7</div><div class="etape__contenu"><h4 class="etape__titre">Dans le composant MenuItem</h4><p>Sur le même <code>button</code>, modifie conditionnellement le contenu, en fonction de l'état <code>isFavorite</code>.</p>
+</div></li></ol>
+<p>Partage le lien de ton fork en solution.</p>
+<h3>Critères de validation</h3>
+<ul>
+<li>[ ] l'application affiche correctement les éléments du menu ;</li>
+<li>[ ] quand tu cliques sur l'image du coeur, elle passe de favorite à non favorite.</li>
+</ul>
+<p>Une solution possible :</p>
+<div class="bloc-code"><div class="bloc-code__langue">jsx</div><pre><code class="hljs language-jsx">!--- <span class="hljs-title class_">App</span>.<span class="hljs-property">js</span>
+<span class="hljs-keyword">import</span> <span class="hljs-title class_">MenuList</span> <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;./components/MenuList&#x27;</span>;
+
+<span class="hljs-keyword">import</span> <span class="hljs-string">&#x27;./App.css&#x27;</span>;
+
+<span class="hljs-keyword">const</span> foodItems = [
+  {
+    <span class="hljs-attr">id</span>: <span class="hljs-number">1</span>,
+    <span class="hljs-attr">itemName</span>: <span class="hljs-string">&quot;Caesar&#x27;s Salad&quot;</span>,
+    <span class="hljs-attr">description</span>: <span class="hljs-string">&quot;The original Caesar&#x27;s Salad recipe&quot;</span>,
+    <span class="hljs-attr">foodImage</span>: <span class="hljs-string">&#x27;https://cdn.britannica.com/14/234014-050-CB842159/Caesar-salad-side-view.jpg&#x27;</span>,
+    <span class="hljs-attr">price</span>: <span class="hljs-number">12</span>,
+    <span class="hljs-attr">isFavorite</span>: <span class="hljs-literal">false</span>,
+  },
+  {
+    <span class="hljs-attr">id</span>: <span class="hljs-number">2</span>,
+    <span class="hljs-attr">itemName</span>: <span class="hljs-string">&#x27;Spaghetti Carbonara&#x27;</span>,
+    <span class="hljs-attr">description</span>: <span class="hljs-string">&quot;Better than your nonna&#x27;s! All local and fresh ingredients&quot;</span>,
+    <span class="hljs-attr">foodImage</span>: <span class="hljs-string">&#x27;https://cdn.britannica.com/96/238196-050-C5560987/Plate-of-traditional-Italian-spaghetti-carbonara-surrounded-by-the-ingredients-use-to-make-it.jpg&#x27;</span>,
+    <span class="hljs-attr">price</span>: <span class="hljs-number">15</span>,
+    <span class="hljs-attr">isFavorite</span>: <span class="hljs-literal">true</span>,
+  },
+  {
+    <span class="hljs-attr">id</span>: <span class="hljs-number">3</span>,
+    <span class="hljs-attr">itemName</span>: <span class="hljs-string">&#x27;Grilled Fish&#x27;</span>,
+    <span class="hljs-attr">description</span>: <span class="hljs-string">&#x27;Fish of the day, grilled with a side of vegetables&#x27;</span>,
+    <span class="hljs-attr">foodImage</span>: <span class="hljs-string">&#x27;https://cdn.britannica.com/38/235438-050-08E3AE20/Grilled-barramundi-steak-on-a-bed-of-vegetables.jpg&#x27;</span>,
+    <span class="hljs-attr">price</span>: <span class="hljs-number">20</span>,
+    <span class="hljs-attr">isFavorite</span>: <span class="hljs-literal">false</span>,
+  },
+  {
+    <span class="hljs-attr">id</span>: <span class="hljs-number">4</span>,
+    <span class="hljs-attr">itemName</span>: <span class="hljs-string">&#x27;Steak&#x27;</span>,
+    <span class="hljs-attr">description</span>: <span class="hljs-string">&#x27;Meat!&#x27;</span>,
+    <span class="hljs-attr">foodImage</span>: <span class="hljs-string">&#x27;https://cdn.britannica.com/70/189770-050-AA419662/New-York-City-steak-Delmonico-rib-eyes.jpg&#x27;</span>,
+    <span class="hljs-attr">price</span>: <span class="hljs-number">30</span>,
+    <span class="hljs-attr">isFavorite</span>: <span class="hljs-literal">false</span>,
+  }
+];
+
+<span class="hljs-keyword">function</span> <span class="hljs-title function_">App</span>(<span class="hljs-params"></span>) {
+  <span class="hljs-keyword">return</span> (
+    <span class="language-xml"><span class="hljs-tag">&lt;<span class="hljs-name">main</span>&gt;</span>
+      <span class="hljs-tag">&lt;<span class="hljs-name">h1</span>&gt;</span>MarmiWild<span class="hljs-tag">&lt;/<span class="hljs-name">h1</span>&gt;</span>
+      {/* pass the variable foodItems as props to MenuList component */}
+      <span class="hljs-tag">&lt;<span class="hljs-name">MenuList</span> <span class="hljs-attr">foodItems</span>=<span class="hljs-string">{foodItems}</span> /&gt;</span>
+    <span class="hljs-tag">&lt;/<span class="hljs-name">main</span>&gt;</span></span>
+  );
+};
+
+<span class="hljs-keyword">export</span> <span class="hljs-keyword">default</span> <span class="hljs-title class_">App</span>;
+!--- <span class="hljs-title class_">App</span>.<span class="hljs-property">css</span>
+body {
+  max-<span class="hljs-attr">width</span>: 800px;
+  <span class="hljs-attr">margin</span>: auto;
+  <span class="hljs-attr">padding</span>: 1rem;
+  font-<span class="hljs-attr">family</span>: <span class="hljs-string">&quot;Grandstander&quot;</span>, cursive;
+}
+
+h1 {
+  text-<span class="hljs-attr">align</span>: center;
+}
+
+figure {
+  <span class="hljs-attr">margin</span>: <span class="hljs-number">0</span>;
+  grid-<span class="hljs-attr">row</span>: <span class="hljs-number">1</span> / -<span class="hljs-number">1</span>;
+  place-<span class="hljs-attr">self</span>: stretch;
+  <span class="hljs-attr">display</span>: flex;
+}
+
+figure img {
+  <span class="hljs-attr">width</span>: 120px;
+  <span class="hljs-attr">height</span>: <span class="hljs-number">100</span>%;
+  object-<span class="hljs-attr">fit</span>: cover;
+}
+
+figure figcaption {
+  padding-<span class="hljs-attr">left</span>: 15px;
+}
+
+.<span class="hljs-property">itemContainer</span> {
+  <span class="hljs-attr">display</span>: grid;
+  grid-template-<span class="hljs-attr">columns</span>: 1fr auto;
+  grid-template-<span class="hljs-attr">rows</span>: <span class="hljs-title function_">repeat</span>(<span class="hljs-number">2</span>, auto);
+  place-<span class="hljs-attr">items</span>: center;
+  <span class="hljs-attr">border</span>: 1px solid lightgrey;
+  margin-<span class="hljs-attr">top</span>: 25px;
+  padding-<span class="hljs-attr">right</span>: 1rem;
+}
+!--- components/<span class="hljs-title class_">MenuList</span>.<span class="hljs-property">js</span>
+<span class="hljs-keyword">import</span> <span class="hljs-title class_">MenuItem</span> <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;./MenuItem&#x27;</span>;
+
+<span class="hljs-keyword">function</span> <span class="hljs-title function_">MenuList</span>(<span class="hljs-params">{ foodItems }</span>) {
+  <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(foodItems);
+
+  <span class="hljs-keyword">return</span> (
+    <span class="language-xml"><span class="hljs-tag">&lt;&gt;</span>
+      {/* render a MenuItem component for each element of the foodItems array */}
+      {foodItems.map((foodItem) =&gt; (
+        <span class="hljs-tag">&lt;<span class="hljs-name">MenuItem</span>
+          <span class="hljs-attr">key</span>=<span class="hljs-string">{foodItem.id}</span>
+          <span class="hljs-attr">itemName</span>=<span class="hljs-string">{foodItem.itemName}</span>
+          <span class="hljs-attr">description</span>=<span class="hljs-string">{foodItem.description}</span>
+          <span class="hljs-attr">foodImage</span>=<span class="hljs-string">{foodItem.foodImage}</span>
+          <span class="hljs-attr">price</span>=<span class="hljs-string">{foodItem.price}</span>
+          <span class="hljs-attr">isFavorite</span>=<span class="hljs-string">{foodItem.isFavorite}</span>
+        /&gt;</span>
+      ))}
+    <span class="hljs-tag">&lt;/&gt;</span></span>
+  );
+}
+
+<span class="hljs-keyword">export</span> <span class="hljs-keyword">default</span> <span class="hljs-title class_">MenuList</span>;
+!--- components/<span class="hljs-title class_">MenuItem</span>.<span class="hljs-property">js</span>
+<span class="hljs-keyword">import</span> { useState } <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;react&quot;</span>;
+
+<span class="hljs-keyword">function</span> <span class="hljs-title function_">MenuItem</span>(<span class="hljs-params">props</span>) {
+  <span class="hljs-comment">//create a state isFavorite that has the inital value of isFavorite that comes from the props</span>
+  <span class="hljs-keyword">const</span> [isFavorite, setIsFavorite] = <span class="hljs-title function_">useState</span>(props.<span class="hljs-property">isFavorite</span>);
+
+  <span class="hljs-keyword">return</span> (
+    <span class="language-xml"><span class="hljs-tag">&lt;<span class="hljs-name">section</span> <span class="hljs-attr">className</span>=<span class="hljs-string">&quot;itemContainer&quot;</span>&gt;</span>
+      <span class="hljs-tag">&lt;<span class="hljs-name">figure</span> <span class="hljs-attr">className</span>=<span class="hljs-string">&quot;imgContainer&quot;</span>&gt;</span>
+        {/* the image will receive the url src from the props */}
+        <span class="hljs-tag">&lt;<span class="hljs-name">img</span> <span class="hljs-attr">src</span>=<span class="hljs-string">{props.foodImage}</span> <span class="hljs-attr">alt</span>=<span class="hljs-string">{props.itemName}</span> /&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">figcaption</span>&gt;</span>
+          {/* the h2 will receive the item name from the props */}
+          <span class="hljs-tag">&lt;<span class="hljs-name">h2</span>&gt;</span>{props.itemName}<span class="hljs-tag">&lt;/<span class="hljs-name">h2</span>&gt;</span>
+          {/* the p will receive the item description from the props */}
+          <span class="hljs-tag">&lt;<span class="hljs-name">p</span>&gt;</span>{props.description}<span class="hljs-tag">&lt;/<span class="hljs-name">p</span>&gt;</span>
+        <span class="hljs-tag">&lt;/<span class="hljs-name">figcaption</span>&gt;</span>
+      <span class="hljs-tag">&lt;/<span class="hljs-name">figure</span>&gt;</span>
+      {/* the span will receive the item price from the props */}
+      <span class="hljs-tag">&lt;<span class="hljs-name">aside</span>&gt;</span>{props.price} EUR<span class="hljs-tag">&lt;/<span class="hljs-name">aside</span>&gt;</span>
+
+      {/* the button to play with the isFavorite state:
+              - onClick, will toggle the isFavorite state,
+              - content will be conditionally rendered as &quot;❤️&quot; or &quot;🖤&quot;, depending on the value of isFavorite
+          */}
+      <span class="hljs-tag">&lt;<span class="hljs-name">button</span>
+        <span class="hljs-attr">type</span>=<span class="hljs-string">&quot;button&quot;</span>
+        <span class="hljs-attr">onClick</span>=<span class="hljs-string">{()</span> =&gt;</span> setIsFavorite(!isFavorite)}
+      &gt;
+        {isFavorite ? &quot;❤️&quot; : &quot;🖤&quot;}
+      <span class="hljs-tag">&lt;/<span class="hljs-name">button</span>&gt;</span>
+    <span class="hljs-tag">&lt;/<span class="hljs-name">section</span>&gt;</span></span>
+  );
+}
+
+<span class="hljs-keyword">export</span> <span class="hljs-keyword">default</span> <span class="hljs-title class_">MenuItem</span>;
+</code></pre></div>
+
+  </div>
+  <section class="ressources-quete">
+  <h2>Ressources partagées sur cette quête</h2>
+  <ul class="ressources-liste">
+    <li><a href="https://www.youtube.com/watch?v=ahKsy1FS45k" target="_blank" rel="noopener noreferrer">Video about how to lifting the state</a><span class="ressources-liste__url">https://www.youtube.com/watch?v=ahKsy1FS45k</span></li>
+    <li><a href="https://www.youtube.com/watch?v=Gnx-37VLH24" target="_blank" rel="noopener noreferrer">Cela devrait vous aider pour réaliser la seconde partie de l'exercice avec le State et le &quot;toggle&quot;</a><span class="ressources-liste__url">https://www.youtube.com/watch?v=Gnx-37VLH24</span></li>
+  </ul>
+</section>
+</article>
+
+<nav class="nav-quete">
+  <a class="nav-quete__lien nav-quete__lien--prec" href="../../developpement-web/008-js-manipulation-du-dom/index.html">
+           <span class="nav-quete__sens">← Précédent</span>
+           <span class="nav-quete__titre">JS - Manipulation du DOM</span>
+         </a>
+  <a class="nav-quete__lien nav-quete__lien--suiv" href="../../developpement-web/010-js-react-express-monorepo/index.html">
+           <span class="nav-quete__sens">Suivant →</span>
+           <span class="nav-quete__titre">JS - React &amp; Express - Monorepo</span>
+         </a>
+</nav>
+</main>
+<footer class="pied">
+  <p>Archive personnelle des cours suivis à la Wild Code School. Copie hors ligne à usage strictement privé.</p>
+</footer>
+
+<script src="../../assets/copie-code.js"></script>
+<script src="../../assets/progression.js"></script>
+</body>
+</html>

@@ -1,0 +1,113 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Composer - 1. Installation — Archives WCS</title>
+<link rel="stylesheet" href="../../assets/style.css">
+</head>
+<body style="--teinte:#745089">
+<header class="entete">
+  <a class="entete__marque" href="../../index.html">Archives Wild Code School</a>
+</header>
+<main class="contenu">
+<nav class="ariane"><a href="../../index.html">Accueil</a><span class="ariane__sep">›</span><a href="../../php-avance/index.html">PHP Avancé</a><span class="ariane__sep">›</span><span aria-current="page">Composer - 1. Installation</span></nav>
+
+<article class="quete">
+  <header class="quete__entete">
+    <a class="pastille pastille--teintee" href="../../php-avance/index.html">PHP Avancé</a>
+    <h1>Composer - 1. Installation</h1>
+    <p class="quete__meta">Quête 5 sur 11 · 1 image archivée</p>
+  </header>
+  <div class="cours">
+<div class="bloc-code"><div class="bloc-code__langue">title-</div><pre><code class="hljs language-title-">Introduction
+</code></pre></div>
+<p><strong>Composer</strong> est un gestionnaire de dépendances Libre, écrit en PHP.</p>
+<p>Il permet à ses utilisateurs de déclarer et d'installer les bibliothèques (<em>packages</em>) dont le projet principal a besoin. Ce type de gestionnaire de dépendances existe dans de nombreux langages, l'équivalent dans l'écosystème JS est par ex <strong>npm</strong>, <strong>yarn</strong>.
+Une bibliothèque est un ensemble de scripts écrits en <strong>PHP</strong> mettant à disposition des fonctions, constantes et classes afin de faciliter et d'accélérer les développements. Tu vas donc utiliser des morceaux de code écrits par d'autres, dans le but de résoudre certaines problématiques communes à de nombreux développeurs. Ainsi, tu n'auras pas à tout redévelopper par toi même en tentant de réinventer la roue ;-)</p>
+<p>Cette quête va t’apprendre à installer <strong>composer</strong> sur ta machine et à lancer ta première commande <strong>composer</strong>.</p>
+<h2>🤓 À la fin de cette quête, tu seras capable de :</h2>
+<p>✅ Installer <strong>composer</strong> sur ta machine
+✅ Vérifier que <strong>composer</strong> est bien installé et afficher sa version</p>
+<div class="bloc-code"><div class="bloc-code__langue">title-magnify</div><pre><code class="hljs language-title-magnify">Installation
+</code></pre></div>
+<p>Il existe 2 façons d'installer <strong>composer</strong> sur ta machine :</p>
+<ul>
+<li><strong>Localement</strong> : <strong>composer</strong> ne sera accessible qu'à l'intérieur de ton projet.</li>
+<li><strong>Globalement</strong> : tu pourras utiliser <strong>composer</strong> dans n'importe quel projet sur ta machine.</li>
+</ul>
+<div class="encadre encadre--warning"><div class="encadre__titre">Attention</div><div class="encadre__corps"><p><strong>Pour le moment ne l'installe pas encore !</strong>
+Cela fera parti de ton challenge. Pour le moment, contente toi de lire les instructions et comprendre les différentes étapes.</p>
+</div></div>
+<h3>Installation locale</h3>
+<p>Tout d'abord ouvre un terminal et rends toi dans le dossier de ton projet.</p>
+<h4>Linux / Windows / MacOS</h4>
+<p>Exécute les commandes suivantes (<em>une par une</em>) afin de télécharger <strong>composer</strong> dans le dossier de ton projet :</p>
+<div class="bloc-code"><div class="bloc-code__langue">bash</div><pre><code class="hljs language-bash">php -r <span class="hljs-string">&quot;copy(&#x27;https://getcomposer.org/installer&#x27;, &#x27;composer-setup.php&#x27;);&quot;</span>
+php composer-setup.php --filename=composer
+php -r <span class="hljs-string">&quot;unlink(&#x27;composer-setup.php&#x27;);&quot;</span>
+</code></pre></div>
+<p>Une fois ces commandes exécutées, tu devrais voir un fichier nommé <strong>composer</strong> à la racine de ton projet.</p>
+<h3>Installation globale (que nous utiliserons)</h3>
+<h4>Linux / MacOS</h4>
+<p>Tout d'abord, suis les instructions de la section <strong>Installation locale</strong>.
+Déplace ensuite le fichier <strong>composer</strong> que tu as téléchargé précédemment dans n'importe quel dossier situé dans ton <strong>PATH</strong> avec la commande suivante :</p>
+<div class="bloc-code"><div class="bloc-code__langue">bash</div><pre><code class="hljs language-bash"><span class="hljs-built_in">sudo</span> <span class="hljs-built_in">mv</span> composer /usr/local/bin
+</code></pre></div>
+<div class="encadre encadre--warning"><div class="encadre__titre">Attention</div><div class="encadre__corps"><h1>Utilisateurs de MacOS</h1>
+<p>Sur certaines versions de MacOS le dossier /usr n'existe pas. Si tu reçois une erreur de type &quot;/usr/local/bin/composer: No such file or directory&quot;, tu dois créer le dossier /usr/local/bin toi-même :
+mkdir -p /usr/local/bin</p>
+</div></div>
+<h4>Windows</h4>
+<p>Télécharge le fichier suivant : <a href="https://getcomposer.org/Composer-Setup.exe" target="_blank" rel="noopener noreferrer">Composer-Setup.exe</a>
+Une fois téléchargé, exécutes-le et clique sur <strong>suivant</strong> à chaque étape de l'installation.</p>
+<div class="bloc-code"><div class="bloc-code__langue">title-magnify</div><pre><code class="hljs language-title-magnify">Pour aller plus loin
+</code></pre></div>
+<a class="ressource" href="https://getcomposer.org/doc/00-intro.md" target="_blank" rel="noopener noreferrer">
+  <div class="ressource__icone">↗</div>
+  <div class="ressource__texte">
+    <div class="ressource__titre">Introduction à composer</div>
+    <div class="ressource__desc"><p>Introduction à composer</p>
+</div>
+    <div class="ressource__hote">getcomposer.org</div>
+  </div>
+</a>
+<h1>💪 Challenge</h1>
+<h2>Installe composer globalement et vérifies son installation</h2>
+<p>Tout d'abord suis les étapes de la section <strong>Installation globale</strong>.</p>
+<p>Si tu as ouvert un terminal, <strong>ferme ce dernier</strong> et ouvres-en un nouveau.</p>
+<p>Vérifie ensuite la version de <strong>composer</strong> en lançant la commande suivante :</p>
+<div class="bloc-code"><div class="bloc-code__langue">bash</div><pre><code class="hljs language-bash">composer --version
+</code></pre></div>
+<p>Tu devrais obtenir quelque chose comme ça :</p>
+<p><img src="images/001-image.png" alt="image" loading="lazy"></p>
+
+  </div>
+  <section class="ressources-quete">
+  <h2>Ressources partagées sur cette quête</h2>
+  <ul class="ressources-liste">
+    <li><a href="https://connect.adfab.fr/outils/quest-ce-composer" target="_blank" rel="noopener noreferrer">Information très simple pour une première approche de Composer</a><span class="ressources-liste__url">https://connect.adfab.fr/outils/quest-ce-composer</span></li>
+    <li><a href="https://getcomposer.org/download/" target="_blank" rel="noopener noreferrer">Installation de composer via getcomposer.org</a><span class="ressources-liste__url">https://getcomposer.org/download/</span></li>
+  </ul>
+</section>
+</article>
+
+<nav class="nav-quete">
+  <a class="nav-quete__lien nav-quete__lien--prec" href="../../php-avance/004-composer-2-psr-4-autoload/index.html">
+           <span class="nav-quete__sens">← Précédent</span>
+           <span class="nav-quete__titre">Composer -  2. PSR-4 &amp; Autoload</span>
+         </a>
+  <a class="nav-quete__lien nav-quete__lien--suiv" href="../../php-avance/006-composer-3-package-management/index.html">
+           <span class="nav-quete__sens">Suivant →</span>
+           <span class="nav-quete__titre">Composer - 3. Package Management</span>
+         </a>
+</nav>
+</main>
+<footer class="pied">
+  <p>Archive personnelle des cours suivis à la Wild Code School. Copie hors ligne à usage strictement privé.</p>
+</footer>
+
+<script src="../../assets/copie-code.js"></script>
+<script src="../../assets/progression.js"></script>
+</body>
+</html>

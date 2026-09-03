@@ -1,0 +1,177 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Node 02 - 🛰️ Utiliser un fichier .env — Archives WCS</title>
+<link rel="stylesheet" href="../../assets/style.css">
+</head>
+<body style="--teinte:#333333">
+<header class="entete">
+  <a class="entete__marque" href="../../index.html">Archives Wild Code School</a>
+</header>
+<main class="contenu">
+<nav class="ariane"><a href="../../index.html">Accueil</a><span class="ariane__sep">›</span><a href="../../node-js/index.html">Node.js</a><span class="ariane__sep">›</span><span aria-current="page">Node 02 - 🛰️ Utiliser un fichier .env</span></nav>
+
+<article class="quete">
+  <header class="quete__entete">
+    <a class="pastille pastille--teintee" href="../../node-js/index.html">Node.js</a>
+    <h1>Node 02 - 🛰️ Utiliser un fichier .env</h1>
+    <p class="quete__meta">Quête 2 sur 5 · 4 images archivées</p>
+  </header>
+  <div class="cours">
+<h2>Objectifs</h2>
+<ul>
+<li>Comprendre le concept d'environnement.</li>
+<li>Utiliser un fichier <code>.env</code> avec la commande <code>node</code>.</li>
+</ul>
+<h2>Pré-requis</h2>
+<ol class="etapes"><li class="etape"><div class="etape__puce">1</div><div class="etape__contenu"><h4 class="etape__titre">Valider la quête suivante</h4><div class="renvois"><div class="renvois__titre">Quêtes liées</div><ul><li><a href="../../node-js/001-node-01-introduction-a-node-js-et-npm/index.html">Quête 1334</a></li></ul></div>
+</div></li></ol>
+<h2>Introduction</h2>
+<p>Les fichiers <code>.env</code> sont des fichiers de configuration utilisés pour stocker des variables d'environnement dans un format simple, lisible et facile à gérer. Ils sont largement utilisés dans les applications modernes, en particulier dans les projets basés sur des frameworks comme Node.js, Django, Laravel, et bien d'autres.</p>
+<h2>Sommaire</h2>
+<h2>Variables d'environnement ?</h2>
+<p>Les variables d'environnement sont des variables qui sont définies dans le système d'exploitation ou dans le conteneur dans lequel l'application est exécutée.</p>
+<p>Les variables d'environnement remplissent plusieurs rôles :</p>
+<ul>
+<li>Configuration dynamique : Les variables permettent d'adapter une application à différents environnements (développement, test, production).</li>
+<li>Sécurité : Elles permettent de stocker des informations sensibles hors du code source.</li>
+<li>Portabilité : En les utilisant, tu peux facilement déployer la même application sur plusieurs systèmes (Linux, macOS, Windows) en modifiant uniquement les valeurs des variables d'environnement.</li>
+</ul>
+<h3>En pratique</h3>
+<p>Une variable d'environnement, comme une variable en JavaScript, est un nom associé à une valeur. Par convention, le nom doit être en majuscule :</p>
+<div class="bloc-code"><div class="bloc-code__langue">bash</div><pre><code class="hljs language-bash">MY_VARIABLE=Hello_world
+</code></pre></div>
+<p>Pour créer une variable d'environnement temporaire, tu peux la définir avant d'exécuter la commande <code>node</code>.</p>
+<div class="onglets" data-onglets="2"><input type="radio" name="onglets-23" id="onglets-23-0" class="onglets__radio" checked><input type="radio" name="onglets-23" id="onglets-23-1" class="onglets__radio"><div class="onglets__barre"><label class="onglets__label" for="onglets-23-0">Linux et macOS</label><label class="onglets__label" for="onglets-23-1">Windows</label></div><div class="onglets__panneaux"><div class="onglets__panneau"><p>Ouvre un terminal et tape :</p>
+<div class="bloc-code"><div class="bloc-code__langue">bash</div><pre><code class="hljs language-bash">MESSAGE=Hello_World node
+</code></pre></div>
+</div><div class="onglets__panneau"><p>La syntaxe est différente selon l'interface en ligne de commande que tu utilises sur Windows.</p>
+<p>Avec PowerShell, ouvre un terminal et tape :</p>
+<div class="bloc-code"><div class="bloc-code__langue">bash</div><pre><code class="hljs language-bash"><span class="hljs-variable">$env</span>:MESSAGE=<span class="hljs-string">&quot;Hello_World&quot;</span> node
+</code></pre></div>
+<p>Avec CMD ouvre un terminal et tape :</p>
+<div class="bloc-code"><div class="bloc-code__langue">bash</div><pre><code class="hljs language-bash"><span class="hljs-built_in">set</span> MESSAGE=<span class="hljs-string">&quot;Hello_World&quot;</span> node
+</code></pre></div>
+</div></div></div>
+<p>Ici, une session <code>node</code> est démarrée avec la variable d'environnement <code>MESSAGE</code> contenant <code>Hello_World</code>.</p>
+<p>Si tu tapes <code>console.log(process.env.MESSAGE)</code>, tu devrais voir <code>Hello_World</code> :</p>
+<p><img src="images/001-hello-world.png" alt="Hello_world" loading="lazy"></p>
+<p>(Utilise la commande <code>.exit</code> pour quitter la session <code>node</code>)</p>
+<h2>Utiliser un fichier .env</h2>
+<p>Définir les variables d'environnement lors du lancement de l'application comme dans l'exemple précédent n'est pas très pratique. Imagine si ton application nécessite plusieurs variables !</p>
+<p>C'est là que les fichiers <code>.env</code> interviennent.</p>
+<p>Un fichier <code>.env</code> est un fichier texte contenant des paires clé-valeur qui définissent des variables d'environnement pour une application. Ces variables peuvent être des informations sensibles ou spécifiques à un environnement, telles que :</p>
+<ul>
+<li>Les clés d'API</li>
+<li>Les URL des bases de données</li>
+<li>Les configurations spécifiques à l'environnement (développement, production, etc.)</li>
+</ul>
+<p>Un fichier <code>.env</code> dans un projet réel pourrait ressembler à ça :</p>
+<div class="bloc-code"><div class="bloc-code__langue">bash</div><pre><code class="hljs language-bash"><span class="hljs-comment"># Configuration de la base de données</span>
+DB_HOST=localhost
+DB_PORT=5432
+DB_USER=admin
+DB_PASSWORD=secret
+
+<span class="hljs-comment"># Clés API</span>
+API_KEY=abcd1234xyz
+</code></pre></div>
+<p>Tu peux en créer un simple avec cette commande :</p>
+<div class="bloc-code"><div class="bloc-code__langue">bash</div><pre><code class="hljs language-bash"><span class="hljs-built_in">echo</span> <span class="hljs-string">&quot;MESSAGE=Hello_World&quot;</span> &gt; .<span class="hljs-built_in">env</span>
+</code></pre></div>
+<p>Contrôle ensuite le contenu du fichier <code>.env</code> avec la commande <code>cat</code> :</p>
+<p><img src="images/002-cat-env.png" alt="cat .env" loading="lazy"></p>
+<p>L'utilisation d'un fichier .env dépend du langage ou du framework que tu utilises. Avec la commande <code>node</code> tu peux utiliser l'option <code>--env-file=</code> suivi du chemin vers ton fichier. Toujours dans le même répertoire :</p>
+<div class="bloc-code"><pre><code class="hljs language-plaintext">node --env-file=.env
+</code></pre></div>
+<p>Tu peux maintenant afficher le contenu de <code>process.env.MESSAGE</code> avec un <code>console.log</code> :</p>
+<p><img src="images/003-console-log-process-env-message.png" alt="console.log(process.env.MESSAGE)" loading="lazy"></p>
+<p>(Utilise la commande <code>.exit</code> pour quitter la session <code>node</code>)</p>
+<p>Accéder aux variables via <code>process.env</code> marche également depuis un fichier <code>.js</code> exécuté avec <code>node</code>. Par exemple, si tu crées un fichier <code>index.js</code> avec ce code (dans le même dossier que ton fichier <code>.env</code>) :</p>
+<div class="bloc-code"><div class="bloc-code__langue">javascript</div><pre><code class="hljs language-javascript"><span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(process.<span class="hljs-property">env</span>.<span class="hljs-property">MESSAGE</span>);
+</code></pre></div>
+<p>Tu peux l'exécuter avec la commande <code>node</code> et l'option <code>--env-file</code> :</p>
+<p><img src="images/004-node-env-file-env-index-js.png" alt="node --env-file=.env index.js" loading="lazy"></p>
+<div class="encadre encadre--note encadre--callout"><div class="encadre__corps"><p>L'option <code>--env-file</code> est relativement récente. Tu entendras peut-être parler du module <a href="https://www.npmjs.com/package/dotenv" target="_blank" rel="noopener noreferrer">dotenv</a> en discutant avec des devs : c'était la référénce pour utiliser un fichier <code>.env</code> avant l'ajout de l'option <code>--env-file</code> à la commande <code>node</code>.</p>
+</div></div>
+<h3>Bonnes pratiques</h3>
+<p><strong>⚠️ Ne publie jamais d'informations sensibles ! ⚠️</strong></p>
+<p><strong>Le fichier <code>.env</code> doit TOUJOURS être ajouté dans le fichier <code>.gitignore</code> afin de ne pas partager des données sensibles via un dépôt public (sur GitHub par exemple) !</strong></p>
+<div class="bloc-code"><div class="bloc-code__langue">bash</div><pre><code class="hljs language-bash"><span class="hljs-comment"># .gitignore</span>
+node_modules/
+.<span class="hljs-built_in">env</span>
+</code></pre></div>
+<p>Cependant, tu devrais mettre dans le dépôt un fichier d'exemple avec des valeurs fictives (appelé <code>.env.sample</code> par convention), permettant de savoir quels paramètres sont nécessaires pour que l'application fonctionne. N'importe qui pourra ensuite créer localement son propre <code>.env</code> à partir de cet exemple.</p>
+<div class="bloc-code"><div class="bloc-code__langue">bash</div><pre><code class="hljs language-bash"><span class="hljs-comment"># .env.sample file</span>
+
+<span class="hljs-comment"># Configuration de la base de données</span>
+DB_HOST=localhost
+DB_PORT=5432
+DB_USER=YOUR_DB_USER
+DB_PASSWORD=YOUR_DB_PASSWORD
+
+<span class="hljs-comment"># Clés API</span>
+API_KEY=YOUR_SECRET_API_KEY
+</code></pre></div>
+<h2>Résumé</h2>
+<ul>
+<li>Les paramètres qui dépendent de l'environnement doivent être stockés dans un fichier <code>.env</code>, sous la forme <code>KEY=valeur</code> (une paire clé-valeur par ligne).</li>
+<li>Ce fichier est passé à la commande <code>node</code> avec l'option <code>--env-file</code>.</li>
+<li>Les variables sont ensuite accessibles dans l'application, via <code>process.env.KEY</code> (remplace <code>KEY</code> par le nom de ta variable).</li>
+<li>Le fichier <code>.env</code> <strong>ne doit pas être versionné avec Git</strong> (utilise .gitgnore).</li>
+</ul>
+<h2>Challenge</h2>
+<p>Crée une petite application JavaScript qui va afficher ce message :</p>
+<p><code>I am &lt;name&gt;, wilder in &lt;city&gt;, and I love &lt;language&gt;</code>.</p>
+<p>Les valeurs <code>&lt;name&gt;</code>, <code>&lt;city&gt;</code> et <code>&lt;language&gt;</code> doivent être remplacées par des variables d'environnement <code>MY_NAME</code>, <code>MY_CITY</code> et <code>MY_LANGUAGE</code>.</p>
+<p>Ces variables doivent être chargées depuis un fichier <code>.env</code>.</p>
+<p>Afin de ne pas le partager, écris un &quot;modèle&quot; <code>.env.sample</code> : il doit indiquer les différentes paires clé-valeur à saisir dans le <code>.env</code> avec des valeurs fictives.</p>
+<p>Partage ta solution sur un dépôt GitHub contenant :</p>
+<ul>
+<li>Le code JavaScript</li>
+<li>Le fichier <code>.env.sample</code>.</li>
+<li>Le fichier <code>.gitignore</code>.</li>
+</ul>
+<h3>Critères de validation</h3>
+<ul>
+<li>[ ] L'application utilise les variables d'environnement.</li>
+<li>[ ] Le fichier <code>.env.sample</code> fournit un exemple de ce à quoi le fichier <code>.env</code> devrait ressembler.</li>
+</ul>
+<p>Ce que tu devrais avoir dans :</p>
+<div class="onglets" data-onglets="3"><input type="radio" name="onglets-24" id="onglets-24-0" class="onglets__radio" checked><input type="radio" name="onglets-24" id="onglets-24-1" class="onglets__radio"><input type="radio" name="onglets-24" id="onglets-24-2" class="onglets__radio"><div class="onglets__barre"><label class="onglets__label" for="onglets-24-0">app.js</label><label class="onglets__label" for="onglets-24-1">.gitignore</label><label class="onglets__label" for="onglets-24-2">.env.sample</label></div><div class="onglets__panneaux"><div class="onglets__panneau"><div class="bloc-code"><div class="bloc-code__langue">javascript</div><pre><code class="hljs language-javascript"><span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(
+  <span class="hljs-string">`I am <span class="hljs-subst">${process.env.MY_NAME}</span>, wilder in <span class="hljs-subst">${process.env.MY_CITY}</span>, and I love <span class="hljs-subst">${process.env.MY_LANGUAGE}</span>`</span>
+);
+</code></pre></div>
+</div><div class="onglets__panneau"><div class="bloc-code"><div class="bloc-code__langue">shell</div><pre><code class="hljs language-shell">.<span class="hljs-built_in">env</span>
+</code></pre></div>
+</div><div class="onglets__panneau"><div class="bloc-code"><div class="bloc-code__langue">shell</div><pre><code class="hljs language-shell">MY_NAME=Bob
+MY_CITY=Paris
+MY_LANGUAGE=Javascript
+</code></pre></div>
+</div></div></div>
+
+  </div>
+  
+</article>
+
+<nav class="nav-quete">
+  <a class="nav-quete__lien nav-quete__lien--prec" href="../../node-js/001-node-01-introduction-a-node-js-et-npm/index.html">
+           <span class="nav-quete__sens">← Précédent</span>
+           <span class="nav-quete__titre">Node 01 - 👩‍🏫 Introduction à Node.js et npm</span>
+         </a>
+  <a class="nav-quete__lien nav-quete__lien--suiv" href="../../node-js/003-node-03-commence-a-linter-et-a-formater-ton-code-en/index.html">
+           <span class="nav-quete__sens">Suivant →</span>
+           <span class="nav-quete__titre">Node 03 - 👨🏻‍🚀 Commence à linter et à formater ton code en utilisant Biome</span>
+         </a>
+</nav>
+</main>
+<footer class="pied">
+  <p>Archive personnelle des cours suivis à la Wild Code School. Copie hors ligne à usage strictement privé.</p>
+</footer>
+
+<script src="../../assets/copie-code.js"></script>
+<script src="../../assets/progression.js"></script>
+</body>
+</html>

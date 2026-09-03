@@ -1,0 +1,28 @@
+{
+  "id": 1549,
+  "titre": "00 - JS Monorepo : Introduction",
+  "titres": {
+    "fr": "00 - JS Monorepo : Introduction"
+  },
+  "theme": {
+    "id": 43,
+    "slug": "prepa",
+    "nom": "JS Monorepo"
+  },
+  "creeLe": "2021-02-19T09:12:11.529+01:00",
+  "difficulte": "0",
+  "dureeEstimee": null,
+  "modeValidation": "self",
+  "chapitres": [
+    {
+      "id": 18200,
+      "type": "content",
+      "langue": "fr",
+      "majLe": "2025-05-13T16:56:55.362+02:00",
+      "caracteres": 12074
+    }
+  ],
+  "ressources": [],
+  "urlOrigine": "https://odyssey.wildcodeschool.com/quests/1549",
+  "archiveLe": "2026-09-02T20:51:54.178Z"
+}

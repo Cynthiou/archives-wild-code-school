@@ -1,0 +1,42 @@
+{
+  "id": 1313,
+  "titre": "Git/GitHub 4 : Branche et flow",
+  "titres": {
+    "en": "Git/GitHub 4: Branch and flow",
+    "fr": "Git/GitHub 4 : Branche et flow"
+  },
+  "theme": {
+    "id": 6,
+    "slug": "git",
+    "nom": "Git"
+  },
+  "creeLe": "2020-08-06T19:16:17.942+02:00",
+  "difficulte": "0",
+  "dureeEstimee": null,
+  "modeValidation": "student",
+  "chapitres": [
+    {
+      "id": 11582,
+      "type": "content",
+      "langue": "fr",
+      "majLe": "2024-05-29T14:33:44.502+02:00",
+      "caracteres": 7515
+    }
+  ],
+  "ressources": [
+    {
+      "link": "https://danielkummer.github.io/git-flow-cheatsheet/",
+      "description": "Cette ressource explique parfaitement le fonctionnement de Git Flow"
+    },
+    {
+      "link": "https://www.youtube.com/watch?v=4o9qzbssfII",
+      "description": "vidéo de 20 minutes qui résume entièrement tout ce que tu as appris lors des 4 premières quetes sur git... à consommer sans modération"
+    },
+    {
+      "link": "https://devconnected.com/how-to-switch-branch-on-git/",
+      "description": "Un petit lexique pour switcher de branche"
+    }
+  ],
+  "urlOrigine": "https://odyssey.wildcodeschool.com/quests/1313",
+  "archiveLe": "2026-09-02T20:53:24.181Z"
+}

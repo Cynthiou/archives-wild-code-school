@@ -1,0 +1,213 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Composer - 3. Package Management — Archives WCS</title>
+<link rel="stylesheet" href="../../assets/style.css">
+</head>
+<body style="--teinte:#745089">
+<header class="entete">
+  <a class="entete__marque" href="../../index.html">Archives Wild Code School</a>
+</header>
+<main class="contenu">
+<nav class="ariane"><a href="../../index.html">Accueil</a><span class="ariane__sep">›</span><a href="../../php-avance/index.html">PHP Avancé</a><span class="ariane__sep">›</span><span aria-current="page">Composer - 3. Package Management</span></nav>
+
+<article class="quete">
+  <header class="quete__entete">
+    <a class="pastille pastille--teintee" href="../../php-avance/index.html">PHP Avancé</a>
+    <h1>Composer - 3. Package Management</h1>
+    <p class="quete__meta">Quête 6 sur 11 · 3 images archivées</p>
+  </header>
+  <div class="cours">
+<p><strong>⚠️ Avant de commencer cette quête, tu dois avoir terminé les quêtes suivantes :</strong></p>
+<div class="renvois"><div class="renvois__titre">Quêtes liées</div><ul><li><a href="../../php-avance/004-composer-2-psr-4-autoload/index.html">Quête 1144</a></li></ul></div>
+<div class="bloc-code"><div class="bloc-code__langue">title-book</div><pre><code class="hljs language-title-book">Introduction
+</code></pre></div>
+<p>Sur la quête &quot;Composer 2 - PSR-4 &amp; Autoload&quot;, tu as vu comment utiliser l’<em>autoloader</em> de Composer avec tes propres classes.
+La vocation première de Composer est d’être un gestionnaire de dépendances, c’est ce que tu vas utiliser dans cette quête.
+Tu vas voir comment installer une bibliothèque externe à ton projet et utiliser l’<em>autoloader</em> pour la charger.</p>
+<h2>🤓 À la fin de cette quête, tu seras capable de :</h2>
+<ul>
+<li>✅ Rechercher un package</li>
+<li>✅ Installer un package dans ton projet</li>
+<li>✅ Maîtriser les commandes <code>composer require</code>, <code>require-dev</code></li>
+</ul>
+<h1>Dépendances</h1>
+<p>Mais qu'est-ce qu'une dépendance ? Une dépendance est une librairie (= bibliothèque ou <em>package</em>) développée par un tiers et que tu vas pouvoir réutiliser dans ton projet.</p>
+<p>En effet, les problématiques rencontrées sont souvent les mêmes, et il existe déjà des librairies, la plupart du temps Open Source (mais pas obligatoirement), qui résolvent ces problèmes.
+Selon la popularité des librairies, ces dernières bénéficient souvent de toute une communauté de développeurs et d'utilisateurs qui les mettent à jour et les font évoluer.</p>
+<p>Par exemple, pour envoyer un mail, il existe la librairie <a href="https://packagist.org/packages/symfony/mailer" target="_blank" rel="noopener noreferrer">Mailer</a>.</p>
+<div class="encadre encadre--error"><div class="encadre__titre">Important</div><div class="encadre__corps"><p>Il faut faire très attention aux librairies que tu vas choisir, car tu vas intégrer du code que tu ne maîtrises pas.
+Cela peut potentiellement être dangereux. Il est donc vivement recommandé de choisir uniquement des librairies sûres.</p>
+</div></div>
+<p>Comment définir qu'une librairie est sûre :</p>
+<ul>
+<li>Elle est activement maintenue (il y a des commits réguliers)</li>
+<li>Elle possède une communauté importante (forums...)</li>
+<li>Elle dispose d'une documentation complète et claire</li>
+<li>Elle est dans un état stable (pas de beta, alpha... en production)</li>
+</ul>
+<p>Tu ne peux pas installer n'importe quelle librairie via Composer. Toutes les librairies disponibles à l'installation sont présentes sur le site <a href="https://packagist.org/" target="_blank" rel="noopener noreferrer">https://packagist.org</a>.</p>
+<p>Packagist fournit des informations sur :</p>
+<ul>
+<li>Le nombre de téléchargements</li>
+<li>Le nombre de projets dépendants</li>
+<li>Le Github du projet</li>
+<li>Les versions</li>
+<li>Les dépendances de la dépendance XD</li>
+<li>...</li>
+</ul>
+<p><img src="images/001-image.png" alt="image" loading="lazy"></p>
+<h1>Comment installer une librairie ?</h1>
+<p>Deux possibilités :</p>
+<p><strong>1 - Tu connais l'identifiant de la librairie :</strong></p>
+<p>Cet identifiant est disponible sur la page de la librairie en question sur Packagist.
+<img src="images/002-image.png" alt="image" loading="lazy"></p>
+<p>Il te suffit donc, à la racine de ton projet, dans ton terminal, de lancer la commande encadrée en rouge dans l'image ci-dessus.</p>
+<div class="bloc-code"><div class="bloc-code__langue">sh</div><pre><code class="hljs language-sh">// Si installé globalement
+composer require &lt;vendor&gt;/&lt;package_name&gt;
+</code></pre></div>
+<p><code>&lt;vendor&gt;</code> représentant le nom de l'éditeur du package, et <code>&lt;package_name&gt;</code> le nom de ce dernier.</p>
+<p><strong>2 - Tu ne connais pas l'identifiant de la librairie :</strong></p>
+<p>Dans ce cas tu peux directement taper :</p>
+<div class="bloc-code"><div class="bloc-code__langue">sh</div><pre><code class="hljs language-sh">composer require
+</code></pre></div>
+<p><img src="images/003-image.png" alt="image" loading="lazy"></p>
+<p>Ce dernier va te proposer de saisir un nom de librairie et te suggérer ce qui lui semble cohérent par rapport à ta saisie.
+Il te suffit de suivre les indications de ton terminal. Composer t'informe des actions qu'il réalise.</p>
+<p>À la fin de l'installation, il est important de noter deux choses inscrites dans le terminal :</p>
+<ul>
+<li><code>Writing lock file</code> (cf. section lock file)</li>
+<li><code>Generating autoload files</code> (cf. <a href="https://odyssey.wildcodeschool.com/quests/1144" target="_blank" rel="noopener noreferrer">Composer 1 - Autoload</a>)</li>
+</ul>
+<p>Il faut aussi noter que ton fichier <em>composer.json</em> a été mis à jour. Il contient maintenant ceci :</p>
+<div class="bloc-code"><div class="bloc-code__langue">json</div><pre><code class="hljs language-json"><span class="hljs-punctuation">{</span>
+    <span class="hljs-attr">&quot;name&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;wcs/quete_composer&quot;</span><span class="hljs-punctuation">,</span>
+    <span class="hljs-attr">&quot;description&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;Projet quête composer&quot;</span><span class="hljs-punctuation">,</span>
+    <span class="hljs-attr">&quot;authors&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-punctuation">[</span>
+        <span class="hljs-punctuation">{</span>
+            <span class="hljs-attr">&quot;name&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;WCS&quot;</span><span class="hljs-punctuation">,</span>
+            <span class="hljs-attr">&quot;email&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;formateur@wildcodeschool.fr&quot;</span>
+        <span class="hljs-punctuation">}</span>
+    <span class="hljs-punctuation">]</span><span class="hljs-punctuation">,</span>
+    <span class="hljs-attr">&quot;require&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-punctuation">{</span>
+        <span class="hljs-attr">&quot;vendor/package_name&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;^1.0&quot;</span>
+    <span class="hljs-punctuation">}</span>
+<span class="hljs-punctuation">}</span>
+</code></pre></div>
+<p>La librairie a été ajoutée dans la section <code>require</code>. Dans l'exemple ci-dessus, <code>^1.0</code> correspond au numéro de version du package.</p>
+<p>Le code de la librairie a également été téléchargé dans le dossier <em>vendor/</em>.</p>
+<div class="encadre encadre--error"><div class="encadre__titre">Important</div><div class="encadre__corps"><h1>Attention</h1>
+<p>Le dossier <em>vendor/</em> ne doit <strong>jamais</strong> être versionné sinon le poids du <em>repository</em> s'alourdirait considérablement et inutilement... Pense donc à bien ajouter <code>vendor/</code> dans ton fichier <em>.gitignore</em>.</p>
+</div></div>
+<a class="ressource" href="https://packagist.org/" target="_blank" rel="noopener noreferrer">
+  <div class="ressource__icone">↗</div>
+  <div class="ressource__texte">
+    <div class="ressource__titre">The PHP Package Repository</div>
+    <div class="ressource__desc"><p>The PHP Package Repository.</p>
+</div>
+    <div class="ressource__hote">packagist.org</div>
+  </div>
+</a>
+<h1>Lock File</h1>
+<p><img src="http://images.innoveduc.fr/php_parcours/lock.gif" alt="" loading="lazy"></p>
+<p>Le fichier <em>composer.lock</em> est directement lié au fichier <em>composer.json</em> que tu as vu plus haut.
+À la fin de l'installation d'une librairie, Composer t'indique <code>Writing lock file</code>.
+Cela signifie que <code>Composer</code> va soit créer le fichier <em>composer.lock</em>, soit le mettre à jour s'il existe déjà.</p>
+<h3>composer.lock VS composer.json</h3>
+<p>Le fichier <em>composer.json</em> contient des informations sur le projet, la liste des dépendances qu'il utilise, les versions de ces dépendances ainsi que les règles pour les mettre à jour.</p>
+<p>Le fichier <em>composer.lock</em>, quant à lui, contient la liste de toutes les dépendances (dont les dépendances de dépendances) ainsi que les <strong>versions précises</strong> installées.</p>
+<p>Cela peut sembler une petite différence mais c'est en fait très différent car chaque mise à jour d'une dépendance peut entraîner un bug ou une incompatibilité.</p>
+<p>Il faut impérativement versionner ton fichier <em>composer.lock</em> (en plus du fichier <em>composer.json</em>) pour s'assurer que tous les développeurs utilisent les mêmes versions de dépendances.</p>
+<h3>install VS update</h3>
+<p>De la même manière qu'il existe deux fichiers <em>composer.lock</em> et <em>composer.json</em>, il existe deux commandes pour les manipuler.</p>
+<div class="bloc-code"><div class="bloc-code__langue">sh</div><pre><code class="hljs language-sh">composer update
+
+// OU
+
+composer install
+</code></pre></div>
+<p>Contrairement à ce que l'on pourrait croire, la commande <code>install</code> n'est pas utilisée uniquement lors de l'installation, mais également pour les mises à jour.
+Cette commande va lire le fichier <em>composer.json</em>, et, si le fichier <em>composer.lock</em> est présent,  installer les versions précises des dépendances qu'il contient (si différentes de celles déjà installées). Le fichier composer.lock sert donc de référence à cette commande et n'est pas modifié.
+La commande <code>update</code> va, elle, lire le fichier <em>composer.json</em> et mettre à jour si nécessaire les dépendances en fonction des règles spécifiées. Dans ce cas, le fichier <em>composer.json</em> sert de base et le fichier <em>composer.lock</em> sera mis à jour.</p>
+<div class="encadre encadre--warning"><div class="encadre__titre">Attention</div><div class="encadre__corps"><p>Le dossier <em>/vendor</em> étant régulièrement mis à jour, son contenu est amené à être régulièrement modifié/écrasé. De plus, ce dernier ne doit pas être versionné. De ce fait, il ne faut donc <strong>JAMAIS</strong> modifier directement le contenu d'un fichier contenu dans ce dossier <em>/vendor</em>, car cette modification ne sera pas versionnée et sera ré-écrasée dès que tu mettras à jour un <em>package</em>.</p>
+</div></div>
+<a class="ressource" href="http://www.weblogin.fr/blog/composer-update-et-composer-install" target="_blank" rel="noopener noreferrer">
+  <div class="ressource__icone">↗</div>
+  <div class="ressource__texte">
+    <div class="ressource__titre">Composer install vs update</div>
+    <div class="ressource__desc"><p>Composer install vs update.</p>
+</div>
+    <div class="ressource__hote">weblogin.fr</div>
+  </div>
+</a>
+<a class="ressource" href="https://madewithlove.com/tilde-and-caret-constraints/" target="_blank" rel="noopener noreferrer">
+  <div class="ressource__icone">↗</div>
+  <div class="ressource__texte">
+    <div class="ressource__titre">Gestion des mises à jour</div>
+    <div class="ressource__desc"><p>Gestion des mises à jour avec Composer.</p>
+</div>
+    <div class="ressource__hote">madewithlove.com</div>
+  </div>
+</a>
+<a class="ressource" href="https://semver.org/" target="_blank" rel="noopener noreferrer">
+  <div class="ressource__icone">↗</div>
+  <div class="ressource__texte">
+    <div class="ressource__titre">Semver</div>
+    <div class="ressource__desc"><p>Indirectement lié à Composer. La numérotation des versions de logiciel.</p>
+</div>
+    <div class="ressource__hote">semver.org</div>
+  </div>
+</a>
+<h1>💪 Challenge</h1>
+<h3>Installer et utiliser un <em>package</em> externe</h3>
+<p>Un peu de fun pour ce challenge, tu vas utiliser un package inutile mais parfait pour t'entraîner !</p>
+<p><a href="https://packagist.org/packages/gipetto/cowsay" target="_blank" rel="noopener noreferrer">https://packagist.org/packages/gipetto/cowsay</a></p>
+<p>Ce package te permettra de faire parler une vache dans ton terminal.</p>
+<ul>
+<li>Créé un nouveau dossier, déplace toi dedans et directement tape la commande permettant d'installer le package <a href="https://packagist.org/packages/gipetto/cowsay" target="_blank" rel="noopener noreferrer">CowSay</a></li>
+</ul>
+<div class="bloc-code"><div class="bloc-code__langue">hidden</div><pre><code class="hljs language-hidden">Indice|||bash|||Essaye déjà de trouver la commande pour ajouter un package dans ton projet puis vérifie ici|||0|||Hide
+composer require gipetto/cowsay
+</code></pre></div>
+<ul>
+<li>Créé un fichier <code>index.php</code> et insère le code permettant de faire parler la vache. Lis bien la documentation du package pour comprendre comment faire. Attention, la documentation montre uniquement comment utiliser le package de façon générique. Dans ton cas, il faudra dès la première ligne require le fichier <em>autoload.php</em> qui se trouve dans ton dossier <em>vendor</em></li>
+</ul>
+<div class="bloc-code"><div class="bloc-code__langue">hidden</div><pre><code class="hljs language-hidden">Indice|||php|||Essaye de trouver comment charger le fichier d'autoload puis vérifie ici|||0|||Hide
+require 'vendor/autoload.php';
+</code></pre></div>
+<ul>
+<li>Enfin, execute ce code dans ton terminal ! <code>php index.php</code></li>
+</ul>
+<p>Et si tu le souhaites, trouve le moyen de faire tirer la langue à la vache :)</p>
+<h3>Critères de validation</h3>
+<ul>
+<li>Ton code est sur un repo personnel sur Github.</li>
+<li>Lorsqu'on execute le fichier index.php la vache apparaît</li>
+</ul>
+<p>Aide à la validation pour les correcteurs : Clonez le repository github et tapez uniquement <code>composer install</code> Ceci installera les dépendances du projet et vous pourrez ensuite tester le code.</p>
+
+  </div>
+  
+</article>
+
+<nav class="nav-quete">
+  <a class="nav-quete__lien nav-quete__lien--prec" href="../../php-avance/005-composer-1-installation/index.html">
+           <span class="nav-quete__sens">← Précédent</span>
+           <span class="nav-quete__titre">Composer - 1. Installation</span>
+         </a>
+  <a class="nav-quete__lien nav-quete__lien--suiv" href="../../php-avance/007-les-formulaires-en-php-prendre-contact/index.html">
+           <span class="nav-quete__sens">Suivant →</span>
+           <span class="nav-quete__titre">Les formulaires en PHP : Prendre contact</span>
+         </a>
+</nav>
+</main>
+<footer class="pied">
+  <p>Archive personnelle des cours suivis à la Wild Code School. Copie hors ligne à usage strictement privé.</p>
+</footer>
+
+<script src="../../assets/copie-code.js"></script>
+<script src="../../assets/progression.js"></script>
+</body>
+</html>

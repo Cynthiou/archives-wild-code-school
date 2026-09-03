@@ -1,0 +1,28 @@
+{
+  "id": 1281,
+  "titre": "👩‍🏫 JS Basics 07 - Les tableaux",
+  "titres": {
+    "fr": "👩‍🏫 JS Basics 07 - Les tableaux"
+  },
+  "theme": {
+    "id": 9,
+    "slug": "javascript",
+    "nom": "JavaScript"
+  },
+  "creeLe": "2020-07-08T19:15:42.314+02:00",
+  "difficulte": "0",
+  "dureeEstimee": null,
+  "modeValidation": "student",
+  "chapitres": [
+    {
+      "id": 12602,
+      "type": "content",
+      "langue": "fr",
+      "majLe": "2024-11-09T11:17:50.294+01:00",
+      "caracteres": 9722
+    }
+  ],
+  "ressources": [],
+  "urlOrigine": "https://odyssey.wildcodeschool.com/quests/1281",
+  "archiveLe": "2026-09-02T20:54:45.059Z"
+}

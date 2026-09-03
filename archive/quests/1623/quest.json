@@ -1,0 +1,49 @@
+{
+  "id": 1623,
+  "titre": "Twig - 01. Démarrage et utilisation",
+  "titres": {
+    "fr": "Twig - 01. Démarrage et utilisation"
+  },
+  "theme": {
+    "id": 7,
+    "slug": "php_adv",
+    "nom": "PHP Avancé"
+  },
+  "creeLe": "2021-04-01T15:47:09.414+02:00",
+  "difficulte": "1",
+  "dureeEstimee": 30,
+  "modeValidation": "student",
+  "chapitres": [
+    {
+      "id": 9459,
+      "type": "content",
+      "langue": "fr",
+      "majLe": "2023-04-02T19:45:50.084+02:00",
+      "caracteres": 11712
+    }
+  ],
+  "ressources": [
+    {
+      "link": "https://openclassrooms.com/fr/courses/5489656-construisez-un-site-web-a-l-aide-du-framework-symfony-5/5517021-dynamisez-vos-vues-a-l-aide-de-twig",
+      "description": "Première approche de Twig"
+    },
+    {
+      "link": "https://iner-dukoid.developpez.com/tutoriels/web/moteur-template-twig/",
+      "description": "Coucou slice"
+    },
+    {
+      "link": "https://www.smashingmagazine.com/2011/10/getting-started-with-php-templating/",
+      "description": "Ressource additionnelle (en anglais) pour expliquer comment utiliser Twig"
+    },
+    {
+      "link": "https://stackoverflow.com/questions/74095851/vs-code-extension-for-autocompleting-html-tag-in-twig-files-in-symfony-6-project",
+      "description": "Pour remettre les raccourcis et l'autocomplétion HTML dans les fichiers twig :"
+    },
+    {
+      "link": "https://twig.symfony.com/doc/3.x/intro.html",
+      "description": "twig"
+    }
+  ],
+  "urlOrigine": "https://odyssey.wildcodeschool.com/quests/1623",
+  "archiveLe": "2026-09-02T20:52:11.073Z"
+}

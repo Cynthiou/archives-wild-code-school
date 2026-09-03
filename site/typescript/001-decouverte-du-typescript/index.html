@@ -1,0 +1,206 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Découverte du TypeScript — Archives WCS</title>
+<link rel="stylesheet" href="../../assets/style.css">
+</head>
+<body style="--teinte:#2079B1">
+<header class="entete">
+  <a class="entete__marque" href="../../index.html">Archives Wild Code School</a>
+</header>
+<main class="contenu">
+<nav class="ariane"><a href="../../index.html">Accueil</a><span class="ariane__sep">›</span><a href="../../typescript/index.html">Typescript</a><span class="ariane__sep">›</span><span aria-current="page">Découverte du TypeScript</span></nav>
+
+<article class="quete">
+  <header class="quete__entete">
+    <a class="pastille pastille--teintee" href="../../typescript/index.html">Typescript</a>
+    <h1>Découverte du TypeScript</h1>
+    <p class="quete__meta">Quête 1 sur 1 · 1 image archivée</p>
+  </header>
+  <div class="cours">
+<p>Cette quête permet de découvrir le langage de programmation TypeScript, en commençant par comprendre son utilité par rapport au JavaScript, puis en découvrant sa syntaxe.</p>
+<h4>Objectifs</h4>
+<ul>
+<li>Comprendre l'intérêt du TypeScript</li>
+<li>Installer les logiciels nécessaires pour développer en TypeScript</li>
+<li>Découvrir la syntaxe du TypeScript</li>
+</ul>
+<h3>TypeScript, pourquoi ?</h3>
+<p><img src="http://blog.soat.fr/wp-content/uploads/2016/03/ts_skyline_fglogo-1024x300.png" alt="" loading="lazy"></p>
+<p>TypeScript est un langage de programmation libre, développé par Microsoft. C'est un surensemble de JavaScript, ce qui signifie qu'il est 100% rétrocompatible avec JavaScript, ce qui veut donc dire que l'on peut coder en pur JavaScript dans un fichier « .ts » (extension d'un fichier TypeScript) sans aucun problème. Les fichiers « .ts » sont transformés en JavaScript grâce au transpileur TypeScript.</p>
+<p>TypeScript ajoute de nombreuses fonctionnalités (ou en simplifie grandement l'utilisation) par rapport au JavaScript. Une des fonctionnalités les plus importantes est le typage des données, voyons un exemple qui montre les limites du JavaScript sur ce point.</p>
+<p>Imaginons une fonction JavaScript qui renvoie l'addition de deux nombres :</p>
+<div class="bloc-code"><div class="bloc-code__langue">typescript</div><pre><code class="hljs language-typescript"><span class="hljs-keyword">function</span> <span class="hljs-title function_">add</span>(<span class="hljs-params">a, b</span>) {
+    <span class="hljs-keyword">return</span> a + b;
+}
+
+<span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(<span class="hljs-title function_">add</span>(<span class="hljs-number">4</span>, <span class="hljs-number">2</span>));
+<span class="hljs-comment">// 6</span>
+</code></pre></div>
+<p>Notre fonction 'add' retourne bien le résultat additionné, tout va bien ! Testons maintenant d'envoyer des chaines de caractère à la place de nombres :</p>
+<div class="bloc-code"><div class="bloc-code__langue">typescript</div><pre><code class="hljs language-typescript"><span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(<span class="hljs-title function_">add</span>(<span class="hljs-string">&quot;4&quot;</span>, <span class="hljs-string">&quot;2&quot;</span>));
+<span class="hljs-comment">// 42</span>
+</code></pre></div>
+<p>Cette fois le résultat n'est plus 6 mais &quot;42&quot;, ce qui est logique, car le signe <code>+</code> entouré de deux chaines de caractères effectue une concaténation, et non une addition.</p>
+<p>Pour rendre ce code plus propre et plus sécurisé, nous devrions donc ajouter une gestion d'erreur qui lancerait une exception si les paramètres ne sont pas des nombres, et nous devrions gérer ce cas avec un <code>try/catch</code> à l'endroit ou l'on appelle la fonction <code>add()</code> :</p>
+<div class="bloc-code"><div class="bloc-code__langue">typescript</div><pre><code class="hljs language-typescript"><span class="hljs-keyword">function</span> <span class="hljs-title function_">add</span>(<span class="hljs-params">a, b</span>) {
+    <span class="hljs-keyword">if</span> (<span class="hljs-built_in">isNaN</span>(a) || <span class="hljs-built_in">isNaN</span>(b)) {
+        <span class="hljs-keyword">throw</span> <span class="hljs-string">&quot;parameters must be numbers&quot;</span>;
+    }
+    <span class="hljs-keyword">return</span> a + b;
+}
+
+<span class="hljs-keyword">try</span> {
+    <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(<span class="hljs-title function_">add</span>(<span class="hljs-string">&quot;4&quot;</span>, <span class="hljs-string">&quot;2&quot;</span>));
+} <span class="hljs-keyword">catch</span> (e) {
+    <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(<span class="hljs-string">&quot;Error occured : &quot;</span> + e);
+}
+
+</code></pre></div>
+<div class="bloc-code"><div class="bloc-code__langue">typescript</div><pre><code class="hljs language-typescript"><span class="hljs-title class_">Error</span> occured : parameters must be numbers
+
+</code></pre></div>
+<p>Le TypeScript offre une solution plus simple et plus propre : il permet de spécifier le type attendu par la fonction :</p>
+<div class="bloc-code"><div class="bloc-code__langue">typescript</div><pre><code class="hljs language-typescript"><span class="hljs-keyword">function</span> <span class="hljs-title function_">add</span>(<span class="hljs-params">a : <span class="hljs-built_in">number</span>, b : <span class="hljs-built_in">number</span></span>) {
+    <span class="hljs-keyword">return</span> a + b;
+}
+
+<span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(<span class="hljs-title function_">add</span>(<span class="hljs-number">4</span>, <span class="hljs-number">2</span>));
+<span class="hljs-comment">// 6</span>
+</code></pre></div>
+<p>Avec cette syntaxe, il sera impossible d'envoyer autre chose qu'un nombre à la fonction, sinon le transpileur nous indiquera une erreur et ne générera pas le code JavaScript !</p>
+<a class="ressource" href="https://www.dunebook.com/typescript-vs-javascript-why-typescript-is-next-to-big-thing/" target="_blank" rel="noopener noreferrer">
+  <div class="ressource__icone">↗</div>
+  <div class="ressource__texte">
+    <div class="ressource__titre">JS vs TS - Why typescript is next to Big Thing</div>
+    <div class="ressource__desc"><p>Pour en savoir plus sur les avantages de TypeScript</p>
+</div>
+    <div class="ressource__hote">dunebook.com</div>
+  </div>
+</a>
+<a class="ressource" href="https://fr.wikipedia.org/wiki/TypeScript" target="_blank" rel="noopener noreferrer">
+  <div class="ressource__icone">↗</div>
+  <div class="ressource__texte">
+    <div class="ressource__titre">TypeScript - Wikipedia</div>
+    <div class="ressource__desc"><p>En apprendre plus sur le projet TypeScript</p>
+</div>
+    <div class="ressource__hote">fr.wikipedia.org</div>
+  </div>
+</a>
+<h3>Installer et utiliser le transpileur TypeScript</h3>
+<p><img src="images/002-installer-et-utiliser-le-transpileur-typescript.webp" alt="" loading="lazy"></p>
+<p>Tu souhaites pouvoir coder en typescript pas vrai ? Pour cela tu as besoin d'un outil capable d'interpréter le Typescript. Dans ce cas : un transpileur.</p>
+<blockquote>
+<p>Point culture: Compiler, c'est convertir un programme d'une forme compréhensible (haut niveau) vers une forme difficilement compréhensible (bas niveau). Transpiler, c'est convertir un langage haut niveau vers un autre langage haut niveau.</p>
+</blockquote>
+<div class="bloc-code"><div class="bloc-code__langue">typescript</div><pre><code class="hljs language-typescript">sudo npm install -g typescript
+</code></pre></div>
+<p>Tu peux maintenant tester que TypeScript est bien installé avec cette commande :</p>
+<div class="bloc-code"><div class="bloc-code__langue">typescript</div><pre><code class="hljs language-typescript">tsc -v
+</code></pre></div>
+<p>Tu devrais normalement voir le numéro de version de TypeScript, ce qui signifie que tu es prêt à coder en TypeScript !</p>
+<p>Crée un fichier <code>add.ts</code> qui contient notre précédent code :</p>
+<div class="bloc-code"><div class="bloc-code__langue">typescript</div><pre><code class="hljs language-typescript"><span class="hljs-keyword">function</span> <span class="hljs-title function_">add</span>(<span class="hljs-params">a : <span class="hljs-built_in">number</span>, b : <span class="hljs-built_in">number</span></span>) {
+    <span class="hljs-keyword">return</span> a + b;
+}
+
+<span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(<span class="hljs-title function_">add</span>(<span class="hljs-number">4</span>, <span class="hljs-number">2</span>));
+
+</code></pre></div>
+<p>Lance maintenant le transpileur TypeScript afin de créer le fichier JavaScript que l'on pourra lancer :</p>
+<div class="bloc-code"><div class="bloc-code__langue">typescript</div><pre><code class="hljs language-typescript">tsc add.<span class="hljs-property">ts</span>
+</code></pre></div>
+<p>Un fichier <code>add.js</code> est maintenant apparu, tu peux le lancer grâce à Node.js :</p>
+<div class="bloc-code"><div class="bloc-code__langue">typescript</div><pre><code class="hljs language-typescript">node add.<span class="hljs-property">js</span>
+</code></pre></div>
+<p>Et on voit le résultat <code>6</code> s'afficher dans le terminal comme prévu !</p>
+<p>Regarde maintenant le contenu de ce fichier <code>add.js</code> :</p>
+<div class="bloc-code"><div class="bloc-code__langue">typescript</div><pre><code class="hljs language-typescript"><span class="hljs-keyword">function</span> <span class="hljs-title function_">add</span>(<span class="hljs-params">a, b</span>) {
+    <span class="hljs-keyword">return</span> a + b;
+}
+
+<span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(<span class="hljs-title function_">add</span>(<span class="hljs-number">4</span>, <span class="hljs-number">2</span>));
+
+</code></pre></div>
+<p>Surprise, tu te retrouves avec exactement le même code qu'au début ! C'est en fait tout à fait normal, étant donné que le JavaScript ne gère pas le typage de données. C'est le transpileur (la commande <code>tsc</code>) qui s'occupe de vérifier que le code est correct et que le bon type est envoyé à la fonction. En revanche, d'autres fonctionnalités de TypeScript peuvent générer un fichier JavaScript différent, par exemple pour les classes, qui sont traduites en JavaScript en prototypes, comme tu peux le voir dans le Playground en ressource plus bas.</p>
+<p>Vérifions que TypeScript nous empêche de nous tromper de type en modifiant le fichier <code>add.ts</code> et en relançant la transpilation :</p>
+<div class="bloc-code"><div class="bloc-code__langue">typescript</div><pre><code class="hljs language-typescript"><span class="hljs-keyword">function</span> <span class="hljs-title function_">add</span>(<span class="hljs-params">a : <span class="hljs-built_in">number</span>, b : <span class="hljs-built_in">number</span></span>) {
+    <span class="hljs-keyword">return</span> a + b;
+}
+
+<span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(<span class="hljs-title function_">add</span>(<span class="hljs-string">&quot;4&quot;</span>, <span class="hljs-string">&quot;2&quot;</span>));
+</code></pre></div>
+<div class="bloc-code"><div class="bloc-code__langue">typescript</div><pre><code class="hljs language-typescript">tsc add.<span class="hljs-property">ts</span>
+</code></pre></div>
+<p>Et effectivement, tsc affiche bien une erreur et empêche d'obtenir notre <code>add.js</code> :</p>
+<div class="bloc-code"><div class="bloc-code__langue">typescript</div><pre><code class="hljs language-typescript">add.<span class="hljs-title function_">ts</span>(<span class="hljs-number">5</span>,<span class="hljs-number">17</span>): error <span class="hljs-title class_">TS2345</span>: <span class="hljs-title class_">Argument</span> <span class="hljs-keyword">of</span> <span class="hljs-keyword">type</span> <span class="hljs-string">``</span><span class="hljs-number">4</span><span class="hljs-string">``</span> is not assignable to parameter <span class="hljs-keyword">of</span> <span class="hljs-keyword">type</span> <span class="hljs-string">&#x27;number&#x27;</span>.
+</code></pre></div>
+<p>Je te conseille de jouer avec le Playground afin de bien comprendre la syntaxe du typage de données.</p>
+<a class="ressource" href="https://www.typescriptlang.org/play/index.html" target="_blank" rel="noopener noreferrer">
+  <div class="ressource__icone">↗</div>
+  <div class="ressource__texte">
+    <div class="ressource__titre">TypeScript Playground</div>
+    <div class="ressource__desc"><p>Un bac à sable pour découvrir le TypeScript. Les exemples rajoutent à chaque fois des fonctionnalités de TypeScript et sont de plus en plus complexes, mais pour l'instant pas besoin d'aller plus loin que &quot;Adding Types&quot;, nous reviendrons sur les classes dans la prochaine quête.</p>
+</div>
+    <div class="ressource__hote">typescriptlang.org</div>
+  </div>
+</a>
+<a class="ressource" href="https://www.typescriptlang.org/docs/handbook/typescript-in-5-minutes.html" target="_blank" rel="noopener noreferrer">
+  <div class="ressource__icone">↗</div>
+  <div class="ressource__texte">
+    <div class="ressource__titre">TypeScript in 5 minutes</div>
+    <div class="ressource__desc"><p>Montre comment installer TypeScript, et ses fonctionnalités principales</p>
+</div>
+    <div class="ressource__hote">typescriptlang.org</div>
+  </div>
+</a>
+<h2>Challenge</h2>
+<h3>Tranformer du code JavaScript en code TypeScript</h3>
+<p>Voici un morceau de code JavaScript :</p>
+<div class="bloc-code"><div class="bloc-code__langue">typescript</div><pre><code class="hljs language-typescript"><span class="hljs-keyword">function</span> <span class="hljs-title function_">hello</span>(<span class="hljs-params">name</span>) {
+    <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(<span class="hljs-string">&quot;Hello &quot;</span> + name);
+}
+
+<span class="hljs-keyword">const</span> firstName = <span class="hljs-string">&quot;bob&quot;</span>;
+
+<span class="hljs-title function_">hello</span>(firstName);
+<span class="hljs-title function_">hello</span>(firstName + <span class="hljs-string">&quot; marley&quot;</span>);
+
+<span class="hljs-keyword">function</span> <span class="hljs-title function_">concat</span>(<span class="hljs-params">a, b</span>) {
+    <span class="hljs-keyword">return</span> a + b;
+}
+
+<span class="hljs-keyword">const</span> wcs = <span class="hljs-title function_">concat</span>(<span class="hljs-string">&quot;Wild&quot;</span>, <span class="hljs-title function_">concat</span>(<span class="hljs-string">&quot;Code&quot;</span>, <span class="hljs-string">&quot;School&quot;</span>));
+<span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(wcs);
+</code></pre></div>
+<p>Tranforme ce code pour qu'il devienne du TypeScript, en précisant le type des données où c'est nécessaire. Poste ensuite ton résultat via un gist.</p>
+<h3>Critères de validation</h3>
+<ul>
+<li>[ ] Les types doivent être spécifiés où il faut</li>
+<li>[ ] Le code doit pouvoir être transpilé, puis lancé sans problème et afficher le même résultat dans la console</li>
+</ul>
+
+  </div>
+  <section class="ressources-quete">
+  <h2>Ressources partagées sur cette quête</h2>
+  <ul class="ressources-liste">
+    <li><a href="https://stackoverflow.com/questions/44192541/typescript-guide-gives-duplicate-function-implementation-warning" target="_blank" rel="noopener noreferrer">Bug dans VSCode qui affiche des messages d'erreur comme &quot;Implémentation de fonction en double &quot;</a><span class="ressources-liste__url">https://stackoverflow.com/questions/44192541/typescript-guide-gives-duplicate-function-implementation-warning</span></li>
+  </ul>
+</section>
+</article>
+
+<nav class="nav-quete">
+  <span class="nav-quete__lien nav-quete__lien--vide"></span>
+  <span class="nav-quete__lien nav-quete__lien--vide"></span>
+</nav>
+</main>
+<footer class="pied">
+  <p>Archive personnelle des cours suivis à la Wild Code School. Copie hors ligne à usage strictement privé.</p>
+</footer>
+
+<script src="../../assets/copie-code.js"></script>
+<script src="../../assets/progression.js"></script>
+</body>
+</html>

@@ -1,0 +1,28 @@
+{
+  "id": 2354,
+  "titre": "POO8 - Exceptions",
+  "titres": {
+    "fr": "POO8 - Exceptions"
+  },
+  "theme": {
+    "id": 70,
+    "slug": "php-object-oriented",
+    "nom": "PHP Orienté Objet"
+  },
+  "creeLe": "2022-11-21T11:27:19.755+01:00",
+  "difficulte": "",
+  "dureeEstimee": null,
+  "modeValidation": "student",
+  "chapitres": [
+    {
+      "id": 9553,
+      "type": "content",
+      "langue": "fr",
+      "majLe": "2023-04-10T17:03:15.806+02:00",
+      "caracteres": 11887
+    }
+  ],
+  "ressources": [],
+  "urlOrigine": "https://odyssey.wildcodeschool.com/quests/2354",
+  "archiveLe": "2026-09-02T23:22:02.808Z"
+}

@@ -1,0 +1,212 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Node 04 - 🔧 Rechercher et choisir un paquet npm (ou pas !) — Archives WCS</title>
+<link rel="stylesheet" href="../../assets/style.css">
+</head>
+<body style="--teinte:#333333">
+<header class="entete">
+  <a class="entete__marque" href="../../index.html">Archives Wild Code School</a>
+</header>
+<main class="contenu">
+<nav class="ariane"><a href="../../index.html">Accueil</a><span class="ariane__sep">›</span><a href="../../node-js/index.html">Node.js</a><span class="ariane__sep">›</span><span aria-current="page">Node 04 - 🔧 Rechercher et choisir un paquet npm (ou pas !)</span></nav>
+
+<article class="quete">
+  <header class="quete__entete">
+    <a class="pastille pastille--teintee" href="../../node-js/index.html">Node.js</a>
+    <h1>Node 04 - 🔧 Rechercher et choisir un paquet npm (ou pas !)</h1>
+    <p class="quete__meta">Quête 4 sur 5 · 5 images archivées</p>
+  </header>
+  <div class="cours">
+<h2>Objectifs</h2>
+<ul>
+<li>Remettre en question la réelle nécessité d'ajout d'un paquet.</li>
+<li>Rechercher et choisir des paquets de manière efficace.</li>
+<li>Comprendre et limiter les risques associés aux paquets NPM.</li>
+</ul>
+<h2>Pré-requis</h2>
+<ol class="etapes"><li class="etape"><div class="etape__puce">1</div><div class="etape__contenu"><h4 class="etape__titre">Valider la quête suivante</h4><div class="renvois"><div class="renvois__titre">Quêtes liées</div><ul><li><a href="../../node-js/001-node-01-introduction-a-node-js-et-npm/index.html">Quête 1334</a></li></ul></div>
+</div></li></ol>
+<h2>Introduction</h2>
+<p>Imaginons que nous voulons créer un logiciel de facturation et que nous devons générer des fichiers PDF. Nous pourrions passer des semaines ou des mois à implémenter nous-mêmes toute la logique liée à la génération de fichier PDF. Ou bien, nous pourrions chercher sur <a href="https://www.npmjs.com/" target="_blank" rel="noopener noreferrer">npmjs.com</a> si quelqu'un a déjà fait quelque chose de similaire. Cela nous permettrait de construire notre application avec, et de gagner un temps précieux pour faire d'autres choses !</p>
+<p>NPM est un outil formidable car il permet à la communauté JS de partager du code afin de construire des applications plus vite. Mais la gestion des dépendances s'accompagne de certains problèmes et pièges dont tu dois avoir conscience.</p>
+<h2>Sommaire</h2>
+<h2>Tu en as vraiment besoin ?</h2>
+<p>La première question à se poser est la suivante : <strong>&quot;Ai-je vraiment besoin d'un paquet pour celà&quot;</strong> ?</p>
+<p>Comme tu le verras rapidement, les dépendances externes comportent certains risques et génèrent parfois une dette technique. Il est donc préférable de les limiter dans nos projets.</p>
+<p>D'un autre côté, de très bonnes dépendances peuvent nous faire gagner beaucoup de temps lors de la construction et de la maintenance de l'application.</p>
+<p><strong>C'est toujours un dilemme</strong> : Rechercher un paquet, lire la documentation, essayer plusieurs options... Est-ce du temps de gagné ? Combien de temps cela prendrait pour apporter une solution similaire sans le paquet ? Si le paquet ne te fait gagner que quelques lignes de code, tu devrais peut-être reconsidérer les choses.</p>
+<p>Par exemple, jette un coup d'œil à <a href="https://www.npmjs.com/package/is-even" target="_blank" rel="noopener noreferrer">ce paquet</a>. Ce qu'il fait est très simple : il exporte une fonction qui renvoie <code>true</code> si le nombre passé en argument est pair, et <code>false</code> sinon. Nous pouvons littéralement écrire quelque chose de similaire avec quelques lignes de code :</p>
+<div class="bloc-code"><div class="bloc-code__langue">javascript</div><pre><code class="hljs language-javascript"><span class="hljs-keyword">function</span> <span class="hljs-title function_">isEven</span>(<span class="hljs-params">n</span>) {
+  <span class="hljs-keyword">return</span> n % <span class="hljs-number">2</span> === <span class="hljs-number">0</span>;
+}
+</code></pre></div>
+<p>Si tu fais quelques recherches, tu découvriras que le paquet <code>is-even</code> effectue des vérifications supplémentaires sur l'entrée. Mais en avons-nous vraiment besoin dans notre cas ?</p>
+<p>Voici un site web qui propose des alternatives à l'utilisation de certaines bibliothèques :</p>
+<a class="ressource" href="https://youmightnotneed.com/" target="_blank" rel="noopener noreferrer">
+  <div class="ressource__icone">↗</div>
+  <div class="ressource__texte">
+    <div class="ressource__titre">You Might Not Need</div>
+    <div class="ressource__desc"><p>You might actually need this website !</p>
+</div>
+    <div class="ressource__hote">youmightnotneed.com</div>
+  </div>
+</a>
+<div class="encadre encadre--info"><div class="encadre__titre">Info</div><div class="encadre__corps"><p><strong>Pour faire court !</strong></p>
+<p>Est-ce que c'est pertinent d'installer une dépendance qui permet d'économiser 10 lignes de code &quot;simples&quot; ? Probablement pas.</p>
+<p>La recherche d'une bibliothèque pour la génération de fichiers PDF en vaut-elle la peine ? Eh bien, probablement oui !</p>
+</div></div>
+<h2>Rechercher et choisir des paquets.</h2>
+<p>Cherchons <strong>&quot;pdf generation&quot;</strong> sur le <a href="https://www.npmjs.com/search?q=pdf%20generation" target="_blank" rel="noopener noreferrer">site de NPM</a>.</p>
+<p><img src="images/001-rechercher-et-choisir-des-paquets.png" alt="" loading="lazy"></p>
+<p>Tu peux voir que plus d'une centaine de paquets correspondent à notre recherche et peuvent potentiellement nous aider à répondre à notre besoin. Plutôt chouette, à première vue !</p>
+<p>C'est la beauté de l'open source : la communauté partage des morceaux de code prêts à l'emploi. Cela permet aux autres membres de la communauté de gagner un temps considérable.</p>
+<p>Génial, mais comment choisir parmi tant de paquets ? Comment savoir si un paquet va m'aider à résoudre mon problème ? Est-il toujours gratuit ? Y a-t-il des risques ?</p>
+<p>Avant de répondre à ces questions, allons sur <a href="https://www.npmjs.com/package/pdfkit" target="_blank" rel="noopener noreferrer">la page de ce paquet</a> et regardons les détails. Nous pouvons voir des informations très utiles :</p>
+<ul>
+<li>La description du paquet : les problèmes qu'il permet de résoudre, les principales fonctionnalités actuellement supportées, etc.</li>
+<li>Le processus d'installation.</li>
+<li>Des exemples d'utilisation.</li>
+<li>Un lien vers une documentation plus détaillée.</li>
+<li>Des informations sur la licence.</li>
+<li>À droite de la page : le site officiel, le nombre de téléchargements par semaine, la version actuelle, etc.</li>
+</ul>
+<h3>Comment savoir si un paquet va me permettre de résoudre mes problèmes ?</h3>
+<p>Lis la description du paquet, et surtout les exemples pour voir comment le paquet fonctionne exactement. Dans notre exemple, nous pouvons voir que ce paquet semble être un bon choix car il nous permettra de créer un document PDF, d'insérer du texte, d'ajuster les styles des éléments et d'enregistrer un fichier PDF sur le disque. Nous pouvons voir tout cela juste en regardant les exemples dans les détails du paquet :</p>
+<p><img src="images/002-comment-savoir-si-un-paquet-va-me-permettre-de.png" alt="" loading="lazy"></p>
+<p>Cela peut répondre à notre besoin pour notre application de facturation.</p>
+<h3>Comment choisir entre plusieurs paquets ?</h3>
+<p>Si plusieurs paquets traitent le même problème, aucune méthode magique n'existe pour trouver le meilleur (à part les tester tous dans tous les cas d'utilisation, mais tu n'auras probablement pas le temps pour cela !)</p>
+<p><img src="images/003-comment-choisir-entre-plusieurs-paquets.png" alt="" loading="lazy"></p>
+<p>Cependant, un bon conseil peut être d'essayer les paquets avec le plus grand nombre de téléchargements hebdomadaires ou ceux qui semblent les plus stables et maintenus. Pour cela, n'hésite pas à regarder les issues du projet et d'autres statistiques comme l'activité des commits sur GitHub !</p>
+<p><img src="images/004-comment-choisir-entre-plusieurs-paquets.png" alt="" loading="lazy"></p>
+<p>Plus le paquet est téléchargé et soutenu par la communauté, plus il est probable que ce paquet soit réellement &quot;bon&quot; et plus tu pourras obtenir de l'aide lors de son utilisation.</p>
+<p>Au moment où j'écris cette quête, le paquet mentionné ci-dessus compte plus de 470 000 téléchargements hebdomadaires. C'est un chiffre tout à fait décent ! Nous pouvons être sûrs que ce paquet a déjà été intégré dans de vrais projets et que la communauté qui l'utilise est assez importante. Cela devrait être relativement facile d'obtenir de l'aide si quelque chose ne va pas ou si nous devons modifier quelque chose.</p>
+<h3>Essaie-tu de résoudre le bon problème ?</h3>
+<p>Et si notre problème était plus spécifique ? Au lieu de &quot;nous avons besoin de générer des fichiers PDF&quot;, nous pourrions avoir des informations supplémentaires comme &quot;nous avons besoin de générer des fichiers PDF et nous avons déjà des fichiers HTML/CSS correspondants&quot;. Ensuite, nous pourrions rechercher &quot;html pdf&quot; au lieu de &quot;pdf&quot; ou &quot;pdf generation&quot; afin de trouver quelque chose qui convertirait nos fichiers existants.</p>
+<p>Et si le problème était plus général ? Et si le besoin réel était de générer des factures qui pourraient être facilement imprimées, pas nécessairement en PDF ? Dans ce cas, une option alternative pourrait être d'adapter simplement un fichier CSS pour les supports d'impression et de ne pas générer de PDF du tout !</p>
+<p>Dans la mesure du possible, n'hésite pas à <strong>remettre en question le problème lui-même</strong> avant de te précipiter dans la recherche et l'adoption d'une solution donnée. Peut-être pourras-tu gagner du temps en reformulant ton problème d’une manière plus pertinente.</p>
+<h2>Problèmes courants avec les paquets NPM</h2>
+<h3>Est-ce totalement gratuit ? Si oui, qu'est-ce que cela signifie ?</h3>
+<p>Les paquets publics présents sur le site de NPM sont tous open source, ce qui peut signifier, dans une certaine mesure, &quot;libre&quot;.</p>
+<p>Toutefois, selon le fondateur de la Free Software Foundation, Richard Stallman, un logiciel &quot;libre&quot; ne signifie pas nécessairement qu’il est gratuit <a href="https://en.wikipedia.org/wiki/Gratis_versus_libre" target="_blank" rel="noopener noreferrer">&quot;free as in free beer&quot;</a>.</p>
+<p><img src="images/005-free-as-in-free-speech.jpg" alt="Free as in free speech" loading="lazy"></p>
+<p>Néanmoins, tu verras que la grande majorité des paquets sur NPM sont effectivement utilisables sans <em>coût monétaire</em>. Pour être sûr, tu peux vérifier les informations de la licence du paquet pour voir ce qui est autorisé ou non.</p>
+<p>Dans notre exemple, le paquet est placé sous la <a href="https://en.wikipedia.org/wiki/MIT_License" target="_blank" rel="noopener noreferrer">licence MIT</a>, qui est très permissive. Donc oui, nous pourrons utiliser ce paquet comme nous le souhaitons dans notre application sans verser de rémunération aux auteurs du paquet.</p>
+<p>Même si nous ne devons pas payer de l'argent pour utiliser ce paquet, d'autres coûts peuvent exister. Par exemple, si je choisis ce paquet, mes collègues et moi devrons apprendre à utiliser la bibliothèque, ce qui nous coûtera du temps (qui peut éventuellement se traduire en argent).</p>
+<p>De plus, tu es sur le point de voir qu'en installant ce paquet, nous prenons également certains risques.</p>
+<a class="ressource" href="https://david-gilbertson.medium.com/npm-packages-they-aint-free-you-know-e3506278314c" target="_blank" rel="noopener noreferrer">
+  <div class="ressource__icone">↗</div>
+  <div class="ressource__texte">
+    <div class="ressource__titre">NPM packages: they ain’t free, you know</div>
+    <div class="ressource__desc"><p>Un article sur le coût des paquets NPM que vous ajoutez à un projet</p>
+</div>
+    <div class="ressource__hote">david-gilbertson.medium.com</div>
+  </div>
+</a>
+<a class="ressource" href="https://medium.com/@vovabilonenko/licenses-of-npm-dependencies-bacaa00c8c65" target="_blank" rel="noopener noreferrer">
+  <div class="ressource__icone">↗</div>
+  <div class="ressource__texte">
+    <div class="ressource__titre">Should you care about the license ?</div>
+    <div class="ressource__desc"><p>(Oui, tu devrais)</p>
+</div>
+    <div class="ressource__hote">medium.com</div>
+  </div>
+</a>
+<a class="ressource" href="https://www.npmjs.com/package/legally" target="_blank" rel="noopener noreferrer">
+  <div class="ressource__icone">↗</div>
+  <div class="ressource__texte">
+    <div class="ressource__titre">Legally</div>
+    <div class="ressource__desc"><p>Un outil pour découvrir les licences des paquets que tu utilises</p>
+</div>
+    <div class="ressource__hote">npmjs.com</div>
+  </div>
+</a>
+<h3>Quels sont les risques ?</h3>
+<p>Très bonne question. Comme tout le monde peut publier des paquets NPM, il peut y avoir des manques en termes de qualité du code, de fiabilité, de documentation, etc.</p>
+<p>N'oublie pas que <strong>beaucoup de logiciels open source sont fournis sans aucune garantie</strong>.</p>
+<p>Pire, certains paquets présentent des <strong>vulnérabilités de sécurité</strong> et certains d'entre eux sont même malveillants 👿.</p>
+<p>Les paquets sont du code écrit par &quot;quelqu'un d'autre&quot; (appelons-le/la Bobbie) et ce code sera exécuté sur une machine (que ce soit ta machine personnelle ou un serveur distant).</p>
+<p>La plupart des &quot;Bobbies&quot; sont bienveillants et fournissent du code utile, mais pas tous. Certains ont des arrière-pensées et veulent que tu exécutes leur code. Quelques exemples de ce que pourrait vouloir faire un &quot;Bobbie&quot; mal intentionné :</p>
+<ul>
+<li>voler tes données</li>
+<li>ouvrir une brèche de sécurité sur ton serveur</li>
+<li>utiliser ton serveur pour lui-même (minage de crypto-monnaies, par exemple).</li>
+</ul>
+<p>L'utilisation de paquets peu connus ou nouveaux peut t'exposer à ces &quot;méchants Bobbies&quot;. C'est un cas rare, mais pas impossible.</p>
+<p>C'est pourquoi tu devrais toujours t'en tenir aux paquets bien connus, ou à ceux qui ont été audités par la communauté.</p>
+<a class="ressource" href="https://lirantal.medium.com/malicious-modules-what-you-need-to-know-when-installing-npm-packages-12b2f56d3685" target="_blank" rel="noopener noreferrer">
+  <div class="ressource__icone">↗</div>
+  <div class="ressource__texte">
+    <div class="ressource__titre">Malicious Modules - what you need to know when installing npm packages</div>
+    
+    <div class="ressource__hote">lirantal.medium.com</div>
+  </div>
+</a>
+<a class="ressource" href="https://qz.com/646467/how-one-programmer-broke-the-internet-by-deleting-a-tiny-piece-of-code/" target="_blank" rel="noopener noreferrer">
+  <div class="ressource__icone">↗</div>
+  <div class="ressource__texte">
+    <div class="ressource__titre">How one programmer broke the internet by deleting a tiny piece of code</div>
+    
+    <div class="ressource__hote">qz.com</div>
+  </div>
+</a>
+<p>Nous pouvons aussi parler du risque de nuire aux performances. Pour faire court : <strong>certaines dépendances sont très lourdes et peuvent ralentir ton application ou tes outils de développement</strong>.</p>
+<p>Parce que les risques sont réels, tu dois <strong>faire attention lorsque tu décides d'ajouter une dépendance à un projet</strong>.</p>
+<p><strong>❓Quizz</strong></p>
+<div class="bloc-code"><div class="bloc-code__langue">quiz</div><pre><code class="hljs language-quiz">true|||true|||true
+# Nous devons résoudre un problème spécifique sur un projet...
+[] Cherchons et essayons tous les paquets liés à ce problème sur NPM.
+[x] Remettons en question la pertinence du problème lui-même, puis si les avantages de l'ajout d'un paquet peuvent potentiellement dépasser les inconvénients, recherchons et essayons les &quot;paquets sûrs&quot;.
+# Quels peuvent être les signes d'un &quot;bon paquet&quot; ?
+[x] La documentation est bien faite et facile à lire.
+[] Il est tout nouveau et tout le monde en parle.
+[x] Il y a une grande communauté derrière lui (beaucoup de téléchargements hebdomadaires, beaucoup d'étoiles Github). 
+[x] Les problèmes importants qui pourraient nous affecter sont traités rapidement.
+[] Le dernier commit sur le github du paquet a été fait il y a plus de 5 ans.
+[x] Le paquet est testé, avec une bonne couverture de code.
+[] L'auteur est célèbre.
+[x] Des projets importants reposent sur ce paquet.
+# Il y a des paquets malveillants sur NPM
+[x] Vrai
+[] Faux
+# Avec les paquets NPM, nous pouvons faire ce que nous voulons sans payer quoi que ce soit.
+[] Oui, ils sont tous open-source !
+[x] Non, nous devons vérifier les licences pour nous assurer que nous pouvons légalement faire ce que nous voulons.
+# L'ajout d'une dépendance pourrait nuire aux performances de notre application.
+[x] Vrai
+[] Faux
+# Tous les paquets sont accompagnés d'une assurance de qualité et d'une assistance.
+[x] Non, la grande majorité est livrée sans aucune garantie.
+[] Oui
+# Nous devons éviter les dépendances dans nos projets ?
+[] Non
+[] Oui
+[x] Les &quot;bonnes&quot; dépendances sont en fait utiles et valent la peine d'être utilisées, mais il faut y réfléchir à deux fois avant d'en ajouter une à un projet, car elles peuvent aussi avoir des inconvénients.
+</code></pre></div>
+
+  </div>
+  
+</article>
+
+<nav class="nav-quete">
+  <a class="nav-quete__lien nav-quete__lien--prec" href="../../node-js/003-node-03-commence-a-linter-et-a-formater-ton-code-en/index.html">
+           <span class="nav-quete__sens">← Précédent</span>
+           <span class="nav-quete__titre">Node 03 - 👨🏻‍🚀 Commence à linter et à formater ton code en utilisant Biome</span>
+         </a>
+  <a class="nav-quete__lien nav-quete__lien--suiv" href="../../node-js/005-node-05-concepts-avances-et-alternatives-a-la-cli-de-npm/index.html">
+           <span class="nav-quete__sens">Suivant →</span>
+           <span class="nav-quete__titre">Node 05 - 🚀 Concepts avancés et alternatives à la CLI de npm</span>
+         </a>
+</nav>
+</main>
+<footer class="pied">
+  <p>Archive personnelle des cours suivis à la Wild Code School. Copie hors ligne à usage strictement privé.</p>
+</footer>
+
+<script src="../../assets/copie-code.js"></script>
+<script src="../../assets/progression.js"></script>
+</body>
+</html>

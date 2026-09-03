@@ -1,0 +1,28 @@
+{
+  "id": 1555,
+  "titre": "👩‍🏫 JS Intermédiaire 01.3 - Manipulation du DOM - Gestion des événements",
+  "titres": {
+    "fr": "👩‍🏫 JS Intermédiaire 01.3 - Manipulation du DOM - Gestion des événements"
+  },
+  "theme": {
+    "id": 91,
+    "slug": "more-javascript",
+    "nom": "JavaScript - Beyond the Basics"
+  },
+  "creeLe": "2021-02-22T07:38:22.114+01:00",
+  "difficulte": "0",
+  "dureeEstimee": null,
+  "modeValidation": "self",
+  "chapitres": [
+    {
+      "id": 12605,
+      "type": "content",
+      "langue": "fr",
+      "majLe": "2024-11-09T11:20:41.396+01:00",
+      "caracteres": 10486
+    }
+  ],
+  "ressources": [],
+  "urlOrigine": "https://odyssey.wildcodeschool.com/quests/1555",
+  "archiveLe": "2026-09-02T20:54:57.362Z"
+}

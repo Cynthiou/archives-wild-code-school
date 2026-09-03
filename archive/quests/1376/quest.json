@@ -1,0 +1,48 @@
+{
+  "id": 1376,
+  "titre": "Installer et configurer Node",
+  "titres": {
+    "fr": "Installer et configurer Node"
+  },
+  "theme": {
+    "id": 149,
+    "slug": "web-development",
+    "nom": "Développement Web"
+  },
+  "creeLe": "2020-09-24T10:20:04.744+02:00",
+  "difficulte": "0",
+  "dureeEstimee": null,
+  "modeValidation": "trainer",
+  "chapitres": [
+    {
+      "id": 17530,
+      "type": "content",
+      "langue": "fr",
+      "majLe": "2025-03-24T12:13:38.048+01:00",
+      "caracteres": 4992
+    },
+    {
+      "id": 17531,
+      "type": "solution",
+      "langue": "fr",
+      "majLe": "2025-03-24T12:13:38.049+01:00",
+      "caracteres": 178
+    }
+  ],
+  "ressources": [
+    {
+      "link": "https://www.youtube.com/watch?v=EqqugQn4KIc",
+      "description": "petite vidéo pour le gitignore :) "
+    },
+    {
+      "link": "https://adamcoster.com/blog/commonjs-and-esm-importexport-compatibility-examples",
+      "description": "Pour mieux comprendre quand on peut utiliser require() et quand on peut utiliser import"
+    },
+    {
+      "link": "https://www.sitepoint.com/understanding-module-exports-exports-node-js/",
+      "description": "Des informations intéressantes sur le module.export"
+    }
+  ],
+  "urlOrigine": "https://odyssey.wildcodeschool.com/quests/1376",
+  "archiveLe": "2026-09-02T20:52:59.381Z"
+}

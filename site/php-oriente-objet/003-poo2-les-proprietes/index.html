@@ -1,0 +1,118 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>POO2 - Les propriétés — Archives WCS</title>
+<link rel="stylesheet" href="../../assets/style.css">
+</head>
+<body style="--teinte:#464985">
+<header class="entete">
+  <a class="entete__marque" href="../../index.html">Archives Wild Code School</a>
+</header>
+<main class="contenu">
+<nav class="ariane"><a href="../../index.html">Accueil</a><span class="ariane__sep">›</span><a href="../../php-oriente-objet/index.html">PHP Orienté Objet</a><span class="ariane__sep">›</span><span aria-current="page">POO2 - Les propriétés</span></nav>
+
+<article class="quete">
+  <header class="quete__entete">
+    <a class="pastille pastille--teintee" href="../../php-oriente-objet/index.html">PHP Orienté Objet</a>
+    <h1>POO2 - Les propriétés</h1>
+    <p class="quete__meta">Quête 3 sur 11</p>
+  </header>
+  <div class="cours">
+<h1>Prérequis</h1>
+<div class="renvois"><div class="renvois__titre">Quêtes liées</div><ul><li><a href="../../php-oriente-objet/001-poo1-introduction-a-la-programmation-orientee-objet/index.html">Quête 2239</a></li></ul></div>
+<div class="bloc-code"><div class="bloc-code__langue">title-book</div><pre><code class="hljs language-title-book">Introduction
+</code></pre></div>
+<p>Dans la précédente quête, tu as pu comprendre à quoi servait la programmation orientée objet, puis tu as vu la syntaxe d'une classe et ses propriétés, avant d'instancier tes premiers objets. Dans cette quête, nous allons nous attarder sur les propriétés et comment manipuler leurs valeurs.</p>
+<p>🖥️ Le projet Wildzoo distant contient 10 branches (une par quête de cette série sur la POO). A chaque nouvelle quête tu dois basculer vers une nouvelle branche correspondant au numéro de la quête. Pour rappel, tu peux trouver le <a href="https://github.com/WildCodeSchool/php-wildzoo" target="_blank" rel="noopener noreferrer">dépôt Wildzoo ici</a></p>
+<p>Si ce n'est pas fait, effectue bien un <code>git add</code> et <code>git commit</code> sur ta branche en cours (POO1) pour valider les changement (sinon tu ne pourras pas changer de branche).
+Ensuite, tu vas basculer sur la branche <strong>poo2</strong>. Pour cela, commence par lancer la commande <code>git fetch origin</code> qui va récupérer les branches distantes (tu les vois en faisant un <code>git branch -a</code>). Ensuite déplace toi vers la branche poo2 via un <code>git switch poo2</code> et le tour est joué.</p>
+<h2>🤓 À la fin de cette quête, tu seras capable de :</h2>
+<ul>
+<li>✅ Créer une propriété,</li>
+<li>✅ Lire une propriété,</li>
+<li>✅ Modifier une propriété.</li>
+</ul>
+<h1>Syntaxe</h1>
+<p>Dans le monde réel, un objet/un concept se définit par des caractéristiques. Pour un animal, nous avons décidé d'utiliser un nom, une taille, un régime alimentaire et un nombre de pattes. Dans la classe, cela se traduit par des <em>variables</em> définies à l'intérieur des accolades de la classe, et qu'on appelle des <strong>propriétés</strong>, auxquelles il va être possible d'affecter des <strong>valeurs</strong>.</p>
+<p>🖥️ Positionne-toi sur le fichier <em>src/Animal.php</em>, tu retrouves la classe Animal et ses 4 propriétés définies pour le moment.</p>
+<div class="bloc-code"><div class="bloc-code__langue">php</div><pre><code class="hljs language-php"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Animal</span>
+</span>{
+    <span class="hljs-keyword">public</span> <span class="hljs-keyword">string</span> <span class="hljs-variable">$name</span>;
+    <span class="hljs-keyword">public</span> <span class="hljs-keyword">float</span> <span class="hljs-variable">$size</span>;
+    <span class="hljs-keyword">public</span> <span class="hljs-keyword">bool</span> <span class="hljs-variable">$carnivorous</span>;
+    <span class="hljs-keyword">public</span> <span class="hljs-keyword">int</span> <span class="hljs-variable">$pawNumber</span>;
+}
+</code></pre></div>
+<p>Côté syntaxe, une propriété s'écrit comme une variable (on l'appelle aussi variable de classe ;-)). Tu noteras qu'il est possible (et même très vivement recommandé) de typer cette propriété, n'oublie pas de le faire. Enfin, en tout début de ligne, il y a le mot clé <code>public</code>, ce dernier concerne la <em>visibilité</em> de la propriété, nous reparlerons de ce concept un peu plus tard.</p>
+<h1>Affecter une valeur à une propriété</h1>
+<p>Il y a plusieurs manières de faire. Si tu fais un <code>var_dump($animal1)</code> dans ton fichier <em>public/index.php</em>, tu constates que toutes les valeurs sont <code>uninitialized</code>.</p>
+<div class="encadre encadre--warning"><div class="encadre__titre">Attention</div><div class="encadre__corps"><p>Petite subtilité de PHP, si tu ne types pas les propriétés, la valeur par défaut devient <code>null</code> et non plus <code>uninitialized</code>. Si tu essaies par la suite d'afficher une propriété <code>uninitialized</code> tu auras une erreur, tandis qu'une propriété non typé (donc à null) afficherait par défaut une chaîne vide. Mais cela ne devrait pas t'arriver puisque nous allons toujours typer nos propriétés.</p>
+</div></div>
+<p>🖥️ Si tu regardes l'interface web, tu vois que les valeurs sous le nom sont <em>undefined</em>.</p>
+<h2>Affecter une valeur par défaut</h2>
+<p>La première manière d'affecter une valeur à une propriété est de le faire dès sa définition. C'est intéressant pour donner une valeur &quot;par défaut&quot; mais ce n'est pas toujours pertinent. Donner un <code>$name</code> par défaut n'a pas grand intérêt, mais nous pouvons partir du principe que les animaux sont végétariens par défaut. On leur donnera une taille arbitraire de 100 par défaut pour le moment.</p>
+<div class="bloc-code"><div class="bloc-code__langue">php</div><pre><code class="hljs language-php"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Animal</span>
+</span>{
+    <span class="hljs-keyword">public</span> <span class="hljs-keyword">string</span> <span class="hljs-variable">$name</span>;
+    <span class="hljs-keyword">public</span> <span class="hljs-keyword">float</span> <span class="hljs-variable">$size</span> = <span class="hljs-number">100</span>;
+    <span class="hljs-keyword">public</span> <span class="hljs-keyword">bool</span> <span class="hljs-variable">$carnivorous</span> = <span class="hljs-literal">false</span>;
+    <span class="hljs-keyword">public</span> <span class="hljs-keyword">int</span> <span class="hljs-variable">$pawNumber</span>;
+}
+</code></pre></div>
+<p>🖥️ Si tu regardes l'interface web, tu vois que les valeurs par défaut s'affichent bien pour la taille et le régime alimentaire.</p>
+<h2>Affecter une valeur depuis l'extérieur de la classe</h2>
+<p>Nous allons maintenant créer nos premiers animaux ! Une araignée est différent d'un dauphin ou d'un éléphant. Nous allons nous placer dans le fichier <em>index.php</em> et créer pour le moment un lion et un perroquet. Commence par renommer les variables <code>$animal1</code> en <code>$lion</code> et <code>$animal2</code> en <code>$parrot</code>, pour plus de lisibilité. Tu dois les modifier dans le tableau <code>$animals</code> également.</p>
+<p>Maintenant, tu vas pouvoir modifier une valeur depuis l'objet en suivant cette syntaxe :</p>
+<div class="bloc-code"><div class="bloc-code__langue">php</div><pre><code class="hljs language-php"><span class="hljs-variable">$lion</span>-&gt;name = <span class="hljs-string">&#x27;lion&#x27;</span>;
+<span class="hljs-variable">$lion</span>-&gt;pawNumber = <span class="hljs-number">4</span>;
+<span class="hljs-variable">$lion</span>-&gt;carnivorous = <span class="hljs-literal">true</span>;
+</code></pre></div>
+<p>Sois bien attentif à la manière d’accéder à la propriété d'un objet.
+Pour un tableau, tu as l'habitude d'utiliser la syntaxe suivante <code>$array['key'];</code>, avec des crochets <code>[]</code>.
+Pour un objet, il s'agit d'une petite flèche <code>-&gt;</code>, composée d'un moins <code>-</code> et d'un chevron <em>&quot;supérieur à&quot;</em> <code>&gt;</code>.
+Et fais très attention, si dans la classe,  les propriétés sont préfixées d'un <code>$</code>, ce n'est pas le cas ici quand tu utilise la flèche.</p>
+<p>Pour récupérer la valeur d'une propriété, tu utilises la même syntaxe. Par exemple, pour afficher une petite description de l'animal, tu feras :</p>
+<div class="bloc-code"><div class="bloc-code__langue">php</div><pre><code class="hljs language-php"><span class="hljs-keyword">echo</span> <span class="hljs-string">&#x27;Bonjour je suis un &#x27;</span> . <span class="hljs-variable">$lion</span>-&gt;name . <span class="hljs-string">&#x27; et j\&#x27;ai &#x27;</span> . <span class="hljs-variable">$lion</span>-&gt;pawNumber . <span class="hljs-string">&#x27; patte(s)&#x27;</span>;
+</code></pre></div>
+<p>Retourne dans ton navigateur. Comme tu peux le voir, ton lion s'affiche avec les données que tu lui as mis. En bonus, une image de lion s'affiche également. Cette image se base simplement sur le nom 'lion' pour aller chercher l'image 'lion.png' dans le dossier public/assets/images/animals. Tu peux voir que de nombreuses images sont fournies par défaut :-)</p>
+<p>Tu as, dans cet exemple, affecté une valeur aux propriétés <code>$name</code> et <code>$pawNumber</code>. De plus, tu as aussi modifié la valeur de <code>$carnivorous</code>, cette syntaxe permet donc d'initialiser <em>ou</em> d'affecter une nouvelle valeur à une propriété déjà initialisée.</p>
+<p>🖥️ Essaie maintenant de modifier la <code>size</code> du lion à 50 depuis <em>index.php</em>. Sur l'interface, tu dois constater que la taille de l'image s'adapte en conséquence.</p>
+<p>🖥️ Fais maintenant la même chose pour le perroquet (parrot), et au moins un troisième animal de ton choix (en fonction des images disponibles). Pense à bien mettre à jour le tableau <code>$animals</code> en fonction.</p>
+<h1>💪 Challenge</h1>
+<h2>Créer une propriété</h2>
+<p>Tu peux être amené à ajouter de nouvelles propriétés à ta classe, si ton projet se complexifie. Un zoo sert notamment à accueillir des espèces en danger. Nous voulons donc ajouter le niveau de menace de l'animal. Pour cela, si tu veux des données réalistes, tu peux te baser sur le <a href="https://www.iucnredlist.org" target="_blank" rel="noopener noreferrer">site de l'IUCN</a> qui recense justement les espèces en danger, en se basant sur différents niveaux de menace, de non concerné (Least Concern ou LC) à éteinds (Extinct ou EX).</p>
+<p><a href="https://nc.iucnredlist.org/redlist/content/images/content_categories_chart_global_v3.jpg" target="_blank" rel="noopener noreferrer">UICN list</a></p>
+<p>🖥️ À toi de créer la propriété (threatenedLevel) qui sera un <code>string</code> et attendra l'une des valeurs de la liste en abrégé (EX, EW, CR, EN, VU, NT, LC, DD ou NE). Par défaut, la valeur sera 'NE' (Not Evaluated).</p>
+<p>Modifie ensuite le niveau de menace pour les animaux que tu as créés dans <em>index.php</em>, puis vérifie que l'icône correspondante apparaît bien sur l'interface web. Par exemple, le lion est <a href="https://www.iucnredlist.org/species/15951/115130419" target="_blank" rel="noopener noreferrer">vulnérable</a>.</p>
+<p>Poste une capture d'écran de la page web, montrant tes animaux.</p>
+<h3>Critères de validation</h3>
+<ul>
+<li>Les animaux créés apparaissent bien tous, avec leur image, au nombre de trois minimum, dont le lion et le perroquet.</li>
+<li>Les différentes informations sur ces animaux sont affichées (pour les 5 propriétés, y compris le niveau de menace). Il n'y a plus d'information &quot;undefined&quot;.</li>
+</ul>
+
+  </div>
+  
+</article>
+
+<nav class="nav-quete">
+  <a class="nav-quete__lien nav-quete__lien--prec" href="../../php-oriente-objet/002-poo10-interfaces/index.html">
+           <span class="nav-quete__sens">← Précédent</span>
+           <span class="nav-quete__titre">POO10 - Interfaces</span>
+         </a>
+  <a class="nav-quete__lien nav-quete__lien--suiv" href="../../php-oriente-objet/004-poo3-les-methodes/index.html">
+           <span class="nav-quete__sens">Suivant →</span>
+           <span class="nav-quete__titre">POO3 - Les méthodes</span>
+         </a>
+</nav>
+</main>
+<footer class="pied">
+  <p>Archive personnelle des cours suivis à la Wild Code School. Copie hors ligne à usage strictement privé.</p>
+</footer>
+
+<script src="../../assets/copie-code.js"></script>
+<script src="../../assets/progression.js"></script>
+</body>
+</html>

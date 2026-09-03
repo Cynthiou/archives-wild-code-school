@@ -1,0 +1,112 @@
+{
+  "id": 629,
+  "titre": "Onboarding - Odyssey",
+  "titres": {
+    "en": "Onboarding - Odyssey",
+    "fr": "Onboarding - Odyssey"
+  },
+  "theme": {
+    "id": 155,
+    "slug": "on-boarding-students",
+    "nom": "Onboarding students"
+  },
+  "creeLe": "2019-06-12T18:28:59.908+02:00",
+  "difficulte": "",
+  "dureeEstimee": null,
+  "modeValidation": "self",
+  "chapitres": [
+    {
+      "id": 16807,
+      "type": "content",
+      "langue": "fr",
+      "majLe": "2025-02-28T16:58:14.922+01:00",
+      "caracteres": 492
+    },
+    {
+      "id": 16821,
+      "type": "content",
+      "langue": "fr",
+      "majLe": "2025-03-03T11:30:54.699+01:00",
+      "caracteres": 1255
+    },
+    {
+      "id": 16853,
+      "type": "content",
+      "langue": "fr",
+      "majLe": "2025-03-03T11:50:00.519+01:00",
+      "caracteres": 543
+    },
+    {
+      "id": 16822,
+      "type": "content",
+      "langue": "fr",
+      "majLe": "2025-03-03T11:43:17.150+01:00",
+      "caracteres": 2515
+    },
+    {
+      "id": 16825,
+      "type": "content",
+      "langue": "fr",
+      "majLe": "2025-03-03T11:46:29.876+01:00",
+      "caracteres": 261
+    },
+    {
+      "id": 16867,
+      "type": "content",
+      "langue": "fr",
+      "majLe": "2025-03-04T09:25:07.054+01:00",
+      "caracteres": 870
+    },
+    {
+      "id": 16826,
+      "type": "content",
+      "langue": "fr",
+      "majLe": "2025-03-03T11:46:29.882+01:00",
+      "caracteres": 325
+    },
+    {
+      "id": 16827,
+      "type": "content",
+      "langue": "fr",
+      "majLe": "2025-03-03T11:46:29.884+01:00",
+      "caracteres": 650
+    },
+    {
+      "id": 16828,
+      "type": "content",
+      "langue": "fr",
+      "majLe": "2025-03-03T11:46:29.886+01:00",
+      "caracteres": 563
+    },
+    {
+      "id": 16852,
+      "type": "content",
+      "langue": "fr",
+      "majLe": "2025-03-03T11:47:36.515+01:00",
+      "caracteres": 533
+    },
+    {
+      "id": 16868,
+      "type": "exercise",
+      "langue": "fr",
+      "majLe": "2025-03-04T09:25:07.055+01:00",
+      "caracteres": 999
+    }
+  ],
+  "ressources": [
+    {
+      "link": "https://accessibilite.numerique.gouv.fr/",
+      "description": "RGAA pour rendre accessible les sites "
+    },
+    {
+      "link": "https://learnsql.com/blog/sql-basics-cheat-sheet/sql-basics-cheat-sheet-a4.pdf",
+      "description": "Référence de poche - SQL"
+    },
+    {
+      "link": "https://static.realpython.com/python-cheatsheet.pdf",
+      "description": "Référence de poche - Python "
+    }
+  ],
+  "urlOrigine": "https://odyssey.wildcodeschool.com/quests/629",
+  "archiveLe": "2026-09-02T20:53:35.485Z"
+}

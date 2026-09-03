@@ -1,0 +1,233 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Utiliser GitHub — Archives WCS</title>
+<link rel="stylesheet" href="../../assets/style.css">
+</head>
+<body style="--teinte:#F44F3D">
+<header class="entete">
+  <a class="entete__marque" href="../../index.html">Archives Wild Code School</a>
+</header>
+<main class="contenu">
+<nav class="ariane"><a href="../../index.html">Accueil</a><span class="ariane__sep">›</span><a href="../../git/index.html">Git</a><span class="ariane__sep">›</span><span aria-current="page">Utiliser GitHub</span></nav>
+
+<article class="quete">
+  <header class="quete__entete">
+    <a class="pastille pastille--teintee" href="../../git/index.html">Git</a>
+    <h1>Utiliser GitHub</h1>
+    <p class="quete__meta">Quête 6 sur 6 · 3 images archivées</p>
+  </header>
+  <div class="cours">
+<h1>Introduction</h1>
+<p>Dans cette quête, tu vas plonger dans l'univers de <strong>GitHub</strong>, une plateforme de gestion et de publication de projets facilitant le travail en équipe.</p>
+<p>Pendant la formation, tu auras l'occasion d'en apprendre plus sur GitHub et sur Git, l'outil de gestion de version décentralisé sur lequel Github s'appuie.</p>
+<p>L'objectif principal ici, c'est de te montrer comment partager tes travaux de manière simple et efficace. Fini les e-mails encombrants ou les fichiers perdus, avec GitHub, tu vas juste envoyer le lien de ton dépôt (<em>repository</em> en anglais) où tu as tout déposé. C'est pas cool ça ?</p>
+<div class="bloc-code"><div class="bloc-code__langue">spacer-small</div><pre><code class="hljs language-spacer-small"></code></pre></div>
+<p><img src="images/001-logo-de-github.png" alt="Logo de GitHub" loading="lazy"></p>
+<div class="bloc-code"><div class="bloc-code__langue">spacer-small</div><pre><code class="hljs language-spacer-small"></code></pre></div>
+<h1>🤓 Objectifs :</h1>
+<p>✅ Créer un compte sur github.com
+✅ Comprendre le concept de dépôt
+✅ Créer un nouveau dépôt
+✅ Utiliser les fonctionnalités de base de GitHub</p>
+<h1>Sommaire</h1>
+<hr>
+<h1>👉 Création d'un compte et Dashboard</h1>
+<h2>🔏 Créer un compte</h2>
+<p>En créant un compte sur GitHub, tu peux :</p>
+<ul>
+<li>Stocker tes projets.</li>
+<li>Travailler en collaboration avec d'autres personnes.</li>
+<li>Suivre les versions de tes projets.</li>
+<li>Contribuer à des projets open-source.</li>
+</ul>
+<h3>🔬 C'est parti !</h3>
+<p>Crée ton compte sur github.com en suivant ces étapes :</p>
+<ol>
+<li>Rends-toi sur <a href="https://github.com" target="_blank" rel="noopener noreferrer">https://github.com</a></li>
+<li>Clique sur le bouton &quot;<strong>Sign up</strong>&quot; (S'inscrire) en haut à droite de la page.</li>
+<li>Remplis les champs avec ton <strong>nom d'utilisateur</strong>, ton <strong>adresse e-mail</strong> et ton <strong>mot de passe</strong>.</li>
+</ol>
+<div class="encadre encadre--info"><div class="encadre__titre">Info</div><div class="encadre__corps"><p><strong>✨ Soigne ton image</strong> : GitHub, c'est une de tes cartes de visite dans le monde numérique. Même si ton adresse mail n'est pas visible, d'autres infos le sont ! Fais bonne impression avec une adresse pro et des infos bien renseignées. 🚀</p>
+</div></div>
+<ol start="4">
+<li>Clique sur &quot;Create an account&quot; (Créer un compte).</li>
+</ol>
+<div class="encadre encadre--success"><div class="encadre__titre">Bravo</div><div class="encadre__corps"><p>Félicitations ! Tu viens de créer ton compte sur GitHub.</p>
+</div></div>
+<h2>🔎 Vue d'ensemble du Dashboard :</h2>
+<p>Maintenant que tu as créé ton compte GitHub, examinons le Dashboard :</p>
+<p><img src="images/002-capture-d-ecran-annotee-permettant-d-identifier.png" alt="Capture d'écran annotée permettant d'identifier les 5 zones décrite ci dessous sur le dashboard github" loading="lazy"></p>
+<ol>
+<li>La barre de recherche est un champ où tu peux saisir des mots-clés pour rechercher des dépôts, des utilisateurs, des organisations ou du contenu sur GitHub.</li>
+<li>En cliquant sur ce bouton <strong>+</strong>, tu peux créer ou importer un dépôt depuis une URL.</li>
+<li>Cette liste affiche tous les dépôts auxquels tu as accès. Elle te permet de naviguer facilement entre tes projets.</li>
+<li>Cette section affiche les équipes auxquelles tu appartiens.</li>
+<li>Cette partie te permet de démarrer rapidement un nouveau projet en fournissant les informations nécessaires sans avoir à passer par les options avancées de création de dépôt.</li>
+</ol>
+<h3>🔬 Exercice</h3>
+<ol>
+<li>Sur la page d'accueil de GitHub, prends un moment pour explorer ton tableau de bord.</li>
+<li>Observe la barre de menu latérale gauche que tu peux déplier en appuyant sur le bouton ☰ . Quels éléments y trouves-tu ?</li>
+</ol>
+<details class="solution"><summary>Voir la solution</summary><div class="solution__corps"><p><strong>Home</strong> : l'icône de la maison te ramène à la page d'accueil de GitHub.</p>
+<p><strong>Issues</strong> : te permet d'accéder directement à la section des problèmes (ou &quot;Issues&quot;).</p>
+<p><strong>Pull Requests</strong> : gère et consulte les pull requests que tu as créées ou auxquelles tu participes.</p>
+<p><strong>Projects</strong> : te permet d'accéder à la fonctionnalité de gestion de projet de GitHub.</p>
+<p><strong>Discussions</strong> : forum de communication collaboratif pour la communauté autour d’un projet open source ou interne.</p>
+<p><strong>Codespace</strong> : un environnement de développement hébergé dans le cloud.</p>
+<hr>
+<p><strong>Explore</strong>: explore de nouveaux projets, tendances et développeurs sur GitHub.</p>
+<p><strong>Marketplace</strong> : te permet d'accéder à la place de marché de GitHub, où tu peux trouver et installer des applications tierces pour enrichir et personnaliser ton expérience GitHub.</p>
+</div></details>
+<h1>👉 Création d'un dépôt</h1>
+<p>Un dépôt (repo pour les intimes) est un endroit où tu stockes tes projets, tu gardes une trace de leur historique et tu peux collaborer avec d'autres personnes. Créer et configurer un dépôt sur GitHub sera ta prochaine tâche !</p>
+<div class="encadre encadre--info"><div class="encadre__titre">Info</div><div class="encadre__corps"><p><strong>Rappel</strong> : Ceci est une quête d'initiation à GitHub et aux dépôts. Pas besoin de tout comprendre de suite ! De nombreuses occasions d'approfondir GitHub t'attendent durant ta formation.</p>
+</div></div>
+<h2>🗄️ Les éléments essentiels d'un dépôt</h2>
+<p>Commençons par quelques concepts sur lesquels GitHub est construit. Voici les éléments essentiels à connaître :</p>
+<ul>
+<li>
+<p><strong>Commits</strong> : Un <em>commit</em> est, en quelque sorte, une sauvegarde des modifications apportées à ton projet à un moment donné. Chaque fois que tu effectues des changements sur tes fichiers, tu dois enregistrer ces changements dans un <em>commit</em> pour les ajouter à l'historique de ton projet.</p>
+</li>
+<li>
+<p><strong>README.md</strong> : La première chose que les gens voient lorsqu'ils visitent ton dépôt. C'est là que tu peux expliquer en quoi consiste ton projet, comment l'utiliser, comment le configurer, etc. Un bon README.md peut aider les autres développeurs à comprendre rapidement ton projet. Il est traditionnellement écrit en <a href="https://fr.wikipedia.org/wiki/Markdown" target="_blank" rel="noopener noreferrer">Markdown</a>, d'où le <code>.md</code>.</p>
+</li>
+<li>
+<p><strong>LICENSE</strong> : Le fichier LICENSE indique aux autres utilisateurs comment ils peuvent utiliser ton code. Il existe différents types de licences, chacune avec ses propres conditions d'utilisation.</p>
+</li>
+<li>
+<p><strong>Branches</strong> : Les branches sont des versions alternatives de ton projet. Elles te permettent de travailler sur des fonctionnalités ou des corrections de bugs sans affecter le code principal (branche principale ou &quot;main&quot;).</p>
+</li>
+<li>
+<p><strong>Issues</strong> : Les <em>issues</em> sont des discussions sur ton projet. Elles peuvent être utilisées pour signaler des bugs, demander des fonctionnalités ou discuter de tout ce qui concerne le projet.</p>
+</li>
+<li>
+<p><strong>Pull Requests</strong> : Les <em>pull requests</em> sont des propositions de modification de ton code. Elles sont généralement utilisées pour fusionner des modifications d'une branche vers une autre (par exemple, de la branche de fonctionnalité vers la branche principale).</p>
+</li>
+</ul>
+<a class="ressource" href="https://github.com/git-guides" target="_blank" rel="noopener noreferrer">
+  <div class="ressource__icone">↗</div>
+  <div class="ressource__texte">
+    <div class="ressource__titre">https://github.com/git-guides</div>
+    <div class="ressource__desc"><p>Le lien vers la base de connaissance GitHub</p>
+</div>
+    <div class="ressource__hote">github.com</div>
+  </div>
+</a>
+<h2>🔎 Vue d'ensemble d'un dépôt :</h2>
+<p><img src="images/003-capture-d-ecran-annotee-permettant-d-identifier.png" alt="Capture d'écran annotée permettant d'identifier les 7 zones décrites ci dessous sur la page de gestion d'un dépôt github" loading="lazy"></p>
+<ol>
+<li><strong>Nom du dépôt</strong> : En haut de la page, tu trouveras le nom de ton dépôt, suivi d'une indication public ou privé selon les possibilité d'accès par défaut du dépôt.</li>
+<li><strong>Add file</strong> : Ce bouton te permet d'ajouter de nouveaux fichiers à ton dépôt. En cliquant dessus, tu peux choisir d'ajouter un nouveau fichier ou de créer un nouveau fichier.</li>
+<li><strong>Les branches</strong> : Ce bouton te montre la liste des branches de ton dépôt. Tu peux passer d'une branche à l'autre en cliquant dessus.</li>
+<li><strong>Liste des fichiers</strong> : Dans cette section, tu verras la liste de tous les fichiers et répertoires présents dans ton dépôt. Tu peux cliquer sur chaque fichier pour voir son contenu.</li>
+<li><strong>Aperçu du README.md</strong> : Si ton dépôt contient un fichier README.md, son contenu s'affichera ici.</li>
+<li><strong>Historique</strong> : Ce bouton te permet de voir l'historique des commits de ton dépôt. En cliquant dessus, tu peux voir tous les commits précédents, avec leurs messages associés.</li>
+<li><strong>&lt;&gt; Code</strong> : Ce bouton te permet de récupérer l'adresse du dépôt. En cliquant dessus, tu verras les options (URL HTTPS ou SSH) pour cloner ton repository avec Git ou pour le partager avec d'autres personnes. Il t'offre aussi la possibilité de le télécharger directement en ZIP.</li>
+</ol>
+<div class="encadre encadre--info"><div class="encadre__titre">Info</div><div class="encadre__corps"><p>Si des termes comme <strong>SSH</strong>, <strong>HTTPS</strong> ou <strong>URL</strong> te semblent confus pour l'instant, c'est tout à fait normal ! Nous les expliquerons plus en détail par la suite. Pour l'instant, concentre-toi sur la découverte de GitHub 🌟</p>
+</div></div>
+<h3>🔬 Exercice</h3>
+<p>Maintenant, à toi de créer un dépôt pour un projet fictif, par exemple en suivant les étapes ci-dessous :</p>
+<ol>
+<li>Connect toi sur ton compte <strong>GitHub</strong>.</li>
+<li>Crée un nouveau dépôt.</li>
+<li>Donne un nom et descriptif pour ton projet fictif.</li>
+<li>Assure-toi que le dépôt est public, ainsi tout le monde pourra le voir.</li>
+<li>Ajoute un fichier README à ton projet avec une description de ton projet fictif.</li>
+</ol>
+<div class="encadre encadre--success"><div class="encadre__titre">Bravo</div><div class="encadre__corps"><p><strong>Félicitations !</strong>
+Dans la suite de la formation, lors de certains exercices, comme les checkpoints ou certaines quêtes, il te sera demander de publier ta solution en créant un dépôt github contenant tous les fichiers (code ou autre) et en fournissant l'URL (i.e. : lien) du dépôt.</p>
+</div></div>
+<hr>
+<h1>☝️ Résumé</h1>
+<p>Dans cette quête, tu as découvert les bases de <strong>GitHub</strong> et des <strong>dépôts</strong> (<em>repositories</em>).
+<strong>GitHub</strong> est une plateforme en ligne pour héberger et collaborer sur des projets de développement.
+Un <strong>dépôt</strong>, c'est un espace où tu stockes ton projet avec son historique et où tu peux collaborer avec d'autres personnes.</p>
+<p>Un dépôt contient un fichier particulier et important : <code>README.md</code> pour décrire le projet.</p>
+<hr>
+<h1>📝 Quiz</h1>
+<div class="bloc-code"><div class="bloc-code__langue">quiz</div><pre><code class="hljs language-quiz">faux||faux|||vrai
+# Qu'est-ce que GitHub ?
+[x] Une plateforme pour héberger des projets.
+[] Un éditeur de texte.
+# Quel est l'élément essentiel pour décrire un projet sur GitHub ?
+[x] README.md
+[] LICENSE
+# Qu'est-ce qu'un commit ?
+[x] Une modification enregistrée dans l'historique.
+[] Un commentaire sur une issue
+</code></pre></div>
+<hr>
+<h1>💪 Challenge</h1>
+<ul>
+<li>Crée ton dépôt public.</li>
+<li>Rédige un <code>README.md</code> avec un Descriptif et sauvegarde-le.</li>
+<li>Utilise le bouton <strong>Add file</strong> pour créer un fichier nommé <code>solution.txt</code>. Assure-toi qu'il contient au moins la phrase suivante : <em>Prêt·e pour ma formation à la Wild Code School</em> . Et quand tu sauvegardes le fichier, n'oublie pas d'ajouter un commentaire explicite dans le <strong>commit</strong> !</li>
+<li>Ajoute une image aux fichiers du projet avec le bouton <strong>Add file</strong>.</li>
+</ul>
+<hr>
+<h1>🧐 Critères d'acceptation</h1>
+<ul>
+<li>Ce dépôt doit contenir trois fichiers <code>README.md</code>, <code>solution.txt</code>. et une image.</li>
+<li>Ce dépôt doit avoir au minimum 1 <code>commit</code> dans son historique.</li>
+</ul>
+
+  </div>
+  <section class="ressources-quete">
+  <h2>Ressources partagées sur cette quête</h2>
+  <ul class="ressources-liste">
+    <li><a href="https://github.com/juliabelhassen/wildcodeschoolprojects/blob/main/README.md" target="_blank" rel="noopener noreferrer">Mon premier readme sur github</a><span class="ressources-liste__url">https://github.com/juliabelhassen/wildcodeschoolprojects/blob/main/README.md</span></li>
+    <li><a href="https://github.com/Saddemga/Saddemga" target="_blank" rel="noopener noreferrer">1ère quête !</a><span class="ressources-liste__url">https://github.com/Saddemga/Saddemga</span></li>
+    <li><a href="https://github.com/Pdev33/test.git" target="_blank" rel="noopener noreferrer">Première quête !</a><span class="ressources-liste__url">https://github.com/Pdev33/test.git</span></li>
+    <li><a href="https://github.com/Jordan-182/Wild" target="_blank" rel="noopener noreferrer">Première quête</a><span class="ressources-liste__url">https://github.com/Jordan-182/Wild</span></li>
+    <li><a href="https://github.com/Joey-dev85/Exo1" target="_blank" rel="noopener noreferrer">1ere quête </a><span class="ressources-liste__url">https://github.com/Joey-dev85/Exo1</span></li>
+    <li><a href="https://github.com/Alexhian/Test" target="_blank" rel="noopener noreferrer">Première quête</a><span class="ressources-liste__url">https://github.com/Alexhian/Test</span></li>
+    <li><a href="https://github.com/franksena/firstwild" target="_blank" rel="noopener noreferrer">nouvelle quête</a><span class="ressources-liste__url">https://github.com/franksena/firstwild</span></li>
+    <li><a href="https://github.com/Sylviatoo/1sttry.git" target="_blank" rel="noopener noreferrer">Mon premier projet github wild code school</a><span class="ressources-liste__url">https://github.com/Sylviatoo/1sttry.git</span></li>
+    <li><a href="https://github.com/itisalicia/premierProjetWildCodeSchool.git" target="_blank" rel="noopener noreferrer">Premier projet Wild Code School !</a><span class="ressources-liste__url">https://github.com/itisalicia/premierProjetWildCodeSchool.git</span></li>
+    <li><a href="https://github.com/hakkenheiner/go-to-the-wild-code-school" target="_blank" rel="noopener noreferrer">Première quête réalisée ! </a><span class="ressources-liste__url">https://github.com/hakkenheiner/go-to-the-wild-code-school</span></li>
+    <li><a href="https://github.com/Aghiles-Belkalem/README.md.git" target="_blank" rel="noopener noreferrer">Premier pas sur Github</a><span class="ressources-liste__url">https://github.com/Aghiles-Belkalem/README.md.git</span></li>
+    <li><a href="https://github.com/EmiLy-Ly-san/FictionalProjectWilders.git" target="_blank" rel="noopener noreferrer">Premier repo avec la Wild Code School</a><span class="ressources-liste__url">https://github.com/EmiLy-Ly-san/FictionalProjectWilders.git</span></li>
+    <li><a href="https://github.com/CharlesMwilder/WildSchoolDepot1/blob/main/README.md" target="_blank" rel="noopener noreferrer">Mon dépôt Github avec Solution et Readme avec image!</a><span class="ressources-liste__url">https://github.com/CharlesMwilder/WildSchoolDepot1/blob/main/README.md</span></li>
+    <li><a href="https://learngitbranching.js.org/?locale=fr_FR" target="_blank" rel="noopener noreferrer">Permet d'apprendre à utiliser les branches, toussa toussa</a><span class="ressources-liste__url">https://learngitbranching.js.org/?locale=fr_FR</span></li>
+    <li><a href="https://github.com/Edwige-Roussin/Mon-premier_projet" target="_blank" rel="noopener noreferrer">Mon premier dossier sur github</a><span class="ressources-liste__url">https://github.com/Edwige-Roussin/Mon-premier_projet</span></li>
+    <li><a href="https://github.com/CharlesCatto/Myfirstone.git" target="_blank" rel="noopener noreferrer">Premier projet :)</a><span class="ressources-liste__url">https://github.com/CharlesCatto/Myfirstone.git</span></li>
+    <li><a href="https://github.com/Lesageemeric/Nouveau_d-p-t_perso.git" target="_blank" rel="noopener noreferrer">Premiers pas, ça ne ressemble à rien x)</a><span class="ressources-liste__url">https://github.com/Lesageemeric/Nouveau_d-p-t_perso.git</span></li>
+    <li><a href="https://github.com/Icebergb1/First-Try/tree/main" target="_blank" rel="noopener noreferrer">Le 1er d'une longue série</a><span class="ressources-liste__url">https://github.com/Icebergb1/First-Try/tree/main</span></li>
+    <li><a href="https://github.com/Fakez92/Quete1.git" target="_blank" rel="noopener noreferrer">Quête numéro 1.</a><span class="ressources-liste__url">https://github.com/Fakez92/Quete1.git</span></li>
+    <li><a href="https://github.com/Prehistory-Banane/Factory" target="_blank" rel="noopener noreferrer">Première quête</a><span class="ressources-liste__url">https://github.com/Prehistory-Banane/Factory</span></li>
+    <li><a href="https://github.com/cedricrighi/quete1.git" target="_blank" rel="noopener noreferrer">Quête 1 github</a><span class="ressources-liste__url">https://github.com/cedricrighi/quete1.git</span></li>
+    <li><a href="https://github.com/CamilleCalvel/Test-Github.git" target="_blank" rel="noopener noreferrer">Ma première quête sur GitHub</a><span class="ressources-liste__url">https://github.com/CamilleCalvel/Test-Github.git</span></li>
+    <li><a href="https://github.com/Philyon/Demarrage-formation-TSSR" target="_blank" rel="noopener noreferrer">Aller hop, c'est parti pour un premier repo sur Git !</a><span class="ressources-liste__url">https://github.com/Philyon/Demarrage-formation-TSSR</span></li>
+    <li><a href="https://github.com/Baudwild/Challenge-GitHub-" target="_blank" rel="noopener noreferrer">première fois sur GitHub </a><span class="ressources-liste__url">https://github.com/Baudwild/Challenge-GitHub-</span></li>
+    <li><a href="https://github.com/Antoine227/Projet_perso_1" target="_blank" rel="noopener noreferrer">Quête Github</a><span class="ressources-liste__url">https://github.com/Antoine227/Projet_perso_1</span></li>
+    <li><a href="https://github.com/JeremyPerezGit/NoNameAllowed" target="_blank" rel="noopener noreferrer">ça c'est un lien incroyable</a><span class="ressources-liste__url">https://github.com/JeremyPerezGit/NoNameAllowed</span></li>
+    <li><a href="https://github.com/Ochoooooo/Test-Projet" target="_blank" rel="noopener noreferrer">Première quête !</a><span class="ressources-liste__url">https://github.com/Ochoooooo/Test-Projet</span></li>
+    <li><a href="https://github.com/Faricoder/solution.txt" target="_blank" rel="noopener noreferrer">Challenge en cours!!</a><span class="ressources-liste__url">https://github.com/Faricoder/solution.txt</span></li>
+    <li><a href="https://github.com/Balt21/Wild-Code-School" target="_blank" rel="noopener noreferrer">Première quête </a><span class="ressources-liste__url">https://github.com/Balt21/Wild-Code-School</span></li>
+    <li><a href="https://github.com/RomainVarra/Test" target="_blank" rel="noopener noreferrer">1ère quête ! </a><span class="ressources-liste__url">https://github.com/RomainVarra/Test</span></li>
+    <li><a href="https://github.com/gregorydatis/Github.git" target="_blank" rel="noopener noreferrer">mon premier dépôt github</a><span class="ressources-liste__url">https://github.com/gregorydatis/Github.git</span></li>
+  </ul>
+</section>
+</article>
+
+<nav class="nav-quete">
+  <a class="nav-quete__lien nav-quete__lien--prec" href="../../git/005-git-github-5-merge-conflits/index.html">
+           <span class="nav-quete__sens">← Précédent</span>
+           <span class="nav-quete__titre">Git/GitHub 5 : Merge &amp; Conflits</span>
+         </a>
+  <span class="nav-quete__lien nav-quete__lien--vide"></span>
+</nav>
+</main>
+<footer class="pied">
+  <p>Archive personnelle des cours suivis à la Wild Code School. Copie hors ligne à usage strictement privé.</p>
+</footer>
+
+<script src="../../assets/copie-code.js"></script>
+<script src="../../assets/progression.js"></script>
+</body>
+</html>

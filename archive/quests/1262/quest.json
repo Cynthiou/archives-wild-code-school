@@ -1,0 +1,53 @@
+{
+  "id": 1262,
+  "titre": "👩‍🏫 JS Basics 01 - Qu'est-ce que JavaScript",
+  "titres": {
+    "fr": "👩‍🏫 JS Basics 01 - Qu'est-ce que JavaScript"
+  },
+  "theme": {
+    "id": 9,
+    "slug": "javascript",
+    "nom": "JavaScript"
+  },
+  "creeLe": "2020-06-30T15:45:03.856+02:00",
+  "difficulte": "0",
+  "dureeEstimee": null,
+  "modeValidation": "self",
+  "chapitres": [
+    {
+      "id": 12578,
+      "type": "content",
+      "langue": "fr",
+      "majLe": "2024-11-06T18:09:28.338+01:00",
+      "caracteres": 6671
+    }
+  ],
+  "ressources": [
+    {
+      "link": "https://www.javascriptdezero.com/module-debutant",
+      "description": "Je vous recommande le site de Jérémy. C'est très bien expliqué et de plus, c'est en français. Un must..."
+    },
+    {
+      "link": "https://www.youtube.com/watch?v=t1ZpiggamPI&list=PLQkrqTy7RjTF9p3uKgjOpcfLcjJ5i2i_7",
+      "description": "Une autre source tout aussi bien faite !"
+    },
+    {
+      "link": "https://infodocbib.net/2020/12/javascript/",
+      "description": "Entre le Vanilla, les Linters, les standards Airbnb ou Google, ECMA, Typescript, NodeJS, les transpilers et polyfills… Il y a de quoi se perdre. Voici de quoi y voir plus clair."
+    },
+    {
+      "link": "https://codecombat.com/",
+      "description": "Funny dungeon-like game to learn / revise JS bases. (+ it's completely free and you don't even need any account)"
+    },
+    {
+      "link": "https://fr.javascript.info/intro",
+      "description": "Plutôt complet et en français."
+    },
+    {
+      "link": "https://www.youtube.com/watch?v=cdDPQkF7hRA",
+      "description": "Une courte introduction en français à l'histoire de Javascript, c'est bien fait et plaisant à regarder"
+    }
+  ],
+  "urlOrigine": "https://odyssey.wildcodeschool.com/quests/1262",
+  "archiveLe": "2026-09-02T20:54:21.446Z"
+}

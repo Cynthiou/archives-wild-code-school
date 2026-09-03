@@ -1,0 +1,248 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>👩‍🏫 React Basics 02 - Pokédex - Ton premier composant — Archives WCS</title>
+<link rel="stylesheet" href="../../assets/style.css">
+</head>
+<body style="--teinte:#4DC4DE">
+<header class="entete">
+  <a class="entete__marque" href="../../index.html">Archives Wild Code School</a>
+</header>
+<main class="contenu">
+<nav class="ariane"><a href="../../index.html">Accueil</a><span class="ariane__sep">›</span><a href="../../react-bases/index.html">React - Bases</a><span class="ariane__sep">›</span><span aria-current="page">👩‍🏫 React Basics 02 - Pokédex - Ton premier composant</span></nav>
+
+<article class="quete">
+  <header class="quete__entete">
+    <a class="pastille pastille--teintee" href="../../react-bases/index.html">React - Bases</a>
+    <h1>👩‍🏫 React Basics 02 - Pokédex - Ton premier composant</h1>
+    <p class="quete__meta">Quête 2 sur 10 · 3 images archivées</p>
+  </header>
+  <div class="cours">
+<h2>Objectifs</h2>
+<ul>
+<li>Comprendre ce qu'est un composant React</li>
+<li>Comprendre la hiérarchie des composants</li>
+<li>Apprendre à exporter et importer des composants</li>
+</ul>
+<h2>Pré-requis</h2>
+<ol class="etapes"><li class="etape"><div class="etape__puce">1</div><div class="etape__contenu"><h4 class="etape__titre">Valider la quête suivante</h4><div class="renvois"><div class="renvois__titre">Quêtes liées</div><ul><li><a href="../../react-bases/001-react-basics-01-pokedex-introduction/index.html">Quête 2328</a></li></ul></div>
+</div></li></ol>
+<h2>Introduction</h2>
+<p>Dans la quête précédente, nous avons vu comment initialiser une application React.</p>
+<p>Nous allons maintenant découvrir ce qu'est un composant, comment le créer et comment l'utiliser.</p>
+<h2>Sommaire</h2>
+<h2>Qu'est-ce qu'un composant ?</h2>
+<p>Un composant est une partie (un morceau, une brique...) d'une interface utilisateur. Il permet d'isoler cet élément et les interactions éventuelles qui y sont liées (un événement au clic par exemple).</p>
+<p>Regarde ce screenshot :</p>
+<p><img src="images/001-interface-utilisateur-avec-les-composants-mis.jpg" alt="interface utilisateur avec les composants mis en évidence" loading="lazy"></p>
+<p>Tu peux imaginer certains composants de la page. Par exemple :</p>
+<ul>
+<li>Un composant pour la barre de navigation.</li>
+<li>Un composant pour la partie de droite.</li>
+<li>Un composant pour la partie centrale.</li>
+<li>Un composant pour la partie de gauche.</li>
+</ul>
+<p>Si tu regardes chacun de ces &quot;morceaux&quot;, tu peux les découper eux-mêmes en sous-composants...</p>
+<h3>La hiérarchie des composants</h3>
+<p>Dans React, les composants forment une hiérarchie. C'est-à-dire que certains composants sont <strong>imbriqués</strong> dans d'autres composants.</p>
+<p>Souviens-toi au chapitre précédent : le composant <code>App</code> était le composant principal de notre application. C'est en fait le composant racine  : <code>App</code> va contenir tous les composants de l'application, et ces composants seront imbriqués dans <code>App</code>.</p>
+<p>Voici un exemple de hiérarchie de composants :</p>
+<p><img src="images/002-app-contient-des-composants-qui-peuvent.png" alt="App contient des composants qui peuvent contenir leurs propres composants" loading="lazy"></p>
+<p>Dans cette hiérarchie :</p>
+<ul>
+<li><code>App</code> contient les composants <code>Header</code>, <code>CardList</code> et <code>Footer</code>.</li>
+<li><code>CardList</code> contient plusieurs composants <code>Card</code>.</li>
+</ul>
+<p>C'est un exemple basique de ce que tu seras amené à voir et réaliser.</p>
+<div class="encadre encadre--info"><div class="encadre__titre">Info</div><div class="encadre__corps"><p>Point de vocabulaire : <code>App</code> est le composant <strong>parent</strong> de <code>Header</code>, <code>CardList</code> et <code>Footer</code>. Les composants  <code>Header</code>, <code>CardList</code> et <code>Footer</code> sont conséquent des <strong>enfants</strong> de <code>App</code>.</p>
+</div></div>
+<h3>Pourquoi utiliser des composants ?</h3>
+<p>Tu as plusieurs raisons d'utiliser des composants :</p>
+<ul>
+<li>Les composants sont réutilisables et extensibles. Dans notre schéma précédent, nous allons créer une fois le composant <code>Card</code> et l'appeler plusieurs fois.</li>
+<li>Le fait de pouvoir découper une interface complexe en composants permet de gagner du temps lors du développement (il est plus facile de répartir des composants à développer entre les membres d'une équipe) et lors des phases de debug (il est plus facile de s'y retrouver dans une architecture de fichiers où tout est bien rangé que dans un immense et unique fichier HTML).</li>
+<li>Lorsque tu as des composants interactifs, le fait qu'ils aient leur propre code JavaScript permet de grandement limiter les bugs éventuels.</li>
+</ul>
+<a class="ressource" href="https://react.dev/learn/thinking-in-react" target="_blank" rel="noopener noreferrer">
+  <div class="ressource__icone">↗</div>
+  <div class="ressource__texte">
+    <div class="ressource__titre">Penser en React</div>
+    <div class="ressource__desc"><p>Tu trouveras ici un bon résumé sur la démarche de construction avec des composants.</p>
+</div>
+    <div class="ressource__hote">react.dev</div>
+  </div>
+</a>
+<h3>Le JSX</h3>
+<p>Dans la suite des quêtes, nous allons parler régulièrement de JSX. Qu'est-ce que c'est ?</p>
+<p>Le JSX est un language de balisage qui ressemble au HTML. Tu peux d'ailleurs y utiliser toutes les balises HTML existantes ou presque, ainsi que les attributs qui peuvent compléter ces balises.</p>
+<p>Mais attention, <strong>le JSX n'est pas du HTML</strong> et il comporte des différences. Il est impossible d'utiliser des mots-clés réservés de JavaScript dans du JSX comme par exemple l'attribut <code>class</code> qui est également le mot-clé qui sert à déclarer une classe en JavaScript.</p>
+<p>Le JSX permet d'inclure directement du code JavaScript, pour afficher le contenu d'une variable, rendre une liste d'éléments depuis un tableau, ajouter des conditions, etc.</p>
+<p>Enfin, le JSX est ce que va retourner ton composant React.</p>
+<a class="ressource" href="https://react.dev/learn/writing-markup-with-jsx" target="_blank" rel="noopener noreferrer">
+  <div class="ressource__icone">↗</div>
+  <div class="ressource__texte">
+    <div class="ressource__titre">Introduction au JSX</div>
+    <div class="ressource__desc"><p>Tu trouveras plus de détails ici.</p>
+</div>
+    <div class="ressource__hote">react.dev</div>
+  </div>
+</a>
+<div class="encadre encadre--warning"><div class="encadre__titre">Attention</div><div class="encadre__corps"><p>Accorde une attention particulère aux <a href="https://react.dev/learn/writing-markup-with-jsx#the-rules-of-jsx" target="_blank" rel="noopener noreferrer">Règles du JSX</a></p>
+</div></div>
+<h2>Bon, et concrètement ?</h2>
+<p>Ouvre ton projet pokedex dans ton IDE. Commence par nettoyer ton composant <code>App</code> en remplaçant le code existant par celui-ci :</p>
+<div class="bloc-code"><div class="bloc-code__langue">jsx</div><pre><code class="hljs language-jsx"><span class="hljs-keyword">import</span> <span class="hljs-string">&quot;./App.css&quot;</span>;
+
+<span class="hljs-keyword">function</span> <span class="hljs-title function_">App</span>(<span class="hljs-params"></span>) {
+  <span class="hljs-keyword">return</span> (
+    <span class="language-xml"><span class="hljs-tag">&lt;<span class="hljs-name">section</span>&gt;</span>
+      <span class="hljs-tag">&lt;<span class="hljs-name">h1</span>&gt;</span>Hello React<span class="hljs-tag">&lt;/<span class="hljs-name">h1</span>&gt;</span>
+    <span class="hljs-tag">&lt;/<span class="hljs-name">section</span>&gt;</span></span>
+  );
+}
+
+<span class="hljs-keyword">export</span> <span class="hljs-keyword">default</span> <span class="hljs-title class_">App</span>;
+</code></pre></div>
+<p>Pour le moment, il affiche uniquement un titre <code>h1</code> dans une <code>section</code> (lance <code>npm run dev</code> pour voir l'application dans ton navigateur). Pour expérimenter, nous pouvons <strong>&quot;exporter&quot;</strong> ce titre sous forme d'un composant dans un fichier à part. Cela nous permettra de l'<strong>importer</strong> pour l'utiliser dans <code>App</code> ensuite.</p>
+<p>Crée un fichier <code>MyTitle.tsx</code> et écris dedans le code suivant pour créer ton composant :</p>
+<div class="bloc-code"><div class="bloc-code__langue">jsx</div><pre><code class="hljs language-jsx"><span class="hljs-keyword">function</span> <span class="hljs-title function_">MyTitle</span>(<span class="hljs-params"></span>) {
+  <span class="hljs-keyword">return</span> <span class="language-xml"><span class="hljs-tag">&lt;<span class="hljs-name">h1</span>&gt;</span>Hello React<span class="hljs-tag">&lt;/<span class="hljs-name">h1</span>&gt;</span></span>;
+}
+
+<span class="hljs-keyword">export</span> <span class="hljs-keyword">default</span> <span class="hljs-title class_">MyTitle</span>;
+</code></pre></div>
+<div class="encadre encadre--info"><div class="encadre__titre">Info</div><div class="encadre__corps"><p>Dans React, il est impératif d'utiliser le <a href="https://www.theserverside.com/definition/Pascal-case" target="_blank" rel="noopener noreferrer">Pascal case</a> pour créer tes composants.</p>
+</div></div>
+<div class="encadre encadre--info"><div class="encadre__titre">Info</div><div class="encadre__corps"><p>Une bonne pratique consiste à créer nos composants dans un répertoire <code>components</code> dans le dossier <code>src</code> du projet.</p>
+</div></div>
+<h3>Vous avez dit import / export ?</h3>
+<p>Dans l'exemple précédent, tu as déclaré le composant <code>MyTitle</code> avec le mot-clé <code>function</code>. Puis, tu as exporté ce composant avec les mots-clés <code>export default</code>. En faisant cela, tu as rendu disponible le composant <code>MyTitle</code> à l'extérieur de ce fichier.</p>
+<p>Maintenant si tu souhaites pouvoir utiliser ce composant dans le composant <code>App</code>, tu dois importer <code>MyTile</code> dans <code>App</code> en procédant comme suit :</p>
+<div class="bloc-code"><div class="bloc-code__langue">jsx</div><pre><code class="hljs language-jsx"><span class="hljs-keyword">import</span> <span class="hljs-string">&quot;./App.css&quot;</span>;
+
+<span class="hljs-keyword">import</span> <span class="hljs-title class_">MyTitle</span> <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;./components/MyTitle&quot;</span>;
+
+<span class="hljs-keyword">function</span> <span class="hljs-title function_">App</span>(<span class="hljs-params"></span>) {
+  <span class="hljs-keyword">return</span> (
+    <span class="language-xml"><span class="hljs-tag">&lt;<span class="hljs-name">section</span>&gt;</span>
+      <span class="hljs-tag">&lt;<span class="hljs-name">h1</span>&gt;</span>Hello React<span class="hljs-tag">&lt;/<span class="hljs-name">h1</span>&gt;</span>
+    <span class="hljs-tag">&lt;/<span class="hljs-name">section</span>&gt;</span></span>
+  );
+}
+
+<span class="hljs-keyword">export</span> <span class="hljs-keyword">default</span> <span class="hljs-title class_">App</span>;
+</code></pre></div>
+<p>Maintenant, tu peux remplacer ton titre <code>h1</code> par le composant <code>MyTitle</code> que tu viens d'importer :</p>
+<div class="bloc-code"><div class="bloc-code__langue">jsx</div><pre><code class="hljs language-jsx"><span class="hljs-keyword">import</span> <span class="hljs-string">&quot;./App.css&quot;</span>;
+
+<span class="hljs-keyword">import</span> <span class="hljs-title class_">MyTitle</span> <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;./components/MyTitle&quot;</span>;
+
+<span class="hljs-keyword">function</span> <span class="hljs-title function_">App</span>(<span class="hljs-params"></span>) {
+  <span class="hljs-keyword">return</span> (
+    <span class="language-xml"><span class="hljs-tag">&lt;<span class="hljs-name">section</span>&gt;</span>
+      <span class="hljs-tag">&lt;<span class="hljs-name">MyTitle</span> /&gt;</span>
+    <span class="hljs-tag">&lt;/<span class="hljs-name">section</span>&gt;</span></span>
+  );
+}
+
+<span class="hljs-keyword">export</span> <span class="hljs-keyword">default</span> <span class="hljs-title class_">App</span>;
+</code></pre></div>
+<p>Si tu regardes dans ton navigateur, il n'y a aucune différence. Mais côté développeur, nous venons de créer notre premier composant réutilisable !</p>
+<h2>Récapitulatif</h2>
+<ul>
+<li>Tu peux découper une interface utilisateur en plusieurs composants.</li>
+<li>Un composant est un bloc réutilisable et extensible.</li>
+<li>Tu peux créer une arborescence de composants potentiellement infinie dont la racine sera toujours <code>App</code>.</li>
+<li>Pour pouvoir utiliser tes composants, tu utilises les <strong>imports</strong> et les <strong>exports</strong>.</li>
+<li>Dans du JSX, tu peux appeler un composant par son nom comme si c'était une balise HTML auto-fermante.</li>
+</ul>
+<h2>Challenge</h2>
+<p>Pour cette étape, crée un composant appelé <code>PokemonCard</code> qui affiche une carte Pokémon dans ton app React.</p>
+<ol class="etapes"><li class="etape"><div class="etape__puce">1</div><div class="etape__contenu"><h4 class="etape__titre">Crée une nouvelle branche</h4><p>Tout d'abord, ouvre ton projet créé dans la quête précédente, et crée une nouvelle branche appelée <code>components.1</code>. Cette branche servira à développer ton composant <code>PokemonCard</code>. Assure-toi de créer la branche à partir de ta branche principale <code>main</code>.</p>
+</div></li><li class="etape"><div class="etape__puce">2</div><div class="etape__contenu"><h4 class="etape__titre">Crée un composant</h4><p>Dans ton projet, crée un dossier appelé <code>components</code> à la racine du dossier <code>src</code> (tu l'as peut-être déjà fait). À l'intérieur de ce dossier <code>components</code>, crée un fichier nommé <code>PokemonCard.tsx</code>.</p>
+</div></li><li class="etape"><div class="etape__puce">3</div><div class="etape__contenu"><h4 class="etape__titre">Ajoute un contenu à ton composant</h4><p>Dans le fichier <code>PokemonCard.tsx</code>, crée un composant React appelé <code>PokemonCard</code>. Ce composant doit contenir une balise <code>&lt;figure&gt;</code>.</p>
+</div></li><li class="etape"><div class="etape__puce">4</div><div class="etape__contenu"><h4 class="etape__titre">Ajoute l'image du Pokémon</h4><p>À l'intérieur de la balise <code>&lt;figure&gt;</code>, ajoute une balise <code>&lt;img&gt;</code> avec l'attribut <code>src</code> défini sur l'URL suivante : <code>images/003-bulbasaur.png</code>. Cette image représente le Pokémon &quot;Bulbasaur&quot;.</p>
+</div></li><li class="etape"><div class="etape__puce">5</div><div class="etape__contenu"><h4 class="etape__titre">Ajoute le nom du Pokémon</h4><p>Ajoute également une balise <code>&lt;figcaption&gt;</code> avec le texte &quot;Bulbasaur&quot;. Cela sera le nom du Pokémon affiché sous l'image.</p>
+</div></li><li class="etape"><div class="etape__puce">6</div><div class="etape__contenu"><h4 class="etape__titre">Affiche ton composant dans App</h4><p>Dans le fichier <code>App.tsx</code>, supprime tout le contenu du composant <code>App</code> pour partir d'une fonction &quot;vide&quot; :</p>
+<div class="bloc-code"><div class="bloc-code__langue">tsx</div><pre><code class="hljs language-tsx"><span class="hljs-keyword">import</span> <span class="hljs-string">&#x27;./App.css&#x27;</span>
+
+<span class="hljs-keyword">function</span> <span class="hljs-title function_">App</span>(<span class="hljs-params"></span>) {
+  <span class="hljs-keyword">return</span> (
+    
+  );
+}
+
+<span class="hljs-keyword">export</span> <span class="hljs-keyword">default</span> <span class="hljs-title class_">App</span>;
+</code></pre></div>
+<p>Ajoute une balise <code>&lt;div&gt;</code>. À l'intérieur de cette balise <code>&lt;div&gt;</code>, affiche le composant <code>PokemonCard</code> que tu viens de créer.</p>
+</div></li></ol>
+<p>Assure-toi que ton composant <code>PokemonCard</code> est correctement créé et affiché dans ton application. N'oublie pas de vérifier que ton serveur de développement est toujours lancé, sinon refait un <code>npm run dev</code>.</p>
+<p>Fournis le lien vers la branche <code>components.1</code> de ton dépôt GitHub pour valider cette étape.</p>
+<h3>Critères de validation</h3>
+<ul>
+<li>Le code est disponible sur GitHub sur une branche <code>components.1</code></li>
+<li>Un composant <code>PokemonCard</code> est créé dans le dossier <code>src/components</code>.</li>
+<li>Le composant <code>PokemonCard</code> est appelé dans le composant <code>App</code>.</li>
+<li>Le pokémon s'affiche correctement.</li>
+</ul>
+<p>Ce que tu devrais avoir dans :</p>
+<div class="onglets" data-onglets="2"><input type="radio" name="onglets-30" id="onglets-30-0" class="onglets__radio" checked><input type="radio" name="onglets-30" id="onglets-30-1" class="onglets__radio"><div class="onglets__barre"><label class="onglets__label" for="onglets-30-0">App.tsx</label><label class="onglets__label" for="onglets-30-1">PokemonCard.tsx</label></div><div class="onglets__panneaux"><div class="onglets__panneau"><div class="bloc-code"><div class="bloc-code__langue">jsx</div><pre><code class="hljs language-jsx"><span class="hljs-keyword">import</span> <span class="hljs-string">&quot;./App.css&quot;</span>;
+
+<span class="hljs-keyword">import</span> <span class="hljs-title class_">PokemonCard</span> <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;./components/PokemonCard&quot;</span>;
+
+<span class="hljs-keyword">function</span> <span class="hljs-title function_">App</span>(<span class="hljs-params"></span>) {
+  <span class="hljs-keyword">return</span> (
+    <span class="language-xml"><span class="hljs-tag">&lt;<span class="hljs-name">div</span>&gt;</span>
+      <span class="hljs-tag">&lt;<span class="hljs-name">PokemonCard</span> /&gt;</span>
+    <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span></span>
+  );
+}
+
+<span class="hljs-keyword">export</span> <span class="hljs-keyword">default</span> <span class="hljs-title class_">App</span>;
+</code></pre></div>
+</div><div class="onglets__panneau"><div class="bloc-code"><div class="bloc-code__langue">jsx</div><pre><code class="hljs language-jsx"><span class="hljs-keyword">function</span> <span class="hljs-title function_">PokemonCard</span>(<span class="hljs-params"></span>) {
+  <span class="hljs-keyword">return</span> (
+    <span class="language-xml"><span class="hljs-tag">&lt;<span class="hljs-name">figure</span>&gt;</span>
+      <span class="hljs-tag">&lt;<span class="hljs-name">img</span>
+        <span class="hljs-attr">src</span>=<span class="hljs-string">&quot;images/003-bulbasaur.png&quot;</span>
+        <span class="hljs-attr">alt</span>=<span class="hljs-string">&quot;bulbasaur&quot;</span>
+      /&gt;</span>
+      <span class="hljs-tag">&lt;<span class="hljs-name">figcaption</span>&gt;</span>bulbasaur<span class="hljs-tag">&lt;/<span class="hljs-name">figcaption</span>&gt;</span>
+    <span class="hljs-tag">&lt;/<span class="hljs-name">figure</span>&gt;</span></span>
+  );
+}
+
+<span class="hljs-keyword">export</span> <span class="hljs-keyword">default</span> <span class="hljs-title class_">PokemonCard</span>;
+</code></pre></div>
+</div></div></div>
+
+  </div>
+  <section class="ressources-quete">
+  <h2>Ressources partagées sur cette quête</h2>
+  <ul class="ressources-liste">
+    <li><a href="https://www.youtube.com/watch?v=lza4-Jvkrac" target="_blank" rel="noopener noreferrer">Introduction à JSX (en français)</a><span class="ressources-liste__url">https://www.youtube.com/watch?v=lza4-Jvkrac</span></li>
+  </ul>
+</section>
+</article>
+
+<nav class="nav-quete">
+  <a class="nav-quete__lien nav-quete__lien--prec" href="../../react-bases/001-react-basics-01-pokedex-introduction/index.html">
+           <span class="nav-quete__sens">← Précédent</span>
+           <span class="nav-quete__titre">👩‍🏫 React Basics 01 - Pokédex - Introduction</span>
+         </a>
+  <a class="nav-quete__lien nav-quete__lien--suiv" href="../../react-bases/003-react-basics-03-pokedex-afficher-des-donnees-dans-un/index.html">
+           <span class="nav-quete__sens">Suivant →</span>
+           <span class="nav-quete__titre">👩‍🏫 React Basics 03 - Pokédex - Afficher des données dans un composant</span>
+         </a>
+</nav>
+</main>
+<footer class="pied">
+  <p>Archive personnelle des cours suivis à la Wild Code School. Copie hors ligne à usage strictement privé.</p>
+</footer>
+
+<script src="../../assets/copie-code.js"></script>
+<script src="../../assets/progression.js"></script>
+</body>
+</html>

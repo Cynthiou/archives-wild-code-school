@@ -1,0 +1,319 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Node 05 - 🚀 Concepts avancés et alternatives à la CLI de npm — Archives WCS</title>
+<link rel="stylesheet" href="../../assets/style.css">
+</head>
+<body style="--teinte:#333333">
+<header class="entete">
+  <a class="entete__marque" href="../../index.html">Archives Wild Code School</a>
+</header>
+<main class="contenu">
+<nav class="ariane"><a href="../../index.html">Accueil</a><span class="ariane__sep">›</span><a href="../../node-js/index.html">Node.js</a><span class="ariane__sep">›</span><span aria-current="page">Node 05 - 🚀 Concepts avancés et alternatives à la CLI de npm</span></nav>
+
+<article class="quete">
+  <header class="quete__entete">
+    <a class="pastille pastille--teintee" href="../../node-js/index.html">Node.js</a>
+    <h1>Node 05 - 🚀 Concepts avancés et alternatives à la CLI de npm</h1>
+    <p class="quete__meta">Quête 5 sur 5 · 2 images archivées</p>
+  </header>
+  <div class="cours">
+<h2>Objectifs</h2>
+<ul>
+<li>Savoir comment fonctionne le <strong>versioning sémantique</strong>.</li>
+<li>Gérer les <strong>dépendances</strong> et les <strong>dépendances de développement</strong> dans <code>package.json</code>.</li>
+<li>En savoir plus sur l'écosystème de Node et NPM.</li>
+</ul>
+<h2>Pré-requis</h2>
+<ol class="etapes"><li class="etape"><div class="etape__puce">1</div><div class="etape__contenu"><h4 class="etape__titre">Valider la quête suivante</h4><div class="renvois"><div class="renvois__titre">Quêtes liées</div><ul><li><a href="../../node-js/004-node-04-rechercher-et-choisir-un-paquet-npm-ou-pas/index.html">Quête 1797</a></li></ul></div>
+</div></li></ol>
+<h2>Introduction</h2>
+<p>Jusqu'à présent, tu as appris à utiliser NPM de manière basique.</p>
+<p>Cette quête a pour but d'approfondir un peu plus ta connaissance de NPM, de ses alternatives et des problèmes plus généraux de gestion des dépendances dans tes applications.</p>
+<h2>Sommaire</h2>
+<h2>Versionnage sémantique</h2>
+<p>Théoriquement, les numéros de version des paquets sur NPM doivent suivre une convention : le <strong>versionnage sémantique</strong> (semver). C'est un moyen de faire évoluer la version d'un logiciel donné de manière explicite, afin de minimiser les incompatibilités et les erreurs.</p>
+<div class="encadre encadre--note encadre--callout"><div class="encadre__corps"><p><strong>Important !</strong></p>
+<p>Le concept du versionnage sémantique (semver) est primordial dans la gestion des dépendances d’un projet. Le versionnage sémantique repose sur trois niveaux de version :</p>
+<ul>
+<li><strong>Patch</strong> : Correction de bugs sans impact sur la compatibilité, modification du dernier chiffre (ex. 1.0.1 → 1.0.2).</li>
+<li><strong>Minor</strong> : Ajout de nouvelles fonctionnalités sans rupture de compatibilité, modification du deuxième chiffre (ex. 1.0.0 → 1.1.0).</li>
+<li><strong>Major</strong> : Modification qui casse la compatibilité avec les versions précédentes (&quot;breaking change&quot; en anglais), modification du premier chiffre (ex. 1.0.0 → 2.0.0).</li>
+</ul>
+<p>Pour limiter la portée des mises à jour d'une dépendance, c'est possible d'utiliser des symboles comme <code>~</code> (mises à jour mineures et correctifs uniquement) ou <code>^</code> (correctifs uniquement) dans le fichier <em>package.json</em>.</p>
+<p>C'est important de bien versionner les packages pour éviter des problèmes d'incompabilité de code.</p>
+</div></div>
+<p><img src="images/001-versionnage-semantique.png" alt="" loading="lazy"></p>
+<p>En moins bref :</p>
+<a class="video-lien" href="https://www.youtube.com/watch?v=kK4Meix58R4" target="_blank" rel="noopener noreferrer">
+  <div class="video-lien__play">▶</div>
+  <div class="video-lien__texte">
+    <div class="video-lien__titre">Vidéo YouTube</div>
+    <div class="video-lien__url">https://www.youtube.com/watch?v=kK4Meix58R4</div>
+  </div>
+</a>
+<a class="ressource" href="https://docs.npmjs.com/about-semantic-versioning" target="_blank" rel="noopener noreferrer">
+  <div class="ressource__icone">↗</div>
+  <div class="ressource__texte">
+    <div class="ressource__titre">NPM docs</div>
+    <div class="ressource__desc"><p>Semantic versioning</p>
+</div>
+    <div class="ressource__hote">docs.npmjs.com</div>
+  </div>
+</a>
+<a class="ressource" href="https://semver.org/" target="_blank" rel="noopener noreferrer">
+  <div class="ressource__icone">↗</div>
+  <div class="ressource__texte">
+    <div class="ressource__titre">Semantic versioning</div>
+    <div class="ressource__desc"><p>Le site officiel</p>
+</div>
+    <div class="ressource__hote">semver.org</div>
+  </div>
+</a>
+<p><strong>❓Quiz</strong></p>
+<div class="bloc-code"><div class="bloc-code__langue">quiz</div><pre><code class="hljs language-quiz">true|||true|||true
+# Combien de parties devrait avoir un numéro de version suivant le &quot;versioning sémantique&quot; ?
+[] 2 : Version majeure et version mineure
+[x] 3 : Version majeure, mineure et patch
+[] 4 : Version majeure, mineure, patch et hotfix. 
+# Tous les paquets sur NPM suivent très strictement la convention de &quot;versionnement sémantique&quot;.
+[] Vrai
+[x] Faux
+# Théoriquement, nous pouvons mettre à jour un paquet NPM donné de la version 2.5.3 à la version 2.9.1 sans nous soucier de la compatibilité avec notre code.
+[x] Vrai
+[] Faux
+# Théoriquement, nous pouvons mettre à jour un paquet NPM donné de la version 3.2.6 à la version 4.1.1 sans nous soucier de la compatibilité avec notre code.
+[] Vrai
+[x] Faux
+# Comment pouvons-nous spécifier que nous voulons seulement accepter les mises à jour de correctifs d'un paquet avec la version 1.2.3 ?
+[x] 1.2
+[x] 1.2.x
+[] 1.2.3
+[x] ~1.2.3
+[] 1.x
+[] 1
+# Comment pouvons-nous spécifier que nous voulons seulement accepter les mises à jour mineures et les correctifs d'un paquet de version 1.2.3 ?
+[x] ^1.2.3
+[] 1.2
+[] 1.2.x
+[] 1.2.3
+[x] 1.x
+[x] 1
+</code></pre></div>
+<h2>Le fichier package.json</h2>
+<p>Voici un exemple :</p>
+<div class="bloc-code"><div class="bloc-code__langue">json</div><pre><code class="hljs language-json"><span class="hljs-punctuation">{</span>
+  <span class="hljs-attr">&quot;name&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;my-super-project&quot;</span><span class="hljs-punctuation">,</span>
+  <span class="hljs-attr">&quot;version&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;1.0.0&quot;</span><span class="hljs-punctuation">,</span>
+  <span class="hljs-attr">&quot;description&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;An app that&#x27;s going to change the world&quot;</span><span class="hljs-punctuation">,</span>
+  <span class="hljs-attr">&quot;main&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;app.js&quot;</span><span class="hljs-punctuation">,</span>
+  <span class="hljs-attr">&quot;scripts&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-punctuation">{</span>
+    <span class="hljs-attr">&quot;start&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;node app.js&quot;</span><span class="hljs-punctuation">,</span>
+    <span class="hljs-attr">&quot;start:watch&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;nodemon app.js&quot;</span><span class="hljs-punctuation">,</span>
+    <span class="hljs-attr">&quot;clean-packages&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;rm -rf node_modules&quot;</span>
+  <span class="hljs-punctuation">}</span><span class="hljs-punctuation">,</span>
+  <span class="hljs-attr">&quot;keywords&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-punctuation">[</span><span class="hljs-string">&quot;super&quot;</span><span class="hljs-punctuation">,</span> <span class="hljs-string">&quot;awesome&quot;</span><span class="hljs-punctuation">]</span><span class="hljs-punctuation">,</span>
+  <span class="hljs-attr">&quot;author&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;Dave Lopper&quot;</span><span class="hljs-punctuation">,</span>
+  <span class="hljs-attr">&quot;license&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;ISC&quot;</span><span class="hljs-punctuation">,</span>
+  <span class="hljs-attr">&quot;dependencies&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-punctuation">{</span>
+    <span class="hljs-attr">&quot;chalk&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;^4.1.2&quot;</span>
+  <span class="hljs-punctuation">}</span><span class="hljs-punctuation">,</span>
+  <span class="hljs-attr">&quot;devDependencies&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-punctuation">{</span>
+    <span class="hljs-attr">&quot;nodemon&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;^2.0.12&quot;</span>
+  <span class="hljs-punctuation">}</span>
+<span class="hljs-punctuation">}</span>
+</code></pre></div>
+<p>Comme tu l'as déjà vu, ce fichier contient des informations comme l'auteur du projet, le numéro de la version actuelle, la description, etc. Ici, nous allons nous concentrer sur certaines propriétés clés :</p>
+<h3>dependencies</h3>
+<p>C'est là que nous spécifions quels paquets et quelles versions de ces paquets sont nécessaires à notre projet. Les paquets sont automatiquement ajoutés dans cette section lorsque tu fais <code>npm install &lt;some-package&gt;</code>.
+Regarde la vidéo ci-dessus sur le versionnement sémantique pour comprendre comment tu peux spécifier des plages de versions.</p>
+<h3>devDependencies</h3>
+<p>Ici, tu spécifieras les paquets que tu utilises exclusivement lors du développement. Ces paquets ne seront pas nécessaires en production. Par exemple, les paquets de test, webpack, nodemon, etc.</p>
+<p>Les paquets sont automatiquement ajoutés dans cette section lorsque tu fais <code>npm install --save-dev &lt;some-package&gt;</code> ou <code>npm install -D &lt;some-package&gt;</code>.</p>
+<h3>scripts</h3>
+<p>Ici tu peux définir les commandes que npm pourra exécuter avec <code>npm run &lt;nom-du-script&gt;</code>. Les scripts sont un bon moyen d'avoir des raccourcis et de documenter des tâches spéciales relatives au projet.</p>
+<a class="ressource" href="https://docs.npmjs.com/cli/v11/commands/npm-run-script" target="_blank" rel="noopener noreferrer">
+  <div class="ressource__icone">↗</div>
+  <div class="ressource__texte">
+    <div class="ressource__titre">NPM docs</div>
+    <div class="ressource__desc"><p>Scripts</p>
+</div>
+    <div class="ressource__hote">docs.npmjs.com</div>
+  </div>
+</a>
+<a class="ressource" href="https://www.npmjs.com/package/npm-run-all" target="_blank" rel="noopener noreferrer">
+  <div class="ressource__icone">↗</div>
+  <div class="ressource__texte">
+    <div class="ressource__titre">npm-run-all</div>
+    <div class="ressource__desc"><p>Un package permettant d'exécuter plusieurs commandes dans un seul script pour tout les OS</p>
+</div>
+    <div class="ressource__hote">npmjs.com</div>
+  </div>
+</a>
+<h2>Le fichier package-lock.json</h2>
+<p>Ce fichier est destiné à préserver un comportement cohérent du module en &quot;verrouillant&quot; les versions des paquets entre différents environnements. Tu ne devrais jamais avoir à modifier ce fichier toi-même car NPM le met à jour automatiquement lorsque tu installes ou désinstalles quelque chose.</p>
+<a class="ressource" href="https://docs.npmjs.com/cli/v11/configuring-npm/package-lock-json" target="_blank" rel="noopener noreferrer">
+  <div class="ressource__icone">↗</div>
+  <div class="ressource__texte">
+    <div class="ressource__titre">NPM docs</div>
+    <div class="ressource__desc"><p>Package locks</p>
+</div>
+    <div class="ressource__hote">docs.npmjs.com</div>
+  </div>
+</a>
+<p><strong>❓Quiz</strong></p>
+<div class="bloc-code"><div class="bloc-code__langue">quiz</div><pre><code class="hljs language-quiz">true|||true|||true
+# Le fichier package.json peut être utilisé pour configurer des alias de commandes utiles pour le projet.
+[x] Vrai
+[] Faux
+# Je veux installer &quot;jest&quot;, qui est un framework de test.
+[x] npm install --save-dev jest
+[] npm install jest
+# C'est une bonne pratique d'éditer le fichier package-lock.json à la main
+[] Vrai
+[x] Faux
+</code></pre></div>
+<h2>Auditer les paquets pour les vulnérabilités de sécurité</h2>
+<p>Conscient des problèmes de sécurité dans son système de paquets, NPM a publié un outil pour analyser tes paquets et tester les failles de sécurité connues. Pour lancer la vérification, il suffit de taper ce qui suit à la racine de ton projet :</p>
+<div class="bloc-code"><pre><code class="hljs language-plaintext">npm audit
+</code></pre></div>
+<a class="ressource" href="https://docs.npmjs.com/auditing-package-dependencies-for-security-vulnerabilities" target="_blank" rel="noopener noreferrer">
+  <div class="ressource__icone">↗</div>
+  <div class="ressource__texte">
+    <div class="ressource__titre">NPM docs</div>
+    <div class="ressource__desc"><p>Auditer des paquets</p>
+</div>
+    <div class="ressource__hote">docs.npmjs.com</div>
+  </div>
+</a>
+<h2>Mise à jour des paquets</h2>
+<p>La mise à jour des paquets peut être importante, car les mises à jour de sécurité sont publiées assez souvent et peuvent protéger ton application contre des attaques potentielles :</p>
+<div class="bloc-code"><pre><code class="hljs language-plaintext">npm update
+</code></pre></div>
+<p>Cela permettra de récupérer automatiquement la dernière version acceptable des paquets disponibles dans le registre NPM.</p>
+<a class="ressource" href="https://docs.npmjs.com/cli/v11/commands/npm-update" target="_blank" rel="noopener noreferrer">
+  <div class="ressource__icone">↗</div>
+  <div class="ressource__texte">
+    <div class="ressource__titre">NPM docs</div>
+    <div class="ressource__desc"><p>Mettre à jour des paquets</p>
+</div>
+    <div class="ressource__hote">docs.npmjs.com</div>
+  </div>
+</a>
+<h2>Correction d'un paquet</h2>
+<p>À un moment donné dans ta carrière de développeur, tu rencontreras peut-être des bibliothèques présentant un bug.</p>
+<p>Si le bug est vraiment critique et empêche ton application de fonctionner correctement, si tu peux le corriger et si l'équipe à l'origine du paquet est trop lente pour le corriger elle-même ou accepter ta Pull Request, il sera peut-être judicieux de corriger le paquet que tu utilises.</p>
+<p>Pour plus de détails :</p>
+<a class="ressource" href="https://www.npmjs.com/package/patch-package" target="_blank" rel="noopener noreferrer">
+  <div class="ressource__icone">↗</div>
+  <div class="ressource__texte">
+    <div class="ressource__titre">patch-package</div>
+    <div class="ressource__desc"><p>Un outil pour t'aider à corriger un paquet en cas d'urgence</p>
+</div>
+    <div class="ressource__hote">npmjs.com</div>
+  </div>
+</a>
+<h2>Le modèle de dépendance</h2>
+<p>Tu sais que ton projet peut avoir des dépendances externes, mais as-tu réalisé que ces dépendances peuvent également avoir leurs propres dépendances, qui à leur tour ont leurs propres dépendances, et ainsi de suite ?</p>
+<p><img src="images/002-le-modele-de-dependance.jpg" alt="" loading="lazy"></p>
+<p>Comment NPM gère-t-il tout ce bazar ?
+Voici un article très complet sur la façon dont NPM résout les dépendances :</p>
+<a class="ressource" href="https://lexi-lambda.github.io/blog/2016/08/24/understanding-the-npm-dependency-model/" target="_blank" rel="noopener noreferrer">
+  <div class="ressource__icone">↗</div>
+  <div class="ressource__texte">
+    <div class="ressource__titre">Understanding the npm dependency model</div>
+    <div class="ressource__desc"><p>Et peut-être comprendre ce qu'est une &quot;peer dependency&quot;</p>
+</div>
+    <div class="ressource__hote">lexi-lambda.github.io</div>
+  </div>
+</a>
+<h2>Des alternatives à la CLI de NPM</h2>
+<p>NPM a été publié pour la première fois en 2010. Au fil des années, des alternatives à l'interface de ligne de commande officielle de NPM sont apparues.</p>
+<p>Ces alternatives ont pour but d'améliorer les performances, la sécurité et la stabilité par rapport à la CLI par défaut, tout en restant compatibles avec presque tous les paquets NPM existants.</p>
+<h3>Yarn</h3>
+<p>Yarn a été publié en 2016, soutenu par de grandes entreprises comme Facebook et Google.
+Tu peux l'installer avec NPM (ce qui est un peu bizarre, non ?) :</p>
+<div class="bloc-code"><pre><code class="hljs language-plaintext">npm install -g yarn
+</code></pre></div>
+<a class="video-lien" href="https://www.youtube.com/watch?v=0DGClZD5LEM" target="_blank" rel="noopener noreferrer">
+  <div class="video-lien__play">▶</div>
+  <div class="video-lien__texte">
+    <div class="video-lien__titre">Vidéo YouTube</div>
+    <div class="video-lien__url">https://www.youtube.com/watch?v=0DGClZD5LEM</div>
+  </div>
+</a>
+<a class="ressource" href="https://yarnpkg.com/" target="_blank" rel="noopener noreferrer">
+  <div class="ressource__icone">↗</div>
+  <div class="ressource__texte">
+    <div class="ressource__titre">Yarn</div>
+    <div class="ressource__desc"><p>Le site officiel</p>
+</div>
+    <div class="ressource__hote">yarnpkg.com</div>
+  </div>
+</a>
+<h3>PNPM</h3>
+<p>PNPM (Performant NPM) version 1 est sorti en 2017.
+Au moment de la rédaction de cette quête, c'est le gestionnaire de paquets le plus rapide en ville d'après ses <a href="https://pnpm.io/benchmarks" target="_blank" rel="noopener noreferrer">benchmarks</a>.
+L'autre avantage principal est que PNPM supporte les mêmes commandes que la CLI par défaut de NPM.</p>
+<p>Si tu veux l'essayer :</p>
+<div class="bloc-code"><pre><code class="hljs language-plaintext">npm install -g pnpm
+</code></pre></div>
+<a class="video-lien" href="https://www.youtube.com/watch?v=KdHiziZsz7s" target="_blank" rel="noopener noreferrer">
+  <div class="video-lien__play">▶</div>
+  <div class="video-lien__texte">
+    <div class="video-lien__titre">Vidéo YouTube</div>
+    <div class="video-lien__url">https://www.youtube.com/watch?v=KdHiziZsz7s</div>
+  </div>
+</a>
+<a class="ressource" href="https://pnpm.io" target="_blank" rel="noopener noreferrer">
+  <div class="ressource__icone">↗</div>
+  <div class="ressource__texte">
+    <div class="ressource__titre">PNPM</div>
+    <div class="ressource__desc"><p>Le site officiel</p>
+</div>
+    <div class="ressource__hote">pnpm.io</div>
+  </div>
+</a>
+<p><strong>❓Quiz</strong></p>
+<div class="bloc-code"><div class="bloc-code__langue">quiz</div><pre><code class="hljs language-quiz">true|||true|||true
+# Yarn a exactement les mêmes commandes que la CLI officielle de NPM.
+[x] Faux
+[] Vrai
+# Une dépendance peut avoir des dépendances
+[x] Vrai
+[] Faux
+# Comment rechercher les problèmes de sécurité connus dans nos dépendances ?
+[] npm find-security-issues
+[x] npm audit
+[] npm run security-checks
+</code></pre></div>
+
+  </div>
+  <section class="ressources-quete">
+  <h2>Ressources partagées sur cette quête</h2>
+  <ul class="ressources-liste">
+    <li><a href="https://fr.linkedin.com/learning/l-essentiel-de-node-package-manager-npm/comprendre-le-systeme-de-versioning-semantique" target="_blank" rel="noopener noreferrer">Explication claire en français du versioning sémantique</a><span class="ressources-liste__url">https://fr.linkedin.com/learning/l-essentiel-de-node-package-manager-npm/comprendre-le-systeme-de-versioning-semantique</span></li>
+    <li><a href="https://www.youtube.com/watch?v=1EwPIcJch2Y" target="_blank" rel="noopener noreferrer">Courte vidéo de présentation des semver en français</a><span class="ressources-liste__url">https://www.youtube.com/watch?v=1EwPIcJch2Y</span></li>
+    <li><a href="https://www.youtube.com/watch?v=x5Nt-B1DoNs" target="_blank" rel="noopener noreferrer">Explication claire de pnpm (en français)</a><span class="ressources-liste__url">https://www.youtube.com/watch?v=x5Nt-B1DoNs</span></li>
+  </ul>
+</section>
+</article>
+
+<nav class="nav-quete">
+  <a class="nav-quete__lien nav-quete__lien--prec" href="../../node-js/004-node-04-rechercher-et-choisir-un-paquet-npm-ou-pas/index.html">
+           <span class="nav-quete__sens">← Précédent</span>
+           <span class="nav-quete__titre">Node 04 - 🔧 Rechercher et choisir un paquet npm (ou pas !)</span>
+         </a>
+  <span class="nav-quete__lien nav-quete__lien--vide"></span>
+</nav>
+</main>
+<footer class="pied">
+  <p>Archive personnelle des cours suivis à la Wild Code School. Copie hors ligne à usage strictement privé.</p>
+</footer>
+
+<script src="../../assets/copie-code.js"></script>
+<script src="../../assets/progression.js"></script>
+</body>
+</html>

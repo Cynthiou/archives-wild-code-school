@@ -1,0 +1,33 @@
+{
+  "id": 1268,
+  "titre": "👩‍🏫 JS Basics 03 - Les variables",
+  "titres": {
+    "fr": "👩‍🏫 JS Basics 03 - Les variables"
+  },
+  "theme": {
+    "id": 9,
+    "slug": "javascript",
+    "nom": "JavaScript"
+  },
+  "creeLe": "2020-07-01T20:12:32.563+02:00",
+  "difficulte": "0",
+  "dureeEstimee": null,
+  "modeValidation": "student",
+  "chapitres": [
+    {
+      "id": 12580,
+      "type": "content",
+      "langue": "fr",
+      "majLe": "2024-11-06T18:26:12.311+01:00",
+      "caracteres": 8313
+    }
+  ],
+  "ressources": [
+    {
+      "link": "https://www.youtube.com/watch?v=L8yNc1xqAw8",
+      "description": "Les variables expliquer en Français."
+    }
+  ],
+  "urlOrigine": "https://odyssey.wildcodeschool.com/quests/1268",
+  "archiveLe": "2026-09-02T23:22:15.759Z"
+}

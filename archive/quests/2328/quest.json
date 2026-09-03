@@ -1,0 +1,28 @@
+{
+  "id": 2328,
+  "titre": "👩‍🏫 React Basics 01 - Pokédex - Introduction",
+  "titres": {
+    "fr": "👩‍🏫 React Basics 01 - Pokédex - Introduction"
+  },
+  "theme": {
+    "id": 23,
+    "slug": "react",
+    "nom": "React - Bases"
+  },
+  "creeLe": "2022-11-02T17:03:29.543+01:00",
+  "difficulte": "0",
+  "dureeEstimee": null,
+  "modeValidation": "student",
+  "chapitres": [
+    {
+      "id": 17697,
+      "type": "content",
+      "langue": "fr",
+      "majLe": "2025-04-01T18:23:01.674+02:00",
+      "caracteres": 11219
+    }
+  ],
+  "ressources": [],
+  "urlOrigine": "https://odyssey.wildcodeschool.com/quests/2328",
+  "archiveLe": "2026-09-02T20:55:02.071Z"
+}

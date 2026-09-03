@@ -1,0 +1,28 @@
+{
+  "id": 1282,
+  "titre": "👩‍🏫 JS Basics 09 - Les objets",
+  "titres": {
+    "fr": "👩‍🏫 JS Basics 09 - Les objets"
+  },
+  "theme": {
+    "id": 9,
+    "slug": "javascript",
+    "nom": "JavaScript"
+  },
+  "creeLe": "2020-07-08T19:37:57.962+02:00",
+  "difficulte": "0",
+  "dureeEstimee": null,
+  "modeValidation": "self",
+  "chapitres": [
+    {
+      "id": 18433,
+      "type": "content",
+      "langue": "fr",
+      "majLe": "2025-10-03T17:21:12.282+02:00",
+      "caracteres": 10404
+    }
+  ],
+  "ressources": [],
+  "urlOrigine": "https://odyssey.wildcodeschool.com/quests/1282",
+  "archiveLe": "2026-09-02T20:54:50.948Z"
+}

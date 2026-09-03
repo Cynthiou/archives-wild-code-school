@@ -1,0 +1,28 @@
+{
+  "id": 477,
+  "titre": "Développer Efficacement avec GitHub Copilot",
+  "titres": {
+    "fr": "Développer Efficacement avec GitHub Copilot"
+  },
+  "theme": {
+    "id": 152,
+    "slug": "generative-ai",
+    "nom": "IA Générative"
+  },
+  "creeLe": "2019-03-10T22:49:58.090+01:00",
+  "difficulte": "",
+  "dureeEstimee": null,
+  "modeValidation": "self",
+  "chapitres": [
+    {
+      "id": 12392,
+      "type": "content",
+      "langue": "fr",
+      "majLe": "2024-10-16T21:24:31.762+02:00",
+      "caracteres": 18573
+    }
+  ],
+  "ressources": [],
+  "urlOrigine": "https://odyssey.wildcodeschool.com/quests/477",
+  "archiveLe": "2026-09-02T20:53:17.050Z"
+}

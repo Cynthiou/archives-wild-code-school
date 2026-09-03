@@ -1,0 +1,46 @@
+{
+  "id": 1320,
+  "titre": "👩‍🏫 JS Intermédiaire 05 - Programmation Orientée Objet",
+  "titres": {
+    "en": "👩‍🏫 JS Intermediate 05 - Object Oriented Programming",
+    "fr": "👩‍🏫 JS Intermédiaire 05 - Programmation Orientée Objet"
+  },
+  "theme": {
+    "id": 91,
+    "slug": "more-javascript",
+    "nom": "JavaScript - Beyond the Basics"
+  },
+  "creeLe": "2020-08-11T12:25:04.664+02:00",
+  "difficulte": "2",
+  "dureeEstimee": null,
+  "modeValidation": "self",
+  "chapitres": [
+    {
+      "id": 11446,
+      "type": "content",
+      "langue": "fr",
+      "majLe": "2024-04-26T10:18:44.113+02:00",
+      "caracteres": 10854
+    }
+  ],
+  "ressources": [
+    {
+      "link": "https://www.youtube.com/watch?v=KjXBPJZPmYU",
+      "description": "une vidéo en francais"
+    },
+    {
+      "link": "https://www.pierre-giraud.com/javascript-apprendre-coder-cours/introduction-programmation-orientee-objet/#:~:text=La%20programmation%20orient%C3%A9e%20objet%20est,vont%20pouvoir%20interagir%20entre%20eux.",
+      "description": "Une autre vision plus détaillée de la POO en Javascript."
+    },
+    {
+      "link": "https://www.youtube.com/watch?v=YosuJkVqdoU&ab_channel=MikeCodeur",
+      "description": "OBJECT CONSTRUCTOR FUNCTION EN JAVASCRIPT (POO)"
+    },
+    {
+      "link": "https://developer.mozilla.org/fr/docs/Learn/JavaScript/Objects/Basics",
+      "description": "Doc mdn de la poo JS"
+    }
+  ],
+  "urlOrigine": "https://odyssey.wildcodeschool.com/quests/1320",
+  "archiveLe": "2026-09-02T20:55:00.342Z"
+}

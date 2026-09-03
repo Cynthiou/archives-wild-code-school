@@ -1,0 +1,282 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>👩‍🏫 React Basics 03 - Pokédex - Afficher des données dans un composant — Archives WCS</title>
+<link rel="stylesheet" href="../../assets/style.css">
+</head>
+<body style="--teinte:#4DC4DE">
+<header class="entete">
+  <a class="entete__marque" href="../../index.html">Archives Wild Code School</a>
+</header>
+<main class="contenu">
+<nav class="ariane"><a href="../../index.html">Accueil</a><span class="ariane__sep">›</span><a href="../../react-bases/index.html">React - Bases</a><span class="ariane__sep">›</span><span aria-current="page">👩‍🏫 React Basics 03 - Pokédex - Afficher des données dans un composant</span></nav>
+
+<article class="quete">
+  <header class="quete__entete">
+    <a class="pastille pastille--teintee" href="../../react-bases/index.html">React - Bases</a>
+    <h1>👩‍🏫 React Basics 03 - Pokédex - Afficher des données dans un composant</h1>
+    <p class="quete__meta">Quête 3 sur 10 · 2 images archivées</p>
+  </header>
+  <div class="cours">
+<h2>Objectifs</h2>
+<ul>
+<li>Afficher des données dans un composant React</li>
+<li>Afficher/masquer une partie du JSX en fonction d'une condition</li>
+</ul>
+<h2>Pré-requis</h2>
+<ol class="etapes"><li class="etape"><div class="etape__puce">1</div><div class="etape__contenu"><h4 class="etape__titre">Valider les quêtes suivantes</h4><div class="renvois"><div class="renvois__titre">Quêtes liées</div><ul><li><a href="../../react-bases/001-react-basics-01-pokedex-introduction/index.html">Quête 2328</a></li><li><a href="../../react-bases/002-react-basics-02-pokedex-ton-premier-composant/index.html">Quête 2332</a></li></ul></div>
+</div></li></ol>
+<h2>Introduction</h2>
+<p>Dans la quête précédente, nous avons vu comment créer, exporter et importer un composant.</p>
+<p>Nous allons maintenant découvrir comment afficher des données dans un composant et comment afficher ou masquer conditionnellement du JSX.</p>
+<p><img src="images/001-introduction.png" alt="" loading="lazy"></p>
+<h2>Sommaire</h2>
+<h2>Petit retour sur le JSX</h2>
+<p>Comme nous l'avons dit dans la quête précédente, JSX te permet de mettre du balisage dans du JavaScript. Dans ce balisage, les accolades te permettent de &quot;revenir&quot; en JavaScript afin d'intégrer une variable de ton code et l'afficher :</p>
+<div class="bloc-code"><div class="bloc-code__langue">jsx</div><pre><code class="hljs language-jsx"><span class="hljs-keyword">function</span> <span class="hljs-title function_">SayHello</span>(<span class="hljs-params"></span>) {
+  <span class="hljs-keyword">const</span> message = <span class="hljs-string">&quot;Hello !&quot;</span>;
+
+  <span class="hljs-keyword">return</span> <span class="language-xml"><span class="hljs-tag">&lt;<span class="hljs-name">p</span>&gt;</span>{message}<span class="hljs-tag">&lt;/<span class="hljs-name">p</span>&gt;</span></span>
+}
+
+<span class="hljs-keyword">export</span> <span class="hljs-keyword">default</span> <span class="hljs-title class_">SayHello</span>;
+</code></pre></div>
+<div class="encadre encadre--warning"><div class="encadre__titre">Attention</div><div class="encadre__corps"><p>Attention, le JSX supporte uniquement l'<strong>affichage des types primitifs</strong> !</p>
+</div></div>
+<p>Tu peux également y <em>exécuter</em> du JavaScript :</p>
+<div class="bloc-code"><div class="bloc-code__langue">jsx</div><pre><code class="hljs language-jsx"><span class="hljs-keyword">function</span> <span class="hljs-title function_">SayHello</span>(<span class="hljs-params"></span>) {
+  <span class="hljs-keyword">const</span> message = <span class="hljs-string">&quot;Hello !&quot;</span>;
+
+  <span class="hljs-keyword">return</span> <span class="language-xml"><span class="hljs-tag">&lt;<span class="hljs-name">p</span>&gt;</span>{message.toUpperCase()}<span class="hljs-tag">&lt;/<span class="hljs-name">p</span>&gt;</span></span>
+}
+
+<span class="hljs-keyword">export</span> <span class="hljs-keyword">default</span> <span class="hljs-title class_">SayHello</span>;
+</code></pre></div>
+<p>Comme tu peux le constater, nous avons mis la chaîne de caractères <code>message</code> en majuscules. Cela fonctionne car la méthode <a href="https://developer.mozilla.org/fr/docs/Web/JavaScript/Reference/Global_Objects/String/toUpperCase" target="_blank" rel="noopener noreferrer">toUpperCase</a> retourne une valeur de type <code>String</code> qui est un type primitif.</p>
+<div class="encadre encadre--warning"><div class="encadre__titre">Attention</div><div class="encadre__corps"><p>Attention, néanmoins, tu ne peux pas exécuter n'importe quel code javascript dans du JSX.</p>
+</div></div>
+<div class="encadre encadre--info"><div class="encadre__titre">Info</div><div class="encadre__corps"><p>Ce qui est important de retenir ici c'est que lorsque que tu écris du code JavaScript entre accolades <code>{}</code> dans du JSX, celui-ci va être interprété.</p>
+</div></div>
+<h3>Expressions VS Instructions</h3>
+<p>En JavaScript, tu dois bien distinguer les <em>expressions</em> qui retournent une valeur des <em>instructions</em> qui peuvent servir à tester des valeurs comme un <code>if</code> ou bien à répéter d'autres instructions comme un <code>for</code>.</p>
+<p>Pour plus de détails, tu peux regarder la vidéo ci-dessous :</p>
+<a class="video-lien" href="https://www.youtube.com/watch?v=WVyCrI1cHi8" target="_blank" rel="noopener noreferrer">
+  <div class="video-lien__play">▶</div>
+  <div class="video-lien__texte">
+    <div class="video-lien__titre">Vidéo YouTube</div>
+    <div class="video-lien__url">https://www.youtube.com/watch?v=WVyCrI1cHi8</div>
+  </div>
+</a>
+<p>Maintenant que nous distinguons bien la différence entre <em>expressions</em> et <em>instructions</em>, et bien, tu dois retenir que dans le <strong>JSX</strong>, tu peux uniquement utiliser des <strong>expressions</strong> !</p>
+<h3>Démonstration</h3>
+<p>Prenons un exemple. Si en fonction d'un mot particulier nous souhaitons afficher une icône correspondante dans du JSX nous procéderions comme suit :</p>
+<div class="bloc-code"><div class="bloc-code__langue">jsx</div><pre><code class="hljs language-jsx"><span class="hljs-keyword">function</span> <span class="hljs-title function_">WeatherIcon</span>(<span class="hljs-params"></span>) {
+  <span class="hljs-keyword">const</span> weather = <span class="hljs-string">&quot;sunny&quot;</span>;
+
+  <span class="hljs-keyword">return</span> <span class="language-xml"><span class="hljs-tag">&lt;<span class="hljs-name">p</span>&gt;</span>{weather === &quot;sunny&quot; ? &quot;☀️&quot; : &quot;☁️&quot;}<span class="hljs-tag">&lt;/<span class="hljs-name">p</span>&gt;</span></span>
+}
+
+<span class="hljs-keyword">export</span> <span class="hljs-keyword">default</span> <span class="hljs-title class_">WeatherIcon</span>;
+</code></pre></div>
+<p>Ici, nous avons mis une condition grâce à <a href="https://developer.mozilla.org/fr/docs/Web/JavaScript/Reference/Operators/Conditional_Operator" target="_blank" rel="noopener noreferrer">l'opérateur ternaire</a> qui est une expression JavaScript.
+Change la valeur de la variable <code>weather</code> (<code>&quot;rainy&quot;</code> par exemple) et tu verras apparaitre le nuage à la place du soleil.</p>
+<p>Comment faire lorsque nos conditions sont plus complexes ou lorsque nous devons utiliser plusieurs instructions ?</p>
+<p>Tu peux créer une fonction qui renvoie une valeur !</p>
+<div class="bloc-code"><div class="bloc-code__langue">jsx</div><pre><code class="hljs language-jsx">
+<span class="hljs-keyword">function</span> <span class="hljs-title function_">WeatherIcon</span>(<span class="hljs-params"></span>) {
+  <span class="hljs-keyword">const</span> weather = <span class="hljs-string">&quot;sunny&quot;</span>;
+
+  <span class="hljs-keyword">const</span> <span class="hljs-title function_">printIcon</span> = (<span class="hljs-params">name</span>) =&gt; {
+    <span class="hljs-keyword">const</span> weatherMap = {
+      <span class="hljs-attr">sunny</span>: <span class="hljs-string">&quot;☀️&quot;</span>,
+      <span class="hljs-attr">cloudy</span>: <span class="hljs-string">&quot;☁️&quot;</span>,
+      <span class="hljs-attr">rainy</span>: <span class="hljs-string">&quot;🌧️&quot;</span>,
+      <span class="hljs-attr">stormy</span>: <span class="hljs-string">&quot;🌩️&quot;</span>
+    }
+  
+    <span class="hljs-keyword">return</span> weatherMap[name]
+  }
+
+  <span class="hljs-keyword">return</span> <span class="language-xml"><span class="hljs-tag">&lt;<span class="hljs-name">p</span>&gt;</span>{printIcon(weather)}<span class="hljs-tag">&lt;/<span class="hljs-name">p</span>&gt;</span></span>
+}
+
+<span class="hljs-keyword">export</span> <span class="hljs-keyword">default</span> <span class="hljs-title class_">WeatherIcon</span>;
+</code></pre></div>
+<p>Ici, nous avons utilisé une fonction comme expression pour gérer la logique en dehors du JSX. L'appel de fonction <code>printIcon(weather)</code> est une expression et retourne une valeur primitive : elle peut être utilisée à l'intérieur du JSX.</p>
+<p>Tu peux t'amuser à changer la valeur de la variable <code>weather</code> pour voir les icônes changer.</p>
+<h2>Challenge</h2>
+<p>Dans ce challenge, tu vas rendre ton composant <code>PokemonCard</code> dynamique en utilisant des données d'une variable plutôt que des données &quot;en dur&quot;.</p>
+<ol class="etapes"><li class="etape"><div class="etape__puce">1</div><div class="etape__contenu"><h4 class="etape__titre">Crée une nouvelle branche</h4><p>Ouvre ton projet existant et crée une nouvelle branche appelée <code>components.2</code>. Cette branche sera utilisée pour développer les fonctionnalités du composant <code>PokemonCard</code>. Assure-toi de partir de la branche <code>components.1</code>.</p>
+</div></li><li class="etape"><div class="etape__puce">2</div><div class="etape__contenu"><h4 class="etape__titre">Ajoute des données Pokémon</h4><p>Dans le fichier <code>PokemonCard.tsx</code>, en dehors de la fonction <code>PokemonCard</code>, ajoute la déclaration suivante :</p>
+<div class="bloc-code"><div class="bloc-code__langue">js</div><pre><code class="hljs language-js"><span class="hljs-keyword">const</span> pokemonList = [
+  {
+    <span class="hljs-attr">name</span>: <span class="hljs-string">&quot;bulbasaur&quot;</span>,
+    <span class="hljs-attr">imgSrc</span>:
+      <span class="hljs-string">&quot;images/002-bulbasaur.png&quot;</span>,
+  },
+  {
+    <span class="hljs-attr">name</span>: <span class="hljs-string">&quot;mew&quot;</span>,
+  },
+];
+
+<span class="hljs-keyword">function</span> <span class="hljs-title function_">PokemonCard</span>(<span class="hljs-params"></span>) {
+  <span class="hljs-comment">// ...</span>
+}
+
+<span class="hljs-keyword">export</span> <span class="hljs-keyword">default</span> <span class="hljs-title class_">PokemonCard</span>;
+</code></pre></div>
+<p>Cette variable <code>pokemonList</code> contient des données pour deux Pokémons : &quot;Bulbasaur&quot; et &quot;Mew&quot;. &quot;Bulbasaur&quot; a une image définie, tandis que &quot;Mew&quot; n'en a pas.</p>
+</div></li><li class="etape"><div class="etape__puce">3</div><div class="etape__contenu"><h4 class="etape__titre">Rends le composant dynamique</h4><p>À l'intérieur de la fonction <code>PokemonCard</code>, crée une variable appelée <code>pokemon</code> : affecte-lui le premier Pokémon du tableau <code>pokemonList</code>.</p>
+<div class="bloc-code"><div class="bloc-code__langue">js</div><pre><code class="hljs language-js"><span class="hljs-keyword">const</span> pokemonList = [
+  {
+    <span class="hljs-attr">name</span>: <span class="hljs-string">&quot;bulbasaur&quot;</span>,
+    <span class="hljs-attr">imgSrc</span>:
+      <span class="hljs-string">&quot;images/002-bulbasaur.png&quot;</span>,
+  },
+  {
+    <span class="hljs-attr">name</span>: <span class="hljs-string">&quot;mew&quot;</span>,
+  },
+];
+
+<span class="hljs-keyword">function</span> <span class="hljs-title function_">PokemonCard</span>(<span class="hljs-params"></span>) {
+  <span class="hljs-keyword">const</span> pokemon = pokemonList[<span class="hljs-number">0</span>];
+
+  <span class="hljs-comment">// ...</span>
+}
+
+<span class="hljs-keyword">export</span> <span class="hljs-keyword">default</span> <span class="hljs-title class_">PokemonCard</span>;
+</code></pre></div>
+<p>Ensuite, utilise les données de <code>pokemon</code> (<code>pokemon.name</code> et <code>pokemon.imgSrc</code>) pour remplacer les textes et attributs fixes de l'affichage.</p>
+<p>Rappelle-toi : tu peux injecter des variables dans un bloc d'affichage JSX avec les accolades <code>{}</code>.</p>
+<div class="bloc-code"><div class="bloc-code__langue">jsx</div><pre><code class="hljs language-jsx"><span class="hljs-keyword">function</span> <span class="hljs-title function_">SayHello</span>(<span class="hljs-params"></span>) {
+  <span class="hljs-keyword">const</span> message = <span class="hljs-string">&quot;Hello !&quot;</span>;
+
+  <span class="hljs-keyword">return</span> <span class="language-xml"><span class="hljs-tag">&lt;<span class="hljs-name">p</span>&gt;</span>{message}<span class="hljs-tag">&lt;/<span class="hljs-name">p</span>&gt;</span></span>
+}
+</code></pre></div>
+<p>Ici, tu cherches à :</p>
+<ol>
+<li>Injecter <code>pokemon.name</code> dans la <code>&lt;figcaption&gt;</code> de ton composant :</li>
+</ol>
+<div class="bloc-code"><div class="bloc-code__langue">jsx</div><pre><code class="hljs language-jsx">&lt;figcaption&gt;bulbasaur&lt;/figcaption&gt;
+</code></pre></div>
+<details class="solution"><summary>Voir la solution</summary><div class="solution__corps"><div class="bloc-code"><div class="bloc-code__langue">jsx</div><pre><code class="hljs language-jsx">&lt;figcaption&gt;{pokemon.<span class="hljs-property">name</span>}&lt;/figcaption&gt;
+</code></pre></div>
+</div></details>
+<ol start="2">
+<li>Injecter <code>pokemon.imgSrc</code> dans l'attribut <code>src</code> de l'image (et <code>pokemon.name</code> dans l'attribut <code>alt</code>) :</li>
+</ol>
+<div class="bloc-code"><div class="bloc-code__langue">jsx</div><pre><code class="hljs language-jsx">&lt;img
+  src=<span class="hljs-string">&quot;images/002-bulbasaur.png&quot;</span>
+  alt=<span class="hljs-string">&quot;bulbasaur&quot;</span>
+/&gt;
+</code></pre></div>
+<details class="solution"><summary>Voir la solution</summary><div class="solution__corps"><div class="bloc-code"><div class="bloc-code__langue">jsx</div><pre><code class="hljs language-jsx">&lt;img
+  src={pokemon.<span class="hljs-property">imgSrc</span>}
+  alt={pokemon.<span class="hljs-property">name</span>}
+/&gt;
+</code></pre></div>
+</div></details>
+</div></li><li class="etape"><div class="etape__puce">4</div><div class="etape__contenu"><h4 class="etape__titre">Gère l'affichage de l'image</h4><p>Modifie ton code pour afficher l'image du Pokémon seulement si <code>pokemon.imgSrc</code> est défini. Si l'image est disponible, utilise une balise <code>&lt;img&gt;</code> pour l'afficher. Sinon, affiche un paragraphe <code>&lt;p&gt;</code> avec &quot;???&quot; en texte. Utilise l'opérateur ternaire <code>?:</code> pour cela.</p>
+<p>Une solution partielle pour la mise en place du ternaire :</p>
+<details class="solution"><summary>Voir la solution</summary><div class="solution__corps"><div class="bloc-code"><div class="bloc-code__langue">jsx</div><pre><code class="hljs language-jsx">{<span class="hljs-comment">/* condition */</span> ? (
+  <span class="language-xml"><span class="hljs-tag">&lt;<span class="hljs-name">img</span> <span class="hljs-attr">src</span>=<span class="hljs-string">{...}</span> <span class="hljs-attr">alt</span>=<span class="hljs-string">{...}</span> /&gt;</span></span>
+) : (
+  <span class="language-xml"><span class="hljs-tag">&lt;<span class="hljs-name">p</span>&gt;</span>???<span class="hljs-tag">&lt;/<span class="hljs-name">p</span>&gt;</span></span>
+)}
+</code></pre></div>
+</div></details>
+<p>Des soucis sur la condition ?</p>
+<details class="solution"><summary>Voir la solution</summary><div class="solution__corps"><p>Tu injectes dans le <code>src</code> de ta balise <code>&lt;img&gt;</code> la variable <code>pokemon.imgSrc</code>. Si la valeur de <code>pokemon</code> est cet objet :</p>
+<div class="bloc-code"><div class="bloc-code__langue">js</div><pre><code class="hljs language-js">{
+  <span class="hljs-attr">name</span>: <span class="hljs-string">&quot;bulbasaur&quot;</span>,
+  <span class="hljs-attr">imgSrc</span>:
+    <span class="hljs-string">&quot;images/002-bulbasaur.png&quot;</span>,
+}
+</code></pre></div>
+<p>La valeur de <code>pokemon.imgSrc</code> est <code>&quot;images/002-bulbasaur.png&quot;</code>.</p>
+<p>Si la valeur de <code>pokemon</code> est cet objet :</p>
+<div class="bloc-code"><div class="bloc-code__langue">js</div><pre><code class="hljs language-js">{
+  <span class="hljs-attr">name</span>: <span class="hljs-string">&quot;mew&quot;</span>,
+}
+</code></pre></div>
+<p>La valeur de <code>pokemon.imgSrc</code> est <code>undefined</code> : le pokémon n'a pas de propriété <code>imgSrc</code>.</p>
+<p>Pour réaliser ta condition, tu dois comparer <code>pokemon.imgSrc</code> avec <code>undefined</code> :</p>
+<div class="bloc-code"><div class="bloc-code__langue">jsx</div><pre><code class="hljs language-jsx">{pokemon.<span class="hljs-property">imgSrc</span> !== <span class="hljs-literal">undefined</span> ? (
+  <span class="language-xml"><span class="hljs-tag">&lt;<span class="hljs-name">img</span> <span class="hljs-attr">src</span>=<span class="hljs-string">{...}</span> <span class="hljs-attr">alt</span>=<span class="hljs-string">{...}</span> /&gt;</span></span>
+) : (
+  <span class="language-xml"><span class="hljs-tag">&lt;<span class="hljs-name">p</span>&gt;</span>???<span class="hljs-tag">&lt;/<span class="hljs-name">p</span>&gt;</span></span>
+)}
+</code></pre></div>
+</div></details>
+</div></li><li class="etape"><div class="etape__puce">5</div><div class="etape__contenu"><h4 class="etape__titre">Change de Pokémon</h4><p>Modifie le code pour que la variable <code>pokemon</code> contienne le deuxième Pokémon du tableau <code>pokemonList</code> : tu auras un Pokémon sans image (&quot;Mew&quot;). Assure-toi que ta condition fonctionne pour afficher l'image uniquement si elle est disponible. Sinon, ton code doit afficher le paragraphe avec &quot;???&quot;.</p>
+</div></li></ol>
+<p>Assure-toi que ton composant <code>PokemonCard</code> est dynamique et s'adapte aux données des Pokémons dans <code>pokemonList</code>.</p>
+<p>Fournis le lien vers la branche <code>components.2</code> de ton dépôt GitHub pour valider cette étape.</p>
+<h3>Critères de validation</h3>
+<ul>
+<li>[ ] Le code est disponible sur GitHub et peut-être cloné.</li>
+<li>[ ] Le pokémon <em>bulbasaur</em> continue de s'afficher normalement lorsque la variable <code>pokemon</code> contient le premier pokémon du tableau. Le nom du pokémon est utilisé en texte alternatif de l'image et dans la <code>figcaption</code> de la figure.</li>
+<li>[ ] Si la variable <code>pokemon</code> contient le deuxième pokémon du tableau, alors <em>???</em> est affiché à la place de l'illustration du pokémon. Le nom du pokémon reste utilisé dans la <code>figcaption</code> de la figure.</li>
+</ul>
+<p>Ce que tu devrais avoir dans :</p>
+<div class="onglets" data-onglets="1"><input type="radio" name="onglets-31" id="onglets-31-0" class="onglets__radio" checked><div class="onglets__barre"><label class="onglets__label" for="onglets-31-0">PokemonCard.tsx</label></div><div class="onglets__panneaux"><div class="onglets__panneau"><div class="bloc-code"><div class="bloc-code__langue">jsx</div><pre><code class="hljs language-jsx"><span class="hljs-keyword">const</span> pokemonList = [
+  {
+    <span class="hljs-attr">name</span>: <span class="hljs-string">&quot;bulbasaur&quot;</span>,
+    <span class="hljs-attr">imgSrc</span>:
+      <span class="hljs-string">&quot;images/002-bulbasaur.png&quot;</span>,
+  },
+  {
+    <span class="hljs-attr">name</span>: <span class="hljs-string">&quot;mew&quot;</span>,
+  },
+];
+
+<span class="hljs-keyword">function</span> <span class="hljs-title function_">PokemonCard</span>(<span class="hljs-params"></span>) {
+  <span class="hljs-keyword">const</span> pokemon = pokemonList[<span class="hljs-number">1</span>];
+
+  <span class="hljs-keyword">return</span> (
+    <span class="language-xml"><span class="hljs-tag">&lt;<span class="hljs-name">figure</span>&gt;</span>
+      {pokemon.imgSrc != null ? (
+        <span class="hljs-tag">&lt;<span class="hljs-name">img</span> <span class="hljs-attr">src</span>=<span class="hljs-string">{pokemon.imgSrc}</span> <span class="hljs-attr">alt</span>=<span class="hljs-string">{pokemon.name}</span> /&gt;</span>
+      ) : (
+        <span class="hljs-tag">&lt;<span class="hljs-name">p</span>&gt;</span>???<span class="hljs-tag">&lt;/<span class="hljs-name">p</span>&gt;</span>
+      )}
+      <span class="hljs-tag">&lt;<span class="hljs-name">figcaption</span>&gt;</span>{pokemon.name}<span class="hljs-tag">&lt;/<span class="hljs-name">figcaption</span>&gt;</span>
+    <span class="hljs-tag">&lt;/<span class="hljs-name">figure</span>&gt;</span></span>
+  );
+}
+
+<span class="hljs-keyword">export</span> <span class="hljs-keyword">default</span> <span class="hljs-title class_">PokemonCard</span>;
+</code></pre></div>
+</div></div></div>
+
+  </div>
+  <section class="ressources-quete">
+  <h2>Ressources partagées sur cette quête</h2>
+  <ul class="ressources-liste">
+    <li><a href="https://www.youtube.com/watch?v=0EOucUY_F0c&amp;t=18s" target="_blank" rel="noopener noreferrer">Si tu veux aller plus loin</a><span class="ressources-liste__url">https://www.youtube.com/watch?v=0EOucUY_F0c&amp;t=18s</span></li>
+  </ul>
+</section>
+</article>
+
+<nav class="nav-quete">
+  <a class="nav-quete__lien nav-quete__lien--prec" href="../../react-bases/002-react-basics-02-pokedex-ton-premier-composant/index.html">
+           <span class="nav-quete__sens">← Précédent</span>
+           <span class="nav-quete__titre">👩‍🏫 React Basics 02 - Pokédex - Ton premier composant</span>
+         </a>
+  <a class="nav-quete__lien nav-quete__lien--suiv" href="../../react-bases/004-react-basics-04-pokedex-passer-des-props/index.html">
+           <span class="nav-quete__sens">Suivant →</span>
+           <span class="nav-quete__titre">👩‍🏫 React Basics 04 - Pokédex - Passer des props</span>
+         </a>
+</nav>
+</main>
+<footer class="pied">
+  <p>Archive personnelle des cours suivis à la Wild Code School. Copie hors ligne à usage strictement privé.</p>
+</footer>
+
+<script src="../../assets/copie-code.js"></script>
+<script src="../../assets/progression.js"></script>
+</body>
+</html>

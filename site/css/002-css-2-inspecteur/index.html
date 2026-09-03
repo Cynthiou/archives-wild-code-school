@@ -1,0 +1,111 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>👩‍🏫 CSS 2 : Inspecteur — Archives WCS</title>
+<link rel="stylesheet" href="../../assets/style.css">
+</head>
+<body style="--teinte:#1b62b1">
+<header class="entete">
+  <a class="entete__marque" href="../../index.html">Archives Wild Code School</a>
+</header>
+<main class="contenu">
+<nav class="ariane"><a href="../../index.html">Accueil</a><span class="ariane__sep">›</span><a href="../../css/index.html">CSS</a><span class="ariane__sep">›</span><span aria-current="page">👩‍🏫 CSS 2 : Inspecteur</span></nav>
+
+<article class="quete">
+  <header class="quete__entete">
+    <a class="pastille pastille--teintee" href="../../css/index.html">CSS</a>
+    <h1>👩‍🏫 CSS 2 : Inspecteur</h1>
+    <p class="quete__meta">Quête 2 sur 10 · 2 images archivées</p>
+  </header>
+  <div class="cours">
+<h2>Objectifs de cette (en)quête :</h2>
+<ul>
+<li>Utiliser l'inspecteur d'un navigateur web pour la création et le débogage en CSS</li>
+</ul>
+<h2>Introduction</h2>
+<p>Tu as commencé à explorer les bases d'HTML/CSS. Poursuis tes investigations et mène l'enquête en apprenant à te servir de l'inspecteur de ton navigateur !</p>
+<p><img src="images/001-introduction.jpg" alt="" loading="lazy"></p>
+<h2>Inspecteur Dev Tools</h2>
+<div class="encadre encadre--story"><div class="encadre__titre">Le récit</div><div class="encadre__corps"><p>L'inspecteur du navigateur est un outil absolument indispensable, permettant aux développeurs web d'examiner et d’interagir avec le document HTML, le style CSS, débugger le Javascript, avoir des information sur les requêtes HTTP effectuées par le navigateur, et tout un tas d'autres actions. Tu seras amené à t'en servir tout le temps, donc il est important que tu maîtrises les bases de ce compagnon essentiel.</p>
+</div></div>
+<p>Voici une blague bien connue des développeurs amateurs de <em>memes</em> :</p>
+<p><img src="images/002-debugging-being-the-detective-in-a-crime-movie.jpg" alt="debugging - being the detective in a crime movie where you are also the murderer" loading="lazy"></p>
+<p>Source : <a href="https://me.me/i/debugging-de-buhg-ing-verb-1-being-the-detective-in-a-crime-8a83fb06c2dc420e91a78990dd46900d" target="_blank" rel="noopener noreferrer">Me.me</a></p>
+<p>Et de fait, le vocabulaire du développement web se rapproche parfois dangereusement d'un film policier, notamment du fait de l'utilisation très répandue de l'<strong>inspecteur</strong>.</p>
+<p>Commence à résoudre le mystère autour de cette entité merveilleuse en regardant la vidéo ci-dessous.</p>
+<a class="video-lien" href="https://www.youtube.com/watch?v=VXNw-elEFlo" target="_blank" rel="noopener noreferrer">
+  <div class="video-lien__play">▶</div>
+  <div class="video-lien__texte">
+    <div class="video-lien__titre">Vidéo YouTube</div>
+    <div class="video-lien__url">https://www.youtube.com/watch?v=VXNw-elEFlo</div>
+  </div>
+</a>
+<blockquote>
+<p>En complément, tu peux aussi voir <a href="https://youtu.be/VYyQv0CSZOE" target="_blank" rel="noopener noreferrer">cette vidéo</a> en anglais .</p>
+</blockquote>
+<p>Alors Chrome ou Firefox ? Et pourquoi pas Safari, Edge, Brave ou Opéra ? Peu importe, aujourd'hui ces navigateurs (<strong><em>user agents</em></strong>) intègrent tous (chacun à sa manière) un inspecteur de code munis d'une console et des outils pour développeurs. Ton choix sera donc essentiellement une affaire d'affinités personnelles. Essaie les tous 🤓!</p>
+<blockquote>
+<p>La suite de cette quête te propose des ressources pour apprendre à utiliser l'inspecteur de Firefox et une vidéo sur l'inspecteur de Chrome. À quelques détails près (le nom des onglets ou certains raccourcis par exemple), tu retrouveras les mêmes fonctionnalités si tu utilises un autre navigateur.</p>
+</blockquote>
+<a class="ressource" href="https://developer.mozilla.org/fr/docs/Tools/Page_Inspector/How_to/Open_the_Inspector" target="_blank" rel="noopener noreferrer">
+  <div class="ressource__icone">↗</div>
+  <div class="ressource__texte">
+    <div class="ressource__titre">Ouvrir l'inspecteur</div>
+    <div class="ressource__desc"><p>Prise en main de l'inspecteur sur Firefox</p>
+</div>
+    <div class="ressource__hote">developer.mozilla.org</div>
+  </div>
+</a>
+<a class="ressource" href="https://developer.mozilla.org/fr/docs/Tools/Page_Inspector/How_to/Examine_and_edit_CSS" target="_blank" rel="noopener noreferrer">
+  <div class="ressource__icone">↗</div>
+  <div class="ressource__texte">
+    <div class="ressource__titre">Examiner et modifier le CSS</div>
+    <div class="ressource__desc"><p>Interagir avec le CSS d'une page directement dans l'inspecteur de Firefox</p>
+</div>
+    <div class="ressource__hote">developer.mozilla.org</div>
+  </div>
+</a>
+<a class="ressource" href="https://developer.mozilla.org/fr/docs/Tools/Page_Inspector/How_to/Examine_and_edit_HTML" target="_blank" rel="noopener noreferrer">
+  <div class="ressource__icone">↗</div>
+  <div class="ressource__texte">
+    <div class="ressource__titre">Examiner et modifier le code HTML</div>
+    <div class="ressource__desc"><p>Interagir avec le HTML d'une page directement dans l'inspecteur de Firefox</p>
+</div>
+    <div class="ressource__hote">developer.mozilla.org</div>
+  </div>
+</a>
+<a class="ressource" href="https://www.youtube.com/watch?v=x4q86IjJFag&amp;ab_channel=TraversyMedia" target="_blank" rel="noopener noreferrer">
+  <div class="ressource__icone">↗</div>
+  <div class="ressource__texte">
+    <div class="ressource__titre">🎥 Démonstration en vidéo</div>
+    <div class="ressource__desc"><p>Présentation complète de l'inspecteur pour les utilisateurs Chrome
+(<em>Concentre toi sur les 17 premières minutes</em>).</p>
+</div>
+    <div class="ressource__hote">youtube.com</div>
+  </div>
+</a>
+
+  </div>
+  
+</article>
+
+<nav class="nav-quete">
+  <a class="nav-quete__lien nav-quete__lien--prec" href="../../css/001-css-1-introduction/index.html">
+           <span class="nav-quete__sens">← Précédent</span>
+           <span class="nav-quete__titre">👩‍🏫 CSS 1 : Introduction</span>
+         </a>
+  <a class="nav-quete__lien nav-quete__lien--suiv" href="../../css/003-css-3-box-model/index.html">
+           <span class="nav-quete__sens">Suivant →</span>
+           <span class="nav-quete__titre">👩‍🏫 CSS 3 : Box model</span>
+         </a>
+</nav>
+</main>
+<footer class="pied">
+  <p>Archive personnelle des cours suivis à la Wild Code School. Copie hors ligne à usage strictement privé.</p>
+</footer>
+
+<script src="../../assets/progression.js"></script>
+</body>
+</html>

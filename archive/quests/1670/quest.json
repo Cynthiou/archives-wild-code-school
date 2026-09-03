@@ -1,0 +1,28 @@
+{
+  "id": 1670,
+  "titre": "Twig - 03. Les globales",
+  "titres": {
+    "fr": "Twig - 03. Les globales"
+  },
+  "theme": {
+    "id": 7,
+    "slug": "php_adv",
+    "nom": "PHP Avancé"
+  },
+  "creeLe": "2021-05-19T11:29:33.656+02:00",
+  "difficulte": "1",
+  "dureeEstimee": 20,
+  "modeValidation": "student",
+  "chapitres": [
+    {
+      "id": 8081,
+      "type": "content",
+      "langue": "fr",
+      "majLe": "2022-10-05T14:15:24.144+02:00",
+      "caracteres": 5183
+    }
+  ],
+  "ressources": [],
+  "urlOrigine": "https://odyssey.wildcodeschool.com/quests/1670",
+  "archiveLe": "2026-09-02T20:52:13.001Z"
+}

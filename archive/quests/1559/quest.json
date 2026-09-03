@@ -1,0 +1,28 @@
+{
+  "id": 1559,
+  "titre": "👩‍🏫 JS Basics 06bis - Fonctions d'ordre supérieur",
+  "titres": {
+    "fr": "👩‍🏫 JS Basics 06bis - Fonctions d'ordre supérieur"
+  },
+  "theme": {
+    "id": 9,
+    "slug": "javascript",
+    "nom": "JavaScript"
+  },
+  "creeLe": "2021-02-22T08:07:11.754+01:00",
+  "difficulte": "0",
+  "dureeEstimee": null,
+  "modeValidation": "student",
+  "chapitres": [
+    {
+      "id": 18431,
+      "type": "content",
+      "langue": "fr",
+      "majLe": "2025-10-03T10:14:56.549+02:00",
+      "caracteres": 8606
+    }
+  ],
+  "ressources": [],
+  "urlOrigine": "https://odyssey.wildcodeschool.com/quests/1559",
+  "archiveLe": "2026-09-02T20:54:44.239Z"
+}

@@ -1,0 +1,46 @@
+{
+  "id": 1301,
+  "titre": "Introduction à la méthodologie Agile et Scrum",
+  "titres": {
+    "en": "Introduction to Agile and Scrum methodology",
+    "fr": "Introduction à la méthodologie Agile et Scrum"
+  },
+  "theme": {
+    "id": 18,
+    "slug": "scrum",
+    "nom": "Scrum"
+  },
+  "creeLe": "2020-08-03T16:59:35.721+02:00",
+  "difficulte": "1",
+  "dureeEstimee": 45,
+  "modeValidation": "self",
+  "chapitres": [
+    {
+      "id": 10585,
+      "type": "content",
+      "langue": "fr",
+      "majLe": "2023-10-17T15:56:01.466+02:00",
+      "caracteres": 10852
+    }
+  ],
+  "ressources": [
+    {
+      "link": "https://www.youtube.com/watch?v=anZcEIQlpoY",
+      "description": "Une vidéo en français qui explique le fonctionnement de la méthode Agile"
+    },
+    {
+      "link": "https://www.youtube.com/watch?v=PgniBA8HPBk",
+      "description": "Product Owner : quel est son rôle ? (FR)"
+    },
+    {
+      "link": "https://vitalitychicago.com/blog/how-to-user-story/",
+      "description": "Les user stories"
+    },
+    {
+      "link": "https://www.youtube.com/watch?v=PdKECeJa5HA",
+      "description": "Vidéo en français, tout y est bien expliqué dedans"
+    }
+  ],
+  "urlOrigine": "https://odyssey.wildcodeschool.com/quests/1301",
+  "archiveLe": "2026-09-02T23:22:01.003Z"
+}

@@ -1,0 +1,88 @@
+{
+  "id": 519,
+  "titre": "05 - Les jointures",
+  "titres": {
+    "fr": "05 - Les jointures"
+  },
+  "theme": {
+    "id": 8,
+    "slug": "database",
+    "nom": "Base de données"
+  },
+  "creeLe": "2019-04-05T13:34:35.369+02:00",
+  "difficulte": "",
+  "dureeEstimee": null,
+  "modeValidation": "student",
+  "chapitres": [
+    {
+      "id": 17789,
+      "type": "content",
+      "langue": "fr",
+      "majLe": "2025-04-10T17:37:47.916+02:00",
+      "caracteres": 25177
+    },
+    {
+      "id": 12507,
+      "type": "solution",
+      "langue": "fr",
+      "majLe": "2024-10-31T17:36:27.220+01:00",
+      "caracteres": 6707
+    }
+  ],
+  "ressources": [
+    {
+      "link": "https://www.sqlshack.com/learn-sql-join-multiple-tables/",
+      "description": "Parce que oui c'est possible avec plus de deux tables ;)"
+    },
+    {
+      "link": "https://sql.sh/cours/group-by",
+      "description": "Pertinent et m'a fait percuter pour realiser le challenge !"
+    },
+    {
+      "link": "https://www.youtube.com/watch?v=Vq2dCxzSHGs",
+      "description": "la jointure expliquée clairement "
+    },
+    {
+      "link": "https://aymeric-auberton.fr/academie/mysql/as-alias",
+      "description": "Commande ALIAS bien expliquée"
+    },
+    {
+      "link": "https://sql.sh/cours/jointures",
+      "description": "Clair et efficace pour comprendre les jointures et les SELECT adaptés ;)"
+    },
+    {
+      "link": "https://www.youtube.com/watch?v=s5hXALXyv1I",
+      "description": "Très bien expliqué, vraiment très claire"
+    },
+    {
+      "link": "https://fr.wikipedia.org/wiki/Jointure_(informatique)#/media/Fichier:SQL_Joins.svg",
+      "description": "schéma"
+    },
+    {
+      "link": "https://www.youtube.com/watch?v=0vJoRP6_5tI&list=PLjwdMgw5TTLXXpRlzDZq7d8iS6YXgnslt&index=9",
+      "description": "Grafikart... tout simplement ! 💝 (Avec SQLite mais le principe est le même)"
+    },
+    {
+      "link": "https://www.youtube.com/watch?v=wdz4MRlzOyE",
+      "description": "A low tech (pen&paper) short (4min) explanation on how to 'conceptualize' the 'linking'  of 3 (or more) tables in SQL."
+    },
+    {
+      "link": "https://www.ionos.fr/digitalguide/hebergement/aspects-techniques/sql-outer-join/",
+      "description": "Pour la requête 3"
+    },
+    {
+      "link": "https://www.youtube.com/watch?v=umB_0eDOrp8",
+      "description": "Sympa"
+    },
+    {
+      "link": "https://www.youtube.com/watch?v=zRQkdqXsrV4",
+      "description": "Super explication des jointures SQL !"
+    },
+    {
+      "link": "https://sql.sh/2401-sql-join-infographie",
+      "description": "On a dans cette page les 7 Jointures SQL en une image (Inner, Left, Right et Full Join)."
+    }
+  ],
+  "urlOrigine": "https://odyssey.wildcodeschool.com/quests/519",
+  "archiveLe": "2026-09-02T20:51:52.663Z"
+}

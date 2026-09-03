@@ -1,0 +1,261 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>👩‍🏫 JS Intermédiaire 01.3 - Manipulation du DOM - Gestion des événements — Archives WCS</title>
+<link rel="stylesheet" href="../../assets/style.css">
+</head>
+<body style="--teinte:#854200">
+<header class="entete">
+  <a class="entete__marque" href="../../index.html">Archives Wild Code School</a>
+</header>
+<main class="contenu">
+<nav class="ariane"><a href="../../index.html">Accueil</a><span class="ariane__sep">›</span><a href="../../javascript-beyond-the-basics/index.html">JavaScript - Beyond the Basics</a><span class="ariane__sep">›</span><span aria-current="page">👩‍🏫 JS Intermédiaire 01.3 - Manipulation du DOM - Gestion des événements</span></nav>
+
+<article class="quete">
+  <header class="quete__entete">
+    <a class="pastille pastille--teintee" href="../../javascript-beyond-the-basics/index.html">JavaScript - Beyond the Basics</a>
+    <h1>👩‍🏫 JS Intermédiaire 01.3 - Manipulation du DOM - Gestion des événements</h1>
+    <p class="quete__meta">Quête 3 sur 8</p>
+  </header>
+  <div class="cours">
+<h6>⚠️ Avant de commencer cette quête, tu dois avoir terminé les quêtes suivantes :</h6>
+<div class="renvois"><div class="renvois__titre">Quêtes liées</div><ul><li><a href="../../javascript-beyond-the-basics/001-js-intermediaire-01-1-introduction-a-la-manipulation-du-dom/index.html">Quête 1259</a></li><li><a href="../../javascript-beyond-the-basics/002-js-intermediaire-01-2-manipulation-du-dom-creer-des-elements/index.html">Quête 1554</a></li></ul></div>
+<h1>Introduction</h1>
+<p>Précédemment, tu as vu <strong>qu'est-ce que le DOM</strong> et comment <strong>changer le DOM en ajoutant ou en supprimant un élément HTML</strong>.</p>
+<p>Maintenant il est temps d'apprendre comment <strong>réagir à un événement en utilisant Javascript</strong>.</p>
+<p><strong>Débutons !</strong></p>
+<h1>🤓 A la fin de cette quête, tu seras capable :</h1>
+<ul>
+<li>✅ <strong>D'écouter les événements</strong> sur les éléments HTML <strong>(clic, survol, ...)</strong></li>
+</ul>
+<hr>
+<h1>Gestionnaires d'événements</h1>
+<p>Maintenant que tu sais comment sélectionner un élément, modifier une propriété et créer des éléments, il est temps d'ajouter un peu d'interactivité !</p>
+<p>Pour cela, nous pouvons utiliser des gestionnaires d'événements.</p>
+<p>Pour la gestion des clics, tu peux modifier la propriété <code>onclick</code> en y affectant une fonction.</p>
+<div class="bloc-code"><div class="bloc-code__langue">javascript</div><pre><code class="hljs language-javascript">someDiv.<span class="hljs-property">onclick</span> = <span class="hljs-keyword">function</span> (<span class="hljs-params"></span>) {
+  someDiv.<span class="hljs-property">style</span>.<span class="hljs-property">backgroundColor</span> = <span class="hljs-string">&quot;red&quot;</span>;
+};
+</code></pre></div>
+<h2>AddEventListener</h2>
+<p>Nous pouvons également utiliser une méthode appelée <code>addEventListener</code>.</p>
+<p><code>addEventListener</code> est une méthode qui accepte comme premier paramètre le type d'événement, et le second est  <strong>une fonction de rappel (<em>callback function</em>).</strong></p>
+<div class="bloc-code"><div class="bloc-code__langue">javascript</div><pre><code class="hljs language-javascript">someDiv.<span class="hljs-title function_">addEventListener</span>(<span class="hljs-string">&#x27;click&#x27;</span>, <span class="hljs-keyword">function</span> (<span class="hljs-params"></span>) {
+  someDiv.<span class="hljs-property">style</span>.<span class="hljs-property">backgroundColor</span> = <span class="hljs-string">&quot;red&quot;</span>;
+});
+</code></pre></div>
+<p><code>addEventListener</code> peut être utilisé pour écouter un grand nombre d'événements différents, tels que:</p>
+<ul>
+<li>click</li>
+<li>mousedown</li>
+<li>mouseup</li>
+<li>mousemove</li>
+<li>mouseover</li>
+<li>mouseleave</li>
+<li>...</li>
+</ul>
+<h3>🔬 Fais une expérience:</h3>
+<p>Essaye de modifier quelques éléments de ce code.</p>
+<ul>
+<li>Lorsque l'utilisateur clique sur l'image, cela doit changer la source de l'image (<code>src</code>) et le texte de la propriété <code>alt</code></li>
+<li>Lorsque l'utilisateur survole le titre, la couleur du texte doit changer</li>
+<li>Lorsque la souris quitte le titre, la couleur doit revenir au noir</li>
+</ul>
+<div class="bloc-code"><div class="bloc-code__langue">codesandbox</div><pre><code class="hljs language-codesandbox">https://codesandbox.io/s/laughing-brook-xd2mm-jgrzq?file=/src/index.js
+</code></pre></div>
+<div class="bloc-code"><div class="bloc-code__langue">hidden</div><pre><code class="hljs language-hidden">Montrer la solution|||javascript|||Des problèmes pour trouver la solution ? |||0|||Masquer
+// We create the variables for imgDog and for title
+const imgDog = document.querySelector('.img-dogs');
+const title = document.querySelector('.title');
+
+// We add a listener on the dog image, when the user clicks on the latter, it changes the src 
+imgDog.addEventListener('click', function () {
+  imgDog.src = &quot;https://placedog.net/300&quot;;
+  imgDog.alt = &quot;Happy cute dog&quot;;
+});
+
+// We add a listener on the title, when the user places the mouse over the element, it changes the color 
+title.addEventListener('mouseover', function () {
+  title.style.color = &quot;blue&quot;;
+});
+
+// We add a listener on the title, when the mouse leaves the element, it changes the color 
+title.addEventListener('mouseleave', function () {
+  title.style.color = &quot;black&quot;;
+});
+</code></pre></div>
+<hr>
+<h1>Travailler avec un <form></h1>
+<p>Voyons comment nous pouvons obtenir des informations à partir d'éléments d'un formulaire.
+Nous pouvons ajouter une fonction qui sera exécutée lorsqu'un formulaire est envoyé, en utilisant la propriété <code>onsubmit</code> sur l'élément <code>form</code>.</p>
+<div class="bloc-code"><div class="bloc-code__langue">javascript</div><pre><code class="hljs language-javascript"><span class="hljs-keyword">const</span> form = <span class="hljs-variable language_">document</span>.<span class="hljs-title function_">querySelector</span>(<span class="hljs-string">&quot;#form&quot;</span>);
+
+form.<span class="hljs-property">onsubmit</span> = <span class="hljs-keyword">function</span> (<span class="hljs-params"></span>) {
+  <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(<span class="hljs-string">&quot;Hello world!&quot;</span>);
+};
+</code></pre></div>
+<p>Le problème avec cette approche est que lorsque l'on appelle <code>onsubmit</code>, la page se rafraîchit (un comportement par défaut des navigateurs).</p>
+<div class="bloc-code"><div class="bloc-code__langue">codesandbox</div><pre><code class="hljs language-codesandbox">https://codesandbox.io/s/form-dom-1-ye6gb?file=/src/index.js
+</code></pre></div>
+<p>Pour empêcher la page de se rafraîchir, nous pouvons utiliser une <strong>méthode</strong> que nous obtenons dans l'objet <code>event</code> appelée <strong><code>preventDefault</code></strong>.</p>
+<p><strong>preventDefault</strong> empêchera la page de se recharger.</p>
+<div class="bloc-code"><div class="bloc-code__langue">javascript</div><pre><code class="hljs language-javascript"><span class="hljs-keyword">const</span> form = <span class="hljs-variable language_">document</span>.<span class="hljs-title function_">querySelector</span>(<span class="hljs-string">&quot;#form&quot;</span>);
+
+form.<span class="hljs-property">onsubmit</span> = <span class="hljs-keyword">function</span> (<span class="hljs-params">event</span>) {
+  event.<span class="hljs-title function_">preventDefault</span>();
+  <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(<span class="hljs-string">&quot;Hello, world!&quot;</span>);
+};
+</code></pre></div>
+<p>De plus, nous pourrions obtenir la valeur de l'<code>input</code> afin de pouvoir afficher le nom que l'utilisateur a tapé.</p>
+<div class="bloc-code"><div class="bloc-code__langue">javascript</div><pre><code class="hljs language-javascript"><span class="hljs-keyword">const</span> form = <span class="hljs-variable language_">document</span>.<span class="hljs-title function_">querySelector</span>(<span class="hljs-string">&quot;#form&quot;</span>);
+<span class="hljs-keyword">const</span> firstName = <span class="hljs-variable language_">document</span>.<span class="hljs-title function_">querySelector</span>(<span class="hljs-string">&quot;#firstname&quot;</span>);
+<span class="hljs-keyword">const</span> lastName = <span class="hljs-variable language_">document</span>.<span class="hljs-title function_">querySelector</span>(<span class="hljs-string">&quot;#lastname&quot;</span>);
+
+form.<span class="hljs-property">onsubmit</span> = <span class="hljs-keyword">function</span> (<span class="hljs-params">event</span>) {
+  event.<span class="hljs-title function_">preventDefault</span>();
+  <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(<span class="hljs-string">`Hello, <span class="hljs-subst">${firstName.value}</span> <span class="hljs-subst">${lastName.value}</span>`</span>);
+};
+</code></pre></div>
+<h3>🔬Fais une expérience :</h3>
+<p>C'est à ton tour maintenant, voici un formulaire où l'utilisateur peut taper la tâche qu'il doit faire.
+Lorsque l'utilisateur clique sur le bouton, un nouvel élément <code>li</code> doit être ajouté à la <code>todolist</code>.</p>
+<p>Celui-ci est un peu plus difficile, on va donc te donner ce que tu dois faire étape par étape (essaie de le faire par toi-même, regarde les étapes si tu n'y arrive pas) :</p>
+<ol class="etapes"><li class="etape"><div class="etape__puce">1</div><div class="etape__contenu"><h4 class="etape__titre">Si vraiment tu n'y arrives pas sans aide :</h4></div></li><li class="etape"><div class="etape__puce">2</div><div class="etape__contenu"><h4 class="etape__titre">Étape 1:</h4><p>Crée les variables pour le <code>form</code>, l'<code>input</code> et la todolist (<code>ul</code>)</p>
+</div></li><li class="etape"><div class="etape__puce">3</div><div class="etape__contenu"><h4 class="etape__titre">Étape 2:</h4><p>Ajoute une fonction anonyme exécutée à la soumission du form (<code>onsubmit</code>, avec <code>event</code> en paramètre)</p>
+</div></li><li class="etape"><div class="etape__puce">4</div><div class="etape__contenu"><h4 class="etape__titre">Étape 3:</h4><p>Dans la fonction, utilise <code>event.preventDefault</code> pour éviter le rafraichissement de la page</p>
+</div></li><li class="etape"><div class="etape__puce">5</div><div class="etape__contenu"><h4 class="etape__titre">Étape 4:</h4><p>Ensuite, crée une autre variable et utilise <code>createElement</code> pour créer un nouveau noeud <code>li</code></p>
+</div></li><li class="etape"><div class="etape__puce">6</div><div class="etape__contenu"><h4 class="etape__titre">Étape 5</h4><p>À l'intérieur de cet élément <code>li</code>, ajoute la valeur de l'<code>input</code> (en utilisant <code>innerHTML</code> et <code>input.value</code>)</p>
+</div></li><li class="etape"><div class="etape__puce">7</div><div class="etape__contenu"><h4 class="etape__titre">Étape 6:</h4><p>Ajoute dans l'élément <code>ul</code> l'élément <code>li</code> juste créé</p>
+<p>Étape 7:
+Efface la valeur de la saisie pour que le texte ne reste pas (input.value = &quot;&quot;)</p>
+</div></li></ol>
+<p>N'hésite pas à essayer, celui-ci est un peu plus difficile mais tu peux le faire !</p>
+<div class="bloc-code"><div class="bloc-code__langue">codesandbox</div><pre><code class="hljs language-codesandbox">https://codesandbox.io/s/jolly-solomon-kv6bb?file=/src/index.js
+</code></pre></div>
+<div class="bloc-code"><div class="bloc-code__langue">hidden</div><pre><code class="hljs language-hidden">Montrer la solution|||javascript|||Des problèmes pour trouver la solution ? |||0|||Masquer
+// We create the variables that we set to the DOM elements 
+const form = document.querySelector(&quot;#form&quot;);
+const inputTodo = document.querySelector(&quot;#todoInput&quot;);
+const todolist = document.querySelector(&quot;#todolist&quot;);
+
+// Onsubmit we will run a function
+form.onsubmit = function (event) {
+  // We want to prevent the page to reload
+  event.preventDefault();
+
+  // We create a variable that we set to a new li node
+  const newTodo = document.createElement(&quot;li&quot;);
+  // We add the text to the li
+  newTodo.innerHTML = inputTodo.value;
+  // We add the li to the ul 
+  todolist.appendChild(newTodo);
+  // We clear the value of the input
+  inputTodo.value = &quot;&quot;;
+};
+</code></pre></div>
+<hr>
+<h1>Changer une classe</h1>
+<p>L'utilisation de la méthode <code>classList.toggle</code> sur un élément ajoutera la classe si la classe n'est pas là, si la classe est déjà présente alors elle la supprimera.
+C'est utile, par exemple, dans le cas où tu veux créer un menu déroulant. Lorsque l'utilisateur clique dessus, cela supprime ou ajoute la classe <code>visible</code>.</p>
+<div class="bloc-code"><div class="bloc-code__langue">javascript</div><pre><code class="hljs language-javascript">element.<span class="hljs-property">classList</span>.<span class="hljs-title function_">toggle</span>(<span class="hljs-string">&quot;mystyle&quot;</span>);
+</code></pre></div>
+<h3>🔬 Fais une expérience :</h3>
+<p>Dans cet exemple, nous avons un bouton et une liste d'animaux emoji. Cette liste a la propriété <code>display: none</code>.
+L'ajout de la classe visible sur l'élément la transformera en <code>display : block</code>.</p>
+<p>En utilisant ce que nous avons appris, crée un <code>listener</code> sur le bouton; au clic, ajoute ou supprime la classe <code>visible</code> sur l'élément qui porte la classe <code>dropdown-menu-content</code> (en utilisant la méthode <code>toggle</code>).</p>
+<div class="bloc-code"><div class="bloc-code__langue">codesandbox</div><pre><code class="hljs language-codesandbox">https://codesandbox.io/s/crazy-volhard-gcmsx?file=/src/index.js
+</code></pre></div>
+<div class="bloc-code"><div class="bloc-code__langue">hidden</div><pre><code class="hljs language-hidden">Montrer la solution|||javascript|||Des problèmes pour trouver la solution ? |||0|||Masquer
+// We create a variable dropdownBtn set to the DOM button node
+const dropdownBtn = document.querySelector(&quot;.dropdown-btn&quot;);
+// We create a variable dropdownMenu set to the DOM element
+const dropdownMenu = document.querySelector(&quot;.dropdown-menu-content&quot;);
+
+// We listen for a click event
+dropdownBtn.addEventListener(&quot;click&quot;, function () {
+  // On click we toggle the class visible on the dropdown
+  dropdownMenu.classList.toggle(&quot;visible&quot;);
+});
+</code></pre></div>
+<h2>Obtenir des informations sur l'événement</h2>
+<p>Comme tu l'as vu tout à l'heure, la fonction de rappel que tu donnes à un <strong>addEventListener</strong> peut accepter un paramètre; ce paramètre est l'<strong>objet <code>event</code>.</strong></p>
+<p>L'objet <code>event</code> contient beaucoup de propriétés et de méthodes concernant l'événement qui vient de se produire.</p>
+<div class="bloc-code"><div class="bloc-code__langue">javascript</div><pre><code class="hljs language-javascript"><span class="hljs-keyword">const</span> title = <span class="hljs-variable language_">document</span>.<span class="hljs-title function_">querySelector</span>(<span class="hljs-string">&quot;.title&quot;</span>);
+
+title.<span class="hljs-title function_">addEventListener</span>(<span class="hljs-string">&quot;click&quot;</span>, <span class="hljs-keyword">function</span> (<span class="hljs-params">event</span>) {
+  <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(event);
+  title.<span class="hljs-property">style</span>.<span class="hljs-property">color</span> = <span class="hljs-string">&quot;red&quot;</span>;
+});
+
+<span class="hljs-variable language_">document</span>.<span class="hljs-property">body</span>.<span class="hljs-title function_">addEventListener</span>(<span class="hljs-string">&quot;mousemove&quot;</span>, <span class="hljs-keyword">function</span> (<span class="hljs-params">event</span>) {
+  <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(event);
+});
+</code></pre></div>
+<p><a href="https://kdo1p.csb.app/" target="_blank" rel="noopener noreferrer">Ouvre cette page</a>, Ouvre la console de ton navigateur et déplace ta souris sur l'écran.</p>
+<p>Tu devrais voir l'objet <code>event</code>.</p>
+<p>Si tu cliques sur le bouton, tu devrais voir toutes les différentes propriétés attachées à cet objet.</p>
+<p>Par exemple, nous avons accès à la position de la souris sur l'écran avec <code>clientX</code> et <code>clientY</code>.</p>
+<h3>🔬Fais une expérience :</h3>
+<p>Utilise tes connaissances en matière de DOM pour afficher et mettre à jour la position de la souris chaque fois que l'utilisateur déplace la souris sur l'écran.
+Tu dois utiliser <code>innerHTML</code> et un template string pour modifier le texte de <code>title-cursor-position</code>.</p>
+<div class="bloc-code"><div class="bloc-code__langue">codesandbox</div><pre><code class="hljs language-codesandbox">https://codesandbox.io/s/hungry-mclean-qmbgj-2-qmbgj?from-embed
+</code></pre></div>
+<div class="bloc-code"><div class="bloc-code__langue">hidden</div><pre><code class="hljs language-hidden">Montrer la solution|||javascript|||Des problèmes pour trouver la solution ? |||0|||Masquer
+// We create a variable set to the title with the cursor position
+const titleCursorPosition = document.querySelector(&quot;#title-cursor-position&quot;);
+
+// We listen to mouse movement on the body
+document.body.addEventListener(&quot;mousemove&quot;, function (event) {
+  // Everytime the mouse moves, we change the text in the element
+  titleCursorPosition.innerHTML = `x:${event.clientX}, y:${event.clientY}`;
+});
+</code></pre></div>
+<hr>
+<h1>☝️ Résumé</h1>
+<ul>
+<li>Le DOM ou Document Object Model est une <strong>interface</strong> fournie par le navigateur qui nous donne accès à une représentation objet du document HTML</li>
+<li>Les éléments du DOM sont appelés des <strong>noeuds</strong></li>
+<li>Le DOM nous donne accès à un grand nombre de propriétés et de méthodes que nous pouvons utiliser pour modifier les propriétés des éléments</li>
+<li>Nous pouvons utiliser <strong>addEventListener</strong> pour <code>écouter</code> les événements se produisant sur un certain élément
+<ul>
+<li>Nous devons fournir une <strong>fonction de callback</strong> à addEventListener, cette fonction de callback accepte un paramètre <code>event</code> qui donne accès à un objet avec des méthodes et des propriétés <strong>utiles</strong> sur l'événement en cours.</li>
+</ul>
+</li>
+</ul>
+<hr>
+<h1>📚 Ressources</h1>
+<a class="ressource" href="https://developer.mozilla.org/en-US/docs/Learn/JavaScript/Client-side_web_APIs/Manipulating_documents" target="_blank" rel="noopener noreferrer">
+  <div class="ressource__icone">↗</div>
+  <div class="ressource__texte">
+    <div class="ressource__titre">Mdn Manipulating documents</div>
+    <div class="ressource__desc"><p>Très bonne ressource de MDN sur la Manipulation du DOM</p>
+</div>
+    <div class="ressource__hote">developer.mozilla.org</div>
+  </div>
+</a>
+
+  </div>
+  
+</article>
+
+<nav class="nav-quete">
+  <a class="nav-quete__lien nav-quete__lien--prec" href="../../javascript-beyond-the-basics/002-js-intermediaire-01-2-manipulation-du-dom-creer-des-elements/index.html">
+           <span class="nav-quete__sens">← Précédent</span>
+           <span class="nav-quete__titre">👩‍🏫 JS Intermédiaire 01.2 - Manipulation du DOM - Créer des éléments</span>
+         </a>
+  <a class="nav-quete__lien nav-quete__lien--suiv" href="../../javascript-beyond-the-basics/004-js-intermediaire-02-tableaux-methodes-fonctionnelles/index.html">
+           <span class="nav-quete__sens">Suivant →</span>
+           <span class="nav-quete__titre">👩‍🏫 JS Intermédiaire 02 - Tableaux : méthodes fonctionnelles</span>
+         </a>
+</nav>
+</main>
+<footer class="pied">
+  <p>Archive personnelle des cours suivis à la Wild Code School. Copie hors ligne à usage strictement privé.</p>
+</footer>
+
+<script src="../../assets/copie-code.js"></script>
+<script src="../../assets/progression.js"></script>
+</body>
+</html>

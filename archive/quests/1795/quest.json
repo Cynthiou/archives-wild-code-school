@@ -1,0 +1,28 @@
+{
+  "id": 1795,
+  "titre": "👩‍🏫 React Basics 08 - Pokédex - Le CSS dans React",
+  "titres": {
+    "fr": "👩‍🏫 React Basics 08 - Pokédex - Le CSS dans React"
+  },
+  "theme": {
+    "id": 23,
+    "slug": "react",
+    "nom": "React - Bases"
+  },
+  "creeLe": "2021-09-02T11:08:06.949+02:00",
+  "difficulte": "0",
+  "dureeEstimee": null,
+  "modeValidation": "self",
+  "chapitres": [
+    {
+      "id": 17321,
+      "type": "content",
+      "langue": "fr",
+      "majLe": "2025-03-14T10:19:51.292+01:00",
+      "caracteres": 10898
+    }
+  ],
+  "ressources": [],
+  "urlOrigine": "https://odyssey.wildcodeschool.com/quests/1795",
+  "archiveLe": "2026-09-02T20:55:08.250Z"
+}

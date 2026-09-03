@@ -1,0 +1,45 @@
+{
+  "id": 1450,
+  "titre": "React Intermédiaire 01 - Fetcher des données depuis une API avec React",
+  "titres": {
+    "fr": "React Intermédiaire 01 - Fetcher des données depuis une API avec React"
+  },
+  "theme": {
+    "id": 78,
+    "slug": "react-intermediate",
+    "nom": "React - Intermédiaire"
+  },
+  "creeLe": "2020-10-26T18:48:22.517+01:00",
+  "difficulte": "0",
+  "dureeEstimee": null,
+  "modeValidation": "student",
+  "chapitres": [
+    {
+      "id": 12335,
+      "type": "content",
+      "langue": "fr",
+      "majLe": "2025-04-10T15:17:42.420+02:00",
+      "caracteres": 10811
+    }
+  ],
+  "ressources": [
+    {
+      "link": "https://www.youtube.com/watch?v=HUTF01zmcDY",
+      "description": "Vidéo en français sur comment récupérer les données depuis une API externe avec React"
+    },
+    {
+      "link": "https://www.pierre-giraud.com/javascript-apprendre-coder-cours/api-fetch/",
+      "description": "Aide à comprendre et à utiliser la méthode fetch()"
+    },
+    {
+      "link": "https://www.youtube.com/watch?v=dnFDcTX_-y0&t=866s",
+      "description": "Récupérer des donnée d'une API"
+    },
+    {
+      "link": "https://blog.logrocket.com/axios-vs-fetch-best-http-requests/#:~:text=To%20send%20data%2C%20fetch(),stringify%20method",
+      "description": "axios vs fetch"
+    }
+  ],
+  "urlOrigine": "https://odyssey.wildcodeschool.com/quests/1450",
+  "archiveLe": "2026-09-02T20:53:58.377Z"
+}

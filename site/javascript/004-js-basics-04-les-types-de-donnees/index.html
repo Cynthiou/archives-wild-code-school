@@ -1,0 +1,194 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>👩‍🏫 JS Basics 04 - Les types de données — Archives WCS</title>
+<link rel="stylesheet" href="../../assets/style.css">
+</head>
+<body style="--teinte:#856400">
+<header class="entete">
+  <a class="entete__marque" href="../../index.html">Archives Wild Code School</a>
+</header>
+<main class="contenu">
+<nav class="ariane"><a href="../../index.html">Accueil</a><span class="ariane__sep">›</span><a href="../../javascript/index.html">JavaScript</a><span class="ariane__sep">›</span><span aria-current="page">👩‍🏫 JS Basics 04 - Les types de données</span></nav>
+
+<article class="quete">
+  <header class="quete__entete">
+    <a class="pastille pastille--teintee" href="../../javascript/index.html">JavaScript</a>
+    <h1>👩‍🏫 JS Basics 04 - Les types de données</h1>
+    <p class="quete__meta">Quête 4 sur 11 · 4 images archivées</p>
+  </header>
+  <div class="cours">
+<h2>Objectifs</h2>
+<ul>
+<li>Vérifier le type d'une expression</li>
+</ul>
+<h2>Pré-requis</h2>
+<p>Avoir validé les quêtes suivantes :</p>
+<div class="renvois"><div class="renvois__titre">Quêtes liées</div><ul><li><a href="../../javascript/001-js-basics-01-qu-est-ce-que-javascript/index.html">Quête 1262</a></li><li><a href="../../javascript/002-js-basics-02-syntaxe-et-concepts-de-base/index.html">Quête 1267</a></li><li><a href="../../javascript/003-js-basics-03-les-variables/index.html">Quête 1268</a></li></ul></div>
+<h2>Introduction</h2>
+<p>Dans les quêtes précédentes, tu as <strong>découvert ce qu'est Javascript et à quoi ressemble la syntaxe</strong>. Tu as également appris comment <strong>créer des variables</strong>.</p>
+<p>Dans cette quête, tu apprendras les différents types de valeurs qui peuvent être utilisés en Javascript.
+Pour l'instant, nous n'avons utilisé que des <strong>chaînes et des nombres</strong>, mais il existe de nombreux autres types de données.</p>
+<p>C'est parti !</p>
+<p><img src="images/001-feuilles.png" alt="Feuilles" loading="lazy"></p>
+<h2>Sommaire</h2>
+<h2>L'opérateur &quot;typeof&quot;</h2>
+<p>En javascript, on peut utiliser un <strong>opérateur</strong> appelé &quot;typeof&quot; pour <strong>voir</strong> le <strong>type de données</strong> d'une valeur.
+Pour ce faire, on peut simplement <strong>écrire</strong> <code>typeof</code> suivi de la valeur que nous voulons vérifier.</p>
+<p><img src="images/002-telescope.png" alt="Télescope" loading="lazy"></p>
+<p>Ouvre la console du navigateur et essaye ce code :</p>
+<div class="bloc-code"><div class="bloc-code__langue">javascript</div><pre><code class="hljs language-javascript"><span class="hljs-keyword">typeof</span> <span class="hljs-number">1</span>;
+</code></pre></div>
+<p>Tu verras apparaître résultat <code>&quot;number&quot;</code> car la valeur <code>1</code> est bien un nombre.</p>
+<h2>Deux catégories de types de données</h2>
+<p>En Javascript, il existe <strong>sept</strong> types de données différents. Ils sont classés en deux catégories :
+<strong>Primitifs</strong> et <strong>non-primitifs</strong>.</p>
+<h3>Les types primitifs</h3>
+<p>Une <strong>valeur primitive</strong> est une valeur qui <strong>ne peut pas changer</strong> (on dit généralement que ces valeurs sont <strong>immutables</strong>, qu'elles ne peuvent pas muter).</p>
+<p>Pense aux nombres. Tu peux écrire un code comme celui-ci :</p>
+<div class="bloc-code"><div class="bloc-code__langue">javascript</div><pre><code class="hljs language-javascript"><span class="hljs-keyword">let</span> a = <span class="hljs-number">1</span>;
+a = <span class="hljs-number">2</span>;
+</code></pre></div>
+<p>Dans ce code, tu modifies la valeur pointée par <code>a</code>. Mais tu n'as pas modifié la valeur <code>1</code>. Tu n'écrirais jamais quelque chose comme ça :</p>
+<div class="bloc-code"><div class="bloc-code__langue">javascript</div><pre><code class="hljs language-javascript"><span class="hljs-number">1</span> = <span class="hljs-number">2</span>;
+</code></pre></div>
+<p>Tu ne peux pas modifier la valeur <code>1</code> pour qu'elle devienne <code>2</code>. Le nombre <code>1</code> sera toujours le nombre <code>1</code>. C'est ce que nous entendons par <strong>immutable</strong>.</p>
+<p><img src="images/003-types-de-donnees-primitifs-en-js.jpg" alt="Types de données primitifs en JS" loading="lazy"></p>
+<p>Voici les types de données primitifs :</p>
+<p><strong>Boolean</strong></p>
+<p>Les booléens sont utilisés pour représenter le <strong>vrai</strong> (<code>true</code>) ou le <strong>faux</strong> (<code>false</code>).</p>
+<div class="bloc-code"><div class="bloc-code__langue">javascript</div><pre><code class="hljs language-javascript"><span class="hljs-keyword">typeof</span> <span class="hljs-literal">true</span>;
+<span class="hljs-comment">// &quot;boolean&quot;</span>
+</code></pre></div>
+<p><strong>String</strong></p>
+<p>Une &quot;String&quot; est une <strong>chaîne (suite) de caractères</strong>. Les chaînes sont toujours entourées de <strong>guillemets doubles</strong> (<code>&quot;&quot;</code>) ou <strong>simples</strong> (<code>''</code>) .</p>
+<div class="bloc-code"><div class="bloc-code__langue">javascript</div><pre><code class="hljs language-javascript"><span class="hljs-keyword">typeof</span> <span class="hljs-string">&quot;Hello, World !&quot;</span>;
+<span class="hljs-comment">// &quot;string&quot;</span>
+</code></pre></div>
+<p><strong>Number</strong></p>
+<p>Les nombres sont une <strong>représentation d'un nombre entier ou décimal.</strong></p>
+<div class="bloc-code"><div class="bloc-code__langue">javascript</div><pre><code class="hljs language-javascript"><span class="hljs-keyword">typeof</span> <span class="hljs-number">1234</span>;
+<span class="hljs-comment">// &quot;number&quot;</span>
+<span class="hljs-keyword">typeof</span> <span class="hljs-number">12.54</span>;
+<span class="hljs-comment">// &quot;number&quot;</span>
+</code></pre></div>
+<p><strong>Null</strong></p>
+<p>La valeur <code>null</code> est utilisée pour <strong>représenter une absence intentionnelle de valeur.</strong></p>
+<p>Si tu utilises <code>typeof</code> avec <code>null</code>, tu verras que le <strong>type de null</strong> est <strong>&quot;object&quot;</strong> ;</p>
+<p>C'est une <strong>erreur</strong> qui a été <strong>implémentée dans l'ECMAScript depuis le début</strong> et <strong>ne peut plus être corrigée</strong> de nos jours.</p>
+<div class="bloc-code"><div class="bloc-code__langue">javascript</div><pre><code class="hljs language-javascript"><span class="hljs-keyword">let</span> empty = <span class="hljs-literal">null</span>;
+<span class="hljs-keyword">typeof</span> empty;
+<span class="hljs-comment">// &quot;object&quot;</span>
+</code></pre></div>
+<p><strong>Undefined</strong></p>
+<p><code>undefined</code> est la valeur par défaut d'une <strong>variable qui existe</strong> (car elle est déclarée) <strong>mais qui n'a pas encore de valeur</strong> (car elle n'a pas été initialisée/assignée).</p>
+<div class="bloc-code"><div class="bloc-code__langue">javascript</div><pre><code class="hljs language-javascript"><span class="hljs-keyword">let</span> notDefined;
+<span class="hljs-keyword">typeof</span> notDefined;
+<span class="hljs-comment">// &quot;undefined&quot;</span>
+</code></pre></div>
+<div class="encadre encadre--warning"><div class="encadre__titre">Attention</div><div class="encadre__corps"><h1>Important</h1>
+<p>Il est important de comprendre que &quot;undefined&quot; ne s'applique qu'aux variables qui ont été créées, mais qui ne contiennent aucune valeur.</p>
+<p>Si tu essaies d'appeler une variable qui n'existe pas (qui n'a pas été déclarée), tu obtiendras une <code>ReferenceError</code>, ce qui n'est pas du tout la même chose.</p>
+</div></div>
+<div class="bloc-code"><div class="bloc-code__langue">javascript</div><pre><code class="hljs language-javascript"><span class="hljs-keyword">let</span> notDefined;
+<span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(notDefined);
+<span class="hljs-comment">// &quot;undefined&quot;</span>
+
+<span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(nothing);
+<span class="hljs-comment">// ReferenceError: nothing is not defined</span>
+</code></pre></div>
+<p>Comme tu peux le voir, <strong>même si le message d'erreur dit &quot;non défini&quot;, ce qui peut prêter à confusion</strong>, ce n'est pas la même chose que <code>undefined</code>. <code>ReferenceError</code> est une erreur fatale ☠️ qui <strong>provoque l'arrêt de l'exécution du Javascript</strong>.</p>
+<h3>Types complexes (non-primitifs)</h3>
+<p><img src="images/004-non-primitives.png" alt="Non-primitives" loading="lazy"></p>
+<p>Les valeurs non primitives sont des valeurs qui <strong>peuvent changer</strong> (on dit qu'elles sont <strong>mutables</strong>).</p>
+<p><strong>Functions</strong></p>
+<p>Une fonction est un bloc de code utilisé pour exécuter un ensemble d'instructions.</p>
+<p>On peut exécuter (on dit aussi <strong>appeler</strong> ou <strong>invoquer</strong>) une fonction en écrivant son nom suivi de parenthèses.</p>
+<p><em><code>console.log(&quot;hello&quot;)</code></em></p>
+<div class="bloc-code"><div class="bloc-code__langue">javascript</div><pre><code class="hljs language-javascript"><span class="hljs-keyword">typeof</span> <span class="hljs-variable language_">console</span>.<span class="hljs-property">log</span>;
+<span class="hljs-comment">// &quot;function&quot;</span>
+</code></pre></div>
+<div class="encadre encadre--info"><div class="encadre__titre">Info</div><div class="encadre__corps"><p>L'opérateur <code>typeof</code> distingue les fonctions des objets. En fait, une fonction en Javascript peut être considérée comme un type particulier d'objet !
+Tu pourras regarder <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Functions" target="_blank" rel="noopener noreferrer">ici</a> quand tu auras le temps pour approfondir cela.</p>
+</div></div>
+<p><strong>Objects</strong></p>
+<p>Nous parlerons davantage des objets dans une autre quête. Pour le moment, saches que les objets sont en quelque sorte des &quot;boîtes&quot; qui peuvent contenir des <em>clés</em> associées à des <em>valeurs,</em> un peu comme dans un dictionnaire où on a des mots associés à des définitions.</p>
+<p>Ces paires <em>&quot;clé/valeur&quot;</em> sont entourés d'accolades pour délimiter l'objet décrit.</p>
+<p>Les valeurs contenues dans un objet peuvent être de n'importe quel type, cela peut même être des fonctions ! Une fonction contenue dans un objet sera appelée <strong>&quot;méthode&quot;</strong>.</p>
+<div class="bloc-code"><div class="bloc-code__langue">javascript</div><pre><code class="hljs language-javascript"><span class="hljs-keyword">const</span> person = {
+  <span class="hljs-attr">name</span>: <span class="hljs-string">&quot;Bob&quot;</span>, 
+  <span class="hljs-attr">age</span>: <span class="hljs-number">25</span>, 
+  <span class="hljs-attr">sayHello</span>: <span class="hljs-keyword">function</span>(<span class="hljs-params"></span>){
+    <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(<span class="hljs-string">&quot;Hello&quot;</span>);
+  }
+}
+
+person.<span class="hljs-title function_">sayHello</span>();
+<span class="hljs-comment">// &quot;Hello&quot;</span>
+
+<span class="hljs-keyword">typeof</span> person;
+<span class="hljs-comment">// &quot;object&quot;</span>
+</code></pre></div>
+<p><strong>Array</strong></p>
+<p>Les <em>Arrays</em> sont utilisés pour <strong>stocker plusieurs valeurs au sein d'une même variable</strong>.</p>
+<div class="bloc-code"><div class="bloc-code__langue">javascript</div><pre><code class="hljs language-javascript"><span class="hljs-keyword">const</span> colors = [<span class="hljs-string">&quot;Red&quot;</span>, <span class="hljs-string">&quot;Blue&quot;</span>, <span class="hljs-string">&quot;Yellow&quot;</span>];
+
+</code></pre></div>
+<div class="encadre encadre--warning"><div class="encadre__titre">Attention</div><div class="encadre__corps"><p>Array n'est pas un type de donnée à proprement parler, c'est un &quot;sous-type&quot; (un cas particulier) du type Object.</p>
+</div></div>
+<div class="bloc-code"><div class="bloc-code__langue">javascript</div><pre><code class="hljs language-javascript"><span class="hljs-keyword">typeof</span> colors;
+<span class="hljs-comment">// &quot;object&quot;</span>
+</code></pre></div>
+<p><strong>🔬 Fais une expérience</strong></p>
+<p>Ouvre la console de ton navigateur et utilise l'opérateur <code>typeof</code> sur plusieurs valeurs différentes pour observer le résultat.</p>
+<h2>Résumé</h2>
+<p>En Javascript, les types de données sont divisés en deux catégories : les types dits &quot;primitifs&quot; et les types &quot;complexes&quot; (non-primitifs) :</p>
+<ul>
+<li>Les types de données primitifs (immutables) :
+<ul>
+<li>Boolean</li>
+<li>String</li>
+<li>Number</li>
+<li>Null</li>
+<li>Undefined</li>
+</ul>
+</li>
+<li>Les autres (mutables) :
+<ul>
+<li>Object</li>
+<li>Function</li>
+</ul>
+</li>
+</ul>
+
+  </div>
+  <section class="ressources-quete">
+  <h2>Ressources partagées sur cette quête</h2>
+  <ul class="ressources-liste">
+    <li><a href="https://www.pierre-giraud.com/javascript-apprendre-coder-cours/type-donnee/" target="_blank" rel="noopener noreferrer">Très bien fait</a><span class="ressources-liste__url">https://www.pierre-giraud.com/javascript-apprendre-coder-cours/type-donnee/</span></li>
+    <li><a href="https://tc39.es/ecma262/#sec-ecmascript-data-types-and-values" target="_blank" rel="noopener noreferrer">Current ECMAScript specification</a><span class="ressources-liste__url">https://tc39.es/ecma262/#sec-ecmascript-data-types-and-values</span></li>
+  </ul>
+</section>
+</article>
+
+<nav class="nav-quete">
+  <a class="nav-quete__lien nav-quete__lien--prec" href="../../javascript/003-js-basics-03-les-variables/index.html">
+           <span class="nav-quete__sens">← Précédent</span>
+           <span class="nav-quete__titre">👩‍🏫 JS Basics 03 - Les variables</span>
+         </a>
+  <a class="nav-quete__lien nav-quete__lien--suiv" href="../../javascript/005-js-basics-05-les-instructions-conditionnelles/index.html">
+           <span class="nav-quete__sens">Suivant →</span>
+           <span class="nav-quete__titre">👩‍🏫 JS Basics 05 - Les instructions conditionnelles</span>
+         </a>
+</nav>
+</main>
+<footer class="pied">
+  <p>Archive personnelle des cours suivis à la Wild Code School. Copie hors ligne à usage strictement privé.</p>
+</footer>
+
+<script src="../../assets/copie-code.js"></script>
+<script src="../../assets/progression.js"></script>
+</body>
+</html>

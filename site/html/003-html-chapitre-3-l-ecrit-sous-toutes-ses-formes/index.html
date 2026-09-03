@@ -1,0 +1,271 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>👩‍🏫 HTML - Chapitre 3 |  L'écrit sous toutes ses formes — Archives WCS</title>
+<link rel="stylesheet" href="../../assets/style.css">
+</head>
+<body style="--teinte:#a03737">
+<header class="entete">
+  <a class="entete__marque" href="../../index.html">Archives Wild Code School</a>
+</header>
+<main class="contenu">
+<nav class="ariane"><a href="../../index.html">Accueil</a><span class="ariane__sep">›</span><a href="../../html/index.html">HTML</a><span class="ariane__sep">›</span><span aria-current="page">👩‍🏫 HTML - Chapitre 3 |  L'écrit sous toutes ses formes</span></nav>
+
+<article class="quete">
+  <header class="quete__entete">
+    <a class="pastille pastille--teintee" href="../../html/index.html">HTML</a>
+    <h1>👩‍🏫 HTML - Chapitre 3 |  L'écrit sous toutes ses formes</h1>
+    <p class="quete__meta">Quête 3 sur 9 · 1 image archivée</p>
+  </header>
+  <div class="cours">
+<h2>Objectifs</h2>
+<ul>
+<li>Maitriser le texte en HTML.</li>
+<li>Utiliser correctement les balises de titre.</li>
+<li>Donner du sens et de la sémantique à ton texte.</li>
+</ul>
+<h2>Pré-requis</h2>
+<ol class="etapes"><li class="etape"><div class="etape__puce">1</div><div class="etape__contenu"><h4 class="etape__titre">Valider la quête suivante</h4><div class="renvois"><div class="renvois__titre">Quêtes liées</div><ul><li><a href="../../html/001-html-chapitre-1-introduction-au-html/index.html">Quête 2113</a></li></ul></div>
+</div></li><li class="etape"><div class="etape__puce">2</div><div class="etape__contenu"><h4 class="etape__titre">Être à l'aise avec la syntaxe des balises HTML</h4><p><img src="images/001-illustration-d-un-element-html-un-element-html.png" alt="Illustration d'un élément HTML. Un élément HTML se compose d'un contenu situé entre deux balises" loading="lazy"></p>
+</div></li></ol>
+<h2>Introduction</h2>
+<p>Précédemment, tu as vu les principes de bases du langage HTML.</p>
+<p>Dans cette quête nous allons aller plus en profondeur sur le texte en HTML. Nous verrons comment utiliser des balises pour lui donner du sens, comment structurer des <strong>titres</strong>, des <strong>citations</strong> et pleins de nouvelles balises qui vont améliorer la sémantique de tes pages web !</p>
+<h2>Sommaire</h2>
+<h2>Les balises de titrages</h2>
+<p>Nous l'avons vu dans les quêtes précédentes, il existe <strong>6 balises de titrages différentes</strong> : de <code>&lt;h1&gt;</code> à <code>&lt;h6&gt;</code>.</p>
+<p>Ces balises sont utiles pour définir si l'élément est <strong>un titre, un sous-titre, ou un sous sous-titre, etc, etc...</strong></p>
+<div class="bloc-code"><div class="bloc-code__langue">html</div><pre><code class="hljs language-html"><span class="hljs-comment">&lt;!-- Titre principal de la page --&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">h1</span>&gt;</span>Apprendre le HTML en s&#x27;amusant<span class="hljs-tag">&lt;/<span class="hljs-name">h1</span>&gt;</span>
+
+<span class="hljs-tag">&lt;<span class="hljs-name">p</span>&gt;</span>Le HTML est un langage de balisage qui permet de structurer le contenu d&#x27;une page web. Le plus souvent, il est associé au CSS pour gérer l&#x27;aspect visuel des pages web.<span class="hljs-tag">&lt;/<span class="hljs-name">p</span>&gt;</span>
+
+<span class="hljs-comment">&lt;!-- Sous-titre --&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">h2</span>&gt;</span>Chapitre 1 : Les balises de base<span class="hljs-tag">&lt;/<span class="hljs-name">h2</span>&gt;</span>
+
+<span class="hljs-comment">&lt;!-- Sous sous-titre --&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">h3</span>&gt;</span>1.1 Les différentes balises<span class="hljs-tag">&lt;/<span class="hljs-name">h3</span>&gt;</span>
+
+<span class="hljs-tag">&lt;<span class="hljs-name">p</span>&gt;</span>On appelle balise tout mot clé entouré de deux &lt; &gt;. Les balises permettent de structurer le contenu d&#x27;une page web en lui donnant un sens. <span class="hljs-tag">&lt;/<span class="hljs-name">p</span>&gt;</span>
+</code></pre></div>
+<p>Tu dois <strong>garder une cohérence</strong> dans la hiérarchie de tes titres. C'est-à-dire ne pas faire de titre principal <code>&lt;h1&gt;</code> suivi d'un titre secondaire <code>&lt;h2&gt;</code> puis d'un titre principal <code>&lt;h1&gt;</code> à nouveau. Ou bien utiliser un <code>&lt;h3&gt;</code> pour le titre principal, ou de passer de <code>&lt;h1&gt;</code> à <code>&lt;h3&gt;</code> directement.</p>
+<p>Également une page web ne devrait avoir <strong>qu'un seul titre principal</strong>, donc qu'une seule balise <code>&lt;h1&gt;</code>.</p>
+<p>Il existe deux raisons principales à cela:</p>
+<ul>
+<li>C'est mieux pour le référencement des pages.</li>
+<li>C'est plus accessible pour les personnes qui utilisent des lecteurs d'écran, comme les personnes malvoyantes par exemple.</li>
+</ul>
+<div class="encadre encadre--note encadre--arrow"><div class="encadre__corps"><p><strong>🎯 À toi de jouer !</strong></p>
+<p>Exerce-toi sur les titres. Voici un article sur les chats : cet article ne contient que du texte brut. À toi d'utiliser les bonnes balises HTML pour les titres :</p>
+<div class="bloc-code"><div class="bloc-code__langue">html</div><pre><code class="hljs language-html">Qui sont les chats ?
+
+Les chats sont les membres de la famille des félins, et ils partagent de nombreuses caractéristiques avec leurs cousins ​​les lions, les tigres et les panthères. Les chats domestiques sont les plus populaires au monde et sont adorés par des millions de personnes pour leur compagnie et leur affectueuse nature.
+
+Quelle est l&#x27;histoire des chats ?
+
+
+Les premiers chats domestiques
+
+Les chats sont originaires d&#x27;Afrique, d&#x27;Asie et d&#x27;Europe, et ils ont été domestiqués il y a environ 9 000 ans. Les premiers chats domestiques étaient probablement des chats sauvages qui se sont approchés des humains pour profiter de leur nourriture. Au fil du temps, les chats et les humains ont développé une relation symbiotique, et les chats ont été apprivoisés et domestiqués.
+
+La domestication des chats en Europe
+
+Les chats ont été introduits en Europe au Moyen Âge, où ils ont été utilisés pour chasser les rats et les souris. Les nobles européens ont rapidement adopté les chats comme animaux de compagnie, et ils ont été très appréciés pour leur beauté et leur personnalité. Au fil du temps, les chats ont été introduits dans d&#x27;autres parties du monde, et ils ont rapidement gagné en popularité.
+
+
+Quelles sont les caractéristiques des chats ?
+
+Les chats sont des animaux très intelligents et ils ont un sens aigu de l&#x27;observation. Ils sont également très flexibles, et ils peuvent se contorsionner pour atteindre des endroits inaccessibles. Les chats sont capables de sauter jusqu&#x27;à cinq fois leur hauteur, et ils peuvent courir à des vitesses allant jusqu&#x27;à 45 km/h.
+
+Les chats ont une excellente vision nocturne, et ils sont très sensibles aux mouvements. Ils ont également un excellent sens de l&#x27;odorat, et ils peuvent détecter des odeurs à des distances allant jusqu&#x27;à 100 mètres. 
+</code></pre></div>
+<p>N'oublie pas de créer un nouveau document HTML, d'ajouter la structure, et de bien remplir la balise <code>&lt;head&gt;</code> comme nous l'avons vu précédemment.</p>
+</div></div>
+<h2>Mettre en avant du texte</h2>
+<p>Tu peux utiliser plusieurs balises pour mettre en évidence du texte, <strong>en fonction de la manière dont tu veux mettre le texte en avant</strong>.</p>
+<p>Voyons quelques exemples concrets.</p>
+<h3>Emphase</h3>
+<p>La balise <code>&lt;em&gt;</code> est utilisée pour marquer <strong>l'emphase d'un texte</strong>.</p>
+<p>Par exemple dans la phrase :</p>
+<div class="encadre encadre--note encadre--story"><div class="encadre__corps"><p>Les chats sont les membres de la famille des <em>félins</em>, et ils partagent de nombreuses caractéristiques avec leurs cousins ​​les lions, les tigres et les panthères.</p>
+</div></div>
+<p>Le mot &quot;félins&quot; est marqué avec insistance, et tu peux le mettre en avant avec la balise <code>&lt;em&gt;</code>. Le texte s'affichera <strong>en italique</strong> sur la plupart des navigateurs, et sera lu par les lecteurs d'écran comme un élément remarquable.</p>
+<div class="bloc-code"><div class="bloc-code__langue">html</div><pre><code class="hljs language-html">Les chats sont les membres de la famille des <span class="hljs-tag">&lt;<span class="hljs-name">em</span>&gt;</span>félins<span class="hljs-tag">&lt;/<span class="hljs-name">em</span>&gt;</span>, et ils partagent de nombreuses caractéristiques avec leurs cousins ​​les lions, les tigres et les panthères.
+</code></pre></div>
+<h3>Importance</h3>
+<p>Lorsqu'un texte est <strong>important</strong>, tu peux utiliser la balise <code>&lt;strong&gt;</code> pour le mettre en avant.</p>
+<p>Par exemple dans la phrase :</p>
+<div class="encadre encadre--note encadre--story"><div class="encadre__corps"><p>Les <strong>chats</strong> sont les membres de la famille des félins, et ils partagent de nombreuses caractéristiques avec leurs cousins ​​les lions, les tigres et les panthères.</p>
+</div></div>
+<p>Le mot &quot;chats&quot; est très important, et tu peux le mettre en avant avec la balise <code>&lt;strong&gt;</code>. Le texte s'affichera en gras sur la plupart des navigateurs, et sera lu par les lecteurs d'écran comme un élément important.</p>
+<div class="bloc-code"><div class="bloc-code__langue">html</div><pre><code class="hljs language-html">Les <span class="hljs-tag">&lt;<span class="hljs-name">strong</span>&gt;</span>chats<span class="hljs-tag">&lt;/<span class="hljs-name">strong</span>&gt;</span> sont les membres de la famille des félins, et ils partagent de nombreuses caractéristiques avec leurs cousins ​​les lions, les tigres et les panthères.
+</code></pre></div>
+<div class="encadre encadre--note encadre--arrow"><div class="encadre__corps"><p><strong>🎯 À toi de jouer !</strong></p>
+<p>Reprends le document que tu as créé avec le texte sur les chats, et ajoute de l'emphase et de l'importance sur les passages pertinants.</p>
+</div></div>
+<h3>Gras, Italique et soulignement</h3>
+<p>Tu as peut-être déjà vu ou tu verras peut-être à l'avenir les balises <code>&lt;b&gt;</code>,  <code>&lt;i&gt;</code> ou <code>&lt;u&gt;</code>, pour mettre du texte en gras, en italique ou souligner du texte.</p>
+<p>Ces balises <strong>doivent être évitées</strong> pour des raisons d'accessibilité et de référencement car elles ne donnent aucune sémantique. Elles changent <strong>uniquement le style des éléments.</strong></p>
+<p>Si tu veux afficher du texte en gras, italique ou souligné pour des questions esthétiques, tu dois passer par du CSS (que nous verrons dans de prochaines quêtes).</p>
+<p>Également, le texte souligné est associé à des liens hypertextes. Tu dois donc éviter d'utiliser cette balise pour souligner du texte, car tes utilisateurs pourraient penser qu'il s'agit d'un lien.</p>
+<h2>Bloc de citation</h2>
+<p>Tu peux réaliser des blocs de citations en HTML en utilisant la balise <code>&lt;blockquote&gt;</code>.</p>
+<p>Tu peux ajouter l'attribut <code>cite</code> avec en valeur le lien de la source de la citation :</p>
+<div class="bloc-code"><div class="bloc-code__langue">html</div><pre><code class="hljs language-html"><span class="hljs-tag">&lt;<span class="hljs-name">blockquote</span> <span class="hljs-attr">cite</span>=<span class="hljs-string">&quot;https://fr.wikipedia.org/wiki/Chat&quot;</span>&gt;</span>
+  Les chats sont les membres de la famille des félins, et ils partagent de nombreuses caractéristiques avec leurs cousins ​​les lions, les tigres et les panthères.
+<span class="hljs-tag">&lt;/<span class="hljs-name">blockquote</span>&gt;</span>
+</code></pre></div>
+<div class="encadre encadre--note encadre--arrow"><div class="encadre__corps"><p><strong>🎯  À toi de jouer !</strong></p>
+<p>Cherche une citation sur internet et ajoute la sur ta page.</p>
+</div></div>
+<h2>Abréviations</h2>
+<p>Tu peux indiquer des abréviations en HTML en utilisant la balise <code>&lt;abbr&gt;</code> :</p>
+<div class="bloc-code"><div class="bloc-code__langue">html</div><pre><code class="hljs language-html"><span class="hljs-tag">&lt;<span class="hljs-name">abbr</span> <span class="hljs-attr">title</span>=<span class="hljs-string">&quot;World Wide Web&quot;</span>&gt;</span>WWW<span class="hljs-tag">&lt;/<span class="hljs-name">abbr</span>&gt;</span>
+</code></pre></div>
+<div class="encadre encadre--note encadre--arrow"><div class="encadre__corps"><p><strong>🎯  À toi de jouer !</strong></p>
+<p>Ajoute les abréviations sur &quot;km&quot; et &quot;h&quot; dans la phrase &quot;Ils sont également très flexibles, et ils peuvent se contorsionner pour atteindre des endroits inaccessibles. Les chats sont capables de sauter jusqu'à cinq fois leur hauteur, et ils peuvent courir à des vitesses allant jusqu'à 45 km/h.&quot;</p>
+</div></div>
+<h2>Extrait de code</h2>
+<p>Tu peux indiquer qu'un bloc contient du code dans un langage de programmation avec la balise <code>&lt;pre&gt;</code> suivi de la balise <code>&lt;code&gt;</code>.</p>
+<p>La balise <code>&lt;pre&gt;</code> est utilisée pour les textes dont le formatage typographique affecte le sens du contenu, comme des poèmes, de l'art ASCII, des transcriptions et, bien sûr, des exemples de code informatique.</p>
+<p><strong>Attention:</strong> Si tu essaies d'écrire du code HTML dans ton document HTML, ton navigateur va l'interpréter comme du code HTML.</p>
+<p>Pour éviter cela,  remplace tous les caractères &quot;&amp;&quot; par <code>&amp;amp;</code>, tous les &quot;&lt;&quot; par <code>&amp;lt;</code>, tous les &quot;&gt;&quot; par <code>&amp;gt;</code> et tous les &quot;&quot;&quot; par <code>&amp;quot;</code> pour obtenir une version encodée en entités HTML.</p>
+<p>Par exemple :</p>
+<div class="bloc-code"><div class="bloc-code__langue">html</div><pre><code class="hljs language-html"><span class="hljs-tag">&lt;<span class="hljs-name">pre</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">code</span>&gt;</span>
+<span class="hljs-symbol">&amp;lt;</span>h1<span class="hljs-symbol">&amp;gt;</span>Hello, world<span class="hljs-symbol">&amp;lt;</span>/h1<span class="hljs-symbol">&amp;gt;</span>
+<span class="hljs-symbol">&amp;lt;</span>h2<span class="hljs-symbol">&amp;gt;</span>Welcome to my Website<span class="hljs-symbol">&amp;lt;</span>/h2<span class="hljs-symbol">&amp;gt;</span>
+    <span class="hljs-tag">&lt;/<span class="hljs-name">code</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">pre</span>&gt;</span>
+</code></pre></div>
+<div class="encadre encadre--note encadre--arrow"><div class="encadre__corps"><p><strong>🎯 À toi de jouer !</strong></p>
+<p>Ajoute un bloc de code à la fin de ton article pour essayer ces balises.</p>
+</div></div>
+<h2>Récapitulatif</h2>
+<ul>
+<li>
+<p>En HTML, la sémantique est très importante : utiliser la bonne balise est nécessaire pour des raisons d'accessibilités et de SEO.</p>
+</li>
+<li>
+<p>Pense à toujours utiliser la bonne hiérarchie des titres, et de n'utiliser qu'un seul <code>&lt;h1&gt;</code> sur chaque page.</p>
+</li>
+<li>
+<p>Tu peux mettre en avant du texte en utilisant les balises <code>&lt;em&gt;</code> ou <code>&lt;strong&gt;</code>. En revanche, tu ne dois pas utiliser les balises <code>&lt;b&gt;</code> <code>&lt;i&gt;</code> et <code>&lt;u&gt;</code> puisqu'elles ne donnent aucune sémantique au texte.</p>
+</li>
+</ul>
+<h2>Challenge</h2>
+<p>Mets en forme le travail que tu as réalisé durant cette quête et compare le résultat avec la solution qui est proposée !</p>
+<h3>Critères de validation</h3>
+<ul>
+<li>[ ] Les titres respectent les principes hiérarchiques</li>
+<li>[ ] Le texte de chaque paragraphe est dans une balise <code>&lt;p&gt;</code></li>
+<li>[ ] La page contient des éléments d'emphase et des éléments importants</li>
+<li>[ ] Un bloc citation est présent</li>
+<li>[ ] Un bloc abréviation est présent</li>
+<li>[ ] Un bloc de code est présent et le code est lisible</li>
+</ul>
+<details class="solution"><summary>Voir la solution</summary><div class="solution__corps"><div class="bloc-code"><div class="bloc-code__langue">html</div><pre><code class="hljs language-html"><span class="hljs-meta">&lt;!DOCTYPE <span class="hljs-keyword">html</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">html</span> <span class="hljs-attr">lang</span>=<span class="hljs-string">&quot;en&quot;</span>&gt;</span>
+
+<span class="hljs-tag">&lt;<span class="hljs-name">head</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">title</span>&gt;</span>Qui sont les chats | Le monde des chats<span class="hljs-tag">&lt;/<span class="hljs-name">title</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">link</span> <span class="hljs-attr">rel</span>=<span class="hljs-string">&quot;shortcut icon&quot;</span> <span class="hljs-attr">href</span>=<span class="hljs-string">&quot;favicon.ico&quot;</span> <span class="hljs-attr">type</span>=<span class="hljs-string">&quot;image/x-icon&quot;</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">meta</span> <span class="hljs-attr">name</span>=<span class="hljs-string">&quot;author&quot;</span> <span class="hljs-attr">content</span>=<span class="hljs-string">&quot;Bob Smith&quot;</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">meta</span> <span class="hljs-attr">name</span>=<span class="hljs-string">&quot;description&quot;</span>
+        <span class="hljs-attr">content</span>=<span class="hljs-string">&quot;Les chats sont des animaux fascinants, mais qui sont-ils vraiment? Découvrez-le dans cet article.&quot;</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">head</span>&gt;</span>
+
+<span class="hljs-tag">&lt;<span class="hljs-name">body</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">h1</span>&gt;</span>Qui sont les chats ?<span class="hljs-tag">&lt;/<span class="hljs-name">h1</span>&gt;</span>
+
+    <span class="hljs-tag">&lt;<span class="hljs-name">p</span>&gt;</span>Les <span class="hljs-tag">&lt;<span class="hljs-name">strong</span>&gt;</span>chats<span class="hljs-tag">&lt;/<span class="hljs-name">strong</span>&gt;</span> sont les membres de la famille des <span class="hljs-tag">&lt;<span class="hljs-name">em</span>&gt;</span>félins<span class="hljs-tag">&lt;/<span class="hljs-name">em</span>&gt;</span>, et ils partagent de nombreuses
+        caractéristiques avec leurs
+        cousins ​​les lions, les tigres et les panthères. Les chats domestiques sont les plus populaires au monde et
+        sont adorés par des millions de personnes pour leur compagnie et leur affectueuse nature.<span class="hljs-tag">&lt;/<span class="hljs-name">p</span>&gt;</span>
+
+    <span class="hljs-tag">&lt;<span class="hljs-name">h2</span>&gt;</span>Quelle est l&#x27;histoire des chats ?<span class="hljs-tag">&lt;/<span class="hljs-name">h2</span>&gt;</span>
+
+
+    <span class="hljs-tag">&lt;<span class="hljs-name">h3</span>&gt;</span>Les premiers chats domestiques<span class="hljs-tag">&lt;/<span class="hljs-name">h3</span>&gt;</span>
+
+    <span class="hljs-tag">&lt;<span class="hljs-name">p</span>&gt;</span>Les chats sont originaires d&#x27;Afrique, d&#x27;Asie et d&#x27;Europe, et <span class="hljs-tag">&lt;<span class="hljs-name">em</span>&gt;</span>ils ont été domestiqués il y a environ 9 000
+            ans<span class="hljs-tag">&lt;/<span class="hljs-name">em</span>&gt;</span>.
+        Les premiers chats domestiques étaient probablement des chats sauvages qui se sont approchés des humains pour
+        profiter de leur nourriture. Au fil du temps, les chats et les humains ont développé une relation symbiotique,
+        et les
+        chats ont été apprivoisés et domestiqués.<span class="hljs-tag">&lt;/<span class="hljs-name">p</span>&gt;</span>
+
+    <span class="hljs-tag">&lt;<span class="hljs-name">h3</span>&gt;</span>La domestication des chats en Europe<span class="hljs-tag">&lt;/<span class="hljs-name">h3</span>&gt;</span>
+
+    <span class="hljs-tag">&lt;<span class="hljs-name">p</span>&gt;</span>Les chats ont été introduits en Europe au <span class="hljs-tag">&lt;<span class="hljs-name">strong</span>&gt;</span>Moyen Âge<span class="hljs-tag">&lt;/<span class="hljs-name">strong</span>&gt;</span>, où ils ont été utilisés pour <span class="hljs-tag">&lt;<span class="hljs-name">em</span>&gt;</span>chasser
+            les rats et les souris<span class="hljs-tag">&lt;/<span class="hljs-name">em</span>&gt;</span>.
+        Les nobles européens ont rapidement adopté les chats comme animaux de compagnie, et ils ont été très appréciés
+        pour
+        leur beauté et leur personnalité. Au fil du temps, les chats ont été introduits dans d&#x27;autres parties du monde,
+        et
+        ils ont rapidement gagné en popularité.<span class="hljs-tag">&lt;/<span class="hljs-name">p</span>&gt;</span>
+
+
+    <span class="hljs-tag">&lt;<span class="hljs-name">h2</span>&gt;</span>Quelles sont les caractéristiques des chats ?<span class="hljs-tag">&lt;/<span class="hljs-name">h2</span>&gt;</span>
+
+    <span class="hljs-tag">&lt;<span class="hljs-name">p</span>&gt;</span>Les chats sont des animaux très <span class="hljs-tag">&lt;<span class="hljs-name">strong</span>&gt;</span>intelligents<span class="hljs-tag">&lt;/<span class="hljs-name">strong</span>&gt;</span> et ils ont un sens aigu de l&#x27;observation. Ils sont
+        également très
+        flexibles, et ils peuvent se contorsionner pour atteindre des endroits inaccessibles. Les chats sont capables de
+        sauter jusqu&#x27;à cinq fois leur hauteur, et <span class="hljs-tag">&lt;<span class="hljs-name">em</span>&gt;</span>ils peuvent courir à des vitesses allant jusqu&#x27;à 45 <span class="hljs-tag">&lt;<span class="hljs-name">abbr</span>
+                <span class="hljs-attr">title</span>=<span class="hljs-string">&quot;Kilomètres&quot;</span>&gt;</span>km<span class="hljs-tag">&lt;/<span class="hljs-name">abbr</span>&gt;</span>/<span class="hljs-tag">&lt;<span class="hljs-name">abbr</span> <span class="hljs-attr">title</span>=<span class="hljs-string">&quot;heure&quot;</span>&gt;</span>h<span class="hljs-tag">&lt;/<span class="hljs-name">abbr</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">em</span>&gt;</span>.
+
+        Les chats ont une <span class="hljs-tag">&lt;<span class="hljs-name">em</span>&gt;</span>excellente vision nocturne<span class="hljs-tag">&lt;/<span class="hljs-name">em</span>&gt;</span>, et ils sont très sensibles aux mouvements. Ils ont
+        également un
+        <span class="hljs-tag">&lt;<span class="hljs-name">em</span>&gt;</span>excellent sens de l&#x27;odorat<span class="hljs-tag">&lt;/<span class="hljs-name">em</span>&gt;</span>, et ils peuvent détecter des odeurs à des distances allant jusqu&#x27;à <span class="hljs-tag">&lt;<span class="hljs-name">em</span>&gt;</span>100
+            mètres.<span class="hljs-tag">&lt;/<span class="hljs-name">em</span>&gt;</span>
+    <span class="hljs-tag">&lt;/<span class="hljs-name">p</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">h2</span>&gt;</span>Citation sur les chats:<span class="hljs-tag">&lt;/<span class="hljs-name">h2</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">blockquote</span> <span class="hljs-attr">cite</span>=<span class="hljs-string">&quot;https://absolumentchats.com/60-citations-sur-les-chats/&quot;</span>&gt;</span>
+        « Lorsqu’un chat accorde sa confiance à un homme, c’est sa plus belle offrande. »
+    <span class="hljs-tag">&lt;/<span class="hljs-name">blockquote</span>&gt;</span>
+
+    <span class="hljs-tag">&lt;<span class="hljs-name">h2</span>&gt;</span>Envie de coder?<span class="hljs-tag">&lt;/<span class="hljs-name">h2</span>&gt;</span>
+
+    <span class="hljs-tag">&lt;<span class="hljs-name">pre</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">code</span>&gt;</span>
+<span class="hljs-symbol">&amp;lt;</span>h1<span class="hljs-symbol">&amp;gt;</span>Hello, world<span class="hljs-symbol">&amp;lt;</span>/h1<span class="hljs-symbol">&amp;gt;</span>
+<span class="hljs-symbol">&amp;lt;</span>h2<span class="hljs-symbol">&amp;gt;</span>Welcome to my Website<span class="hljs-symbol">&amp;lt;</span>/h2<span class="hljs-symbol">&amp;gt;</span>
+        <span class="hljs-tag">&lt;/<span class="hljs-name">code</span>&gt;</span>
+    <span class="hljs-tag">&lt;/<span class="hljs-name">pre</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">body</span>&gt;</span>
+
+<span class="hljs-tag">&lt;/<span class="hljs-name">html</span>&gt;</span>
+</code></pre></div>
+</div></details>
+
+  </div>
+  <section class="ressources-quete">
+  <h2>Ressources partagées sur cette quête</h2>
+  <ul class="ressources-liste">
+    <li><a href="https://www.leptidigital.fr/productivite/caracteres-speciaux-html-2-19297/" target="_blank" rel="noopener noreferrer">Petite liste des caractères spéciaux HTML qui peuvent être utiles</a><span class="ressources-liste__url">https://www.leptidigital.fr/productivite/caracteres-speciaux-html-2-19297/</span></li>
+    <li><a href="https://ronan-hello.fr/series/html/balises-semantiques-html" target="_blank" rel="noopener noreferrer">Un complément sur l'utilisation des balises sémantiques afin d'optimiser le contenu de ses pages</a><span class="ressources-liste__url">https://ronan-hello.fr/series/html/balises-semantiques-html</span></li>
+  </ul>
+</section>
+</article>
+
+<nav class="nav-quete">
+  <a class="nav-quete__lien nav-quete__lien--prec" href="../../html/002-html-chapitre-2-what-s-in-your-head/index.html">
+           <span class="nav-quete__sens">← Précédent</span>
+           <span class="nav-quete__titre">👩‍🏫 HTML - Chapitre 2 | What's in your &lt;head&gt; ?</span>
+         </a>
+  <a class="nav-quete__lien nav-quete__lien--suiv" href="../../html/004-html-chapitre-4-les-liens-hypertexte/index.html">
+           <span class="nav-quete__sens">Suivant →</span>
+           <span class="nav-quete__titre">👩‍🏫 HTML - Chapitre 4 | Les liens hypertexte</span>
+         </a>
+</nav>
+</main>
+<footer class="pied">
+  <p>Archive personnelle des cours suivis à la Wild Code School. Copie hors ligne à usage strictement privé.</p>
+</footer>
+
+<script src="../../assets/copie-code.js"></script>
+<script src="../../assets/progression.js"></script>
+</body>
+</html>

@@ -1,0 +1,224 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>04.3 - Les bases de la modélisation : MPD — Archives WCS</title>
+<link rel="stylesheet" href="../../assets/style.css">
+</head>
+<body style="--teinte:#F7A356">
+<header class="entete">
+  <a class="entete__marque" href="../../index.html">Archives Wild Code School</a>
+</header>
+<main class="contenu">
+<nav class="ariane"><a href="../../index.html">Accueil</a><span class="ariane__sep">›</span><a href="../../base-de-donnees/index.html">Base de données</a><span class="ariane__sep">›</span><span aria-current="page">04.3 - Les bases de la modélisation : MPD</span></nav>
+
+<article class="quete">
+  <header class="quete__entete">
+    <a class="pastille pastille--teintee" href="../../base-de-donnees/index.html">Base de données</a>
+    <h1>04.3 - Les bases de la modélisation : MPD</h1>
+    <p class="quete__meta">Quête 7 sur 9 · 1 image archivée</p>
+  </header>
+  <div class="cours">
+<h2>Objectifs</h2>
+<ul>
+<li>Approfondir la méthode Merise</li>
+<li>Comprendre la construction d'un MPD</li>
+</ul>
+<h2>Introduction</h2>
+<p>Pour pouvoir créer une base de données, tu as découvert la construction d'un MCD et sa conversion en MLD. La dernière étape est de réaliser un MPD.</p>
+<h2>Sommaire</h2>
+<h2>La méthode Merise (rappels)</h2>
+<p>Modéliser une base de données est une étape cruciale mais complexe. Elle dépend avant tout de la compréhension des règles métiers, c'est-à-dire des <strong>besoins du client</strong>. Parfois, plusieurs façons de modéliser une base peuvent répondre à ces besoins.</p>
+<p>Bref, cela demande avant tout de la <strong>rigueur</strong> et de <strong>l’expérience</strong>. La méthodologie Merise (datant des années 70) apporte des règles précises pour t’aider à modéliser convenablement tes données.</p>
+<div class="encadre encadre--warning"><div class="encadre__titre">Attention</div><div class="encadre__corps"><p>La méthode Merise est très vaste. Nous ne la couvrirons pas de manière exhaustive. Nous allons l'aborder de manière <em>pragmatique</em>.</p>
+<p>Avec le contenu de cette quête, tu pourras réaliser rapidement des modélisations simples. N’hésite pas à t’intéresser davantage à Merise par la suite, afin d’acquérir un certain vocabulaire et des solutions pour résoudre des cas plus complexes.</p>
+</div></div>
+<p>Dans le cadre de la formation, tu ne vas utiliser &quot;que&quot; 3 modèles de la méthode Merise. Dans l'ordre :</p>
+<ul>
+<li>MCD : Modèle Conceptuel de Données</li>
+<li>MLD : Modèle Logique de Données</li>
+<li>MPD : Modèle Physique de Données</li>
+</ul>
+<p>Cette quête décrit l'étape 3 : le <strong>Modèle Physique de Données (MPD)</strong>.</p>
+<h2>MPD : spécifique à ton SGBD</h2>
+<p>La partie MPD (Modèle Physique de données) est censée prendre en compte les spécificités du SGBDR utilisé. Pour faire simple, tu dois choisir les types de tes champs : certains types particuliers peuvent être spécifiques à des SGBDR et ne pas exister sur d'autres. Le choix de ton système de base de données et la connaissance de ses types spécifiques sera donc important pour cette partie.</p>
+<p>Rassure-toi. Pour les types les plus courants (texte, nombre, date...), la plupart des systèmes basés sur SQL te proposeront les mêmes outils. Pour faire ton MPD, tu peux même directement écrire le script SQL de création de ta base de données :</p>
+<div class="bloc-code"><div class="bloc-code__langue">sql</div><pre><code class="hljs language-sql"><span class="hljs-keyword">CREATE TABLE</span> wizard (
+    id <span class="hljs-type">INT</span> <span class="hljs-keyword">PRIMARY KEY</span> AUTO_INCREMENT,
+    firstname <span class="hljs-type">VARCHAR</span>(<span class="hljs-number">100</span>) <span class="hljs-keyword">NOT NULL</span>,
+    lastname <span class="hljs-type">VARCHAR</span>(<span class="hljs-number">100</span>) <span class="hljs-keyword">NOT NULL</span>,
+    school_id <span class="hljs-type">INT</span> <span class="hljs-keyword">NOT NULL</span>
+);
+</code></pre></div>
+<p>Un point important sur <code>school_id</code>. Si le sorcier avec l’id <strong>1</strong> (par exemple Harry Potter) est inscrit à Hogwarts (avec l’id <strong>2</strong> dans la table <code>school</code>), le champ <code>school_id</code> de la table <code>wizard</code> prendra la valeur <strong>2</strong> pour le sorcier <strong>1</strong>. Les tables sont donc reliées par ces champs <code>school_id</code> de la table <code>wizard</code> et <code>id</code> de la table school.</p>
+<div class="colonnes"><div class="colonne"><p>School :</p>
+<div class="table-wrap"><table><thead>
+<tr>
+<th>id</th>
+<th>name</th>
+<th>capacity</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>2</td>
+<td>Hogwarts</td>
+<td>999</td>
+</tr>
+</tbody>
+</table></div></div><div class="colonne"><p>Wizard :</p>
+<div class="table-wrap"><table><thead>
+<tr>
+<th>id</th>
+<th>firstname</th>
+<th>lastname</th>
+<th>school_id</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>Harry</td>
+<td>Potter</td>
+<td>2</td>
+</tr>
+</tbody>
+</table></div></div></div>
+<p>Et le tour est joué !</p>
+<p>Enfin presque... Imagine (via un INSERT ou un UPDATE) que la valeur <strong>8</strong> soit insérée dans le <code>school_id</code> d’un élève, alors que cette école n’existerait pas dans la table <code>school</code>.</p>
+<div class="colonnes"><div class="colonne"><p>School :</p>
+<div class="table-wrap"><table><thead>
+<tr>
+<th>id</th>
+<th>name</th>
+<th>capacity</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>2</td>
+<td>Hogwarts</td>
+<td>999</td>
+</tr>
+</tbody>
+</table></div></div><div class="colonne"><p>Wizard :</p>
+<div class="table-wrap"><table><thead>
+<tr>
+<th>id</th>
+<th>firstname</th>
+<th>lastname</th>
+<th>school_id</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>Harry</td>
+<td>Potter</td>
+<td>2</td>
+</tr>
+<tr>
+<td>2</td>
+<td>Hocus</td>
+<td>Pocus</td>
+<td>8 ❌</td>
+</tr>
+</tbody>
+</table></div></div></div>
+<p>De même, si le tuple <strong>2</strong> est effacé de la table <code>school</code>, Harry se retrouverait alors relié à une école qui n’existe plus. Tu te retrouves avec une incohérence dans l’intégrité de tes données, ce qui entraînera à coup sûr divers bugs dans ton application !</p>
+<p>Pour pallier ce problème, tu peux définir une <strong>contrainte de clé étrangère</strong>. Elle permet d’empêcher une insertion dans la table <code>wizard</code> si la valeur du <code>school_id</code> associée n’existe pas dans la table <code>school</code> (idem, elle empêche la suppression d’un tuple qui serait relié à des données dans une autre table). Ainsi, cela te protège de nombreuses erreurs. C’est donc <strong>indispensable</strong> pour conserver des données saines et cohérentes.</p>
+<p>Pour définir une contrainte de clé étrangère, une fois le champ <code>school_id</code> créé, tu peux utiliser la commande SQL suivante :</p>
+<div class="bloc-code"><div class="bloc-code__langue">sql</div><pre><code class="hljs language-sql"><span class="hljs-keyword">ALTER TABLE</span> wizard
+  <span class="hljs-keyword">ADD CONSTRAINT</span> fk_wizard_school
+  <span class="hljs-keyword">FOREIGN KEY</span> (school_id)
+  <span class="hljs-keyword">REFERENCES</span> school(id);
+</code></pre></div>
+<p>Tu peux également définir une contrainte de clé étrangère directement à la création d’une table :</p>
+<div class="bloc-code"><div class="bloc-code__langue">sql</div><pre><code class="hljs language-sql"><span class="hljs-keyword">CREATE TABLE</span> wizard (
+    id <span class="hljs-type">INT</span> <span class="hljs-keyword">PRIMARY KEY</span> AUTO_INCREMENT,
+    firstname <span class="hljs-type">VARCHAR</span>(<span class="hljs-number">100</span>) <span class="hljs-keyword">NOT NULL</span>,
+    lastname <span class="hljs-type">VARCHAR</span>(<span class="hljs-number">100</span>) <span class="hljs-keyword">NOT NULL</span>,
+    school_id <span class="hljs-type">INT</span> <span class="hljs-keyword">NOT NULL</span>,
+    <span class="hljs-keyword">CONSTRAINT</span> fk_wizard_school
+        <span class="hljs-keyword">FOREIGN KEY</span> (school_id)
+        <span class="hljs-keyword">REFERENCES</span> school(id)
+);
+</code></pre></div>
+<p>Dans les deux cas, les mots-clés à retenir sont :</p>
+<ul>
+<li>CONSTRAINT  : tu indiques ici le nom que tu souhaites, qui te permet d’identifier ta contrainte.</li>
+<li>FOREIGN KEY() : indique que tu souhaites créer une contrainte de type “clé étrangère” sur le champ indiqué entre les parenthèses, ici <code>school_id</code>, de la table <code>wizard</code>.</li>
+<li>REFERENCES () : et ce dernier mot-clé indique que la clé étrangère fait référence ici au champ id de la table <code>school</code>.</li>
+</ul>
+<a class="ressource" href="https://www.w3schools.com/sql/sql_foreignkey.asp" target="_blank" rel="noopener noreferrer">
+  <div class="ressource__icone">↗</div>
+  <div class="ressource__texte">
+    <div class="ressource__titre">https://www.w3schools.com/sql/sql_foreignkey.asp</div>
+    <div class="ressource__desc"><p>Plus d’information sur la syntaxe de la contrainte de clé étrangère</p>
+</div>
+    <div class="ressource__hote">w3schools.com</div>
+  </div>
+</a>
+<h2>Challenge</h2>
+<p>Bienvenue au cours de potions magiques (étape 3) !</p>
+<p>Chaque potion que tu vas créer a un nom. Les potions utilisent des ingrédients, et chaque ingrédient est défini par son nom.</p>
+<p>Ça fait beaucoup d’informations à retenir... Pour ne rien oublier, tu aimerais stocker en base de données quels ingrédients sont nécessaires pour chaque potion. J'ai travaillé ce MCD et ce MLD pour t'aider :</p>
+<p><img src="images/001-challenge.png" alt="" loading="lazy"></p>
+<div class="encadre encadre--info"><div class="encadre__titre">Info</div><div class="encadre__corps"><p><a href="https://harrypotter.fandom.com/fr/wiki/Potions" target="_blank" rel="noopener noreferrer">Tu trouveras ici</a> quelques potions et ingrédients, afin de mieux comprendre la problématique métier et d'évaluer la bonne taille pour tes noms.</p>
+</div></div>
+<p>Propose <strong>un MPD</strong> qui correspond au MLD.</p>
+<p>Astuce : pour la table <code>ingredient_potion</code>, tu auras besoin de créer <a href="https://www.geeksforgeeks.org/composite-key-in-sql/" target="_blank" rel="noopener noreferrer">une clé primaire composite</a>.</p>
+<h3>Critères de validation</h3>
+<ul>
+<li>Le code SQL de la modélisation est posté</li>
+<li>La modélisation permet de stocker les informations sur les ingrédients utilisés dans chaque potion.</li>
+</ul>
+<p>Une solution possible :</p>
+<div class="bloc-code"><div class="bloc-code__langue">sql</div><pre><code class="hljs language-sql"><span class="hljs-keyword">CREATE TABLE</span> potion (
+    id <span class="hljs-type">INT</span> <span class="hljs-keyword">PRIMARY KEY</span> AUTO_INCREMENT,
+    name <span class="hljs-type">VARCHAR</span>(<span class="hljs-number">40</span>) <span class="hljs-keyword">NOT NULL</span>
+);
+
+<span class="hljs-keyword">CREATE TABLE</span> ingredient (
+    id <span class="hljs-type">INT</span> <span class="hljs-keyword">PRIMARY KEY</span> AUTO_INCREMENT,
+    name <span class="hljs-type">VARCHAR</span>(<span class="hljs-number">40</span>) <span class="hljs-keyword">NOT NULL</span>
+);
+
+<span class="hljs-keyword">CREATE TABLE</span> ingredient_potion (
+    ingredient_id <span class="hljs-type">INT</span> <span class="hljs-keyword">NOT NULL</span>,
+    potion_id <span class="hljs-type">INT</span> <span class="hljs-keyword">NOT NULL</span>,
+    <span class="hljs-keyword">CONSTRAINT</span> pk_ingredient_potion
+        <span class="hljs-keyword">PRIMARY KEY</span> (ingredient_id, potion_id),
+    <span class="hljs-keyword">CONSTRAINT</span> fk_ingredient_potion_ingredient
+        <span class="hljs-keyword">FOREIGN KEY</span> (ingredient_id)
+        <span class="hljs-keyword">REFERENCES</span> ingredient(id),
+    <span class="hljs-keyword">CONSTRAINT</span> fk_ingredient_potion_potion
+        <span class="hljs-keyword">FOREIGN KEY</span> (potion_id)
+        <span class="hljs-keyword">REFERENCES</span> potion(id)
+);
+</code></pre></div>
+
+  </div>
+  
+</article>
+
+<nav class="nav-quete">
+  <a class="nav-quete__lien nav-quete__lien--prec" href="../../base-de-donnees/006-04-2-les-bases-de-la-modelisation-mld/index.html">
+           <span class="nav-quete__sens">← Précédent</span>
+           <span class="nav-quete__titre">04.2 - Les bases de la modélisation : MLD</span>
+         </a>
+  <a class="nav-quete__lien nav-quete__lien--suiv" href="../../base-de-donnees/008-05-les-jointures/index.html">
+           <span class="nav-quete__sens">Suivant →</span>
+           <span class="nav-quete__titre">05 - Les jointures</span>
+         </a>
+</nav>
+</main>
+<footer class="pied">
+  <p>Archive personnelle des cours suivis à la Wild Code School. Copie hors ligne à usage strictement privé.</p>
+</footer>
+
+<script src="../../assets/copie-code.js"></script>
+<script src="../../assets/progression.js"></script>
+</body>
+</html>

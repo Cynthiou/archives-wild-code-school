@@ -1,0 +1,76 @@
+{
+  "id": 520,
+  "titre": "06 - SQL Group By",
+  "titres": {
+    "fr": "06 - SQL Group By"
+  },
+  "theme": {
+    "id": 8,
+    "slug": "database",
+    "nom": "Base de données"
+  },
+  "creeLe": "2019-04-05T13:43:48.225+02:00",
+  "difficulte": "",
+  "dureeEstimee": null,
+  "modeValidation": "student",
+  "chapitres": [
+    {
+      "id": 14523,
+      "type": "content",
+      "langue": "fr",
+      "majLe": "2024-12-09T16:10:37.023+01:00",
+      "caracteres": 19266
+    },
+    {
+      "id": 12513,
+      "type": "solution",
+      "langue": "fr",
+      "majLe": "2024-10-31T18:27:33.616+01:00",
+      "caracteres": 1992
+    }
+  ],
+  "ressources": [
+    {
+      "link": "https://sql.sh/fonctions/date-heure/dayofweek",
+      "description": "Pour la request 3"
+    },
+    {
+      "link": "https://sql.sh/cours/group-by",
+      "description": "Pertinent et m'a fait percuter pour realiser le challenge !"
+    },
+    {
+      "link": "https://fxjollois.github.io/cours-sql/",
+      "description": "Cours et Exercices complets et concis, 3 jours complets et vous serez des rois de SQL -> Correction sur son git : https://gist.github.com/fxjollois/9778791a5e65ace16f96cf2be37a35f3"
+    },
+    {
+      "link": "https://www.youtube.com/watch?v=guJAF0NMHII",
+      "description": "Explication du GROUP BY en vidéo !"
+    },
+    {
+      "link": "https://stackoverflow.com/questions/6734276/how-to-combine-group-by-order-by-and-having",
+      "description": "Intéressant pour la question 2 du challenge !"
+    },
+    {
+      "link": "https://learnsql.fr/blog/la-fonction-sql-count-expliquee-avec-7-exemples",
+      "description": "Utilisation du COUNT dans différents cas de figure, très pratique !"
+    },
+    {
+      "link": "http://e-ressources.univ-avignon.fr/sgbd-exemple/SQL/RequetteSELECT.pdf",
+      "description": "Un petit pdf récapitulatif en lien avec la ressource précédente "
+    },
+    {
+      "link": "https://www.w3schools.com/sql/func_mysql_dayname.asp",
+      "description": "Pour définir le jour de la semaine : fonction DAYNAME(date)"
+    },
+    {
+      "link": "https://www.youtube.com/user/temoinderien",
+      "description": "Trés bonne explication de la façon de construire une requête complexe sql !"
+    },
+    {
+      "link": "https://www.youtube.com/watch?v=umB_0eDOrp8",
+      "description": "Au-delà de la vidéo, image vraiment très visuelle des différents types de jointures. A voir !"
+    }
+  ],
+  "urlOrigine": "https://odyssey.wildcodeschool.com/quests/520",
+  "archiveLe": "2026-09-02T20:51:53.516Z"
+}

@@ -1,0 +1,40 @@
+{
+  "id": 2332,
+  "titre": "👩‍🏫 React Basics 02 - Pokédex - Ton premier composant",
+  "titres": {
+    "fr": "👩‍🏫 React Basics 02 - Pokédex - Ton premier composant"
+  },
+  "theme": {
+    "id": 23,
+    "slug": "react",
+    "nom": "React - Bases"
+  },
+  "creeLe": "2022-11-03T15:09:07.273+01:00",
+  "difficulte": "0",
+  "dureeEstimee": null,
+  "modeValidation": "student",
+  "chapitres": [
+    {
+      "id": 17674,
+      "type": "content",
+      "langue": "fr",
+      "majLe": "2025-03-31T20:14:08.321+02:00",
+      "caracteres": 9005
+    },
+    {
+      "id": 12328,
+      "type": "solution",
+      "langue": "fr",
+      "majLe": "2024-10-09T09:37:20.266+02:00",
+      "caracteres": 583
+    }
+  ],
+  "ressources": [
+    {
+      "link": "https://www.youtube.com/watch?v=lza4-Jvkrac",
+      "description": "Introduction à JSX (en français)"
+    }
+  ],
+  "urlOrigine": "https://odyssey.wildcodeschool.com/quests/2332",
+  "archiveLe": "2026-09-02T20:55:02.874Z"
+}

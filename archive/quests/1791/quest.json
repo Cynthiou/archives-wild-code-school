@@ -1,0 +1,33 @@
+{
+  "id": 1791,
+  "titre": "React Intermédiaire 03.2 - Contrôler la saisie dans un formulaire via le state",
+  "titres": {
+    "fr": "React Intermédiaire 03.2 - Contrôler la saisie dans un formulaire via le state"
+  },
+  "theme": {
+    "id": 78,
+    "slug": "react-intermediate",
+    "nom": "React - Intermédiaire"
+  },
+  "creeLe": "2021-08-20T16:13:00.694+02:00",
+  "difficulte": "0",
+  "dureeEstimee": null,
+  "modeValidation": "student",
+  "chapitres": [
+    {
+      "id": 12364,
+      "type": "content",
+      "langue": "fr",
+      "majLe": "2024-10-14T16:59:53.286+02:00",
+      "caracteres": 19162
+    }
+  ],
+  "ressources": [
+    {
+      "link": "https://www.youtube.com/watch?v=h2a0cSC1Vz8&list=LL&index=1&t=3697s",
+      "description": "Il rappele en video les principes de react mais en plus il y a une partie formulaire..."
+    }
+  ],
+  "urlOrigine": "https://odyssey.wildcodeschool.com/quests/1791",
+  "archiveLe": "2026-09-02T20:54:00.877Z"
+}

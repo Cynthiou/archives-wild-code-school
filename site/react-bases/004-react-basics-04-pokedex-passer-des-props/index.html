@@ -1,0 +1,412 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>👩‍🏫 React Basics 04 - Pokédex - Passer des props — Archives WCS</title>
+<link rel="stylesheet" href="../../assets/style.css">
+</head>
+<body style="--teinte:#4DC4DE">
+<header class="entete">
+  <a class="entete__marque" href="../../index.html">Archives Wild Code School</a>
+</header>
+<main class="contenu">
+<nav class="ariane"><a href="../../index.html">Accueil</a><span class="ariane__sep">›</span><a href="../../react-bases/index.html">React - Bases</a><span class="ariane__sep">›</span><span aria-current="page">👩‍🏫 React Basics 04 - Pokédex - Passer des props</span></nav>
+
+<article class="quete">
+  <header class="quete__entete">
+    <a class="pastille pastille--teintee" href="../../react-bases/index.html">React - Bases</a>
+    <h1>👩‍🏫 React Basics 04 - Pokédex - Passer des props</h1>
+    <p class="quete__meta">Quête 4 sur 10 · 2 images archivées</p>
+  </header>
+  <div class="cours">
+<h2>Objectifs</h2>
+<ul>
+<li>Passer des données d'un composant à un autre grâce aux props</li>
+</ul>
+<h2>Pré-requis</h2>
+<ol class="etapes"><li class="etape"><div class="etape__puce">1</div><div class="etape__contenu"><h4 class="etape__titre">Valider les quêtes suivantes</h4><div class="renvois"><div class="renvois__titre">Quêtes liées</div><ul><li><a href="../../react-bases/001-react-basics-01-pokedex-introduction/index.html">Quête 2328</a></li><li><a href="../../react-bases/002-react-basics-02-pokedex-ton-premier-composant/index.html">Quête 2332</a></li><li><a href="../../react-bases/003-react-basics-03-pokedex-afficher-des-donnees-dans-un/index.html">Quête 2336</a></li></ul></div>
+</div></li></ol>
+<div class="encadre encadre--warning"><div class="encadre__titre">Attention</div><div class="encadre__corps"><p>Avant de commencer cette quête, modifie le fichier <code>tsconfig.app.json</code> de ton projet pokedex. Tu dois supprimer les lignes qui commencent par <code>-</code>, et ajouter les lignes qui commencent par <code>+</code> :</p>
+<div class="bloc-code"><div class="bloc-code__langue">diff</div><pre><code class="hljs language-diff">{
+  &quot;compilerOptions&quot;: {
+    &quot;target&quot;: &quot;ES2020&quot;,
+    &quot;useDefineForClassFields&quot;: true,
+    &quot;lib&quot;: [&quot;ES2020&quot;, &quot;DOM&quot;, &quot;DOM.Iterable&quot;],
+    &quot;module&quot;: &quot;ESNext&quot;,
+    &quot;skipLibCheck&quot;: true,
+
+    /* Bundler mode */
+    &quot;moduleResolution&quot;: &quot;bundler&quot;,
+    &quot;allowImportingTsExtensions&quot;: true,
+    &quot;isolatedModules&quot;: true,
+    &quot;moduleDetection&quot;: &quot;force&quot;,
+    &quot;noEmit&quot;: true,
+    &quot;jsx&quot;: &quot;react-jsx&quot;,
+
+    /* Linting */
+    &quot;strict&quot;: true,
+    &quot;noUnusedLocals&quot;: true,
+    &quot;noUnusedParameters&quot;: true,
+<span class="hljs-deletion">-    &quot;noFallthroughCasesInSwitch&quot;: true</span>
+<span class="hljs-addition">+    &quot;noFallthroughCasesInSwitch&quot;: true,</span>
+<span class="hljs-addition">+    &quot;noImplicitAny&quot;: false</span>
+  },
+  &quot;include&quot;: [&quot;src&quot;]
+}
+</code></pre></div>
+<p>Les notions abordées dans cette quête vont déclencher des nouveaux messages de Typescript. Pour faire les choses une étape à la fois, nous les désactivons pour l'instant et nous les traiterons dans la quête suivante.</p>
+</div></div>
+<h2>Introduction</h2>
+<p>Dans les quêtes précédentes, nous avons vu comment créer et afficher des composants, comment afficher des données dans des composants, ainsi que comment utiliser des expressions dans le JSX.</p>
+<p>Dans cette quête, tu vas découvrir comment passer des valeurs d'un composant à un autre.</p>
+<p><img src="images/001-introduction.png" alt="" loading="lazy"></p>
+<h2>Sommaire</h2>
+<h2>Une histoire d'arborescence</h2>
+<p>Si tu te souviens bien, dans les quêtes précédentes, nous avons vu la hiérarchie des composants dans React. Les <code>props</code> dans React permettent de faire passer des informations d'un composant à un autre. Mais attention : les <code>props</code> peuvent être transmises <strong>uniquement</strong> d'un composant <strong>parent</strong> vers un composant <strong>enfant</strong>.</p>
+<p>Regarde ce schéma :</p>
+<p><img src="images/002-app-est-parent-des-2-composants-card-et-chaque.jpg" alt="App est parent des 2 composants Card et chaque composant Card est parent d'un composant Button" loading="lazy"></p>
+<p>Tu peux voir que <code>App</code> peut transmettre des <code>props</code> à chacun de ses composants <code>Card</code>. Chaque composant <code>Card</code> peut lui-même transmettre des <code>props</code> à son composant <code>Button</code>.</p>
+<h2>Comment procéder ?</h2>
+<p>Garde en tête que les composants React sont des fonctions. Tu peux imaginer le code suivant en JavaScript &quot;vanilla&quot; :</p>
+<div class="bloc-code"><div class="bloc-code__langue">js</div><pre><code class="hljs language-js">!--- <span class="hljs-title class_">App</span>.<span class="hljs-property">js</span>
+<span class="hljs-keyword">import</span> <span class="hljs-title class_">SayHello</span> <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;./SayHello&quot;</span>;
+
+<span class="hljs-keyword">function</span> <span class="hljs-title function_">App</span>(<span class="hljs-params"></span>) {
+  <span class="hljs-variable language_">document</span>.<span class="hljs-property">body</span>.<span class="hljs-property">innerText</span> = <span class="hljs-title class_">SayHello</span>(<span class="hljs-string">&quot;Wilder&quot;</span>);
+}
+
+<span class="hljs-keyword">export</span> <span class="hljs-keyword">default</span> <span class="hljs-title class_">App</span>;
+!--- <span class="hljs-title class_">SayHello</span>.<span class="hljs-property">js</span>
+<span class="hljs-keyword">function</span> <span class="hljs-title function_">SayHello</span>(<span class="hljs-params">name</span>) {
+  <span class="hljs-keyword">return</span> <span class="hljs-string">`Hello <span class="hljs-subst">${name}</span>!`</span>;
+}
+
+<span class="hljs-keyword">export</span> <span class="hljs-keyword">default</span> <span class="hljs-title class_">SayHello</span>;
+!--- index.<span class="hljs-property">js</span>
+<span class="hljs-keyword">import</span> <span class="hljs-title class_">App</span> <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;./App&quot;</span>;
+
+<span class="hljs-title class_">App</span>();
+</code></pre></div>
+<div class="encadre encadre--note encadre--arrow"><div class="encadre__corps"><p>Dans <code>App.js</code>, nous avons créé une fonction <code>App</code> et importé une fonction <code>SayHello</code> depuis un autre fichier (<code>SayHello.js</code>). La fonction <code>SayHello</code> attend en paramètre une chaine de caractère que nous lui passons lors de l'appel dans <code>App</code> :</p>
+<div class="bloc-code"><div class="bloc-code__langue">js</div><pre><code class="hljs language-js"><span class="hljs-title class_">SayHello</span>(<span class="hljs-string">&quot;Wilder&quot;</span>)
+</code></pre></div>
+</div></div>
+<p>En React, la même chose donnerait :</p>
+<div class="bloc-code"><div class="bloc-code__langue">jsx</div><pre><code class="hljs language-jsx">!--- <span class="hljs-title class_">App</span>.<span class="hljs-property">js</span>
+<span class="hljs-keyword">import</span> <span class="hljs-title class_">SayHello</span> <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;./SayHello&quot;</span>;
+
+<span class="hljs-keyword">function</span> <span class="hljs-title function_">App</span>(<span class="hljs-params"></span>) {
+  <span class="hljs-keyword">return</span> <span class="hljs-title class_">SayHello</span>(<span class="hljs-string">&quot;Wilder&quot;</span>);
+}
+
+<span class="hljs-keyword">export</span> <span class="hljs-keyword">default</span> <span class="hljs-title class_">App</span>;
+
+!--- <span class="hljs-title class_">SayHello</span>.<span class="hljs-property">js</span>
+<span class="hljs-keyword">function</span> <span class="hljs-title function_">SayHello</span>(<span class="hljs-params">name</span>) {
+  <span class="hljs-keyword">return</span> <span class="hljs-string">`Hello <span class="hljs-subst">${name}</span>!`</span>;
+}
+
+<span class="hljs-keyword">export</span> <span class="hljs-keyword">default</span> <span class="hljs-title class_">SayHello</span>;
+</code></pre></div>
+<div class="encadre encadre--note encadre--arrow"><div class="encadre__corps"><p>Une grosse différence : c'est React qui gère la manipulation du DOM à notre place. Cette partie du code dans le premier exemple a disparu :</p>
+<div class="bloc-code"><div class="bloc-code__langue">js</div><pre><code class="hljs language-js"><span class="hljs-variable language_">document</span>.<span class="hljs-property">body</span>.<span class="hljs-property">innerText</span> =
+</code></pre></div>
+</div></div>
+<p>Dans React, tu dois passer les props au travers d'un objet et non pas directement la valeur comme dans <code>SayHello(&quot;Wilder&quot;)</code>. Si par le plus grand des hasards tu appelles cet objet <code>props</code> dans le composant <code>SayHello</code>, cela donne :</p>
+<div class="bloc-code"><div class="bloc-code__langue">jsx</div><pre><code class="hljs language-jsx">!--- <span class="hljs-title class_">App</span>.<span class="hljs-property">js</span>
+<span class="hljs-keyword">import</span> <span class="hljs-title class_">SayHello</span> <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;./SayHello&quot;</span>;
+
+<span class="hljs-keyword">function</span> <span class="hljs-title function_">App</span>(<span class="hljs-params"></span>) {
+  <span class="hljs-keyword">return</span> <span class="hljs-title class_">SayHello</span>({<span class="hljs-attr">name</span>: <span class="hljs-string">&quot;Wilder&quot;</span>});
+}
+
+<span class="hljs-keyword">export</span> <span class="hljs-keyword">default</span> <span class="hljs-title class_">App</span>;
+
+!--- <span class="hljs-title class_">SayHello</span>.<span class="hljs-property">js</span>
+<span class="hljs-keyword">function</span> <span class="hljs-title function_">SayHello</span>(<span class="hljs-params">props</span>) {
+  <span class="hljs-keyword">return</span> <span class="hljs-string">`Hello <span class="hljs-subst">${props.name}</span>!`</span>;
+}
+
+<span class="hljs-keyword">export</span> <span class="hljs-keyword">default</span> <span class="hljs-title class_">SayHello</span>;
+</code></pre></div>
+<div class="encadre encadre--note encadre--arrow"><div class="encadre__corps"><p>Dans React, le nom <code>props</code> est une convention pour le premier paramètre d'une fonction composant. Ici, c'est le paramètre qui représente l'objet avec toutes les valeurs envoyées du composant parent <code>App</code> au composant enfant <code>SayHello</code>.</p>
+</div></div>
+<p>Dernier point : dans React, tu manipules tes composants avec la syntaxe JSX. Plutôt que la syntaxe JS <code>SayHello({name: &quot;Wilder&quot;})</code>, tu peux appeler tes composants avec la syntaxe JSX et passer tes props comme tu utiliserais des attributs en HTML :</p>
+<div class="bloc-code"><div class="bloc-code__langue">jsx</div><pre><code class="hljs language-jsx">!--- <span class="hljs-title class_">App</span>.<span class="hljs-property">js</span>
+<span class="hljs-keyword">import</span> <span class="hljs-title class_">SayHello</span> <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;./SayHello&quot;</span>;
+
+<span class="hljs-keyword">function</span> <span class="hljs-title function_">App</span>(<span class="hljs-params"></span>) {
+  <span class="hljs-keyword">return</span> <span class="language-xml"><span class="hljs-tag">&lt;<span class="hljs-name">SayHello</span> <span class="hljs-attr">name</span>=<span class="hljs-string">&quot;Wilder&quot;</span> /&gt;</span></span>;
+}
+
+<span class="hljs-keyword">export</span> <span class="hljs-keyword">default</span> <span class="hljs-title class_">App</span>;
+
+!--- <span class="hljs-title class_">SayHello</span>.<span class="hljs-property">js</span>
+<span class="hljs-keyword">function</span> <span class="hljs-title function_">SayHello</span>(<span class="hljs-params">props</span>) {
+  <span class="hljs-keyword">return</span> <span class="hljs-string">`Hello <span class="hljs-subst">${props.name}</span>!`</span>;
+}
+
+<span class="hljs-keyword">export</span> <span class="hljs-keyword">default</span> <span class="hljs-title class_">SayHello</span>;
+</code></pre></div>
+<div class="encadre encadre--note encadre--arrow"><div class="encadre__corps"><p>Dans notre composant <code>App</code>, nous avons appelé notre composant <code>SayHello</code> en lui passant en <code>props</code> un couple clé/valeur : la clé est <code>name</code> et la valeur est <code>&quot;Wilder&quot;</code>.</p>
+</div></div>
+<p>En fait, <code>props</code> est un objet qui contient toutes les clés/valeurs passées au composant. Tu peux le voir dans cet exemple :</p>
+<div class="bloc-code"><div class="bloc-code__langue">jsx</div><pre><code class="hljs language-jsx">!--- <span class="hljs-title class_">App</span>.<span class="hljs-property">js</span>
+<span class="hljs-keyword">import</span> <span class="hljs-title class_">SayHello</span> <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;./SayHello&quot;</span>;
+
+<span class="hljs-keyword">function</span> <span class="hljs-title function_">App</span>(<span class="hljs-params"></span>) {
+  <span class="hljs-keyword">return</span> <span class="language-xml"><span class="hljs-tag">&lt;<span class="hljs-name">SayHello</span> <span class="hljs-attr">name</span>=<span class="hljs-string">&quot;Alice&quot;</span> <span class="hljs-attr">age</span>=<span class="hljs-string">{25}</span> /&gt;</span></span>;
+}
+
+<span class="hljs-keyword">export</span> <span class="hljs-keyword">default</span> <span class="hljs-title class_">App</span>;
+
+!--- <span class="hljs-title class_">SayHello</span>.<span class="hljs-property">js</span>
+<span class="hljs-keyword">function</span> <span class="hljs-title function_">SayHello</span>(<span class="hljs-params">props</span>) {
+  <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(props);
+
+  <span class="hljs-keyword">return</span> <span class="hljs-string">`Hello my name is <span class="hljs-subst">${props.name}</span>, I&#x27;m <span class="hljs-subst">${props.age}</span>!`</span>;
+}
+
+<span class="hljs-keyword">export</span> <span class="hljs-keyword">default</span> <span class="hljs-title class_">SayHello</span>;
+</code></pre></div>
+<div class="encadre encadre--note encadre--arrow"><div class="encadre__corps"><p>Tu peux voir que la syntaxe est différente pour <code>name</code> et pour <code>age</code>. Les chaînes de caractères peuvent être passées dans les <code>props</code> avec des <code>&quot;&quot;</code> comme les attributs HTML. C'est le cas pour <code>name=&quot;Alice&quot;</code>.</p>
+<p>Pour toutes les autres valeurs (nombre, objet, variable...), tu dois utiliser des <code>{}</code> pour entourer ta valeur JavaScript. C'est le cas pour <code>age={25}</code>.</p>
+</div></div>
+<h3>Quelles valeurs je peux faire passer en props ?</h3>
+<p>Dans react, tu peux passer n'importe quel type de valeur en props à tes composants. Des types primitifs (string, number, boolean...) et non primitifs (function, object) :</p>
+<div class="bloc-code"><div class="bloc-code__langue">jsx</div><pre><code class="hljs language-jsx">!--- <span class="hljs-title class_">App</span>.<span class="hljs-property">js</span>
+<span class="hljs-keyword">import</span> <span class="hljs-title class_">Cart</span> <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;./Cart&quot;</span>
+
+<span class="hljs-keyword">function</span> <span class="hljs-title function_">App</span>(<span class="hljs-params"></span>) {
+  <span class="hljs-keyword">const</span> product = {
+    <span class="hljs-attr">name</span>: <span class="hljs-string">&quot;apples&quot;</span>,
+    <span class="hljs-attr">price</span>: <span class="hljs-number">1.5</span>,
+    <span class="hljs-attr">quantity</span>: <span class="hljs-number">2</span>
+  }
+
+  <span class="hljs-keyword">const</span> <span class="hljs-title function_">calculate</span> = (<span class="hljs-params">product</span>) =&gt; product.<span class="hljs-property">price</span> * product.<span class="hljs-property">quantity</span>
+
+  <span class="hljs-keyword">return</span> <span class="language-xml"><span class="hljs-tag">&lt;<span class="hljs-name">Cart</span> <span class="hljs-attr">product</span>=<span class="hljs-string">{product}</span> <span class="hljs-attr">calculate</span>=<span class="hljs-string">{calculate}</span> /&gt;</span></span>;
+}
+
+<span class="hljs-keyword">export</span> <span class="hljs-keyword">default</span> <span class="hljs-title class_">App</span>;
+
+!--- <span class="hljs-title class_">Cart</span>.<span class="hljs-property">js</span>
+
+<span class="hljs-keyword">function</span> <span class="hljs-title function_">Cart</span>(<span class="hljs-params">props</span>) {
+  <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(props);
+
+  <span class="hljs-keyword">return</span> <span class="hljs-string">`You bought <span class="hljs-subst">${props.product.quantity}</span> <span class="hljs-subst">${props.product.name}</span> for <span class="hljs-subst">${props.calculate(props.product)}</span>€`</span>;
+}
+
+<span class="hljs-keyword">export</span> <span class="hljs-keyword">default</span> <span class="hljs-title class_">Cart</span>;
+</code></pre></div>
+<div class="encadre encadre--warning"><div class="encadre__titre">Attention</div><div class="encadre__corps"><p>Attention cependant à la façon dont tu passes tes <code>props</code>. Seules les chaînes de caractères statiques comme <code>&quot;Hello wilder !&quot;</code> peuvent être passées entre guillemets. Expressions, variables, fonctions et même les template strings doivent être passées entre accolades.</p>
+</div></div>
+<h3>Rendre les choses plus lisibles</h3>
+<p>Une dernière chose : tu peux déstructurer l'objet <code>props</code> dans le composant qui l'utilise.</p>
+<p>Reprenons notre composant <code>Cart</code> qui actuellement ressemble à ceci :</p>
+<div class="bloc-code"><div class="bloc-code__langue">jsx</div><pre><code class="hljs language-jsx"><span class="hljs-keyword">function</span> <span class="hljs-title function_">Cart</span>(<span class="hljs-params">props</span>) {
+  <span class="hljs-keyword">return</span> <span class="hljs-string">`You bought <span class="hljs-subst">${props.product.quantity}</span> <span class="hljs-subst">${props.product.name}</span> for <span class="hljs-subst">${props.calculate(props.product)}</span>€`</span>;
+}
+
+<span class="hljs-keyword">export</span> <span class="hljs-keyword">default</span> <span class="hljs-title class_">Cart</span>;
+</code></pre></div>
+<p>Tu peux déstructurer l'objet <code>props</code> afin d'améliorer la lisibilité :</p>
+<div class="bloc-code"><div class="bloc-code__langue">jsx</div><pre><code class="hljs language-jsx"><span class="hljs-keyword">function</span> <span class="hljs-title function_">Cart</span>(<span class="hljs-params">props</span>) {
+  <span class="hljs-keyword">const</span> { product, calculate } = props;
+
+  <span class="hljs-keyword">return</span> <span class="hljs-string">`You bought <span class="hljs-subst">${product.quantity}</span> <span class="hljs-subst">${product.name}</span> for <span class="hljs-subst">${calculate(product)}</span>€`</span>;
+}
+
+<span class="hljs-keyword">export</span> <span class="hljs-keyword">default</span> <span class="hljs-title class_">Cart</span>;
+</code></pre></div>
+<p>Le JSX est plus lisible de cette manière. Pour aller plus loin, tu peux déstructurer tes <code>props</code> directement dans les paramètres de ta fonction composant :</p>
+<div class="bloc-code"><div class="bloc-code__langue">jsx</div><pre><code class="hljs language-jsx"><span class="hljs-keyword">function</span> <span class="hljs-title function_">Cart</span>(<span class="hljs-params">{ product, calculate }</span>) {
+  <span class="hljs-keyword">return</span> <span class="hljs-string">`You bought <span class="hljs-subst">${product.quantity}</span> <span class="hljs-subst">${product.name}</span> for <span class="hljs-subst">${calculate(product)}</span>€`</span>;
+}
+
+<span class="hljs-keyword">export</span> <span class="hljs-keyword">default</span> <span class="hljs-title class_">Cart</span>;
+</code></pre></div>
+<p>C'est cette syntaxe nous utiliserons par défaut.</p>
+<h2>Récapitulatif</h2>
+<ul>
+<li>Les <code>props</code> sont toujours passées d'un composant parent vers un composant enfant.</li>
+<li>Le mot-clé <code>props</code> est une convention pour l'objet en paramètre d'une fonction composant.</li>
+<li>Les <code>props</code> peuvent être de n'importe quel type.</li>
+<li>Les <code>props</code> sont <strong>toujours</strong> en lecture seul.</li>
+</ul>
+<h2>Challenge</h2>
+<p>Dans ce challenge, tu vas utiliser le système de props pour transmettre des données entre tes composants <code>App</code> et <code>PokemonCard</code>.</p>
+<div class="encadre encadre--warning"><div class="encadre__titre">Attention</div><div class="encadre__corps"><p>Rappel : avant de commencer ce challenge, tu dois modifier le fichier <code>tsconfig.app.json</code> de ton projet pokedex. Ton fichier doit contenir la règle <code>&quot;noImplicitAny&quot;: false</code> :</p>
+<div class="bloc-code"><div class="bloc-code__langue">diff</div><pre><code class="hljs language-diff">{
+  &quot;compilerOptions&quot;: {
+    &quot;target&quot;: &quot;ES2020&quot;,
+    &quot;useDefineForClassFields&quot;: true,
+    &quot;lib&quot;: [&quot;ES2020&quot;, &quot;DOM&quot;, &quot;DOM.Iterable&quot;],
+    &quot;module&quot;: &quot;ESNext&quot;,
+    &quot;skipLibCheck&quot;: true,
+
+    /* Bundler mode */
+    &quot;moduleResolution&quot;: &quot;bundler&quot;,
+    &quot;allowImportingTsExtensions&quot;: true,
+    &quot;isolatedModules&quot;: true,
+    &quot;moduleDetection&quot;: &quot;force&quot;,
+    &quot;noEmit&quot;: true,
+    &quot;jsx&quot;: &quot;react-jsx&quot;,
+
+    /* Linting */
+    &quot;strict&quot;: true,
+    &quot;noUnusedLocals&quot;: true,
+    &quot;noUnusedParameters&quot;: true,
+    &quot;noFallthroughCasesInSwitch&quot;: true,
+    &quot;noImplicitAny&quot;: false
+  },
+  &quot;include&quot;: [&quot;src&quot;]
+}
+</code></pre></div>
+<p>Les props déclenchent de nouveaux messages de Typescript. Pour faire les choses une étape à la fois, nous les désactivons pour l'instant et nous les traiterons dans la quête suivante.</p>
+</div></div>
+<ol class="etapes"><li class="etape"><div class="etape__puce">1</div><div class="etape__contenu"><h4 class="etape__titre">Crée une nouvelle branche</h4><p>Ouvre ton projet existant et crée une nouvelle branche appelée <code>props.1</code>. Cette branche sera utilisée pour développer les fonctionnalités liées aux props. Assure-toi de partir de la branche <code>components.2</code>.</p>
+</div></li><li class="etape"><div class="etape__puce">2</div><div class="etape__contenu"><h4 class="etape__titre">Ajoute un paramètre props</h4><p>Dans ton composant <code>PokemonCard</code>, ajoute un paramètre <code>props</code> à la fonction <code>PokemonCard</code>. Ensuite, utilise <code>console.log(props)</code> à l'intérieur de la fonction pour afficher l'objet <code>props</code> dans la console de ton navigateur. À ce stade, tu devrais voir dans la console un objet vide.</p>
+<div class="bloc-code"><div class="bloc-code__langue">js</div><pre><code class="hljs language-js"><span class="hljs-keyword">const</span> pokemonList = [
+  {
+    <span class="hljs-attr">name</span>: <span class="hljs-string">&quot;bulbasaur&quot;</span>,
+    <span class="hljs-attr">imgSrc</span>:
+      <span class="hljs-string">&quot;https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/1.png&quot;</span>,
+  },
+  {
+    <span class="hljs-attr">name</span>: <span class="hljs-string">&quot;mew&quot;</span>,
+  },
+];
+
+<span class="hljs-keyword">function</span> <span class="hljs-title function_">PokemonCard</span>(<span class="hljs-params">props</span>) {
+  <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(props);
+
+  <span class="hljs-comment">// ...</span>
+}
+
+<span class="hljs-keyword">export</span> <span class="hljs-keyword">default</span> <span class="hljs-title class_">PokemonCard</span>;
+</code></pre></div>
+</div></li><li class="etape"><div class="etape__puce">3</div><div class="etape__contenu"><h4 class="etape__titre">Transmets un pokémon à PokemonCard via une prop</h4><p>Copie le tableau <code>pokemonList</code> du composant <code>PokemonCard</code> dans le composant <code>App</code> :</p>
+<div class="bloc-code"><div class="bloc-code__langue">jsx</div><pre><code class="hljs language-jsx"><span class="hljs-keyword">import</span> <span class="hljs-string">&quot;./App.css&quot;</span>;
+
+<span class="hljs-keyword">import</span> <span class="hljs-title class_">PokemonCard</span> <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;./components/PokemonCard&quot;</span>;
+
+<span class="hljs-keyword">const</span> pokemonList = [
+  {
+    <span class="hljs-attr">name</span>: <span class="hljs-string">&quot;bulbasaur&quot;</span>,
+    <span class="hljs-attr">imgSrc</span>:
+      <span class="hljs-string">&quot;https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/1.png&quot;</span>,
+  },
+  {
+    <span class="hljs-attr">name</span>: <span class="hljs-string">&quot;mew&quot;</span>,
+  },
+];
+
+<span class="hljs-keyword">function</span> <span class="hljs-title function_">App</span>(<span class="hljs-params"></span>) {
+  <span class="hljs-keyword">return</span> (
+    <span class="language-xml"><span class="hljs-tag">&lt;<span class="hljs-name">div</span>&gt;</span>
+      <span class="hljs-tag">&lt;<span class="hljs-name">PokemonCard</span> /&gt;</span>
+    <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span></span>
+  );
+}
+
+<span class="hljs-keyword">export</span> <span class="hljs-keyword">default</span> <span class="hljs-title class_">App</span>;
+</code></pre></div>
+<p>Dans le composant <code>App</code>, là où tu utilises le composant <code>PokemonCard</code>, ajoute une prop appelée <code>pokemon</code> et attribue-lui un Pokémon du tableau <code>pokemonList</code> :</p>
+<div class="bloc-code"><div class="bloc-code__langue">jsx</div><pre><code class="hljs language-jsx">&lt;<span class="hljs-title class_">PokemonCard</span> pokemon={pokemonList[<span class="hljs-number">0</span>]} /&gt;
+</code></pre></div>
+<p>Ce <code>pokemon</code> va ainsi passer à ton composant <code>PokemonCard</code> : le <code>console.log</code> dans <code>PokemonCard</code> devrait maintenant afficher un objet qui contient une propriété <code>pokemon</code>.</p>
+</div></li><li class="etape"><div class="etape__puce">4</div><div class="etape__contenu"><h4 class="etape__titre">Déstructure props pour en extraire l'objet pokemon</h4><p>Dans le composant <code>PokemonCard</code>, remplace le paramètre <code>props</code> par <code>{ pokemon }</code>. Ensuite :</p>
+<ul>
+<li>Supprime le <code>console.log(props)</code> : ton code ne déclare plus de variable <code>props</code>.</li>
+<li>Supprime la ligne <code>const pokemon = pokemonList[0];</code>  : cette variable <code>pokemon</code> fait doublon avec le <code>pokemon</code> que tu reçois des props.</li>
+<li>Supprime le tableau <code>pokemonList</code> : le tableau qui compte maintenant est celui dans <code>App</code>.</li>
+</ul>
+<p>Le Pokémon devrait s'afficher comme avant dans ton navigateur. Mais maintenant, ton composant <code>PokemonCard</code> est devenu complètement dynamique : il affiche les informations du <code>pokemon</code> qu’il reçoit en prop, au lieu d’être figé sur un Pokémon spécifique. Le code reste figé dans <code>App</code>, mais dans <code>PokemonCard</code>, il s'adapte en fonction des données passées en prop : c'est l'objectif pour cette étape du projet.</p>
+</div></li></ol>
+<p>Assure-toi que ton composant <code>PokemonCard</code> utilise l'objet <code>pokemon</code> des <code>props</code> pour recevoir les données du Pokémon et que tout fonctionne correctement.</p>
+<p>Fournis le lien vers la branche <code>props.1</code> de ton dépôt GitHub pour valider cette étape.</p>
+<h3>Critères de validation</h3>
+<ul>
+<li>Le composant <code>PokemonCard</code> attend une <code>prop</code> <code>pokemon</code>.</li>
+<li>Le composant <code>App</code> envoie les données d'un pokémon au composant <code>PokemonCard</code> via une <code>prop</code> <code>pokemon</code>.</li>
+<li>Le pokémon s'affiche correctement.</li>
+</ul>
+<p>Ce que tu devrais avoir dans :</p>
+<div class="onglets" data-onglets="2"><input type="radio" name="onglets-32" id="onglets-32-0" class="onglets__radio" checked><input type="radio" name="onglets-32" id="onglets-32-1" class="onglets__radio"><div class="onglets__barre"><label class="onglets__label" for="onglets-32-0">App.tsx</label><label class="onglets__label" for="onglets-32-1">PokemonCard.tsx</label></div><div class="onglets__panneaux"><div class="onglets__panneau"><div class="bloc-code"><div class="bloc-code__langue">jsx</div><pre><code class="hljs language-jsx"><span class="hljs-keyword">import</span> <span class="hljs-string">&quot;./App.css&quot;</span>;
+
+<span class="hljs-keyword">import</span> <span class="hljs-title class_">PokemonCard</span> <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;./components/PokemonCard&quot;</span>;
+
+<span class="hljs-keyword">const</span> pokemonList = [
+  {
+    <span class="hljs-attr">name</span>: <span class="hljs-string">&quot;bulbasaur&quot;</span>,
+    <span class="hljs-attr">imgSrc</span>:
+      <span class="hljs-string">&quot;https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/1.png&quot;</span>,
+  },
+  {
+    <span class="hljs-attr">name</span>: <span class="hljs-string">&quot;mew&quot;</span>,
+  },
+];
+
+<span class="hljs-keyword">function</span> <span class="hljs-title function_">App</span>(<span class="hljs-params"></span>) {
+  <span class="hljs-keyword">return</span> (
+    <span class="language-xml"><span class="hljs-tag">&lt;<span class="hljs-name">div</span>&gt;</span>
+      <span class="hljs-tag">&lt;<span class="hljs-name">PokemonCard</span> <span class="hljs-attr">pokemon</span>=<span class="hljs-string">{pokemonList[0]}</span> /&gt;</span>
+    <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span></span>
+  );
+}
+
+<span class="hljs-keyword">export</span> <span class="hljs-keyword">default</span> <span class="hljs-title class_">App</span>;
+</code></pre></div>
+</div><div class="onglets__panneau"><div class="bloc-code"><div class="bloc-code__langue">jsx</div><pre><code class="hljs language-jsx"><span class="hljs-keyword">function</span> <span class="hljs-title function_">PokemonCard</span>(<span class="hljs-params">{ pokemon }</span>) {
+  <span class="hljs-keyword">return</span> (
+    <span class="language-xml"><span class="hljs-tag">&lt;<span class="hljs-name">figure</span>&gt;</span>
+      {pokemon.imgSrc != null ? (
+        <span class="hljs-tag">&lt;<span class="hljs-name">img</span> <span class="hljs-attr">src</span>=<span class="hljs-string">{pokemon.imgSrc}</span> <span class="hljs-attr">alt</span>=<span class="hljs-string">{pokemon.name}</span> /&gt;</span>
+      ) : (
+        <span class="hljs-tag">&lt;<span class="hljs-name">p</span>&gt;</span>???<span class="hljs-tag">&lt;/<span class="hljs-name">p</span>&gt;</span>
+      )}
+      <span class="hljs-tag">&lt;<span class="hljs-name">figcaption</span>&gt;</span>{pokemon.name}<span class="hljs-tag">&lt;/<span class="hljs-name">figcaption</span>&gt;</span>
+    <span class="hljs-tag">&lt;/<span class="hljs-name">figure</span>&gt;</span></span>
+  );
+}
+<span class="hljs-keyword">export</span> <span class="hljs-keyword">default</span> <span class="hljs-title class_">PokemonCard</span>;
+</code></pre></div>
+</div></div></div>
+
+  </div>
+  <section class="ressources-quete">
+  <h2>Ressources partagées sur cette quête</h2>
+  <ul class="ressources-liste">
+    <li><a href="https://fr.reactjs.org/docs/components-and-props.html" target="_blank" rel="noopener noreferrer">si quelqu’un est en difficulté pour la façon dont il est expliqué sur ces quetes</a><span class="ressources-liste__url">https://fr.reactjs.org/docs/components-and-props.html</span></li>
+    <li><a href="https://www.freecodecamp.org/news/how-to-use-props-in-react/" target="_blank" rel="noopener noreferrer">Simple et clair au niveau des liens</a><span class="ressources-liste__url">https://www.freecodecamp.org/news/how-to-use-props-in-react/</span></li>
+    <li><a href="https://www.youtube.com/watch?v=PvndxDHVaW8" target="_blank" rel="noopener noreferrer">vidéo explicative sur les props en français</a><span class="ressources-liste__url">https://www.youtube.com/watch?v=PvndxDHVaW8</span></li>
+    <li><a href="https://www.youtube.com/watch?v=en0If_3jkRU" target="_blank" rel="noopener noreferrer">N'hésitez pas, cette vidéo m'a bien aidé pour comprendre le cours</a><span class="ressources-liste__url">https://www.youtube.com/watch?v=en0If_3jkRU</span></li>
+    <li><a href="https://dmitripavlutin.com/react-props/" target="_blank" rel="noopener noreferrer">explique simplement, en anglais</a><span class="ressources-liste__url">https://dmitripavlutin.com/react-props/</span></li>
+    <li><a href="https://www.youtube.com/watch?v=kHJSNFU7H4U" target="_blank" rel="noopener noreferrer">petite vidéo (en anglais) qui peut aider a comprendre les props</a><span class="ressources-liste__url">https://www.youtube.com/watch?v=kHJSNFU7H4U</span></li>
+  </ul>
+</section>
+</article>
+
+<nav class="nav-quete">
+  <a class="nav-quete__lien nav-quete__lien--prec" href="../../react-bases/003-react-basics-03-pokedex-afficher-des-donnees-dans-un/index.html">
+           <span class="nav-quete__sens">← Précédent</span>
+           <span class="nav-quete__titre">👩‍🏫 React Basics 03 - Pokédex - Afficher des données dans un composant</span>
+         </a>
+  <a class="nav-quete__lien nav-quete__lien--suiv" href="../../react-bases/005-react-basics-05-pokedex-typer-les-props-avec-typescript/index.html">
+           <span class="nav-quete__sens">Suivant →</span>
+           <span class="nav-quete__titre">👩‍🏫 React Basics 05 - Pokédex - Typer les props avec TypeScript</span>
+         </a>
+</nav>
+</main>
+<footer class="pied">
+  <p>Archive personnelle des cours suivis à la Wild Code School. Copie hors ligne à usage strictement privé.</p>
+</footer>
+
+<script src="../../assets/copie-code.js"></script>
+<script src="../../assets/progression.js"></script>
+</body>
+</html>

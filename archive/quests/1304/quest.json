@@ -1,0 +1,41 @@
+{
+  "id": 1304,
+  "titre": "👩‍🏫 HTML - Chapitre 9 | Performance & Structure",
+  "titres": {
+    "fr": "👩‍🏫 HTML - Chapitre 9 | Performance & Structure"
+  },
+  "theme": {
+    "id": 104,
+    "slug": "html5",
+    "nom": "HTML"
+  },
+  "creeLe": "2020-08-04T16:49:15.571+02:00",
+  "difficulte": "1",
+  "dureeEstimee": 45,
+  "modeValidation": "self",
+  "chapitres": [
+    {
+      "id": 16926,
+      "type": "content",
+      "langue": "fr",
+      "majLe": "2025-03-05T17:34:53.260+01:00",
+      "caracteres": 9828
+    }
+  ],
+  "ressources": [
+    {
+      "link": "https://chrome.google.com/webstore/detail/headingsmap/flbjommegcjonpdmenkdiocclhjacmbi",
+      "description": "Plugin Chrome utile pour voir si l'arborescence des titres d'un site/app est respectée et comment elle est lue par les outils favorisant l'accessibilité"
+    },
+    {
+      "link": "https://serpsim.com/",
+      "description": "Ce site permet de visualiser l'affichage sur une page de résultat tout en ayant un compteur en pixel pour le titre et la métadescription. Je précise juste qu'il compte de manière assez large pour la métadescription, mieux vaut réduire un peu par rapport au maximum qu'il affiche la méta complète."
+    },
+    {
+      "link": "https://wave.webaim.org/extension/",
+      "description": "Cette extension disponible pour Chrome, Firefox et Edge permet d'évaluer ta page web en terme d'accessibilité, cela directement dans le navigateur."
+    }
+  ],
+  "urlOrigine": "https://odyssey.wildcodeschool.com/quests/1304",
+  "archiveLe": "2026-09-02T20:54:16.820Z"
+}

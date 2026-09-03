@@ -1,0 +1,42 @@
+{
+  "id": 1303,
+  "titre": "Scrum: Lancer un sprint",
+  "titres": {
+    "en": "Scrum: Running an Agile Sprint",
+    "fr": "Scrum: Lancer un sprint"
+  },
+  "theme": {
+    "id": 18,
+    "slug": "scrum",
+    "nom": "Scrum"
+  },
+  "creeLe": "2020-08-04T14:55:46.515+02:00",
+  "difficulte": "1",
+  "dureeEstimee": 50,
+  "modeValidation": "self",
+  "chapitres": [
+    {
+      "id": 13774,
+      "type": "content",
+      "langue": "fr",
+      "majLe": "2024-11-20T11:45:34.657+01:00",
+      "caracteres": 10439
+    }
+  ],
+  "ressources": [
+    {
+      "link": "https://youtu.be/LWUmGsEY6N4",
+      "description": "Poker planning en français"
+    },
+    {
+      "link": "https://www.youtube.com/c/ScrumLife",
+      "description": "une chaine youtube sur la méthode scrum"
+    },
+    {
+      "link": "https://vitalitychicago.com/blog/agile-and-scrum-tip-sheet/",
+      "description": "Agile and Scrum cheat sheet"
+    }
+  ],
+  "urlOrigine": "https://odyssey.wildcodeschool.com/quests/1303",
+  "archiveLe": "2026-09-02T20:53:30.845Z"
+}

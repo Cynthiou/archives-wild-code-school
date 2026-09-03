@@ -1,0 +1,41 @@
+{
+  "id": 141,
+  "titre": "2. Les variables en PHP",
+  "titres": {
+    "fr": "2. Les variables en PHP"
+  },
+  "theme": {
+    "id": 25,
+    "slug": "php",
+    "nom": "PHP"
+  },
+  "creeLe": "2018-02-09T14:34:17.696+01:00",
+  "difficulte": "",
+  "dureeEstimee": null,
+  "modeValidation": "student",
+  "chapitres": [
+    {
+      "id": 7799,
+      "type": "content",
+      "langue": "fr",
+      "majLe": "2022-09-09T10:42:39.934+02:00",
+      "caracteres": 9981
+    }
+  ],
+  "ressources": [
+    {
+      "link": "https://www.pierre-giraud.com/php-mysql-apprendre-coder-cours/introduction-variables/",
+      "description": "Pour echo, beaucoup plus explicite que la doc officielle ^^"
+    },
+    {
+      "link": "https://extendsclass.com/php.html",
+      "description": "Un site pour tester son code en ligne"
+    },
+    {
+      "link": "https://www.mail-tester.com/",
+      "description": " Un site pour tester la note des mails et éviter de terminer dans les spams."
+    }
+  ],
+  "urlOrigine": "https://odyssey.wildcodeschool.com/quests/141",
+  "archiveLe": "2026-09-02T23:21:27.657Z"
+}

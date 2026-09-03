@@ -1,0 +1,29 @@
+{
+  "id": 2148,
+  "titre": "Tes interlocuteurs",
+  "titres": {
+    "en": "Your Points of Contact",
+    "fr": "Tes interlocuteurs"
+  },
+  "theme": {
+    "id": 155,
+    "slug": "on-boarding-students",
+    "nom": "Onboarding students"
+  },
+  "creeLe": "2022-07-06T09:37:36.958+02:00",
+  "difficulte": "1",
+  "dureeEstimee": 15,
+  "modeValidation": "self",
+  "chapitres": [
+    {
+      "id": 10508,
+      "type": "content",
+      "langue": "fr",
+      "majLe": "2023-10-02T16:15:21.530+02:00",
+      "caracteres": 3209
+    }
+  ],
+  "ressources": [],
+  "urlOrigine": "https://odyssey.wildcodeschool.com/quests/2148",
+  "archiveLe": "2026-09-02T20:53:37.575Z"
+}

@@ -1,0 +1,149 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>✏️ Exercise 5 - Loops — Archives WCS</title>
+<link rel="stylesheet" href="../../assets/style.css">
+</head>
+<body style="--teinte:#5F83B2">
+<header class="entete">
+  <a class="entete__marque" href="../../index.html">Archives Wild Code School</a>
+</header>
+<main class="contenu">
+<nav class="ariane"><a href="../../index.html">Accueil</a><span class="ariane__sep">›</span><a href="../../php/index.html">PHP</a><span class="ariane__sep">›</span><span aria-current="page">✏️ Exercise 5 - Loops</span></nav>
+
+<article class="quete">
+  <header class="quete__entete">
+    <a class="pastille pastille--teintee" href="../../php/index.html">PHP</a>
+    <h1>✏️ Exercise 5 - Loops</h1>
+    <p class="quete__meta">Quête 13 sur 14 · 2 images archivées</p>
+  </header>
+  <div class="cours">
+<h1>Introduction</h1>
+<p><img src="images/001-image.webp" alt="image" loading="lazy"></p>
+<h6>⚠️ Before starting this quest, you must have finished the following quests:</h6>
+<div class="renvois"><div class="renvois__titre">Quêtes liées</div><ul><li><a href="../../php/004-4-1-les-tableaux-et-boucles-en-php/index.html">Quête 1356</a></li></ul></div>
+<blockquote>
+<p><strong>Reminder</strong> : A loop allows to repeat an instruction a number of times, according to a condition.
+<img src="images/002-loop.png" alt="loop" loading="lazy"></p>
+<ol>
+<li>Initialization of a counter</li>
+<li>Check if condition is still true</li>
+<li>If so, execute the code inside curly brackets. Else the loop ends and following steps are skipped.</li>
+<li>Update value of counter</li>
+<li>Restart to step 2 (while condition is true)</li>
+</ol>
+<p><em>Source: <a href="http://www.hexainclude.com/php-entry-control-loop/" target="_blank" rel="noopener noreferrer">hexainclude</a></em></p>
+</blockquote>
+<h1>💪 Challenge</h1>
+<div class="encadre encadre--info"><div class="encadre__titre">Info</div><div class="encadre__corps"><h1>Hint:</h1>
+<p>You can execute your script directly in your terminal using <code>php myScript.php</code>. To display a line break and improve readability, use the PHP constant <code>PHP_EOL</code> (EOL = End Of Line).
+e.g. <code>echo 'hello' . PHP_EOL;</code> will display the 'hello' string and add a new line in your console.</p>
+</div></div>
+<h3>Exercise 1 : planting trees 🌳</h3>
+<ul>
+<li>Write a loop to plant 3 trees (you should display '🌳🌳🌳').</li>
+<li>Write a loop to plant 8 🌳 .</li>
+<li>Write a loop to plant 20 🌳 .</li>
+</ul>
+<h3>Exercise 2 : planting more trees 🌲🌴</h3>
+<p>In previous exercise, you can plant one 🌳 per hour. So in a loop of 8, you plant 8 🌳, easy.
+Now, you have to plant 🌲, they are more delicate and need to dig deeper. You need 2 hours to plant a 🌲.</p>
+<blockquote>
+<p>Hint: you shouldn't calculate the amount of trees planted before but have the loop do it for you. Probably using a $numberOfHours counter</p>
+</blockquote>
+<ul>
+<li>Write a loop to plant 🌲 during a 6 hours working day.</li>
+<li>Write a loop to plant 🌲 during a 8 hours working day.</li>
+<li>Write a loop to plant 🌲 during a 9 hours working day.</li>
+</ul>
+<p>You have now experience in tree planting. You work now with very delicate and rare tree 🌴. You need 3 hours of work to plant one 🌴.</p>
+<ul>
+<li>Write a loop to plant 🌴 during a 6 hours working day.</li>
+<li>Write a loop to plant 🌴 during a 2 hours working day.</li>
+<li>Write a loop to plant 🌴 during a 8 hours working day.</li>
+</ul>
+<h3>Exercise 3 : planting a forest</h3>
+<p>You know how to plant a row of trees 🌳🌳🌳🌳🌳🌳🌳🌳🌳.
+But you see bigger, and you want now to plant a whole forest.</p>
+<ul>
+<li>
+<p>Using 2 <strong>nested</strong> loops (yes, you can use a loop inside another loop, it's crazy!), display a forest of 8 columns and 3 rows. Use <code>PHP_EOL</code> to create new lines.
+You should obtain
+🌳🌳🌳🌳🌳🌳🌳🌳
+🌳🌳🌳🌳🌳🌳🌳🌳
+🌳🌳🌳🌳🌳🌳🌳🌳</p>
+</li>
+<li>
+<p>Bigger now ! Display a forest of 40 columns and 25 rows. You can also use 2 variables to determine the forest width and height. The loops should reflect the values of these variables.</p>
+</li>
+<li>
+<p>Create a forest of 10 columns and 5 rows, with alternate types of trees in each <strong>row</strong>, as below. (Hint: use modulo operator % to determine if you have a odd or even value)</p>
+</li>
+</ul>
+<p>🌳🌳🌳🌳🌳🌳🌳🌳🌳🌳
+🌲🌲🌲🌲🌲🌲🌲🌲🌲🌲
+🌳🌳🌳🌳🌳🌳🌳🌳🌳🌳
+🌲🌲🌲🌲🌲🌲🌲🌲🌲🌲
+🌳🌳🌳🌳🌳🌳🌳🌳🌳🌳</p>
+<ul>
+<li>Create a forest of 7 columns and 8 rows, with alternate types of trees in each <strong>column</strong>
+🌳🌲🌳🌲🌳🌲🌳
+🌳🌲🌳🌲🌳🌲🌳
+🌳🌲🌳🌲🌳🌲🌳
+🌳🌲🌳🌲🌳🌲🌳
+🌳🌲🌳🌲🌳🌲🌳
+🌳🌲🌳🌲🌳🌲🌳
+🌳🌲🌳🌲🌳🌲🌳
+🌳🌲🌳🌲🌳🌲🌳</li>
+</ul>
+<h3>Exercise 4 : planting triangle forest</h3>
+<p>You can not always plant rectangle shape forest.</p>
+<ul>
+<li>
+<p>Create loops to display this triangle shape forest (one more 🌳 in each new line).
+🌳
+🌳🌳
+🌳🌳🌳
+🌳🌳🌳🌳
+🌳🌳🌳🌳🌳</p>
+</li>
+<li>
+<p>Create loops to display this other triangle shape forest (from largest to shortest line).
+🌳🌳🌳🌳🌳
+🌳🌳🌳🌳
+🌳🌳🌳
+🌳🌳
+🌳</p>
+</li>
+</ul>
+<h1>🧐 Acceptance criteria</h1>
+<ul>
+<li>[ ] All the trees are correctly displayed</li>
+<li>[ ] You have understand how to use simple loops</li>
+<li>[ ] You have understand how to nest two loops to solve more complex problems.</li>
+</ul>
+
+  </div>
+  
+</article>
+
+<nav class="nav-quete">
+  <a class="nav-quete__lien nav-quete__lien--prec" href="../../php/012-exercise-4-conditions/index.html">
+           <span class="nav-quete__sens">← Précédent</span>
+           <span class="nav-quete__titre">✏️ Exercise 4 - Conditions</span>
+         </a>
+  <a class="nav-quete__lien nav-quete__lien--suiv" href="../../php/014-integration-de-php-et-html/index.html">
+           <span class="nav-quete__sens">Suivant →</span>
+           <span class="nav-quete__titre">Intégration de PHP et HTML</span>
+         </a>
+</nav>
+</main>
+<footer class="pied">
+  <p>Archive personnelle des cours suivis à la Wild Code School. Copie hors ligne à usage strictement privé.</p>
+</footer>
+
+<script src="../../assets/progression.js"></script>
+</body>
+</html>

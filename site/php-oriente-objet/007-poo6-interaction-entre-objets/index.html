@@ -1,0 +1,238 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>POO6 - Intéraction entre objets — Archives WCS</title>
+<link rel="stylesheet" href="../../assets/style.css">
+</head>
+<body style="--teinte:#464985">
+<header class="entete">
+  <a class="entete__marque" href="../../index.html">Archives Wild Code School</a>
+</header>
+<main class="contenu">
+<nav class="ariane"><a href="../../index.html">Accueil</a><span class="ariane__sep">›</span><a href="../../php-oriente-objet/index.html">PHP Orienté Objet</a><span class="ariane__sep">›</span><span aria-current="page">POO6 - Intéraction entre objets</span></nav>
+
+<article class="quete">
+  <header class="quete__entete">
+    <a class="pastille pastille--teintee" href="../../php-oriente-objet/index.html">PHP Orienté Objet</a>
+    <h1>POO6 - Intéraction entre objets</h1>
+    <p class="quete__meta">Quête 7 sur 11 · 1 image archivée</p>
+  </header>
+  <div class="cours">
+<h1>Prérequis</h1>
+<div class="renvois"><div class="renvois__titre">Quêtes liées</div><ul><li><a href="../../php-oriente-objet/006-poo5-les-constantes-de-classe/index.html">Quête 2265</a></li></ul></div>
+<div class="bloc-code"><div class="bloc-code__langue">title-book</div><pre><code class="hljs language-title-book">Introduction
+</code></pre></div>
+<div class="encadre encadre--story"><div class="encadre__titre">Le récit</div><div class="encadre__corps"><p>Bonjour visiteur, lance toi sur la nouvelle branche <strong>poo6</strong> de ton <a href="https://github.com/WildCodeSchool/php-wildzoo" target="_blank" rel="noopener noreferrer">Wild zoo</a>. Dans cette quête, tu vas être amené à créer d'autres classes, et voir comment les objets peuvent interagir les uns avec les autres.</p>
+</div></div>
+<h2>🤓 À la fin de cette quête, tu seras capable de :</h2>
+<ul>
+<li>✅ Comprendre le principe de <em>namespace</em></li>
+<li>✅ Créer des classes dans un espace de nom</li>
+<li>✅ Comprendre le typage objet</li>
+<li>✅ Injecter un objet dans un autre</li>
+</ul>
+<h1>Les <em>namespaces</em></h1>
+<p>En programmation orientée objet, il arrive que différentes classes, portent <strong>le même nom</strong>, parce que le projet peut être vaste et contenir des centaines de fichiers, ou parce que tu utiliseras souvent des classes venues de bibliothèques externes (pour ne pas réinventer la roue, on télécharge souvent des briques de codes réalisées par d'autres développeurs ;-)). Dans ce cas, tu ne maîtrises pas forcément le nom des classes récupérées. Afin d'éviter tout conflit de nom, PHP met à disposition des <strong>espaces de noms</strong> ou <em><strong>namespaces</strong></em>.</p>
+<p>Les <em>namespaces</em> permettent à une application d'utiliser des classes aux noms identiques au sein d'un même projet.</p>
+<p>Le principe de <em>namespace</em> peut être comparé à un système d'arborescence de fichiers et de dossiers.</p>
+<ul>
+<li>Une arborescence de fichiers définit une structure <strong>physique</strong> de répertoires.</li>
+<li>Un namespace définit plutôt une structure <strong>logique</strong> de répertoires.</li>
+</ul>
+<p>Prenons l'exemple de notre WildZoo.
+Cette application comporte déjà la classe Animal dans le fichier <em>src/Animal.php</em> ! Imagine que tu utilises une bibliothèque externe, contenant elle même une classe nommée <strong>Animal</strong>, que tu rangeras dans le sous-répertoire, <em>src/Other/Animal.php</em>.</p>
+<div class="encadre encadre--warning"><div class="encadre__titre">Attention</div><div class="encadre__corps"><p>Tu peux voir que ce répertoire et ce fichier sont déjà créés, la nouvelle classe Animal est vide, c'est juste pour l'exemple, tu pourras effacer ce répertoire <em>Other</em> à la fin de la quête.</p>
+</div></div>
+<p>🖥️ Maintenant, imaginons que l'on ait besoin d'utiliser ces deux classes dans un même fichier, mets à jour <em>index.php</em> en ajoutant le require de la nouvelle classe <strong>Animal.</strong></p>
+<div class="bloc-code"><div class="bloc-code__langue">php</div><pre><code class="hljs language-php"><span class="hljs-meta">&lt;?php</span>
+<span class="hljs-keyword">require</span> <span class="hljs-keyword">__DIR__</span> . <span class="hljs-string">&#x27;/../src/Animal.php&#x27;</span>;
+<span class="hljs-keyword">require</span> <span class="hljs-keyword">__DIR__</span> . <span class="hljs-string">&#x27;/../src/Other/Animal.php&#x27;</span>;
+
+<span class="hljs-variable">$animal</span> = <span class="hljs-keyword">new</span> <span class="hljs-title class_">Animal</span>();
+</code></pre></div>
+<p>Actualise, tu obtiens alors cette erreur :</p>
+<div class="encadre encadre--error"><div class="encadre__titre">Important</div><div class="encadre__corps"><p>PHP Fatal error:  Cannot declare class Animal, because the name is already in use in...</p>
+</div></div>
+<p>Au moment de l'instanciation de l'objet Animal, PHP ne sait pas quelle classe <strong>Animal</strong> utiliser, il y a un conflit de nom.
+Les espaces de noms vont pouvoir régler ce problème !</p>
+<p>🖥️ Ajoute maintenant des <em>namespaces</em> dans les deux classes :</p>
+<div class="bloc-code"><div class="bloc-code__langue">php</div><pre><code class="hljs language-php"><span class="hljs-meta">&lt;?php</span> 
+<span class="hljs-keyword">namespace</span> <span class="hljs-title class_">App</span>;
+
+<span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Animal</span>
+</span>{
+    <span class="hljs-comment">// (...) Code de ta classe Animal</span>
+}
+</code></pre></div>
+<div class="bloc-code"><div class="bloc-code__langue">php</div><pre><code class="hljs language-php"><span class="hljs-meta">&lt;?php</span>
+<span class="hljs-keyword">namespace</span> <span class="hljs-title class_">App</span>\<span class="hljs-title class_">Other</span>;
+
+<span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Animal</span>
+</span>{
+    <span class="hljs-comment">// Code d&#x27;une autre classe Animal</span>
+}
+</code></pre></div>
+<p>L'effet de l'ajout de <em>namespace</em> sera de créer pour chacune de ces classes un :def[FQCN]{value=&quot;Fully Qualified Class Name&quot;} (nom pleinement qualifié) construit comme ceci :</p>
+<ul>
+<li><code>App\Animal</code> Pour la classe <code>src/Animal.php</code></li>
+<li><code>App\Other\Animal</code> Pour la classe <code>src/Other/Animal.php</code></li>
+</ul>
+<p>🖥️ Met maintenant <em>index.php</em> à jour pour permettre l'instanciation des deux classes (tu dois mettre le bon FQCN pour toutes les instanciations d'animaux) :</p>
+<div class="bloc-code"><div class="bloc-code__langue">php</div><pre><code class="hljs language-php"><span class="hljs-meta">&lt;?php</span>
+<span class="hljs-comment">//index.php</span>
+<span class="hljs-keyword">require</span> <span class="hljs-string">&#x27;src/Animal.php&#x27;</span>;
+<span class="hljs-keyword">require</span> <span class="hljs-string">&#x27;src/Other/Animal.php&#x27;</span>;
+
+<span class="hljs-variable">$lion</span> = <span class="hljs-keyword">new</span> <span class="hljs-title class_">App\Animal</span>(<span class="hljs-string">&#x27;lion&#x27;</span>, <span class="hljs-number">4</span>);
+<span class="hljs-variable">$otherAnimal</span> = <span class="hljs-keyword">new</span> <span class="hljs-title class_">App\Other\Animal</span>();
+</code></pre></div>
+<div class="encadre encadre--info"><div class="encadre__titre">Info</div><div class="encadre__corps"><p>Cette fois, aucune erreur et nous avons bien deux instances différentes. Pour PHP, le nom de la classe n'est plus juste &quot;Animal&quot;, mais le FQCN (donc namespace + nom de classe), puisque les FQCN des deux classes sont différents, il n'y a plus de conflit de noms.</p>
+</div></div>
+<p>Pour simplifier un peu cette écriture, nous utiliserons le mot clé <code>use</code> (en début de fichier) plutôt que d'appeler les classes par leur FQCN à chaque instanciation, ce qui peut-être long à écrire.</p>
+<p>🖥️ Mets à jour le code :</p>
+<div class="bloc-code"><div class="bloc-code__langue">php</div><pre><code class="hljs language-php"><span class="hljs-meta">&lt;?php</span>
+<span class="hljs-comment">//index.php</span>
+<span class="hljs-keyword">require</span> <span class="hljs-string">&#x27;src/Animal.php&#x27;</span>;
+<span class="hljs-keyword">require</span> <span class="hljs-string">&#x27;src/Other/Animal.php&#x27;</span>;
+<span class="hljs-keyword">use</span> <span class="hljs-title">App</span>\<span class="hljs-title">Animal</span>;
+<span class="hljs-keyword">use</span> <span class="hljs-title">App</span>\<span class="hljs-title">Other</span>\<span class="hljs-title">Animal</span> <span class="hljs-keyword">as</span> <span class="hljs-title">OtherAnimal</span>;
+
+<span class="hljs-variable">$animal</span> = <span class="hljs-keyword">new</span> <span class="hljs-title class_">Animal</span>();
+<span class="hljs-variable">$otherAnimal</span> = <span class="hljs-keyword">new</span> <span class="hljs-title class_">OtherAnimal</span>();
+</code></pre></div>
+<p>Le <code>use</code> demande d'écrire le FQCN  une bonne fois pour toute (ton IDE t'aide généralement pour l'auto-complétion). Tu n'auras plus à le faire dans le reste du script, et tu appelleras ta classe avec la dernière partie du <code>use</code> (après le dernier antislash).
+Pour <code>use App\Animal</code> tu pourras ensuite appeler ta classe juste <code>Animal</code> pour le reste de ton code dans ce fichier <em>index.php</em>.
+Cependant, si on en reste là, le problème de conflit de nom réapparaît avec l'autre <code>use App\Other\Animal</code> ! Heureusement, il y a une solution, les alias de nom. À l'aide du mot clé <code>as</code> après le FQCN, tu peux donner un autre nom (pour ce script) à ta classe. PHP considère ensuite uniquement ce nouveau nom pour l'usage de la classe. Donc ici, suite au <code>use App\Other\Animal as OtherAnimal</code>, pour instancier cette classe tu devras faire un <code>new OtherAnimal</code> et non un <code>new Animal</code> car c'est le nom de l'alias qui prime.</p>
+<div class="encadre encadre--info"><div class="encadre__titre">Info</div><div class="encadre__corps"><p>Dans ces exemples, on utilise un <em>namespace</em> appelé <code>App</code>. Ce n'est pas obligatoire mais c'est souvent le nom donné au <em>namespace</em> principal de ton <strong>App</strong>lication.</p>
+</div></div>
+<p>Tu connais maintenant le fonctionnement et l'intérêt des <em>namespaces</em>. Cela te permettra d'aborder sereinement le principe d'<em>autoload</em> (chargement automatique des classes) que tu verras bientôt et <strong>spoiler</strong> nous épargnera d'écrire les <code>require</code> :D !</p>
+<a class="ressource" href="https://www.php.net/manual/en/language.namespaces.php" target="_blank" rel="noopener noreferrer">
+  <div class="ressource__icone">↗</div>
+  <div class="ressource__texte">
+    <div class="ressource__titre">Les namespaces en PHP</div>
+    <div class="ressource__desc"><p>Les namespaces en PHP.</p>
+</div>
+    <div class="ressource__hote">php.net</div>
+  </div>
+</a>
+<div class="encadre encadre--error"><div class="encadre__titre">Important</div><div class="encadre__corps"><p>Efface le répertoire Other, tu n'as pas besoin de cette classe Animal supplémentaire qui était donné juste pour illustrer cette quête.</p>
+</div></div>
+<h1>Un objet dans un autre</h1>
+<p>En POO, il est très fréquent de faire interagir les objets entre eux. Dans notre zoo, les animaux sont placés dans des zones.
+Le lion et l'éléphant vont être dans la zone &quot;savane&quot;, le perroquet dans la zone &quot;jungle&quot;, le poisson dans l'aquarium, <em>etc</em>.</p>
+<p><img src="images/001-image.webp" alt="image" loading="lazy"></p>
+<p>🖥️ Crée la classe <strong>Area</strong>, dans le fichier <em>src/Area.php</em> et dans le <em>namespace</em> <code>App</code>. Ajoute le <em>require</em> pour le fichier <em>Area.php</em> dans <em>index.php</em> ainsi que le <code>use</code> adéquat.</p>
+<p>Actualise la page dans ton navigateur. Tu dois maintenant voir une nouvelle icône en forme de carte apparaître en haut à droite. Clique dessus pour ouvrir la carte des zones de ton zoo. Pour le moment, tu n'en a pas déclaré donc la carte est vide. Arrangeons vite cela.</p>
+<p>🖥️ Dans la classe <strong>Area</strong>, ajoute (en typant bien)  :</p>
+<ul>
+<li>une propriété <code>$name</code></li>
+<li>un constructeur pour indiquer le nom de la zone à l'instanciation d'un nouvelle Area.</li>
+<li>une méthode <code>getName()</code></li>
+</ul>
+<p>Dans <em>index.php</em>, instancie un objet <code>$savana</code> de type <code>Area</code>, en lui passant le nom 'savana'. Comme tu l'as fait pour les animaux, il faut aussi créer un tableau <code>$areas</code> dans lequel tu mettras tes objets <strong>Area</strong>, ce tableau est utilisé pour la partie l'affichage. Actualise ta page, tu vois ta nouvelle zone apparaître. Une image est choisie automatiquement depuis le dossier <em>images/areas</em> en fonction du nom de la zone, il en existe plusieurs de disponible (savana, aquarium, jungle...) donc n'hésite pas à en ajouter d'autres.</p>
+<div class="bloc-code"><div class="bloc-code__langue">php</div><pre><code class="hljs language-php"><span class="hljs-variable">$savana</span> = <span class="hljs-keyword">new</span> <span class="hljs-title class_">Area</span>(<span class="hljs-string">&#x27;savana&#x27;</span>);
+<span class="hljs-variable">$areas</span> = [<span class="hljs-variable">$savana</span>];
+</code></pre></div>
+<p>Maintenant, tu veux pouvoir ajouter les animaux à tes Area. L'idée pour organiser tout ça, va être de créer une propriété <code>$animals</code>, qui sera un tableau contenant des animaux (c'est-à-dire des instances de la classe <strong>Animal</strong>).</p>
+<p>Tes objets <code>Area</code> contiendront donc des objets <code>Animal</code> ! Voici le diagramme de classe :</p>
+<figure class="diagramme"><svg id="diagramme-5k24ymuck54" width="100%" xmlns="http://www.w3.org/2000/svg" style="max-width: 282.421875px;" viewBox="0 0 282.421875 212" role="graphics-document document" aria-roledescription="classDiagram"><style>#diagramme-5k24ymuck54{font-family:"trebuchet ms",verdana,arial,sans-serif;font-size:16px;fill:#333;}#diagramme-5k24ymuck54 .error-icon{fill:hsl(220.5882352941, 100%, 98.3333333333%);}#diagramme-5k24ymuck54 .error-text{fill:rgb(8.5000000002, 5.7500000001, 0);stroke:rgb(8.5000000002, 5.7500000001, 0);}#diagramme-5k24ymuck54 .edge-thickness-normal{stroke-width:2px;}#diagramme-5k24ymuck54 .edge-thickness-thick{stroke-width:3.5px;}#diagramme-5k24ymuck54 .edge-pattern-solid{stroke-dasharray:0;}#diagramme-5k24ymuck54 .edge-pattern-dashed{stroke-dasharray:3;}#diagramme-5k24ymuck54 .edge-pattern-dotted{stroke-dasharray:2;}#diagramme-5k24ymuck54 .marker{fill:#0b0b0b;stroke:#0b0b0b;}#diagramme-5k24ymuck54 .marker.cross{stroke:#0b0b0b;}#diagramme-5k24ymuck54 svg{font-family:"trebuchet ms",verdana,arial,sans-serif;font-size:16px;}#diagramme-5k24ymuck54 g.classGroup text{fill:hsl(40.5882352941, 60%, 83.3333333333%);stroke:none;font-family:"trebuchet ms",verdana,arial,sans-serif;font-size:10px;}#diagramme-5k24ymuck54 g.classGroup text .title{font-weight:bolder;}#diagramme-5k24ymuck54 .nodeLabel,#diagramme-5k24ymuck54 .edgeLabel{color:#333;}#diagramme-5k24ymuck54 .edgeLabel .label rect{fill:#fff4dd;}#diagramme-5k24ymuck54 .label text{fill:#333;}#diagramme-5k24ymuck54 .edgeLabel .label span{background:#fff4dd;}#diagramme-5k24ymuck54 .classTitle{font-weight:bolder;}#diagramme-5k24ymuck54 .node rect,#diagramme-5k24ymuck54 .node circle,#diagramme-5k24ymuck54 .node ellipse,#diagramme-5k24ymuck54 .node polygon,#diagramme-5k24ymuck54 .node path{fill:#fff4dd;stroke:hsl(40.5882352941, 60%, 83.3333333333%);stroke-width:1px;}#diagramme-5k24ymuck54 .divider{stroke:hsl(40.5882352941, 60%, 83.3333333333%);stroke-width:1;}#diagramme-5k24ymuck54 g.clickable{cursor:pointer;}#diagramme-5k24ymuck54 g.classGroup rect{fill:#fff4dd;stroke:hsl(40.5882352941, 60%, 83.3333333333%);}#diagramme-5k24ymuck54 g.classGroup line{stroke:hsl(40.5882352941, 60%, 83.3333333333%);stroke-width:1;}#diagramme-5k24ymuck54 .classLabel .box{stroke:none;stroke-width:0;fill:#fff4dd;opacity:0.5;}#diagramme-5k24ymuck54 .classLabel .label{fill:hsl(40.5882352941, 60%, 83.3333333333%);font-size:10px;}#diagramme-5k24ymuck54 .relation{stroke:#0b0b0b;stroke-width:1;fill:none;}#diagramme-5k24ymuck54 .dashed-line{stroke-dasharray:3;}#diagramme-5k24ymuck54 .dotted-line{stroke-dasharray:1 2;}#diagramme-5k24ymuck54 #compositionStart,#diagramme-5k24ymuck54 .composition{fill:#0b0b0b!important;stroke:#0b0b0b!important;stroke-width:1;}#diagramme-5k24ymuck54 #compositionEnd,#diagramme-5k24ymuck54 .composition{fill:#0b0b0b!important;stroke:#0b0b0b!important;stroke-width:1;}#diagramme-5k24ymuck54 #dependencyStart,#diagramme-5k24ymuck54 .dependency{fill:#0b0b0b!important;stroke:#0b0b0b!important;stroke-width:1;}#diagramme-5k24ymuck54 #dependencyStart,#diagramme-5k24ymuck54 .dependency{fill:#0b0b0b!important;stroke:#0b0b0b!important;stroke-width:1;}#diagramme-5k24ymuck54 #extensionStart,#diagramme-5k24ymuck54 .extension{fill:transparent!important;stroke:#0b0b0b!important;stroke-width:1;}#diagramme-5k24ymuck54 #extensionEnd,#diagramme-5k24ymuck54 .extension{fill:transparent!important;stroke:#0b0b0b!important;stroke-width:1;}#diagramme-5k24ymuck54 #aggregationStart,#diagramme-5k24ymuck54 .aggregation{fill:transparent!important;stroke:#0b0b0b!important;stroke-width:1;}#diagramme-5k24ymuck54 #aggregationEnd,#diagramme-5k24ymuck54 .aggregation{fill:transparent!important;stroke:#0b0b0b!important;stroke-width:1;}#diagramme-5k24ymuck54 #lollipopStart,#diagramme-5k24ymuck54 .lollipop{fill:#fff4dd!important;stroke:#0b0b0b!important;stroke-width:1;}#diagramme-5k24ymuck54 #lollipopEnd,#diagramme-5k24ymuck54 .lollipop{fill:#fff4dd!important;stroke:#0b0b0b!important;stroke-width:1;}#diagramme-5k24ymuck54 .edgeTerminals{font-size:11px;line-height:initial;}#diagramme-5k24ymuck54 .classTitleText{text-anchor:middle;font-size:18px;fill:#333;}#diagramme-5k24ymuck54 :root{--mermaid-font-family:"trebuchet ms",verdana,arial,sans-serif;}</style><g><defs><marker id="diagramme-5k24ymuck54_classDiagram-aggregationStart" class="marker aggregation classDiagram" refX="18" refY="7" markerWidth="190" markerHeight="240" orient="auto"><path d="M 18,7 L9,13 L1,7 L9,1 Z"></path></marker></defs><defs><marker id="diagramme-5k24ymuck54_classDiagram-aggregationEnd" class="marker aggregation classDiagram" refX="1" refY="7" markerWidth="20" markerHeight="28" orient="auto"><path d="M 18,7 L9,13 L1,7 L9,1 Z"></path></marker></defs><defs><marker id="diagramme-5k24ymuck54_classDiagram-extensionStart" class="marker extension classDiagram" refX="18" refY="7" markerWidth="190" markerHeight="240" orient="auto"><path d="M 1,7 L18,13 V 1 Z"></path></marker></defs><defs><marker id="diagramme-5k24ymuck54_classDiagram-extensionEnd" class="marker extension classDiagram" refX="1" refY="7" markerWidth="20" markerHeight="28" orient="auto"><path d="M 1,1 V 13 L18,7 Z"></path></marker></defs><defs><marker id="diagramme-5k24ymuck54_classDiagram-compositionStart" class="marker composition classDiagram" refX="18" refY="7" markerWidth="190" markerHeight="240" orient="auto"><path d="M 18,7 L9,13 L1,7 L9,1 Z"></path></marker></defs><defs><marker id="diagramme-5k24ymuck54_classDiagram-compositionEnd" class="marker composition classDiagram" refX="1" refY="7" markerWidth="20" markerHeight="28" orient="auto"><path d="M 18,7 L9,13 L1,7 L9,1 Z"></path></marker></defs><defs><marker id="diagramme-5k24ymuck54_classDiagram-dependencyStart" class="marker dependency classDiagram" refX="6" refY="7" markerWidth="190" markerHeight="240" orient="auto"><path d="M 5,7 L9,13 L1,7 L9,1 Z"></path></marker></defs><defs><marker id="diagramme-5k24ymuck54_classDiagram-dependencyEnd" class="marker dependency classDiagram" refX="13" refY="7" markerWidth="20" markerHeight="28" orient="auto"><path d="M 18,7 L9,13 L14,7 L9,1 Z"></path></marker></defs><defs><marker id="diagramme-5k24ymuck54_classDiagram-lollipopStart" class="marker lollipop classDiagram" refX="13" refY="7" markerWidth="190" markerHeight="240" orient="auto"><circle stroke="black" fill="transparent" cx="7" cy="7" r="6"></circle></marker></defs><defs><marker id="diagramme-5k24ymuck54_classDiagram-lollipopEnd" class="marker lollipop classDiagram" refX="1" refY="7" markerWidth="190" markerHeight="240" orient="auto"><circle stroke="black" fill="transparent" cx="7" cy="7" r="6"></circle></marker></defs><g class="root"><g class="clusters"></g><g class="edgePaths"></g><g class="edgeLabels"></g><g class="nodes"><g class="node default" id="classId-Area-0" data-node="true" data-id="Area" transform="translate(141.2109375, 106)"><rect style="" class="outer title-state" x="-133.2109375" y="-98" width="266.421875" height="196"></rect><line class="divider" x1="-133.2109375" x2="133.2109375" y1="-67" y2="-67"></line><line class="divider" x1="-133.2109375" x2="133.2109375" y1="-5" y2="-5"></line><g class="label"><foreignObject width="0" height="0"><div xmlns="http://www.w3.org/1999/xhtml" style="display: inline-block; white-space: nowrap;"><span class="nodeLabel"></span></div></foreignObject><foreignObject class="classTitle" width="34.6875" height="19" transform="translate( -17.34375, -90.5)"><div xmlns="http://www.w3.org/1999/xhtml" style="display: inline-block; white-space: nowrap;"><span class="nodeLabel">Area</span></div></foreignObject><foreignObject width="98.625" height="19" transform="translate( -125.7109375, -55.5)"><div xmlns="http://www.w3.org/1999/xhtml" style="display: inline-block; white-space: nowrap;"><span class="nodeLabel">-string $name</span></div></foreignObject><foreignObject width="130.96875" height="19" transform="translate( -125.7109375, -32.5)"><div xmlns="http://www.w3.org/1999/xhtml" style="display: inline-block; white-space: nowrap;"><span class="nodeLabel">-array $animals=[]</span></div></foreignObject><foreignObject width="196.96875" height="19" transform="translate( -125.7109375, 2.5)"><div xmlns="http://www.w3.org/1999/xhtml" style="display: inline-block; white-space: nowrap;"><span class="nodeLabel">+__construct(string $name)</span></div></foreignObject><foreignObject width="139.765625" height="19" transform="translate( -125.7109375, 25.5)"><div xmlns="http://www.w3.org/1999/xhtml" style="display: inline-block; white-space: nowrap;"><span class="nodeLabel">+getName() : string</span></div></foreignObject><foreignObject width="151.53125" height="19" transform="translate( -125.7109375, 48.5)"><div xmlns="http://www.w3.org/1999/xhtml" style="display: inline-block; white-space: nowrap;"><span class="nodeLabel">+getAnimals() : array</span></div></foreignObject><foreignObject width="251.421875" height="19" transform="translate( -125.7109375, 71.5)"><div xmlns="http://www.w3.org/1999/xhtml" style="display: inline-block; white-space: nowrap;"><span class="nodeLabel">+addAnimal(Animal $animal) : void</span></div></foreignObject></g></g></g></g></g></svg></figure>
+<p>🖥️ Dans la classe <strong>Area</strong>, ajoute  :</p>
+<ul>
+<li>une proriété <code>$animals</code> de type <em>array</em>, avec en tableau vide en valeur par défaut.</li>
+<li>un <em>getter</em> <code>getAnimals()</code> renvoyant un <em>array</em>. Un setter pour le nom n'est pas nécessaire, une zone ne va pas changer de nom.</li>
+<li>pour ajouter un nouvel animal, on <em>pourrait</em> créer un <em>setter</em> <code>setAnimals()</code> qui prendrait un tableau en paramètres. Cependant, cela serait compliqué de s'assurer que ce tableau contient uniquement des objets de type <strong>Animal</strong>. Une bonne alternative est plutôt de créer une méthode <code>addAnimal()</code> :</li>
+</ul>
+<div class="bloc-code"><div class="bloc-code__langue">php</div><pre><code class="hljs language-php"><span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">addAnimal</span>(<span class="hljs-params">Animal <span class="hljs-variable">$animal</span></span>): <span class="hljs-title">void</span>
+</span>{
+    <span class="hljs-variable language_">$this</span>-&gt;animals[] = <span class="hljs-variable">$animal</span>;
+}
+</code></pre></div>
+<p>Cette méthode va prendre en paramètre un <strong>objet de type Animal</strong>.</p>
+<div class="encadre encadre--info"><div class="encadre__titre">Info</div><div class="encadre__corps"><p>Tu vois ici que le type utilisé est directement le nom de la classe <strong>Animal</strong> ! En PHP, tu as vu les types classiques (integer, string, array, float, booleen...) mais tu peux également typer avec des noms de classes. Cela te permet de restreindre le paramètre à un objet de cette classe, ce qui est extrêmement pratique pour t'assurer qu'on ne passe pas n'importe quoi en argument de ta méthode. Tu utiliseras très souvent cette façon de faire pour <em>injecter</em> des objets dans un autre.</p>
+</div></div>
+<h2>Challenge</h2>
+<ul>
+<li>Fais en sorte de bien utiliser les <em>namespaces</em> et les <em>use</em>.</li>
+</ul>
+<p>Ajoute au moins les zones <em>savana</em> et <em>jungle</em> à ta carte.</p>
+<p>En utilisation <code>addAnimal()</code>, ajoutes-y des animaux :</p>
+<ul>
+<li>Pour la zone savane, ajoute le lion et l'éléphant.</li>
+<li>Pour la zone jungle, ajoute le perroquet.</li>
+</ul>
+<p>Une fois qu'une zone possède des animaux, tu peux cliquer sur l'icône de cette zone sur la carte, pour revenir sur la page des animaux, mais affichant uniquement ceux de la zone en question (regarde la <em>query string</em> dans l'URL).</p>
+<ul>
+<li>Poste le code de ta page <em>index.php</em>.</li>
+</ul>
+<h2>Validation</h2>
+<ul>
+<li>Le code de la page <em>index</em> possède les <em>use</em> pour <strong>Area</strong> et <strong>Animal</strong></li>
+<li>Des objets de type <strong>Area</strong> sont instanciés pour la savane et la jungle, et les bons animaux sont mis dedans.</li>
+</ul>
+<p>==$==</p>
+<div class="bloc-code"><div class="bloc-code__langue">php</div><pre><code class="hljs language-php"><span class="hljs-meta">&lt;?php</span>
+
+<span class="hljs-comment">/***************************************/</span>
+<span class="hljs-comment">/******** ⚠️ WORK HERE ONLY ⚠️ ***********/</span>
+
+<span class="hljs-keyword">require</span> <span class="hljs-keyword">__DIR__</span> . <span class="hljs-string">&#x27;/../src/Animal.php&#x27;</span>;
+<span class="hljs-keyword">require</span> <span class="hljs-keyword">__DIR__</span> . <span class="hljs-string">&#x27;/../src/Area.php&#x27;</span>;
+
+<span class="hljs-keyword">use</span> <span class="hljs-title">App</span>\<span class="hljs-title">Area</span>;
+<span class="hljs-keyword">use</span> <span class="hljs-title">App</span>\<span class="hljs-title">Animal</span>;
+
+<span class="hljs-variable">$lion</span> = <span class="hljs-keyword">new</span> <span class="hljs-title class_">Animal</span>(<span class="hljs-string">&#x27;lion&#x27;</span>, <span class="hljs-number">4</span>);
+<span class="hljs-variable">$lion</span>-&gt;<span class="hljs-title function_ invoke__">setCarnivorous</span>(<span class="hljs-literal">true</span>);
+<span class="hljs-variable">$lion</span>-&gt;<span class="hljs-title function_ invoke__">setSize</span>(<span class="hljs-number">70</span>);
+<span class="hljs-variable">$lion</span>-&gt;<span class="hljs-title function_ invoke__">setThreatenedLevel</span>(<span class="hljs-string">&#x27;VU&#x27;</span>);
+
+<span class="hljs-variable">$parrot</span> = <span class="hljs-keyword">new</span> <span class="hljs-title class_">Animal</span>(<span class="hljs-string">&#x27;parrot&#x27;</span>, <span class="hljs-number">2</span>);
+<span class="hljs-variable">$parrot</span>-&gt;<span class="hljs-title function_ invoke__">setSize</span>(<span class="hljs-number">30</span>);
+
+<span class="hljs-variable">$elephant</span> = <span class="hljs-keyword">new</span> <span class="hljs-title class_">Animal</span>(<span class="hljs-string">&#x27;elephant&#x27;</span>, <span class="hljs-number">4</span>);
+<span class="hljs-variable">$elephant</span>-&gt;<span class="hljs-title function_ invoke__">setThreatenedLevel</span>(<span class="hljs-string">&#x27;LC&#x27;</span>);
+
+<span class="hljs-variable">$animals</span> = [<span class="hljs-variable">$lion</span>, <span class="hljs-variable">$parrot</span>, <span class="hljs-variable">$elephant</span>];
+
+<span class="hljs-variable">$savana</span> = <span class="hljs-keyword">new</span> <span class="hljs-title class_">Area</span>(<span class="hljs-string">&#x27;savana&#x27;</span>);
+<span class="hljs-variable">$savana</span>-&gt;<span class="hljs-title function_ invoke__">addAnimal</span>(<span class="hljs-variable">$lion</span>);
+<span class="hljs-variable">$savana</span>-&gt;<span class="hljs-title function_ invoke__">addAnimal</span>(<span class="hljs-variable">$elephant</span>);
+<span class="hljs-variable">$jungle</span> = <span class="hljs-keyword">new</span> <span class="hljs-title class_">Area</span>(<span class="hljs-string">&#x27;jungle&#x27;</span>);
+<span class="hljs-variable">$jungle</span>-&gt;<span class="hljs-title function_ invoke__">addAnimal</span>(<span class="hljs-variable">$parrot</span>);
+
+<span class="hljs-variable">$areas</span> = [<span class="hljs-variable">$savana</span>, <span class="hljs-variable">$jungle</span>];
+
+<span class="hljs-comment">/***************************************/</span>
+<span class="hljs-comment">/***************************************/</span>
+
+
+<span class="hljs-comment">// Do not modify code below</span>
+<span class="hljs-keyword">require</span> <span class="hljs-string">&#x27;view.php&#x27;</span>;
+<span class="hljs-meta">?&gt;</span>
+</code></pre></div>
+
+  </div>
+  
+</article>
+
+<nav class="nav-quete">
+  <a class="nav-quete__lien nav-quete__lien--prec" href="../../php-oriente-objet/006-poo5-les-constantes-de-classe/index.html">
+           <span class="nav-quete__sens">← Précédent</span>
+           <span class="nav-quete__titre">POO5 - Les constantes de classe</span>
+         </a>
+  <a class="nav-quete__lien nav-quete__lien--suiv" href="../../php-oriente-objet/008-poo7-heritage/index.html">
+           <span class="nav-quete__sens">Suivant →</span>
+           <span class="nav-quete__titre">POO7 - Héritage</span>
+         </a>
+</nav>
+</main>
+<footer class="pied">
+  <p>Archive personnelle des cours suivis à la Wild Code School. Copie hors ligne à usage strictement privé.</p>
+</footer>
+
+<script src="../../assets/copie-code.js"></script>
+<script src="../../assets/progression.js"></script>
+</body>
+</html>

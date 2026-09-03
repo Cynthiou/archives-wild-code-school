@@ -1,0 +1,37 @@
+{
+  "id": 2113,
+  "titre": "👩‍🏫 HTML - Chapitre 1 | Introduction au HTML",
+  "titres": {
+    "fr": "👩‍🏫 HTML - Chapitre 1 | Introduction au HTML"
+  },
+  "theme": {
+    "id": 104,
+    "slug": "html5",
+    "nom": "HTML"
+  },
+  "creeLe": "2022-06-16T14:32:58.045+02:00",
+  "difficulte": "0",
+  "dureeEstimee": null,
+  "modeValidation": "self",
+  "chapitres": [
+    {
+      "id": 16895,
+      "type": "content",
+      "langue": "fr",
+      "majLe": "2025-03-04T15:37:07.519+01:00",
+      "caracteres": 15217
+    }
+  ],
+  "ressources": [
+    {
+      "link": "https://www.virustotal.com/gui/home/upload",
+      "description": "Sécurité pour vérifier que le contenu du fichier ne contienne pas de virus !"
+    },
+    {
+      "link": "https://validator.w3.org",
+      "description": "Je redonne le lien pour ceux qui ne l'auraient pas ou perdu !"
+    }
+  ],
+  "urlOrigine": "https://odyssey.wildcodeschool.com/quests/2113",
+  "archiveLe": "2026-09-02T23:22:04.549Z"
+}

@@ -1,0 +1,28 @@
+{
+  "id": 2239,
+  "titre": "POO1 - Introduction à la Programmation Orientée Objet",
+  "titres": {
+    "fr": "POO1 - Introduction à la Programmation Orientée Objet"
+  },
+  "theme": {
+    "id": 70,
+    "slug": "php-object-oriented",
+    "nom": "PHP Orienté Objet"
+  },
+  "creeLe": "2022-09-08T17:10:45.153+02:00",
+  "difficulte": "1",
+  "dureeEstimee": null,
+  "modeValidation": "self",
+  "chapitres": [
+    {
+      "id": 9005,
+      "type": "content",
+      "langue": "fr",
+      "majLe": "2023-03-02T08:52:28.520+01:00",
+      "caracteres": 10819
+    }
+  ],
+  "ressources": [],
+  "urlOrigine": "https://odyssey.wildcodeschool.com/quests/2239",
+  "archiveLe": "2026-09-02T20:53:44.929Z"
+}

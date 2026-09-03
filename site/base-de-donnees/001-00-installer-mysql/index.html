@@ -1,0 +1,275 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>00 - Installer MySQL — Archives WCS</title>
+<link rel="stylesheet" href="../../assets/style.css">
+</head>
+<body style="--teinte:#F7A356">
+<header class="entete">
+  <a class="entete__marque" href="../../index.html">Archives Wild Code School</a>
+</header>
+<main class="contenu">
+<nav class="ariane"><a href="../../index.html">Accueil</a><span class="ariane__sep">›</span><a href="../../base-de-donnees/index.html">Base de données</a><span class="ariane__sep">›</span><span aria-current="page">00 - Installer MySQL</span></nav>
+
+<article class="quete">
+  <header class="quete__entete">
+    <a class="pastille pastille--teintee" href="../../base-de-donnees/index.html">Base de données</a>
+    <h1>00 - Installer MySQL</h1>
+    <p class="quete__meta">Quête 1 sur 9 · 15 images archivées</p>
+  </header>
+  <div class="cours">
+<h2>Objectifs</h2>
+<ul>
+<li>Comprendre ce qu'est un SGBD</li>
+<li>Installer et configurer MySQL</li>
+<li>Écrire ta première requête SQL</li>
+</ul>
+<h2>Introduction</h2>
+<div class="encadre encadre--story"><div class="encadre__titre">Le récit</div><div class="encadre__corps"><p>Bienvenue jeune sorcier, dans le monde merveilleux et magique des bases de données.</p>
+<p><img src="images/001-dumbledore-welcome.jpg" alt="dumbledore welcome" loading="lazy"></p>
+<p>Une base de données permet de stocker des informations utiles pour ton application. Tu vas apprendre dans les prochaines quêtes comment manipuler ces données.</p>
+<p>Pour le moment, tu dois installer un logiciel de base de données sur ta machine : un SGBD (Système de Gestion de Base de Données). Dans cette quête, nous te proposons d'installer MySQL. Il en existe d'autres comme MariaDB, PostgreSQL, Microsoft SQL Server, <em>etc.</em> et leur fonctionnement est globalement similaire.</p>
+</div></div>
+<div class="encadre encadre--warning"><div class="encadre__titre">Attention</div><div class="encadre__corps"><p><strong>IMPORTANT</strong></p>
+<p>Si tu as des difficultés avec l'installation de MySQL, n'hésite pas à demander de l'aide à ton formateur !</p>
+</div></div>
+<h2>Sommaire</h2>
+<h2>Un peu de vocabulaire</h2>
+<ul>
+<li><strong>SQL</strong> (Structured Query Language) est le langage standard pour interagir avec une base de données. Il est utilisé par tous les SGBD.</li>
+<li>Un <strong>SGBD</strong> est un logiciel de gestion de base de données, qui utilise donc SQL.</li>
+<li><strong>MySQL</strong> est <strong>un</strong> SGBD très utilisé, appartenant à l'entreprise Oracle. Dans les prochaines quêtes, tu va apprendre à utiliser le SQL sur MySQL, mais puisque ce langage est un standard, tu seras en mesure de l'utiliser également sur les autres SGBD. Attention, il y a tout de même quelques différences entre les SGBD qui n'implémentent pas tous le standard SQL exactement de la même manière, mais pour les fonctionnalités les plus basiques tu ne verras pas de différence.</li>
+</ul>
+<p>MySQL est un logiciel possédant une architecture <strong>client-serveur</strong>. C'est-à-dire que les données sont stockées sur un serveur MySQL. Mais ce serveur n'a pas d'interface graphique. Il est simplement là pour stocker, et répondre aux requêtes. Il faut donc utiliser un <strong>client</strong> compatible avec MySQL, pour envoyer des requêtes au serveur et interagir avec. Ces requêtes servent notamment à lire, mettre à jour ou ajouter des données dans la base.</p>
+<div class="encadre encadre--info"><div class="encadre__titre">Info</div><div class="encadre__corps"><p>Tu connais déjà cette architecture client-serveur pour les sites web. Le serveur HTTP traite les requêtes envoyées par le client (ton navigateur par exemple) et renvoie des réponses.</p>
+</div></div>
+<p>Le serveur MySQL peut donc se trouver sur une machine différente du client qui va l'interroger. Quand tu seras en train de développer, tu auras simultanément le client et le serveur sur ta machine en local.</p>
+<p>De la même manière qu'un serveur HTTP peut-être interrogé par des clients HTTP différents, tu auras un serveur MySQL mais tu seras amené à utiliser différents clients MySQL.
+Le premier (le plus basique) s'installe en même temps que le serveur MySQL, et s'utilise en ligne de commande uniquement. Pour te familiariser avec SQL, tu utiliseras au départ uniquement ce client dans ton terminal. Un peu plus tard durant ta formation, tu pourras installer des clients graphiques plus complets (citons par exemple MySQL Workbench, PHPMyAdmin, des extensions directement dans ton IDE, <em>etc.</em>).</p>
+<p>Il y aura donc toujours 2 étapes fondamentales :</p>
+<ol>
+<li>Le client envoie une requête SQL au serveur</li>
+<li>Le serveur analyse cette requête et renvoie sa réponse au client qui l'affiche si nécessaire.</li>
+</ol>
+<figure class="diagramme"><svg id="diagramme-pddcavdp34b" width="100%" xmlns="http://www.w3.org/2000/svg" style="max-width: 188.75px;" viewBox="-8 -8 188.75 188.19107055664062" role="graphics-document document" aria-roledescription="flowchart-v2"><style>#diagramme-pddcavdp34b{font-family:"trebuchet ms",verdana,arial,sans-serif;font-size:16px;fill:#fff;}#diagramme-pddcavdp34b .error-icon{fill:hsl(178.8, 66.9642857143%, 48.9215686275%);}#diagramme-pddcavdp34b .error-text{fill:rgb(213.7879464285, 46.7120535712, 50.0535714283);stroke:rgb(213.7879464285, 46.7120535712, 50.0535714283);}#diagramme-pddcavdp34b .edge-thickness-normal{stroke-width:2px;}#diagramme-pddcavdp34b .edge-thickness-thick{stroke-width:3.5px;}#diagramme-pddcavdp34b .edge-pattern-solid{stroke-dasharray:0;}#diagramme-pddcavdp34b .edge-pattern-dashed{stroke-dasharray:3;}#diagramme-pddcavdp34b .edge-pattern-dotted{stroke-dasharray:2;}#diagramme-pddcavdp34b .marker{fill:#F8B229;stroke:#F8B229;}#diagramme-pddcavdp34b .marker.cross{stroke:#F8B229;}#diagramme-pddcavdp34b svg{font-family:"trebuchet ms",verdana,arial,sans-serif;font-size:16px;}#diagramme-pddcavdp34b .label{font-family:"trebuchet ms",verdana,arial,sans-serif;color:#fff;}#diagramme-pddcavdp34b .cluster-label text{fill:rgb(213.7879464285, 46.7120535712, 50.0535714283);}#diagramme-pddcavdp34b .cluster-label span,#diagramme-pddcavdp34b p{color:rgb(213.7879464285, 46.7120535712, 50.0535714283);}#diagramme-pddcavdp34b .label text,#diagramme-pddcavdp34b span,#diagramme-pddcavdp34b p{fill:#fff;color:#fff;}#diagramme-pddcavdp34b .node rect,#diagramme-pddcavdp34b .node circle,#diagramme-pddcavdp34b .node ellipse,#diagramme-pddcavdp34b .node polygon,#diagramme-pddcavdp34b .node path{fill:#BB2528;stroke:hsl(358.8, 26.9642857143%, 33.9215686275%);stroke-width:1px;}#diagramme-pddcavdp34b .flowchart-label text{text-anchor:middle;}#diagramme-pddcavdp34b .node .katex path{fill:#000;stroke:#000;stroke-width:1px;}#diagramme-pddcavdp34b .node .label{text-align:center;}#diagramme-pddcavdp34b .node.clickable{cursor:pointer;}#diagramme-pddcavdp34b .arrowheadPath{fill:#0b0b0b;}#diagramme-pddcavdp34b .edgePath .path{stroke:#F8B229;stroke-width:2.0px;}#diagramme-pddcavdp34b .flowchart-link{stroke:#F8B229;fill:none;}#diagramme-pddcavdp34b .edgeLabel{background-color:#888;text-align:center;}#diagramme-pddcavdp34b .edgeLabel rect{opacity:0.5;background-color:#888;fill:#888;}#diagramme-pddcavdp34b .labelBkg{background-color:rgba(136, 136, 136, 0.5);}#diagramme-pddcavdp34b .cluster rect{fill:hsl(178.8, 66.9642857143%, 48.9215686275%);stroke:hsl(178.8, 26.9642857143%, 38.9215686275%);stroke-width:1px;}#diagramme-pddcavdp34b .cluster text{fill:rgb(213.7879464285, 46.7120535712, 50.0535714283);}#diagramme-pddcavdp34b .cluster span,#diagramme-pddcavdp34b p{color:rgb(213.7879464285, 46.7120535712, 50.0535714283);}#diagramme-pddcavdp34b div.mermaidTooltip{position:absolute;text-align:center;max-width:200px;padding:2px;font-family:"trebuchet ms",verdana,arial,sans-serif;font-size:12px;background:hsl(178.8, 66.9642857143%, 48.9215686275%);border:1px solid hsl(178.8, 26.9642857143%, 38.9215686275%);border-radius:2px;pointer-events:none;z-index:100;}#diagramme-pddcavdp34b .flowchartTitleText{text-anchor:middle;font-size:18px;fill:#fff;}#diagramme-pddcavdp34b :root{--mermaid-font-family:"trebuchet ms",verdana,arial,sans-serif;}</style><g><marker id="diagramme-pddcavdp34b_flowchart-pointEnd" class="marker flowchart" viewBox="0 0 10 10" refX="6" refY="5" markerUnits="userSpaceOnUse" markerWidth="12" markerHeight="12" orient="auto"><path d="M 0 0 L 10 5 L 0 10 z" class="arrowMarkerPath" style="stroke-width: 1; stroke-dasharray: 1, 0;"></path></marker><marker id="diagramme-pddcavdp34b_flowchart-pointStart" class="marker flowchart" viewBox="0 0 10 10" refX="4.5" refY="5" markerUnits="userSpaceOnUse" markerWidth="12" markerHeight="12" orient="auto"><path d="M 0 5 L 10 10 L 10 0 z" class="arrowMarkerPath" style="stroke-width: 1; stroke-dasharray: 1, 0;"></path></marker><marker id="diagramme-pddcavdp34b_flowchart-circleEnd" class="marker flowchart" viewBox="0 0 10 10" refX="11" refY="5" markerUnits="userSpaceOnUse" markerWidth="11" markerHeight="11" orient="auto"><circle cx="5" cy="5" r="5" class="arrowMarkerPath" style="stroke-width: 1; stroke-dasharray: 1, 0;"></circle></marker><marker id="diagramme-pddcavdp34b_flowchart-circleStart" class="marker flowchart" viewBox="0 0 10 10" refX="-1" refY="5" markerUnits="userSpaceOnUse" markerWidth="11" markerHeight="11" orient="auto"><circle cx="5" cy="5" r="5" class="arrowMarkerPath" style="stroke-width: 1; stroke-dasharray: 1, 0;"></circle></marker><marker id="diagramme-pddcavdp34b_flowchart-crossEnd" class="marker cross flowchart" viewBox="0 0 11 11" refX="12" refY="5.2" markerUnits="userSpaceOnUse" markerWidth="11" markerHeight="11" orient="auto"><path d="M 1,1 l 9,9 M 10,1 l -9,9" class="arrowMarkerPath" style="stroke-width: 2; stroke-dasharray: 1, 0;"></path></marker><marker id="diagramme-pddcavdp34b_flowchart-crossStart" class="marker cross flowchart" viewBox="0 0 11 11" refX="-1" refY="5.2" markerUnits="userSpaceOnUse" markerWidth="11" markerHeight="11" orient="auto"><path d="M 1,1 l 9,9 M 10,1 l -9,9" class="arrowMarkerPath" style="stroke-width: 2; stroke-dasharray: 1, 0;"></path></marker><g class="root"><g class="clusters"></g><g class="edgePaths"><path d="M76,34L70.62,39.75C65.239,45.5,54.479,57,52.615,67.964C50.751,78.928,57.783,89.356,61.3,94.57L64.816,99.783" id="L-A-D-0" class=" edge-thickness-normal edge-pattern-solid flowchart-link LS-A LE-D" style="fill:none;" marker-end="url(#diagramme-pddcavdp34b_flowchart-pointEnd)"></path><path d="M116.033,104.178L120.043,98.231C124.053,92.285,132.074,80.393,131.307,69.341C130.54,58.29,120.987,48.08,116.211,42.975L111.434,37.87" id="L-D-A-0" class=" edge-thickness-normal edge-pattern-solid flowchart-link LS-D LE-A" style="fill:none;" marker-end="url(#diagramme-pddcavdp34b_flowchart-pointEnd)"></path></g><g class="edgeLabels"><g class="edgeLabel" transform="translate(43.71875, 68.5)"><g class="label" transform="translate(-43.71875, -9.5)"><foreignObject width="87.4375" height="19"><div xmlns="http://www.w3.org/1999/xhtml" style="display: inline-block; white-space: nowrap;"><span class="edgeLabel">SQL Request</span></div></foreignObject></g></g><g class="edgeLabel" transform="translate(140.09375, 68.5)"><g class="label" transform="translate(-32.65625, -9.5)"><foreignObject width="65.3125" height="19"><div xmlns="http://www.w3.org/1999/xhtml" style="display: inline-block; white-space: nowrap;"><span class="edgeLabel">Response</span></div></foreignObject></g></g></g><g class="nodes"><g class="node default default flowchart-label" id="flowchart-A-0" data-node="true" data-id="A" transform="translate(91.90625, 17)"><rect class="basic label-container" style="fill: blue;" rx="0" ry="0" x="-53.875" y="-17" width="107.75" height="34"></rect><g class="label" style="" transform="translate(-46.375, -9.5)"><rect></rect><foreignObject width="92.75" height="19"><div xmlns="http://www.w3.org/1999/xhtml" style="display: inline-block; white-space: nowrap;"><span class="nodeLabel">MySQL Client</span></div></foreignObject></g></g><g class="node default default flowchart-label" id="flowchart-D-2" label-offset-y="11.73036093418259" data-node="true" data-id="D" transform="translate(91.90625, 137.59553909301758)"><path style="" d="M 0,11.73036093418259 a 55.25,11.73036093418259 0,0,0 110.5 0 a 55.25,11.73036093418259 0,0,0 -110.5 0 l 0,45.73036093418259 a 55.25,11.73036093418259 0,0,0 110.5 0 l 0,-45.73036093418259" transform="translate(-55.25,-34.595541401273884)"></path><g class="label" style="" transform="translate(-47.75, -9.5)"><rect></rect><foreignObject width="95.5" height="19"><div xmlns="http://www.w3.org/1999/xhtml" style="display: inline-block; white-space: nowrap;"><span class="nodeLabel">MySQL Server</span></div></foreignObject></g></g></g></g></g></svg></figure>
+<h2>Installation de MySQL</h2>
+<div class="encadre encadre--error"><div class="encadre__titre">Important</div><div class="encadre__corps"><p>Avant d'aller plus loin, assure toi de ne pas avoir déjà installé MySQL ou un logiciel tel que MAMP, XAMP, WAMP, etc. qui pourrait déjà inclure un serveur MySQL. Cela pourrait créer des conflits par la suite.</p>
+<p>Si c'est le cas, la procédure d’installation de MySQL est évidemment à ignorer et tu peux passer à la partie sur la connexion à MySQL.</p>
+</div></div>
+<div class="encadre encadre--warning"><div class="encadre__titre">Attention</div><div class="encadre__corps"><p>Si tu n'as pas MySQL d'installé (ce qui devrait être le cas), surtout n'essaie pas de l'installer par toi même. Choisi l'onglet correspondant à ton système d'exploitation (Ubuntu, Mac OS ou Windows) et suis bien les procédures expliquées ci-dessous.</p>
+</div></div>
+<div class="onglets" data-onglets="3"><input type="radio" name="onglets-1" id="onglets-1-0" class="onglets__radio" checked><input type="radio" name="onglets-1" id="onglets-1-1" class="onglets__radio"><input type="radio" name="onglets-1" id="onglets-1-2" class="onglets__radio"><div class="onglets__barre"><label class="onglets__label" for="onglets-1-0">Ubuntu</label><label class="onglets__label" for="onglets-1-1">Mac OS</label><label class="onglets__label" for="onglets-1-2">Windows</label></div><div class="onglets__panneaux"><div class="onglets__panneau"><p>Pour installer MySQL, ouvre un terminal et tape :</p>
+<div class="bloc-code"><div class="bloc-code__langue">sh</div><pre><code class="hljs language-sh"><span class="hljs-built_in">sudo</span> apt update
+<span class="hljs-built_in">sudo</span> apt install mysql-server
+</code></pre></div>
+<p>Voilà tu viens de d'installer MySQL, c'est  fini... ou pas, car en fait, c'est la configuration ensuite qui sera un peu plus complexe</p>
+<a class="ressource" href="https://www.digitalocean.com/community/tutorials/how-to-install-mysql-on-ubuntu-22-04" target="_blank" rel="noopener noreferrer">
+  <div class="ressource__icone">↗</div>
+  <div class="ressource__texte">
+    <div class="ressource__titre">Digital Ocean - Install MySQL Ubuntu 22.04</div>
+    <div class="ressource__desc"><p>🐧 Ressource très complète sur un installation de MySQL sur Ubuntu, notamment pour une installation sécurisée pour de la production (tu n'as pas besoin de suivre ces instructions dans la quête).</p>
+</div>
+    <div class="ressource__hote">digitalocean.com</div>
+  </div>
+</a>
+</div><div class="onglets__panneau"><p>A. Télécharger MySQL Server</p>
+<p>Cliquez sur le lien suivant afin de vous rendre sur la page de téléchargement du serveur MySQL : <a href="https://dev.mysql.com/downloads/mysql/" target="_blank" rel="noopener noreferrer">https://dev.mysql.com/downloads/mysql/</a></p>
+<p>Vous devriez voir cette page apparaître :</p>
+<p><img src="images/002-installation-de-mysql-mac-os.jpg" alt="" loading="lazy"></p>
+<p>Dans la partie <strong>« Select Operating System »</strong>, vérifiez bien que « macOs » est sélectionné.</p>
+<p>Dans la partie <strong>« Select OS Version »</strong>, il va falloir aller sélectionner la version de votre macOS ainsi que de votre processeur (votre puce). Pour cela, prenez le temps de lire la suite.</p>
+<p>Afin de connaître la version de l’OS de votre Mac ainsi qui le choix entre une puce ARM ou x64 / x86, je vous invite à suivre ces étapes :</p>
+<ol>
+<li>
+<p>Cliquez sur votre logo apple, en haut à gauche de votre Mac. Ensuite cliquez sur <strong>« A propos de ce Mac »</strong></p>
+</li>
+<li>
+<p>Dans la pop up d’information qui apparait, vous devriez avoir les détails concernant votre <strong>processeur (puce)</strong>, votre capacité de stockage, votre numéro de série et enfin votre <strong>version d’OS</strong></p>
+</li>
+<li>
+<p>Sélectionnez la version d’OS correspondante dans la partie <strong>« Select OS Version »</strong>.
+<em>Si vous avez une version plus ancienne, rendez vous sur l’onglet « Archives » que vous trouvez en haut de page puis sélectionnez la version correspondante.</em></p>
+</li>
+<li>
+<p>Si votre puce est une INTEL, choisissez <strong>x64 / x86</strong></p>
+</li>
+<li>
+<p>Si votre puce est une Apple M1 ou M2, choisissez <strong>ARM</strong></p>
+</li>
+</ol>
+<p>Cliquez ensuite sur <strong>« Download »</strong> à côté de l’installateur correspondant <em>(prenez les DMG archive, qui sont des fichiers exécutables sur Mac. Similaires aux .exe sur Windows)</em></p>
+<p>Vous arrivez ensuite sur la page ci dessous. Cliquez sur <strong>« No thanks, just start my download »</strong></p>
+<p><img src="images/003-installation-de-mysql-mac-os.jpg" alt="" loading="lazy"></p>
+<p>B. Installer MySQL Server</p>
+<p>Aller chercher le fichier téléchargé dans vos Téléchargements et double cliquez dessus.</p>
+<p>Cette fenêtre est censée s’ouvrir :</p>
+<p><img src="images/004-installation-de-mysql-mac-os.jpg" alt="" loading="lazy"></p>
+<p>Suivez la procédure d'installation en acceptant tous les choix par défaut.</p>
+<p><strong>Installation</strong></p>
+<p>Vous devrez saisir le mot de passe de votre Mac (celui que vous saisissez à l’ouverture de session en allumant votre Mac).</p>
+<p><strong>Configuration</strong></p>
+<p>Vous serez invité à saisir ou à créer un mot de passe pour l’utilisateur root. Quelle que soit la méthode choisie, bien <strong>noter et conserver</strong> ce mot de passe.</p>
+<p><em>N.B : si cette étape n’est pas proposée, pas de panique, on pourra définir ce mot de passe par la suite. Après validation de cette étape, il est possible que vous deviez à nouveau saisir le mot de passe de votre Mac.</em></p>
+<p>Une fois l’installation terminée, rendez vous dans les <strong>Préférences système</strong> de votre Mac.</p>
+<p>MySQL est censé apparaître tout en bas à gauche de la liste des configurations possibles. Cliquez dessus puis :</p>
+<ul>
+<li>Si les indicateurs sont en rouge,</li>
+</ul>
+<p>Cliquez sur <strong>Start MySQL Server</strong>.
+Saisir le mot de passe de votre Mac.</p>
+<p><em>N.B : Afin que MySQL soit lancé automatiquement à l’ouverture de votre Mac, cochez la case « Start MySQL when your computer starts up »</em></p>
+<ul>
+<li>Si les indicateurs sont en vert, MySQL est bien lancé.</li>
+</ul>
+<p><em>N.B : si le mot de passe de l’utilisateur root n’avait pas pu être créé précédemment, cliquer sur « Initialize Database », saisir un mot de passe, le conserver, le noter, et valider.</em></p>
+<p><strong>BRAVO, VOUS AVEZ FINI L'INSTALLATION DE MYSQL SERVER</strong> 🥳</p>
+</div><div class="onglets__panneau"><ol class="etapes"><li class="etape"><div class="etape__puce">1</div><div class="etape__contenu"><h4 class="etape__titre">Etape 1 - Téléchargement de MySQL</h4><p>Tout d'abord, il va falloir télécharger le programme d'installation à cette adresse : <a href="https://dev.mysql.com/downloads/installer/" target="_blank" rel="noopener noreferrer">https://dev.mysql.com/downloads/installer/</a>.</p>
+<p>Il est conseillé de prendre le <strong>second programme</strong> de la liste, comme sur cette image</p>
+<p><img src="images/005-page-de-telechargement-mysql.jpg" alt="Page de téléchargement MySQL" loading="lazy"></p>
+<p>Lorsque le téléchargement est terminé, <strong>exécute le programme</strong> que tu viens de télécharger.</p>
+<p>Autorise le programme à s'installer. Cette fenêtre devrait apparaître devant toi :</p>
+<p><img src="images/006-installation-mysql-page-d-accueil.jpg" alt="Installation MySQL - Page d'accueil" loading="lazy"></p>
+<p>Choisissez la version <strong>Server Only</strong> et appuyez sur le bouton <strong>Next</strong>. Sur la fenêtre suivante, appuyez sur <strong>Execute</strong>.</p>
+</div></li><li class="etape"><div class="etape__puce">2</div><div class="etape__contenu"><h4 class="etape__titre">Etape 2 - Installation de MySQL</h4><p>Le logiciel va procéder à l'installation de MySQL. Jusqu'ici, tu n'as téléchargé que le programme d'installation, mais pas encore MySQL en tant que tel.</p>
+<p><img src="images/007-installation-mysql-telechargement-mysql.jpg" alt="Installation MySQL - Téléchargement MySQL" loading="lazy"></p>
+<p>Lorsque le téléchargement de MySQL est terminé, clique sur <strong>Next</strong> puis <strong>Execute</strong>.</p>
+<p><img src="images/008-installation-mysql-mysql-installe.jpg" alt="Installation MySQL - MySQL installé" loading="lazy"></p>
+<p>Une fois cette étape passée, cliquez sur <strong>Execute</strong> et/ou <strong>Next</strong>.</p>
+<p>Félicitations, MySQL est bien installé désormais mais ce n'est pas encore fini !! Il reste encore l'étape de configuration qui est très importante.</p>
+<p>Tu devrais être sur cette page  :</p>
+<p><img src="images/009-installation-mysql-configuration.jpg" alt="Installation MySQL - Configuration" loading="lazy"></p>
+<p>Il suffit simplement de cliquer sur <strong>Next</strong>. Sur la page suivante, on sélectionne <strong>Use Strong Password</strong>, puis <strong>Next</strong>..</p>
+<p>Tu arrives donc sur cette fenêtre :</p>
+<p><img src="images/010-installation-mysql-mot-de-passe.jpg" alt="Installation MySQL - Mot de passe" loading="lazy"></p>
+<div class="encadre encadre--error"><div class="encadre__titre">Important</div><div class="encadre__corps"><p>Cette étape est <strong>très importante</strong> car c'est maintenant que tu vas définir le mot de passe qui te permet d'accéder à ton serveur MySQL en tant que <strong>root</strong>.</p>
+<p>Il faut absolument que tu te souviennes de ce mot de passe, donc saisis en un que tu n'oublieras pas et de préférence non sensible ! En effet, pendant la formation, il t'arrive souvent de partager ton écran ou des fichiers par erreur, il se peut donc fortement que l'on puisse lire par accident ce mot de passe. Ne choisi pas un mot de passe personnel, un simple « password » peut tout à fait convenir car ton ordinateur n'est pas un serveur de production ;).</p>
+</div></div>
+<p>Ensuite, clique sur <strong>Next</strong>, puis <strong>Next</strong>, et sur cette page, clique sur <strong>Execute</strong> :</p>
+<p><img src="images/011-installation-mysql-configuration-terminee.jpg" alt="Installation MySQL - Configuration terminée" loading="lazy"></p>
+<p>Lorsque toute la configuration est terminée, clique sur <strong>Finish</strong>, <strong>Next</strong> et <strong>Finish</strong>. Félicitations, tout est installé !!</p>
+</div></li><li class="etape"><div class="etape__puce">3</div><div class="etape__contenu"><h4 class="etape__titre">Etape 3 - Lancement de MySQL</h4><p>Tu vas maintenant exécuter l'invite de commandes qui te permet d'exécuter tes requêtes SQL.</p>
+<p>Pour cela, tape dans la barre de recherche de Windows &quot;MySQL&quot;. Tu devrais avoir ce résultat :</p>
+<p><img src="images/012-mysql-command-line-client.jpg" alt="MySQL Command Line Client" loading="lazy"></p>
+<p>Sélectionnez <strong>MySQL Command Line Client</strong>.</p>
+<p>On va te demander de saisir le mot de passe que tu as renseigné dans les étapes de configuration plus haut.</p>
+<p>Une fois cela fait, tu devrais avoir ce programme qui apparait :</p>
+<p><img src="images/013-enfin-fini.jpg" alt="Enfin fini ! " loading="lazy"></p>
+</div></li></ol>
+</div></div></div>
+<h2>Configuration de MySQL</h2>
+<h3>Se connecter via le client MySQL</h3>
+<p>Avant de passer à la suite, il faut que tu comprennes un peu le fonctionnement de MySQL. MySQL permet de créer plusieurs utilisateurs possédant chacun un mot de passe (gérés par MySQL) et ayant chacun plus ou moins de droits. Par défaut, il te créé un super-utilisateur (appelé root), qui a le droit de tout faire, dont créer de nouveaux utilisateurs.</p>
+<p>L'installation du serveur MySQL installe aussi automatiquement le client MySQL (celui en ligne de commande).</p>
+<div class="onglets" data-onglets="3"><input type="radio" name="onglets-2" id="onglets-2-0" class="onglets__radio" checked><input type="radio" name="onglets-2" id="onglets-2-1" class="onglets__radio"><input type="radio" name="onglets-2" id="onglets-2-2" class="onglets__radio"><div class="onglets__barre"><label class="onglets__label" for="onglets-2-0">Ubuntu</label><label class="onglets__label" for="onglets-2-1">Mac OS</label><label class="onglets__label" for="onglets-2-2">Windows</label></div><div class="onglets__panneaux"><div class="onglets__panneau"><p>Pour utiliser ce client, il faut utiliser la commande <code>mysql</code> dans ton terminal, en super utilisateur, et saisi ton mot de passe de session</p>
+<p>Tu viens d'installer une version &quot;récente&quot; de MySQL. Dans les versions précédentes, au moment de l'installation, MySQL te demandait de choisir un mot de passe pour cet utilisateur root. Aujourd'hui, MySQL utilise un plugin appelé <code>auth_socket</code> qui permet de s'affranchir d'un mot de passe pour root, et d'utiliser plutôt le mot de passe de ton utilisateur Ubuntu. C'est pour cela que pour te connecter, tu as utilisé <code>sudo</code> devant <code>mysql</code>. Ainsi, ton mot de passe de session t'es demandé et tu es connecté automatiquement en root.</p>
+<div class="bloc-code"><div class="bloc-code__langue">sh</div><pre><code class="hljs language-sh"><span class="hljs-built_in">sudo</span> mysql
+</code></pre></div>
+</div><div class="onglets__panneau"><div class="encadre encadre--warning"><div class="encadre__titre">Attention</div><div class="encadre__corps"><p>Si tu tapes la commande <code>mysql</code> dans ton terminal tu auras sans doute l'erreur suivante : <code>zsh command not found: mysql</code>. Certaines commandes Zsh ne sont pas accessible suite à l'installation d'une application ou d'une mise à jour. Pour les rendre accessibles par le système il faut vérifier que la variable d'environnement <code>$PATH</code> est correctement configurée et l'ajouter au fichier ~/.zshrc:</p>
+<ul>
+<li>Ouvre ton terminal</li>
+<li>Vérifie que tu es sous <code>zsh</code> en tapant &quot;zsh&quot;</li>
+<li>Tape <code>nano ~/.zshrc</code> dans ton terminal</li>
+<li>Ajoute en copiant/collant cette variable &quot;path&quot; au fichier, <code>export PATH=${PATH}:/usr/local/mysql/bin/</code></li>
+<li>Sauvegarde le fichier et sors de l'éditeur nano (<code>Ctrl + X</code>, même sur Mac).</li>
+<li>Pour exécuter les changements, tape <code>source ~/.zshrc</code></li>
+</ul>
+<p>Et voila ;)</p>
+</div></div>
+<p>Tu peux maintenant ouvrir ton terminal et taper <code>mysql -u root -p</code>. Cette commande sert à demander l'ouverture d'une session mysql dans ton terminal pour l'utilisateur root (-u root) avec le mot de passe que tu fourniras juste après (-p).</p>
+<p>On te demande maintenant le mot de passe, il s'agit de celui que tu as choisi lors de l'installation de MySQL auparavant pour ton utilisateur Root. Entre ce mot de passe et te voila connecté.</p>
+</div><div class="onglets__panneau"><div class="encadre encadre--info"><div class="encadre__titre">Info</div><div class="encadre__corps"><p>Même si une version du terminal directement connectée à MySQL est installée de base, tu dois faire les étapes suivantes pour pouvoir lancer la commande <code>mysql</code> dans n'importe quel terminal (git bash, terminal de VS Code...).</p>
+</div></div>
+<p>Il faut commencer par indiquer a Windows où ce dernier se trouve en passant par les variables d'environnement.</p>
+<p>Pour commencer, tu vas te rendre dans le répertoire d'installation de MySQL, qui devrait être <code>C:\Program Files\MySQL</code> si tu as suivi les instructions de la vidéo.</p>
+<p>Tu trouveras dans ce répertoire tous les composants MySQL que tu as choisi d'installer. Rends toi dans le dossier &quot;MySQL Server&quot; puis &quot;bin&quot; et cherche l'exécutable qui s'appelle <em>mysql.exe</em>.
+Fais un clic droit dessus et &quot;<em>copier en tant que chemin d'accès</em>&quot; pour que Windows copie le chemin d'accès au fichier, par défaut le suivant : <code>&quot;C:\Program Files\MySQL\MySQL Server 9.3\bin\mysql.exe&quot;</code>.</p>
+<p>Ensuite, tape &quot;environnement&quot; dans la barre de recherche de ton menu démarrer et clique sur &quot;Modifier les variables d'environnement système&quot;.</p>
+<p>Dans la fenêtre qui s'ouvre, clique sur &quot;Variables d'environnement&quot; en bas à droite et tu verras apparaître deux sections : la première sert à définir des variables relatives au compte d'utilisateur actuel et la seconde s'appliquera à tous les utilisateurs.</p>
+<p>Dans notre cas, tu vas sélectionner Path dans la catégorie du bas appelée &quot;Variables systèmes&quot; puis cliquer sur &quot;Modifier...&quot;.</p>
+<p>Dans la fenêtre qui s'ouvre, ne touche surtout pas aux différents chemins qui apparaissent, clique plutôt sur Nouveau en haut à droite, colle le chemin d'accès que tu as été chercher juste avant en faisant CTRL + V puis efface le <em>mysql.exe</em> à la fin de la ligne, tu devrais donc avoir en bas de ta liste <code>&quot;C:\Program Files\MySQL\MySQL Server 9.3\bin\</code> si tu as suivi toutes les instructions précédentes en gardant les valeurs par défaut.</p>
+<p><img src="images/014-capture-d-ecran-des-variables-d-environnement.png" alt="Capture d'écran des variables d'environnement" loading="lazy"></p>
+<p>Tu peux maintenant ouvrir n'importe quel terminal (CMD Windows, Git Bash ...) et taper <code>mysql -u root -p</code>. Cette commande sert à demander l'ouverture d'une session mysql dans ton terminal pour l'utilisateur root (-u root) avec le mot de passe que tu fourniras juste après (-p).</p>
+<p>On te demande maintenant le mot de passe, il s'agit de celui que tu as choisi lors de l'installation de MySQL auparavant pour ton utilisateur Root. Entre ce mot de passe et te voila connecté.</p>
+<div class="encadre encadre--warning"><div class="encadre__titre">Attention</div><div class="encadre__corps"><p>Bien que nous indiquions que la commande <code>mysql</code> puisse désormais être utilisée dans n'importe quel terminal et  faisons mention de Git Bash, il est <em><strong>impératif</strong></em> d'activer le support pour les pseudo consoles de Git Bash au moment de l'installation de ce dernier pour que cette commande fonctionne sans avoir à utiliser winpty.</p>
+</div></div>
+</div></div></div>
+<p>Une fois connecté, tu arrive sur un <em>prompt</em> qui a la forme <code>mysql &gt;</code> et qui t'invite à saisir tes requêtes SQL. Pour obtenir de l'aide, tu peux simplement utiliser le mot <code>help</code> ou le caractère <code>?</code> ce qui te donnera</p>
+<p><img src="images/015-capture-help-mysql.png" alt="capture help mysql" loading="lazy"></p>
+<h3>Créer un nouvel utilisateur</h3>
+<p>Une fois connecté avec root, tu vas pouvoir créer un nouvel utilisateur, celui dont tu te serviras au quotidien.</p>
+<div class="encadre encadre--error"><div class="encadre__titre">Important</div><div class="encadre__corps"><p>En effet, pour des raisons de sécurité, on n'utilisera <strong>jamais</strong> directement l'utilisateur root ! c'est pour cela que nous allons créer un nouvel utilisateur.</p>
+</div></div>
+<div class="encadre encadre--note encadre--callout"><div class="encadre__corps"><p>Dans le cas d'un site web mis en production, on cherchera à créer un mot de passe extrêmement sécurisé pour ce nouvel utilisateur, ainsi que les droits les plus restreints possibles afin de limiter les dégâts si l'utilisateur était tout de même compromis. Mais pour le moment, tu fais juste du développement sur ta machine. Ton serveur de base de données n'est pas celui qui sera sur le serveur final de production. Il n'y a normalement que toi qui va t'en servir. Tu n'as donc pas besoin &quot;en développement&quot; de choisir un mot de passe complexe. Au contraire, tu seras sans doute amené à partager ton écran avec des collègues ou ton formateur, choisi donc un mot de passe trivial, que tu n'utilises pas ailleurs et qui ne te posera donc pas de problème de sécurité.</p>
+</div></div>
+<p>Dans les exemples ci-dessous, nous choisirons en nom d'utilisateur 'harry' et en mot de passe 'potter'. Bien entendu, change par les valeurs de ton choix dans l'exemple ci-dessous.</p>
+<div class="encadre encadre--warning"><div class="encadre__titre">Attention</div><div class="encadre__corps"><p>Dans des exemples de commandes SQL comme ci-dessous, c'est une pratique courante de représenter le prompt <code>mysql &gt;</code> : cela rappelle que les commandes doivent être lancées dans un prompt MySQL et pas dans un prompt &quot;classique&quot;. Fais attenttion à reproduire les commandes sans le <code>mysql &gt;</code>. Fais aussi attention à taper ces commandes dans un prompt MySQL : tu dois voir le <code>mysql &gt;</code> là où tu tapes tes commandes SQL.</p>
+</div></div>
+<div class="bloc-code"><div class="bloc-code__langue">sql</div><pre><code class="hljs language-sql">mysql <span class="hljs-operator">&gt;</span> <span class="hljs-keyword">CREATE</span> <span class="hljs-keyword">USER</span> <span class="hljs-string">&#x27;harry&#x27;</span>@<span class="hljs-string">&#x27;localhost&#x27;</span> IDENTIFIED <span class="hljs-keyword">BY</span> <span class="hljs-string">&#x27;potter&#x27;</span>;
+</code></pre></div>
+<div class="encadre encadre--note encadre--arrow"><div class="encadre__corps"><p>Note la présence du <code>;</code> : dans le terminal, tu dois toujours terminer une instruction SQL par un <code>;</code>. Si tu l'oublies, l'invite de commande affichera quelque chose comme ça :</p>
+<div class="bloc-code"><div class="bloc-code__langue">sql</div><pre><code class="hljs language-sql">mysql <span class="hljs-operator">&gt;</span> <span class="hljs-keyword">CREATE</span> <span class="hljs-keyword">USER</span> <span class="hljs-string">&#x27;harry&#x27;</span>@<span class="hljs-string">&#x27;localhost&#x27;</span> IDENTIFIED <span class="hljs-keyword">BY</span> <span class="hljs-string">&#x27;potter&#x27;</span>
+  <span class="hljs-operator">-</span><span class="hljs-operator">&gt;</span>
+</code></pre></div>
+<p>La flèche <code>-&gt;</code> t'indique que ton instruction est considérée comme incomplète et que tu dois la terminer avec un <code>;</code> final. Il n'est jamais trop tard pour bien faire 😉</p>
+<div class="bloc-code"><div class="bloc-code__langue">sql</div><pre><code class="hljs language-sql">mysql <span class="hljs-operator">&gt;</span> <span class="hljs-keyword">CREATE</span> <span class="hljs-keyword">USER</span> <span class="hljs-string">&#x27;harry&#x27;</span>@<span class="hljs-string">&#x27;localhost&#x27;</span> IDENTIFIED <span class="hljs-keyword">BY</span> <span class="hljs-string">&#x27;potter&#x27;</span>
+  <span class="hljs-operator">-</span><span class="hljs-operator">&gt;</span> ;
+</code></pre></div>
+</div></div>
+<p>Cette commande créé l'utilisateur 'harry' avec le mot de passe 'potter'. Saisis ensuite ces commandes :</p>
+<div class="bloc-code"><div class="bloc-code__langue">sql</div><pre><code class="hljs language-sql">mysql <span class="hljs-operator">&gt;</span> <span class="hljs-keyword">GRANT</span> <span class="hljs-keyword">ALL</span> PRIVILEGES <span class="hljs-keyword">ON</span> <span class="hljs-operator">*</span> . <span class="hljs-operator">*</span> <span class="hljs-keyword">TO</span> <span class="hljs-string">&#x27;harry&#x27;</span>@<span class="hljs-string">&#x27;localhost&#x27;</span>;
+mysql <span class="hljs-operator">&gt;</span> FLUSH PRIVILEGES;
+</code></pre></div>
+<p>La commande <code>GRANT</code> permet de modifier les droits. Ici, on donne tous les droits au nouvel utilisateur (car de base il possède des droits trop limités pour ce qui nous intéresse). Ensuite, le <code>FLUSH PRIVILEGES</code> permet de recharger les données sur les droits des utilisateurs et donc de prendre en compte les modifications.</p>
+<p>Pour sortir du prompt MySQL et revenir à ton terminal, tu peux saisir <code>exit</code> ou <code>\q</code>.</p>
+<h3>Connexion avec le nouvel utilisateur</h3>
+<p>Et voilà ! À partir de maintenant, tu utiliseras uniquement ce nouvel utilisateur pour accéder à MySQL. Voici la commande pour te connecter, à saisir dans ton terminal (et non depuis le prompt mysql qui n'est justement pas encore lancé) :</p>
+<div class="bloc-code"><div class="bloc-code__langue">sql</div><pre><code class="hljs language-sql">$ mysql <span class="hljs-operator">-</span>u USERNAME_YOU_CHOSE_JUST_BEFORE <span class="hljs-operator">-</span>p
+</code></pre></div>
+<p>appuie sur entrée, l'option -p permet de demander le mot de passe pour cet utilisateur MySQL de manière cachée, saisi le mot de passe et appuie à nouveau sur entrée, bravo tu es connecté !</p>
+<p>pour notre exemple :</p>
+<div class="bloc-code"><div class="bloc-code__langue">sql</div><pre><code class="hljs language-sql">$ mysql <span class="hljs-operator">-</span>u harry <span class="hljs-operator">-</span>p
+</code></pre></div>
+<p>puis on saisira le mot de passe &quot;potter&quot;.</p>
+<p>Ton terminal doit bien afficher ton prompt MySQL et donc ressembler à ça :</p>
+<div class="bloc-code"><div class="bloc-code__langue">bash</div><pre><code class="hljs language-bash">mysql &gt;
+</code></pre></div>
+<h2>Challenge</h2>
+<p>Pour voir si tout fonctionne, tape cette première requête qui va te donner la version de MySQL installée :</p>
+<div class="bloc-code"><div class="bloc-code__langue">sql</div><pre><code class="hljs language-sql">mysql <span class="hljs-operator">&gt;</span> <span class="hljs-keyword">SELECT</span> VERSION();
+</code></pre></div>
+<p>N'oublie pas le point virgule qui indique à MySQL la fin d'une requête.
+Tu dois obtenir en réponse la version dans ton terminal.</p>
+
+  </div>
+  <section class="ressources-quete">
+  <h2>Ressources partagées sur cette quête</h2>
+  <ul class="ressources-liste">
+    <li><a href="https://openclassrooms.com/fr/courses/6971126-implementez-vos-bases-de-donnees-relationnelles-avec-sql/7152681-installez-le-sgbd-mysql" target="_blank" rel="noopener noreferrer">Installation en francais</a><span class="ressources-liste__url">https://openclassrooms.com/fr/courses/6971126-implementez-vos-bases-de-donnees-relationnelles-avec-sql/7152681-installez-le-sgbd-mysql</span></li>
+    <li><a href="https://stackoverflow.com/questions/32620670/git-bash-mysql-blank" target="_blank" rel="noopener noreferrer">Résout le fait que rien ne se passe en &quot;mysql -u root -p&quot; sur gitbash., propose une commande alternative.</a><span class="ressources-liste__url">https://stackoverflow.com/questions/32620670/git-bash-mysql-blank</span></li>
+    <li><a href="https://www.youtube.com/watch?v=1K4m6m5y9Oo" target="_blank" rel="noopener noreferrer">Si vous êtes sous macOS et que vous voulez passer par Homebrew pour vous servir de MySQL.</a><span class="ressources-liste__url">https://www.youtube.com/watch?v=1K4m6m5y9Oo</span></li>
+    <li><a href="https://www.youtube.com/watch?v=6CXp6I5js1w" target="_blank" rel="noopener noreferrer">Si vous oubliez votre mot de passe route et que vous désinstallez réinstallez mysql, cette vidéo vous aidera</a><span class="ressources-liste__url">https://www.youtube.com/watch?v=6CXp6I5js1w</span></li>
+    <li><a href="https://www.youtube.com/watch?v=Sfvpgu9ID2Q&amp;t=327s" target="_blank" rel="noopener noreferrer">Vidéo récente sur l'installation de MySQL pour Windows 11 + modification des variables d'environnement</a><span class="ressources-liste__url">https://www.youtube.com/watch?v=Sfvpgu9ID2Q&amp;t=327s</span></li>
+    <li><a href="https://dev.mysql.com/downloads/mysql/" target="_blank" rel="noopener noreferrer">version à jour </a><span class="ressources-liste__url">https://dev.mysql.com/downloads/mysql/</span></li>
+    <li><a href="https://www.youtube.com/watch?v=1oxLmS8MiEo&amp;t=286s" target="_blank" rel="noopener noreferrer">perso sur windows j'ai fait un mix de cette vidéo et celle de la quête et ça a marché</a><span class="ressources-liste__url">https://www.youtube.com/watch?v=1oxLmS8MiEo&amp;t=286s</span></li>
+  </ul>
+</section>
+</article>
+
+<nav class="nav-quete">
+  <span class="nav-quete__lien nav-quete__lien--vide"></span>
+  <a class="nav-quete__lien nav-quete__lien--suiv" href="../../base-de-donnees/002-01-introduction-aux-bases-de-donnees-relationnelles/index.html">
+           <span class="nav-quete__sens">Suivant →</span>
+           <span class="nav-quete__titre">01 - Introduction aux bases de données relationnelles</span>
+         </a>
+</nav>
+</main>
+<footer class="pied">
+  <p>Archive personnelle des cours suivis à la Wild Code School. Copie hors ligne à usage strictement privé.</p>
+</footer>
+
+<script src="../../assets/copie-code.js"></script>
+<script src="../../assets/progression.js"></script>
+</body>
+</html>

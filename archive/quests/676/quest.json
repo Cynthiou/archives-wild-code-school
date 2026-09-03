@@ -1,0 +1,33 @@
+{
+  "id": 676,
+  "titre": "7. Debug toi même en PHP",
+  "titres": {
+    "fr": "7. Debug toi même en PHP"
+  },
+  "theme": {
+    "id": 25,
+    "slug": "php",
+    "nom": "PHP"
+  },
+  "creeLe": "2019-08-09T15:55:51.172+02:00",
+  "difficulte": "",
+  "dureeEstimee": null,
+  "modeValidation": "student",
+  "chapitres": [
+    {
+      "id": 7803,
+      "type": "content",
+      "langue": "fr",
+      "majLe": "2022-09-09T10:45:05.677+02:00",
+      "caracteres": 9025
+    }
+  ],
+  "ressources": [
+    {
+      "link": "https://www.youtube.com/watch?v=8HidJasG_ds",
+      "description": "Vidéo de tutoriel en français simplifiant les étapes de configuration et d'utilisation de Xdebugger avec PHP et VSC"
+    }
+  ],
+  "urlOrigine": "https://odyssey.wildcodeschool.com/quests/676",
+  "archiveLe": "2026-09-02T23:21:36.868Z"
+}

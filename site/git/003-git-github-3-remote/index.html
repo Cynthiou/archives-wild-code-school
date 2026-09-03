@@ -1,0 +1,246 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Git/GitHub 3 : Remote — Archives WCS</title>
+<link rel="stylesheet" href="../../assets/style.css">
+</head>
+<body style="--teinte:#F44F3D">
+<header class="entete">
+  <a class="entete__marque" href="../../index.html">Archives Wild Code School</a>
+</header>
+<main class="contenu">
+<nav class="ariane"><a href="../../index.html">Accueil</a><span class="ariane__sep">›</span><a href="../../git/index.html">Git</a><span class="ariane__sep">›</span><span aria-current="page">Git/GitHub 3 : Remote</span></nav>
+
+<article class="quete">
+  <header class="quete__entete">
+    <a class="pastille pastille--teintee" href="../../git/index.html">Git</a>
+    <h1>Git/GitHub 3 : Remote</h1>
+    <p class="quete__meta">Quête 3 sur 6 · 2 images archivées</p>
+  </header>
+  <div class="cours">
+<h1>Avant de commencer</h1>
+<div class="encadre encadre--warning"><div class="encadre__titre">Attention</div><div class="encadre__corps"><p>Bon à savoir : Tu auras besoin du projet créé lors de la quête précédente pour poursuivre ton aventure.</p>
+<div class="renvois"><div class="renvois__titre">Quêtes liées</div><ul><li><a href="../../git/002-git-github-2-git-en-local/index.html">Quête 1309</a></li></ul></div>
+</div></div>
+<h1>Introduction</h1>
+<p>Jusqu'à présent, tu as créé un fichier et apporté des modifications que tu as enregistrées localement avec git. En d'autres termes, ton chef-d'œuvre de programmation est, pour le moment, seulement accessible par le biais de ton ordinateur.</p>
+<div class="encadre encadre--info"><div class="encadre__titre">Info</div><div class="encadre__corps"><p>En 2020, Git, Github ainsi que d'autres acteurs du monde informatique ont décidé de remplacer tous les termes pouvant être associés à de la discrimination raciale de leurs terminologies : <em>master, whitelist/blacklist, etc</em>. Il est donc possible dans certaines ressources que le mot &quot;master&quot;, soit utilisé au lieu de &quot;main&quot;. Cela ne change rien au fonctionnement. Cela demande juste un peu de gymnastique cérébrale. 🤸</p>
+</div></div>
+<h2>🤓 Objectifs :</h2>
+<ul>
+<li>✅ Découvrir et comprendre le concept de dépôt distant (remote repository)</li>
+<li>✅ Relier un dépôt distant à son dépôt local</li>
+<li>✅ Connaître et comprendre les commandes de base liées aux dépôts distants telles que : clone, remote, push, pull, fetch, merge</li>
+</ul>
+<h2>👀 Contenu de la quête :</h2>
+<ul>
+<li>Le dépôt distant</li>
+<li>La connexion SSH</li>
+<li>Les URL de dépôts</li>
+<li>Paramétrage d'un dépôt distant</li>
+<li>Envoyer du code vers ton dépôt distant</li>
+<li>Récupérer du code depuis le dépôt distant</li>
+<li>Cloner un dépôt</li>
+</ul>
+<h1>🤷‍♂️ Le dépôt distant</h1>
+<p>Un dépôt distant est un dépôt git (repository) qui n'est pas sur ton ordinateur.</p>
+<p>Travailler sur un dépôt local est en général beaucoup plus pratique. Mais à un moment donné, tu dois envoyer ton code vers un dépôt distant pour :</p>
+<ul>
+<li>Enregistrer tes modifications sur un serveur (en cas de crash de ta machine locale)</li>
+<li>Partager ton code avec tes collègues</li>
+</ul>
+<p>Avant de comprendre comment cela se fait, tu devras comprendre ce qu'est un dépôt distant.</p>
+<p>Il existe plusieurs plateformes pour l'hébergement de tes travaux à distance, en voici quelques-unes</p>
+<ul>
+<li><a href="https://github.com" target="_blank" rel="noopener noreferrer">GitHub</a></li>
+<li><a href="https://bitbucket.org" target="_blank" rel="noopener noreferrer">Bitbucket</a></li>
+<li><a href="https://gitlab.com" target="_blank" rel="noopener noreferrer">Gitlab</a></li>
+</ul>
+<p>Tu peux également créer ton propre serveur git avec ou sans interface d'administration web (ce que nous ne ferons pas dans la quête).</p>
+<h1>👉 Avant toute chose : la connexion SSH</h1>
+<p>GitHub a récemment modifié sa politique concernant les questions de sécurité. Ainsi, depuis le 13 août 2021, il est obligatoire d'utiliser une authentification de type &quot;SSH&quot; lors de l'utilisation de git en coordination avec GitHub.</p>
+<p>SSH (Secure Shell) est un protocole permettant par exemple d'ouvrir un shell à distance (mais pas seulement) avec de forts objectifs de sécurité. Parmi ces objectifs, SSH assure une authentification par clés cryptographique.
+La page WikipediA sur <a href="https://fr.wikipedia.org/wiki/Secure_Shell" target="_blank" rel="noopener noreferrer">SSH</a> permet d'en savoir un peu plus sur ce protocole.</p>
+<h2>Création de clés SSH dans GitHub</h2>
+<p>Pour cela, tu dois donc en premier lieu créer une paire de clés SSH. Tu peux le faire &quot;à la main&quot;, mais pour simplifier la configuration, Github te propose une solution pratique, via l'utilisation de Github CLI (un outil en ligne de commande propre à Github, à ne pas confondre avec git !). Github CLI permet de faire beaucoup de chose depuis ton terminal, notamment de configurer la clé SSH.</p>
+<div class="encadre encadre--warning"><div class="encadre__titre">Attention</div><div class="encadre__corps"><p>Attention de bien suivre les étapes en fonction de votre système d'exploitation.</p>
+</div></div>
+<h3>Installation de Github CLI</h3>
+<div class="onglets" data-onglets="3"><input type="radio" name="onglets-7" id="onglets-7-0" class="onglets__radio" checked><input type="radio" name="onglets-7" id="onglets-7-1" class="onglets__radio"><input type="radio" name="onglets-7" id="onglets-7-2" class="onglets__radio"><div class="onglets__barre"><label class="onglets__label" for="onglets-7-0">Ubuntu</label><label class="onglets__label" for="onglets-7-1">Mac OS</label><label class="onglets__label" for="onglets-7-2">Windows</label></div><div class="onglets__panneaux"><div class="onglets__panneau"><p>Tape simplement cette commande</p>
+<div class="bloc-code"><div class="bloc-code__langue">sh</div><pre><code class="hljs language-sh"><span class="hljs-built_in">sudo</span> apt install gh
+</code></pre></div>
+</div><div class="onglets__panneau"><p>Tape simplement cette commande</p>
+<div class="bloc-code"><div class="bloc-code__langue">sh</div><pre><code class="hljs language-sh">brew install gh
+</code></pre></div>
+</div><div class="onglets__panneau"><p>Va sur la page <a href="https://github.com/cli/cli/releases/" target="_blank" rel="noopener noreferrer">https://github.com/cli/cli/releases/</a></p>
+<p>Dans la catégoie &quot;Assets&quot;, télécharge le &quot;windows amd64 installer&quot; (tu devras peut-être cliquer sur &quot;Afficher tous les assets&quot; pour le trouver) et exécute le.</p>
+</div></div></div>
+<h3>Configuration de la clé SSH via github CLI</h3>
+<p>Suit uniquement l'étape 2 (<strong>Step 2 - Authentication</strong>) de la documentation ci-dessous (la partie 1 traite de l'installation mais tu viens déjà de le faire).</p>
+<a class="ressource" href="https://blog.devgenius.io/getting-started-with-the-github-cli-2a723585e368#552e" target="_blank" rel="noopener noreferrer">
+  <div class="ressource__icone">↗</div>
+  <div class="ressource__texte">
+    <div class="ressource__titre">Tuto sur la configuration d'une clé SSH via la CLI</div>
+    
+    <div class="ressource__hote">blog.devgenius.io</div>
+  </div>
+</a>
+<div class="encadre encadre--note encadre--arrow"><div class="encadre__corps"><p>Si ça ne marche pas, la documentation de GitHub te donne des instructions pour configurer à la main ta clé SSH, dans les sections &quot;Generating a new SSH key&quot; et &quot;Adding your SSH key to the ssh-agent&quot;. Tu n'as <strong>pas besoin de suivre</strong> cette ressource si tu as configuré la clé via Github CLI.</p>
+<a class="ressource" href="https://docs.github.com/en/github/authenticating-to-github/generating-a-new-ssh-key-and-adding-it-to-the-ssh-agent" target="_blank" rel="noopener noreferrer">
+  <div class="ressource__icone">↗</div>
+  <div class="ressource__texte">
+    <div class="ressource__titre">[Alternative] Tutoriel sur GitHub pour la création d'une paire de clés SSH à la main</div>
+    
+    <div class="ressource__hote">docs.github.com</div>
+  </div>
+</a>
+</div></div>
+<div class="encadre encadre--info"><div class="encadre__titre">Info</div><div class="encadre__corps"><p>Tu peux enregistrer plusieurs clés SSH sur ton compte GitHub. Par exemple, si tu utilises git et GitHub sur plusieurs machines différentes, alors il te faudra répéter ces instructions sur chacun de tes ordinateurs, afin qu'ils aient tous leurs propre clés SSH liées à ton compte GitHub.</p>
+</div></div>
+<h1>👉 Paramétrage d'un dépôt distant</h1>
+<p>Pour envoyer ton travail à un dépôt distant (<em>remote</em>), tu dois d'abord informer ton dépôt local de l'existence du dépôt distant.</p>
+<div class="bloc-code"><div class="bloc-code__langue">bash</div><pre><code class="hljs language-bash">git remote add origin &lt;REMOTE_URL&gt;
+</code></pre></div>
+<div class="encadre encadre--note encadre--arrow"><div class="encadre__corps"><p>Dans cette commande, &quot;origin&quot; est ton nom de dépôt distant et est associé à une URL. C'est un nom conventionnel comme un autre, mais nous aurions très bien pu en choisir un autre.</p>
+<p>Pour <code>&lt;REMOTE_URL&gt;</code>, chaque dépôt GitHub possède en réalité deux types d'adresses, une HTTPS et une SSH. Tu peux les retrouver en cliquant sur le bouton vert &quot;Code&quot;, comme indiqué sur la capture ci-dessous</p>
+<p><img src="images/001-where-to-find-ssh-url-in-github.png" alt="where to find ssh url in GitHub" loading="lazy"></p>
+<p>Même si c'est l'adresse en HTTPS apparait en premier, tu ne l'utiliseras pas ! Tu dois cliquer sur SSH et utiliser l'adresse commençant par git@github... c'est elle qui est compatible avec la configuration de la clé SSH que tu as fais dans l'étape précédente.</p>
+<a class="ressource" href="https://www.ssh.com/ssh/public-key-authentication" target="_blank" rel="noopener noreferrer">
+  <div class="ressource__icone">↗</div>
+  <div class="ressource__texte">
+    <div class="ressource__titre">Authentification SSH</div>
+    <div class="ressource__desc"><p>Pour plus d'informations sur le fonctionnement de l'authentification SSH</p>
+</div>
+    <div class="ressource__hote">ssh.com</div>
+  </div>
+</a>
+</div></div>
+<p>Voilà ! Ton dépôt à distance est lié à ton dépôt local (pour fetch et push). Tu peux le vérifier en exécutant la commande suivante à tout moment.</p>
+<div class="bloc-code"><div class="bloc-code__langue">bash</div><pre><code class="hljs language-bash">git remote -v
+</code></pre></div>
+<p><img src="images/002-git-remote-v.png" alt="git remote -v" loading="lazy"></p>
+<ul>
+<li><strong>Fetch</strong> : Pour récupérer ton travail du dépôt distant vers le local.</li>
+<li><strong>Push</strong> : Pour envoyer ton travail du local vers le distant.</li>
+</ul>
+<h1>👉 Envoyer du code vers ton dépôt distant</h1>
+<p>Pour envoyer du code vers le dépôt distant, on utilise la commande <em>push</em>.</p>
+<p>La commande push met à jour le dépôt distant avec le contenu des derniers commits locaux non envoyés.</p>
+<div class="bloc-code"><pre><code class="hljs language-plaintext">git push origin main
+</code></pre></div>
+<p>Dans cette commande, <code>origin</code> est le lien vers le dépôt distant. <code>main</code> est ici le nom de la branche distante vers laquelle nous voulons <em>push</em>.</p>
+<p>Pas d'inquiétude, tu découvriras le concept de <strong>branches</strong> dans la quête suivante. Pour le moment, tu peux considérer une branche comme un ensemble de lignes de code (d'un même thème). Une branche possède un nom unique et &quot;main&quot; est la branche par défaut.</p>
+<h1>👉 Récupérer du code depuis le dépôt distant</h1>
+<p>Si ton dépôt à distance comporte des modifications et que tu souhaites les récupérer en local, tu utiliseras la commande <em>pull</em>.</p>
+<div class="bloc-code"><div class="bloc-code__langue">bash</div><pre><code class="hljs language-bash">git pull origin main
+</code></pre></div>
+<p>Il s'agit d'un raccourci, la commande &quot;pull&quot; est en fait un &quot;fetch&quot; puis un &quot;merge&quot;.</p>
+<p>C'est l'équivalent de :</p>
+<div class="bloc-code"><div class="bloc-code__langue">bash</div><pre><code class="hljs language-bash">git fetch origin
+git merge origin/main
+</code></pre></div>
+<ul>
+<li>La commande &quot;fetch&quot; permet de récupérer localement la branche distante.</li>
+<li>La commande &quot;merge&quot; fusionne la branche distante et la branche locale (tu verras comment fusionner dans une quête ultérieure).</li>
+</ul>
+<p>Il est important de comprendre que tu as une copie des deux branches (distante et locale) sur ton ordinateur.</p>
+<p>Git ne fonctionne que localement, tu dois donc lui demander de fusionner la branche distante nommée <em>main</em> de <em>origin</em> avec la branche locale sur laquelle tu es <em>main</em>.</p>
+<h1>👉 Cloner un dépôt</h1>
+<p>Si tu as déjà un dépôt distant (un projet existant qui comprend un peu de code), tu peux récupérer le projet localement avec la commande <em>clone</em> :</p>
+<div class="bloc-code"><div class="bloc-code__langue">bash</div><pre><code class="hljs language-bash">git <span class="hljs-built_in">clone</span> &lt;REMOTE_URL&gt;
+</code></pre></div>
+<p>Cela permettra de récupérer le projet distant localement dans un nouveau dossier et de lier local et distant correctement par la même occasion.</p>
+<p>Si tu ajoutes un dossier dans la ligne de commande (c'est facultatif), tu récupéreras le code source dans ce dossier spécifique.</p>
+<p>Une courte vidéo pour résumer :</p>
+<a class="video-lien" href="https://www.youtube.com/watch?v=s6KTbytdNgs" target="_blank" rel="noopener noreferrer">
+  <div class="video-lien__play">▶</div>
+  <div class="video-lien__texte">
+    <div class="video-lien__titre">Vidéo YouTube</div>
+    <div class="video-lien__url">https://www.youtube.com/watch?v=s6KTbytdNgs</div>
+  </div>
+</a>
+<h1>☝️ En résumé</h1>
+<ul>
+<li>Un dépôt distant est un dépôt git hébergé sur Internet.</li>
+<li>Tu peux envoyer tes changements locaux sur ton dépôt distant avec la commande <em>push</em>.</li>
+<li>Tu peux récupérer les modifications du dépôt à distance grâce à la commande <em>pull</em>.</li>
+<li>Tu peux télécharger un projet existant avec la commande &quot;clone&quot;.</li>
+</ul>
+<hr>
+<h1>📝 Quiz</h1>
+<div class="bloc-code"><div class="bloc-code__langue">quiz</div><pre><code class="hljs language-quiz">true|||true|||false
+# La notion de dépôt distant (remote) n'existe que sur GitHub ?
+[] Vrai
+[x] Faux
+# Quelle commande git permet de s'assurer que son dépôt local est à jour ?
+[x] git pull
+[] git push
+[] git remote
+[] git clone
+[x] git fetch &amp; git merge
+# Comment créer un dépôt local à partir d'un dépôt distant ? 
+[] git init &lt;REMOTE_URL&gt;
+[x] git clone &lt;REMOTE_URL&gt;
+[] git pull &lt;REMOTE_URL&gt;
+# Quelle commande permet de récupérer les URL des dépôts distants configurés sur un dépôt local
+[x] git remote -v
+[] git status
+[] git list &lt;REMOTE_URL&gt;
+</code></pre></div>
+<hr>
+<h1>💪 Challenge</h1>
+<ol>
+<li>Crée un nouveau dépôt nommé &quot;my-awesome-project&quot; sur GitHub (coche &quot;Initialiser ce dépôt avec un README&quot;).</li>
+<li>Clone ce dépôt sur ton ordinateur à partir du lien SSH dans GitHub</li>
+<li>Modifie le fichier README directement sur GitHub pour inclure une courte description du projet (par exemple : This awesome project is created to experiment git notions like clone, push and pull)</li>
+<li>Récupère les modifications distantes sur ton projet local</li>
+<li>Modifie sur ton ordinateur le fichier README en ajoutant une section appelée <em>achievements</em>. Remplis-la avec le texte &quot;J'ai réussi à faire clone, pull et je m'apprête à faire push&quot;.</li>
+<li>En utilisant le terminal, envoie (<em>push</em>) tes modifications vers le dépôt distant.</li>
+<li>Partage le lien du dépôt distant en solution à ce défi.</li>
+</ol>
+<h1>🧐 Critères de validation :</h1>
+<ul>
+<li>[ ] Le dépôt distant contient un fichier README.md</li>
+<li>[ ] Ce fichier a été modifié par au moins 2 commits</li>
+</ul>
+
+  </div>
+  <section class="ressources-quete">
+  <h2>Ressources partagées sur cette quête</h2>
+  <ul class="ressources-liste">
+    <li><a href="https://www.youtube.com/watch?v=yXT1ElMEkW8" target="_blank" rel="noopener noreferrer">using push pull commit remote....</a><span class="ressources-liste__url">https://www.youtube.com/watch?v=yXT1ElMEkW8</span></li>
+    <li><a href="https://fr.w3docs.com/snippets/git/comment-generer-une-cle-ssh-pour-git.html" target="_blank" rel="noopener noreferrer">Pour gérer les clees SSH c'est trés bien argumenté </a><span class="ressources-liste__url">https://fr.w3docs.com/snippets/git/comment-generer-une-cle-ssh-pour-git.html</span></li>
+    <li><a href="https://www.youtube.com/watch?v=gxQKw7A6qDM&amp;ab_channel=IT-Connect" target="_blank" rel="noopener noreferrer">Qu'est-ce que le protocole SSH ? A quoi sert le protocole SSH ? Terminal distant, transfert de fichiers, etc...</a><span class="ressources-liste__url">https://www.youtube.com/watch?v=gxQKw7A6qDM&amp;ab_channel=IT-Connect</span></li>
+    <li><a href="https://www.youtube.com/watch?v=RGOj5yH7evk&amp;ab_channel=freeCodeCamp.org" target="_blank" rel="noopener noreferrer">crash course on the basics </a><span class="ressources-liste__url">https://www.youtube.com/watch?v=RGOj5yH7evk&amp;ab_channel=freeCodeCamp.org</span></li>
+    <li><a href="https://education.github.com/git-cheat-sheet-education.pdf" target="_blank" rel="noopener noreferrer">git cheat sheet la feuille qui explique les commande de git. Disponible en français dans les ressources de la quête 2</a><span class="ressources-liste__url">https://education.github.com/git-cheat-sheet-education.pdf</span></li>
+    <li><a href="https://www.youtube.com/watch?v=8X4u9sca3Io" target="_blank" rel="noopener noreferrer">Great Youtube video explaining in details how to create and add your ssh key to GitHub</a><span class="ressources-liste__url">https://www.youtube.com/watch?v=8X4u9sca3Io</span></li>
+    <li><a href="https://www.youtube.com/watch?v=RGOj5yH7evk" target="_blank" rel="noopener noreferrer">Git and GitHub CrashCourse (May20, 1h08, time-stamped sections)</a><span class="ressources-liste__url">https://www.youtube.com/watch?v=RGOj5yH7evk</span></li>
+    <li><a href="https://training.github.com/downloads/fr/github-git-cheat-sheet.pdf" target="_blank" rel="noopener noreferrer">Pour avoir les commandes de bases de GIT !</a><span class="ressources-liste__url">https://training.github.com/downloads/fr/github-git-cheat-sheet.pdf</span></li>
+    <li><a href="https://www.hostinger.fr/tutoriels/commandes-git#Git_config" target="_blank" rel="noopener noreferrer">les commandes de git</a><span class="ressources-liste__url">https://www.hostinger.fr/tutoriels/commandes-git#Git_config</span></li>
+    <li><a href="https://docs.github.com/en/authentication/connecting-to-github-with-ssh" target="_blank" rel="noopener noreferrer">La doc officielle de github pour troubleshooter des problèmes SSH</a><span class="ressources-liste__url">https://docs.github.com/en/authentication/connecting-to-github-with-ssh</span></li>
+    <li><a href="https://desktop.github.com/download/" target="_blank" rel="noopener noreferrer">Petit outils très efficace pour les synchros sans soucis de clé SSH</a><span class="ressources-liste__url">https://desktop.github.com/download/</span></li>
+  </ul>
+</section>
+</article>
+
+<nav class="nav-quete">
+  <a class="nav-quete__lien nav-quete__lien--prec" href="../../git/002-git-github-2-git-en-local/index.html">
+           <span class="nav-quete__sens">← Précédent</span>
+           <span class="nav-quete__titre">Git/GitHub 2 : Git en local</span>
+         </a>
+  <a class="nav-quete__lien nav-quete__lien--suiv" href="../../git/004-git-github-4-branche-et-flow/index.html">
+           <span class="nav-quete__sens">Suivant →</span>
+           <span class="nav-quete__titre">Git/GitHub 4 : Branche et flow</span>
+         </a>
+</nav>
+</main>
+<footer class="pied">
+  <p>Archive personnelle des cours suivis à la Wild Code School. Copie hors ligne à usage strictement privé.</p>
+</footer>
+
+<script src="../../assets/copie-code.js"></script>
+<script src="../../assets/progression.js"></script>
+</body>
+</html>

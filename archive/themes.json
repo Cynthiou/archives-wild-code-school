@@ -1,0 +1,163 @@
+[
+  {
+    "slug": "code",
+    "nom": "Terminal",
+    "description": "La ligne de commande - ou CLI (Command Line Interface) - est l'interface principale entre un développeur et sa machine. Elle permet d'effectuer toutes les tâches.",
+    "couleur": "#3b3003",
+    "icone": "assets/themes/terminal.png"
+  },
+  {
+    "slug": "git",
+    "nom": "Git",
+    "description": "Git is a version control system for tracking changes in computer files and coordinating work on those files among multiple people.",
+    "couleur": "#F44F3D",
+    "icone": "assets/themes/git.png"
+  },
+  {
+    "slug": "php_adv",
+    "nom": "PHP Avancé",
+    "description": "PHP is a server-side scripting language designed for web development but also used as a general-purpose programming language.",
+    "couleur": "#745089",
+    "icone": "assets/themes/php-avance.png"
+  },
+  {
+    "slug": "database",
+    "nom": "Base de données",
+    "description": "Les bases de données sont des outils indispensables dans le développement de sites web (et dans bien d'autres domaines). Elles vont te permettre de stocker des données, de manière structurée et organisée, et de les réutiliser facilement.",
+    "couleur": "#F7A356",
+    "icone": "assets/themes/base-de-donnees.png"
+  },
+  {
+    "slug": "javascript",
+    "nom": "JavaScript",
+    "description": "JavaScript, often abbreviated as JS, is a high-level, interpreted programming language. It is a language which is also characterized as dynamic, weakly typed, prototype-based and multi-paradigm.",
+    "couleur": "#856400",
+    "icone": "assets/themes/javascript.png"
+  },
+  {
+    "slug": "html",
+    "nom": "CSS",
+    "description": "Différentes quêtes sur CSS et son ecosystème",
+    "couleur": "#1b62b1",
+    "icone": "assets/themes/css.png"
+  },
+  {
+    "slug": "scrum",
+    "nom": "Scrum",
+    "description": "Scrum is an agile framework for managing work with an emphasis on software development.",
+    "couleur": "#17B481",
+    "icone": "assets/themes/scrum.png"
+  },
+  {
+    "slug": "typescript",
+    "nom": "Typescript",
+    "description": "TypeScript is an open-source programming language. It is a strict syntactical superset of JavaScript, and adds optional static typing to the language.",
+    "couleur": "#2079B1",
+    "icone": "assets/themes/typescript.png"
+  },
+  {
+    "slug": "nodejs",
+    "nom": "Node.js",
+    "description": "Node.js is an open-source, cross-platform JavaScript run-time environment that executes JavaScript code server-side.",
+    "couleur": "#333333",
+    "icone": "assets/themes/node-js.png"
+  },
+  {
+    "slug": "react",
+    "nom": "React - Bases",
+    "description": "React est une bibliothèque JavaScript permettant de construire des interfaces utilisateur. Elle combine rapidité d'exécution, simplicité de développement et scalabilité.",
+    "couleur": "#4DC4DE",
+    "icone": "assets/themes/react-bases.png"
+  },
+  {
+    "slug": "php",
+    "nom": "PHP",
+    "description": "PHP is a server-side scripting language designed for web development but also used as a general-purpose programming language.",
+    "couleur": "#5F83B2",
+    "icone": "assets/themes/php.png"
+  },
+  {
+    "slug": "prepa",
+    "nom": "JS Monorepo",
+    "description": "Votre framework JavaScript",
+    "couleur": "#000000",
+    "icone": "assets/themes/js-monorepo.png"
+  },
+  {
+    "slug": "tools",
+    "nom": "Outils",
+    "description": "Les bons outils font les bons ouvriers",
+    "couleur": "#3B424E",
+    "icone": "assets/themes/outils.png"
+  },
+  {
+    "slug": "php-object-oriented",
+    "nom": "PHP Orienté Objet",
+    "description": "À partir de PHP 5, PHP inclus un modèle objet complet.",
+    "couleur": "#464985",
+    "icone": "assets/themes/php-oriente-objet.png"
+  },
+  {
+    "slug": "react-intermediate",
+    "nom": "React - Intermédiaire",
+    "description": "Aller plus loin avec React 🚀",
+    "couleur": "#5B76DF",
+    "icone": "assets/themes/react-intermediaire.png"
+  },
+  {
+    "slug": "web-design",
+    "nom": "Web Design",
+    "description": "Web Design",
+    "couleur": "#4d4e4d",
+    "icone": "assets/themes/web-design.png"
+  },
+  {
+    "slug": "more-javascript",
+    "nom": "JavaScript - Beyond the Basics",
+    "description": "JavaScript, often abbreviated as JS, is a high-level, interpreted programming language. It is a language which is also characterized as dynamic, weakly typed, prototype-based and multi-paradigm.",
+    "couleur": "#854200",
+    "icone": "assets/themes/javascript-beyond-the-basics.png"
+  },
+  {
+    "slug": "html5",
+    "nom": "HTML",
+    "description": "HTML est un langage de balisage utilisé pour structurer et présenter du contenu sur le Web. Il s'agit de la cinquième et actuelle version de la norme HTML.",
+    "couleur": "#a03737",
+    "icone": "assets/themes/html.png"
+  },
+  {
+    "slug": "express-js",
+    "nom": "Express.js",
+    "description": "le framework web rapide, sans parti pris et minimaliste pour node",
+    "couleur": "#545454",
+    "icone": "assets/themes/express-js.png"
+  },
+  {
+    "slug": "ui-design",
+    "nom": "UI Design",
+    "description": "Design d'interface utilisateur",
+    "couleur": "#0b7771",
+    "icone": "assets/themes/ui-design.png"
+  },
+  {
+    "slug": "web-development",
+    "nom": "Développement Web",
+    "description": "Le développement Web est le travail nécessaire au développement d'un site Web pour Internet (World Wide Web) ou pour un intranet (un réseau privé). Le développement Web peut aller du développement d'une simple page statique unique de texte brut à des applications Web complexes..",
+    "couleur": "#000000",
+    "icone": "assets/themes/developpement-web.png"
+  },
+  {
+    "slug": "generative-ai",
+    "nom": "IA Générative",
+    "description": "IA Générative",
+    "couleur": "#220f2a",
+    "icone": "assets/themes/ia-generative.png"
+  },
+  {
+    "slug": "on-boarding-students",
+    "nom": "Onboarding students",
+    "description": "On-boarding - consacré aux nouveaux étudiants ou aux nouveaux processus d'apprentissage",
+    "couleur": "#05604e",
+    "icone": "assets/themes/onboarding-students.png"
+  }
+]

@@ -1,0 +1,28 @@
+{
+  "id": 2985,
+  "titre": "Intégration de PHP et HTML",
+  "titres": {
+    "fr": "Intégration de PHP et HTML"
+  },
+  "theme": {
+    "id": 25,
+    "slug": "php",
+    "nom": "PHP"
+  },
+  "creeLe": "2024-02-01T07:17:32.611+01:00",
+  "difficulte": "1",
+  "dureeEstimee": null,
+  "modeValidation": "self",
+  "chapitres": [
+    {
+      "id": 11223,
+      "type": "content",
+      "langue": "fr",
+      "majLe": "2024-03-07T10:39:38.873+01:00",
+      "caracteres": 15882
+    }
+  ],
+  "ressources": [],
+  "urlOrigine": "https://odyssey.wildcodeschool.com/quests/2985",
+  "archiveLe": "2026-09-02T20:52:38.922Z"
+}

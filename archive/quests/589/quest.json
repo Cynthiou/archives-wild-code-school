@@ -1,0 +1,35 @@
+{
+  "id": 589,
+  "titre": "02 - JS Monorepo : Installation et initialisation d'un projet full-stack",
+  "titres": {
+    "fr": "02 - JS Monorepo : Installation et initialisation d'un projet full-stack"
+  },
+  "theme": {
+    "id": 43,
+    "slug": "prepa",
+    "nom": "JS Monorepo"
+  },
+  "creeLe": "2019-05-19T23:15:19.022+02:00",
+  "difficulte": "",
+  "dureeEstimee": null,
+  "modeValidation": "student",
+  "chapitres": [
+    {
+      "id": 12613,
+      "type": "content",
+      "langue": "fr",
+      "majLe": "2024-11-11T11:41:42.999+01:00",
+      "caracteres": 12514
+    },
+    {
+      "id": 12614,
+      "type": "solution",
+      "langue": "fr",
+      "majLe": "2024-11-10T17:36:31.031+01:00",
+      "caracteres": 1067
+    }
+  ],
+  "ressources": [],
+  "urlOrigine": "https://odyssey.wildcodeschool.com/quests/589",
+  "archiveLe": "2026-09-02T20:51:56.352Z"
+}

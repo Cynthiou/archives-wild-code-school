@@ -1,0 +1,33 @@
+{
+  "id": 1356,
+  "titre": "4.1. Les tableaux et boucles en PHP",
+  "titres": {
+    "fr": "4.1. Les tableaux et boucles en PHP"
+  },
+  "theme": {
+    "id": 25,
+    "slug": "php",
+    "nom": "PHP"
+  },
+  "creeLe": "2020-09-09T09:07:42.509+02:00",
+  "difficulte": "1",
+  "dureeEstimee": null,
+  "modeValidation": "student",
+  "chapitres": [
+    {
+      "id": 11595,
+      "type": "content",
+      "langue": "fr",
+      "majLe": "2024-06-03T11:31:27.346+02:00",
+      "caracteres": 19405
+    }
+  ],
+  "ressources": [
+    {
+      "link": "https://www.youtube.com/watch?v=X6pOIPZGC3o",
+      "description": "Les boucles en PHP de CharlieProd"
+    }
+  ],
+  "urlOrigine": "https://odyssey.wildcodeschool.com/quests/1356",
+  "archiveLe": "2026-09-02T23:21:30.646Z"
+}

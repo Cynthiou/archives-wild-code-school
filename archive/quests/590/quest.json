@@ -1,0 +1,35 @@
+{
+  "id": 590,
+  "titre": "03 - JS Monorepo : Routing",
+  "titres": {
+    "fr": "03 - JS Monorepo : Routing"
+  },
+  "theme": {
+    "id": 43,
+    "slug": "prepa",
+    "nom": "JS Monorepo"
+  },
+  "creeLe": "2019-05-19T23:16:01.377+02:00",
+  "difficulte": "",
+  "dureeEstimee": null,
+  "modeValidation": "student",
+  "chapitres": [
+    {
+      "id": 14979,
+      "type": "content",
+      "langue": "fr",
+      "majLe": "2025-01-07T17:40:10.019+01:00",
+      "caracteres": 16570
+    },
+    {
+      "id": 12558,
+      "type": "solution",
+      "langue": "fr",
+      "majLe": "2024-11-14T20:57:13.798+01:00",
+      "caracteres": 4398
+    }
+  ],
+  "ressources": [],
+  "urlOrigine": "https://odyssey.wildcodeschool.com/quests/590",
+  "archiveLe": "2026-09-02T20:51:57.083Z"
+}

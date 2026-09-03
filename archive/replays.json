@@ -1,0 +1,1252 @@
+[
+  {
+    "id": 8937,
+    "titre": "TuneLab - On reprend les bases",
+    "categorie": "live_coding",
+    "source": "drive",
+    "dureeMinutes": 60,
+    "enregistreLe": "2026-08-31T00:00:00.000+02:00",
+    "description": "",
+    "telechargeable": true
+  },
+  {
+    "id": 8936,
+    "titre": "SQL - Advanced",
+    "categorie": "lesson",
+    "source": "drive",
+    "dureeMinutes": 60,
+    "enregistreLe": "2026-08-24T00:00:00.000+02:00",
+    "description": "",
+    "telechargeable": true
+  },
+  {
+    "id": 8935,
+    "titre": "Correction : SQL avancé",
+    "categorie": "live_coding",
+    "source": "drive",
+    "dureeMinutes": 30,
+    "enregistreLe": "2026-08-24T00:00:00.000+02:00",
+    "description": "",
+    "telechargeable": true
+  },
+  {
+    "id": 8934,
+    "titre": "Atelier carrière #2",
+    "categorie": "workshop",
+    "source": "drive",
+    "dureeMinutes": 90,
+    "enregistreLe": "2026-08-06T00:00:00.000+02:00",
+    "description": "",
+    "telechargeable": true
+  },
+  {
+    "id": 8933,
+    "titre": "Live Coding : TuneLab #3 - US01 - Ajout d'un album - Backend",
+    "categorie": "live_coding",
+    "source": "drive",
+    "dureeMinutes": 90,
+    "enregistreLe": "2026-08-05T00:00:00.000+02:00",
+    "description": "",
+    "telechargeable": true
+  },
+  {
+    "id": 8932,
+    "titre": "Live Coding : TuneLab #3 - US01 - Ajout d'un album - Backend",
+    "categorie": "live_coding",
+    "source": "drive",
+    "dureeMinutes": 90,
+    "enregistreLe": "2026-08-05T00:00:00.000+02:00",
+    "description": "",
+    "telechargeable": true
+  },
+  {
+    "id": 8931,
+    "titre": "Live Coding : TuneLab #2 - Seeders",
+    "categorie": "live_coding",
+    "source": "drive",
+    "dureeMinutes": 120,
+    "enregistreLe": "2026-08-05T00:00:00.000+02:00",
+    "description": "",
+    "telechargeable": true
+  },
+  {
+    "id": 8930,
+    "titre": "Live Coding : TuneLab #1 - Intro",
+    "categorie": "live_coding",
+    "source": "drive",
+    "dureeMinutes": 60,
+    "enregistreLe": "2026-08-04T00:00:00.000+02:00",
+    "description": "",
+    "telechargeable": true
+  },
+  {
+    "id": 8929,
+    "titre": "Monorepo - BDD",
+    "categorie": "lesson",
+    "source": "drive",
+    "dureeMinutes": 60,
+    "enregistreLe": "2026-08-04T00:00:00.000+02:00",
+    "description": "",
+    "telechargeable": true
+  },
+  {
+    "id": 8928,
+    "titre": "Projet - Le backlog",
+    "categorie": "live_coding",
+    "source": "drive",
+    "dureeMinutes": 60,
+    "enregistreLe": "2026-08-03T00:00:00.000+02:00",
+    "description": "",
+    "telechargeable": true
+  },
+  {
+    "id": 8927,
+    "titre": "Monorepo - Intro",
+    "categorie": "lesson",
+    "source": "drive",
+    "dureeMinutes": 90,
+    "enregistreLe": "2026-08-03T00:00:00.000+02:00",
+    "description": "",
+    "telechargeable": true
+  },
+  {
+    "id": 8926,
+    "titre": "Kata By Alexandra",
+    "categorie": "masterclass",
+    "source": "drive",
+    "dureeMinutes": 60,
+    "enregistreLe": "2026-07-31T00:00:00.000+02:00",
+    "description": "",
+    "telechargeable": true
+  },
+  {
+    "id": 8925,
+    "titre": "Project 3 - Launch",
+    "categorie": "masterclass",
+    "source": "drive",
+    "dureeMinutes": 30,
+    "enregistreLe": "2026-07-30T00:00:00.000+02:00",
+    "description": "",
+    "telechargeable": true
+  },
+  {
+    "id": 8924,
+    "titre": "Atelier carrière #1",
+    "categorie": "masterclass",
+    "source": "drive",
+    "dureeMinutes": 90,
+    "enregistreLe": "2026-07-29T00:00:00.000+02:00",
+    "description": "",
+    "telechargeable": true
+  },
+  {
+    "id": 8923,
+    "titre": "Connecter un back à un front",
+    "categorie": "live_coding",
+    "source": "drive",
+    "dureeMinutes": 90,
+    "enregistreLe": "2026-07-24T00:00:00.000+02:00",
+    "description": "",
+    "telechargeable": true
+  },
+  {
+    "id": 8922,
+    "titre": "Présentation du titre",
+    "categorie": "masterclass",
+    "source": "drive",
+    "dureeMinutes": 120,
+    "enregistreLe": "2026-07-23T00:00:00.000+02:00",
+    "description": "",
+    "telechargeable": true
+  },
+  {
+    "id": 8921,
+    "titre": "Correction : Modélisation",
+    "categorie": "live_coding",
+    "source": "drive",
+    "dureeMinutes": 90,
+    "enregistreLe": "2026-07-23T00:00:00.000+02:00",
+    "description": "",
+    "telechargeable": true
+  },
+  {
+    "id": 8920,
+    "titre": "Cours : Database modeling",
+    "categorie": "lesson",
+    "source": "drive",
+    "dureeMinutes": 90,
+    "enregistreLe": "2026-07-23T00:00:00.000+02:00",
+    "description": "",
+    "telechargeable": true
+  },
+  {
+    "id": 8919,
+    "titre": "Correction : SQL Intro",
+    "categorie": "live_coding",
+    "source": "drive",
+    "dureeMinutes": 60,
+    "enregistreLe": "2026-07-21T00:00:00.000+02:00",
+    "description": "",
+    "telechargeable": true
+  },
+  {
+    "id": 8918,
+    "titre": "Cours : SQL Intro",
+    "categorie": "lesson",
+    "source": "drive",
+    "dureeMinutes": 75,
+    "enregistreLe": "2026-07-21T00:00:00.000+02:00",
+    "description": "",
+    "telechargeable": true
+  },
+  {
+    "id": 8917,
+    "titre": "Correction CP2",
+    "categorie": "live_coding",
+    "source": "drive",
+    "dureeMinutes": 105,
+    "enregistreLe": "2026-07-20T00:00:00.000+02:00",
+    "description": "",
+    "telechargeable": true
+  },
+  {
+    "id": 8916,
+    "titre": "🌈 Projects final demo",
+    "categorie": "masterclass",
+    "source": "drive",
+    "dureeMinutes": 60,
+    "enregistreLe": "2026-07-17T00:00:00.000+02:00",
+    "description": "",
+    "telechargeable": true
+  },
+  {
+    "id": 8915,
+    "titre": "Kata by Sophie",
+    "categorie": "masterclass",
+    "source": "drive",
+    "dureeMinutes": 30,
+    "enregistreLe": "2026-07-16T00:00:00.000+02:00",
+    "description": "",
+    "telechargeable": true
+  },
+  {
+    "id": 8914,
+    "titre": "Correction : Atelier API & Express",
+    "categorie": "live_coding",
+    "source": "drive",
+    "dureeMinutes": 90,
+    "enregistreLe": "2026-07-15T00:00:00.000+02:00",
+    "description": "",
+    "telechargeable": true
+  },
+  {
+    "id": 8913,
+    "titre": "API & Express",
+    "categorie": "lesson",
+    "source": "drive",
+    "dureeMinutes": 90,
+    "enregistreLe": "2026-07-15T00:00:00.000+02:00",
+    "description": "",
+    "telechargeable": true
+  },
+  {
+    "id": 8912,
+    "titre": "Correction : Atelier React Context",
+    "categorie": "live_coding",
+    "source": "drive",
+    "dureeMinutes": 60,
+    "enregistreLe": "2026-07-07T00:00:00.000+02:00",
+    "description": "",
+    "telechargeable": true
+  },
+  {
+    "id": 8911,
+    "titre": "React - Context",
+    "categorie": "lesson",
+    "source": "drive",
+    "dureeMinutes": 90,
+    "enregistreLe": "2026-07-07T00:00:00.000+02:00",
+    "description": "",
+    "telechargeable": true
+  },
+  {
+    "id": 8910,
+    "titre": "Kata by Yannick",
+    "categorie": "masterclass",
+    "source": "drive",
+    "dureeMinutes": 30,
+    "enregistreLe": "2026-07-02T00:00:00.000+02:00",
+    "description": "",
+    "telechargeable": true
+  },
+  {
+    "id": 8909,
+    "titre": "Kata by Guillermo",
+    "categorie": "masterclass",
+    "source": "drive",
+    "dureeMinutes": 30,
+    "enregistreLe": "2026-07-01T00:00:00.000+02:00",
+    "description": "",
+    "telechargeable": true
+  },
+  {
+    "id": 8908,
+    "titre": "API & fetch",
+    "categorie": "lesson",
+    "source": "drive",
+    "dureeMinutes": 120,
+    "enregistreLe": "2026-06-30T00:00:00.000+02:00",
+    "description": "",
+    "telechargeable": true
+  },
+  {
+    "id": 8907,
+    "titre": "Git workflow",
+    "categorie": "lesson",
+    "source": "drive",
+    "dureeMinutes": 60,
+    "enregistreLe": "2026-06-25T00:00:00.000+02:00",
+    "description": "",
+    "telechargeable": true
+  },
+  {
+    "id": 8906,
+    "titre": "🥋 Kata by Cynthia",
+    "categorie": "masterclass",
+    "source": "drive",
+    "dureeMinutes": 30,
+    "enregistreLe": "2026-06-25T00:00:00.000+02:00",
+    "description": "",
+    "telechargeable": true
+  },
+  {
+    "id": 8905,
+    "titre": "SCRUM",
+    "categorie": "lesson",
+    "source": "drive",
+    "dureeMinutes": 90,
+    "enregistreLe": "2026-06-23T00:00:00.000+02:00",
+    "description": "",
+    "telechargeable": true
+  },
+  {
+    "id": 8904,
+    "titre": "Quête HTML CSS with Claude",
+    "categorie": "masterclass",
+    "source": "drive",
+    "dureeMinutes": 90,
+    "enregistreLe": "2026-06-22T00:00:00.000+02:00",
+    "description": "",
+    "telechargeable": true
+  },
+  {
+    "id": 8903,
+    "titre": "Correction : Atelier Robot Finder",
+    "categorie": "live_coding",
+    "source": "drive",
+    "dureeMinutes": 90,
+    "enregistreLe": "2026-06-16T00:00:00.000+02:00",
+    "description": "",
+    "telechargeable": true
+  },
+  {
+    "id": 8902,
+    "titre": "Correction : Atelier React Router",
+    "categorie": "live_coding",
+    "source": "drive",
+    "dureeMinutes": 120,
+    "enregistreLe": "2026-06-16T00:00:00.000+02:00",
+    "description": "",
+    "telechargeable": true
+  },
+  {
+    "id": 8901,
+    "titre": "Correction : Atelier - Les donuts",
+    "categorie": "live_coding",
+    "source": "drive",
+    "dureeMinutes": 90,
+    "enregistreLe": "2026-06-11T00:00:00.000+02:00",
+    "description": "",
+    "telechargeable": true
+  },
+  {
+    "id": 8900,
+    "titre": "React - State",
+    "categorie": "lesson",
+    "source": "drive",
+    "dureeMinutes": 90,
+    "enregistreLe": "2026-06-11T00:00:00.000+02:00",
+    "description": "",
+    "telechargeable": true
+  },
+  {
+    "id": 8899,
+    "titre": "🥋 Kata by Dorian",
+    "categorie": "masterclass",
+    "source": "drive",
+    "dureeMinutes": 30,
+    "enregistreLe": "2026-06-11T00:00:00.000+02:00",
+    "description": "",
+    "telechargeable": true
+  },
+  {
+    "id": 8898,
+    "titre": "Correction : Atelier - The Simpsooooons",
+    "categorie": "live_coding",
+    "source": "drive",
+    "dureeMinutes": 60,
+    "enregistreLe": "2026-06-10T00:00:00.000+02:00",
+    "description": "",
+    "telechargeable": true
+  },
+  {
+    "id": 8897,
+    "titre": "React - Props",
+    "categorie": "lesson",
+    "source": "drive",
+    "dureeMinutes": 90,
+    "enregistreLe": "2026-06-10T00:00:00.000+02:00",
+    "description": "",
+    "telechargeable": true
+  },
+  {
+    "id": 8896,
+    "titre": "Correction : Atelier - Mon premier composant",
+    "categorie": "live_coding",
+    "source": "drive",
+    "dureeMinutes": 60,
+    "enregistreLe": "2026-06-09T00:00:00.000+02:00",
+    "description": "",
+    "telechargeable": true
+  },
+  {
+    "id": 8895,
+    "titre": "React - Basics",
+    "categorie": "lesson",
+    "source": "drive",
+    "dureeMinutes": 60,
+    "enregistreLe": "2026-06-09T00:00:00.000+02:00",
+    "description": "",
+    "telechargeable": true
+  },
+  {
+    "id": 8894,
+    "titre": "Cours : Typescript",
+    "categorie": "lesson",
+    "source": "drive",
+    "dureeMinutes": 60,
+    "enregistreLe": "2026-06-08T00:00:00.000+02:00",
+    "description": "",
+    "telechargeable": true
+  },
+  {
+    "id": 8893,
+    "titre": "Correction : Checkpoint 1",
+    "categorie": "live_coding",
+    "source": "drive",
+    "dureeMinutes": 120,
+    "enregistreLe": "2026-06-08T00:00:00.000+02:00",
+    "description": "",
+    "telechargeable": true
+  },
+  {
+    "id": 8892,
+    "titre": "🌈 Project 1 final demo",
+    "categorie": "masterclass",
+    "source": "drive",
+    "dureeMinutes": 45,
+    "enregistreLe": "2026-06-05T00:00:00.000+02:00",
+    "description": "",
+    "telechargeable": true
+  },
+  {
+    "id": 8891,
+    "titre": "How to do a good demo",
+    "categorie": "lesson",
+    "source": "drive",
+    "dureeMinutes": 90,
+    "enregistreLe": "2026-06-04T00:00:00.000+02:00",
+    "description": "",
+    "telechargeable": true
+  },
+  {
+    "id": 8890,
+    "titre": "🥋 Kata by Laurent",
+    "categorie": "masterclass",
+    "source": "drive",
+    "dureeMinutes": 30,
+    "enregistreLe": "2026-06-03T00:00:00.000+02:00",
+    "description": "",
+    "telechargeable": true
+  },
+  {
+    "id": 8889,
+    "titre": "Live Coding : Correction NodeJS",
+    "categorie": "live_coding",
+    "source": "drive",
+    "dureeMinutes": 60,
+    "enregistreLe": "2026-06-02T00:00:00.000+02:00",
+    "description": "",
+    "telechargeable": true
+  },
+  {
+    "id": 8888,
+    "titre": "What is Node ?",
+    "categorie": "lesson",
+    "source": "drive",
+    "dureeMinutes": 60,
+    "enregistreLe": "2026-06-02T00:00:00.000+02:00",
+    "description": "",
+    "telechargeable": true
+  },
+  {
+    "id": 8887,
+    "titre": "🥋 Kata by Julien D",
+    "categorie": "masterclass",
+    "source": "drive",
+    "dureeMinutes": 30,
+    "enregistreLe": "2026-06-02T00:00:00.000+02:00",
+    "description": "",
+    "telechargeable": true
+  },
+  {
+    "id": 8886,
+    "titre": "Support - JS Basics",
+    "categorie": "support",
+    "source": "drive",
+    "dureeMinutes": 90,
+    "enregistreLe": "2026-06-01T00:00:00.000+02:00",
+    "description": "",
+    "telechargeable": true
+  },
+  {
+    "id": 8885,
+    "titre": "Support - JS Basics",
+    "categorie": "support",
+    "source": "drive",
+    "dureeMinutes": 90,
+    "enregistreLe": "2026-06-01T00:00:00.000+02:00",
+    "description": "",
+    "telechargeable": true
+  },
+  {
+    "id": 8884,
+    "titre": "Veille techno By Josselin",
+    "categorie": "masterclass",
+    "source": "drive",
+    "dureeMinutes": 60,
+    "enregistreLe": "2026-05-29T00:00:00.000+02:00",
+    "description": "",
+    "telechargeable": true
+  },
+  {
+    "id": 8883,
+    "titre": "JS DOM Basics",
+    "categorie": "lesson",
+    "source": "drive",
+    "dureeMinutes": 90,
+    "enregistreLe": "2026-05-27T00:00:00.000+02:00",
+    "description": "",
+    "telechargeable": true
+  },
+  {
+    "id": 8882,
+    "titre": "Kata By Julien R",
+    "categorie": "masterclass",
+    "source": "drive",
+    "dureeMinutes": 60,
+    "enregistreLe": "2026-05-27T00:00:00.000+02:00",
+    "description": "",
+    "telechargeable": true
+  },
+  {
+    "id": 8881,
+    "titre": "JS Basics #1",
+    "categorie": "lesson",
+    "source": "drive",
+    "dureeMinutes": 90,
+    "enregistreLe": "2026-05-26T00:00:00.000+02:00",
+    "description": "",
+    "telechargeable": true
+  },
+  {
+    "id": 8880,
+    "titre": "Programming Basics",
+    "categorie": "lesson",
+    "source": "drive",
+    "dureeMinutes": 75,
+    "enregistreLe": "2026-05-22T00:00:00.000+02:00",
+    "description": "",
+    "telechargeable": true
+  },
+  {
+    "id": 8879,
+    "titre": "Correction : Atelier Git / GitHub",
+    "categorie": "live_coding",
+    "source": "drive",
+    "dureeMinutes": 90,
+    "enregistreLe": "2026-05-21T00:00:00.000+02:00",
+    "description": "",
+    "telechargeable": true
+  },
+  {
+    "id": 8878,
+    "titre": "Git / GitHub",
+    "categorie": "lesson",
+    "source": "drive",
+    "dureeMinutes": 90,
+    "enregistreLe": "2026-05-21T00:00:00.000+02:00",
+    "description": "",
+    "telechargeable": true
+  },
+  {
+    "id": 8877,
+    "titre": "Cours : Website Conception",
+    "categorie": "lesson",
+    "source": "drive",
+    "dureeMinutes": 60,
+    "enregistreLe": "2026-05-18T00:00:00.000+02:00",
+    "description": "",
+    "telechargeable": true
+  },
+  {
+    "id": 8876,
+    "titre": "Correction : Atelier Responsive Web Design",
+    "categorie": "live_coding",
+    "source": "drive",
+    "dureeMinutes": 60,
+    "enregistreLe": "2026-05-15T00:00:00.000+02:00",
+    "description": "",
+    "telechargeable": true
+  },
+  {
+    "id": 8875,
+    "titre": "Cours : Responsive Web Design",
+    "categorie": "lesson",
+    "source": "drive",
+    "dureeMinutes": 90,
+    "enregistreLe": "2026-05-15T00:00:00.000+02:00",
+    "description": "",
+    "telechargeable": true
+  },
+  {
+    "id": 8874,
+    "titre": "Correction : Atelier HTML / CSS Basics",
+    "categorie": "live_coding",
+    "source": "drive",
+    "dureeMinutes": 120,
+    "enregistreLe": "2026-05-13T00:00:00.000+02:00",
+    "description": "",
+    "telechargeable": true
+  },
+  {
+    "id": 8873,
+    "titre": "Cours : CSS Basics",
+    "categorie": "lesson",
+    "source": "drive",
+    "dureeMinutes": 45,
+    "enregistreLe": "2026-05-13T00:00:00.000+02:00",
+    "description": "",
+    "telechargeable": true
+  },
+  {
+    "id": 8872,
+    "titre": "Cours : HTML Basics",
+    "categorie": "lesson",
+    "source": "drive",
+    "dureeMinutes": 45,
+    "enregistreLe": "2026-05-13T00:00:00.000+02:00",
+    "description": "",
+    "telechargeable": true
+  },
+  {
+    "id": 8871,
+    "titre": "Correction : Atelier Terminal",
+    "categorie": "live_coding",
+    "source": "drive",
+    "dureeMinutes": 120,
+    "enregistreLe": "2026-05-12T00:00:00.000+02:00",
+    "description": "",
+    "telechargeable": true
+  },
+  {
+    "id": 8870,
+    "titre": "Cours : Terminal",
+    "categorie": "lesson",
+    "source": "drive",
+    "dureeMinutes": 90,
+    "enregistreLe": "2026-05-12T00:00:00.000+02:00",
+    "description": "",
+    "telechargeable": true
+  },
+  {
+    "id": 8735,
+    "titre": "Masterclass Accessibilité",
+    "categorie": "masterclass",
+    "source": "drive",
+    "dureeMinutes": 60,
+    "enregistreLe": "2025-10-15T00:00:00.000+02:00",
+    "description": "",
+    "telechargeable": true
+  },
+  {
+    "id": 8368,
+    "titre": "Masterclass A11y",
+    "categorie": "masterclass",
+    "source": "drive",
+    "dureeMinutes": 56,
+    "enregistreLe": "2025-06-09T08:54:55.452+02:00",
+    "description": "",
+    "telechargeable": true
+  },
+  {
+    "id": 6572,
+    "titre": "masterclass SEO",
+    "categorie": "masterclass",
+    "source": "drive",
+    "dureeMinutes": 86,
+    "enregistreLe": "2024-07-03T11:25:33.066+02:00",
+    "description": "Julien présente diverses approches du référencement",
+    "telechargeable": true
+  },
+  {
+    "id": 6540,
+    "titre": "Anthony | Prisma TS",
+    "categorie": "live_coding",
+    "source": "drive",
+    "dureeMinutes": 150,
+    "enregistreLe": "2024-07-01T00:00:00.000+02:00",
+    "description": "",
+    "telechargeable": true
+  },
+  {
+    "id": 5973,
+    "titre": "MasterClass, CRM and Emailing",
+    "categorie": "masterclass",
+    "source": "drive",
+    "dureeMinutes": 60,
+    "enregistreLe": "2024-04-25T00:00:00.000+02:00",
+    "description": "Slides : [CRM Mailing](https://docs.google.com/presentation/d/1jGqatH3FrQnhQ8wz880TUjeEA9LwOG63HTxBdV7DjU4/edit?usp=sharing)\nSpeaker : [Vincent Pasquiou](https://www.linkedin.com/in/vincentpasquiou/)",
+    "telechargeable": true
+  },
+  {
+    "id": 2669,
+    "titre": "Utiliser le github education pack pour avoir un VPS gratuit chez digital ocean",
+    "categorie": "various",
+    "source": "drive",
+    "dureeMinutes": 15,
+    "enregistreLe": "2023-04-05T16:54:40.748+02:00",
+    "description": "",
+    "telechargeable": true
+  },
+  {
+    "id": 2264,
+    "titre": "Echange avec les alumnis de la Wild - Alternance et insertion professionnelle réussie dans la Tech",
+    "categorie": "career",
+    "source": "drive",
+    "dureeMinutes": 60,
+    "enregistreLe": "2023-02-23T12:05:05.037+01:00",
+    "description": "Lors de cette table-ronde, des alumnis de la Wild Code School partageront leurs bonnes pratiques, conseils et retours d'expériences sur l'alternance et une insertion professionnelle réussie dans le monde de la Tech. ",
+    "telechargeable": true
+  },
+  {
+    "id": 2263,
+    "titre": "Etablir sa stratégie de recherche d'emploi, de stage, d'alternance",
+    "categorie": "career",
+    "source": "drive",
+    "dureeMinutes": 60,
+    "enregistreLe": "2023-02-23T12:05:05.037+01:00",
+    "description": "Lors de ce webinar, Anthony Daloz, career specialist, partagera ses recommandations et bonnes pratiques pour une recherche otpimisée d'emploi, d'alternance ou de stage.",
+    "telechargeable": true
+  },
+  {
+    "id": 1963,
+    "titre": "Et pourquoi pas devenir Freelance ?",
+    "categorie": "career",
+    "source": "drive",
+    "dureeMinutes": 60,
+    "enregistreLe": "2022-12-12T14:56:20.497+01:00",
+    "description": "Lors de ce webinar, Coline Didier, co-fondatrice de Social declik, et Axelle Lenoury, growth marketing manager chez Fiverr répondront à vos interrogations sur le freelancing et vous partageront leurs bonnes pratiques pour devenir freelance.",
+    "telechargeable": true
+  },
+  {
+    "id": 1962,
+    "titre": "LinkedIn : un outil puissant pour cibler les entreprises",
+    "categorie": "career",
+    "source": "drive",
+    "dureeMinutes": 60,
+    "enregistreLe": "2022-12-12T14:56:20.497+01:00",
+    "description": "LinkedIn regorge d'informations pour vous aider dans vos recherches de stage/alternance/job, Anthony Daloz, Career specialist, vous partagera ses recommandations pour utiliser les différentes fonctionnalités de Linkedin pour cibler efficacement les entreprises qui vous intéressent, et vice-versa !",
+    "telechargeable": true
+  },
+  {
+    "id": 1961,
+    "titre": "Echange avec les alumnis de la Wild Code School pour une insertion professionnelle réussie ",
+    "categorie": "career",
+    "source": "drive",
+    "dureeMinutes": 60,
+    "enregistreLe": "2022-12-12T14:56:20.497+01:00",
+    "description": "Lors de cette table-ronde, des alumnis de la Wild Code School partageront leurs bonnes pratiques, conseils et retours d'expériences pour une insertion professionnelle réussie dans le monde de la Tech.",
+    "telechargeable": true
+  },
+  {
+    "id": 1960,
+    "titre": "A la découverte du portage salarial ",
+    "categorie": "career",
+    "source": "drive",
+    "dureeMinutes": 60,
+    "enregistreLe": "2022-12-12T14:56:20.497+01:00",
+    "description": "Lors de ce webinar, Arnaud Le Brouster, responsable d'agence RH Solutions portage salarial, vous informera sur le portage salarial et répondra à vos questions",
+    "telechargeable": true
+  },
+  {
+    "id": 1959,
+    "titre": "Comment devenir indépendant / freelance pour être son propre patron ?",
+    "categorie": "career",
+    "source": "drive",
+    "dureeMinutes": 60,
+    "enregistreLe": "2022-12-12T14:56:20.497+01:00",
+    "description": "Lors de cette table-ronde, Quentin Bardent, Freelance en développement web pour SNCF Réseau partagera ses bonnes pratiques et conseils pour devenir indépendant/freelance. \n",
+    "telechargeable": true
+  },
+  {
+    "id": 1958,
+    "titre": "Surmontez le syndrome de l'imposteur et osez ! ",
+    "categorie": "career",
+    "source": "drive",
+    "dureeMinutes": 90,
+    "enregistreLe": "2022-12-12T14:56:20.497+01:00",
+    "description": "Lors de ce webinar, Rose Lutz, auto-entrepreneur, partagera ses recommandations pour surmonter le syndrome de l'imposteur.",
+    "telechargeable": true
+  },
+  {
+    "id": 1511,
+    "titre": "Push notifications on mobile using React Native and Expo",
+    "categorie": "workshop",
+    "source": "drive",
+    "dureeMinutes": 36,
+    "enregistreLe": "2022-10-07T11:11:21.154+02:00",
+    "description": "What is really a push notification and how do we integrate them inside our mobile applications ?\n\nThanks to EXPO, we can implement them pretty easily, check this out inside this little course\n\nEnjoy !",
+    "telechargeable": true
+  },
+  {
+    "id": 1456,
+    "titre": "PHP - Workshop Functions",
+    "categorie": "workshop",
+    "source": "drive",
+    "dureeMinutes": 13,
+    "enregistreLe": "2022-10-03T10:35:53.709+02:00",
+    "description": "",
+    "telechargeable": true
+  },
+  {
+    "id": 1457,
+    "titre": "Advanced PHP Forms and loops",
+    "categorie": "live_coding",
+    "source": "youtube",
+    "dureeMinutes": 50,
+    "enregistreLe": "2022-10-03T09:13:40.212+02:00",
+    "description": "Here a livedemo with a basic name and surname form. We will see here how to check he conformity of a form and display valdiation / errors message after the user send datas",
+    "telechargeable": false
+  },
+  {
+    "id": 1245,
+    "titre": "Présentation de l'entretien technique ",
+    "categorie": "career",
+    "source": "drive",
+    "dureeMinutes": 45,
+    "enregistreLe": "2022-08-24T09:25:05.211+02:00",
+    "description": "Présentation de l'entretien technique. ",
+    "telechargeable": true
+  },
+  {
+    "id": 1168,
+    "titre": "Fonctionnement d'un cabinet de recrutement et marché de l'emploi Bordelais",
+    "categorie": "career",
+    "source": "drive",
+    "dureeMinutes": 60,
+    "enregistreLe": "2022-07-01T11:57:04.308+02:00",
+    "description": "Externatic intervient sur le fonctionnement d'un cabinet de recrutement et sur le marché de l'emploi Bordelais.",
+    "telechargeable": true
+  },
+  {
+    "id": 1167,
+    "titre": "Le freelancing et l'entrepreneuriat",
+    "categorie": "career",
+    "source": "drive",
+    "dureeMinutes": 50,
+    "enregistreLe": "2022-07-01T11:57:04.308+02:00",
+    "description": "Wekey (cabinet de conseil en transformation digitale et conduite du changement) intervient sur la thématique du freelancing et de l'entrepreneuriat.",
+    "telechargeable": true
+  },
+  {
+    "id": 1160,
+    "titre": "Tuto : Paramétrer une alerte emploi sur Wilders.co (site emploi \"jobboard\" de la Wild Code School)",
+    "categorie": "career",
+    "source": "drive",
+    "dureeMinutes": 1,
+    "enregistreLe": "2022-06-29T10:32:28.857+02:00",
+    "description": "**Vidéo tutoriel expliquant en moins de 2 minutes comment paramétrer une alerte emploi sur le jobboard dédié de la Wild Code School : Wilders.co !**\nBénéfice : recevez chaque semaine toutes les nouvelles offres correspondant à vos critère (type de contrat recherché, zone géographique etc.)\nBonnes recherches !",
+    "telechargeable": true
+  },
+  {
+    "id": 794,
+    "titre": "BBL Déploiement",
+    "categorie": "masterclass",
+    "source": "drive",
+    "dureeMinutes": 30,
+    "enregistreLe": "2022-04-29T15:02:25.199+02:00",
+    "description": "",
+    "telechargeable": true
+  },
+  {
+    "id": 782,
+    "titre": "Guest Speaker Joris Liberati - Gestion de projet ",
+    "categorie": "masterclass",
+    "source": "drive",
+    "dureeMinutes": 55,
+    "enregistreLe": "2022-04-28T14:05:18.000+02:00",
+    "description": "",
+    "telechargeable": true
+  },
+  {
+    "id": 684,
+    "titre": "Louis Darques - Flow Agency",
+    "categorie": "masterclass",
+    "source": "drive",
+    "dureeMinutes": 62,
+    "enregistreLe": "2022-04-13T08:52:16.500+02:00",
+    "description": "https://www.flow-agency.io/",
+    "telechargeable": true
+  },
+  {
+    "id": 632,
+    "titre": "Guest Speaker Alice Bonhomme-Biais - La technologie et le traitement des données au service d'un impact social",
+    "categorie": "masterclass",
+    "source": "drive",
+    "dureeMinutes": 90,
+    "enregistreLe": "2022-04-07T08:57:56.000+02:00",
+    "description": "",
+    "telechargeable": true
+  },
+  {
+    "id": 538,
+    "titre": "Guest Speaker iAdvize - UX Design",
+    "categorie": "masterclass",
+    "source": "drive",
+    "dureeMinutes": 60,
+    "enregistreLe": "2022-03-30T11:52:22.970+02:00",
+    "description": "",
+    "telechargeable": true
+  },
+  {
+    "id": 422,
+    "titre": "Masterclass - Comment faire une bonne présentation ? ",
+    "categorie": "masterclass",
+    "source": "drive",
+    "dureeMinutes": 30,
+    "enregistreLe": "2022-03-17T09:32:45.492+01:00",
+    "description": "",
+    "telechargeable": true
+  },
+  {
+    "id": 297,
+    "titre": "Guest Speaker Damien BUCHET - React Advanced",
+    "categorie": "masterclass",
+    "source": "drive",
+    "dureeMinutes": 60,
+    "enregistreLe": "2022-03-03T09:46:36.255+01:00",
+    "description": "Le support : https://dbuchet.github.io/formation-react-memo/",
+    "telechargeable": true
+  },
+  {
+    "id": 303,
+    "titre": "Guest Speaker Gilles TUET - Que faire avec la donnée ? ",
+    "categorie": "masterclass",
+    "source": "drive",
+    "dureeMinutes": 90,
+    "enregistreLe": "2022-03-03T08:56:08.000+01:00",
+    "description": "",
+    "telechargeable": true
+  },
+  {
+    "id": 273,
+    "titre": "Table-ronde avec les alumnis : conseils pour une insertion professionnelle réussie ",
+    "categorie": "career",
+    "source": "drive",
+    "dureeMinutes": 60,
+    "enregistreLe": "2022-03-01T15:47:01.562+01:00",
+    "description": "Table-ronde avec les alumnis : conseils pour une insertion professionnelle réussie ",
+    "telechargeable": true
+  },
+  {
+    "id": 265,
+    "titre": "Comment se rendre visible auprès des recruteurs ?",
+    "categorie": "career",
+    "source": "drive",
+    "dureeMinutes": 60,
+    "enregistreLe": "2022-02-21T15:57:26.675+01:00",
+    "description": "Lors de ce live, Mélisande Sirot, consultante en développement professionnel à l'APEC  (Association Pour l'Emploi des Cadres) abordera le sujet de la visibilité auprès des recruteurs, notamment sur la cvthèque de l'APEC. ",
+    "telechargeable": true
+  },
+  {
+    "id": 236,
+    "titre": "Webinar \"devenir freelance\"",
+    "categorie": "career",
+    "source": "drive",
+    "dureeMinutes": 60,
+    "enregistreLe": "2022-02-03T15:13:26.727+01:00",
+    "description": "Quels sont les avantages et les inconvénients du Freelance ?\nComment s’organiser ?\nQuelles sont les démarches administratives et juridiques ?\nComment trouver ses premiers contrats ?\n\nDans ce replay du webinar organisé par la Wild Code School de Lille, Corentin Loreille, fondateur de Keytech.io, une plateforme de mise en relation 🤝 entre freelances IT et entreprises et Camille Thirionnet de la BGE Hauts-de-France, un acteur majeur de la création d’entreprise en région 🌱 partagent leurs conseils. D'autres freelances font également part de leurs retours d'expériences. Le tout, animé par Alexandre Mikolajczak, régional manager :) ",
+    "telechargeable": true
+  },
+  {
+    "id": 235,
+    "titre": "Cryptographie & Authentification",
+    "categorie": "lesson",
+    "source": "drive",
+    "dureeMinutes": 120,
+    "enregistreLe": "2022-01-31T16:23:45.008+01:00",
+    "description": "# Introduction à la cryptographie et à son application à l'authentification\n\nPlan :\n* Contexte et définitions\n* Principes de la cryptographie symétrique\n* Principes de la cryptographie asymétrique\n* Principes des fonctions de hachage\n* HMAC\n* Signatures numérique\n* Certificats\n* Authentification et mot de passe\n* Le hachage de mot de passe",
+    "telechargeable": true
+  },
+  {
+    "id": 231,
+    "titre": "Jennifer PRENDKI - Création de modèles d'IA",
+    "categorie": "masterclass",
+    "source": "drive",
+    "dureeMinutes": 120,
+    "enregistreLe": "2022-01-27T14:49:28.000+01:00",
+    "description": "",
+    "telechargeable": true
+  },
+  {
+    "id": 228,
+    "titre": "Artisan Développeur - TDD",
+    "categorie": "masterclass",
+    "source": "drive",
+    "dureeMinutes": 60,
+    "enregistreLe": "2022-01-27T14:13:18.885+01:00",
+    "description": "",
+    "telechargeable": true
+  },
+  {
+    "id": 221,
+    "titre": "Laurent ANDRIAMIFIDY - Architecture des données ",
+    "categorie": "masterclass",
+    "source": "drive",
+    "dureeMinutes": 60,
+    "enregistreLe": "2022-01-21T09:05:09.264+01:00",
+    "description": "",
+    "telechargeable": true
+  },
+  {
+    "id": 217,
+    "titre": "Aborder la vie de freelance et trouver ses premières missions",
+    "categorie": "career",
+    "source": "drive",
+    "dureeMinutes": 75,
+    "enregistreLe": "2022-01-19T15:09:18.280+01:00",
+    "description": "Aborder la vie de freelance et trouver ses premières missions",
+    "telechargeable": true
+  },
+  {
+    "id": 216,
+    "titre": "Maximiser sa visibilité et augmenter ses résultats sur Fiverr",
+    "categorie": "career",
+    "source": "drive",
+    "dureeMinutes": 60,
+    "enregistreLe": "2022-01-19T15:09:18.280+01:00",
+    "description": "Comment maximiser sa visibilité et augmenter ses résultats sur Fiverr",
+    "telechargeable": true
+  },
+  {
+    "id": 155,
+    "titre": "HONEYWELL - Cybersécurité dans l'industrie",
+    "categorie": "masterclass",
+    "source": "drive",
+    "dureeMinutes": 90,
+    "enregistreLe": "2022-01-06T16:18:51.612+01:00",
+    "description": "",
+    "telechargeable": true
+  },
+  {
+    "id": 154,
+    "titre": "ANSSI - Cybersécurité ",
+    "categorie": "masterclass",
+    "source": "drive",
+    "dureeMinutes": 90,
+    "enregistreLe": "2022-01-06T16:18:51.612+01:00",
+    "description": "",
+    "telechargeable": true
+  },
+  {
+    "id": 153,
+    "titre": "Aurélien MEUNIER - Méthodes agiles",
+    "categorie": "masterclass",
+    "source": "drive",
+    "dureeMinutes": 90,
+    "enregistreLe": "2022-01-06T16:18:51.612+01:00",
+    "description": "",
+    "telechargeable": true
+  },
+  {
+    "id": 70,
+    "titre": "Comment réussir son entretien technique  en data analyse ?",
+    "categorie": "career",
+    "source": "drive",
+    "dureeMinutes": 65,
+    "enregistreLe": "2021-12-16T16:27:23.655+01:00",
+    "description": "Pierre Mur, Lead instructor, partage ses conseils sur \"comment réussir son entretien technique en data analyse\"",
+    "telechargeable": true
+  },
+  {
+    "id": 69,
+    "titre": "Comment réussir son entretien technique en développement web ?",
+    "categorie": "career",
+    "source": "drive",
+    "dureeMinutes": 72,
+    "enregistreLe": "2021-12-16T16:27:23.655+01:00",
+    "description": "Leonard Flachs, lead instructor, partage ses recommandations sur \"comment réussir son entretien technique en développement web.",
+    "telechargeable": true
+  },
+  {
+    "id": 68,
+    "titre": "Qu'est ce qu'un chasseur de tête ? ",
+    "categorie": "career",
+    "source": "drive",
+    "dureeMinutes": 51,
+    "enregistreLe": "2021-12-16T16:27:23.655+01:00",
+    "description": "Lors de ce webinar, Jerry Dumont, Talent recruiter, présente le métier de chasseur de tête.",
+    "telechargeable": true
+  },
+  {
+    "id": 67,
+    "titre": "How to succeed in your job interview ?",
+    "categorie": "career",
+    "source": "drive",
+    "dureeMinutes": 22,
+    "enregistreLe": "2021-12-16T16:27:23.655+01:00",
+    "description": "Katia Ouaret, Head of HR, shares her recommendations on how to prepare and succeed in a job interview",
+    "telechargeable": true
+  },
+  {
+    "id": 79,
+    "titre": "Gael MANCEC - RGPD",
+    "categorie": "masterclass",
+    "source": "drive",
+    "dureeMinutes": 120,
+    "enregistreLe": "2021-12-16T00:00:00.000+01:00",
+    "description": "",
+    "telechargeable": true
+  },
+  {
+    "id": 78,
+    "titre": "Frédéric FABREGUE - RGPD",
+    "categorie": "masterclass",
+    "source": "drive",
+    "dureeMinutes": 90,
+    "enregistreLe": "2021-12-16T00:00:00.000+01:00",
+    "description": "",
+    "telechargeable": true
+  },
+  {
+    "id": 81,
+    "titre": "Elsa MAGNE - UX Design",
+    "categorie": "masterclass",
+    "source": "drive",
+    "dureeMinutes": 90,
+    "enregistreLe": "2021-12-09T00:00:00.000+01:00",
+    "description": "",
+    "telechargeable": true
+  },
+  {
+    "id": 80,
+    "titre": "Elise BOUTIN - Dataviz",
+    "categorie": "masterclass",
+    "source": "drive",
+    "dureeMinutes": 90,
+    "enregistreLe": "2021-12-09T00:00:00.000+01:00",
+    "description": "",
+    "telechargeable": true
+  },
+  {
+    "id": 61,
+    "titre": "Aline FEBRISSY et Céline LE MARC - UX Design",
+    "categorie": "masterclass",
+    "source": "drive",
+    "dureeMinutes": 90,
+    "enregistreLe": "2021-12-02T00:00:00.000+01:00",
+    "description": "",
+    "telechargeable": true
+  },
+  {
+    "id": 57,
+    "titre": "Nicolas LAMBERT - Extract Transform Load",
+    "categorie": "masterclass",
+    "source": "drive",
+    "dureeMinutes": 90,
+    "enregistreLe": "2021-12-02T00:00:00.000+01:00",
+    "description": "",
+    "telechargeable": true
+  },
+  {
+    "id": 59,
+    "titre": "Stéphane BOUNMY - No Code",
+    "categorie": "masterclass",
+    "source": "drive",
+    "dureeMinutes": 90,
+    "enregistreLe": "2021-11-04T00:00:00.000+01:00",
+    "description": "",
+    "telechargeable": true
+  },
+  {
+    "id": 76,
+    "titre": "Cyrille ISTIN et François ARBOGAST - No code ",
+    "categorie": "masterclass",
+    "source": "drive",
+    "dureeMinutes": 90,
+    "enregistreLe": "2021-10-28T00:00:00.000+02:00",
+    "description": "",
+    "telechargeable": true
+  },
+  {
+    "id": 60,
+    "titre": "Thibaut COLLETTE - Utilisation des données en mode gestion de projet",
+    "categorie": "masterclass",
+    "source": "drive",
+    "dureeMinutes": 90,
+    "enregistreLe": "2021-10-28T00:00:00.000+02:00",
+    "description": "",
+    "telechargeable": true
+  },
+  {
+    "id": 56,
+    "titre": "Gilles TUET - Que faire avec la donnée ? ",
+    "categorie": "masterclass",
+    "source": "drive",
+    "dureeMinutes": 90,
+    "enregistreLe": "2021-10-28T00:00:00.000+02:00",
+    "description": "Masterclass de Gilles TUET sur le thème Que faire avec la donnée ? ",
+    "telechargeable": true
+  },
+  {
+    "id": 58,
+    "titre": "Sébastien LABBE - Méthodes agiles",
+    "categorie": "masterclass",
+    "source": "drive",
+    "dureeMinutes": 90,
+    "enregistreLe": "2021-10-07T00:00:00.000+02:00",
+    "description": "",
+    "telechargeable": true
+  },
+  {
+    "id": 243,
+    "titre": "Talk - Passage du titre RNCP (2021-01-28 at 04:32 GMT-8)",
+    "categorie": "masterclass",
+    "source": "drive",
+    "dureeMinutes": 73,
+    "enregistreLe": "2021-01-28T00:00:00.000+01:00",
+    "description": "Présentation du titre Développeur Web et Web Mobile, isncript au RNCP.",
+    "telechargeable": true
+  }
+]

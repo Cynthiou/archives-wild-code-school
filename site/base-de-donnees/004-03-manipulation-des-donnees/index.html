@@ -1,0 +1,314 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>03 - Manipulation des données — Archives WCS</title>
+<link rel="stylesheet" href="../../assets/style.css">
+</head>
+<body style="--teinte:#F7A356">
+<header class="entete">
+  <a class="entete__marque" href="../../index.html">Archives Wild Code School</a>
+</header>
+<main class="contenu">
+<nav class="ariane"><a href="../../index.html">Accueil</a><span class="ariane__sep">›</span><a href="../../base-de-donnees/index.html">Base de données</a><span class="ariane__sep">›</span><span aria-current="page">03 - Manipulation des données</span></nav>
+
+<article class="quete">
+  <header class="quete__entete">
+    <a class="pastille pastille--teintee" href="../../base-de-donnees/index.html">Base de données</a>
+    <h1>03 - Manipulation des données</h1>
+    <p class="quete__meta">Quête 4 sur 9 · 1 image archivée</p>
+  </header>
+  <div class="cours">
+<h2>Objectifs</h2>
+<ul>
+<li>Insérer du contenu dans une table</li>
+<li>Modifier du contenu</li>
+<li>Supprimer du contenu</li>
+</ul>
+<h2>Introduction</h2>
+<p>Avoir des données dans une base de données, c'est bien. Savoir comment ajouter, modifier et supprimer ces données, c'est encore mieux ! Tu vas découvrir comment manipuler tout cela grâce à de nouveaux <em>sortilèges</em> SQL.</p>
+<h2>Sommaire</h2>
+<h2>Comment ajouter des données ?</h2>
+<p>Tu vas ajouter plusieurs données dans la table <code>school</code>. Pour cela, connecte-toi à MySQL dans ton terminal, toujours sur la base de données <code>wild_db_quest</code>.</p>
+<div class="encadre encadre--info"><div class="encadre__titre">Info</div><div class="encadre__corps"><p>Cette table  <code>school</code>, créée dans la première quête du parcours, contient les champs <code>name</code>, <code>capacity</code> et <code>country</code>, ainsi qu’un champ <code>id</code> auto-incrémenté comme clé primaire.</p>
+</div></div>
+<p>Le mot-clé qui va nous intéresser pour pouvoir insérer des données dans une table est <strong>INSERT</strong>.</p>
+<p>Sa syntaxe est la suivante</p>
+<div class="bloc-code"><div class="bloc-code__langue">sql</div><pre><code class="hljs language-sql"><span class="hljs-keyword">INSERT INTO</span> <span class="hljs-keyword">table</span>
+  (col1, col2, ...)
+<span class="hljs-keyword">VALUES</span>
+  (<span class="hljs-string">&#x27;valeur1&#x27;</span>, <span class="hljs-string">&#x27;valeur2&#x27;</span>, ...);
+</code></pre></div>
+<p>Il est possible de ne renseigner les valeurs que pour un certain nombre de colonnes. Cela fonctionne uniquement si une valeur par défaut est définie pour les colonnes non renseignées dans la requête. Typiquement, tu n’as pas à renseigner un <code>id</code> si celui-ci est auto-incrémenté, cela se fera tout seul.</p>
+<p>Afin d'ajouter du contenu à la table <code>school</code>, essaie les requêtes suivantes :</p>
+<div class="bloc-code"><div class="bloc-code__langue">sql</div><pre><code class="hljs language-sql"><span class="hljs-keyword">INSERT INTO</span> school
+  (name, country, capacity)
+<span class="hljs-keyword">VALUES</span>
+  (<span class="hljs-string">&#x27;Hogwarts School of Witchcraft and Wizardry&#x27;</span>, <span class="hljs-string">&#x27;United Kingdom&#x27;</span>, <span class="hljs-number">400</span>);
+</code></pre></div>
+<p>L’ordre dans lequel les champs sont appelés n’a pas d’importance. Il faut juste que la position des valeurs corresponde à l’ordre de l’énumération des colonnes dans la requête. Fais attention également à l’utilisation des <em>quotes</em>. Tu dois en mettre autour des chaînes de caractères pour les <strong>valeurs</strong> à insérer, mais tu ne dois <strong>pas</strong> en mettre autour des noms de champs.</p>
+<p>Tu peux également ajouter plusieurs lignes avec des valeurs différentes, dans une même requête SQL. Pour cela, il suffit de séparer chaque groupe de valeurs par des &quot;,&quot; :</p>
+<div class="bloc-code"><div class="bloc-code__langue">sql</div><pre><code class="hljs language-sql"><span class="hljs-keyword">INSERT INTO</span> school
+  (name, country, capacity) 
+<span class="hljs-keyword">VALUES</span>
+  (<span class="hljs-string">&#x27;Beauxbatons Academy of Magic&#x27;</span>, <span class="hljs-string">&#x27;France&#x27;</span>, <span class="hljs-number">550</span>), 
+  (<span class="hljs-string">&#x27;Castelobruxo&#x27;</span>, <span class="hljs-string">&#x27;Brazil&#x27;</span>, <span class="hljs-number">380</span>), 
+  (<span class="hljs-string">&#x27;Durmstrang Institute&#x27;</span>, <span class="hljs-string">&#x27;Norway&#x27;</span>, <span class="hljs-number">570</span>);
+</code></pre></div>
+<a class="ressource" href="https://harrypotter.fandom.com/wiki/Wizarding_school" target="_blank" rel="noopener noreferrer">
+  <div class="ressource__icone">↗</div>
+  <div class="ressource__texte">
+    <div class="ressource__titre">Plus d’informations sur les écoles de magie</div>
+    
+    <div class="ressource__hote">harrypotter.fandom.com</div>
+  </div>
+</a>
+<a class="ressource" href="https://www.w3schools.com/sql/sql_insert.asp" target="_blank" rel="noopener noreferrer">
+  <div class="ressource__icone">↗</div>
+  <div class="ressource__texte">
+    <div class="ressource__titre">INSERT - SQL</div>
+    <div class="ressource__desc"><p>Tout savoir sur la commande <strong>INSERT</strong></p>
+</div>
+    <div class="ressource__hote">w3schools.com</div>
+  </div>
+</a>
+<h2>Comment modifier des données ?</h2>
+<p>Maintenant que tu sais insérer des données, tu vas apprendre comment les modifier.</p>
+<p>Cette fois-ci, le mot-clé qui va nous intéresser est <strong>UPDATE</strong>.</p>
+<p>Voici la syntaxe que prend une requête SQL de mise à jour :</p>
+<div class="bloc-code"><div class="bloc-code__langue">sql</div><pre><code class="hljs language-sql"><span class="hljs-keyword">UPDATE</span> <span class="hljs-operator">&lt;</span><span class="hljs-keyword">table</span><span class="hljs-operator">&gt;</span>
+<span class="hljs-keyword">SET</span> colonne1 <span class="hljs-operator">=</span> valeur1, colonne2 <span class="hljs-operator">=</span> valeur2, etc...
+<span class="hljs-keyword">WHERE</span> <span class="hljs-operator">&lt;</span>conditions<span class="hljs-operator">&gt;</span>;
+</code></pre></div>
+<div class="encadre encadre--warning"><div class="encadre__titre">Attention</div><div class="encadre__corps"><p>Sois bien vigilant lorsque tu effectues une modification dans une table. La clause <code>WHERE</code> permet de cibler quelles lignes doivent être mises à jour. Si tu oublies ce <code>WHERE</code>, <strong>toutes</strong> les données de la table seront modifiées. Dans la très grande majorité des cas, un <code>UPDATE</code> se fait donc accompagner d’un <code>WHERE</code> (qui fonctionne par ailleurs de la même façon que pour une requête <code>SELECT</code>).</p>
+</div></div>
+<p>Effectue un <code>SELECT * FROM school</code> afin de lister toutes les écoles dans ta table. Tu dois normalement avoir quatre enregistrements. Si tout s’est bien passé, l’école Hogwarts (Poudlard en français) doit avoir l’id numéro 1. <strong>Cependant</strong>, si tu as effectué certaines commandes dans le désordre, il est tout à fait possible que la valeur de cet id soit différente. Ce n’est absolument pas grave. La “valeur” de l’id n’a aucune importance en soi. Ce qui compte, c’est que ce champ soit unique, afin de pouvoir être utilisé en tant que clé primaire. Dans les exemples qui suivent, c’est l’id “1” qui va donc être utilisé pour identifier Hogwarts, mais <strong>pense à changer</strong> la valeur si elle est différente dans ton cas.</p>
+<p><img src="images/001-comment-modifier-des-donnees.jpg" alt="" loading="lazy"></p>
+<p>Il y a plus d’élèves cette année. La capacité de l’école doit passer à 450. Exécute la requête suivante :</p>
+<div class="bloc-code"><div class="bloc-code__langue">sql</div><pre><code class="hljs language-sql"><span class="hljs-keyword">UPDATE</span> school
+<span class="hljs-keyword">SET</span> capacity <span class="hljs-operator">=</span> <span class="hljs-number">450</span>
+<span class="hljs-keyword">WHERE</span> id <span class="hljs-operator">=</span> <span class="hljs-number">1</span>;
+</code></pre></div>
+<p>Si tu récupères à nouveau (<code>SELECT</code>) les données de ta table <code>school</code>, la capacité de <em>Hogwarts School of Witchcraft and Wizardry</em> doit être maintenant de 450 !</p>
+<div class="encadre encadre--warning"><div class="encadre__titre">Attention</div><div class="encadre__corps"><p>N'oublie pas la clause <code>WHERE</code> dans ton <code>UPDATE</code>, sous peine de changer <strong>TOUS</strong> les tuples de ta table ! La plupart du temps, une mise à jour ne touche qu’un seul tuple. Tu utiliseras dans ce cas la clé primaire dans le <code>WHERE</code> pour t’assurer d’identifier uniquement cette ligne.</p>
+</div></div>
+<a class="ressource" href="https://www.w3schools.com/sql/sql_update.asp" target="_blank" rel="noopener noreferrer">
+  <div class="ressource__icone">↗</div>
+  <div class="ressource__texte">
+    <div class="ressource__titre">UPDATE - SQL</div>
+    <div class="ressource__desc"><p>Tout savoir sur la commande <strong>UPDATE</strong></p>
+</div>
+    <div class="ressource__hote">w3schools.com</div>
+  </div>
+</a>
+<h2>Comment supprimer des données ?</h2>
+<p>Le mot-clé qui va t’intéresser cette fois est <strong>DELETE</strong>.</p>
+<p>Voici la syntaxe que prend une requête SQL de suppression :</p>
+<div class="bloc-code"><div class="bloc-code__langue">sql</div><pre><code class="hljs language-sql"><span class="hljs-keyword">DELETE</span> <span class="hljs-keyword">FROM</span> <span class="hljs-operator">&lt;</span><span class="hljs-keyword">table</span><span class="hljs-operator">&gt;</span>
+<span class="hljs-keyword">WHERE</span> <span class="hljs-operator">&lt;</span>conditions<span class="hljs-operator">&gt;</span>;
+</code></pre></div>
+<div class="encadre encadre--warning"><div class="encadre__titre">Attention</div><div class="encadre__corps"><p>Comme pour l’<em>update</em>, sois bien vigilant lorsque tu effectues une suppression dans une table. Le mot-clé <code>WHERE</code> spécifie quels tuples doivent être supprimés. Si tu oublies ce <code>WHERE</code>, <strong>toutes les données</strong> de la table seront supprimées.</p>
+</div></div>
+<p>Tu vas maintenant supprimer l’école de “Castelobruxo”, avec l’id 3. Là encore, si dans ton cas l’id est différent, modifie juste sa valeur dans la requête afin d’effacer la bonne école.</p>
+<p>Exécute la requête suivante :</p>
+<div class="bloc-code"><div class="bloc-code__langue">sql</div><pre><code class="hljs language-sql"><span class="hljs-keyword">DELETE</span> <span class="hljs-keyword">FROM</span> school
+<span class="hljs-keyword">WHERE</span> id <span class="hljs-operator">=</span> <span class="hljs-number">3</span>;
+</code></pre></div>
+<p>Si tu regardes à nouveau ta table <code>school</code>, l’école a disparu !</p>
+<p>Tu peux également spécifier d'autres conditions de suppression. Si par exemple, tu veux supprimer toutes les écoles dont la capacité est supérieure à 500, tu peux exécuter la requête suivante :</p>
+<div class="bloc-code"><div class="bloc-code__langue">sql</div><pre><code class="hljs language-sql"><span class="hljs-keyword">DELETE</span> <span class="hljs-keyword">FROM</span> school
+<span class="hljs-keyword">WHERE</span> capacity <span class="hljs-operator">&gt;</span> <span class="hljs-number">500</span>;
+</code></pre></div>
+<p><em>Beauxbatons</em> et <em>Drumstrang</em> ont normalement été supprimées, tu ne devrais plus avoir que <em>Hogwarts</em> dans ta table.</p>
+<div class="encadre encadre--warning"><div class="encadre__titre">Attention</div><div class="encadre__corps"><h1>Rappel (encore)</h1>
+<p>N'oublie jamais la clause <code>WHERE</code> dans un <code>DELETE</code>, sous peine de supprimer <strong>TOUTES</strong> les lignes de ta table !!</p>
+</div></div>
+<a class="ressource" href="https://sql.sh/cours/delete" target="_blank" rel="noopener noreferrer">
+  <div class="ressource__icone">↗</div>
+  <div class="ressource__texte">
+    <div class="ressource__titre">DELETE - SQL</div>
+    <div class="ressource__desc"><p>Cours détaillé sur le <code>DELETE</code></p>
+</div>
+    <div class="ressource__hote">sql.sh</div>
+  </div>
+</a>
+<p>La commande <code>DELETE</code> te permet donc de supprimer une ou plusieurs lignes, selon certaines conditions. Si tu souhaites cependant vider une table de <strong>toutes</strong> ses données (sans supprimer la structure de la table elle-même), tu peux alors utiliser la commande <code>TRUNCATE &lt;table&gt;</code>. Cette commande sera alors plus performante qu’un <code>DELETE FROM &lt;table&gt;</code>. Autre différence notable, <code>TRUNCATE</code> <strong>réinitialise l’auto-incrémentation</strong>, ce qui n’est pas le cas pour <code>DELETE</code>.</p>
+<p>Effectue la commande :</p>
+<div class="bloc-code"><div class="bloc-code__langue">sql</div><pre><code class="hljs language-sql"><span class="hljs-keyword">TRUNCATE</span> school;
+</code></pre></div>
+<p>puis vérifie que la table school est maintenant bien vide de toutes données, avant de passer au challenge.</p>
+<a class="ressource" href="https://sql.sh/cours/truncate-table" target="_blank" rel="noopener noreferrer">
+  <div class="ressource__icone">↗</div>
+  <div class="ressource__texte">
+    <div class="ressource__titre">TRUNCATE - SQL</div>
+    <div class="ressource__desc"><p>plus d’informations sur cette commande et ses différences avec <code>DELETE</code></p>
+</div>
+    <div class="ressource__hote">sql.sh</div>
+  </div>
+</a>
+<h2>Challenge</h2>
+<p>Effectue les requêtes suivantes :</p>
+<ul>
+<li>Insère dans la table <code>school</code> les données suivantes :</li>
+</ul>
+<div class="table-wrap"><table><thead>
+<tr>
+<th>name</th>
+<th>country</th>
+<th>capacity</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Beauxbatons Academy of Magic</td>
+<td>France</td>
+<td>550</td>
+</tr>
+<tr>
+<td>Castelobruxo</td>
+<td>Brazil</td>
+<td>380</td>
+</tr>
+<tr>
+<td>Durmstrang Institute</td>
+<td>Norway</td>
+<td>570</td>
+</tr>
+<tr>
+<td>Hogwarts School of Witchcraft and Wizardry</td>
+<td>United Kingdom</td>
+<td>450</td>
+</tr>
+<tr>
+<td>Ilvermorny School of Witchcraft and Wizardry</td>
+<td>USA</td>
+<td>300</td>
+</tr>
+<tr>
+<td>Koldovstoretz</td>
+<td>Russia</td>
+<td>125</td>
+</tr>
+<tr>
+<td>Mahoutokoro School of Magic</td>
+<td>Japan</td>
+<td>800</td>
+</tr>
+<tr>
+<td>Uagadou School of Magic</td>
+<td>Uganda</td>
+<td>350</td>
+</tr>
+</tbody>
+</table></div><ul>
+<li>“Durmstrang Institute” est en réalité en Suède (<em>Sweden</em>), modifie son pays.</li>
+<li>“Koldovstoretz” passe à une capacité de 150.</li>
+<li>Supprime en une seule requête toutes les écoles comportant “Magic” dans leur nom (il y en a 3). Tu peux t’aider du mot clé <code>LIKE</code>.</li>
+<li>Affiche via une requête <code>SELECT</code> toutes les données de la table <code>school</code>.</li>
+</ul>
+<p>Poste tes requêtes et leurs résultats en solution.</p>
+<h3>Critères de validation</h3>
+<ul>
+<li>La solution contient toutes les requêtes SQL : 1 requête d’insertion, 2 requêtes de modification, 1 requête de suppression et 1 sélection.</li>
+<li>Elle contient également le tableau des données finales de la table <code>school</code> (5 écoles restantes, avec les capacités et pays modifiés selon les consignes).</li>
+</ul>
+<ol>
+<li>Insère les données dans la table <code>school</code> :</li>
+</ol>
+<div class="bloc-code"><div class="bloc-code__langue">sql</div><pre><code class="hljs language-sql"><span class="hljs-keyword">insert into</span> school
+  (name, country, capacity)
+  <span class="hljs-keyword">values</span>
+  (<span class="hljs-string">&#x27;Beauxbatons Academy of Magic&#x27;</span>, <span class="hljs-string">&#x27;France&#x27;</span>, <span class="hljs-number">550</span>),
+  (<span class="hljs-string">&#x27;Castelobruxo&#x27;</span>, <span class="hljs-string">&#x27;Brazil&#x27;</span>, <span class="hljs-number">380</span>),
+  (<span class="hljs-string">&#x27;Durmstrang Institute&#x27;</span>, <span class="hljs-string">&#x27;Norway&#x27;</span>, <span class="hljs-number">570</span>),
+  (<span class="hljs-string">&#x27;Hogwarts School of Witchcraft and Wizardry&#x27;</span>, <span class="hljs-string">&#x27;United Kingdom&#x27;</span>, <span class="hljs-number">450</span>),
+  (<span class="hljs-string">&#x27;Ilvermorny School of Witchcraft and Wizardry&#x27;</span>, <span class="hljs-string">&#x27;USA&#x27;</span>, <span class="hljs-number">300</span>),
+  (<span class="hljs-string">&#x27;Koldovstoretz&#x27;</span>, <span class="hljs-string">&#x27;Russia&#x27;</span>, <span class="hljs-number">125</span>),
+  (<span class="hljs-string">&#x27;Mahoutokoro School of Magic&#x27;</span>, <span class="hljs-string">&#x27;Japan&#x27;</span>, <span class="hljs-number">800</span>),
+  (<span class="hljs-string">&#x27;Uagadou School of Magic&#x27;</span>, <span class="hljs-string">&#x27;Uganda&#x27;</span>, <span class="hljs-number">350</span>);
+
+Query OK, <span class="hljs-number">8</span> <span class="hljs-keyword">rows</span> affected
+Records: <span class="hljs-number">8</span>  Duplicates: <span class="hljs-number">0</span>  Warnings: <span class="hljs-number">0</span>
+</code></pre></div>
+<ol start="2">
+<li>“Durmstrang Institute” est en réalité en Suède :</li>
+</ol>
+<div class="bloc-code"><div class="bloc-code__langue">sql</div><pre><code class="hljs language-sql"><span class="hljs-keyword">update</span>
+  school
+<span class="hljs-keyword">set</span>
+  country <span class="hljs-operator">=</span> <span class="hljs-string">&#x27;Sweden&#x27;</span>
+<span class="hljs-keyword">where</span>
+  name <span class="hljs-operator">=</span> <span class="hljs-string">&#x27;Durmstrang Institute&#x27;</span>;
+
+Query OK, <span class="hljs-number">1</span> <span class="hljs-type">row</span> affected
+<span class="hljs-keyword">Rows</span> matched: <span class="hljs-number">1</span>  Changed: <span class="hljs-number">1</span>  Warnings: <span class="hljs-number">0</span>
+</code></pre></div>
+<ol start="3">
+<li>“Koldovstoretz” passe à une capacité de 150 :</li>
+</ol>
+<div class="bloc-code"><div class="bloc-code__langue">sql</div><pre><code class="hljs language-sql"><span class="hljs-keyword">update</span>
+  school
+<span class="hljs-keyword">set</span>
+  capacity <span class="hljs-operator">=</span> <span class="hljs-number">150</span>
+<span class="hljs-keyword">where</span>
+  name <span class="hljs-operator">=</span> <span class="hljs-string">&#x27;Koldovstoretz&#x27;</span>;
+
+Query OK, <span class="hljs-number">1</span> <span class="hljs-type">row</span> affected
+<span class="hljs-keyword">Rows</span> matched: <span class="hljs-number">1</span>  Changed: <span class="hljs-number">1</span>  Warnings: <span class="hljs-number">0</span>
+</code></pre></div>
+<ol start="4">
+<li>Supprime en une seule requête toutes les écoles comportant “Magic” dans leur nom :</li>
+</ol>
+<div class="bloc-code"><div class="bloc-code__langue">sql</div><pre><code class="hljs language-sql"><span class="hljs-keyword">delete</span> <span class="hljs-keyword">from</span>
+  school
+<span class="hljs-keyword">where</span>
+  name <span class="hljs-keyword">like</span> <span class="hljs-string">&#x27;%Magic%&#x27;</span>;
+
+Query OK, <span class="hljs-number">3</span> <span class="hljs-keyword">rows</span> affected
+</code></pre></div>
+<ol start="5">
+<li>Affiche via une requête SELECT toutes les données de la table school :</li>
+</ol>
+<div class="bloc-code"><div class="bloc-code__langue">sql</div><pre><code class="hljs language-sql"><span class="hljs-keyword">select</span> <span class="hljs-operator">*</span> <span class="hljs-keyword">from</span> school;
+
+<span class="hljs-operator">+</span><span class="hljs-comment">----+----------------------------------------------+----------+----------------+</span>
+<span class="hljs-operator">|</span> id <span class="hljs-operator">|</span> name                                         <span class="hljs-operator">|</span> capacity <span class="hljs-operator">|</span> country        <span class="hljs-operator">|</span>
+<span class="hljs-operator">+</span><span class="hljs-comment">----+----------------------------------------------+----------+----------------+</span>
+<span class="hljs-operator">|</span>  <span class="hljs-number">2</span> <span class="hljs-operator">|</span> Castelobruxo                                 <span class="hljs-operator">|</span>      <span class="hljs-number">380</span> <span class="hljs-operator">|</span> Brazil         <span class="hljs-operator">|</span>
+<span class="hljs-operator">|</span>  <span class="hljs-number">3</span> <span class="hljs-operator">|</span> Durmstrang Institute                         <span class="hljs-operator">|</span>      <span class="hljs-number">570</span> <span class="hljs-operator">|</span> Sweden         <span class="hljs-operator">|</span>
+<span class="hljs-operator">|</span>  <span class="hljs-number">4</span> <span class="hljs-operator">|</span> Hogwarts School <span class="hljs-keyword">of</span> Witchcraft <span class="hljs-keyword">and</span> Wizardry   <span class="hljs-operator">|</span>      <span class="hljs-number">450</span> <span class="hljs-operator">|</span> United Kingdom <span class="hljs-operator">|</span>
+<span class="hljs-operator">|</span>  <span class="hljs-number">5</span> <span class="hljs-operator">|</span> Ilvermorny School <span class="hljs-keyword">of</span> Witchcraft <span class="hljs-keyword">and</span> Wizardry <span class="hljs-operator">|</span>      <span class="hljs-number">300</span> <span class="hljs-operator">|</span> USA            <span class="hljs-operator">|</span>
+<span class="hljs-operator">|</span>  <span class="hljs-number">6</span> <span class="hljs-operator">|</span> Koldovstoretz                                <span class="hljs-operator">|</span>      <span class="hljs-number">150</span> <span class="hljs-operator">|</span> Russia         <span class="hljs-operator">|</span>
+<span class="hljs-operator">+</span><span class="hljs-comment">----+----------------------------------------------+----------+----------------+</span>
+<span class="hljs-number">5</span> <span class="hljs-keyword">rows</span> <span class="hljs-keyword">in</span> <span class="hljs-keyword">set</span>
+</code></pre></div>
+
+  </div>
+  <section class="ressources-quete">
+  <h2>Ressources partagées sur cette quête</h2>
+  <ul class="ressources-liste">
+    <li><a href="https://learnsql.com/blog/mysql-cheat-sheet/" target="_blank" rel="noopener noreferrer">cheat sheet tres utile quand on debute pour avoir les commande a porter de main</a><span class="ressources-liste__url">https://learnsql.com/blog/mysql-cheat-sheet/</span></li>
+  </ul>
+</section>
+</article>
+
+<nav class="nav-quete">
+  <a class="nav-quete__lien nav-quete__lien--prec" href="../../base-de-donnees/003-02-recuperer-des-informations-avec-select/index.html">
+           <span class="nav-quete__sens">← Précédent</span>
+           <span class="nav-quete__titre">02 - Récupérer des informations avec SELECT</span>
+         </a>
+  <a class="nav-quete__lien nav-quete__lien--suiv" href="../../base-de-donnees/005-04-1-les-bases-de-la-modelisation-mcd/index.html">
+           <span class="nav-quete__sens">Suivant →</span>
+           <span class="nav-quete__titre">04.1 - Les bases de la modélisation : MCD</span>
+         </a>
+</nav>
+</main>
+<footer class="pied">
+  <p>Archive personnelle des cours suivis à la Wild Code School. Copie hors ligne à usage strictement privé.</p>
+</footer>
+
+<script src="../../assets/copie-code.js"></script>
+<script src="../../assets/progression.js"></script>
+</body>
+</html>

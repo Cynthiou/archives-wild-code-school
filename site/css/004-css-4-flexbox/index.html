@@ -1,0 +1,627 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>👩‍🏫 CSS 4 : Flexbox — Archives WCS</title>
+<link rel="stylesheet" href="../../assets/style.css">
+</head>
+<body style="--teinte:#1b62b1">
+<header class="entete">
+  <a class="entete__marque" href="../../index.html">Archives Wild Code School</a>
+</header>
+<main class="contenu">
+<nav class="ariane"><a href="../../index.html">Accueil</a><span class="ariane__sep">›</span><a href="../../css/index.html">CSS</a><span class="ariane__sep">›</span><span aria-current="page">👩‍🏫 CSS 4 : Flexbox</span></nav>
+
+<article class="quete">
+  <header class="quete__entete">
+    <a class="pastille pastille--teintee" href="../../css/index.html">CSS</a>
+    <h1>👩‍🏫 CSS 4 : Flexbox</h1>
+    <p class="quete__meta">Quête 4 sur 10 · 12 images archivées</p>
+  </header>
+  <div class="cours">
+<h2>Objectifs</h2>
+<ul>
+<li>Créer des mises en page adaptées en utilisant flexbox</li>
+<li>Acquérir une compréhension approfondie de ce qu'est flexbox</li>
+</ul>
+<h2>Introduction</h2>
+<p>Faire de la mise en page en CSS peut être difficile, il existe de nombreuses façons de créer une mise en page en CSS et certaines méthodes sont plus efficaces que d'autres.</p>
+<p>Dans cette quête, nous apprendrons Flexbox, une méthode permettant de créer facilement des mises en page responsive.</p>
+<p><img src="images/001-cat-flex.jpg" alt="cat flex" loading="lazy"></p>
+<h2>Sommaire</h2>
+<h2>Flexible Layout (Flexbox)</h2>
+<p>Le modèle Flexbox est un moyen <strong>très efficace</strong> d'<strong>aligner et de répartir</strong> l'espace entre les éléments.</p>
+<p>Flexbox t'aidera à créer des <strong>mises en page</strong> très rapidement.</p>
+<p>Flexbox peut être difficile au début, ce n'est pas le concept le plus simple, mais sois confiant, quand tu le comprendras et le maîtriseras correctement, tu verras que c'est un outil puissant !</p>
+<h2>Créer un conteneur Flex</h2>
+<p>Pour utiliser flexbox, il suffit de <strong>créer un conteneur flex.</strong>
+Le <strong>conteneur flex</strong> contiendra des <strong>éléments enfants</strong> auxquels nous appliquerons <strong>certaines règles</strong>.</p>
+<div class="bloc-code"><div class="bloc-code__langue">css</div><pre><code class="hljs language-css"><span class="hljs-selector-class">.parent</span>{
+  <span class="hljs-attribute">display</span>: flex;
+}
+</code></pre></div>
+<p>Une fois que le <em><strong>display</strong></em> d'un parent passe en <code>flex</code>, <strong>il devient un conteneur flex!</strong></p>
+<p><img src="images/002-flex-container.png" alt="Flex-container" loading="lazy"><strong>Source:</strong> <a href="https://sharkcoder.com/layout/flexbox" target="_blank" rel="noopener noreferrer">https://sharkcoder.com/layout/flexbox</a></p>
+<p>Dans un conteneur flex, tu peux <strong>contrôler la façon dont les enfants sont présentés.</strong></p>
+<p>Par <strong>défaut</strong>, le conteneur flexible est réglé sur <strong>row</strong> (ligne). Cette ligne a deux axes :</p>
+<ul>
+<li>L'axe principal (<strong>main axis</strong>) : horizontal</li>
+<li>L'axe transversal (<strong>cross axis</strong>) : vertical</li>
+</ul>
+<p><img src="images/003-axis-flexbox.png" alt="Axis Flexbox" loading="lazy"><img src="images/004-cross-axis-flexbox.png" alt="Cross Axis flexbox" loading="lazy"><em>Source:</em> <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_Flexible_Box_Layout/Basic_Concepts_of_Flexbox" target="_blank" rel="noopener noreferrer">https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_Flexible_Box_Layout/Basic_Concepts_of_Flexbox</a></p>
+<h2>Aligner des éléments avec flex</h2>
+<h3>Sur l'axe principal</h3>
+<p>Pour aligner des éléments le long de l'axe <strong>principal</strong>, utilise <strong>justify-content</strong> suivi d'une des valeurs suivantes :</p>
+<ul>
+<li><strong>flex-start</strong> alignera les éléments au début du conteneur</li>
+<li><strong>flex-end</strong> alignera les éléments à la fin du conteneur</li>
+<li><strong>center</strong> alignera les éléments au centre du conteneur</li>
+<li><strong>space-between</strong> répartira les éléments du conteneur (sur l'axe principal)</li>
+<li><strong>space-around</strong> répartira les éléments du conteneur et ajoutera un espace avant le premier et après le dernier élément</li>
+<li><strong>space-evenly</strong> : répartira les éléments de manière à ce que l'espace entre deux éléments (et l'espace par rapport aux bords) soit égal.</li>
+</ul>
+<p><img src="images/005-justify-content.png" alt="Justify content" loading="lazy"></p>
+<p><strong>Source:</strong> <a href="https://css-tricks.com/snippets/css/a-guide-to-flexbox/#aa-justify-content" target="_blank" rel="noopener noreferrer">https://css-tricks.com/snippets/css/a-guide-to-flexbox/#aa-justify-content</a></p>
+<h3>Sur l'axe transversal</h3>
+<p>Pour aligner les éléments sur l'axe transversal, nous pouvons utiliser les <strong>align-items</strong> en utilisant l'une des valeurs suivantes :</p>
+<ul>
+<li><strong>stretch</strong> étirera les éléments le long de l'axe transversal</li>
+<li><strong>flex-start</strong> alignera les éléments au départ</li>
+<li><strong>flex-end</strong> alignera les éléments à la fin</li>
+<li><strong>center</strong>  alignera les éléments au centre</li>
+<li><strong>baseline</strong> s'alignera sur la ligne de base du conteneur</li>
+</ul>
+<p><img src="images/006-flexbox-align-items.png" alt="flexbox align items" loading="lazy"></p>
+<p><strong>🔬 Expérience</strong></p>
+<p>Essaie d'espacer les éléments horizontalement et de les centrer verticalement.</p>
+<p>Le résultat devrait ressembler à ceci :</p>
+<p><img src="images/007-exercise-flexbox.png" alt="Exercise Flexbox" loading="lazy"></p>
+<div class="bloc-code"><div class="bloc-code__langue">js</div><pre><code class="hljs language-js">!--- index.<span class="hljs-property">html</span>
+&lt;!<span class="hljs-variable constant_">DOCTYPE</span> html&gt;
+<span class="language-xml"><span class="hljs-tag">&lt;<span class="hljs-name">html</span> <span class="hljs-attr">lang</span>=<span class="hljs-string">&quot;en&quot;</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">head</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">meta</span> <span class="hljs-attr">charset</span>=<span class="hljs-string">&quot;UTF-8&quot;</span> /&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">meta</span> <span class="hljs-attr">name</span>=<span class="hljs-string">&quot;viewport&quot;</span> <span class="hljs-attr">content</span>=<span class="hljs-string">&quot;width=device-width, initial-scale=1.0&quot;</span> /&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">meta</span> <span class="hljs-attr">http-equiv</span>=<span class="hljs-string">&quot;X-UA-Compatible&quot;</span> <span class="hljs-attr">content</span>=<span class="hljs-string">&quot;ie=edge&quot;</span> /&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">title</span>&gt;</span>Static Template<span class="hljs-tag">&lt;/<span class="hljs-name">title</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">link</span> <span class="hljs-attr">rel</span>=<span class="hljs-string">&quot;stylesheet&quot;</span> <span class="hljs-attr">href</span>=<span class="hljs-string">&quot;style.css&quot;</span> /&gt;</span>
+  <span class="hljs-tag">&lt;/<span class="hljs-name">head</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">body</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">h1</span>&gt;</span>
+      Space the element horizontally and center them vertically
+    <span class="hljs-tag">&lt;/<span class="hljs-name">h1</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;bloc-container&quot;</span>&gt;</span>
+      <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;blocs bg-peru&quot;</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+      <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;blocs bg-turquoise&quot;</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+      <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;blocs bg-violetred&quot;</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+    <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+  <span class="hljs-tag">&lt;/<span class="hljs-name">body</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">html</span>&gt;</span></span>
+
+!--- style.<span class="hljs-property">css</span>
+.<span class="hljs-property">bloc</span>-container {
+  <span class="hljs-attr">display</span>: flex;
+  <span class="hljs-attr">border</span>: 1px solid black;
+  <span class="hljs-attr">height</span>: 200px;
+}
+.<span class="hljs-property">blocs</span> {
+  <span class="hljs-attr">width</span>: 100px;
+  <span class="hljs-attr">height</span>: 100px;
+}
+.<span class="hljs-property">bg</span>-peru {
+  background-<span class="hljs-attr">color</span>: peru;
+}
+
+.<span class="hljs-property">bg</span>-turquoise {
+  background-<span class="hljs-attr">color</span>: paleturquoise;
+}
+.<span class="hljs-property">bg</span>-violetred {
+  background-<span class="hljs-attr">color</span>: palevioletred;
+}
+
+
+!--- index.<span class="hljs-property">js</span>
+<span class="hljs-keyword">import</span> <span class="hljs-string">&quot;./style.css&quot;</span>;
+</code></pre></div>
+<details class="solution"><summary>Voir la solution</summary><div class="solution__corps"><div class="bloc-code"><div class="bloc-code__langue">css</div><pre><code class="hljs language-css"><span class="hljs-selector-class">.bloc-container</span> {
+  <span class="hljs-attribute">display</span>: flex;
+  <span class="hljs-attribute">border</span>: <span class="hljs-number">1px</span> solid black;
+  <span class="hljs-attribute">justify-content</span>: space-around;
+  <span class="hljs-attribute">align-items</span>: center;
+  <span class="hljs-attribute">height</span>: <span class="hljs-number">200px</span>;
+}
+</code></pre></div>
+</div></details>
+<h2>Répartir les éléments</h2>
+<p>Dans notre exemple, les éléments <strong>prennent chacun une largeur de 100px.</strong>
+<strong>100px est la taille principale de l'élément.</strong></p>
+<p>Si nous modifions la largeur de l'élément à 100%, notre conteneur flexbox répartira les éléments sur la rangée.</p>
+<div class="bloc-code"><div class="bloc-code__langue">js</div><pre><code class="hljs language-js">!--- index.<span class="hljs-property">html</span>
+&lt;!<span class="hljs-variable constant_">DOCTYPE</span> html&gt;
+<span class="language-xml"><span class="hljs-tag">&lt;<span class="hljs-name">html</span> <span class="hljs-attr">lang</span>=<span class="hljs-string">&quot;en&quot;</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">head</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">meta</span> <span class="hljs-attr">charset</span>=<span class="hljs-string">&quot;UTF-8&quot;</span> /&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">meta</span> <span class="hljs-attr">name</span>=<span class="hljs-string">&quot;viewport&quot;</span> <span class="hljs-attr">content</span>=<span class="hljs-string">&quot;width=device-width, initial-scale=1.0&quot;</span> /&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">meta</span> <span class="hljs-attr">http-equiv</span>=<span class="hljs-string">&quot;X-UA-Compatible&quot;</span> <span class="hljs-attr">content</span>=<span class="hljs-string">&quot;ie=edge&quot;</span> /&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">title</span>&gt;</span>Static Template<span class="hljs-tag">&lt;/<span class="hljs-name">title</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">link</span> <span class="hljs-attr">rel</span>=<span class="hljs-string">&quot;stylesheet&quot;</span> <span class="hljs-attr">href</span>=<span class="hljs-string">&quot;style.css&quot;</span> /&gt;</span>
+  <span class="hljs-tag">&lt;/<span class="hljs-name">head</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">body</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">h1</span>&gt;</span>
+      Flexbox
+    <span class="hljs-tag">&lt;/<span class="hljs-name">h1</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;bloc-container&quot;</span>&gt;</span>
+      <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;blocs bg-peru&quot;</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+      <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;blocs bg-turquoise&quot;</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+      <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;blocs bg-violetred&quot;</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+    <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+  <span class="hljs-tag">&lt;/<span class="hljs-name">body</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">html</span>&gt;</span></span>
+
+
+!--- style.<span class="hljs-property">css</span>
+.<span class="hljs-property">bloc</span>-container {
+  <span class="hljs-attr">display</span>: flex;
+}
+.<span class="hljs-property">blocs</span> {
+  <span class="hljs-attr">width</span>: <span class="hljs-number">100</span>%;
+  <span class="hljs-attr">height</span>: 100px;
+}
+.<span class="hljs-property">bg</span>-peru {
+  background-<span class="hljs-attr">color</span>: peru;
+}
+
+.<span class="hljs-property">bg</span>-turquoise {
+  background-<span class="hljs-attr">color</span>: paleturquoise;
+}
+.<span class="hljs-property">bg</span>-violetred {
+  background-<span class="hljs-attr">color</span>: palevioletred;
+}
+
+!--- index.<span class="hljs-property">js</span>
+<span class="hljs-keyword">import</span> <span class="hljs-string">&quot;./style.css&quot;</span>;
+</code></pre></div>
+<p>Donc maintenant, <strong>en terme de ratio</strong>, nous pourrions dire que <strong>chaque élément prend 1 espace du conteneur flex</strong>, n'est-ce pas ?</p>
+<p>Nous pouvons utiliser la propriété <strong>flex</strong> pour décider de l'espace que nous voulons donner à chaque élément sur le conteneur.</p>
+<div class="bloc-code"><div class="bloc-code__langue">js</div><pre><code class="hljs language-js">!--- index.<span class="hljs-property">html</span>
+&lt;!<span class="hljs-variable constant_">DOCTYPE</span> html&gt;
+<span class="language-xml"><span class="hljs-tag">&lt;<span class="hljs-name">html</span> <span class="hljs-attr">lang</span>=<span class="hljs-string">&quot;en&quot;</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">head</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">meta</span> <span class="hljs-attr">charset</span>=<span class="hljs-string">&quot;UTF-8&quot;</span> /&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">meta</span> <span class="hljs-attr">name</span>=<span class="hljs-string">&quot;viewport&quot;</span> <span class="hljs-attr">content</span>=<span class="hljs-string">&quot;width=device-width, initial-scale=1.0&quot;</span> /&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">meta</span> <span class="hljs-attr">http-equiv</span>=<span class="hljs-string">&quot;X-UA-Compatible&quot;</span> <span class="hljs-attr">content</span>=<span class="hljs-string">&quot;ie=edge&quot;</span> /&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">title</span>&gt;</span>Static Template<span class="hljs-tag">&lt;/<span class="hljs-name">title</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">link</span> <span class="hljs-attr">rel</span>=<span class="hljs-string">&quot;stylesheet&quot;</span> <span class="hljs-attr">href</span>=<span class="hljs-string">&quot;style.css&quot;</span> /&gt;</span>
+  <span class="hljs-tag">&lt;/<span class="hljs-name">head</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">body</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">h1</span>&gt;</span>
+      Flexbox
+    <span class="hljs-tag">&lt;/<span class="hljs-name">h1</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;bloc-container&quot;</span>&gt;</span>
+      <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;blocs box-1&quot;</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+      <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;blocs box-2&quot;</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+      <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;blocs box-3&quot;</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+    <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+  <span class="hljs-tag">&lt;/<span class="hljs-name">body</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">html</span>&gt;</span></span>
+
+!--- style.<span class="hljs-property">css</span>
+.<span class="hljs-property">bloc</span>-container {
+  <span class="hljs-attr">display</span>: flex;
+  justify-<span class="hljs-attr">content</span>: center;
+}
+.<span class="hljs-property">blocs</span> {
+  <span class="hljs-attr">height</span>: 100px;
+}
+.<span class="hljs-property">box</span>-<span class="hljs-number">1</span> {
+  <span class="hljs-attr">flex</span>: <span class="hljs-number">1</span>;
+  background-<span class="hljs-attr">color</span>: peru;
+}
+
+.<span class="hljs-property">box</span>-<span class="hljs-number">2</span> {
+  <span class="hljs-attr">flex</span>: <span class="hljs-number">1</span>;
+  background-<span class="hljs-attr">color</span>: paleturquoise;
+}
+.<span class="hljs-property">box</span>-<span class="hljs-number">3</span> {
+  <span class="hljs-attr">flex</span>: <span class="hljs-number">2</span>;
+  background-<span class="hljs-attr">color</span>: palevioletred;
+}
+
+!--- index.<span class="hljs-property">js</span>
+<span class="hljs-keyword">import</span> <span class="hljs-string">&quot;./style.css&quot;</span>;
+</code></pre></div>
+<p>Dans cet exemple, <strong>nous avons changé la propriété flex du dernier élément pour qu'il prenne 2 espaces sur l'axe principal</strong>. <strong>Les autres prendront alors 1 et 1.</strong></p>
+<p><strong>🔬 Expérience</strong></p>
+<p>Modifie la taille des éléments suivants en utilisant la propriété flex.</p>
+<div class="bloc-code"><div class="bloc-code__langue">js</div><pre><code class="hljs language-js">!--- index.<span class="hljs-property">html</span>
+&lt;!<span class="hljs-variable constant_">DOCTYPE</span> html&gt;
+<span class="language-xml"><span class="hljs-tag">&lt;<span class="hljs-name">html</span> <span class="hljs-attr">lang</span>=<span class="hljs-string">&quot;en&quot;</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">head</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">meta</span> <span class="hljs-attr">charset</span>=<span class="hljs-string">&quot;UTF-8&quot;</span> /&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">meta</span> <span class="hljs-attr">name</span>=<span class="hljs-string">&quot;viewport&quot;</span> <span class="hljs-attr">content</span>=<span class="hljs-string">&quot;width=device-width, initial-scale=1.0&quot;</span> /&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">meta</span> <span class="hljs-attr">http-equiv</span>=<span class="hljs-string">&quot;X-UA-Compatible&quot;</span> <span class="hljs-attr">content</span>=<span class="hljs-string">&quot;ie=edge&quot;</span> /&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">title</span>&gt;</span>Static Template<span class="hljs-tag">&lt;/<span class="hljs-name">title</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">link</span> <span class="hljs-attr">rel</span>=<span class="hljs-string">&quot;stylesheet&quot;</span> <span class="hljs-attr">href</span>=<span class="hljs-string">&quot;style.css&quot;</span> /&gt;</span>
+  <span class="hljs-tag">&lt;/<span class="hljs-name">head</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">body</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">h1</span>&gt;</span>
+      Change the size of the bloc
+    <span class="hljs-tag">&lt;/<span class="hljs-name">h1</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">ul</span>&gt;</span>
+      <span class="hljs-tag">&lt;<span class="hljs-name">li</span>&gt;</span>The first one should take 1<span class="hljs-tag">&lt;/<span class="hljs-name">li</span>&gt;</span>
+      <span class="hljs-tag">&lt;<span class="hljs-name">li</span>&gt;</span>The second one should take 3<span class="hljs-tag">&lt;/<span class="hljs-name">li</span>&gt;</span>
+      <span class="hljs-tag">&lt;<span class="hljs-name">li</span>&gt;</span>The third one should take 2<span class="hljs-tag">&lt;/<span class="hljs-name">li</span>&gt;</span>
+      <span class="hljs-tag">&lt;<span class="hljs-name">li</span>&gt;</span>The fourth one should take 1<span class="hljs-tag">&lt;/<span class="hljs-name">li</span>&gt;</span>
+    <span class="hljs-tag">&lt;/<span class="hljs-name">ul</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;bloc-container&quot;</span>&gt;</span>
+      <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;blocs box-1&quot;</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+      <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;blocs box-2&quot;</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+      <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;blocs box-3&quot;</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+      <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;blocs box-4&quot;</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+    <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+  <span class="hljs-tag">&lt;/<span class="hljs-name">body</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">html</span>&gt;</span></span>
+
+
+!--- style.<span class="hljs-property">css</span>
+.<span class="hljs-property">bloc</span>-container {
+  <span class="hljs-attr">display</span>: flex;
+  justify-<span class="hljs-attr">content</span>: center;
+}
+.<span class="hljs-property">blocs</span> {
+  <span class="hljs-attr">height</span>: 100px;
+  <span class="hljs-attr">width</span>: <span class="hljs-number">100</span>%;
+}
+.<span class="hljs-property">box</span>-<span class="hljs-number">1</span> {
+  background-<span class="hljs-attr">color</span>: peru;
+}
+
+.<span class="hljs-property">box</span>-<span class="hljs-number">2</span> {
+  background-<span class="hljs-attr">color</span>: paleturquoise;
+}
+.<span class="hljs-property">box</span>-<span class="hljs-number">3</span> {
+  background-<span class="hljs-attr">color</span>: palevioletred;
+}
+
+.<span class="hljs-property">box</span>-<span class="hljs-number">4</span> {
+  background-<span class="hljs-attr">color</span>: lightgray;
+}
+
+
+!--- index.<span class="hljs-property">js</span>
+<span class="hljs-keyword">import</span> <span class="hljs-string">&quot;./style.css&quot;</span>;
+</code></pre></div>
+<details class="solution"><summary>Voir la solution</summary><div class="solution__corps"><div class="bloc-code"><div class="bloc-code__langue">css</div><pre><code class="hljs language-css">
+<span class="hljs-selector-class">.bloc-container</span> {
+  <span class="hljs-attribute">display</span>: flex;
+  <span class="hljs-attribute">justify-content</span>: center;
+}
+<span class="hljs-selector-class">.blocs</span> {
+  <span class="hljs-attribute">height</span>: <span class="hljs-number">100px</span>;
+  <span class="hljs-attribute">flex</span>: <span class="hljs-number">1</span>;
+}
+<span class="hljs-selector-class">.box-1</span> {
+  <span class="hljs-attribute">background-color</span>: peru;
+}
+<span class="hljs-selector-class">.box-2</span> {
+  <span class="hljs-attribute">flex</span>: <span class="hljs-number">3</span>;
+  <span class="hljs-attribute">background-color</span>: paleturquoise;
+}
+<span class="hljs-selector-class">.box-3</span> {
+  <span class="hljs-attribute">flex</span>: <span class="hljs-number">2</span>;
+  <span class="hljs-attribute">background-color</span>: palevioletred;
+}
+<span class="hljs-selector-class">.box-4</span> {
+  <span class="hljs-attribute">background-color</span>: lightgray;
+}
+
+</code></pre></div>
+<h3>À noter</h3>
+<p>Ligne 8 : la propriété <code>width: 100%;</code> a été retirée et remplacée par <code>flex: 1;</code> indiquant aux éléments <code>.blocs</code> de prendre <strong>un espace flexible</strong> par défaut.</p>
+</div></details>
+<h2>Changer de direction</h2>
+<p>Nous pouvons <strong>changer la direction</strong> du conteneur flex <strong>en utilisant</strong> <code>flex-direction</code>, par défaut la direction est <strong>row</strong> (ligne) mais nous pouvons aussi utiliser <strong>column</strong> (colonne).</p>
+<div class="encadre encadre--warning"><div class="encadre__titre">Attention</div><div class="encadre__corps"><p>Lorsque tu changes la direction du flex, les axes changent, en mode column, l'axe principal est alors <strong>vertical</strong> et l'axe transversal devient <strong>horizontal</strong>.
+Cela signifie que si tu veux centrer horizontalement, tu dois maintenant utiliser <em><strong>align-items</strong></em>.</p>
+</div></div>
+<ul>
+<li>Si la <strong>direction</strong> est <strong>row</strong> l'axe principal est <strong>horizontal</strong></li>
+<li>si la <strong>direction</strong> est <strong>row-reverse</strong> les éléments s'afficheront de droite à gauche</li>
+<li>si la <strong>direction</strong> est <strong>column</strong> l'axe principal est <strong>vertical</strong></li>
+<li>si la <strong>direction</strong> est <strong>column-reverse</strong>, les éléments s'afficheront de bas en haut</li>
+</ul>
+<p>C'est la partie <strong>délicate de Flexbox</strong>, car l'axe principal change si l'on change la direction du conteneur.</p>
+<p>Souviens-toi que <code>justify-content</code> alignera les éléments sur l'<strong>axe principal</strong> et <code>align-items</code> sur l'<strong>axe transversal</strong> et que tu peux changer l'axe en utilisant flex-direction.</p>
+<p><strong><img src="images/008-axis-flexbox.png" alt="Axis flexbox" loading="lazy"></strong></p>
+<div class="bloc-code"><div class="bloc-code__langue">css</div><pre><code class="hljs language-css"><span class="hljs-selector-class">.parent</span>{
+  <span class="hljs-attribute">flex-direction</span>: column;
+}
+</code></pre></div>
+<p><img src="images/009-flex-direction-illustration.jpg" alt="Flex direction illustration" loading="lazy"><strong>Source:</strong> <a href="https://tympanus.net/codrops/css_reference/flexbox/" target="_blank" rel="noopener noreferrer">https://tympanus.net/codrops/css_reference/flexbox/</a></p>
+<p><strong>🔬 Expérience</strong></p>
+<p>Modifie les éléments de manière à ce qu'ils soient <strong>affichés dans une colonne</strong> et qu'ils prennent <strong>100% de la largeur</strong>.
+Ils doivent être centrés sur l'axe principal.</p>
+<p>Le résultat devrait ressembler à ceci.</p>
+<p><img src="images/010-image.png" alt="image" loading="lazy"></p>
+<div class="bloc-code"><div class="bloc-code__langue">js</div><pre><code class="hljs language-js">!--- index.<span class="hljs-property">html</span>
+&lt;!<span class="hljs-variable constant_">DOCTYPE</span> html&gt;
+<span class="language-xml"><span class="hljs-tag">&lt;<span class="hljs-name">html</span> <span class="hljs-attr">lang</span>=<span class="hljs-string">&quot;en&quot;</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">head</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">meta</span> <span class="hljs-attr">charset</span>=<span class="hljs-string">&quot;UTF-8&quot;</span> /&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">meta</span> <span class="hljs-attr">name</span>=<span class="hljs-string">&quot;viewport&quot;</span> <span class="hljs-attr">content</span>=<span class="hljs-string">&quot;width=device-width, initial-scale=1.0&quot;</span> /&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">meta</span> <span class="hljs-attr">http-equiv</span>=<span class="hljs-string">&quot;X-UA-Compatible&quot;</span> <span class="hljs-attr">content</span>=<span class="hljs-string">&quot;ie=edge&quot;</span> /&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">title</span>&gt;</span>Static Template<span class="hljs-tag">&lt;/<span class="hljs-name">title</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">link</span> <span class="hljs-attr">rel</span>=<span class="hljs-string">&quot;stylesheet&quot;</span> <span class="hljs-attr">href</span>=<span class="hljs-string">&quot;style.css&quot;</span> /&gt;</span>
+  <span class="hljs-tag">&lt;/<span class="hljs-name">head</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">body</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">h1</span>&gt;</span>
+      The elements should be in column and take the full width
+    <span class="hljs-tag">&lt;/<span class="hljs-name">h1</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;bloc-container&quot;</span>&gt;</span>
+      <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;blocs bg-peru&quot;</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+      <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;blocs bg-turquoise&quot;</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+      <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;blocs bg-violetred&quot;</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+    <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+  <span class="hljs-tag">&lt;/<span class="hljs-name">body</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">html</span>&gt;</span></span>
+
+
+!--- style.<span class="hljs-property">css</span>
+.<span class="hljs-property">bloc</span>-container {
+  <span class="hljs-attr">display</span>: flex;
+  <span class="hljs-attr">border</span>: 1px solid black;
+  <span class="hljs-attr">height</span>: 500px;
+}
+.<span class="hljs-property">blocs</span> {
+  <span class="hljs-attr">width</span>: 100px;
+  <span class="hljs-attr">height</span>: 100px;
+}
+.<span class="hljs-property">bg</span>-peru {
+  background-<span class="hljs-attr">color</span>: peru;
+}
+
+.<span class="hljs-property">bg</span>-turquoise {
+  background-<span class="hljs-attr">color</span>: paleturquoise;
+}
+.<span class="hljs-property">bg</span>-violetred {
+  background-<span class="hljs-attr">color</span>: palevioletred;
+}
+
+
+!--- index.<span class="hljs-property">js</span>
+<span class="hljs-keyword">import</span> <span class="hljs-string">&quot;./style.css&quot;</span>;
+</code></pre></div>
+<details class="solution"><summary>Voir la solution</summary><div class="solution__corps"><div class="bloc-code"><div class="bloc-code__langue">css</div><pre><code class="hljs language-css"><span class="hljs-selector-class">.bloc-container</span> {
+  <span class="hljs-attribute">display</span>: flex;
+  <span class="hljs-attribute">border</span>: <span class="hljs-number">1px</span> solid black;
+  <span class="hljs-attribute">height</span>: <span class="hljs-number">500px</span>;
+  <span class="hljs-attribute">flex-direction</span>: column;
+  <span class="hljs-attribute">align-items</span>: flex-end;
+  <span class="hljs-attribute">justify-content</span>: space-between;
+}
+
+<span class="hljs-selector-class">.blocs</span> {
+  <span class="hljs-attribute">width</span>: <span class="hljs-number">100%</span>;
+  <span class="hljs-attribute">height</span>: <span class="hljs-number">100px</span>;
+}
+</code></pre></div>
+</div></details>
+<h2>Wrap</h2>
+<p>Il peut arriver que les <strong>éléments soient trop grands pour le conteneur</strong>.
+Nous pouvons utiliser la propriété <strong>flex-wrap</strong> pour décider comment les élements doivent se comporter lorsque le conteneur n'a pas assez de place pour les éléments.</p>
+<p>Par défaut, le <strong>flex-wrap est réglé sur <code>nowrap</code></strong>.
+Si les éléments n'ont pas assez de place, alors <strong>ils prendront la place disponible qu'ils peuvent.</strong></p>
+<p>Avec <strong>wrap les éléments passeront à la ligne suivante s'ils n'ont plus assez de place</strong>.</p>
+<p><img src="images/011-flex-wrap.jpg" alt="Flex-wrap" loading="lazy"><strong>Source:</strong> <a href="https://tympanus.net/codrops/css_reference/flexbox/" target="_blank" rel="noopener noreferrer">https://tympanus.net/codrops/css_reference/flexbox/</a></p>
+<p>Voyons un exemple :</p>
+<div class="bloc-code"><div class="bloc-code__langue">js</div><pre><code class="hljs language-js">!--- index.<span class="hljs-property">html</span>
+&lt;!<span class="hljs-variable constant_">DOCTYPE</span> html&gt;
+<span class="language-xml"><span class="hljs-tag">&lt;<span class="hljs-name">html</span> <span class="hljs-attr">lang</span>=<span class="hljs-string">&quot;en&quot;</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">head</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">meta</span> <span class="hljs-attr">charset</span>=<span class="hljs-string">&quot;UTF-8&quot;</span> /&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">meta</span> <span class="hljs-attr">name</span>=<span class="hljs-string">&quot;viewport&quot;</span> <span class="hljs-attr">content</span>=<span class="hljs-string">&quot;width=device-width, initial-scale=1.0&quot;</span> /&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">meta</span> <span class="hljs-attr">http-equiv</span>=<span class="hljs-string">&quot;X-UA-Compatible&quot;</span> <span class="hljs-attr">content</span>=<span class="hljs-string">&quot;ie=edge&quot;</span> /&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">title</span>&gt;</span>Static Template<span class="hljs-tag">&lt;/<span class="hljs-name">title</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">link</span> <span class="hljs-attr">rel</span>=<span class="hljs-string">&quot;stylesheet&quot;</span> <span class="hljs-attr">href</span>=<span class="hljs-string">&quot;style.css&quot;</span> /&gt;</span>
+  <span class="hljs-tag">&lt;/<span class="hljs-name">head</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">body</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">h1</span>&gt;</span>
+      Flex-wrap: nowrap
+    <span class="hljs-tag">&lt;/<span class="hljs-name">h1</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;bloc-container no-wrap&quot;</span>&gt;</span>
+      <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;blocs bg-peru&quot;</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+      <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;blocs bg-turquoise&quot;</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+      <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;blocs bg-violetred&quot;</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+    <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">h1</span>&gt;</span>
+      Flex-wrap: wrap
+    <span class="hljs-tag">&lt;/<span class="hljs-name">h1</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;bloc-container wrap&quot;</span>&gt;</span>
+      <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;blocs bg-peru&quot;</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+      <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;blocs bg-turquoise&quot;</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+      <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;blocs bg-violetred&quot;</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+    <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+  <span class="hljs-tag">&lt;/<span class="hljs-name">body</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">html</span>&gt;</span></span>
+
+
+!--- style.<span class="hljs-property">css</span>
+.<span class="hljs-property">wrap</span> {
+  flex-<span class="hljs-attr">wrap</span>: wrap;
+}
+.<span class="hljs-property">no</span>-wrap {
+  flex-<span class="hljs-attr">wrap</span>: nowrap;
+}
+.<span class="hljs-property">bloc</span>-container {
+  <span class="hljs-attr">display</span>: flex;
+  <span class="hljs-attr">border</span>: 1px solid black;
+  <span class="hljs-attr">padding</span>: 50px <span class="hljs-number">0</span>;
+  <span class="hljs-attr">height</span>: <span class="hljs-number">100</span>%;
+}
+.<span class="hljs-property">blocs</span> {
+  <span class="hljs-attr">width</span>: 200px;
+  <span class="hljs-attr">height</span>: 200px;
+}
+.<span class="hljs-property">bg</span>-peru {
+  background-<span class="hljs-attr">color</span>: peru;
+}
+
+.<span class="hljs-property">bg</span>-turquoise {
+  background-<span class="hljs-attr">color</span>: paleturquoise;
+}
+.<span class="hljs-property">bg</span>-violetred {
+  background-<span class="hljs-attr">color</span>: palevioletred;
+}
+
+!--- index.<span class="hljs-property">js</span>
+<span class="hljs-keyword">import</span> <span class="hljs-string">&quot;./style.css&quot;</span>;
+</code></pre></div>
+<h2>Résumé</h2>
+<ul>
+<li>Flexbox est une bonne méthode pour créer une <strong>mise en page responsive</strong>.</li>
+<li>Le conteneur flex peut contrôler le comportement de ses enfants</li>
+<li>Un conteneur flex a <strong>deux axes</strong>, l'<strong>axe principal</strong> et l'<strong>axe transversal</strong>
+<ul>
+<li>L'axe principal est horizontal si la direction est en ligne et vertical si la direction est en colonne.</li>
+<li>L'axe transversal est vertical si la direction est en ligne et horizontal si la direction est en colonne.</li>
+</ul>
+</li>
+<li>On peut <strong>aligner les éléments le long de l'axe principal en utilisant justify-content</strong>.</li>
+<li>Nous pouvons <strong>aligner les éléments le long de l'axe transversal en utilisant align-items</strong>.</li>
+<li>Nous pouvons <strong>changer la direction du conteneur en utilisant flex-direction</strong>.</li>
+<li>La <strong>propriété flex fixée sur un enfant</strong> nous permet de <strong>définir l'espace que nous voulons allouer à un élément</strong></li>
+</ul>
+<a class="ressource" href="https://www.youtube.com/watch?v=K74l26pE4YA" target="_blank" rel="noopener noreferrer">
+  <div class="ressource__icone">↗</div>
+  <div class="ressource__texte">
+    <div class="ressource__titre">Une vidéo qui résume tout ce que nous avons vu en 1 min</div>
+    
+    <div class="ressource__hote">youtube.com</div>
+  </div>
+</a>
+<a class="ressource" href="https://flexboxfroggy.com/#fr" target="_blank" rel="noopener noreferrer">
+  <div class="ressource__icone">↗</div>
+  <div class="ressource__texte">
+    <div class="ressource__titre">Entraîne-toi</div>
+    <div class="ressource__desc"><p>Complète au moins 10 niveaux sur Flexbox Froggy - un jeu pour apprendre CSS Flexbox</p>
+</div>
+    <div class="ressource__hote">flexboxfroggy.com</div>
+  </div>
+</a>
+<div class="bloc-code"><div class="bloc-code__langue">quiz</div><pre><code class="hljs language-quiz">false|||false|||true
+# Quelle propriété aligne les éléments le long de l'axe principal ?
+[x] justify-content
+[] align-items
+# Quelle propriété aligne les éléments le long de l'axe transversal ?
+[] justify-content
+[x] align-items
+# Quelle propriété change la direction du conteneur flex ?
+[] flex-wrap
+[x] flex-direction
+</code></pre></div>
+<h2>Challenge</h2>
+<p>À partir du code HTML suivant :</p>
+<div class="bloc-code"><div class="bloc-code__langue">html</div><pre><code class="hljs language-html"><span class="hljs-meta">&lt;!DOCTYPE <span class="hljs-keyword">html</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">html</span> <span class="hljs-attr">lang</span>=<span class="hljs-string">&quot;en&quot;</span>&gt;</span>
+
+<span class="hljs-tag">&lt;<span class="hljs-name">head</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">meta</span> <span class="hljs-attr">charset</span>=<span class="hljs-string">&quot;UTF-8&quot;</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">meta</span> <span class="hljs-attr">name</span>=<span class="hljs-string">&quot;viewport&quot;</span> <span class="hljs-attr">content</span>=<span class="hljs-string">&quot;width=device-width, initial-scale=1.0&quot;</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">title</span>&gt;</span>Exercise | Flexbox<span class="hljs-tag">&lt;/<span class="hljs-name">title</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">link</span> <span class="hljs-attr">rel</span>=<span class="hljs-string">&quot;stylesheet&quot;</span> <span class="hljs-attr">href</span>=<span class="hljs-string">&quot;style.css&quot;</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">head</span>&gt;</span>
+
+<span class="hljs-tag">&lt;<span class="hljs-name">body</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">nav</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">div</span>&gt;</span>Logo<span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">ul</span>&gt;</span>
+            <span class="hljs-tag">&lt;<span class="hljs-name">li</span>&gt;</span><span class="hljs-tag">&lt;<span class="hljs-name">a</span> <span class="hljs-attr">href</span>=<span class="hljs-string">&quot;#&quot;</span>&gt;</span>Articles<span class="hljs-tag">&lt;/<span class="hljs-name">a</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">li</span>&gt;</span>
+            <span class="hljs-tag">&lt;<span class="hljs-name">li</span>&gt;</span><span class="hljs-tag">&lt;<span class="hljs-name">a</span> <span class="hljs-attr">href</span>=<span class="hljs-string">&quot;#&quot;</span>&gt;</span>About<span class="hljs-tag">&lt;/<span class="hljs-name">a</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">li</span>&gt;</span>
+            <span class="hljs-tag">&lt;<span class="hljs-name">li</span>&gt;</span><span class="hljs-tag">&lt;<span class="hljs-name">a</span> <span class="hljs-attr">href</span>=<span class="hljs-string">&quot;#&quot;</span>&gt;</span>Contact<span class="hljs-tag">&lt;/<span class="hljs-name">a</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">li</span>&gt;</span>
+        <span class="hljs-tag">&lt;/<span class="hljs-name">ul</span>&gt;</span>
+    <span class="hljs-tag">&lt;/<span class="hljs-name">nav</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">body</span>&gt;</span>
+
+<span class="hljs-tag">&lt;/<span class="hljs-name">html</span>&gt;</span>
+</code></pre></div>
+<p>Essaie de reproduire la mise en forme de cette barre de navigation en utilisant le <strong>display flex</strong> :</p>
+<p><img src="images/012-navbar-with-flexbox.png" alt="Navbar with flexbox" loading="lazy"></p>
+<h3>Précisions</h3>
+<ul>
+<li>Les éléments sont verticalement alignés au centre.</li>
+<li>Le code couleur pour le violet : #A306B6;</li>
+</ul>
+<details class="solution"><summary>Voir la solution</summary><div class="solution__corps"><p>Une solution possible.</p>
+<div class="bloc-code"><div class="bloc-code__langue">css</div><pre><code class="hljs language-css">* {
+    <span class="hljs-attribute">box-sizing</span>: border-box;
+}
+
+<span class="hljs-selector-tag">body</span> {
+    <span class="hljs-attribute">margin</span>: <span class="hljs-number">0</span>;
+    <span class="hljs-attribute">line-height</span>: <span class="hljs-number">1.5</span>;
+    <span class="hljs-attribute">background-color</span>: grey;
+    <span class="hljs-attribute">font-family</span>: Verdana, Geneva, Tahoma, sans-serif;
+}
+
+<span class="hljs-selector-tag">nav</span> {
+    <span class="hljs-attribute">display</span>: flex;
+    <span class="hljs-attribute">justify-content</span>: space-between;
+    <span class="hljs-attribute">align-items</span>: center;
+    <span class="hljs-attribute">padding</span>: <span class="hljs-number">1rem</span>;
+    <span class="hljs-attribute">background-color</span>: <span class="hljs-number">#A306B6</span>;
+    <span class="hljs-attribute">color</span>: <span class="hljs-number">#fff</span>;
+}
+
+<span class="hljs-selector-tag">nav</span>&gt;<span class="hljs-selector-tag">ul</span> {
+    <span class="hljs-attribute">display</span>: flex;
+    <span class="hljs-attribute">list-style</span>: none;
+}
+
+<span class="hljs-selector-tag">nav</span>&gt;<span class="hljs-selector-tag">ul</span>&gt;<span class="hljs-selector-tag">li</span>&gt;<span class="hljs-selector-tag">a</span> {
+    <span class="hljs-attribute">color</span>: inherit;
+    <span class="hljs-attribute">text-decoration</span>: none;
+    <span class="hljs-attribute">padding</span>: <span class="hljs-number">1rem</span>;
+}
+</code></pre></div>
+</div></details>
+
+  </div>
+  <section class="ressources-quete">
+  <h2>Ressources partagées sur cette quête</h2>
+  <ul class="ressources-liste">
+    <li><a href="https://flexbox.malven.co/" target="_blank" rel="noopener noreferrer">Un excellent cheatsheet visuel pour les properties flexbox</a><span class="ressources-liste__url">https://flexbox.malven.co/</span></li>
+    <li><a href="https://css-tricks.com/snippets/css/a-guide-to-flexbox/" target="_blank" rel="noopener noreferrer">Bonne présentation et synthétique</a><span class="ressources-liste__url">https://css-tricks.com/snippets/css/a-guide-to-flexbox/</span></li>
+    <li><a href="https://www.pierre-giraud.com/html-css-apprendre-coder-cours/flexbox-modele-boite-flexible/" target="_blank" rel="noopener noreferrer">J'ai appris le flexbox grâce à ce site.</a><span class="ressources-liste__url">https://www.pierre-giraud.com/html-css-apprendre-coder-cours/flexbox-modele-boite-flexible/</span></li>
+    <li><a href="https://flexboxfroggy.com/#fr" target="_blank" rel="noopener noreferrer">Jeu qui met en pratique le Flexbox</a><span class="ressources-liste__url">https://flexboxfroggy.com/#fr</span></li>
+    <li><a href="https://paletton.com/" target="_blank" rel="noopener noreferrer">Un excellent outil pour vous aider dans vos choix de couleurs CSS</a><span class="ressources-liste__url">https://paletton.com/</span></li>
+    <li><a href="https://mastery.games/flexboxzombies/" target="_blank" rel="noopener noreferrer">Flex-Box sous forme d'un jeu ! Un peu plus long que flexfroggy mais avec plus de propriétés !</a><span class="ressources-liste__url">https://mastery.games/flexboxzombies/</span></li>
+    <li><a href="https://flexbox.help/" target="_blank" rel="noopener noreferrer">Préparez vos flexbox directement avec ce site.</a><span class="ressources-liste__url">https://flexbox.help/</span></li>
+    <li><a href="https://www.youtube.com/kepowob" target="_blank" rel="noopener noreferrer">Le boss du css : Kevin Powell ! Excellente chaine youtube avec tout un tas de tips</a><span class="ressources-liste__url">https://www.youtube.com/kepowob</span></li>
+    <li><a href="https://yoksel.github.io/flex-cheatsheet/#section-order" target="_blank" rel="noopener noreferrer">Facile pour visualiser l'action de chaque flexbox instantanément.</a><span class="ressources-liste__url">https://yoksel.github.io/flex-cheatsheet/#section-order</span></li>
+    <li><a href="https://www.freecodecamp.org/news/css-flexbox-tutorial-with-cheatsheet/" target="_blank" rel="noopener noreferrer">Du CSS et des chats, pour celles et ceux qui ont un mode d'apprentissage plus visuel ;)</a><span class="ressources-liste__url">https://www.freecodecamp.org/news/css-flexbox-tutorial-with-cheatsheet/</span></li>
+    <li><a href="https://www.youtube.com/watch?v=LNqBKTeeiWo&amp;list=PLjwdMgw5TTLVjTZQocrMwKicV5wsZlRpj&amp;index=11" target="_blank" rel="noopener noreferrer">Tour d'horizon en vidéo complet sur tout ce qu'on peut faire en flexbox</a><span class="ressources-liste__url">https://www.youtube.com/watch?v=LNqBKTeeiWo&amp;list=PLjwdMgw5TTLVjTZQocrMwKicV5wsZlRpj&amp;index=11</span></li>
+    <li><a href="https://youtu.be/DPHgIIdrmFk?si=WEoJcYYVHwbS9SDV" target="_blank" rel="noopener noreferrer">une vidéo explicative courte et concise et compréhensible </a><span class="ressources-liste__url">https://youtu.be/DPHgIIdrmFk?si=WEoJcYYVHwbS9SDV</span></li>
+  </ul>
+</section>
+</article>
+
+<nav class="nav-quete">
+  <a class="nav-quete__lien nav-quete__lien--prec" href="../../css/003-css-3-box-model/index.html">
+           <span class="nav-quete__sens">← Précédent</span>
+           <span class="nav-quete__titre">👩‍🏫 CSS 3 : Box model</span>
+         </a>
+  <a class="nav-quete__lien nav-quete__lien--suiv" href="../../css/005-css-5-grid/index.html">
+           <span class="nav-quete__sens">Suivant →</span>
+           <span class="nav-quete__titre">👩‍🏫 CSS 5 : Grid</span>
+         </a>
+</nav>
+</main>
+<footer class="pied">
+  <p>Archive personnelle des cours suivis à la Wild Code School. Copie hors ligne à usage strictement privé.</p>
+</footer>
+
+<script src="../../assets/copie-code.js"></script>
+<script src="../../assets/progression.js"></script>
+</body>
+</html>

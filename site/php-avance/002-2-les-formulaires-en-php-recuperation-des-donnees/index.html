@@ -1,0 +1,298 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>2 - Les formulaires en PHP : récupération des données — Archives WCS</title>
+<link rel="stylesheet" href="../../assets/style.css">
+</head>
+<body style="--teinte:#745089">
+<header class="entete">
+  <a class="entete__marque" href="../../index.html">Archives Wild Code School</a>
+</header>
+<main class="contenu">
+<nav class="ariane"><a href="../../index.html">Accueil</a><span class="ariane__sep">›</span><a href="../../php-avance/index.html">PHP Avancé</a><span class="ariane__sep">›</span><span aria-current="page">2 - Les formulaires en PHP : récupération des données</span></nav>
+
+<article class="quete">
+  <header class="quete__entete">
+    <a class="pastille pastille--teintee" href="../../php-avance/index.html">PHP Avancé</a>
+    <h1>2 - Les formulaires en PHP : récupération des données</h1>
+    <p class="quete__meta">Quête 2 sur 11 · 2 images archivées</p>
+  </header>
+  <div class="cours">
+<div class="bloc-code"><div class="bloc-code__langue">title-book</div><pre><code class="hljs language-title-book"> Introduction
+</code></pre></div>
+<p>Dans cette quête, nous allons aborder la manière de récupérer et d'afficher les données issues d'un formulaire.
+Cela va se passer côté serveur avec PHP.</p>
+<h1>🤓 À la fin de cette quête, tu seras en mesure de :</h1>
+<ul>
+<li>✅ Connaitre les différentes méthodes de récupération de données suite à la soumission d'un formulaire</li>
+<li>✅ Récupérer ces données et les utiliser dans le contexte voulu</li>
+<li>✅ Afficher les données et mettre en place une protection contre les injections XSS (Cross-site scripting)</li>
+</ul>
+<h2>Sommaire</h2>
+<h2>Mise en place</h2>
+<p>Reprenons l'exemple donné à la fin de la quête traitant de la structure HTML d'un formulaire.</p>
+<div class="renvois"><div class="renvois__titre">Quêtes liées</div><ul><li><a href="../../php-avance/001-1-les-formulaires-en-php-structure-html/index.html">Quête 2943</a></li></ul></div>
+<p>À peu de choses près, voici ce que nous avions :</p>
+<div class="bloc-code"><div class="bloc-code__langue">html</div><pre><code class="hljs language-html"><span class="hljs-tag">&lt;<span class="hljs-name">form</span> <span class="hljs-attr">action</span>=<span class="hljs-string">&quot;treatment.php&quot;</span> <span class="hljs-attr">method</span>=<span class="hljs-string">&quot;post&quot;</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">label</span> <span class="hljs-attr">for</span>=<span class="hljs-string">&quot;firstname&quot;</span>&gt;</span>Nom<span class="hljs-tag">&lt;/<span class="hljs-name">label</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">input</span> <span class="hljs-attr">type</span>=<span class="hljs-string">&quot;text&quot;</span> <span class="hljs-attr">id</span>=<span class="hljs-string">&quot;firstname&quot;</span> <span class="hljs-attr">name</span>=<span class="hljs-string">&quot;firstname&quot;</span>&gt;</span>
+
+    <span class="hljs-tag">&lt;<span class="hljs-name">label</span> <span class="hljs-attr">for</span>=<span class="hljs-string">&quot;email&quot;</span>&gt;</span>Email<span class="hljs-tag">&lt;/<span class="hljs-name">label</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">input</span> <span class="hljs-attr">type</span>=<span class="hljs-string">&quot;email&quot;</span> <span class="hljs-attr">id</span>=<span class="hljs-string">&quot;email&quot;</span> <span class="hljs-attr">name</span>=<span class="hljs-string">&quot;email&quot;</span>&gt;</span>
+
+    <span class="hljs-tag">&lt;<span class="hljs-name">input</span> <span class="hljs-attr">type</span>=<span class="hljs-string">&quot;submit&quot;</span> <span class="hljs-attr">value</span>=<span class="hljs-string">&quot;Valider&quot;</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">form</span>&gt;</span>
+</code></pre></div>
+<p>Parlons plus en détail des attributs <code>action</code>, <code>method</code> et de ce fameux <code>name</code> placé sur les champs du formulaire.</p>
+<h2>Envoi des données : l'attribut <em>action</em></h2>
+<p>Lorsque l'utilisateur soumet le formulaire, une <strong>requête HTTP</strong> est créée.</p>
+<p>Elle a pour destination le fichier défini dans l'attribut <code>action</code> de ta balise <code>&lt;form&gt;</code> et elle contient toutes les données saisies par l'utilisateur.</p>
+<p>Dans notre exemple, la redirection se fera donc vers le fichier se trouvant à l'adresse <strong>treatment.php</strong></p>
+<div class="encadre encadre--info"><div class="encadre__titre">Info</div><div class="encadre__corps"><p>Si jamais l'attribut <code>action</code> est vide ou non présent, alors la redirection se fera vers l'adresse courante, c'est-à-dire sur la même page que celle affichée dans le navigateur au moment de la soumission.</p>
+</div></div>
+<h2>Verbe HTTP : l'attribut <em>method</em></h2>
+<p>Pour un formulaire HTML, il existe deux méthodes de transmission de données : <strong>GET</strong> et <strong>POST</strong>. Nous l'avons évoqué dans une précédente quête, pour choisir l'une ou ou l'autre de ces deux méthodes, il faut utiliser l'attribut <code>method</code> de ta balise <code>form</code>.</p>
+<div class="bloc-code"><div class="bloc-code__langue">html</div><pre><code class="hljs language-html">  <span class="hljs-tag">&lt;<span class="hljs-name">form</span> <span class="hljs-attr">method</span>=<span class="hljs-string">&quot;post&quot;</span> <span class="hljs-attr">action</span>=<span class="hljs-string">&quot;treatment.php&quot;</span>&gt;</span>
+</code></pre></div>
+<p>ou</p>
+<div class="bloc-code"><div class="bloc-code__langue">html</div><pre><code class="hljs language-html">  <span class="hljs-tag">&lt;<span class="hljs-name">form</span> <span class="hljs-attr">method</span>=<span class="hljs-string">&quot;get&quot;</span> <span class="hljs-attr">action</span>=<span class="hljs-string">&quot;treatment.php&quot;</span>&gt;</span>
+</code></pre></div>
+<p>Quelle différence y a-t-il entre ces deux méthodes ?</p>
+<h3>La méthode GET</h3>
+<ul>
+<li>Utilisée pour envoyer les données via l'URL.</li>
+<li>Les données sont visibles dans la barre d'adresse du navigateur.</li>
+<li>Principalement utilisée pour des actions non sensibles et persister des données de page en page ou pouvoir communiquer ou conserver l'état d'un formulaire (partage ou sauvegarde en favoris d'une recherche par exemple).</li>
+<li>Limite de taille pour les données transmises (2048 caractères maximum autorisés dans une URL).</li>
+<li><em><strong>get</strong></em> sera la <strong>valeur par défaut</strong> si l'attribut <code>method</code> est <strong>absent ou vide</strong>.</li>
+</ul>
+<p>Lorsque tu soumets ton formulaire, qu'observes-tu ? Rien ? Regarde bien la barre d'adresse de ton navigateur.</p>
+<div class="bloc-code"><pre><code class="hljs language-plaintext">http://localhost:8000/treatment.php?firstname=John&amp;email=johndoe%40gmail.com
+</code></pre></div>
+<p>Que s'est-il passé ?</p>
+<p>En précisant que la méthode d'envoi des données du formulaire est en <strong>GET</strong>, toutes les données vont transiter par l’URL.</p>
+<p>En effet, tu peux constater qu'à la suite de l'URL de notre page <code>http://localhost:8000/treatment.php</code>, on retrouve un ensemble de <code>clé=valeur</code>. Avec, devant, un <code>?</code> pour indiquer le début de la liste des paramètres. Chaque paire de clé/valeur est ensuite séparée par des <code>&amp;</code> (appelé couramment <em>&quot;ET commercial&quot;</em> mais le vrai nom typographique est <em>&quot;esperluette&quot;</em>).</p>
+<p>Tu auras remarqué que chaque clé correspond à l'attribut <code>name=&quot;...&quot;</code> de chaque champ de ton formulaire et que chaque valeur associée correspond aux données saisies dans les champs correspondants.</p>
+<div class="encadre encadre--info"><div class="encadre__titre">Info</div><div class="encadre__corps"><p>Dernier point de détail, où est passé le <code>@</code> de l'adresse mail ?!?
+Il a été remplacé par <code>%40</code>. À l'origine, il n'est pas prévu qu'une URL comporte des caractères spéciaux. Certains caractères sont donc substitués par leur version encodée. C'est ainsi que les espaces, eux, sont remplacés par <code>%20</code> par la plupart des navigateurs. Ou par le signe &quot;+&quot; dans le cas de firefox. (Le signe &quot;plus&quot;, étant lui même remplacé par <code>%2</code> )</p>
+</div></div>
+<h3>La méthode POST</h3>
+<ul>
+<li>Les données sont envoyées de manière invisible (dans le corps de la requête HTTP) et ne sont pas affichées dans l'URL.</li>
+<li>Adaptée pour des actions plus sensibles (formulaire d'inscription ou de connexion par exemple).
+⚠️ <strong>Attention</strong>, cela ne veut pas dire que la soumission des données est plus sécurisée qu'avec la méthode <strong>GET</strong>.</li>
+<li>Pas de limite de taille prédéfinie pour les données.</li>
+</ul>
+<p>Les données ne sont plus présentes dans l'URL, mais elles sont bien &quot;cachées&quot; quelque part.</p>
+<div class="bloc-code"><pre><code class="hljs language-plaintext">http://localhost:8000/treatment.php
+</code></pre></div>
+<div class="encadre encadre--warning"><div class="encadre__titre">Attention</div><div class="encadre__corps"><p>Avant de soumettre ton formulaire, ouvre ta console et rends-toi sur l'onglet Réseaux (ou Network en anglais).</p>
+</div></div>
+<p>Grâce à ta console ouverte, tu peux  suivre l'état de toutes tes requêtes HTTP vers le serveur.
+Si tu cliques sur la ligne <em>treatment.php</em> après avoir soumis le formulaire, tu peux accéder à ces données dans le nouvel onglet <em><strong>Payload</strong></em> qui est apparu. Tu peux y retrouver toutes les informations envoyées par le formulaire.</p>
+<p><img src="images/001-onglet-payload-de-l-inspecteur-avec-une-requete.png" alt="Onglet Payload de l'inspecteur avec une requête POST" loading="lazy"></p>
+<p>Bon, très bien, tu sais par où ça passe à présent et tu perçois un peu mieux la différence entre ces deux méthodes..</p>
+<p>Regardons à présent comment récupérer les données côté serveur.</p>
+<h2>Récupération des données</h2>
+<p>À la réception de la <strong>requête HTTP</strong>, PHP va prendre ces données et les mettre dans des &quot;boîtes&quot; que tu vas pouvoir utiliser.
+En voici quelques-unes :</p>
+<ul>
+<li><code>$_GET</code></li>
+<li><code>$_POST</code></li>
+<li><code>$_REQUEST</code></li>
+<li><code>$_FILES</code></li>
+</ul>
+<p>Ces boîtes sont de la famille des <strong>superglobales</strong> et tu vas pouvoir y accéder dans ton fichier de traitement de données.
+Les <strong>superglobales</strong> sont des <strong>variables prédéfinies</strong> toujours accessibles indépendamment de leur portée. Elles contiennent des informations importantes sur le script en cours d'exécution et sont automatiquement créées par PHP.</p>
+<a class="ressource" href="https://www.php.net/manual/en/language.variables.superglobals.php" target="_blank" rel="noopener noreferrer">
+  <div class="ressource__icone">↗</div>
+  <div class="ressource__texte">
+    <div class="ressource__titre">Les superglobales PHP</div>
+    <div class="ressource__desc"><p>Les variables internes qui sont toujours disponibles, quel que soit le contexte</p>
+</div>
+    <div class="ressource__hote">php.net</div>
+  </div>
+</a>
+<p>Le point commun à toutes ces <strong>superglobale</strong> est leur type. Elles sont en effet toutes de type <em><strong>array</strong></em>, ce sont des tableaux.</p>
+<h3>GET</h3>
+<p>Pour récupérer les valeurs d'une requête HTTP envoyées avec une méthode <strong>GET</strong>, tu pourras par exemple utiliser la <strong>superglobale</strong> <code>$_GET</code> et parcourir ses index qui correspondent aux valeurs des attributs <code>name</code> des champs du formulaire.</p>
+<div class="bloc-code"><div class="bloc-code__langue">html</div><pre><code class="hljs language-html"><span class="hljs-comment">&lt;!-- index.html --&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">input</span> <span class="hljs-attr">...</span> <span class="hljs-attr">name</span>=<span class="hljs-string">&quot;firstname&quot;</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">input</span> <span class="hljs-attr">...</span> <span class="hljs-attr">name</span>=<span class="hljs-string">&quot;email&quot;</span>&gt;</span>
+</code></pre></div>
+<p>⬇️</p>
+<div class="bloc-code"><div class="bloc-code__langue">php</div><pre><code class="hljs language-php"><span class="hljs-comment">//treatment.php</span>
+<span class="hljs-variable">$firstname</span> = <span class="hljs-variable">$_GET</span>[<span class="hljs-string">&quot;firstname&quot;</span>];
+<span class="hljs-variable">$email</span> = <span class="hljs-variable">$_GET</span>[<span class="hljs-string">&quot;email&quot;</span>];
+</code></pre></div>
+<div class="encadre encadre--note encadre--arrow"><div class="encadre__corps"><p>Dans notre exemple, on récupère le prénom et l'email de notre utilisateur aux index <em><strong>firstname</strong></em> et <em><strong>email</strong></em> du tableau <code>$_GET</code> que l'on stocke ici dans des variables du même nom.</p>
+</div></div>
+<p>Tu peux vérifier le contenu de l'ensemble de cette variable <code>$_GET</code> en faisant un  <em><strong>var_dump()</strong></em> :</p>
+<div class="bloc-code"><div class="bloc-code__langue">php</div><pre><code class="hljs language-php"><span class="hljs-title function_ invoke__">var_dump</span>(<span class="hljs-variable">$_GET</span>);
+</code></pre></div>
+<div class="encadre encadre--info"><div class="encadre__titre">Info</div><div class="encadre__corps"><h1>Astuce</h1>
+<p>Tu peux transmettre des données en GET vers une autre page simplement en créant un lien et sans utiliser de formulaire :</p>
+<div class="bloc-code"><div class="bloc-code__langue">html</div><pre><code class="hljs language-html"><span class="hljs-tag">&lt;<span class="hljs-name">a</span> <span class="hljs-attr">href</span>=<span class="hljs-string">&quot;page.php?nom=John&amp;age=25&quot;</span>&gt;</span>Cliquez ici<span class="hljs-tag">&lt;/<span class="hljs-name">a</span>&gt;</span>
+</code></pre></div>
+</div></div>
+<h3>POST</h3>
+<p>Le formulaire a été soumis avec la méthode <strong>POST</strong> ?
+Aucun problème, cela fonctionne exactement pareil.
+Tu vas pouvoir récupérer les données grâce a la <strong>superglobale</strong> <code>$_POST</code> qui est donc aussi un tableau.</p>
+<div class="bloc-code"><div class="bloc-code__langue">html</div><pre><code class="hljs language-html"><span class="hljs-comment">&lt;!-- index.html --&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">form</span> <span class="hljs-attr">method</span>=<span class="hljs-string">&quot;post&quot;</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">input</span> <span class="hljs-attr">...</span> <span class="hljs-attr">name</span>=<span class="hljs-string">&quot;firstname&quot;</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">input</span> <span class="hljs-attr">...</span> <span class="hljs-attr">name</span>=<span class="hljs-string">&quot;email&quot;</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">form</span>&gt;</span>
+</code></pre></div>
+<p>⬇️</p>
+<div class="bloc-code"><div class="bloc-code__langue">php</div><pre><code class="hljs language-php"><span class="hljs-comment">//treatment.php</span>
+<span class="hljs-variable">$firstname</span> = <span class="hljs-variable">$_POST</span>[<span class="hljs-string">&#x27;firstname&#x27;</span>];
+<span class="hljs-variable">$email</span> = <span class="hljs-variable">$_POST</span>[<span class="hljs-string">&#x27;email&#x27;</span>];
+</code></pre></div>
+<p>Tu peux vérifier le contenu de l'ensemble de cette variable en faisant un <em><strong>var_dump()</strong></em> :</p>
+<div class="bloc-code"><div class="bloc-code__langue">php</div><pre><code class="hljs language-php"><span class="hljs-title function_ invoke__">var_dump</span>(<span class="hljs-variable">$_POST</span>);
+</code></pre></div>
+<div class="encadre encadre--info"><div class="encadre__titre">Info</div><div class="encadre__corps"><h1>En résumé</h1>
+<ul>
+<li>Utilise POST pour des informations sensibles qu'on ne souhaite pas afficher dans la barre d'adresse ou de la donnée volumineuse (c'est-à-dire pour la plupart des formulaires).</li>
+<li>Utilise GET dans les autres cas, tels que les formulaires de recherche principalement.</li>
+</ul>
+</div></div>
+<h3>Aller plus loin</h3>
+<p>La requête HTTP est au cœur des préoccupations quotidiennes du développeur web.
+Découvre plus en détail les règles et les contraintes de ce protocole applicatif en consultant la ressource ci-dessous.</p>
+<div class="renvois"><div class="renvois__titre">Quêtes liées</div><ul><li>Quête 102 <span class="muet">(hors archive)</span></li></ul></div>
+<p>Consulte la ressource ci-dessous pour en apprendre plus sur les caractères spéciaux encodés dans une URL.</p>
+<a class="ressource" href="https://www.w3schools.com/tags/ref_urlencode.asp" target="_blank" rel="noopener noreferrer">
+  <div class="ressource__icone">↗</div>
+  <div class="ressource__texte">
+    <div class="ressource__titre">Caractères spéciaux dans l'URL</div>
+    
+    <div class="ressource__hote">w3schools.com</div>
+  </div>
+</a>
+<h2>Traitement des données</h2>
+<p>Maintenant que nous avons récupéré nos données à l'endroit qui nous intéresse, qu'allons-nous en faire ?
+Cela va dépendre de ta logique métier et de l'utilisation de ton application web.
+Tu vas pouvoir les afficher, les manipuler, les stocker en BDD, les transférer par mail, etc.</p>
+<p>Si tu soumets ton formulaire en POST et que tu souhaites afficher le champ <strong>Nom</strong>, voici ce que tu pourrais faire :</p>
+<div class="bloc-code"><div class="bloc-code__langue">php</div><pre><code class="hljs language-php">&lt;p&gt;Bonjour <span class="hljs-meta">&lt;?php</span> <span class="hljs-keyword">echo</span> <span class="hljs-variable">$_POST</span>[<span class="hljs-string">&#x27;firstname&#x27;</span>] <span class="hljs-meta">?&gt;</span> !&lt;/p&gt;
+&lt;!-- ou avec la syntaxe courte de la fonction <span class="hljs-keyword">echo</span>() --&gt;
+&lt;p&gt;Bonjour <span class="hljs-meta">&lt;?=</span><span class="hljs-variable">$_POST</span>[<span class="hljs-string">&#x27;firstname&#x27;</span>]<span class="hljs-meta">?&gt;</span> !&lt;/p&gt;
+</code></pre></div>
+<p>C'est aussi simple que ça ?
+Oui.
+Enfin presque.
+Nous verrons plus détail la manipulation, la sécurisation et la persistance des données dans une autre quête. Mais pour le moment, attardons-nous un instant sur une première faille de sécurité : les injections de scripts (XSS).</p>
+<h2>Failles XSS : Cross-site scripting</h2>
+<p>Les attaques XSS (Cross-Site Scripting) sont l'une des vulnérabilités les plus courantes sur le web. Elles surviennent lorsque des données non fiables sont insérées dans une page web sans être correctement échappées ou filtrées, permettant ainsi à un attaquant d'injecter et d'exécuter du code JavaScript malveillant côté client.
+Cela peut entraîner le vol de sessions utilisateur, la redirection vers des sites frauduleux, même la compromission du compte utilisateur ou toute autre modification de l'interface et de l'expérience utilisateur.</p>
+<h3>🔬 Expérience</h3>
+<p>Avec ton navigateur, accède à la page contenant ton formulaire et insère ce code dans le champ <strong>Prénom</strong> :</p>
+<div class="bloc-code"><div class="bloc-code__langue">js</div><pre><code class="hljs language-js">&lt;script&gt;<span class="hljs-title function_">alert</span>(<span class="hljs-string">&#x27;Coucou, vous avez été piraté !&#x27;</span>)&lt;/script&gt;
+</code></pre></div>
+<p>Que se passe-t-il lorsque tu soumets le formulaire et que la page <em><strong>treatment.php</strong></em> cherche à afficher le prénom ?
+😱
+<img src="images/002-xss.png" alt="XSS" loading="lazy">
+Eh oui, le script est exécuté.
+Imagine les conséquences s'il s'agit d'un message enregistré en BDD (comme un commentaire de forum par exemple) puis affiché à tous les utilisateurs. L'utilisateur malveillant pourrait laisser libre court à toute sa créativité pour prendre le contrôle de l'interface grâce à cette formidable porte d'entrée.</p>
+<h3>Protection en PHP : htmlentities()</h3>
+<p>Un bon moyen de se protéger est traduire tous les caractères utilisés pour générer du code HTML comme les chevrons <code>&lt;</code> et <code>&gt;</code>. Il existe une fonction PHP pour ça : <a href="https://www.php.net/manual/fr/function.htmlentities.php" target="_blank" rel="noopener noreferrer">htmlentities()</a>.</p>
+<p>En utilisant cette fonction partout où tu affiches des données provenant d'un utilisateur, tu protèges ton application, et donc tes utilisateurs, des injections XSS.
+Voici ce que cela donne :</p>
+<div class="bloc-code"><div class="bloc-code__langue">php</div><pre><code class="hljs language-php">&lt;p&gt;Bonjour <span class="hljs-meta">&lt;?php</span> <span class="hljs-keyword">echo</span> <span class="hljs-title function_ invoke__">htmlentities</span>(<span class="hljs-variable">$_POST</span>[<span class="hljs-string">&#x27;firstname&#x27;</span>]) <span class="hljs-meta">?&gt;</span> !&lt;/p&gt;
+&lt;!-- ou avec la syntaxe courte de la fonction <span class="hljs-keyword">echo</span>() --&gt;
+&lt;p&gt;Bonjour <span class="hljs-meta">&lt;?=</span><span class="hljs-title function_ invoke__">htmlentities</span>(<span class="hljs-variable">$_POST</span>[<span class="hljs-string">&#x27;firstname&#x27;</span>])<span class="hljs-meta">?&gt;</span> !&lt;/p&gt;
+</code></pre></div>
+<h2>🎯 Exercice</h2>
+<p>Reprenons notre exemple précédent et affichons un message à l'utilisateur suite à la soumission du formulaire.</p>
+<ul>
+<li>Crée un fichier <code>index.html</code> qui contient un formulaire permettant à l'utilisateur de saisir les données suivantes :
+<ul>
+<li>l'objet de son message (par exemple : Prendre rendez-vous, Demander un devis, M'inscrire à la newsletter, …)</li>
+<li>son nom</li>
+<li>son email</li>
+</ul>
+</li>
+<li>Crée un fichier <code>treatment.php</code> dans le même dossier que le fichier <code>index.html</code> et affiche le message ci-dessous où <strong>les mots en gras</strong> sont remplacés par les données saisies de l'utilisateur.</li>
+<li>Le formulaire enverra les données en <strong>POST</strong> vers ce fichier.</li>
+<li>Attention aux failles XSS 🤓</li>
+</ul>
+<div class="encadre encadre--note encadre--story"><div class="encadre__corps"><p>Bonjour <em><strong>NOM</strong></em>,
+Merci pour votre message.
+Vous nous avez indiqué vouloir <em><strong>SUBJECT</strong></em>.
+Nous vous contacterons à l'adresse <em><strong>EMAIL</strong></em> très rapidement.
+À bientôt,</p>
+</div></div>
+<blockquote>
+<p>💡 Tips
+Pour gérer l'<strong>objet du message</strong>, tu peux utiliser des champs <code>&lt;input&gt;</code> de type <em>radio</em>  ou une liste déroulante avec un champ <code>&lt;select&gt;</code>. Regarde la quête qui t'est donnée en ressource complémentaire.</p>
+</blockquote>
+<details class="solution"><summary>Voir la solution</summary><div class="solution__corps"><h1>Fichier index.html : le formulaire avec <em>input radio</em></h1>
+<div class="bloc-code"><div class="bloc-code__langue">html</div><pre><code class="hljs language-html"><span class="hljs-tag">&lt;<span class="hljs-name">form</span> <span class="hljs-attr">action</span>=<span class="hljs-string">&quot;treatment.php&quot;</span> <span class="hljs-attr">method</span>=<span class="hljs-string">&quot;post&quot;</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">fieldset</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">legend</span>&gt;</span>Je souhaite<span class="hljs-tag">&lt;/<span class="hljs-name">legend</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">label</span>&gt;</span>
+            <span class="hljs-tag">&lt;<span class="hljs-name">input</span> <span class="hljs-attr">type</span>=<span class="hljs-string">&quot;radio&quot;</span> <span class="hljs-attr">name</span>=<span class="hljs-string">&quot;subject&quot;</span> <span class="hljs-attr">value</span>=<span class="hljs-string">&quot;prendre rendez-vous&quot;</span>&gt;</span>
+            Prendre rendez-vous
+        <span class="hljs-tag">&lt;/<span class="hljs-name">label</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">label</span>&gt;</span>
+            <span class="hljs-tag">&lt;<span class="hljs-name">input</span> <span class="hljs-attr">type</span>=<span class="hljs-string">&quot;radio&quot;</span> <span class="hljs-attr">name</span>=<span class="hljs-string">&quot;subject&quot;</span> <span class="hljs-attr">value</span>=<span class="hljs-string">&quot;demander un devis&quot;</span>&gt;</span>
+            Demander un devis
+        <span class="hljs-tag">&lt;/<span class="hljs-name">label</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">label</span>&gt;</span>
+            <span class="hljs-tag">&lt;<span class="hljs-name">input</span> <span class="hljs-attr">type</span>=<span class="hljs-string">&quot;radio&quot;</span> <span class="hljs-attr">name</span>=<span class="hljs-string">&quot;subject&quot;</span> <span class="hljs-attr">value</span>=<span class="hljs-string">&quot;être inscrite<span class="hljs-symbol">&amp;#183;</span>e à la newsletter&quot;</span>&gt;</span>
+            M&#x27;inscrire à la newsletter
+        <span class="hljs-tag">&lt;/<span class="hljs-name">label</span>&gt;</span>
+    <span class="hljs-tag">&lt;/<span class="hljs-name">fieldset</span>&gt;</span>
+
+    <span class="hljs-tag">&lt;<span class="hljs-name">label</span> <span class="hljs-attr">for</span>=<span class="hljs-string">&quot;name&quot;</span>&gt;</span>Nom<span class="hljs-tag">&lt;/<span class="hljs-name">label</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">input</span> <span class="hljs-attr">type</span>=<span class="hljs-string">&quot;text&quot;</span> <span class="hljs-attr">id</span>=<span class="hljs-string">&quot;name&quot;</span> <span class="hljs-attr">name</span>=<span class="hljs-string">&quot;name&quot;</span>&gt;</span>
+
+    <span class="hljs-tag">&lt;<span class="hljs-name">label</span> <span class="hljs-attr">for</span>=<span class="hljs-string">&quot;email&quot;</span>&gt;</span>Email<span class="hljs-tag">&lt;/<span class="hljs-name">label</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">input</span> <span class="hljs-attr">type</span>=<span class="hljs-string">&quot;email&quot;</span> <span class="hljs-attr">id</span>=<span class="hljs-string">&quot;email&quot;</span> <span class="hljs-attr">name</span>=<span class="hljs-string">&quot;email&quot;</span>&gt;</span>
+
+    <span class="hljs-tag">&lt;<span class="hljs-name">input</span> <span class="hljs-attr">type</span>=<span class="hljs-string">&quot;submit&quot;</span> <span class="hljs-attr">value</span>=<span class="hljs-string">&quot;Valider&quot;</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">form</span>&gt;</span>
+</code></pre></div>
+<h1>Fichier treatment.php : l'affichage</h1>
+<div class="bloc-code"><div class="bloc-code__langue">php</div><pre><code class="hljs language-php">&lt;p&gt;
+    Bonjour <span class="hljs-meta">&lt;?=</span><span class="hljs-title function_ invoke__">htmlentities</span>(<span class="hljs-variable">$_POST</span>[<span class="hljs-string">&#x27;name&#x27;</span>])<span class="hljs-meta">?&gt;</span>,
+    &lt;br&gt;
+    Merci pour votre message.
+    &lt;br&gt;
+    Vous nous avez indiqué vouloir &lt;strong&gt;<span class="hljs-meta">&lt;?=</span><span class="hljs-title function_ invoke__">htmlentities</span>(<span class="hljs-variable">$_POST</span>[<span class="hljs-string">&#x27;subject&#x27;</span>])<span class="hljs-meta">?&gt;</span>&lt;/strong&gt;.
+    &lt;br&gt;
+    Nous vous contacterons à l<span class="hljs-string">&#x27;adresse &lt;?=htmlentities($_POST[&#x27;</span>email<span class="hljs-string">&#x27;])?&gt; très rapidement.
+    &lt;br&gt;
+    À bientôt,
+&lt;/p&gt;
+</span></code></pre></div>
+</div></details>
+
+  </div>
+  
+</article>
+
+<nav class="nav-quete">
+  <a class="nav-quete__lien nav-quete__lien--prec" href="../../php-avance/001-1-les-formulaires-en-php-structure-html/index.html">
+           <span class="nav-quete__sens">← Précédent</span>
+           <span class="nav-quete__titre">1 - Les formulaires en PHP : structure HTML</span>
+         </a>
+  <a class="nav-quete__lien nav-quete__lien--suiv" href="../../php-avance/003-3-les-formulaires-en-php-verification-et-securisation-des/index.html">
+           <span class="nav-quete__sens">Suivant →</span>
+           <span class="nav-quete__titre">3 - Les formulaires en PHP : Vérification et sécurisation des données</span>
+         </a>
+</nav>
+</main>
+<footer class="pied">
+  <p>Archive personnelle des cours suivis à la Wild Code School. Copie hors ligne à usage strictement privé.</p>
+</footer>
+
+<script src="../../assets/copie-code.js"></script>
+<script src="../../assets/progression.js"></script>
+</body>
+</html>

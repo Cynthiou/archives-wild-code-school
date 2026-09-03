@@ -1,0 +1,28 @@
+{
+  "id": 2124,
+  "titre": "👩‍🏫 HTML - Chapitre 6 |  Multimédias",
+  "titres": {
+    "fr": "👩‍🏫 HTML - Chapitre 6 |  Multimédias"
+  },
+  "theme": {
+    "id": 104,
+    "slug": "html5",
+    "nom": "HTML"
+  },
+  "creeLe": "2022-06-23T18:13:13.927+02:00",
+  "difficulte": "1",
+  "dureeEstimee": null,
+  "modeValidation": "self",
+  "chapitres": [
+    {
+      "id": 11742,
+      "type": "content",
+      "langue": "fr",
+      "majLe": "2024-07-02T09:46:08.481+02:00",
+      "caracteres": 18228
+    }
+  ],
+  "ressources": [],
+  "urlOrigine": "https://odyssey.wildcodeschool.com/quests/2124",
+  "archiveLe": "2026-09-02T23:22:10.105Z"
+}

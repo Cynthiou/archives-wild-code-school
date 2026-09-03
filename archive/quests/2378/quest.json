@@ -1,0 +1,35 @@
+{
+  "id": 2378,
+  "titre": "👩‍🏫 React Basics 07 - Pokédex - Répéter un bloc d'affichage avec map",
+  "titres": {
+    "fr": "👩‍🏫 React Basics 07 - Pokédex - Répéter un bloc d'affichage avec map"
+  },
+  "theme": {
+    "id": 23,
+    "slug": "react",
+    "nom": "React - Bases"
+  },
+  "creeLe": "2023-01-03T14:19:20.642+01:00",
+  "difficulte": "",
+  "dureeEstimee": null,
+  "modeValidation": "student",
+  "chapitres": [
+    {
+      "id": 17712,
+      "type": "content",
+      "langue": "fr",
+      "majLe": "2025-04-03T08:20:38.749+02:00",
+      "caracteres": 12037
+    },
+    {
+      "id": 17105,
+      "type": "solution",
+      "langue": "fr",
+      "majLe": "2025-03-12T11:40:19.831+01:00",
+      "caracteres": 1514
+    }
+  ],
+  "ressources": [],
+  "urlOrigine": "https://odyssey.wildcodeschool.com/quests/2378",
+  "archiveLe": "2026-09-02T20:55:07.434Z"
+}

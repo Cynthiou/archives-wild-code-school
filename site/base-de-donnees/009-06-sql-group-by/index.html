@@ -1,0 +1,435 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>06 - SQL Group By — Archives WCS</title>
+<link rel="stylesheet" href="../../assets/style.css">
+</head>
+<body style="--teinte:#F7A356">
+<header class="entete">
+  <a class="entete__marque" href="../../index.html">Archives Wild Code School</a>
+</header>
+<main class="contenu">
+<nav class="ariane"><a href="../../index.html">Accueil</a><span class="ariane__sep">›</span><a href="../../base-de-donnees/index.html">Base de données</a><span class="ariane__sep">›</span><span aria-current="page">06 - SQL Group By</span></nav>
+
+<article class="quete">
+  <header class="quete__entete">
+    <a class="pastille pastille--teintee" href="../../base-de-donnees/index.html">Base de données</a>
+    <h1>06 - SQL Group By</h1>
+    <p class="quete__meta">Quête 9 sur 9 · 1 image archivée</p>
+  </header>
+  <div class="cours">
+<h2>Objectifs</h2>
+<ul>
+<li>Reconnaître les principales fonctions SQL</li>
+<li>Comprendre comment grouper des données</li>
+</ul>
+<h2>Introduction</h2>
+<p>Dans cette nouvelle quête, tu vas voir les fonctions SQL et apprendre comment grouper des données entre elles. Expecto Datatum !</p>
+<div class="encadre encadre--warning"><div class="encadre__titre">Attention</div><div class="encadre__corps"><p>Commence par exécuter ces requêtes pour (re)créer une nouvelle base de données &quot;bac à sable&quot; :</p>
+<div class="bloc-code"><div class="bloc-code__langue">sql</div><pre><code class="hljs language-sql"><span class="hljs-keyword">DROP</span> DATABASE IF <span class="hljs-keyword">EXISTS</span> wild_db_quests_advanced;
+<span class="hljs-keyword">CREATE</span> DATABASE wild_db_quests_advanced;
+
+USE wild_db_quests_advanced;
+
+<span class="hljs-keyword">CREATE TABLE</span> school(
+  id <span class="hljs-type">INT</span> <span class="hljs-keyword">NOT NULL</span> AUTO_INCREMENT,
+  name <span class="hljs-type">VARCHAR</span>(<span class="hljs-number">100</span>) <span class="hljs-keyword">NOT NULL</span>,
+  capacity <span class="hljs-type">INT</span>,
+  <span class="hljs-keyword">PRIMARY KEY</span> (id)
+);
+
+<span class="hljs-keyword">CREATE TABLE</span> wizard(
+  id <span class="hljs-type">INT</span> <span class="hljs-keyword">NOT NULL</span> AUTO_INCREMENT,
+  firstname <span class="hljs-type">VARCHAR</span>(<span class="hljs-number">100</span>) <span class="hljs-keyword">NOT NULL</span>,
+  lastname <span class="hljs-type">VARCHAR</span>(<span class="hljs-number">100</span>) <span class="hljs-keyword">NOT NULL</span>,
+  school_id <span class="hljs-type">INT</span>,
+  <span class="hljs-keyword">PRIMARY KEY</span> (id),
+  <span class="hljs-keyword">CONSTRAINT</span> fk_wizard_school <span class="hljs-keyword">FOREIGN KEY</span> (school_id) <span class="hljs-keyword">REFERENCES</span> school(id)
+);
+
+<span class="hljs-keyword">INSERT INTO</span> school
+  (id, name, capacity)
+  <span class="hljs-keyword">VALUES</span>
+  (<span class="hljs-number">1</span>, <span class="hljs-string">&#x27;Beauxbatons Academy of Magic&#x27;</span>, <span class="hljs-number">550</span>),
+  (<span class="hljs-number">2</span>, <span class="hljs-string">&#x27;Castelobruxo&#x27;</span>, <span class="hljs-number">380</span>),
+  (<span class="hljs-number">3</span>, <span class="hljs-string">&#x27;Durmstrang Institute&#x27;</span>, <span class="hljs-number">570</span>),
+  (<span class="hljs-number">4</span>, <span class="hljs-string">&#x27;Hogwarts School of Witchcraft and Wizardry&#x27;</span>, <span class="hljs-number">450</span>),
+  (<span class="hljs-number">5</span>, <span class="hljs-string">&#x27;Ilvermorny School of Witchcraft and Wizar&#x27;</span>, <span class="hljs-number">300</span>),
+  (<span class="hljs-number">6</span>, <span class="hljs-string">&#x27;Koldovstoretz&#x27;</span>, <span class="hljs-number">125</span>),
+  (<span class="hljs-number">7</span>, <span class="hljs-string">&#x27;Mahoutokoro School of Magic&#x27;</span>, <span class="hljs-number">800</span>),
+  (<span class="hljs-number">8</span>, <span class="hljs-string">&#x27;Uagadou School of Magic&#x27;</span>, <span class="hljs-number">350</span>);
+
+<span class="hljs-keyword">INSERT INTO</span> wizard
+  (firstname, lastname, school_id)
+  <span class="hljs-keyword">VALUES</span>
+  (<span class="hljs-string">&#x27;fleur&#x27;</span>, <span class="hljs-string">&#x27;delacour&#x27;</span>, <span class="hljs-number">1</span>),
+  (<span class="hljs-string">&#x27;gabrielle&#x27;</span>, <span class="hljs-string">&#x27;delacour&#x27;</span>, <span class="hljs-number">1</span>),
+  (<span class="hljs-string">&#x27;viktor&#x27;</span>, <span class="hljs-string">&#x27;krum&#x27;</span>, <span class="hljs-number">3</span>),
+  (<span class="hljs-string">&#x27;gellert&#x27;</span>, <span class="hljs-string">&#x27;grindelwald&#x27;</span>, <span class="hljs-number">3</span>),
+  (<span class="hljs-string">&#x27;harry&#x27;</span>, <span class="hljs-string">&#x27;potter&#x27;</span>, <span class="hljs-number">4</span>),
+  (<span class="hljs-string">&#x27;hermione&#x27;</span>, <span class="hljs-string">&#x27;granger&#x27;</span>, <span class="hljs-number">4</span>),
+  (<span class="hljs-string">&#x27;lily&#x27;</span>, <span class="hljs-string">&#x27;potter&#x27;</span>, <span class="hljs-number">4</span>),
+  (<span class="hljs-string">&#x27;ron&#x27;</span>, <span class="hljs-string">&#x27;weasley&#x27;</span>, <span class="hljs-number">4</span>),
+  (<span class="hljs-string">&#x27;ginny&#x27;</span>, <span class="hljs-string">&#x27;weasley&#x27;</span>, <span class="hljs-number">4</span>),
+  (<span class="hljs-string">&#x27;fred&#x27;</span>, <span class="hljs-string">&#x27;weasley&#x27;</span>, <span class="hljs-number">4</span>),
+  (<span class="hljs-string">&#x27;george&#x27;</span>, <span class="hljs-string">&#x27;weasley&#x27;</span>, <span class="hljs-number">4</span>),
+  (<span class="hljs-string">&#x27;arthur&#x27;</span>, <span class="hljs-string">&#x27;weasley&#x27;</span>, <span class="hljs-number">4</span>),
+  (<span class="hljs-string">&#x27;molly&#x27;</span>, <span class="hljs-string">&#x27;weasley&#x27;</span>, <span class="hljs-number">4</span>),
+  (<span class="hljs-string">&#x27;drago&#x27;</span>, <span class="hljs-string">&#x27;malefoy&#x27;</span>, <span class="hljs-number">4</span>),
+  (<span class="hljs-string">&#x27;albus&#x27;</span>, <span class="hljs-string">&#x27;dumbledore&#x27;</span>, <span class="hljs-number">4</span>),
+  (<span class="hljs-string">&#x27;severus&#x27;</span>, <span class="hljs-string">&#x27;rogue&#x27;</span>, <span class="hljs-number">4</span>),
+  (<span class="hljs-string">&#x27;tom&#x27;</span>, <span class="hljs-string">&#x27;jédusor&#x27;</span>, <span class="hljs-number">4</span>),
+  (<span class="hljs-string">&#x27;dudley&#x27;</span>, <span class="hljs-string">&#x27;dursley&#x27;</span>, <span class="hljs-number">4</span>),
+  (<span class="hljs-string">&#x27;babajide&#x27;</span>, <span class="hljs-string">&#x27;akingbade&#x27;</span>, <span class="hljs-number">8</span>),
+  (<span class="hljs-string">&#x27;dudley&#x27;</span>, <span class="hljs-string">&#x27;dursley&#x27;</span>, <span class="hljs-keyword">NULL</span>);
+</code></pre></div>
+</div></div>
+<h2>Sommaire</h2>
+<h2>Fonctions SQL</h2>
+<p>SQL possède un grand nombre de fonctions te permettant d’effectuer des calculs mathématiques, des manipulations de chaînes ou de dates, directement dans ta requête (ce qui évite souvent de déporter inutilement ce rôle au langage de programmation, et donc d’optimiser grandement le temps global d’exécution de ton code).</p>
+<h3>Fonctions d’agrégation</h3>
+<p>Ces fonctions permettent de faire un calcul sur un <strong>ensemble de lignes</strong>.</p>
+<p>Par exemple, la fonction <code>COUNT()</code> est très utile, car plutôt que de te renvoyer directement des tuples en résultat, elle va à la place te retourner le <strong>nombre de tuples</strong> concernés par la requête. Entre les parenthèses, tu peux préciser le nom du champ à compter (les lignes à NULL pour ce champ seront alors ignorées). Si tu veux vraiment compter toutes les lignes, tu peux simplement écrire <code>COUNT(*)</code>.</p>
+<p>Par exemple, avec cette requête :</p>
+<div class="bloc-code"><div class="bloc-code__langue">sql</div><pre><code class="hljs language-sql"><span class="hljs-keyword">SELECT</span> <span class="hljs-built_in">count</span>(<span class="hljs-operator">*</span>) <span class="hljs-keyword">as</span> nb_school <span class="hljs-keyword">FROM</span> school;
+</code></pre></div>
+<p>Tu peux obtenir comme résultat :</p>
+<div class="bloc-code"><div class="bloc-code__langue">sql</div><pre><code class="hljs language-sql"><span class="hljs-operator">+</span><span class="hljs-comment">-----------+</span>
+<span class="hljs-operator">|</span> nb_school <span class="hljs-operator">|</span>
+<span class="hljs-operator">+</span><span class="hljs-comment">-----------+</span>
+<span class="hljs-operator">|</span>         <span class="hljs-number">8</span> <span class="hljs-operator">|</span>
+<span class="hljs-operator">+</span><span class="hljs-comment">-----------+</span>
+</code></pre></div>
+<div class="encadre encadre--warning"><div class="encadre__titre">Attention</div><div class="encadre__corps"><p>Quand tu utilises des fonctions dont tu souhaites récupérer le résultat, pense à ajouter un alias pour faciliter la lisibilité (ici <code>nb_school</code>), sinon la colonne s’appellera <code>COUNT(*)</code>, ce qui n’est pas aisé à manipuler.</p>
+<p>Remarque : Ce <code>COUNT()</code> peut être utile dans le cas d’une pagination, par exemple, afin de calculer le nombre total de pages.</p>
+</div></div>
+<p>Il existe plusieurs autres fonctions permettant d’effectuer un calcul sur un ensemble de tuples. En voici quelques-unes parmi les plus utiles :</p>
+<ul>
+<li><code>SUM(champ)</code> : effectue la somme des valeurs pour le champ entre les parenthèses.</li>
+<li><code>AVG(champ)</code> : effectue la moyenne des valeurs pour le champ entre les parenthèses.</li>
+<li><code>MIN(champ)</code> et <code>MAX(champ)</code> : retourne la valeur minimale/maximale du champ sélectionné.</li>
+</ul>
+<h3>Autres fonctions</h3>
+<p>Tu peux utiliser de nombreuses autres fonctions pour manipuler des chaînes de caractères (<code>LOWER()</code>, <code>UPPER()</code>, <code>LENGTH()</code>...), effectuer des calculs mathématiques (<code>ROUND()</code>, <code>ABS()</code>, <code>SIN()</code>...) ou manipuler des dates (<code>DATEDIFF()</code>, <code>MONTH()</code>, <code>NOW()</code>...). Reporte-toi aux ressources pour voir une liste exhaustive de ces dernières. Voici un exemple avec une fonction de concaténation :</p>
+<div class="bloc-code"><div class="bloc-code__langue">sql</div><pre><code class="hljs language-sql"><span class="hljs-keyword">SELECT</span> CONCAT(firstname, <span class="hljs-string">&#x27; &#x27;</span>, lastname) <span class="hljs-keyword">AS</span> fullname <span class="hljs-keyword">FROM</span> wizard;
+</code></pre></div>
+<p>Pour obtenir ce résultat :</p>
+<div class="bloc-code"><div class="bloc-code__langue">sql</div><pre><code class="hljs language-sql"><span class="hljs-operator">+</span><span class="hljs-comment">---------------------+</span>
+<span class="hljs-operator">|</span> fullname            <span class="hljs-operator">|</span>
+<span class="hljs-operator">+</span><span class="hljs-comment">---------------------+</span>
+<span class="hljs-operator">|</span> fleur delacour      <span class="hljs-operator">|</span>
+<span class="hljs-operator">|</span> gabrielle delacour  <span class="hljs-operator">|</span>
+<span class="hljs-operator">|</span> viktor krum         <span class="hljs-operator">|</span>
+<span class="hljs-operator">|</span> gellert grindelwald <span class="hljs-operator">|</span>
+<span class="hljs-operator">|</span> harry potter        <span class="hljs-operator">|</span>
+<span class="hljs-operator">|</span> hermione granger    <span class="hljs-operator">|</span>
+<span class="hljs-operator">|</span> lily potter         <span class="hljs-operator">|</span>
+<span class="hljs-operator">|</span> ron weasley         <span class="hljs-operator">|</span>
+<span class="hljs-operator">|</span> ginny weasley       <span class="hljs-operator">|</span>
+<span class="hljs-operator">|</span> fred weasley        <span class="hljs-operator">|</span>
+<span class="hljs-operator">|</span> george weasley      <span class="hljs-operator">|</span>
+<span class="hljs-operator">|</span> arthur weasley      <span class="hljs-operator">|</span>
+<span class="hljs-operator">|</span> molly weasley       <span class="hljs-operator">|</span>
+<span class="hljs-operator">|</span> drago malefoy       <span class="hljs-operator">|</span>
+<span class="hljs-operator">|</span> albus dumbledore    <span class="hljs-operator">|</span>
+<span class="hljs-operator">|</span> severus rogue       <span class="hljs-operator">|</span>
+<span class="hljs-operator">|</span> tom jédusor         <span class="hljs-operator">|</span>
+<span class="hljs-operator">|</span> dudley dursley      <span class="hljs-operator">|</span>
+<span class="hljs-operator">|</span> babajide akingbade  <span class="hljs-operator">|</span>
+<span class="hljs-operator">|</span> dudley dursley      <span class="hljs-operator">|</span>
+<span class="hljs-operator">+</span><span class="hljs-comment">---------------------+</span>
+</code></pre></div>
+<div class="encadre encadre--info"><div class="encadre__titre">Info</div><div class="encadre__corps"><p>Ces fonctions ne sont pas limitées au <code>SELECT</code> et peuvent tout aussi bien s’utiliser dans une clause <code>WHERE</code>.</p>
+</div></div>
+<a class="ressource" href="https://sql.sh/fonctions" target="_blank" rel="noopener noreferrer">
+  <div class="ressource__icone">↗</div>
+  <div class="ressource__texte">
+    <div class="ressource__titre">Les fonctions SQL</div>
+    <div class="ressource__desc"><p>Cette page de <em>sql.sh</em> présente quelques fonctions principales. Pour avoir une liste exhaustive, regarde la rubrique “Fonctions SQL” du menu sur la gauche du site.</p>
+</div>
+    <div class="ressource__hote">sql.sh</div>
+  </div>
+</a>
+<h2>Grouper des données</h2>
+<h3>GROUP BY</h3>
+<p>Pour le moment, lorsque tu effectuais des requêtes de type <code>SELECT</code>, tu récupérais plus ou moins de tuples (en fonction des filtres imposés via la clause <code>WHERE</code>), mais chaque ligne de résultat était un tuple unique. Il y a cependant des cas de figure où tu aimerais récupérer des résultats, non pas individuels, mais regroupés selon des critères.</p>
+<p>Reprends l’exemple des élèves inscrits dans des écoles. Ce serait intéressant de regrouper ensemble les élèves appartenant à la même école. En l’état, cela peut paraître inutile, mais couplé à des fonctions d'agrégation, cela prend tout son sens. Par exemple, tu peux compter le nombre de lignes dans tel ou tel groupe.</p>
+<p>Reprenons une requête avec une jointure simple entre les tables <code>wizard</code> et <code>school</code> :</p>
+<div class="bloc-code"><div class="bloc-code__langue">sql</div><pre><code class="hljs language-sql"><span class="hljs-keyword">SELECT</span>
+  <span class="hljs-operator">*</span>
+<span class="hljs-keyword">FROM</span>
+  wizard w
+<span class="hljs-keyword">INNER</span> <span class="hljs-keyword">JOIN</span>
+  school s <span class="hljs-keyword">ON</span> s.id <span class="hljs-operator">=</span> w.school_id;
+</code></pre></div>
+<p>Elle nous donne ce résultat :</p>
+<div class="bloc-code"><div class="bloc-code__langue">sql</div><pre><code class="hljs language-sql"><span class="hljs-operator">+</span><span class="hljs-comment">----+-----------+-------------+-----------+----+--------------------------------------------+----------+</span>
+<span class="hljs-operator">|</span> id <span class="hljs-operator">|</span> firstname <span class="hljs-operator">|</span> lastname    <span class="hljs-operator">|</span> school_id <span class="hljs-operator">|</span> id <span class="hljs-operator">|</span> name                                       <span class="hljs-operator">|</span> capacity <span class="hljs-operator">|</span>
+<span class="hljs-operator">+</span><span class="hljs-comment">----+-----------+-------------+-----------+----+--------------------------------------------+----------+</span>
+<span class="hljs-operator">|</span>  <span class="hljs-number">1</span> <span class="hljs-operator">|</span> fleur     <span class="hljs-operator">|</span> delacour    <span class="hljs-operator">|</span>         <span class="hljs-number">1</span> <span class="hljs-operator">|</span>  <span class="hljs-number">1</span> <span class="hljs-operator">|</span> Beauxbatons Academy <span class="hljs-keyword">of</span> Magic               <span class="hljs-operator">|</span>      <span class="hljs-number">550</span> <span class="hljs-operator">|</span>
+<span class="hljs-operator">|</span>  <span class="hljs-number">2</span> <span class="hljs-operator">|</span> gabrielle <span class="hljs-operator">|</span> delacour    <span class="hljs-operator">|</span>         <span class="hljs-number">1</span> <span class="hljs-operator">|</span>  <span class="hljs-number">1</span> <span class="hljs-operator">|</span> Beauxbatons Academy <span class="hljs-keyword">of</span> Magic               <span class="hljs-operator">|</span>      <span class="hljs-number">550</span> <span class="hljs-operator">|</span>
+<span class="hljs-operator">|</span>  <span class="hljs-number">3</span> <span class="hljs-operator">|</span> viktor    <span class="hljs-operator">|</span> krum        <span class="hljs-operator">|</span>         <span class="hljs-number">3</span> <span class="hljs-operator">|</span>  <span class="hljs-number">3</span> <span class="hljs-operator">|</span> Durmstrang Institute                       <span class="hljs-operator">|</span>      <span class="hljs-number">570</span> <span class="hljs-operator">|</span>
+<span class="hljs-operator">|</span>  <span class="hljs-number">4</span> <span class="hljs-operator">|</span> gellert   <span class="hljs-operator">|</span> grindelwald <span class="hljs-operator">|</span>         <span class="hljs-number">3</span> <span class="hljs-operator">|</span>  <span class="hljs-number">3</span> <span class="hljs-operator">|</span> Durmstrang Institute                       <span class="hljs-operator">|</span>      <span class="hljs-number">570</span> <span class="hljs-operator">|</span>
+<span class="hljs-operator">|</span>  <span class="hljs-number">5</span> <span class="hljs-operator">|</span> harry     <span class="hljs-operator">|</span> potter      <span class="hljs-operator">|</span>         <span class="hljs-number">4</span> <span class="hljs-operator">|</span>  <span class="hljs-number">4</span> <span class="hljs-operator">|</span> Hogwarts School <span class="hljs-keyword">of</span> Witchcraft <span class="hljs-keyword">and</span> Wizardry <span class="hljs-operator">|</span>      <span class="hljs-number">450</span> <span class="hljs-operator">|</span>
+<span class="hljs-operator">|</span>  <span class="hljs-number">6</span> <span class="hljs-operator">|</span> hermione  <span class="hljs-operator">|</span> granger     <span class="hljs-operator">|</span>         <span class="hljs-number">4</span> <span class="hljs-operator">|</span>  <span class="hljs-number">4</span> <span class="hljs-operator">|</span> Hogwarts School <span class="hljs-keyword">of</span> Witchcraft <span class="hljs-keyword">and</span> Wizardry <span class="hljs-operator">|</span>      <span class="hljs-number">450</span> <span class="hljs-operator">|</span>
+<span class="hljs-operator">|</span>  <span class="hljs-number">7</span> <span class="hljs-operator">|</span> lily      <span class="hljs-operator">|</span> potter      <span class="hljs-operator">|</span>         <span class="hljs-number">4</span> <span class="hljs-operator">|</span>  <span class="hljs-number">4</span> <span class="hljs-operator">|</span> Hogwarts School <span class="hljs-keyword">of</span> Witchcraft <span class="hljs-keyword">and</span> Wizardry <span class="hljs-operator">|</span>      <span class="hljs-number">450</span> <span class="hljs-operator">|</span>
+<span class="hljs-operator">|</span>  <span class="hljs-number">8</span> <span class="hljs-operator">|</span> ron       <span class="hljs-operator">|</span> weasley     <span class="hljs-operator">|</span>         <span class="hljs-number">4</span> <span class="hljs-operator">|</span>  <span class="hljs-number">4</span> <span class="hljs-operator">|</span> Hogwarts School <span class="hljs-keyword">of</span> Witchcraft <span class="hljs-keyword">and</span> Wizardry <span class="hljs-operator">|</span>      <span class="hljs-number">450</span> <span class="hljs-operator">|</span>
+<span class="hljs-operator">|</span>  <span class="hljs-number">9</span> <span class="hljs-operator">|</span> ginny     <span class="hljs-operator">|</span> weasley     <span class="hljs-operator">|</span>         <span class="hljs-number">4</span> <span class="hljs-operator">|</span>  <span class="hljs-number">4</span> <span class="hljs-operator">|</span> Hogwarts School <span class="hljs-keyword">of</span> Witchcraft <span class="hljs-keyword">and</span> Wizardry <span class="hljs-operator">|</span>      <span class="hljs-number">450</span> <span class="hljs-operator">|</span>
+<span class="hljs-operator">|</span> <span class="hljs-number">10</span> <span class="hljs-operator">|</span> fred      <span class="hljs-operator">|</span> weasley     <span class="hljs-operator">|</span>         <span class="hljs-number">4</span> <span class="hljs-operator">|</span>  <span class="hljs-number">4</span> <span class="hljs-operator">|</span> Hogwarts School <span class="hljs-keyword">of</span> Witchcraft <span class="hljs-keyword">and</span> Wizardry <span class="hljs-operator">|</span>      <span class="hljs-number">450</span> <span class="hljs-operator">|</span>
+<span class="hljs-operator">|</span> <span class="hljs-number">11</span> <span class="hljs-operator">|</span> george    <span class="hljs-operator">|</span> weasley     <span class="hljs-operator">|</span>         <span class="hljs-number">4</span> <span class="hljs-operator">|</span>  <span class="hljs-number">4</span> <span class="hljs-operator">|</span> Hogwarts School <span class="hljs-keyword">of</span> Witchcraft <span class="hljs-keyword">and</span> Wizardry <span class="hljs-operator">|</span>      <span class="hljs-number">450</span> <span class="hljs-operator">|</span>
+<span class="hljs-operator">|</span> <span class="hljs-number">12</span> <span class="hljs-operator">|</span> arthur    <span class="hljs-operator">|</span> weasley     <span class="hljs-operator">|</span>         <span class="hljs-number">4</span> <span class="hljs-operator">|</span>  <span class="hljs-number">4</span> <span class="hljs-operator">|</span> Hogwarts School <span class="hljs-keyword">of</span> Witchcraft <span class="hljs-keyword">and</span> Wizardry <span class="hljs-operator">|</span>      <span class="hljs-number">450</span> <span class="hljs-operator">|</span>
+<span class="hljs-operator">|</span> <span class="hljs-number">13</span> <span class="hljs-operator">|</span> molly     <span class="hljs-operator">|</span> weasley     <span class="hljs-operator">|</span>         <span class="hljs-number">4</span> <span class="hljs-operator">|</span>  <span class="hljs-number">4</span> <span class="hljs-operator">|</span> Hogwarts School <span class="hljs-keyword">of</span> Witchcraft <span class="hljs-keyword">and</span> Wizardry <span class="hljs-operator">|</span>      <span class="hljs-number">450</span> <span class="hljs-operator">|</span>
+<span class="hljs-operator">|</span> <span class="hljs-number">14</span> <span class="hljs-operator">|</span> drago     <span class="hljs-operator">|</span> malefoy     <span class="hljs-operator">|</span>         <span class="hljs-number">4</span> <span class="hljs-operator">|</span>  <span class="hljs-number">4</span> <span class="hljs-operator">|</span> Hogwarts School <span class="hljs-keyword">of</span> Witchcraft <span class="hljs-keyword">and</span> Wizardry <span class="hljs-operator">|</span>      <span class="hljs-number">450</span> <span class="hljs-operator">|</span>
+<span class="hljs-operator">|</span> <span class="hljs-number">15</span> <span class="hljs-operator">|</span> albus     <span class="hljs-operator">|</span> dumbledore  <span class="hljs-operator">|</span>         <span class="hljs-number">4</span> <span class="hljs-operator">|</span>  <span class="hljs-number">4</span> <span class="hljs-operator">|</span> Hogwarts School <span class="hljs-keyword">of</span> Witchcraft <span class="hljs-keyword">and</span> Wizardry <span class="hljs-operator">|</span>      <span class="hljs-number">450</span> <span class="hljs-operator">|</span>
+<span class="hljs-operator">|</span> <span class="hljs-number">16</span> <span class="hljs-operator">|</span> severus   <span class="hljs-operator">|</span> rogue       <span class="hljs-operator">|</span>         <span class="hljs-number">4</span> <span class="hljs-operator">|</span>  <span class="hljs-number">4</span> <span class="hljs-operator">|</span> Hogwarts School <span class="hljs-keyword">of</span> Witchcraft <span class="hljs-keyword">and</span> Wizardry <span class="hljs-operator">|</span>      <span class="hljs-number">450</span> <span class="hljs-operator">|</span>
+<span class="hljs-operator">|</span> <span class="hljs-number">17</span> <span class="hljs-operator">|</span> tom       <span class="hljs-operator">|</span> jédusor     <span class="hljs-operator">|</span>         <span class="hljs-number">4</span> <span class="hljs-operator">|</span>  <span class="hljs-number">4</span> <span class="hljs-operator">|</span> Hogwarts School <span class="hljs-keyword">of</span> Witchcraft <span class="hljs-keyword">and</span> Wizardry <span class="hljs-operator">|</span>      <span class="hljs-number">450</span> <span class="hljs-operator">|</span>
+<span class="hljs-operator">|</span> <span class="hljs-number">18</span> <span class="hljs-operator">|</span> dudley    <span class="hljs-operator">|</span> dursley     <span class="hljs-operator">|</span>         <span class="hljs-number">4</span> <span class="hljs-operator">|</span>  <span class="hljs-number">4</span> <span class="hljs-operator">|</span> Hogwarts School <span class="hljs-keyword">of</span> Witchcraft <span class="hljs-keyword">and</span> Wizardry <span class="hljs-operator">|</span>      <span class="hljs-number">450</span> <span class="hljs-operator">|</span>
+<span class="hljs-operator">|</span> <span class="hljs-number">19</span> <span class="hljs-operator">|</span> babajide  <span class="hljs-operator">|</span> akingbade   <span class="hljs-operator">|</span>         <span class="hljs-number">8</span> <span class="hljs-operator">|</span>  <span class="hljs-number">8</span> <span class="hljs-operator">|</span> Uagadou School <span class="hljs-keyword">of</span> Magic                    <span class="hljs-operator">|</span>      <span class="hljs-number">350</span> <span class="hljs-operator">|</span>
+<span class="hljs-operator">+</span><span class="hljs-comment">----+-----------+-------------+-----------+----+--------------------------------------------+----------+</span>
+</code></pre></div>
+<p>La jointure ici ne sert à rien pour “grouper”, puisque c’est le <code>school_id</code> de la table <code>wizard</code> qui est utilisé. Mais elle est cependant utile pour récupérer le <code>name</code> de l’école.</p>
+<p>La syntaxe du <code>GROUP BY</code> est très simple. Elle attend une liste de champs sur lesquels grouper (tu peux indiquer plusieurs champs, elle fera alors les groupes dans l’ordre de ces champs).</p>
+<p>Par exemple, voici comment récupérer le nombre d'étudiants par école :</p>
+<div class="bloc-code"><div class="bloc-code__langue">sql</div><pre><code class="hljs language-sql"><span class="hljs-keyword">SELECT</span>
+  s.name, <span class="hljs-built_in">COUNT</span>(<span class="hljs-operator">*</span>) <span class="hljs-keyword">as</span> nb_student
+<span class="hljs-keyword">FROM</span>
+  wizard w
+<span class="hljs-keyword">INNER</span> <span class="hljs-keyword">JOIN</span>
+  school s <span class="hljs-keyword">ON</span> s.id<span class="hljs-operator">=</span>w.school_id
+<span class="hljs-keyword">GROUP</span> <span class="hljs-keyword">BY</span>
+  s.id;
+</code></pre></div>
+<p>Ce qui nous donne :</p>
+<div class="bloc-code"><div class="bloc-code__langue">sql</div><pre><code class="hljs language-sql"><span class="hljs-operator">+</span><span class="hljs-comment">--------------------------------------------+------------+</span>
+<span class="hljs-operator">|</span> name                                       <span class="hljs-operator">|</span> nb_student <span class="hljs-operator">|</span>
+<span class="hljs-operator">+</span><span class="hljs-comment">--------------------------------------------+------------+</span>
+<span class="hljs-operator">|</span> Beauxbatons Academy <span class="hljs-keyword">of</span> Magic               <span class="hljs-operator">|</span>          <span class="hljs-number">2</span> <span class="hljs-operator">|</span>
+<span class="hljs-operator">|</span> Durmstrang Institute                       <span class="hljs-operator">|</span>          <span class="hljs-number">2</span> <span class="hljs-operator">|</span>
+<span class="hljs-operator">|</span> Hogwarts School <span class="hljs-keyword">of</span> Witchcraft <span class="hljs-keyword">and</span> Wizardry <span class="hljs-operator">|</span>         <span class="hljs-number">14</span> <span class="hljs-operator">|</span>
+<span class="hljs-operator">|</span> Uagadou School <span class="hljs-keyword">of</span> Magic                    <span class="hljs-operator">|</span>          <span class="hljs-number">1</span> <span class="hljs-operator">|</span>
+<span class="hljs-operator">+</span><span class="hljs-comment">--------------------------------------------+------------+</span>
+</code></pre></div>
+<h3>HAVING</h3>
+<p>Il est possible d’aller encore plus loin dans les regroupements, en y ajoutant des critères de filtre sur ces groupes. Par exemple, si tu souhaites ne ressortir que les groupes ayant plus de trois élèves, tu peux écrire :</p>
+<div class="bloc-code"><div class="bloc-code__langue">sql</div><pre><code class="hljs language-sql"><span class="hljs-keyword">SELECT</span>
+  s.name, <span class="hljs-built_in">COUNT</span>(<span class="hljs-operator">*</span>) <span class="hljs-keyword">AS</span> nb_student
+<span class="hljs-keyword">FROM</span>
+  wizard w
+<span class="hljs-keyword">INNER</span> <span class="hljs-keyword">JOIN</span>
+  school s <span class="hljs-keyword">ON</span> s.id<span class="hljs-operator">=</span>w.school_id
+<span class="hljs-keyword">GROUP</span> <span class="hljs-keyword">BY</span>
+  school_id
+<span class="hljs-keyword">HAVING</span>
+  nb_student <span class="hljs-operator">&gt;</span> <span class="hljs-number">3</span>;
+</code></pre></div>
+<p>Et obtenir une version filtrée du résultat précédent :</p>
+<div class="bloc-code"><div class="bloc-code__langue">sql</div><pre><code class="hljs language-sql"><span class="hljs-operator">+</span><span class="hljs-comment">--------------------------------------------+------------+</span>
+<span class="hljs-operator">|</span> name                                       <span class="hljs-operator">|</span> nb_student <span class="hljs-operator">|</span>
+<span class="hljs-operator">+</span><span class="hljs-comment">--------------------------------------------+------------+</span>
+<span class="hljs-operator">|</span> Hogwarts School <span class="hljs-keyword">of</span> Witchcraft <span class="hljs-keyword">and</span> Wizardry <span class="hljs-operator">|</span>         <span class="hljs-number">14</span> <span class="hljs-operator">|</span>
+<span class="hljs-operator">+</span><span class="hljs-comment">--------------------------------------------+------------+</span>
+</code></pre></div>
+<p>Le <code>HAVING</code> a donc un fonctionnement très similaire à une clause <code>WHERE</code>, puisqu’il a également besoin d’une <em>condition</em>. Cependant, ces deux clauses sont <strong>différentes</strong> et ne sont <strong>pas interchangeables</strong>.</p>
+<p>En effet, lorsque tu fais un <code>SELECT</code>, tu ressors un certain nombre de tuples. Un <code>WHERE</code> va imposer un filtre qui va potentiellement diminuer ce nombre de résultats. Si tu ajoutes ensuite un <code>GROUP BY</code>, le regroupement ne se fera <strong>QUE</strong> sur les tuples préalablement filtrés par le <code>WHERE</code>.</p>
+<p>Une fois le regroupement fait, si tu ajoutes un <code>HAVING</code>, ce dernier s’appliquera sur les résultats du regroupement. C’est pour cela qu’un <code>WHERE</code> s’écrit <strong>toujours avant</strong> un bloc <code>GROUP BY ... HAVING</code>.</p>
+<a class="ressource" href="https://www.youtube.com/watch?v=aLs8bvkeAFo" target="_blank" rel="noopener noreferrer">
+  <div class="ressource__icone">↗</div>
+  <div class="ressource__texte">
+    <div class="ressource__titre">Également en vidéo !</div>
+    <div class="ressource__desc"><p>Présentation du <code>GROUP BY</code>, <code>HAVING</code> et de quelques fonctions d’agrégation.</p>
+</div>
+    <div class="ressource__hote">youtube.com</div>
+  </div>
+</a>
+<a class="ressource" href="https://sql.sh/cours/having" target="_blank" rel="noopener noreferrer">
+  <div class="ressource__icone">↗</div>
+  <div class="ressource__texte">
+    <div class="ressource__titre">HAVING</div>
+    
+    <div class="ressource__hote">sql.sh</div>
+  </div>
+</a>
+<a class="ressource" href="https://sql.sh/cours/group-by" target="_blank" rel="noopener noreferrer">
+  <div class="ressource__icone">↗</div>
+  <div class="ressource__texte">
+    <div class="ressource__titre">GROUP BY</div>
+    
+    <div class="ressource__hote">sql.sh</div>
+  </div>
+</a>
+<h2>Challenge</h2>
+<p><strong>Tournoi de quidditch (suite)</strong></p>
+<p>Le tournoi de quidditch continue. Reproduis les mêmes données que dans la quête précédente :</p>
+<div class="bloc-code"><div class="bloc-code__langue">sql</div><pre><code class="hljs language-sql"><span class="hljs-keyword">DROP</span> DATABASE IF <span class="hljs-keyword">EXISTS</span> wild_db_quests_advanced;
+<span class="hljs-keyword">CREATE</span> DATABASE wild_db_quests_advanced;
+
+USE wild_db_quests_advanced;
+
+<span class="hljs-keyword">CREATE TABLE</span> wizard(
+  id <span class="hljs-type">INT</span> <span class="hljs-keyword">NOT NULL</span> AUTO_INCREMENT,
+  firstname <span class="hljs-type">VARCHAR</span>(<span class="hljs-number">100</span>) <span class="hljs-keyword">NOT NULL</span>,
+  lastname <span class="hljs-type">VARCHAR</span>(<span class="hljs-number">100</span>) <span class="hljs-keyword">NOT NULL</span>,
+  <span class="hljs-keyword">PRIMARY KEY</span> (id)
+);
+
+<span class="hljs-keyword">CREATE TABLE</span> team(
+  id <span class="hljs-type">INT</span> <span class="hljs-keyword">NOT NULL</span> AUTO_INCREMENT,
+  name <span class="hljs-type">VARCHAR</span>(<span class="hljs-number">100</span>) <span class="hljs-keyword">NOT NULL</span>,
+  <span class="hljs-keyword">PRIMARY KEY</span> (id)
+);
+
+<span class="hljs-keyword">CREATE TABLE</span> player(
+  id <span class="hljs-type">INT</span> <span class="hljs-keyword">NOT NULL</span> AUTO_INCREMENT,
+  wizard_id <span class="hljs-type">INT</span> <span class="hljs-keyword">NOT NULL</span>,
+  team_id <span class="hljs-type">INT</span> <span class="hljs-keyword">NULL</span>,
+  role <span class="hljs-type">VARCHAR</span>(<span class="hljs-number">100</span>) <span class="hljs-keyword">NOT NULL</span>,
+  enrollment_date <span class="hljs-type">DATE</span> <span class="hljs-keyword">NOT NULL</span>,
+  <span class="hljs-keyword">PRIMARY KEY</span> (id),
+  <span class="hljs-keyword">CONSTRAINT</span> fk_player_wizard <span class="hljs-keyword">FOREIGN KEY</span> (wizard_id) <span class="hljs-keyword">REFERENCES</span> wizard(id),
+  <span class="hljs-keyword">CONSTRAINT</span> fk_player_team <span class="hljs-keyword">FOREIGN KEY</span> (team_id) <span class="hljs-keyword">REFERENCES</span> team(id)
+);
+
+<span class="hljs-keyword">INSERT INTO</span> team
+  (id, name)
+  <span class="hljs-keyword">VALUES</span>
+  (<span class="hljs-number">1</span>, <span class="hljs-string">&#x27;Gryffindor&#x27;</span>), (<span class="hljs-number">2</span>, <span class="hljs-string">&#x27;Ravenclaw&#x27;</span>), (<span class="hljs-number">3</span>, <span class="hljs-string">&#x27;Slytherin&#x27;</span>), (<span class="hljs-number">4</span>, <span class="hljs-string">&#x27;Hufflepuff&#x27;</span>);
+
+<span class="hljs-keyword">INSERT INTO</span> wizard
+  (id, firstname, lastname)
+  <span class="hljs-keyword">VALUES</span>
+  (<span class="hljs-number">1</span>, <span class="hljs-string">&#x27;Hannah&#x27;</span>, <span class="hljs-string">&#x27;Abbott&#x27;</span>), (<span class="hljs-number">2</span>, <span class="hljs-string">&#x27;Katie&#x27;</span>, <span class="hljs-string">&#x27;Bell&#x27;</span>), (<span class="hljs-number">3</span>, <span class="hljs-string">&#x27;Cuthbert&#x27;</span>, <span class="hljs-string">&#x27;Binns&#x27;</span>), (<span class="hljs-number">4</span>, <span class="hljs-string">&#x27;Phineas&#x27;</span>, <span class="hljs-string">&#x27;Nigellus&#x27;</span>), (<span class="hljs-number">5</span>, <span class="hljs-string">&#x27;Regulus&#x27;</span>, <span class="hljs-string">&#x27;Black&#x27;</span>), (<span class="hljs-number">6</span>, <span class="hljs-string">&#x27;Sirius&#x27;</span>, <span class="hljs-string">&#x27;Black&#x27;</span>), (<span class="hljs-number">7</span>, <span class="hljs-string">&#x27;Amelia&#x27;</span>, <span class="hljs-string">&#x27;Bones&#x27;</span>), (<span class="hljs-number">8</span>, <span class="hljs-string">&#x27;Susan&#x27;</span>, <span class="hljs-string">&#x27;Bones&#x27;</span>), (<span class="hljs-number">9</span>, <span class="hljs-string">&#x27;Terry&#x27;</span>, <span class="hljs-string">&#x27;Boot&#x27;</span>), (<span class="hljs-number">10</span>, <span class="hljs-string">&#x27;Lavender&#x27;</span>, <span class="hljs-string">&#x27;Brown&#x27;</span>), (<span class="hljs-number">11</span>, <span class="hljs-string">&#x27;Millicent&#x27;</span>, <span class="hljs-string">&#x27;Bulstrode&#x27;</span>), (<span class="hljs-number">12</span>, <span class="hljs-string">&#x27;Cho&#x27;</span>, <span class="hljs-string">&#x27;Chang&#x27;</span>), (<span class="hljs-number">13</span>, <span class="hljs-string">&#x27;Penelope&#x27;</span>, <span class="hljs-string">&#x27;Clearwater&#x27;</span>), (<span class="hljs-number">14</span>, <span class="hljs-string">&#x27;Michael&#x27;</span>, <span class="hljs-string">&#x27;Corner&#x27;</span>), (<span class="hljs-number">15</span>, <span class="hljs-string">&#x27;Crabbe&#x27;</span>, <span class="hljs-string">&#x27;&#x27;</span>), (<span class="hljs-number">16</span>, <span class="hljs-string">&#x27;Vincent&#x27;</span>, <span class="hljs-string">&#x27;Crabbe&#x27;</span>), (<span class="hljs-number">17</span>, <span class="hljs-string">&#x27;Colin&#x27;</span>, <span class="hljs-string">&#x27;Creevey&#x27;</span>), (<span class="hljs-number">18</span>, <span class="hljs-string">&#x27;Dennis&#x27;</span>, <span class="hljs-string">&#x27;Creevey&#x27;</span>), (<span class="hljs-number">19</span>, <span class="hljs-string">&#x27;Cedric&#x27;</span>, <span class="hljs-string">&#x27;Diggory&#x27;</span>), (<span class="hljs-number">20</span>, <span class="hljs-string">&#x27;Aberforth&#x27;</span>, <span class="hljs-string">&#x27;Dumbledore&#x27;</span>), (<span class="hljs-number">21</span>, <span class="hljs-string">&#x27;Albus&#x27;</span>, <span class="hljs-string">&#x27;Dumbledore&#x27;</span>), (<span class="hljs-number">22</span>, <span class="hljs-string">&#x27;Marietta&#x27;</span>, <span class="hljs-string">&#x27;Edgecombe&#x27;</span>), (<span class="hljs-number">23</span>, <span class="hljs-string">&#x27;Justin&#x27;</span>, <span class="hljs-string">&#x27;Finch-Fletchley&#x27;</span>), (<span class="hljs-number">24</span>, <span class="hljs-string">&#x27;Seamus&#x27;</span>, <span class="hljs-string">&#x27;Finnigan&#x27;</span>), (<span class="hljs-number">25</span>, <span class="hljs-string">&#x27;Marcus&#x27;</span>, <span class="hljs-string">&#x27;Flint&#x27;</span>), (<span class="hljs-number">26</span>, <span class="hljs-string">&#x27;Filius&#x27;</span>, <span class="hljs-string">&#x27;Flitwick&#x27;</span>), (<span class="hljs-number">27</span>, <span class="hljs-string">&#x27;Anthony&#x27;</span>, <span class="hljs-string">&#x27;Goldstein&#x27;</span>), (<span class="hljs-number">28</span>, <span class="hljs-string">&#x27;Gregory&#x27;</span>, <span class="hljs-string">&#x27;Goyle&#x27;</span>), (<span class="hljs-number">29</span>, <span class="hljs-string">&#x27;Hermione&#x27;</span>, <span class="hljs-string">&#x27;Granger&#x27;</span>), (<span class="hljs-number">30</span>, <span class="hljs-string">&#x27;Godric&#x27;</span>, <span class="hljs-string">&#x27;Gryffindor&#x27;</span>), (<span class="hljs-number">31</span>, <span class="hljs-string">&#x27;Rubeus&#x27;</span>, <span class="hljs-string">&#x27;Hagrid&#x27;</span>), (<span class="hljs-number">32</span>, <span class="hljs-string">&#x27;Helga&#x27;</span>, <span class="hljs-string">&#x27;Hufflepuff&#x27;</span>), (<span class="hljs-number">33</span>, <span class="hljs-string">&#x27;Angelina&#x27;</span>, <span class="hljs-string">&#x27;Johnson&#x27;</span>), (<span class="hljs-number">34</span>, <span class="hljs-string">&#x27;Lee&#x27;</span>, <span class="hljs-string">&#x27;Jordan&#x27;</span>), (<span class="hljs-number">35</span>, <span class="hljs-string">&#x27;Bellatrix&#x27;</span>, <span class="hljs-string">&#x27;Lestrange&#x27;</span>), (<span class="hljs-number">36</span>, <span class="hljs-string">&#x27;Rabastan&#x27;</span>, <span class="hljs-string">&#x27;Lestrange&#x27;</span>), (<span class="hljs-number">37</span>, <span class="hljs-string">&#x27;Rodolphus&#x27;</span>, <span class="hljs-string">&#x27;Lestrange&#x27;</span>), (<span class="hljs-number">38</span>, <span class="hljs-string">&#x27;Gilderoy&#x27;</span>, <span class="hljs-string">&#x27;Lockhart&#x27;</span>), (<span class="hljs-number">39</span>, <span class="hljs-string">&#x27;Alice&#x27;</span>, <span class="hljs-string">&#x27;Longbottom&#x27;</span>), (<span class="hljs-number">40</span>, <span class="hljs-string">&#x27;Frank&#x27;</span>, <span class="hljs-string">&#x27;Longbottom&#x27;</span>), (<span class="hljs-number">41</span>, <span class="hljs-string">&#x27;Augusta&#x27;</span>, <span class="hljs-string">&#x27;Longbottom&#x27;</span>), (<span class="hljs-number">42</span>, <span class="hljs-string">&#x27;Neville&#x27;</span>, <span class="hljs-string">&#x27;Longbottom&#x27;</span>), (<span class="hljs-number">43</span>, <span class="hljs-string">&#x27;Luna&#x27;</span>, <span class="hljs-string">&#x27;Lovegood&#x27;</span>), (<span class="hljs-number">44</span>, <span class="hljs-string">&#x27;Xenophilius&#x27;</span>, <span class="hljs-string">&#x27;Lovegood&#x27;</span>), (<span class="hljs-number">45</span>, <span class="hljs-string">&#x27;Remus&#x27;</span>, <span class="hljs-string">&#x27;Lupin&#x27;</span>), (<span class="hljs-number">46</span>, <span class="hljs-string">&#x27;Draco&#x27;</span>, <span class="hljs-string">&#x27;Malfoy&#x27;</span>), (<span class="hljs-number">47</span>, <span class="hljs-string">&#x27;Lucius&#x27;</span>, <span class="hljs-string">&#x27;Malfoy&#x27;</span>), (<span class="hljs-number">48</span>, <span class="hljs-string">&#x27;Narcissa&#x27;</span>, <span class="hljs-string">&#x27;Malfoy&#x27;</span>), (<span class="hljs-number">49</span>, <span class="hljs-string">&#x27;Minerva&#x27;</span>, <span class="hljs-string">&#x27;McGonagall&#x27;</span>), (<span class="hljs-number">50</span>, <span class="hljs-string">&#x27;Theodore&#x27;</span>, <span class="hljs-string">&#x27;Nott&#x27;</span>), (<span class="hljs-number">51</span>, <span class="hljs-string">&#x27;Garrick&#x27;</span>, <span class="hljs-string">&#x27;Ollivander&#x27;</span>), (<span class="hljs-number">52</span>, <span class="hljs-string">&#x27;Pansy&#x27;</span>, <span class="hljs-string">&#x27;Parkinson&#x27;</span>), (<span class="hljs-number">53</span>, <span class="hljs-string">&#x27;Padma&#x27;</span>, <span class="hljs-string">&#x27;Patil&#x27;</span>), (<span class="hljs-number">54</span>, <span class="hljs-string">&#x27;Parvati&#x27;</span>, <span class="hljs-string">&#x27;Patil&#x27;</span>), (<span class="hljs-number">55</span>, <span class="hljs-string">&#x27;Peter&#x27;</span>, <span class="hljs-string">&#x27;Pettigrew&#x27;</span>), (<span class="hljs-number">56</span>, <span class="hljs-string">&#x27;Harry&#x27;</span>, <span class="hljs-string">&#x27;Potter&#x27;</span>), (<span class="hljs-number">57</span>, <span class="hljs-string">&#x27;James&#x27;</span>, <span class="hljs-string">&#x27;Potter&#x27;</span>), (<span class="hljs-number">58</span>, <span class="hljs-string">&#x27;Lily&#x27;</span>, <span class="hljs-string">&#x27;J.&#x27;</span>), (<span class="hljs-number">59</span>, <span class="hljs-string">&#x27;Quirinus&#x27;</span>, <span class="hljs-string">&#x27;Quirrell&#x27;</span>), (<span class="hljs-number">60</span>, <span class="hljs-string">&#x27;Helena&#x27;</span>, <span class="hljs-string">&#x27;Ravenclaw&#x27;</span>), (<span class="hljs-number">61</span>, <span class="hljs-string">&#x27;Rowena&#x27;</span>, <span class="hljs-string">&#x27;Ravenclaw&#x27;</span>), (<span class="hljs-number">62</span>, <span class="hljs-string">&#x27;Tom&#x27;</span>, <span class="hljs-string">&#x27;Riddle&#x27;</span>), (<span class="hljs-number">63</span>, <span class="hljs-string">&#x27;Demelza&#x27;</span>, <span class="hljs-string">&#x27;Robins&#x27;</span>), (<span class="hljs-number">64</span>, <span class="hljs-string">&#x27;Newton&#x27;</span>, <span class="hljs-string">&#x27;Scamander&#x27;</span>), (<span class="hljs-number">65</span>, <span class="hljs-string">&#x27;Horace&#x27;</span>, <span class="hljs-string">&#x27;Slughorn&#x27;</span>), (<span class="hljs-number">66</span>, <span class="hljs-string">&#x27;Salazar&#x27;</span>, <span class="hljs-string">&#x27;Slytherin&#x27;</span>), (<span class="hljs-number">67</span>, <span class="hljs-string">&#x27;Hepzibah&#x27;</span>, <span class="hljs-string">&#x27;Smith&#x27;</span>), (<span class="hljs-number">68</span>, <span class="hljs-string">&#x27;Zacharias&#x27;</span>, <span class="hljs-string">&#x27;Smith&#x27;</span>), (<span class="hljs-number">69</span>, <span class="hljs-string">&#x27;Severus&#x27;</span>, <span class="hljs-string">&#x27;Snape&#x27;</span>), (<span class="hljs-number">70</span>, <span class="hljs-string">&#x27;Alicia&#x27;</span>, <span class="hljs-string">&#x27;Spinnet&#x27;</span>), (<span class="hljs-number">71</span>, <span class="hljs-string">&#x27;Pomona&#x27;</span>, <span class="hljs-string">&#x27;Sprout&#x27;</span>), (<span class="hljs-number">72</span>, <span class="hljs-string">&#x27;Dean&#x27;</span>, <span class="hljs-string">&#x27;Thomas&#x27;</span>), (<span class="hljs-number">73</span>, <span class="hljs-string">&#x27;Andromeda&#x27;</span>, <span class="hljs-string">&#x27;Tonks&#x27;</span>), (<span class="hljs-number">74</span>, <span class="hljs-string">&#x27;Nymphadora&#x27;</span>, <span class="hljs-string">&#x27;Tonks&#x27;</span>), (<span class="hljs-number">75</span>, <span class="hljs-string">&#x27;Sybill&#x27;</span>, <span class="hljs-string">&#x27;Trelawney&#x27;</span>), (<span class="hljs-number">76</span>, <span class="hljs-string">&#x27;Dolores&#x27;</span>, <span class="hljs-string">&#x27;Umbridge&#x27;</span>), (<span class="hljs-number">77</span>, <span class="hljs-string">&#x27;Romilda&#x27;</span>, <span class="hljs-string">&#x27;Vane&#x27;</span>), (<span class="hljs-number">78</span>, <span class="hljs-string">&#x27;Arthur&#x27;</span>, <span class="hljs-string">&#x27;Weasley&#x27;</span>), (<span class="hljs-number">79</span>, <span class="hljs-string">&#x27;William&#x27;</span>, <span class="hljs-string">&#x27;Weasley&#x27;</span>), (<span class="hljs-number">80</span>, <span class="hljs-string">&#x27;Charles&#x27;</span>, <span class="hljs-string">&#x27;Weasley&#x27;</span>), (<span class="hljs-number">81</span>, <span class="hljs-string">&#x27;Fred&#x27;</span>, <span class="hljs-string">&#x27;Weasley&#x27;</span>), (<span class="hljs-number">82</span>, <span class="hljs-string">&#x27;George&#x27;</span>, <span class="hljs-string">&#x27;Weasley&#x27;</span>), (<span class="hljs-number">83</span>, <span class="hljs-string">&#x27;Ginevra&#x27;</span>, <span class="hljs-string">&#x27;Weasley&#x27;</span>), (<span class="hljs-number">84</span>, <span class="hljs-string">&#x27;Molly&#x27;</span>, <span class="hljs-string">&#x27;Weasley&#x27;</span>), (<span class="hljs-number">85</span>, <span class="hljs-string">&#x27;Percy&#x27;</span>, <span class="hljs-string">&#x27;Weasley&#x27;</span>), (<span class="hljs-number">86</span>, <span class="hljs-string">&#x27;Ronald&#x27;</span>, <span class="hljs-string">&#x27;Weasley&#x27;</span>), (<span class="hljs-number">87</span>, <span class="hljs-string">&#x27;Oliver&#x27;</span>, <span class="hljs-string">&#x27;Wood&#x27;</span>), (<span class="hljs-number">88</span>, <span class="hljs-string">&#x27;Blaise&#x27;</span>, <span class="hljs-string">&#x27;Zabini&#x27;</span>), (<span class="hljs-number">89</span>, <span class="hljs-string">&#x27;Bloody&#x27;</span>, <span class="hljs-string">&#x27;Baron&#x27;</span>), (<span class="hljs-number">90</span>, <span class="hljs-string">&#x27;Cadogan&#x27;</span>, <span class="hljs-string">&#x27;&#x27;</span>), (<span class="hljs-number">91</span>, <span class="hljs-string">&#x27;Fat&#x27;</span>, <span class="hljs-string">&#x27;Friar&#x27;</span>), (<span class="hljs-number">92</span>, <span class="hljs-string">&#x27;Myrtle&#x27;</span>, <span class="hljs-string">&#x27;Warren&#x27;</span>);
+
+<span class="hljs-keyword">INSERT INTO</span> player
+  (id, wizard_id, team_id, role, enrollment_date)
+  <span class="hljs-keyword">VALUES</span>
+  (<span class="hljs-number">1</span>, <span class="hljs-number">1</span>, <span class="hljs-number">4</span>, <span class="hljs-string">&#x27;beater&#x27;</span>, <span class="hljs-string">&#x27;1995-10-09&#x27;</span>), (<span class="hljs-number">2</span>, <span class="hljs-number">2</span>, <span class="hljs-number">1</span>, <span class="hljs-string">&#x27;chaser&#x27;</span>, <span class="hljs-string">&#x27;1995-08-17&#x27;</span>), (<span class="hljs-number">3</span>, <span class="hljs-number">3</span>, <span class="hljs-number">1</span>, <span class="hljs-string">&#x27;seeker&#x27;</span>, <span class="hljs-string">&#x27;1994-12-03&#x27;</span>), (<span class="hljs-number">4</span>, <span class="hljs-number">4</span>, <span class="hljs-number">3</span>, <span class="hljs-string">&#x27;chaser&#x27;</span>, <span class="hljs-string">&#x27;1995-03-24&#x27;</span>), (<span class="hljs-number">5</span>, <span class="hljs-number">5</span>, <span class="hljs-number">3</span>, <span class="hljs-string">&#x27;keeper&#x27;</span>, <span class="hljs-string">&#x27;1997-07-16&#x27;</span>), (<span class="hljs-number">6</span>, <span class="hljs-number">6</span>, <span class="hljs-number">1</span>, <span class="hljs-string">&#x27;beater&#x27;</span>, <span class="hljs-string">&#x27;1994-01-10&#x27;</span>), (<span class="hljs-number">7</span>, <span class="hljs-number">7</span>, <span class="hljs-number">4</span>, <span class="hljs-string">&#x27;chaser&#x27;</span>, <span class="hljs-string">&#x27;1999-01-21&#x27;</span>), (<span class="hljs-number">8</span>, <span class="hljs-number">8</span>, <span class="hljs-number">4</span>, <span class="hljs-string">&#x27;keeper&#x27;</span>, <span class="hljs-string">&#x27;1991-10-20&#x27;</span>), (<span class="hljs-number">10</span>, <span class="hljs-number">10</span>, <span class="hljs-number">1</span>, <span class="hljs-string">&#x27;beater&#x27;</span>, <span class="hljs-string">&#x27;1991-08-03&#x27;</span>), (<span class="hljs-number">11</span>, <span class="hljs-number">11</span>, <span class="hljs-number">3</span>, <span class="hljs-string">&#x27;beater&#x27;</span>, <span class="hljs-string">&#x27;1996-10-04&#x27;</span>), (<span class="hljs-number">12</span>, <span class="hljs-number">12</span>, <span class="hljs-number">2</span>, <span class="hljs-string">&#x27;chaser&#x27;</span>, <span class="hljs-string">&#x27;1992-01-27&#x27;</span>), (<span class="hljs-number">13</span>, <span class="hljs-number">13</span>, <span class="hljs-number">2</span>, <span class="hljs-string">&#x27;beater&#x27;</span>, <span class="hljs-string">&#x27;1991-01-11&#x27;</span>), (<span class="hljs-number">14</span>, <span class="hljs-number">14</span>, <span class="hljs-number">2</span>, <span class="hljs-string">&#x27;seeker&#x27;</span>, <span class="hljs-string">&#x27;1995-08-17&#x27;</span>), (<span class="hljs-number">16</span>, <span class="hljs-number">16</span>, <span class="hljs-number">3</span>, <span class="hljs-string">&#x27;beater&#x27;</span>, <span class="hljs-string">&#x27;1992-11-27&#x27;</span>), (<span class="hljs-number">17</span>, <span class="hljs-number">17</span>, <span class="hljs-number">1</span>, <span class="hljs-string">&#x27;seeker&#x27;</span>, <span class="hljs-string">&#x27;1993-07-07&#x27;</span>), (<span class="hljs-number">18</span>, <span class="hljs-number">18</span>, <span class="hljs-number">1</span>, <span class="hljs-string">&#x27;keeper&#x27;</span>, <span class="hljs-string">&#x27;1991-05-01&#x27;</span>), (<span class="hljs-number">19</span>, <span class="hljs-number">19</span>, <span class="hljs-number">4</span>, <span class="hljs-string">&#x27;keeper&#x27;</span>, <span class="hljs-string">&#x27;1997-11-02&#x27;</span>), (<span class="hljs-number">20</span>, <span class="hljs-number">20</span>, <span class="hljs-number">1</span>, <span class="hljs-string">&#x27;keeper&#x27;</span>, <span class="hljs-string">&#x27;1995-04-24&#x27;</span>), (<span class="hljs-number">21</span>, <span class="hljs-number">21</span>, <span class="hljs-number">1</span>, <span class="hljs-string">&#x27;chaser&#x27;</span>, <span class="hljs-string">&#x27;1991-03-12&#x27;</span>), (<span class="hljs-number">22</span>, <span class="hljs-number">22</span>, <span class="hljs-number">2</span>, <span class="hljs-string">&#x27;chaser&#x27;</span>, <span class="hljs-string">&#x27;1990-07-05&#x27;</span>), (<span class="hljs-number">23</span>, <span class="hljs-number">23</span>, <span class="hljs-number">4</span>, <span class="hljs-string">&#x27;beater&#x27;</span>, <span class="hljs-string">&#x27;1995-01-06&#x27;</span>), (<span class="hljs-number">24</span>, <span class="hljs-number">24</span>, <span class="hljs-number">1</span>, <span class="hljs-string">&#x27;beater&#x27;</span>, <span class="hljs-string">&#x27;1997-02-08&#x27;</span>), (<span class="hljs-number">25</span>, <span class="hljs-number">25</span>, <span class="hljs-number">3</span>, <span class="hljs-string">&#x27;beater&#x27;</span>, <span class="hljs-string">&#x27;1996-12-16&#x27;</span>), (<span class="hljs-number">26</span>, <span class="hljs-number">26</span>, <span class="hljs-number">2</span>, <span class="hljs-string">&#x27;chaser&#x27;</span>, <span class="hljs-string">&#x27;1997-02-07&#x27;</span>), (<span class="hljs-number">27</span>, <span class="hljs-number">27</span>, <span class="hljs-number">2</span>, <span class="hljs-string">&#x27;chaser&#x27;</span>, <span class="hljs-string">&#x27;1999-07-31&#x27;</span>), (<span class="hljs-number">28</span>, <span class="hljs-number">28</span>, <span class="hljs-number">3</span>, <span class="hljs-string">&#x27;seeker&#x27;</span>, <span class="hljs-string">&#x27;1994-05-13&#x27;</span>), (<span class="hljs-number">29</span>, <span class="hljs-number">29</span>, <span class="hljs-number">1</span>, <span class="hljs-string">&#x27;chaser&#x27;</span>, <span class="hljs-string">&#x27;1997-08-14&#x27;</span>), (<span class="hljs-number">30</span>, <span class="hljs-number">30</span>, <span class="hljs-number">1</span>, <span class="hljs-string">&#x27;seeker&#x27;</span>, <span class="hljs-string">&#x27;1993-08-30&#x27;</span>), (<span class="hljs-number">31</span>, <span class="hljs-number">31</span>, <span class="hljs-number">1</span>, <span class="hljs-string">&#x27;beater&#x27;</span>, <span class="hljs-string">&#x27;1994-11-16&#x27;</span>), (<span class="hljs-number">32</span>, <span class="hljs-number">32</span>, <span class="hljs-number">4</span>, <span class="hljs-string">&#x27;seeker&#x27;</span>, <span class="hljs-string">&#x27;1992-08-14&#x27;</span>), (<span class="hljs-number">33</span>, <span class="hljs-number">33</span>, <span class="hljs-number">1</span>, <span class="hljs-string">&#x27;keeper&#x27;</span>, <span class="hljs-string">&#x27;1995-12-02&#x27;</span>), (<span class="hljs-number">34</span>, <span class="hljs-number">34</span>, <span class="hljs-number">1</span>, <span class="hljs-string">&#x27;chaser&#x27;</span>, <span class="hljs-string">&#x27;1996-01-31&#x27;</span>), (<span class="hljs-number">35</span>, <span class="hljs-number">35</span>, <span class="hljs-number">3</span>, <span class="hljs-string">&#x27;chaser&#x27;</span>, <span class="hljs-string">&#x27;1992-03-21&#x27;</span>), (<span class="hljs-number">36</span>, <span class="hljs-number">36</span>, <span class="hljs-number">3</span>, <span class="hljs-string">&#x27;seeker&#x27;</span>, <span class="hljs-string">&#x27;1997-10-30&#x27;</span>), (<span class="hljs-number">37</span>, <span class="hljs-number">37</span>, <span class="hljs-number">3</span>, <span class="hljs-string">&#x27;chaser&#x27;</span>, <span class="hljs-string">&#x27;1991-04-27&#x27;</span>), (<span class="hljs-number">38</span>, <span class="hljs-number">38</span>, <span class="hljs-number">2</span>, <span class="hljs-string">&#x27;chaser&#x27;</span>, <span class="hljs-string">&#x27;1998-04-05&#x27;</span>), (<span class="hljs-number">39</span>, <span class="hljs-number">39</span>, <span class="hljs-number">1</span>, <span class="hljs-string">&#x27;beater&#x27;</span>, <span class="hljs-string">&#x27;1992-02-17&#x27;</span>), (<span class="hljs-number">40</span>, <span class="hljs-number">40</span>, <span class="hljs-number">1</span>, <span class="hljs-string">&#x27;chaser&#x27;</span>, <span class="hljs-string">&#x27;1995-10-15&#x27;</span>), (<span class="hljs-number">41</span>, <span class="hljs-number">41</span>, <span class="hljs-number">1</span>, <span class="hljs-string">&#x27;chaser&#x27;</span>, <span class="hljs-string">&#x27;1999-10-25&#x27;</span>), (<span class="hljs-number">42</span>, <span class="hljs-number">42</span>, <span class="hljs-number">1</span>, <span class="hljs-string">&#x27;chaser&#x27;</span>, <span class="hljs-string">&#x27;1998-05-06&#x27;</span>), (<span class="hljs-number">43</span>, <span class="hljs-number">43</span>, <span class="hljs-number">2</span>, <span class="hljs-string">&#x27;chaser&#x27;</span>, <span class="hljs-string">&#x27;1998-03-01&#x27;</span>), (<span class="hljs-number">44</span>, <span class="hljs-number">44</span>, <span class="hljs-number">2</span>, <span class="hljs-string">&#x27;chaser&#x27;</span>, <span class="hljs-string">&#x27;1991-03-11&#x27;</span>), (<span class="hljs-number">46</span>, <span class="hljs-number">46</span>, <span class="hljs-number">3</span>, <span class="hljs-string">&#x27;chaser&#x27;</span>, <span class="hljs-string">&#x27;1993-11-02&#x27;</span>), (<span class="hljs-number">47</span>, <span class="hljs-number">47</span>, <span class="hljs-number">3</span>, <span class="hljs-string">&#x27;chaser&#x27;</span>, <span class="hljs-string">&#x27;1992-03-12&#x27;</span>), (<span class="hljs-number">48</span>, <span class="hljs-number">48</span>, <span class="hljs-number">3</span>, <span class="hljs-string">&#x27;seeker&#x27;</span>, <span class="hljs-string">&#x27;1993-03-17&#x27;</span>), (<span class="hljs-number">49</span>, <span class="hljs-number">49</span>, <span class="hljs-number">1</span>, <span class="hljs-string">&#x27;beater&#x27;</span>, <span class="hljs-string">&#x27;1992-07-14&#x27;</span>), (<span class="hljs-number">50</span>, <span class="hljs-number">50</span>, <span class="hljs-number">3</span>, <span class="hljs-string">&#x27;chaser&#x27;</span>, <span class="hljs-string">&#x27;1996-12-02&#x27;</span>), (<span class="hljs-number">51</span>, <span class="hljs-number">51</span>, <span class="hljs-number">2</span>, <span class="hljs-string">&#x27;chaser&#x27;</span>, <span class="hljs-string">&#x27;1995-06-25&#x27;</span>), (<span class="hljs-number">52</span>, <span class="hljs-number">52</span>, <span class="hljs-number">3</span>, <span class="hljs-string">&#x27;beater&#x27;</span>, <span class="hljs-string">&#x27;1991-12-14&#x27;</span>), (<span class="hljs-number">55</span>, <span class="hljs-number">55</span>, <span class="hljs-number">1</span>, <span class="hljs-string">&#x27;chaser&#x27;</span>, <span class="hljs-string">&#x27;1991-05-14&#x27;</span>), (<span class="hljs-number">56</span>, <span class="hljs-number">56</span>, <span class="hljs-number">1</span>, <span class="hljs-string">&#x27;beater&#x27;</span>, <span class="hljs-string">&#x27;1997-03-05&#x27;</span>), (<span class="hljs-number">57</span>, <span class="hljs-number">57</span>, <span class="hljs-number">1</span>, <span class="hljs-string">&#x27;beater&#x27;</span>, <span class="hljs-string">&#x27;1996-12-07&#x27;</span>), (<span class="hljs-number">58</span>, <span class="hljs-number">58</span>, <span class="hljs-number">1</span>, <span class="hljs-string">&#x27;chaser&#x27;</span>, <span class="hljs-string">&#x27;1999-02-23&#x27;</span>), (<span class="hljs-number">59</span>, <span class="hljs-number">59</span>, <span class="hljs-number">2</span>, <span class="hljs-string">&#x27;beater&#x27;</span>, <span class="hljs-string">&#x27;1995-09-23&#x27;</span>), (<span class="hljs-number">60</span>, <span class="hljs-number">60</span>, <span class="hljs-number">2</span>, <span class="hljs-string">&#x27;beater&#x27;</span>, <span class="hljs-string">&#x27;1992-04-12&#x27;</span>), (<span class="hljs-number">61</span>, <span class="hljs-number">61</span>, <span class="hljs-number">2</span>, <span class="hljs-string">&#x27;seeker&#x27;</span>, <span class="hljs-string">&#x27;1992-10-09&#x27;</span>), (<span class="hljs-number">62</span>, <span class="hljs-number">62</span>, <span class="hljs-number">3</span>, <span class="hljs-string">&#x27;chaser&#x27;</span>, <span class="hljs-string">&#x27;1990-02-27&#x27;</span>), (<span class="hljs-number">64</span>, <span class="hljs-number">64</span>, <span class="hljs-number">4</span>, <span class="hljs-string">&#x27;chaser&#x27;</span>, <span class="hljs-string">&#x27;1999-01-12&#x27;</span>), (<span class="hljs-number">66</span>, <span class="hljs-number">66</span>, <span class="hljs-number">3</span>, <span class="hljs-string">&#x27;seeker&#x27;</span>, <span class="hljs-string">&#x27;1991-02-23&#x27;</span>), (<span class="hljs-number">67</span>, <span class="hljs-number">67</span>, <span class="hljs-number">4</span>, <span class="hljs-string">&#x27;beater&#x27;</span>, <span class="hljs-string">&#x27;1996-07-18&#x27;</span>), (<span class="hljs-number">68</span>, <span class="hljs-number">68</span>, <span class="hljs-number">4</span>, <span class="hljs-string">&#x27;keeper&#x27;</span>, <span class="hljs-string">&#x27;1993-10-01&#x27;</span>), (<span class="hljs-number">69</span>, <span class="hljs-number">69</span>, <span class="hljs-number">3</span>, <span class="hljs-string">&#x27;beater&#x27;</span>, <span class="hljs-string">&#x27;1997-03-06&#x27;</span>), (<span class="hljs-number">70</span>, <span class="hljs-number">70</span>, <span class="hljs-number">1</span>, <span class="hljs-string">&#x27;chaser&#x27;</span>, <span class="hljs-string">&#x27;1995-11-08&#x27;</span>), (<span class="hljs-number">71</span>, <span class="hljs-number">71</span>, <span class="hljs-number">4</span>, <span class="hljs-string">&#x27;beater&#x27;</span>, <span class="hljs-string">&#x27;1998-06-12&#x27;</span>), (<span class="hljs-number">72</span>, <span class="hljs-number">72</span>, <span class="hljs-number">1</span>, <span class="hljs-string">&#x27;beater&#x27;</span>, <span class="hljs-string">&#x27;1997-11-23&#x27;</span>), (<span class="hljs-number">73</span>, <span class="hljs-number">73</span>, <span class="hljs-number">3</span>, <span class="hljs-string">&#x27;chaser&#x27;</span>, <span class="hljs-string">&#x27;1994-01-28&#x27;</span>), (<span class="hljs-number">74</span>, <span class="hljs-number">74</span>, <span class="hljs-number">4</span>, <span class="hljs-string">&#x27;beater&#x27;</span>, <span class="hljs-string">&#x27;1999-11-25&#x27;</span>), (<span class="hljs-number">75</span>, <span class="hljs-number">75</span>, <span class="hljs-number">2</span>, <span class="hljs-string">&#x27;seeker&#x27;</span>, <span class="hljs-string">&#x27;1991-12-28&#x27;</span>), (<span class="hljs-number">76</span>, <span class="hljs-number">76</span>, <span class="hljs-number">3</span>, <span class="hljs-string">&#x27;seeker&#x27;</span>, <span class="hljs-string">&#x27;1993-10-23&#x27;</span>), (<span class="hljs-number">77</span>, <span class="hljs-number">77</span>, <span class="hljs-number">1</span>, <span class="hljs-string">&#x27;seeker&#x27;</span>, <span class="hljs-string">&#x27;1990-07-31&#x27;</span>), (<span class="hljs-number">78</span>, <span class="hljs-number">78</span>, <span class="hljs-number">1</span>, <span class="hljs-string">&#x27;beater&#x27;</span>, <span class="hljs-string">&#x27;1992-01-01&#x27;</span>), (<span class="hljs-number">79</span>, <span class="hljs-number">79</span>, <span class="hljs-number">1</span>, <span class="hljs-string">&#x27;seeker&#x27;</span>, <span class="hljs-string">&#x27;1991-04-27&#x27;</span>), (<span class="hljs-number">81</span>, <span class="hljs-number">81</span>, <span class="hljs-number">1</span>, <span class="hljs-string">&#x27;seeker&#x27;</span>, <span class="hljs-string">&#x27;1998-03-29&#x27;</span>), (<span class="hljs-number">82</span>, <span class="hljs-number">82</span>, <span class="hljs-number">1</span>, <span class="hljs-string">&#x27;chaser&#x27;</span>, <span class="hljs-string">&#x27;1991-08-26&#x27;</span>), (<span class="hljs-number">83</span>, <span class="hljs-number">83</span>, <span class="hljs-number">1</span>, <span class="hljs-string">&#x27;keeper&#x27;</span>, <span class="hljs-string">&#x27;1992-04-17&#x27;</span>), (<span class="hljs-number">85</span>, <span class="hljs-number">85</span>, <span class="hljs-number">1</span>, <span class="hljs-string">&#x27;beater&#x27;</span>, <span class="hljs-string">&#x27;1990-09-05&#x27;</span>), (<span class="hljs-number">86</span>, <span class="hljs-number">86</span>, <span class="hljs-number">1</span>, <span class="hljs-string">&#x27;seeker&#x27;</span>, <span class="hljs-string">&#x27;1997-06-22&#x27;</span>), (<span class="hljs-number">87</span>, <span class="hljs-number">87</span>, <span class="hljs-number">1</span>, <span class="hljs-string">&#x27;chaser&#x27;</span>, <span class="hljs-string">&#x27;1999-04-08&#x27;</span>), (<span class="hljs-number">88</span>, <span class="hljs-number">88</span>, <span class="hljs-number">3</span>, <span class="hljs-string">&#x27;beater&#x27;</span>, <span class="hljs-string">&#x27;1991-07-08&#x27;</span>), (<span class="hljs-number">89</span>, <span class="hljs-number">89</span>, <span class="hljs-number">3</span>, <span class="hljs-string">&#x27;chaser&#x27;</span>, <span class="hljs-string">&#x27;1996-09-25&#x27;</span>), (<span class="hljs-number">90</span>, <span class="hljs-number">90</span>, <span class="hljs-number">1</span>, <span class="hljs-string">&#x27;keeper&#x27;</span>, <span class="hljs-string">&#x27;1993-01-04&#x27;</span>), (<span class="hljs-number">91</span>, <span class="hljs-number">91</span>, <span class="hljs-number">4</span>, <span class="hljs-string">&#x27;beater&#x27;</span>, <span class="hljs-string">&#x27;1993-11-04&#x27;</span>), (<span class="hljs-number">92</span>, <span class="hljs-number">92</span>, <span class="hljs-number">2</span>, <span class="hljs-string">&#x27;beater&#x27;</span>, <span class="hljs-string">&#x27;1997-12-14&#x27;</span>);
+</code></pre></div>
+<p>(pour rappel, le schéma des tables apparaît ci-dessous)</p>
+<p><img src="images/001-challenge.png" alt="" loading="lazy"></p>
+<p>Écris les requêtes suivantes, et poste-les avec les résultats en guise de solution :</p>
+<ol>
+<li>Retourne le nom des équipes et le nombre de joueurs par équipe, le tout classé par nombre de joueurs par équipe, de la plus nombreuse à la moins nombreuse.</li>
+<li>Retourne uniquement les noms des équipes complètes (ayant 14 joueurs ou plus, c’est-à- dire 7 joueurs et 7 remplaçants minimum), classés par ordre alphabétique.</li>
+<li>L’entraîneur des Gryffindor est superstitieux, son jour préféré est le lundi. Retourne la liste des joueurs de son équipe qui ont été enrôlés un lundi (il souhaite les faire jouer en priorité... si seulement il existait une <a href="https://sql.sh/fonctions/date-heure/dayofweek" target="_blank" rel="noopener noreferrer">fonction SQL pour ça</a>...), et classe les résultats par date d’enrôlement chronologique.</li>
+</ol>
+<h3>Critères de validation</h3>
+<ul>
+<li>La solution contient bien les 3 requêtes.</li>
+<li>Lorsque tu testes les requêtes (sur le jeu de données fourni), les résultats de chaque requête sont corrects (fais attention aux champs retournés et au tri des résultats pour qu’ils correspondent précisément aux critères demandés)</li>
+</ul>
+<ol>
+<li>Le nom des équipes et le nombre de joueurs par équipe, le tout classé par nombre de joueurs par équipe, de la plus nombreuse à la moins nombreuse :</li>
+</ol>
+<div class="bloc-code"><div class="bloc-code__langue">sql</div><pre><code class="hljs language-sql"><span class="hljs-keyword">select</span>
+  t.name, <span class="hljs-built_in">count</span>(<span class="hljs-operator">*</span>) <span class="hljs-keyword">as</span> players
+<span class="hljs-keyword">from</span>
+  team <span class="hljs-keyword">as</span> t
+<span class="hljs-keyword">join</span>
+  player <span class="hljs-keyword">as</span> p <span class="hljs-keyword">on</span> t.id <span class="hljs-operator">=</span> p.team_id
+<span class="hljs-keyword">group</span> <span class="hljs-keyword">by</span>
+  t.id
+<span class="hljs-keyword">order</span> <span class="hljs-keyword">by</span>
+  players <span class="hljs-keyword">desc</span>;
+
+<span class="hljs-operator">+</span><span class="hljs-comment">------------+---------+</span>
+<span class="hljs-operator">|</span> name       <span class="hljs-operator">|</span> players <span class="hljs-operator">|</span>
+<span class="hljs-operator">+</span><span class="hljs-comment">------------+---------+</span>
+<span class="hljs-operator">|</span> Gryffindor <span class="hljs-operator">|</span>      <span class="hljs-number">35</span> <span class="hljs-operator">|</span>
+<span class="hljs-operator">|</span> Slytherin  <span class="hljs-operator">|</span>      <span class="hljs-number">21</span> <span class="hljs-operator">|</span>
+<span class="hljs-operator">|</span> Ravenclaw  <span class="hljs-operator">|</span>      <span class="hljs-number">15</span> <span class="hljs-operator">|</span>
+<span class="hljs-operator">|</span> Hufflepuff <span class="hljs-operator">|</span>      <span class="hljs-number">12</span> <span class="hljs-operator">|</span>
+<span class="hljs-operator">+</span><span class="hljs-comment">------------+---------+</span>
+<span class="hljs-number">4</span> <span class="hljs-keyword">rows</span>
+</code></pre></div>
+<ol start="2">
+<li>Uniquement les noms des équipes complètes (ayant 14 joueurs ou plus, c’est-à- dire 7 joueurs et 7 remplaçants minimum), classés par ordre alphabétique :</li>
+</ol>
+<div class="bloc-code"><div class="bloc-code__langue">sql</div><pre><code class="hljs language-sql"><span class="hljs-keyword">select</span>
+  t.name, <span class="hljs-built_in">count</span>(<span class="hljs-operator">*</span>) <span class="hljs-keyword">as</span> players
+<span class="hljs-keyword">from</span>
+  team <span class="hljs-keyword">as</span> t
+<span class="hljs-keyword">join</span>
+  player <span class="hljs-keyword">as</span> p <span class="hljs-keyword">on</span> t.id <span class="hljs-operator">=</span> p.team_id
+<span class="hljs-keyword">group</span> <span class="hljs-keyword">by</span>
+  t.id
+<span class="hljs-keyword">having</span>
+  players <span class="hljs-operator">&gt;=</span> <span class="hljs-number">14</span>
+<span class="hljs-keyword">order</span> <span class="hljs-keyword">by</span>
+  t.name;
+
+<span class="hljs-operator">+</span><span class="hljs-comment">------------+---------+</span>
+<span class="hljs-operator">|</span> name       <span class="hljs-operator">|</span> players <span class="hljs-operator">|</span>
+<span class="hljs-operator">+</span><span class="hljs-comment">------------+---------+</span>
+<span class="hljs-operator">|</span> Gryffindor <span class="hljs-operator">|</span>      <span class="hljs-number">35</span> <span class="hljs-operator">|</span>
+<span class="hljs-operator">|</span> Ravenclaw  <span class="hljs-operator">|</span>      <span class="hljs-number">15</span> <span class="hljs-operator">|</span>
+<span class="hljs-operator">|</span> Slytherin  <span class="hljs-operator">|</span>      <span class="hljs-number">21</span> <span class="hljs-operator">|</span>
+<span class="hljs-operator">+</span><span class="hljs-comment">------------+---------+</span>
+<span class="hljs-number">3</span> <span class="hljs-keyword">rows</span>
+</code></pre></div>
+<ol start="3">
+<li>La liste des joueurs de Gryffindor qui ont été enrôlés un lundi, classés par date d’enrôlement chronologique :</li>
+</ol>
+<div class="bloc-code"><div class="bloc-code__langue">sql</div><pre><code class="hljs language-sql"><span class="hljs-keyword">select</span>
+  w.firstname, w.lastname, p.role, p.enrollment_date
+<span class="hljs-keyword">from</span>
+  wizard <span class="hljs-keyword">as</span> w
+<span class="hljs-keyword">join</span>
+  player <span class="hljs-keyword">as</span> p <span class="hljs-keyword">on</span> w.id <span class="hljs-operator">=</span> p.wizard_id
+<span class="hljs-keyword">join</span>
+  team <span class="hljs-keyword">as</span> t <span class="hljs-keyword">on</span> p.team_id <span class="hljs-operator">=</span> t.id
+<span class="hljs-keyword">where</span>
+  t.name <span class="hljs-operator">=</span> <span class="hljs-string">&#x27;Gryffindor&#x27;</span>
+  <span class="hljs-keyword">and</span> DAYOFWEEK(p.enrollment_date) <span class="hljs-operator">=</span> <span class="hljs-number">2</span>
+<span class="hljs-keyword">order</span> <span class="hljs-keyword">by</span>
+  p.enrollment_date;
+
+<span class="hljs-operator">+</span><span class="hljs-comment">-----------+------------+--------+-----------------+</span>
+<span class="hljs-operator">|</span> firstname <span class="hljs-operator">|</span> lastname   <span class="hljs-operator">|</span> role   <span class="hljs-operator">|</span> enrollment_date <span class="hljs-operator">|</span>
+<span class="hljs-operator">+</span><span class="hljs-comment">-----------+------------+--------+-----------------+</span>
+<span class="hljs-operator">|</span> George    <span class="hljs-operator">|</span> Weasley    <span class="hljs-operator">|</span> chaser <span class="hljs-operator">|</span> <span class="hljs-number">1991</span><span class="hljs-number">-08</span><span class="hljs-number">-26</span>      <span class="hljs-operator">|</span>
+<span class="hljs-operator">|</span> Alice     <span class="hljs-operator">|</span> Longbottom <span class="hljs-operator">|</span> beater <span class="hljs-operator">|</span> <span class="hljs-number">1992</span><span class="hljs-number">-02</span><span class="hljs-number">-17</span>      <span class="hljs-operator">|</span>
+<span class="hljs-operator">|</span> Cadogan   <span class="hljs-operator">|</span>            <span class="hljs-operator">|</span> keeper <span class="hljs-operator">|</span> <span class="hljs-number">1993</span><span class="hljs-number">-01</span><span class="hljs-number">-04</span>      <span class="hljs-operator">|</span>
+<span class="hljs-operator">|</span> Godric    <span class="hljs-operator">|</span> Gryffindor <span class="hljs-operator">|</span> seeker <span class="hljs-operator">|</span> <span class="hljs-number">1993</span><span class="hljs-number">-08</span><span class="hljs-number">-30</span>      <span class="hljs-operator">|</span>
+<span class="hljs-operator">|</span> Sirius    <span class="hljs-operator">|</span> Black      <span class="hljs-operator">|</span> beater <span class="hljs-operator">|</span> <span class="hljs-number">1994</span><span class="hljs-number">-01</span><span class="hljs-number">-10</span>      <span class="hljs-operator">|</span>
+<span class="hljs-operator">|</span> Aberforth <span class="hljs-operator">|</span> Dumbledore <span class="hljs-operator">|</span> keeper <span class="hljs-operator">|</span> <span class="hljs-number">1995</span><span class="hljs-number">-04</span><span class="hljs-number">-24</span>      <span class="hljs-operator">|</span>
+<span class="hljs-operator">|</span> Augusta   <span class="hljs-operator">|</span> Longbottom <span class="hljs-operator">|</span> chaser <span class="hljs-operator">|</span> <span class="hljs-number">1999</span><span class="hljs-number">-10</span><span class="hljs-number">-25</span>      <span class="hljs-operator">|</span>
+<span class="hljs-operator">+</span><span class="hljs-comment">-----------+------------+--------+-----------------+</span>
+<span class="hljs-number">7</span> <span class="hljs-keyword">rows</span>
+</code></pre></div>
+
+  </div>
+  <section class="ressources-quete">
+  <h2>Ressources partagées sur cette quête</h2>
+  <ul class="ressources-liste">
+    <li><a href="https://sql.sh/fonctions/date-heure/dayofweek" target="_blank" rel="noopener noreferrer">Pour la request 3</a><span class="ressources-liste__url">https://sql.sh/fonctions/date-heure/dayofweek</span></li>
+    <li><a href="https://sql.sh/cours/group-by" target="_blank" rel="noopener noreferrer">Pertinent et m'a fait percuter pour realiser le challenge !</a><span class="ressources-liste__url">https://sql.sh/cours/group-by</span></li>
+    <li><a href="https://fxjollois.github.io/cours-sql/" target="_blank" rel="noopener noreferrer">Cours et Exercices complets et concis, 3 jours complets et vous serez des rois de SQL -&gt; Correction sur son git : https://gist.github.com/fxjollois/9778791a5e65ace16f96cf2be37a35f3</a><span class="ressources-liste__url">https://fxjollois.github.io/cours-sql/</span></li>
+    <li><a href="https://www.youtube.com/watch?v=guJAF0NMHII" target="_blank" rel="noopener noreferrer">Explication du GROUP BY en vidéo !</a><span class="ressources-liste__url">https://www.youtube.com/watch?v=guJAF0NMHII</span></li>
+    <li><a href="https://stackoverflow.com/questions/6734276/how-to-combine-group-by-order-by-and-having" target="_blank" rel="noopener noreferrer">Intéressant pour la question 2 du challenge !</a><span class="ressources-liste__url">https://stackoverflow.com/questions/6734276/how-to-combine-group-by-order-by-and-having</span></li>
+    <li><a href="https://learnsql.fr/blog/la-fonction-sql-count-expliquee-avec-7-exemples" target="_blank" rel="noopener noreferrer">Utilisation du COUNT dans différents cas de figure, très pratique !</a><span class="ressources-liste__url">https://learnsql.fr/blog/la-fonction-sql-count-expliquee-avec-7-exemples</span></li>
+    <li><a href="http://e-ressources.univ-avignon.fr/sgbd-exemple/SQL/RequetteSELECT.pdf" target="_blank" rel="noopener noreferrer">Un petit pdf récapitulatif en lien avec la ressource précédente </a><span class="ressources-liste__url">http://e-ressources.univ-avignon.fr/sgbd-exemple/SQL/RequetteSELECT.pdf</span></li>
+    <li><a href="https://www.w3schools.com/sql/func_mysql_dayname.asp" target="_blank" rel="noopener noreferrer">Pour définir le jour de la semaine : fonction DAYNAME(date)</a><span class="ressources-liste__url">https://www.w3schools.com/sql/func_mysql_dayname.asp</span></li>
+    <li><a href="https://www.youtube.com/user/temoinderien" target="_blank" rel="noopener noreferrer">Trés bonne explication de la façon de construire une requête complexe sql !</a><span class="ressources-liste__url">https://www.youtube.com/user/temoinderien</span></li>
+    <li><a href="https://www.youtube.com/watch?v=umB_0eDOrp8" target="_blank" rel="noopener noreferrer">Au-delà de la vidéo, image vraiment très visuelle des différents types de jointures. A voir !</a><span class="ressources-liste__url">https://www.youtube.com/watch?v=umB_0eDOrp8</span></li>
+  </ul>
+</section>
+</article>
+
+<nav class="nav-quete">
+  <a class="nav-quete__lien nav-quete__lien--prec" href="../../base-de-donnees/008-05-les-jointures/index.html">
+           <span class="nav-quete__sens">← Précédent</span>
+           <span class="nav-quete__titre">05 - Les jointures</span>
+         </a>
+  <span class="nav-quete__lien nav-quete__lien--vide"></span>
+</nav>
+</main>
+<footer class="pied">
+  <p>Archive personnelle des cours suivis à la Wild Code School. Copie hors ligne à usage strictement privé.</p>
+</footer>
+
+<script src="../../assets/copie-code.js"></script>
+<script src="../../assets/progression.js"></script>
+</body>
+</html>

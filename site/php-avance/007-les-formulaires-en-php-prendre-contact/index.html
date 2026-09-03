@@ -1,0 +1,170 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Les formulaires en PHP : Prendre contact — Archives WCS</title>
+<link rel="stylesheet" href="../../assets/style.css">
+</head>
+<body style="--teinte:#745089">
+<header class="entete">
+  <a class="entete__marque" href="../../index.html">Archives Wild Code School</a>
+</header>
+<main class="contenu">
+<nav class="ariane"><a href="../../index.html">Accueil</a><span class="ariane__sep">›</span><a href="../../php-avance/index.html">PHP Avancé</a><span class="ariane__sep">›</span><span aria-current="page">Les formulaires en PHP : Prendre contact</span></nav>
+
+<article class="quete">
+  <header class="quete__entete">
+    <a class="pastille pastille--teintee" href="../../php-avance/index.html">PHP Avancé</a>
+    <h1>Les formulaires en PHP : Prendre contact</h1>
+    <p class="quete__meta">Quête 7 sur 11 · 2 images archivées</p>
+  </header>
+  <div class="cours">
+<div class="bloc-code"><div class="bloc-code__langue">title-book</div><pre><code class="hljs language-title-book"> Introduction
+</code></pre></div>
+<p>Tu commences à mieux comprendre les rudiments de PHP. Tu manipules maintenant les variables, les tableaux et les structures de contrôle.
+Cette quête va te permettre de mettre en pratique ces notions sur un véritable cas d'usage en projet web : <strong>les formulaires</strong>.
+Tu la trouveras sans doute assez technique, mais sache que l'implémentation d'un formulaire est un point essentiel qu'un développeur web doit apprendre à maîtriser.</p>
+<h2>🤓 À la fin de cette quête, tu seras en mesure de :</h2>
+<ul>
+<li>✅ Mettre en place un formulaire de contact</li>
+<li>✅ Découvrir et mettre en application les notions suivantes :
+<ul>
+<li>Structurer un <strong>formulaire HTML</strong></li>
+<li><strong>Récupérer les données</strong> de l'utilisateur</li>
+<li>Mettre en place des <strong>validations côté client et côté serveur</strong></li>
+<li><strong>Afficher les erreurs</strong> le cas échéant</li>
+<li>Effectuer une <strong>redirection après traitement</strong></li>
+</ul>
+</li>
+</ul>
+<h2>Sommaire</h2>
+<h2>Nouvelle mission</h2>
+<p>Dans la continuité de la précédente quête orientée HTML/CSS citée ci-dessous, celle-ci t'est également proposée sous forme de « brief feature » pour être au plus proche des missions confiées à un développeur.</p>
+<div class="renvois"><div class="renvois__titre">Quêtes liées</div><ul><li><a href="../../developpement-web/003-html-css-1-bienvenue-a-bord/index.html">Quête 2999</a></li></ul></div>
+<h2>Le brief</h2>
+<div class="encadre encadre--note encadre--story"><div class="encadre__corps"><p>Hello :var[user.firstname] 👋</p>
+<p>J'espère que tu vas bien 🙂.</p>
+<p>Tu te souviens du mini-projet pour lequel tu as fait une intégration HTML/CSS ?
+Le client était vraiment content du travail effectué et vient de nous demander une évolution : la mise en place d'un <strong>formulaire de contact</strong>.</p>
+<p>Un membre de l'équipe a tout juste eu le temps de commencer le travail, mais à peine le dépôt Github mis en place et quelques fichiers réorganisés, il a été appelé en urgence sur un autre projet. Est-ce que tu pourrais prendre le relai s'il te plaît ?</p>
+<p>Voici ce qu'il avait prévu et qui a été validé en réu client :</p>
+<ul>
+<li>mettre en place le formulaire sur la page d'accueil avec les champs suivants :
+<ul>
+<li><strong>Nom</strong> (obligatoire)</li>
+<li><strong>Email</strong> (obligatoire)</li>
+<li><strong>Sujet</strong> du message (obligatoire) sélectionnable dans une liste déroulante. Nous n'avons pas encore la liste précise mais tu peux d'ores et déjà indiquer ces quelques choix : « <em>Prendre rendez-vous, inscription à la newsletter, réclamation, demander un devis…</em>) ».</li>
+<li><strong>Message</strong> (facultatif)</li>
+</ul>
+</li>
+<li>effectuer un minimum de vérifications avant la soumission et surtout après, côté serveur,</li>
+<li>afficher les erreurs sur la page d'accueil s'il y en a,</li>
+<li>rediriger l'utilisateur vers une autre page si tout s'est bien passé. Un message générique de remerciement y sera affiché.</li>
+</ul>
+<p>Inutile de t'occuper du traitement de la donnée pour le moment car on attend encore confirmation du client pour savoir s'il veut enregistrer les messages en base de données ou envoyer directement un email. On saura ça dans la semaine, donc autant prendre de l'avance et mettre en place dès maintenant tout ce que je viens de lister 😉.</p>
+<p>Dernière chose, une maquette a été faite par l'équipe design pour cette fonctionnalité.
+La voici :</p>
+<p><img src="images/001-le-brief.png" alt="" loading="lazy"></p>
+<p>Essaie de faire au mieux pour la respecter mais garde en tête que le plus important est de mettre en place les autres points.</p>
+<p>Et enfin, voici le lien du dépôt Github déjà préparé : <a href="https://github.com/WildCodeSchool/quest-material-php-form-welcome-on-board" target="_blank" rel="noopener noreferrer">https://github.com/WildCodeSchool/quest-material-php-form-welcome-on-board</a>.
+Des informations sont indiquées dans le README pour continuer le travail.</p>
+<p>Je reste disponible si besoin.</p>
+<p>Bon courage à toi, merci et bonne journée 🌞</p>
+</div></div>
+<h2>Le debrief</h2>
+<p>Eh bien, on a affaire ici à un cas classique d'intégration de formulaire.
+PHP va s'avérer très performant pour accomplir cette mission.
+Voici quelques conseils pour t'y atteler.</p>
+<h3>Préparer son environnement de travail</h3>
+<p>Cette fois-ci, du code est fourni. Il faut déjà en prendre connaissance.</p>
+<ol>
+<li>Clone le dépôt qui est indiqué et ouvre une nouvelle fenêtre de ton IDE en racine de celui-ci.</li>
+<li>Il y a un fichier <em><strong>README</strong></em> qui explique comment lancer le projet ainsi que la structure des fichiers CSS qui a été adoptée.</li>
+<li>Tu trouveras également les fichiers de la maquette dans le dossier <code>/docs</code> si besoin.</li>
+</ol>
+<p>Passons à la réalisation.</p>
+<h3>Mise en place du formulaire</h3>
+<p>La première étape va consister à poser la structure HTML du formulaire.
+Si besoin, consulte la quête ci-dessous qui te donnera les clés ainsi que des ressources complémentaires pour t'aider.</p>
+<div class="renvois"><div class="renvois__titre">Quêtes liées</div><ul><li><a href="../../php-avance/001-1-les-formulaires-en-php-structure-html/index.html">Quête 2943</a></li></ul></div>
+<p>Profite de cette étape pour mettre un peu de CSS afin de te <strong>rapprocher au mieux de la maquette</strong>.</p>
+<h3>Récupération des données</h3>
+<p>Poursuis ta mission en apprenant à récupérer les données côté serveur.
+La quête suivante t'expliquera les subtilités des méthodes HTTP <em><strong>GET</strong></em> et <em><strong>POST</strong></em> et comment afficher les données récupérées.</p>
+<div class="renvois"><div class="renvois__titre">Quêtes liées</div><ul><li><a href="../../php-avance/002-2-les-formulaires-en-php-recuperation-des-donnees/index.html">Quête 2945</a></li></ul></div>
+<p>Dès cette étape, tu vas avoir besoin d'intégrer du PHP dans du HTML.
+Voici une quête qui te donnera quelques conseilles et astuces.</p>
+<div class="renvois"><div class="renvois__titre">Quêtes liées</div><ul><li><a href="../../php/014-integration-de-php-et-html/index.html">Quête 2985</a></li></ul></div>
+<h3>Vérification et validation des données</h3>
+<p>Dernière étape très importante : le contrôle et la validation des données.
+La quête suivante reprend pas à pas les points importants à respecter avant et après la soumission d'un formulaire pour contrôler la saisie de l'utilisateur. Prends le temps nécessaire pour bien cerner les enjeux côté front-end et côté back-end.</p>
+<div class="renvois"><div class="renvois__titre">Quêtes liées</div><ul><li><a href="../../php-avance/003-3-les-formulaires-en-php-verification-et-securisation-des/index.html">Quête 2946</a></li></ul></div>
+<h2>Challenge</h2>
+<p>Lorsque tu penses avoir terminé cette mission, publie ton code sur ton compte Github et colle le lien en guise de solution au challenge.</p>
+<div class="encadre encadre--warning"><div class="encadre__titre">Attention</div><div class="encadre__corps"><p>Le dossier que tu as cloné étant de fait déjà relié à un autre dépôt, il va falloir ajouter une référence de répertoire distant.</p>
+<ol>
+<li>
+<p>Crée un nouveau dépôt vide <em><strong>quest-php-form-welcome-on-board</strong></em> sur ton compte Github en prenant soin de ne pas créer de fichier <code>README</code> ni de <code>.gitignore</code>
+<img src="images/002-challenge.png" alt="" loading="lazy"></p>
+</li>
+<li>
+<p>Récupère l'adresse SSH du dépôt que tu viens de créer et entre la commande suivante dans ton terminal en racine du projet :</p>
+</li>
+</ol>
+<div class="bloc-code"><div class="bloc-code__langue">bash</div><pre><code class="hljs language-bash">git remote add challenge &lt;adresse_ssh_du_depot&gt;
+</code></pre></div>
+<p>⚠️ remplace <strong>&lt;adresse_ssh_du_depot&gt;</strong> par la bonne valeur 😉.</p>
+<ol start="3">
+<li>Vérifie que ton projet est à présent correctement relié avec la commande :</li>
+</ol>
+<div class="bloc-code"><div class="bloc-code__langue">bash</div><pre><code class="hljs language-bash">git remote -v
+</code></pre></div>
+<p>Tu es censé voir quelque chose comme ceci :</p>
+<div class="bloc-code"><div class="bloc-code__langue">bash</div><pre><code class="hljs language-bash">challenge    git@github.com:&lt;ton_nom_utilisateur&gt;/quest-php-form-welcome-on-board.git (fetch)
+challenge    git@github.com:&lt;ton_nom_utilisateur&gt;/quest-php-form-welcome-on-board.git (push)
+origin  git@github.com:WildCodeSchool/quest-material-php-form-welcome-on-board.git (fetch)
+origin  git@github.com:WildCodeSchool/quest-material-php-form-welcome-on-board.git (push)
+</code></pre></div>
+<ol start="4">
+<li>Fais un commit, puis un push sur ton dépôt :</li>
+</ol>
+<div class="bloc-code"><div class="bloc-code__langue">bash</div><pre><code class="hljs language-bash">git push challenge main -u
+</code></pre></div>
+<p><strong>Si tu es complètement perdu à cette étape, ne perds pas trop de temps et demande conseil à tes collègues</strong>.</p>
+</div></div>
+<h3>Critères de validation</h3>
+<ul>
+<li>[ ] Le formulaire est correctement structuré avec les balises et attributs HTML appropriés pour les champs obligatoires.</li>
+<li>[ ] Les vérifications et validations sont effectuées côté serveur.</li>
+<li>[ ] S'il y a des erreurs, elles sont affichées à l'utilisateur au-dessus du formulaire, comme l'indique la maquette.</li>
+<li>[ ] S'il n'y a pas d'erreurs, l'utilisateur est redirigé vers une page qui affiche un message de remerciement.</li>
+<li>[ ] Un minimum de CSS a été appliqué aux champs du formulaire pour un rendu agréable et au plus proche de la maquette.</li>
+</ul>
+<p>==$==
+Une solution possible est disponible sur <a href="https://github.com/WildCodeSchool/quest-php-form-welcome-on-board" target="_blank" rel="noopener noreferrer">ce dépôt</a> sur la branche <em><strong>solution</strong></em>.
+Tu peux accéder directement au <a href="https://github.com/WildCodeSchool/quest-php-form-welcome-on-board/commit/f7de9d4c3e425c0343d4d7fca6b8fbfab8f8b312" target="_blank" rel="noopener noreferrer">commit de solution</a> et voir les modifications en un coup d'œil.</p>
+
+  </div>
+  
+</article>
+
+<nav class="nav-quete">
+  <a class="nav-quete__lien nav-quete__lien--prec" href="../../php-avance/006-composer-3-package-management/index.html">
+           <span class="nav-quete__sens">← Précédent</span>
+           <span class="nav-quete__titre">Composer - 3. Package Management</span>
+         </a>
+  <a class="nav-quete__lien nav-quete__lien--suiv" href="../../php-avance/008-pdo-un-ami-pour-la-vie/index.html">
+           <span class="nav-quete__sens">Suivant →</span>
+           <span class="nav-quete__titre">PDO, un ami pour la vie.</span>
+         </a>
+</nav>
+</main>
+<footer class="pied">
+  <p>Archive personnelle des cours suivis à la Wild Code School. Copie hors ligne à usage strictement privé.</p>
+</footer>
+
+<script src="../../assets/copie-code.js"></script>
+<script src="../../assets/progression.js"></script>
+</body>
+</html>

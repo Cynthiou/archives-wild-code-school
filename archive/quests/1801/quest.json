@@ -1,0 +1,28 @@
+{
+  "id": 1801,
+  "titre": "✏️ Exercise 4 - Conditions",
+  "titres": {
+    "en": "✏️ Exercise 4 - Conditions"
+  },
+  "theme": {
+    "id": 25,
+    "slug": "php",
+    "nom": "PHP"
+  },
+  "creeLe": "2021-09-07T15:27:14.029+02:00",
+  "difficulte": "1",
+  "dureeEstimee": null,
+  "modeValidation": "self",
+  "chapitres": [
+    {
+      "id": 4415,
+      "type": "content",
+      "langue": "en",
+      "majLe": "2021-09-07T15:27:14.031+02:00",
+      "caracteres": 2173
+    }
+  ],
+  "ressources": [],
+  "urlOrigine": "https://odyssey.wildcodeschool.com/quests/1801",
+  "archiveLe": "2026-09-02T23:21:45.624Z"
+}

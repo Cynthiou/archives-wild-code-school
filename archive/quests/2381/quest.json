@@ -1,0 +1,35 @@
+{
+  "id": 2381,
+  "titre": "👩‍🏫 React Basics 10 - Pokédex - Aller plus loin avec les événements",
+  "titres": {
+    "fr": "👩‍🏫 React Basics 10 - Pokédex - Aller plus loin avec les événements"
+  },
+  "theme": {
+    "id": 23,
+    "slug": "react",
+    "nom": "React - Bases"
+  },
+  "creeLe": "2023-01-03T14:20:47.879+01:00",
+  "difficulte": "",
+  "dureeEstimee": null,
+  "modeValidation": "student",
+  "chapitres": [
+    {
+      "id": 12468,
+      "type": "content",
+      "langue": "fr",
+      "majLe": "2024-10-28T20:32:19.006+01:00",
+      "caracteres": 4402
+    },
+    {
+      "id": 17111,
+      "type": "solution",
+      "langue": "fr",
+      "majLe": "2025-03-12T11:59:25.818+01:00",
+      "caracteres": 2120
+    }
+  ],
+  "ressources": [],
+  "urlOrigine": "https://odyssey.wildcodeschool.com/quests/2381",
+  "archiveLe": "2026-09-02T20:55:10.027Z"
+}

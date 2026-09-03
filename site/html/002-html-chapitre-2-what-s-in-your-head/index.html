@@ -1,0 +1,242 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>👩‍🏫 HTML - Chapitre 2 | What's in your &lt;head&gt; ? — Archives WCS</title>
+<link rel="stylesheet" href="../../assets/style.css">
+</head>
+<body style="--teinte:#a03737">
+<header class="entete">
+  <a class="entete__marque" href="../../index.html">Archives Wild Code School</a>
+</header>
+<main class="contenu">
+<nav class="ariane"><a href="../../index.html">Accueil</a><span class="ariane__sep">›</span><a href="../../html/index.html">HTML</a><span class="ariane__sep">›</span><span aria-current="page">👩‍🏫 HTML - Chapitre 2 | What's in your &lt;head&gt; ?</span></nav>
+
+<article class="quete">
+  <header class="quete__entete">
+    <a class="pastille pastille--teintee" href="../../html/index.html">HTML</a>
+    <h1>👩‍🏫 HTML - Chapitre 2 | What's in your &lt;head&gt; ?</h1>
+    <p class="quete__meta">Quête 2 sur 9 · 3 images archivées</p>
+  </header>
+  <div class="cours">
+<h2>Objectifs</h2>
+<ul>
+<li>Utiliser au mieux la balise head.</li>
+<li>Comprendre à quoi servent les métadonnées.</li>
+</ul>
+<h2>Pré-requis</h2>
+<ol class="etapes"><li class="etape"><div class="etape__puce">1</div><div class="etape__contenu"><h4 class="etape__titre">Valider la quête suivante</h4><div class="renvois"><div class="renvois__titre">Quêtes liées</div><ul><li><a href="../../html/001-html-chapitre-1-introduction-au-html/index.html">Quête 2113</a></li></ul></div>
+</div></li><li class="etape"><div class="etape__puce">2</div><div class="etape__contenu"><h4 class="etape__titre">Connaitre la structure de base d'un document HTML</h4><div class="bloc-code"><div class="bloc-code__langue">html</div><pre><code class="hljs language-html"><span class="hljs-meta">&lt;!DOCTYPE <span class="hljs-keyword">html</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">html</span> <span class="hljs-attr">lang</span>=<span class="hljs-string">&quot;fr&quot;</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">head</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">meta</span> <span class="hljs-attr">charset</span>=<span class="hljs-string">&quot;UTF-8&quot;</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">title</span>&gt;</span>My super website<span class="hljs-tag">&lt;/<span class="hljs-name">title</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">head</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">body</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">p</span>&gt;</span>Hello World<span class="hljs-tag">&lt;/<span class="hljs-name">p</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">body</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">html</span>&gt;</span>
+</code></pre></div>
+</div></li></ol>
+<h2>Introduction</h2>
+<p>Précédemment, tu as vu les principes de bases du langage HTML.</p>
+<p>La balise <code>&lt;head&gt;</code> est la première partie d'un document : c'est la partie de la page qui n'est pas &quot;visible&quot;. Pourtant la balise <code>&lt;head&gt;</code> contient de nombreuses métadonnées qui sont très utiles au navigateur pour comprendre le contexte d'une page web.</p>
+<h2>Sommaire</h2>
+<h2>Dans la tête ?</h2>
+<p>La balise <code>&lt;head&gt;</code> contiens des <strong>informations utiles</strong> à notre <strong>navigateur</strong>.</p>
+<p>Elle est située au début de notre document dans la balise <code>&lt;html&gt;</code> et avant la balise <code>&lt;body&gt;</code>.</p>
+<div class="bloc-code"><div class="bloc-code__langue">html</div><pre><code class="hljs language-html"><span class="hljs-meta">&lt;!DOCTYPE <span class="hljs-keyword">html</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">html</span> <span class="hljs-attr">lang</span>=<span class="hljs-string">&quot;fr&quot;</span>&gt;</span>
+
+<span class="hljs-tag">&lt;<span class="hljs-name">head</span>&gt;</span>
+    <span class="hljs-comment">&lt;!-- Head of the document --&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">head</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">body</span>&gt;</span>
+    ...
+<span class="hljs-tag">&lt;/<span class="hljs-name">body</span>&gt;</span>
+
+<span class="hljs-tag">&lt;/<span class="hljs-name">html</span>&gt;</span>
+</code></pre></div>
+<p>Voyons en détail ce que doit contenir cette balise <code>&lt;head&gt;</code>.</p>
+<h3>Un titre</h3>
+<p>La première chose que doit contenir ta balise <code>&lt;head&gt;</code>, c'est <strong>un titre</strong> avec la balise <code>&lt;title&gt;</code>.</p>
+<p>Le titre de la page <strong>ne s'affichera pas directement</strong> mais il sera visible sur les onglets et ce sera également le titre de notre page si un utilisateur met la page en favori.</p>
+<p><img src="images/001-capture-d-ecran-d-un-navigateur-avec-un-onglet.jpg" alt="Capture d'écran d'un navigateur avec un onglet entouré avec le titre de la page" loading="lazy"><em>Source:</em> <a href="https://www.myprograming.com/html-head-tag/" target="_blank" rel="noopener noreferrer">https://www.myprograming.com/html-head-tag/</a></p>
+<p>Ce titre sera aussi celui utilisé par les moteurs de recherches lorsqu'ils indexeront ton site internet, d'où l'importance de toujours <strong>être précis</strong> lorsque tu ajoutes un titre.</p>
+<p>La balise titre est un élément important du :def[SEO]{value=&quot;Search Engine Optimisation&quot;}, c'est-à-dire de l'optimisation de ton site internet pour les moteurs de recherches.</p>
+<p>Voici quelques conseils pour un titre SEO et user-friendly :</p>
+<ul>
+<li>
+<p>Attention à la <strong>longueur</strong> du titre ! Un bon titre doit être <strong>court, maximum 60 caractères</strong>.</p>
+</li>
+<li>
+<p>Éviter de TOUT METTRE EN MAJUSCULE.</p>
+</li>
+<li>
+<p>Chaque page doit avoir un titre <strong>unique</strong> afin d'améliorer leur indexation.</p>
+</li>
+<li>
+<p>Utilise des caractères spéciaux comme <code>|</code> ou <code>-</code> pour séparer les éléments et faciliter la lecture : <code>Mot clef principal | Deuxième mot clef - Marque</code></p>
+</li>
+</ul>
+<p>Voici quelques bons exemples de titre pour des pages HTML (note que ton <code>&lt;head&gt;</code> ne doit contenir qu'une seule balise <code>&lt;title&gt;</code>) :</p>
+<div class="bloc-code"><div class="bloc-code__langue">html</div><pre><code class="hljs language-html"><span class="hljs-tag">&lt;<span class="hljs-name">title</span>&gt;</span>Découvrez mon portfolio | Webdesigner Freelance - Bob Smith<span class="hljs-tag">&lt;/<span class="hljs-name">title</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">title</span>&gt;</span>Our products \| Delicious refreshing Juice - Minute Maid<span class="hljs-tag">&lt;/<span class="hljs-name">title</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">title</span>&gt;</span>Learn HTML5 \| Best courses - Wild Code School<span class="hljs-tag">&lt;/<span class="hljs-name">title</span>&gt;</span>
+</code></pre></div>
+<div class="encadre encadre--note encadre--arrow"><div class="encadre__corps"><p><strong>🎯 À toi de jouer !</strong></p>
+<p>Effectue quelques recherches sur google et regarde comment sont structurés les titres des pages web en fonction de tes recherches.</p>
+<p>Note les titres qui attirent le plus ton oeil.</p>
+<p>Ensuite, change le titre des pages que tu as créées dans le chapitre précédent en respectant les principes que tu as pu observer.</p>
+<p>Note en commentaire la raison pour laquelle tu as choisi chacun des titres.</p>
+</div></div>
+<h3>Les métadonnées</h3>
+<p>La balise <code>&lt;meta&gt;</code> permet de transmettre des <strong>informations pour le navigateur</strong>.</p>
+<p>Par exemple, utilisée avec l'attribut <code>charset</code> que nous avons vu dans la quête précédente, il permet de <strong>définir le jeu de caractères</strong> (lettres et symboles) que tu veux utiliser pour ta page web.</p>
+<p>Le jeu de caractères <code>utf-8</code> permet d'utiliser tous les caractères de n'importe quelle langue.</p>
+<div class="bloc-code"><div class="bloc-code__langue">html</div><pre><code class="hljs language-html"><span class="hljs-tag">&lt;<span class="hljs-name">meta</span> <span class="hljs-attr">charset</span>=<span class="hljs-string">&quot;UTF-8&quot;</span>&gt;</span>
+</code></pre></div>
+<div class="encadre encadre--info"><div class="encadre__titre">Info</div><div class="encadre__corps"><p>En réalité, si tu oublies de spécifier le jeu de caractères sur ton document HTML, la plupart des navigateurs utilisent automatiquement l'encodage des caractères utf-8 par défaut. Cependant, ajouter cette balise permet de s'assurer qu'avec tous les navigateurs et dans toutes les situations, ta page s'affichera avec le bon encodage de caractères.</p>
+</div></div>
+<p>Tu peux également intégrer le <strong>nom de l'auteur</strong> d'une page web ainsi qu'une <strong>description</strong> à l'aide de la balise <code>&lt;meta&gt;</code> et de l'attribut <code>name</code>.</p>
+<p>Ajouter le nom de l'auteur peut-être utile pour certains systèmes de gestion de contenus qui utilisent cette information.</p>
+<div class="bloc-code"><div class="bloc-code__langue">html</div><pre><code class="hljs language-html"><span class="hljs-tag">&lt;<span class="hljs-name">meta</span> <span class="hljs-attr">name</span>=<span class="hljs-string">&quot;author&quot;</span> <span class="hljs-attr">content</span>=<span class="hljs-string">&quot;Bob Smith&quot;</span>&gt;</span>
+</code></pre></div>
+<p>La <strong>description</strong> est entre autres utilisée par les moteurs de recherches lorsqu'ils affichent un résultat avec ta page :</p>
+<p><img src="images/002-capture-d-ecran-d-un-resultat-de-recherche.webp" alt="Capture d'écran d'un résultat de recherche google avec la description entouré en rouge" loading="lazy"></p>
+<div class="bloc-code"><div class="bloc-code__langue">html</div><pre><code class="hljs language-html"><span class="hljs-tag">&lt;<span class="hljs-name">meta</span> <span class="hljs-attr">name</span>=<span class="hljs-string">&quot;description&quot;</span> <span class="hljs-attr">content</span>=<span class="hljs-string">&quot;Webdesigner, graphiste et developpeur frontend freelance, je désigne et développe des applications web innovantes et créatives !&quot;</span>&gt;</span>
+</code></pre></div>
+<div class="encadre encadre--note encadre--arrow"><div class="encadre__corps"><p><strong>🎯 À toi de jouer !</strong></p>
+<p>Ajoute les métadonnées pour l'encodage des caractères (utf-8), l'auteur et la description de ta page.</p>
+</div></div>
+<h3>La favicône</h3>
+<p>Une favicône est une <strong>icône utilisée par le navigateur pour représenter le site web</strong>. Bien souvent,  c'est une déclinaison du logo spécifiquement crée pour cette utilisation.</p>
+<p><img src="images/003-capture-d-ecran-de-la-fenetre-du-navigateur.jpg" alt="Capture d'écran de la fenêtre du navigateur avec deux onglets et une favicône entouré sur chaque onglet" loading="lazy"></p>
+<p>Pour utiliser une favicône, tu dois créer une image au format <strong><code>.ico</code></strong>  dont la taille est de <strong>16x16.</strong></p>
+<p>Pour convertir un PNG au format ico, tu peux utiliser un convertisseur en ligne comme <a href="https://www.convertico.com/" target="_blank" rel="noopener noreferrer">convertico</a>.</p>
+<p>Ensuite, place la favicône à la racine de ton dossier de travail, puis ajoute la balise <code>&lt;link&gt;</code> avec 3 attributs :</p>
+<ul>
+<li><code>rel</code> qui définit le type d’élément avec la valeur <code>shortcut icon</code></li>
+<li><code>href</code> qui spécifie l'emplacement de la favicône</li>
+<li><code>type</code> qui spécifie le type du fichier avec la valeur <code>image/x-icon</code></li>
+</ul>
+<div class="bloc-code"><div class="bloc-code__langue">html</div><pre><code class="hljs language-html"><span class="hljs-tag">&lt;<span class="hljs-name">link</span> <span class="hljs-attr">rel</span>=<span class="hljs-string">&quot;shortcut icon&quot;</span> <span class="hljs-attr">href</span>=<span class="hljs-string">&quot;favicon.ico&quot;</span> <span class="hljs-attr">type</span>=<span class="hljs-string">&quot;image/x-icon&quot;</span>&gt;</span>
+</code></pre></div>
+<p>Nous verrons plus tard que la balise <code>&lt;link&gt;</code> peut-être utilisée pour lier d'autres éléments comme des feuilles de style par exemple.</p>
+<div class="encadre encadre--note encadre--arrow"><div class="encadre__corps"><p><strong>🎯 À toi de jouer !</strong></p>
+<p>Ajoute une favicône dans ton dossier et ajoute la balise sur toutes les pages de ton projet.</p>
+</div></div>
+<h2>Récapitulatif</h2>
+<ul>
+<li>
+<p>La balise <code>&lt;head&gt;</code> contient de nombreuses métadonnées utiles pour le navigateur.</p>
+</li>
+<li>
+<p>Ajouter un titre à sa page HTML est très important, tant pour l'expérience utilisateur que pour améliorer le SEO. Le titre doit être clair, impactant et différent pour chaque page du site web.</p>
+</li>
+<li>
+<p>La balise <code>&lt;meta&gt;</code> permet d'ajouter des métadonnées, utiles également pour les moteurs de recherches.</p>
+</li>
+<li>
+<p>La favicône est une petite icône qui s'affiche sur le navigateur, il est important de l'ajouter à l'aide de la balise <code>&lt;link&gt;</code></p>
+</li>
+</ul>
+<h2>Challenge</h2>
+<p>Mets en forme le travail que tu as réalisé durant cette quête et compare le résultat avec la solution qui est proposée !</p>
+<h3>Critères de validation</h3>
+<ul>
+<li>[ ] Les pages contiennent un titre clair, respectant les principes évoqués dans la quête ainsi qu'un commentaire expliquant le choix réalisé.</li>
+<li>[ ] Toutes les balises <code>&lt;meta&gt;</code> sont présentes</li>
+<li>[ ] La favicône s'affiche bien</li>
+</ul>
+<details class="solution"><summary>Voir la solution</summary><div class="solution__corps"><h1>Pour le fichier index.html:</h1>
+<div class="bloc-code"><div class="bloc-code__langue">html</div><pre><code class="hljs language-html"><span class="hljs-meta">&lt;!DOCTYPE <span class="hljs-keyword">html</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">html</span> <span class="hljs-attr">lang</span>=<span class="hljs-string">&quot;fr&quot;</span>&gt;</span>
+
+<span class="hljs-tag">&lt;<span class="hljs-name">head</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">title</span>&gt;</span>Bienvenue sur mon site internet | Bob Smith Webdesigner<span class="hljs-tag">&lt;/<span class="hljs-name">title</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">link</span> <span class="hljs-attr">rel</span>=<span class="hljs-string">&quot;shortcut icon&quot;</span> <span class="hljs-attr">href</span>=<span class="hljs-string">&quot;favicon.ico&quot;</span> <span class="hljs-attr">type</span>=<span class="hljs-string">&quot;image/x-icon&quot;</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">meta</span> <span class="hljs-attr">name</span>=<span class="hljs-string">&quot;author&quot;</span> <span class="hljs-attr">content</span>=<span class="hljs-string">&quot;Bob Smith&quot;</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">meta</span> <span class="hljs-attr">name</span>=<span class="hljs-string">&quot;description&quot;</span>
+        <span class="hljs-attr">content</span>=<span class="hljs-string">&quot;Webdesigner, graphiste et developpeur frontend freelance, je désigne et développe des applications web innovantes et créatives !&quot;</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">head</span>&gt;</span>
+
+<span class="hljs-tag">&lt;<span class="hljs-name">body</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">h1</span>&gt;</span>Hello world!<span class="hljs-tag">&lt;/<span class="hljs-name">h1</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">h2</span>&gt;</span>Welcome here<span class="hljs-tag">&lt;/<span class="hljs-name">h2</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">p</span>&gt;</span>Bienvenue sur mon <span class="hljs-tag">&lt;<span class="hljs-name">strong</span>&gt;</span>incroyable<span class="hljs-tag">&lt;/<span class="hljs-name">strong</span>&gt;</span> site internet!<span class="hljs-tag">&lt;/<span class="hljs-name">p</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">p</span>&gt;</span>Je m&#x27;appelle Bob<span class="hljs-tag">&lt;/<span class="hljs-name">p</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">img</span> <span class="hljs-attr">src</span>=<span class="hljs-string">&quot;https://placekitten.com/200/287&quot;</span> <span class="hljs-attr">alt</span>=<span class="hljs-string">&quot;A Cute cat&quot;</span> <span class="hljs-attr">width</span>=<span class="hljs-string">&quot;300 px&quot;</span> /&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">button</span> <span class="hljs-attr">disabled</span>=<span class="hljs-string">&quot;true&quot;</span>&gt;</span>Click here<span class="hljs-tag">&lt;/<span class="hljs-name">button</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">a</span> <span class="hljs-attr">href</span>=<span class="hljs-string">&quot;about.html&quot;</span>&gt;</span>À propos de moi<span class="hljs-tag">&lt;/<span class="hljs-name">a</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">body</span>&gt;</span>
+
+<span class="hljs-tag">&lt;/<span class="hljs-name">html</span>&gt;</span>
+
+</code></pre></div>
+<h1>Pour le fichier about.html:</h1>
+<div class="bloc-code"><div class="bloc-code__langue">html</div><pre><code class="hljs language-html"><span class="hljs-meta">&lt;!DOCTYPE <span class="hljs-keyword">html</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">html</span> <span class="hljs-attr">lang</span>=<span class="hljs-string">&quot;fr&quot;</span>&gt;</span>
+
+<span class="hljs-tag">&lt;<span class="hljs-name">head</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">title</span>&gt;</span>Découvrez-en plus sur moi | Bob Smith Webdesigner<span class="hljs-tag">&lt;/<span class="hljs-name">title</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">link</span> <span class="hljs-attr">rel</span>=<span class="hljs-string">&quot;shortcut icon&quot;</span> <span class="hljs-attr">href</span>=<span class="hljs-string">&quot;favicon.ico&quot;</span> <span class="hljs-attr">type</span>=<span class="hljs-string">&quot;image/x-icon&quot;</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">meta</span> <span class="hljs-attr">name</span>=<span class="hljs-string">&quot;author&quot;</span> <span class="hljs-attr">content</span>=<span class="hljs-string">&quot;Bob Smith&quot;</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">meta</span> <span class="hljs-attr">name</span>=<span class="hljs-string">&quot;description&quot;</span>
+            <span class="hljs-attr">content</span>=<span class="hljs-string">&quot;Webdesigner, graphiste et developpeur frontend freelance, je désigne et développe des  applications web innovantes et créatives !&quot;</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">head</span>&gt;</span>
+
+<span class="hljs-tag">&lt;<span class="hljs-name">body</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">h1</span>&gt;</span>A propos de moi:<span class="hljs-tag">&lt;/<span class="hljs-name">h1</span>&gt;</span>
+
+    <span class="hljs-tag">&lt;<span class="hljs-name">h2</span>&gt;</span>Mes skills :<span class="hljs-tag">&lt;/<span class="hljs-name">h2</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">ul</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">li</span>&gt;</span>HTML<span class="hljs-tag">&lt;/<span class="hljs-name">li</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">li</span>&gt;</span>Webdesign<span class="hljs-tag">&lt;/<span class="hljs-name">li</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">li</span>&gt;</span>Illustration<span class="hljs-tag">&lt;/<span class="hljs-name">li</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">li</span>&gt;</span>Piano<span class="hljs-tag">&lt;/<span class="hljs-name">li</span>&gt;</span>
+    <span class="hljs-tag">&lt;/<span class="hljs-name">ul</span>&gt;</span>
+
+    <span class="hljs-tag">&lt;<span class="hljs-name">h2</span>&gt;</span>Mes plats préférés<span class="hljs-tag">&lt;/<span class="hljs-name">h2</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">ol</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">li</span>&gt;</span>Pizza<span class="hljs-tag">&lt;/<span class="hljs-name">li</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">li</span>&gt;</span>Sushi<span class="hljs-tag">&lt;/<span class="hljs-name">li</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">li</span>&gt;</span>Burgers<span class="hljs-tag">&lt;/<span class="hljs-name">li</span>&gt;</span>
+    <span class="hljs-tag">&lt;/<span class="hljs-name">ol</span>&gt;</span>
+
+    <span class="hljs-tag">&lt;<span class="hljs-name">a</span> <span class="hljs-attr">href</span>=<span class="hljs-string">&quot;index.html&quot;</span>&gt;</span>Retourner à l&#x27;accueil<span class="hljs-tag">&lt;/<span class="hljs-name">a</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">body</span>&gt;</span>
+
+<span class="hljs-tag">&lt;/<span class="hljs-name">html</span>&gt;</span>
+</code></pre></div>
+</div></details>
+
+  </div>
+  <section class="ressources-quete">
+  <h2>Ressources partagées sur cette quête</h2>
+  <ul class="ressources-liste">
+    <li><a href="https://laconsole.dev/formations/html/balises-entete/" target="_blank" rel="noopener noreferrer">Une présentation sous un autre angle du contenu de la Balise &quot;head&quot;</a><span class="ressources-liste__url">https://laconsole.dev/formations/html/balises-entete/</span></li>
+  </ul>
+</section>
+</article>
+
+<nav class="nav-quete">
+  <a class="nav-quete__lien nav-quete__lien--prec" href="../../html/001-html-chapitre-1-introduction-au-html/index.html">
+           <span class="nav-quete__sens">← Précédent</span>
+           <span class="nav-quete__titre">👩‍🏫 HTML - Chapitre 1 | Introduction au HTML</span>
+         </a>
+  <a class="nav-quete__lien nav-quete__lien--suiv" href="../../html/003-html-chapitre-3-l-ecrit-sous-toutes-ses-formes/index.html">
+           <span class="nav-quete__sens">Suivant →</span>
+           <span class="nav-quete__titre">👩‍🏫 HTML - Chapitre 3 |  L'écrit sous toutes ses formes</span>
+         </a>
+</nav>
+</main>
+<footer class="pied">
+  <p>Archive personnelle des cours suivis à la Wild Code School. Copie hors ligne à usage strictement privé.</p>
+</footer>
+
+<script src="../../assets/copie-code.js"></script>
+<script src="../../assets/progression.js"></script>
+</body>
+</html>

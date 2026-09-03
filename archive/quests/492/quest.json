@@ -1,0 +1,28 @@
+{
+  "id": 492,
+  "titre": "CSS imbriqué",
+  "titres": {
+    "fr": "CSS imbriqué"
+  },
+  "theme": {
+    "id": 12,
+    "slug": "html",
+    "nom": "CSS"
+  },
+  "creeLe": "2019-03-26T17:12:22.367+01:00",
+  "difficulte": "0",
+  "dureeEstimee": null,
+  "modeValidation": "student",
+  "chapitres": [
+    {
+      "id": 12577,
+      "type": "content",
+      "langue": "fr",
+      "majLe": "2024-11-09T14:24:39.267+01:00",
+      "caracteres": 6717
+    }
+  ],
+  "ressources": [],
+  "urlOrigine": "https://odyssey.wildcodeschool.com/quests/492",
+  "archiveLe": "2026-09-02T20:52:52.608Z"
+}

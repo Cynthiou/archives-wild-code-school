@@ -1,0 +1,35 @@
+{
+  "id": 824,
+  "titre": "06 - JS Monorepo : Créer ton premier Repository",
+  "titres": {
+    "fr": "06 - JS Monorepo : Créer ton premier Repository"
+  },
+  "theme": {
+    "id": 43,
+    "slug": "prepa",
+    "nom": "JS Monorepo"
+  },
+  "creeLe": "2019-10-21T08:49:17.273+02:00",
+  "difficulte": "",
+  "dureeEstimee": null,
+  "modeValidation": "student",
+  "chapitres": [
+    {
+      "id": 14958,
+      "type": "content",
+      "langue": "fr",
+      "majLe": "2025-01-06T13:37:06.120+01:00",
+      "caracteres": 26767
+    },
+    {
+      "id": 12618,
+      "type": "solution",
+      "langue": "fr",
+      "majLe": "2024-11-11T19:55:56.255+01:00",
+      "caracteres": 3963
+    }
+  ],
+  "ressources": [],
+  "urlOrigine": "https://odyssey.wildcodeschool.com/quests/824",
+  "archiveLe": "2026-09-02T20:51:59.319Z"
+}

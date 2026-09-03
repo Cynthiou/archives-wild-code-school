@@ -1,0 +1,41 @@
+{
+  "id": 1820,
+  "titre": "Node 05 - 🚀 Concepts avancés et alternatives à la CLI de npm",
+  "titres": {
+    "fr": "Node 05 - 🚀 Concepts avancés et alternatives à la CLI de npm"
+  },
+  "theme": {
+    "id": 22,
+    "slug": "nodejs",
+    "nom": "Node.js"
+  },
+  "creeLe": "2021-09-21T12:34:10.233+02:00",
+  "difficulte": "0",
+  "dureeEstimee": null,
+  "modeValidation": "self",
+  "chapitres": [
+    {
+      "id": 17489,
+      "type": "content",
+      "langue": "fr",
+      "majLe": "2025-03-20T10:55:30.322+01:00",
+      "caracteres": 9682
+    }
+  ],
+  "ressources": [
+    {
+      "link": "https://fr.linkedin.com/learning/l-essentiel-de-node-package-manager-npm/comprendre-le-systeme-de-versioning-semantique",
+      "description": "Explication claire en français du versioning sémantique"
+    },
+    {
+      "link": "https://www.youtube.com/watch?v=1EwPIcJch2Y",
+      "description": "Courte vidéo de présentation des semver en français"
+    },
+    {
+      "link": "https://www.youtube.com/watch?v=x5Nt-B1DoNs",
+      "description": "Explication claire de pnpm (en français)"
+    }
+  ],
+  "urlOrigine": "https://odyssey.wildcodeschool.com/quests/1820",
+  "archiveLe": "2026-09-02T20:53:44.108Z"
+}

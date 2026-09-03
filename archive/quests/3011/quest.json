@@ -1,0 +1,28 @@
+{
+  "id": 3011,
+  "titre": "Les formulaires en PHP : Prendre contact",
+  "titres": {
+    "fr": "Les formulaires en PHP : Prendre contact"
+  },
+  "theme": {
+    "id": 7,
+    "slug": "php_adv",
+    "nom": "PHP Avancé"
+  },
+  "creeLe": "2024-03-06T17:34:23.688+01:00",
+  "difficulte": "2",
+  "dureeEstimee": null,
+  "modeValidation": "student",
+  "chapitres": [
+    {
+      "id": 11352,
+      "type": "content",
+      "langue": "fr",
+      "majLe": "2024-04-05T07:41:27.485+02:00",
+      "caracteres": 7708
+    }
+  ],
+  "ressources": [],
+  "urlOrigine": "https://odyssey.wildcodeschool.com/quests/3011",
+  "archiveLe": "2026-09-02T20:52:07.659Z"
+}

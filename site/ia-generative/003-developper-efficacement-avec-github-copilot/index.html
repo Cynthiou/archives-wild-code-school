@@ -1,0 +1,266 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Développer Efficacement avec GitHub Copilot — Archives WCS</title>
+<link rel="stylesheet" href="../../assets/style.css">
+</head>
+<body style="--teinte:#220f2a">
+<header class="entete">
+  <a class="entete__marque" href="../../index.html">Archives Wild Code School</a>
+</header>
+<main class="contenu">
+<nav class="ariane"><a href="../../index.html">Accueil</a><span class="ariane__sep">›</span><a href="../../ia-generative/index.html">IA Générative</a><span class="ariane__sep">›</span><span aria-current="page">Développer Efficacement avec GitHub Copilot</span></nav>
+
+<article class="quete">
+  <header class="quete__entete">
+    <a class="pastille pastille--teintee" href="../../ia-generative/index.html">IA Générative</a>
+    <h1>Développer Efficacement avec GitHub Copilot</h1>
+    <p class="quete__meta">Quête 3 sur 3 · 12 images archivées</p>
+  </header>
+  <div class="cours">
+<h2>Objectifs d'apprentissage</h2>
+<p>À la fin de cette leçon, vous aurez :</p>
+<ul>
+<li>Une compréhension claire de ce qu'est GitHub Copilot et de son fonctionnement</li>
+<li>Appris comment configurer GitHub Copilot sur votre machine locale</li>
+<li>Appris comment utiliser GitHub Copilot et ses principales fonctionnalités pour aider dans les tâches de programmation</li>
+<li>Compris comment évaluer les recommandations faites par GitHub Copilot</li>
+</ul>
+<h2>Prérequis</h2>
+<p>Compréhension de base de :</p>
+<ul>
+<li>La plateforme GitHub</li>
+<li>Visual Studio Code (VS Code)</li>
+<li>Concepts de programmation</li>
+<li>Syntaxe d'au moins un langage de programmation</li>
+</ul>
+<h2>Introduction</h2>
+<p>GitHub Copilot est un outil qui aide les développeurs à écrire du code plus facilement. Il utilise l'intelligence artificielle pour fournir des suggestions de complétion de code, proposer des modèles, créer des fonctions et même créer des classes entières. Cette leçon vous guidera pour comprendre comment fonctionne GitHub Copilot, les tâches qu'il peut aider à réaliser et comment en tirer le meilleur parti dans votre parcours de programmation.</p>
+<p><img src="images/001-introduction.png" alt="" loading="lazy"></p>
+<h2>Sommaire</h2>
+<h2>Démarrer avec GitHub Copilot</h2>
+<h3>Quid GitHub Copilot?</h3>
+<p>GitHub Copilot est un outil qui sert de programmeur en binôme basé sur l'IA, alimenté par le modèle <a href="https://platform.openai.com/docs/guides/code" target="_blank" rel="noopener noreferrer">Codex d'OpenAI</a>. Il propose des suggestions de complétion de code, de simples lignes de code à des fonctions entières. Il apprend et s'améliore avec le temps en analysant les codes des dépôts publics sur GitHub. Il prend en charge plusieurs langages et frameworks tels que JavaScript, Python, TypeScript, Ruby, Java, etc.</p>
+<p><img src="images/002-quid-github-copilot.png" alt="" loading="lazy"></p>
+<h3>Configuration de GitHub Copilot sur Visual Studio Code</h3>
+<p>‼️ Copilot est gratuit pour les étudiants vérifiés, les enseignants et les responsables de projets open source populaires. Sinon, il nécessite un abonnement actif à GitHub pour l'utiliser.</p>
+<p>🔬 GitHub Copilot fonctionne comme une extension de Visual Studio (VS) Code. Assurez-vous d'avoir la version la plus récente de Visual Studio Code avant d'installer Copilot.</p>
+<p>Si vous avez déjà VS Code installé, vérifiez s'il est mis à jour en cliquant sur <strong>Aide &gt; Rechercher les mises à jour</strong> sur Windows ou <strong>Code &gt; Rechercher les mises à jour</strong> sur Mac.</p>
+<p>Suivez les étapes ci-dessous pour installer GitHub Copilot avec VS Code :</p>
+<ol>
+<li>Ouvrez Visual Studio Code.</li>
+<li>Accédez à l'onglet <strong>Extensions</strong> sur le côté gauche de l'écran de VS Code. Tapez &quot;GitHub Copilot&quot; dans la barre de recherche en haut.</li>
+<li>Cliquez sur la première option dans la liste déroulante, qui devrait être GitHub Copilot Official. Ensuite, cliquez sur le bouton &quot;Installer&quot;.</li>
+</ol>
+<p><img src="images/003-configuration-de-github-copilot-sur-visual.png" alt="" loading="lazy"></p>
+<p>Une fois l'installation terminée, GitHub Copilot s'activera automatiquement lorsque vous ouvrirez un nouveau fichier ou commencerez à taper dans un fichier existant. Pour cela, vous devez avoir un compte GitHub actif.</p>
+<h3>Connectez-vous à votre compte GitHub sur VS Code</h3>
+<p>Vous devez être connecté à votre compte GitHub dans Visual Studio Code pour utiliser GitHub Copilot. Suivez ces étapes pour vous connecter à GitHub :</p>
+<ol>
+<li>Cliquez sur l'icône &quot;Comptes&quot; dans le coin inférieur gauche de VS Code.</li>
+<li>Cliquez sur &quot;Connectez-vous à GitHub pour utiliser GitHub Copilot&quot;.</li>
+<li>Dans la page de connexion du navigateur qui s'ouvre, saisissez vos identifiants GitHub et cliquez sur &quot;Se connecter&quot;.</li>
+<li>Après vous être connecté avec succès, fermez la fenêtre du navigateur.</li>
+</ol>
+<p><img src="images/004-connectez-vous-a-votre-compte-github-sur-vs-code.png" alt="" loading="lazy"></p>
+<p>💡 Voir comment <a href="https://docs.github.com/en/copilot/getting-started-with-github-copilot?tool=vimneovim" target="_blank" rel="noopener noreferrer">installer Copilot pour Vim/NeoVim</a> sur MacOS, Windows et Linux</p>
+<p>🔬 <strong>Exercice</strong></p>
+<p>Installez GitHub Copilot dans votre Visual Studio Code et créez un programme basique &quot;Hello, World!&quot; en utilisant les suggestions générées.</p>
+<h2>Utiliser efficacement GitHub Copilot</h2>
+<p>Une fois installé, GitHub Copilot fonctionne directement dans votre éditeur. Les sections suivantes décrivent comment vous pouvez utiliser GitHub Copilot pour une programmation efficace en utilisant ses fonctions de suggestion de complétion de code, de tests unitaires, de requêtes SQL, etc.</p>
+<h3>Complétion de code</h3>
+<p>Une des principales fonctionnalités de GitHub Copilot est sa capacité à fournir des suggestions de complétion de code en temps réel. Lorsque vous commencez à écrire une ligne de code, GitHub Copilot commencera à suggérer des complétions. Ces suggestions sont basées sur les motifs et les utilisations dans les dépôts de code qu'il a précédemment analysés. Vous pouvez accepter la suggestion en appuyant sur <code>Tab</code>.</p>
+<p><img src="images/005-completion-de-code.gif" alt="" loading="lazy"></p>
+<p>🔬 <strong>Exercice</strong>
+Écrivez une fonction qui calcule le factoriel d'un nombre donné. Utilisez GitHub Copilot pour compléter le code et suggérer la logique nécessaire pour calculer le factoriel.</p>
+<h3>Transformer les commentaires en code</h3>
+<p>GitHub Copilot a été formé à la fois sur du code source et du texte en langage naturel. Cela lui permet de générer du texte, tout comme il le fait avec du code, avec la capacité de compléter vos commentaires pendant que vous les tapez. Des commentaires clairs et informatifs favorisent les suggestions de code pertinentes de Copilot.</p>
+<p>Dans l'exemple ci-dessous, après que Copilot a complété notre explication en texte brut, nous utilisons la touche <code>Tab</code> pour lui faire générer le code correspondant ligne par ligne.</p>
+<p><img src="images/006-transformer-les-commentaires-en-code.gif" alt="" loading="lazy"></p>
+<h3>Création de tests unitaires</h3>
+<p>GitHub Copilot simplifie également l'écriture de tests unitaires. Par exemple, considérons une fonction qui calcule le préfixe commun de deux listes, et nous voulons le tester. Pour créer ce test, nous commençons par importer le package de tests unitaires. Ensuite, nous écrivons une fonction de test. Copilot suggérera des complétions pour la fonction de test unitaire que nous pouvons accepter en utilisant la touche <code>Tab</code>.</p>
+<p><img src="images/007-creation-de-tests-unitaires.gif" alt="" loading="lazy"></p>
+<h3>Création de requêtes SQL</h3>
+<p>GitHub Copilot peut également être utilisé pour générer des requêtes SQL. Dans l'exemple ci-dessous avec le langage Go, nous fournissons un schéma sous forme d'instruction CREATE TABLE. Une fois le schéma écrit, Copilot peut écrire une requête intégrée dans le code, et convertir le résultat en une classe. Cette fonctionnalité simplifie la création de requêtes SQL. Cependant, il est important de vérifier et de valider les requêtes générées pour s'assurer qu'elles répondent aux exigences spécifiques et aux bonnes pratiques.</p>
+<p><img src="images/008-creation-de-requetes-sql.gif" alt="" loading="lazy"></p>
+<p>🔬 <strong>Exercice</strong>
+Utilisez Copilot pour générer une classe avec des requêtes SQL intégrées pour une base de données d'administration utilisateur.</p>
+<h3>Refactorisation de code</h3>
+<p>Copilot peut également vous aider à refactoriser votre code existant en proposant des suggestions pour simplifier ou améliorer votre implémentation.</p>
+<p>Considérez le code Ruby ci-dessous :</p>
+<div class="bloc-code"><div class="bloc-code__langue">ruby</div><pre><code class="hljs language-ruby"><span class="hljs-keyword">def</span> <span class="hljs-title function_">price_with_discount</span>(<span class="hljs-params">price, discount_rate</span>)
+  price - (price * discount_rate)
+<span class="hljs-keyword">end</span>
+</code></pre></div>
+<p>Ce simple calcul de prix ne prend pas en compte les valeurs <code>nil</code>, les chaînes de caractères qui devraient être des nombres ou des valeurs raisonnables pour <code>price</code> ou <code>discount_rate</code>. Nous avons besoin que le code fasse ce qui suit :</p>
+<ol>
+<li>S'assurer que <code>price</code> est un entier ou un nombre à virgule (non nul)</li>
+<li>S'assurer que <code>price</code> n'est pas négatif</li>
+<li>S'assurer que <code>discount_rate</code> est un nombre à virgule (non nul)</li>
+<li>S'assurer que <code>discount_rate</code> n'est pas négatif et inférieur ou égal à 1</li>
+</ol>
+<p>Copilot peut suivre ces instructions et générer le résultat suivant :</p>
+<div class="bloc-code"><div class="bloc-code__langue">ruby</div><pre><code class="hljs language-ruby"><span class="hljs-keyword">def</span> <span class="hljs-title function_">price_with_discount</span>(<span class="hljs-params">price, discount_rate</span>)
+  <span class="hljs-keyword">raise</span> <span class="hljs-title class_">ArgumentError</span>, <span class="hljs-string">&quot;Price must be a positive number&quot;</span> <span class="hljs-keyword">unless</span> price.is_a?(<span class="hljs-title class_">Numeric</span>) &amp;&amp; price &gt;= <span class="hljs-number">0</span>
+  <span class="hljs-keyword">raise</span> <span class="hljs-title class_">ArgumentError</span>, <span class="hljs-string">&quot;Discount rate must be a float between 0 and 1&quot;</span> <span class="hljs-keyword">unless</span> discount_rate.is_a?(<span class="hljs-title class_">Float</span>) &amp;&amp; discount_rate &gt;= <span class="hljs-number">0</span> &amp;&amp; discount_rate &lt;= <span class="hljs-number">1</span>
+
+  price - (price * discount_rate)
+<span class="hljs-keyword">end</span>
+</code></pre></div>
+<h3>Automatisation des tâches répétitives</h3>
+<p>Toutes les tâches répétitives telles que la création de getters et setters, les opérations CRUD standard et les conversions de formats peuvent être automatisées à l'aide de GitHub Copilot.</p>
+<p><a href="https://www.youtube.com/watch?v=fU9fWqcou0o" target="_blank" rel="noopener noreferrer">https://www.youtube.com/watch?v=fU9fWqcou0o</a></p>
+<p>🔬 <strong>Exercice - Implémentation d'algorithmes</strong></p>
+<p>Implémentez la série de Fibonacci, l'algorithme de tri à bulles et l'algorithme de recherche binaire avec Copilot pour comprendre comment l'outil aide à écrire du code plus complexe. Ajoutez des commentaires à votre code et utilisez les suggestions de Copilot pour explorer d'autres algorithmes de tri et de recherche.</p>
+<p><a href="https://www.youtube.com/watch?v=5XheKKZoGnE" target="_blank" rel="noopener noreferrer">https://www.youtube.com/watch?v=5XheKKZoGnE</a></p>
+<p>💡 <strong>Conseils - Apprentissage de nouvelles techniques</strong></p>
+<p>GitHub Copilot peut également être utilisé pour découvrir et explorer de nouveaux algorithmes, bibliothèques, fonctions et techniques de codage.</p>
+<p>💡 <strong>Raccourcis clavier</strong></p>
+<p>Les raccourcis clavier les plus courants à retenir lors de l'utilisation de GitHub Copilot avec Visual Studio Code :</p>
+<div class="table-wrap"><table><thead>
+<tr>
+<th>Action</th>
+<th>Windows / Linux</th>
+<th>macOS</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Déclencher des suggestions en ligne</td>
+<td>Alt + \</td>
+<td>Option + \</td>
+</tr>
+<tr>
+<td>Voir la suggestion suivante</td>
+<td>Alt + ]</td>
+<td>Option + ]</td>
+</tr>
+<tr>
+<td>Voir la suggestion précédente</td>
+<td>Alt + [</td>
+<td>Option + [</td>
+</tr>
+<tr>
+<td>Accepter une suggestion</td>
+<td>Tab</td>
+<td>Tab</td>
+</tr>
+<tr>
+<td>Rejeter une suggestion en ligne</td>
+<td>Esc</td>
+<td>Esc</td>
+</tr>
+<tr>
+<td>Afficher toutes les suggestions dans un nouvel onglet</td>
+<td>Ctrl + Enter</td>
+<td>Ctrl + Enter</td>
+</tr>
+</tbody>
+</table></div><p>Vous pouvez également définir vos propres <a href="https://realpython.com/advanced-visual-studio-code-python/#keyboard-shortcuts" target="_blank" rel="noopener noreferrer">raccourcis clavier</a> dans Visual Studio Code. Cela peut être utile si vous travaillez avec un clavier non américain.</p>
+<h2>Copilot Chat - Interagir avec Copilot dans l'éditeur</h2>
+<h3>Qu'est-ce que GitHub Copilot Chat ?</h3>
+<p>GitHub Copilot Chat, actuellement en version bêta, est une interface de discussion intégrée dans des IDE pris en charge tels que Visual Studio Code, Visual Studio et JetBrains. Il fournit des réponses aux questions liées à la programmation directement dans ces environnements. Accessible aux abonnés individuels et commerciaux de GitHub Copilot, il aide les utilisateurs en évitant la nécessité de naviguer dans la documentation ou de rechercher des forums en ligne.</p>
+<h3>Configuration de Copilot Chat dans VS Code</h3>
+<ol>
+<li>
+<p>Lancez VS Code et cliquez sur l'icône de l'extension. <em>Icône d'extension de VS Code</em></p>
+</li>
+<li>
+<p>Tapez <strong>Copilot</strong> dans la barre de recherche</p>
+</li>
+<li>
+<p>Sélectionnez <strong>GitHub Copilot Chat</strong></p>
+</li>
+<li>
+<p>Cliquez sur Installer</p>
+<p><a href="https://techcommunity.microsoft.com/t5/image/serverpage/image-id/485754i0B2619E27889869B/image-dimensions/799x473?v=v2" target="_blank" rel="noopener noreferrer">https://techcommunity.microsoft.com/t5/image/serverpage/image-id/485754i0B2619E27889869B/image-dimensions/799x473?v=v2</a></p>
+</li>
+<li>
+<p>Tout comme Copilot, vous devez vous connecter à votre compte GitHub pour activer Copilot Chat</p>
+</li>
+<li>
+<p>Cliquez sur l'icône de GitHub Copilot Chat pour commencer.</p>
+<p><a href="https://techcommunity.microsoft.com/t5/image/serverpage/image-id/481396i6310CCCC3B4357FB/image-dimensions/801x600?v=v2" target="_blank" rel="noopener noreferrer">https://techcommunity.microsoft.com/t5/image/serverpage/image-id/481396i6310CCCC3B4357FB/image-dimensions/801x600?v=v2</a></p>
+</li>
+</ol>
+<p><a href="https://www.youtube.com/watch?v=eCOsNCYxdYM" target="_blank" rel="noopener noreferrer">https://www.youtube.com/watch?v=eCOsNCYxdYM</a></p>
+<h3>Cas d'utilisation de Copilot Chat</h3>
+<p>Les principaux cas d'utilisation de Copilot Chat comprennent les suivants :</p>
+<ul>
+<li><strong>Génération de cas de test unitaires</strong> : Copilot Chat peut générer des cas de test unitaires, suggérer des paramètres d'entrée et des sorties attendues, et tester les cas limites.</li>
+</ul>
+<p><img src="images/009-cas-d-utilisation-de-copilot-chat.png" alt="" loading="lazy"></p>
+<ul>
+<li><strong>Explication du code et suggestions d'améliorations</strong> : Il fournit des descriptions en langage naturel de la fonctionnalité du code et suggère des améliorations pour la lisibilité du code et la gestion des erreurs.</li>
+</ul>
+<p><img src="images/010-cas-d-utilisation-de-copilot-chat.png" alt="" loading="lazy"></p>
+<ul>
+<li><strong>Proposition de corrections de code</strong> : Offre des solutions et des extraits de code pour corriger les bugs en fonction du contexte.</li>
+</ul>
+<p><img src="images/011-cas-d-utilisation-de-copilot-chat.png" alt="" loading="lazy"></p>
+<ul>
+<li><strong>Réponse aux questions de programmation</strong> : Aide à résoudre des problèmes de programmation spécifiques sous forme de langage naturel ou de morceau de code.</li>
+</ul>
+<p><img src="images/012-cas-d-utilisation-de-copilot-chat.png" alt="" loading="lazy"></p>
+<h3>Bonnes pratiques et limitations</h3>
+<ul>
+<li><strong>Bonnes pratiques</strong> : Vous devez considérer Copilot Chat comme un outil, pas comme un remplacement de la programmation humaine, et suivre les bonnes pratiques de codage sécurisé. Les retours d'informations sont encouragés pour améliorer l'outil.</li>
+<li><strong>Limitations</strong> : Copilot Chat a une portée limitée, peut présenter des biais potentiels et des risques de sécurité, et peut générer du code incorrect. Il n'est pas conçu pour les questions non liées à la programmation.</li>
+</ul>
+<p>💡 Explorez d'autres <a href="https://marketplace.visualstudio.com/search?term=copilot&amp;target=VSCode&amp;category=All" target="_blank" rel="noopener noreferrer">extensions Copilot</a> pour Visual Studio Code</p>
+<h2>Évaluation des suggestions de GitHub Copilot</h2>
+<p>GitHub Copilot est un outil puissant. Sa capacité à suggérer des extraits de code en fonction de vos commentaires ou du code actuel peut simplifier votre processus de développement. Cependant, aucun outil, pas même un programmeur humain, n'est parfait à 100% du temps. Il est essentiel de toujours penser à évaluer de manière critique les suggestions fournies par Copilot. Suivez ces lignes directrices pour vous assurer de tirer le meilleur parti de Copilot en tant qu'outil de programmation en binôme.</p>
+<h3>Pertinence contextuelle</h3>
+<p>Tout d'abord, assurez-vous que la suggestion est contextuellement pertinente pour la partie du code sur laquelle vous travaillez. Bien que Copilot ait une compréhension sophistiquée du langage, il ne comprend pas pleinement le contexte comme le ferait un humain. Évaluez si la solution proposée s'intègre dans le contexte de votre projet, tant en termes de code que des objectifs plus larges du projet sur lesquels vous travaillez.</p>
+<h3>Vérification des erreurs</h3>
+<p>Vérifiez toujours les suggestions pour d'éventuelles erreurs. Les recommandations de Copilot peuvent parfois contenir des erreurs. Vérifiez que le code compile sans erreurs et ne introduit pas de bugs. Il est également conseillé de tester le nouvel extrait de code inséré de manière isolée si possible, et de s'assurer qu'il fonctionne comme prévu.</p>
+<h3>Comprenez votre code</h3>
+<p>N'insérez jamais un morceau de code suggéré que vous ne comprenez pas. Vous devriez être en mesure d'expliquer comment chaque partie de votre code fonctionne. Si Copilot suggère quelque chose que vous ne comprenez pas, prenez le temps d'apprendre ce code avant de décider de l'inclure dans votre projet. Cela garantit que vous conservez le contrôle et la connaissance de votre propre code.</p>
+<h3>Sécurité et bonnes pratiques</h3>
+<p>Évaluez si le code suggéré respecte les bonnes pratiques et les directives de codage sécurisé. Rappelez-vous que Copilot utilise des dépôts de code publics pour l'apprentissage, et tous les extraits de code qu'il a appris ne suivent peut-être pas les meilleures pratiques sécurisées.</p>
+<p>De même, vérifiez le code par rapport aux normes de codage de votre projet et aux meilleures pratiques de l'industrie. Bien que Copilot puisse suggérer différentes façons d'obtenir un résultat, toutes ne correspondent peut-être pas aux meilleures pratiques établies.</p>
+<h3>Efficacité du code</h3>
+<p>Évaluez l'efficacité du code fourni. Regardez la complexité temporelle, la complexité spatiale et tout potentiel d'optimisation. L'insertion d'un code inefficace dans une section critique de l'application pourrait entraîner des problèmes de performance à l'avenir.</p>
+<p>💡 <strong>En résumé</strong></p>
+<p>Lors de l'évaluation des suggestions de Copilot, il est important de prendre en compte les facteurs suivants :
+• <strong>Exactitude</strong> : Le code suggéré est-il correct ? Compile-t-il et fonctionne-t-il comme prévu ?
+• <strong>Sécurité</strong> : Le code suggéré est-il sécurisé ? Respecte-t-il les meilleures pratiques en matière de sécurité ?
+• <strong>Lisibilité</strong> : Le code suggéré est-il lisible ? Est-il facile à comprendre et à maintenir ?
+• <strong>Maintenabilité</strong> : Le code suggéré est-il maintenable ? Est-il facile à modifier et à étendre ?
+• <strong>Efficacité</strong> : Le code suggéré est-il efficace ? A-t-il de bonnes performances ?
+• <strong>Style de codage</strong> : Le code suggéré correspond-il à votre style de codage ?</p>
+<h2>Résumé</h2>
+<p>GitHub Copilot est un outil alimenté par l'IA qui aide les développeurs à écrire du code de manière plus efficace. Il propose des suggestions pour l'auto-complétion du code, la création de modèles et même de classes entières. Cette leçon donne un aperçu de GitHub Copilot, explique comment le configurer et explore ses principales fonctionnalités. Elle aborde des sujets tels que l'auto-complétion du code, la conversion des commentaires en code, la création de tests unitaires, la génération de requêtes SQL, la refonte du code, l'automatisation des tâches répétitives et l'utilisation de Copilot Chat. La leçon souligne l'importance d'évaluer de manière critique les suggestions de Copilot et fournit des bonnes pratiques pour utiliser l'outil de manière efficace.</p>
+<h3>Recommended Resources</h3>
+<p><a href="https://www.youtube.com/watch?v=Fi3AJZZregI" target="_blank" rel="noopener noreferrer">https://www.youtube.com/watch?v=Fi3AJZZregI</a></p>
+<p><a href="https://www.youtube.com/watch?v=ImWfIDTxn7E" target="_blank" rel="noopener noreferrer">https://www.youtube.com/watch?v=ImWfIDTxn7E</a></p>
+<ul>
+<li><a href="https://copilot.github.com/" target="_blank" rel="noopener noreferrer">GitHub Copilot Official Document</a></li>
+<li><a href="https://learn.microsoft.com/en-us/visualstudio/ide/visual-studio-github-copilot-extension" target="_blank" rel="noopener noreferrer">What is the GitHub Copilot extension for Visual Studio?</a></li>
+<li><a href="https://www.hostinger.com/tutorials/how-to-use-github-copilot" target="_blank" rel="noopener noreferrer">How to Use GitHub Copilot: Setting Up and Learning Various Useful AI Coding Methods</a></li>
+<li><a href="https://github.blog/2022-09-14-8-things-you-didnt-know-you-could-do-with-github-copilot/" target="_blank" rel="noopener noreferrer">8 things you didn’t know you could do with GitHub Copilot</a></li>
+<li>[Pour les plus curieux] <a href="https://platform.openai.com/docs/guides/code" target="_blank" rel="noopener noreferrer">OpenAI’s Codex Model</a></li>
+</ul>
+
+  </div>
+  
+</article>
+
+<nav class="nav-quete">
+  <a class="nav-quete__lien nav-quete__lien--prec" href="../../ia-generative/002-demystifier-l-ia-generative-une-introduction-complete/index.html">
+           <span class="nav-quete__sens">← Précédent</span>
+           <span class="nav-quete__titre">Démystifier l'IA Générative : une Introduction Complète</span>
+         </a>
+  <span class="nav-quete__lien nav-quete__lien--vide"></span>
+</nav>
+</main>
+<footer class="pied">
+  <p>Archive personnelle des cours suivis à la Wild Code School. Copie hors ligne à usage strictement privé.</p>
+</footer>
+
+<script src="../../assets/copie-code.js"></script>
+<script src="../../assets/progression.js"></script>
+</body>
+</html>

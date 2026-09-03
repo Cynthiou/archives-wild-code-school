@@ -1,0 +1,38 @@
+{
+  "id": 1554,
+  "titre": "👩‍🏫 JS Intermédiaire 01.2 - Manipulation du DOM - Créer des éléments",
+  "titres": {
+    "en": "👩‍🏫 JS Intermediate 01.2 - DOM Manipulation - Create elements",
+    "fr": "👩‍🏫 JS Intermédiaire 01.2 - Manipulation du DOM - Créer des éléments"
+  },
+  "theme": {
+    "id": 91,
+    "slug": "more-javascript",
+    "nom": "JavaScript - Beyond the Basics"
+  },
+  "creeLe": "2021-02-22T07:35:16.058+01:00",
+  "difficulte": "1",
+  "dureeEstimee": null,
+  "modeValidation": "self",
+  "chapitres": [
+    {
+      "id": 12604,
+      "type": "content",
+      "langue": "fr",
+      "majLe": "2024-11-09T11:20:24.871+01:00",
+      "caracteres": 9999
+    }
+  ],
+  "ressources": [
+    {
+      "link": "https://www.youtube.com/watch?v=gHD7FOONV2o",
+      "description": "Il y a plusieurs vidéos en différentes parties, voici la partie 1"
+    },
+    {
+      "link": "https://youtu.be/UBIfdObb9cY",
+      "description": "apprendre le Dom avec Grafikart "
+    }
+  ],
+  "urlOrigine": "https://odyssey.wildcodeschool.com/quests/1554",
+  "archiveLe": "2026-09-02T20:54:55.927Z"
+}

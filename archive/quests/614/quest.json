@@ -1,0 +1,28 @@
+{
+  "id": 614,
+  "titre": "JS - React & Express - Monorepo",
+  "titres": {
+    "fr": "JS - React & Express - Monorepo"
+  },
+  "theme": {
+    "id": 149,
+    "slug": "web-development",
+    "nom": "Développement Web"
+  },
+  "creeLe": "2019-06-02T21:49:29.245+02:00",
+  "difficulte": "",
+  "dureeEstimee": null,
+  "modeValidation": "trainer",
+  "chapitres": [
+    {
+      "id": 14854,
+      "type": "content",
+      "langue": "fr",
+      "majLe": "2024-12-17T18:45:17.060+01:00",
+      "caracteres": 3918
+    }
+  ],
+  "ressources": [],
+  "urlOrigine": "https://odyssey.wildcodeschool.com/quests/614",
+  "archiveLe": "2026-09-02T20:53:03.072Z"
+}

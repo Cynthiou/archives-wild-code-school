@@ -1,0 +1,28 @@
+{
+  "id": 2333,
+  "titre": "Concevoir des prototypes",
+  "titres": {
+    "fr": "Concevoir des prototypes"
+  },
+  "theme": {
+    "id": 127,
+    "slug": "ui-design",
+    "nom": "UI Design"
+  },
+  "creeLe": "2022-11-07T07:57:53.308+01:00",
+  "difficulte": "1",
+  "dureeEstimee": null,
+  "modeValidation": "self",
+  "chapitres": [
+    {
+      "id": 11490,
+      "type": "content",
+      "langue": "fr",
+      "majLe": "2024-05-13T09:36:59.385+02:00",
+      "caracteres": 7050
+    }
+  ],
+  "ressources": [],
+  "urlOrigine": "https://odyssey.wildcodeschool.com/quests/2333",
+  "archiveLe": "2026-09-02T20:53:11.916Z"
+}

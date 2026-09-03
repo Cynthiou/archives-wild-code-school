@@ -1,0 +1,40 @@
+{
+  "id": 2376,
+  "titre": "👩‍🏫 React Basics 06 - Pokédex - Utiliser un state",
+  "titres": {
+    "fr": "👩‍🏫 React Basics 06 - Pokédex - Utiliser un state"
+  },
+  "theme": {
+    "id": 23,
+    "slug": "react",
+    "nom": "React - Bases"
+  },
+  "creeLe": "2023-01-03T14:17:01.828+01:00",
+  "difficulte": "",
+  "dureeEstimee": null,
+  "modeValidation": "student",
+  "chapitres": [
+    {
+      "id": 17097,
+      "type": "content",
+      "langue": "fr",
+      "majLe": "2025-03-12T11:24:57.227+01:00",
+      "caracteres": 11119
+    },
+    {
+      "id": 17098,
+      "type": "solution",
+      "langue": "fr",
+      "majLe": "2025-03-12T11:01:32.763+01:00",
+      "caracteres": 965
+    }
+  ],
+  "ressources": [
+    {
+      "link": "https://react.dev/reference/react/useState",
+      "description": "La doc officielle sur useState"
+    }
+  ],
+  "urlOrigine": "https://odyssey.wildcodeschool.com/quests/2376",
+  "archiveLe": "2026-09-02T20:55:06.646Z"
+}

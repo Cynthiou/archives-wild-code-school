@@ -1,0 +1,838 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>07 - JS Monorepo : Mettre en place un CRUD / BREAD 🍞 — Archives WCS</title>
+<link rel="stylesheet" href="../../assets/style.css">
+</head>
+<body style="--teinte:#000000">
+<header class="entete">
+  <a class="entete__marque" href="../../index.html">Archives Wild Code School</a>
+</header>
+<main class="contenu">
+<nav class="ariane"><a href="../../index.html">Accueil</a><span class="ariane__sep">›</span><a href="../../js-monorepo/index.html">JS Monorepo</a><span class="ariane__sep">›</span><span aria-current="page">07 - JS Monorepo : Mettre en place un CRUD / BREAD 🍞</span></nav>
+
+<article class="quete">
+  <header class="quete__entete">
+    <a class="pastille pastille--teintee" href="../../js-monorepo/index.html">JS Monorepo</a>
+    <h1>07 - JS Monorepo : Mettre en place un CRUD / BREAD 🍞</h1>
+    <p class="quete__meta">Quête 8 sur 9 · 1 image archivée</p>
+  </header>
+  <div class="cours">
+<h2>Objectifs</h2>
+<ul>
+<li>Apprendre les conventions et bonnes pratiques REST</li>
+<li>Mettre en place un CRUD / BREAD complet</li>
+<li>Communiquer avec une application serveur depuis une application cliente</li>
+<li>Étudier et utiliser un code existant</li>
+</ul>
+<h2>Pré-requis</h2>
+<ol class="etapes"><li class="etape"><div class="etape__puce">1</div><div class="etape__contenu"><h4 class="etape__titre">Valider les quêtes suivantes</h4><div class="renvois"><div class="renvois__titre">Quêtes liées</div><ul><li><a href="../../js-monorepo/007-06-js-monorepo-creer-ton-premier-repository/index.html">Quête 824</a></li><li><a href="../../base-de-donnees/008-05-les-jointures/index.html">Quête 519</a></li><li><a href="../../base-de-donnees/009-06-sql-group-by/index.html">Quête 520</a></li></ul></div>
+</div></li><li class="etape"><div class="etape__puce">2</div><div class="etape__contenu"><h4 class="etape__titre">Identifier les informations principales d'une requête HTTP</h4><p>Exemple de requête HTTP :</p>
+<div class="bloc-code"><pre><code class="hljs language-plaintext">POST /categories
+Host: foo.com
+Content-Type: application/json
+Content-Length: 23
+
+{ &quot;title&quot;: &quot;Aventure&quot; }
+</code></pre></div>
+<p>Les informations principales :</p>
+<div class="table-wrap"><table><thead>
+<tr>
+<th>Méthode HTTP</th>
+<th>Chemin d'URL</th>
+<th>Corps de la requête</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>POST</td>
+<td>/categories</td>
+<td>{ &quot;title&quot;: &quot;Aventure&quot; }</td>
+</tr>
+</tbody>
+</table></div></div></li><li class="etape"><div class="etape__puce">3</div><div class="etape__contenu"><h4 class="etape__titre">Identifier les informations principales d'une réponse HTTP</h4><p>Exemple de réponse HTTP :</p>
+<div class="bloc-code"><pre><code class="hljs language-plaintext">HTTP/1.1 201 Created
+ETag: W/&quot;xyzzy&quot;
+Content-Type: application/json
+Content-Length: 11
+Cache-Control: no-cache
+
+{ &quot;id&quot;: 3 }
+</code></pre></div>
+<p>Les informations principales :</p>
+<div class="table-wrap"><table><thead>
+<tr>
+<th>Statut de la réponse</th>
+<th>Corps de la réponse</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>201 Created</td>
+<td>{ &quot;id&quot;: 3 }</td>
+</tr>
+</tbody>
+</table></div></div></li></ol>
+<h2>Sommaire</h2>
+<h2>Introduction</h2>
+<p>Dans les quêtes précédentes, tu as mis en place une application serveur, et appris à communiquer avec une base de données.</p>
+<p>Dans cette quête, tu vas mettre en place un CRUD (<strong>C</strong>reate, <strong>R</strong>ead, <strong>U</strong>pdate, <strong>D</strong>elete) complet, aussi appelé BREAD (<strong>B</strong>rowse, <strong>R</strong>ead, <strong>E</strong>dit, <strong>A</strong>dd, <strong>D</strong>estroy), pour gérer les données de ton application. Tu vas également apprendre à communiquer avec une application serveur depuis une application cliente en suivant les principes REST.</p>
+<h2>Qu'est-ce que REST ?</h2>
+<p>REST (<strong>RE</strong>presentational <strong>S</strong>tate <strong>T</strong>ransfer) est une architecture qui repose sur un ensemble de contraintes pour construire des services web. Les services RESTful utilisent les protocoles HTTP pour effectuer des opérations sur les ressources d'un serveur web.</p>
+<p>Les bonnes pratiques REST :</p>
+<ul>
+<li>Utiliser des <strong>noms de ressources</strong> : Les URL doivent représenter des ressources. Par exemple, pour une ressource de type &quot;article&quot;, l'URL pourrait être <code>/articles</code> pour l'ensemble des articles et <code>/articles/:id</code> pour un article spécifique.</li>
+<li>Utiliser les <strong>méthodes HTTP</strong> de manière appropriée : GET pour récupérer des ressources, POST pour créer des ressources, PUT pour mettre à jour des ressources, et DELETE pour supprimer des ressources.</li>
+<li>Statuts de <strong>réponse HTTP</strong> : Utiliser les codes de statut HTTP pour indiquer le résultat des opérations (200 pour OK, 201 pour Created, 204 pour No Content, etc.).</li>
+<li>Utiliser des <strong>formats standardisés</strong> : JSON est couramment utilisé pour représenter les données des requêtes et des réponses.</li>
+</ul>
+<h3>Les opérations CRUD / BREAD</h3>
+<p>Les opérations CRUD (Create, Read, Update, Delete) correspondent aux actions de base que tu peux effectuer sur les données d'une application. Dans le cadre de cette quête, nous allons étendre ce concept avec BREAD (Browse, Read, Edit, Add, Destroy), qui est une version plus parlante des mêmes opérations.</p>
+<p>C'est un moyen mnémotechnique de retenir les opérations les plus courantes : une &quot;checklist&quot; à vérifier pour chaque ressource. Chaque ressource est identifiée par une URL et les opérations sur ces ressources sont effectuées en utilisant les méthodes HTTP.</p>
+<h3>Table de correspondance entre BREAD et HTTP (et SQL)</h3>
+<p>Pour une ressource &quot;item&quot; :</p>
+<div class="table-wrap"><table><thead>
+<tr>
+<th>Nom de l'opération</th>
+<th>Méthode HTTP</th>
+<th>Chemin d'URL</th>
+<th>Corps de la requête</th>
+<th>Opération SQL</th>
+<th>Statut de la réponse</th>
+<th>Corps de la réponse</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Browse</td>
+<td>GET</td>
+<td>/items</td>
+<td>(rien)</td>
+<td>SELECT</td>
+<td>200 OK</td>
+<td>Liste des ressources</td>
+</tr>
+<tr>
+<td>Read</td>
+<td>GET</td>
+<td>/items/:id</td>
+<td>(rien)</td>
+<td>SELECT</td>
+<td>200 OK</td>
+<td>Détails de la ressource</td>
+</tr>
+<tr>
+<td>Add (Create)</td>
+<td>POST</td>
+<td>/items</td>
+<td>Données de la nouvelle ressource</td>
+<td>INSERT</td>
+<td>201 Created</td>
+<td>Id d'insertion *</td>
+</tr>
+<tr>
+<td>Edit (Update)</td>
+<td>PUT</td>
+<td>/items/:id</td>
+<td>Données mises à jour</td>
+<td>UPDATE</td>
+<td>204 No Content</td>
+<td>(rien)</td>
+</tr>
+<tr>
+<td>Destroy (Delete)</td>
+<td>DELETE</td>
+<td>/items/:id</td>
+<td>(rien)</td>
+<td>DELETE</td>
+<td>204 No Content</td>
+<td>(rien)</td>
+</tr>
+</tbody>
+</table></div><p>* La recommandation pour la création de ressources est de ne rien retourner dans le corps de la réponse, et d'utiliser un <a href="https://developer.mozilla.org/fr/docs/Web/HTTP/Headers/Location" target="_blank" rel="noopener noreferrer">header &quot;Location&quot;</a>. Cette pratique amène une complexité supplémentaire. Retourner l'id d'insertion dans le corps de la réponse est une alternative que tu utiliseras pendant ta formation.</p>
+<div class="encadre encadre--note encadre--callout"><div class="encadre__corps"><p>Ces détails sont repris sur la page <a href="https://www.restapitutorial.com/introduction/httpmethods" target="_blank" rel="noopener noreferrer">Using HTTP Methods for RESTful Services</a>.</p>
+<p>Pour aller plus loin sur REST, tu peux aussi consulter le site <a href="https://restfulapi.net/" target="_blank" rel="noopener noreferrer">https://restfulapi.net/</a>.</p>
+</div></div>
+<h2>Avant d'aller plus loin</h2>
+<h3>Comment utiliser cette quête ?</h3>
+<p>Tu vas récupérer un dépôt avec un CRUD / BREAD complet (serveur et client) sur les catégories :</p>
+<ul>
+<li>Lister les catégories (Browse)</li>
+<li>Voir les détails d'une catégorie (Read)</li>
+<li>Modifier une catégorie (Edit)</li>
+<li>Créer une nouvelle catégorie (Add)</li>
+<li>Supprimer une catégorie (Destroy)</li>
+</ul>
+<p>Tu peux suivre cette quête pour construire pas à pas chaque fonctionnalité en t'appuyant sur le code du dépôt fourni en exemple.</p>
+<p>Si tu préfères expérimenter de ton côté ou explorer le code du dépôt fourni en autonomie, tu peux prendre comme référence la <a href="#table-de-correspondance-entre-bread-et-http-et-sql">Table de correspondance entre BREAD et HTTP (et SQL)</a> pour implémenter ton propre BREAD des catégories.</p>
+<div class="encadre encadre--warning"><div class="encadre__titre">Attention</div><div class="encadre__corps"><p>Attention : une étape indispensable pour faire communiquer ton client et ton serveur est d'activer le parsing du JSON dans la requête. Si tu ne suis pas toutes les étapes de la quête, lis attentivement les commentaires dans <code>server/src/app.ts</code> pour avoir des indications sur ce que tu dois faire.</p>
+</div></div>
+<h3>Le dépôt fourni pour cette quête</h3>
+<p>Pour cette quête, un dépôt de démonstration est disponible : il contient une application serveur prête à l'emploi. Ce dépôt contient également le code client qui interagira avec le serveur. Pour le cloner, ouvre un terminal puis exécute la commande :</p>
+<div class="bloc-code"><div class="bloc-code__langue">bash</div><pre><code class="hljs language-bash">git <span class="hljs-built_in">clone</span> git@github.com:WildCodeSchool/quest-js-wild-series.git
+</code></pre></div>
+<p>Installe ensuite les dépendances du projet :</p>
+<div class="bloc-code"><div class="bloc-code__langue">bash</div><pre><code class="hljs language-bash"><span class="hljs-built_in">cd</span> quest-js-wild-series
+npm install
+</code></pre></div>
+<p>Créé les fichiers <code>server/.env</code> et <code>client/.env</code> en copiant et en adaptant <code>server/.env.sample</code> et <code>client/.env.sample</code>. Mets en place la base de données en exécutant la commande :</p>
+<div class="bloc-code"><div class="bloc-code__langue">bash</div><pre><code class="hljs language-bash">npm run db:migrate
+</code></pre></div>
+<p>Tu peux maintenant démarrer les applications avec la commande <code>npm run dev</code> et tester l'application <code>client</code> en ouvrant la page <a href="http://localhost:3000" target="_blank" rel="noopener noreferrer">http://localhost:3000</a>.</p>
+<h2>B, R, E, A, D</h2>
+<p>Chacune des parties suivantes détaille l'implémentation d'une méthode. Le schéma est toujours le même :</p>
+<ul>
+<li>Côté client :
+<ul>
+<li>Fetch : l'appel qui envoie une requête au serveur</li>
+</ul>
+</li>
+<li>Côté serveur :
+<ul>
+<li>Action : l'action déclenchée côté serveur.</li>
+<li>Repository : la méthode utilisée pour appliquer l'action dans la base de données.</li>
+</ul>
+</li>
+</ul>
+<div class="encadre encadre--warning"><div class="encadre__titre">Attention</div><div class="encadre__corps"><p>Plusieurs des requêtes HTTP dans ce dépôt utilisent des options avancées de <code>fetch</code>. Par exemple, une requête PUT ressemble à ceci :</p>
+<div class="bloc-code"><div class="bloc-code__langue">typescript</div><pre><code class="hljs language-typescript"><span class="hljs-keyword">const</span> category = { <span class="hljs-attr">id</span>: <span class="hljs-number">1</span>, <span class="hljs-attr">name</span>: <span class="hljs-string">&quot;Comédie musicale&quot;</span> };
+
+<span class="hljs-title function_">fetch</span>(<span class="hljs-string">`<span class="hljs-subst">${<span class="hljs-keyword">import</span>.meta.env.VITE_API_URL}</span>/api/categories/<span class="hljs-subst">${someId}</span>`</span>, {
+  <span class="hljs-attr">method</span>: <span class="hljs-string">&quot;put&quot;</span>,
+  <span class="hljs-attr">headers</span>: { <span class="hljs-string">&quot;Content-Type&quot;</span>: <span class="hljs-string">&quot;application/json&quot;</span> },
+  <span class="hljs-attr">body</span>: <span class="hljs-title class_">JSON</span>.<span class="hljs-title function_">stringify</span>(category),
+});
+</code></pre></div>
+<p>Décryptage :</p>
+<ul>
+<li><code>import.meta.env.VITE_API_URL</code> : c'est l'URL de base de ton serveur, indiquée dans <code>client/.env</code>. Elle est suivie du chemin d'URL à requêter : <code>/api/categories/${someId}</code>.</li>
+<li><code>method: &quot;put&quot;</code> : le verbe HTTP qui complète la requête, ici PUT.</li>
+<li><code>headers: { &quot;Content-Type&quot;: &quot;application/json&quot; }</code> : les en-têtes de la requête, ici pour préciser que le type du contenu, le corps (<em>body</em>) contient des données au format JSON.</li>
+<li><code>body: JSON.stringify(category)</code> : le corps de la requête, qui doit impérativement être une chaine de caractères (au format JSON, puisque c'est le format que nous avons fixé).</li>
+</ul>
+</div></div>
+<p>L'opération <em>Add</em> inclue des détails supplémentaires sur l'activation du parsing du JSON dans <code>server/src/app.ts</code> : tu devrais commencer par cette opération. Libre à toi ensuite de piocher l'opération BREAD que tu veux dérouler.</p>
+<h3>Browse</h3>
+<div class="table-wrap"><table><thead>
+<tr>
+<th>Nom de l'opération</th>
+<th>Méthode HTTP</th>
+<th>Chemin d'URL</th>
+<th>Corps de la requête</th>
+<th>Opération SQL</th>
+<th>Statut de la réponse</th>
+<th>Corps de la réponse</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Browse</td>
+<td>GET</td>
+<td>/categories</td>
+<td>(rien)</td>
+<td>SELECT</td>
+<td>200 OK</td>
+<td>Liste des catégories</td>
+</tr>
+</tbody>
+</table></div><ol class="etapes"><li class="etape"><div class="etape__puce">1</div><div class="etape__contenu"><h4 class="etape__titre">Fetch</h4><p>Dans <code>client/src/pages/CategoryIndex.tsx</code> :</p>
+<div class="bloc-code"><div class="bloc-code__langue">typescript</div><pre><code class="hljs language-typescript"><span class="hljs-keyword">import</span> { useEffect, useState } <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;react&quot;</span>;
+<span class="hljs-keyword">import</span> { <span class="hljs-title class_">Link</span> } <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;react-router-dom&quot;</span>;
+
+<span class="hljs-keyword">type</span> <span class="hljs-title class_">Category</span> = {
+  <span class="hljs-attr">id</span>: <span class="hljs-built_in">number</span>;
+  <span class="hljs-attr">name</span>: <span class="hljs-built_in">string</span>;
+};
+
+<span class="hljs-keyword">function</span> <span class="hljs-title function_">CategoryIndex</span>(<span class="hljs-params"></span>) {
+  <span class="hljs-keyword">const</span> [categories, setCategories] = <span class="hljs-title function_">useState</span>([] <span class="hljs-keyword">as</span> <span class="hljs-title class_">Category</span>[]);
+
+  <span class="hljs-title function_">useEffect</span>(<span class="hljs-function">() =&gt;</span> {
+    <span class="hljs-title function_">fetch</span>(<span class="hljs-string">`<span class="hljs-subst">${<span class="hljs-keyword">import</span>.meta.env.VITE_API_URL}</span>/api/categories`</span>)
+      .<span class="hljs-title function_">then</span>(<span class="hljs-function">(<span class="hljs-params">response</span>) =&gt;</span> response.<span class="hljs-title function_">json</span>())
+      .<span class="hljs-title function_">then</span>(<span class="hljs-function">(<span class="hljs-params"><span class="hljs-attr">data</span>: <span class="hljs-title class_">Category</span>[]</span>) =&gt;</span> {
+        <span class="hljs-title function_">setCategories</span>(data);
+      });
+  }, []);
+
+  <span class="hljs-keyword">return</span> (
+    <span class="language-xml"><span class="hljs-tag">&lt;&gt;</span>
+      <span class="hljs-tag">&lt;<span class="hljs-name">Link</span> <span class="hljs-attr">to</span>=<span class="hljs-string">{</span>&quot;/<span class="hljs-attr">categories</span>/<span class="hljs-attr">new</span>&quot;}&gt;</span>Ajouter<span class="hljs-tag">&lt;/<span class="hljs-name">Link</span>&gt;</span>
+      <span class="hljs-tag">&lt;<span class="hljs-name">ul</span>&gt;</span>
+        {categories.map((category) =&gt; (
+          <span class="hljs-tag">&lt;<span class="hljs-name">li</span> <span class="hljs-attr">key</span>=<span class="hljs-string">{category.id}</span>&gt;</span>
+            <span class="hljs-tag">&lt;<span class="hljs-name">Link</span> <span class="hljs-attr">to</span>=<span class="hljs-string">{</span>`/<span class="hljs-attr">categories</span>/${<span class="hljs-attr">category.id</span>}`}&gt;</span>{category.name}<span class="hljs-tag">&lt;/<span class="hljs-name">Link</span>&gt;</span>
+          <span class="hljs-tag">&lt;/<span class="hljs-name">li</span>&gt;</span>
+        ))}
+      <span class="hljs-tag">&lt;/<span class="hljs-name">ul</span>&gt;</span>
+    <span class="hljs-tag">&lt;/&gt;</span></span>
+  );
+}
+
+<span class="hljs-keyword">export</span> <span class="hljs-keyword">default</span> <span class="hljs-title class_">CategoryIndex</span>;
+</code></pre></div>
+</div></li><li class="etape"><div class="etape__puce">2</div><div class="etape__contenu"><h4 class="etape__titre">Requête envoyée, en attente d'une réponse</h4><p><img src="images/001-react-et-express-dans-l-architecture-client.png" alt="react et express dans l'architecture client serveur du web" loading="lazy"></p>
+</div></li><li class="etape"><div class="etape__puce">3</div><div class="etape__contenu"><h4 class="etape__titre">Action</h4><p>Dans <code>server/src/modules/category/categoryActions.ts</code> :</p>
+<div class="bloc-code"><div class="bloc-code__langue">typescript</div><pre><code class="hljs language-typescript"><span class="hljs-keyword">const</span> <span class="hljs-attr">browse</span>: <span class="hljs-title class_">RequestHandler</span> = <span class="hljs-title function_">async</span> (req, res, next) =&gt; {
+  <span class="hljs-keyword">try</span> {
+    <span class="hljs-comment">// Fetch all categories</span>
+    <span class="hljs-keyword">const</span> categories = <span class="hljs-keyword">await</span> categoryRepository.<span class="hljs-title function_">readAll</span>();
+
+    <span class="hljs-comment">// Respond with the categories in JSON format</span>
+    res.<span class="hljs-title function_">json</span>(categories);
+  } <span class="hljs-keyword">catch</span> (err) {
+    <span class="hljs-comment">// Pass any errors to the error-handling middleware</span>
+    <span class="hljs-title function_">next</span>(err);
+  }
+};
+</code></pre></div>
+</div></li><li class="etape"><div class="etape__puce">4</div><div class="etape__contenu"><h4 class="etape__titre">Repository</h4><p>Dans <code>server/src/modules/category/categoryRepository.ts</code> :</p>
+<div class="bloc-code"><div class="bloc-code__langue">typescript</div><pre><code class="hljs language-typescript"><span class="hljs-keyword">async</span> <span class="hljs-title function_">readAll</span>(<span class="hljs-params"></span>) {
+  <span class="hljs-comment">// Execute the SQL SELECT query to retrieve all categories from the &quot;category&quot; table</span>
+  <span class="hljs-keyword">const</span> [rows] = <span class="hljs-keyword">await</span> databaseClient.<span class="hljs-property">query</span>&lt;<span class="hljs-title class_">Rows</span>&gt;(<span class="hljs-string">&quot;select * from category&quot;</span>);
+
+  <span class="hljs-comment">// Return the array of categories</span>
+  <span class="hljs-keyword">return</span> rows <span class="hljs-keyword">as</span> <span class="hljs-title class_">Category</span>[];
+}
+</code></pre></div>
+</div></li></ol>
+<h3>Read</h3>
+<div class="table-wrap"><table><thead>
+<tr>
+<th>Nom de l'opération</th>
+<th>Méthode HTTP</th>
+<th>Chemin d'URL</th>
+<th>Corps de la requête</th>
+<th>Opération SQL</th>
+<th>Statut de la réponse</th>
+<th>Corps de la réponse</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Read</td>
+<td>GET</td>
+<td>/categories/:id</td>
+<td>(rien)</td>
+<td>SELECT</td>
+<td>200 OK</td>
+<td>Détails de la catégorie</td>
+</tr>
+</tbody>
+</table></div><ol class="etapes"><li class="etape"><div class="etape__puce">1</div><div class="etape__contenu"><h4 class="etape__titre">Fetch</h4><p>Dans <code>client/src/pages/CategoryDetails.tsx</code> :</p>
+<div class="bloc-code"><div class="bloc-code__langue">typescript</div><pre><code class="hljs language-typescript"><span class="hljs-keyword">import</span> { useEffect, useState } <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;react&quot;</span>;
+<span class="hljs-keyword">import</span> { <span class="hljs-title class_">Link</span>, useParams } <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;react-router-dom&quot;</span>;
+
+<span class="hljs-keyword">import</span> <span class="hljs-title class_">CategoryDeleteForm</span> <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;../components/CategoryDeleteForm&quot;</span>;
+
+<span class="hljs-keyword">type</span> <span class="hljs-title class_">Program</span> = {
+  <span class="hljs-attr">id</span>: <span class="hljs-built_in">number</span>;
+  <span class="hljs-attr">title</span>: <span class="hljs-built_in">string</span>;
+};
+
+<span class="hljs-keyword">type</span> <span class="hljs-title class_">Category</span> = {
+  <span class="hljs-attr">id</span>: <span class="hljs-built_in">number</span>;
+  <span class="hljs-attr">name</span>: <span class="hljs-built_in">string</span>;
+  <span class="hljs-attr">programs</span>: <span class="hljs-title class_">Program</span>[];
+};
+
+<span class="hljs-keyword">function</span> <span class="hljs-title function_">CategoryDetails</span>(<span class="hljs-params"></span>) {
+  <span class="hljs-keyword">const</span> { id } = <span class="hljs-title function_">useParams</span>();
+  <span class="hljs-keyword">const</span> [category, setCategory] = <span class="hljs-title function_">useState</span>(<span class="hljs-literal">null</span> <span class="hljs-keyword">as</span> <span class="hljs-literal">null</span> | <span class="hljs-title class_">Category</span>);
+
+  <span class="hljs-title function_">useEffect</span>(<span class="hljs-function">() =&gt;</span> {
+    <span class="hljs-title function_">fetch</span>(<span class="hljs-string">`<span class="hljs-subst">${<span class="hljs-keyword">import</span>.meta.env.VITE_API_URL}</span>/api/categories/<span class="hljs-subst">${id}</span>`</span>)
+      .<span class="hljs-title function_">then</span>(<span class="hljs-function">(<span class="hljs-params">response</span>) =&gt;</span> response.<span class="hljs-title function_">json</span>())
+      .<span class="hljs-title function_">then</span>(<span class="hljs-function">(<span class="hljs-params"><span class="hljs-attr">data</span>: <span class="hljs-title class_">Category</span></span>) =&gt;</span> {
+        <span class="hljs-title function_">setCategory</span>(data);
+      });
+  }, [id]);
+
+  <span class="hljs-keyword">return</span> (
+    category &amp;&amp; (
+      <span class="language-xml"><span class="hljs-tag">&lt;&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">hgroup</span> <span class="hljs-attr">className</span>=<span class="hljs-string">&quot;details-hgroup&quot;</span>&gt;</span>
+          <span class="hljs-tag">&lt;<span class="hljs-name">h1</span>&gt;</span>{category.name}<span class="hljs-tag">&lt;/<span class="hljs-name">h1</span>&gt;</span>
+          <span class="hljs-tag">&lt;<span class="hljs-name">Link</span> <span class="hljs-attr">to</span>=<span class="hljs-string">{</span>`/<span class="hljs-attr">categories</span>/${<span class="hljs-attr">category.id</span>}/<span class="hljs-attr">edit</span>`}&gt;</span>Modifier<span class="hljs-tag">&lt;/<span class="hljs-name">Link</span>&gt;</span>
+          <span class="hljs-tag">&lt;<span class="hljs-name">CategoryDeleteForm</span> <span class="hljs-attr">id</span>=<span class="hljs-string">{category.id}</span>&gt;</span>Supprimer<span class="hljs-tag">&lt;/<span class="hljs-name">CategoryDeleteForm</span>&gt;</span>
+        <span class="hljs-tag">&lt;/<span class="hljs-name">hgroup</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">ul</span>&gt;</span>
+          {category.programs.map((program) =&gt; (
+            <span class="hljs-tag">&lt;<span class="hljs-name">li</span> <span class="hljs-attr">key</span>=<span class="hljs-string">{program.id}</span>&gt;</span>
+              <span class="hljs-tag">&lt;<span class="hljs-name">Link</span> <span class="hljs-attr">to</span>=<span class="hljs-string">{</span>`/<span class="hljs-attr">programs</span>/${<span class="hljs-attr">program.id</span>}`}&gt;</span>{program.title}<span class="hljs-tag">&lt;/<span class="hljs-name">Link</span>&gt;</span>
+            <span class="hljs-tag">&lt;/<span class="hljs-name">li</span>&gt;</span>
+          ))}
+        <span class="hljs-tag">&lt;/<span class="hljs-name">ul</span>&gt;</span>
+      <span class="hljs-tag">&lt;/&gt;</span></span>
+    )
+  );
+}
+
+<span class="hljs-keyword">export</span> <span class="hljs-keyword">default</span> <span class="hljs-title class_">CategoryDetails</span>;
+</code></pre></div>
+</div></li><li class="etape"><div class="etape__puce">2</div><div class="etape__contenu"><h4 class="etape__titre">Requête envoyée, en attente d'une réponse</h4><p><img src="images/001-react-et-express-dans-l-architecture-client.png" alt="react et express dans l'architecture client serveur du web" loading="lazy"></p>
+</div></li><li class="etape"><div class="etape__puce">3</div><div class="etape__contenu"><h4 class="etape__titre">Action</h4><p>Dans <code>server/src/modules/category/categoryActions.ts</code> :</p>
+<div class="bloc-code"><div class="bloc-code__langue">typescript</div><pre><code class="hljs language-typescript"><span class="hljs-keyword">const</span> <span class="hljs-attr">read</span>: <span class="hljs-title class_">RequestHandler</span> = <span class="hljs-title function_">async</span> (req, res, next) =&gt; {
+  <span class="hljs-keyword">try</span> {
+    <span class="hljs-comment">// Fetch a specific category based on the provided ID</span>
+    <span class="hljs-keyword">const</span> categoryId = <span class="hljs-title class_">Number</span>(req.<span class="hljs-property">params</span>.<span class="hljs-property">id</span>);
+    <span class="hljs-keyword">const</span> category = <span class="hljs-keyword">await</span> categoryRepository.<span class="hljs-title function_">read</span>(categoryId);
+
+    <span class="hljs-comment">// If the category is not found, respond with HTTP 404 (Not Found)</span>
+    <span class="hljs-comment">// Otherwise, respond with the category in JSON format</span>
+    <span class="hljs-keyword">if</span> (category == <span class="hljs-literal">null</span>) {
+      res.<span class="hljs-title function_">sendStatus</span>(<span class="hljs-number">404</span>);
+    } <span class="hljs-keyword">else</span> {
+      res.<span class="hljs-title function_">json</span>(category);
+    }
+  } <span class="hljs-keyword">catch</span> (err) {
+    <span class="hljs-comment">// Pass any errors to the error-handling middleware</span>
+    <span class="hljs-title function_">next</span>(err);
+  }
+};
+</code></pre></div>
+</div></li><li class="etape"><div class="etape__puce">4</div><div class="etape__contenu"><h4 class="etape__titre">Repository</h4><p>Dans <code>server/src/modules/category/categoryRepository.ts</code> :</p>
+<div class="bloc-code"><div class="bloc-code__langue">typescript</div><pre><code class="hljs language-typescript"><span class="hljs-keyword">async</span> <span class="hljs-title function_">read</span>(<span class="hljs-params"><span class="hljs-attr">id</span>: <span class="hljs-built_in">number</span></span>) {
+  <span class="hljs-comment">// Execute the SQL SELECT query to retrieve a specific category by its ID</span>
+  <span class="hljs-keyword">const</span> [rows] = <span class="hljs-keyword">await</span> databaseClient.<span class="hljs-property">query</span>&lt;<span class="hljs-title class_">Rows</span>&gt;(
+      <span class="hljs-string">`
+      select 
+        category.*, 
+        JSON_ARRAYAGG(
+          JSON_OBJECT(
+            &quot;id&quot;, program.id, &quot;title&quot;, program.title
+          )
+        ) as programs 
+      from 
+        category 
+        left join program on program.category_id = category.id 
+      where 
+        category.id = ? 
+      group by 
+        category.id
+      `</span>,
+    [id],
+  );
+
+  <span class="hljs-comment">// Return the first row of the result, which represents the category</span>
+  <span class="hljs-keyword">return</span> rows[<span class="hljs-number">0</span>] <span class="hljs-keyword">as</span> <span class="hljs-title class_">Category</span>;
+}
+</code></pre></div>
+<div class="encadre encadre--error"><div class="encadre__titre">Important</div><div class="encadre__corps"><p>Quelle est cette diablerie ?!? Qu'est devenu le <code>select * from category where id = ?</code> ?</p>
+<p>Rassure-toi : tu auras rarement besoin d'une requête aussi complexe. Nous avons volontairement provoqué le cas pour que tu le rencontres pendant cette quête.</p>
+</div></div>
+<p>Sur la page détaillée d'une ressource, tu peux vouloir afficher des ressources associées par une clé étrangère. Ici par exemple, le code SQL permet de récupérer une catégorie avec toutes ses séries.</p>
+<p>C'est le rôle d'une jointure SQL : récupérer des données à travers plusieurs tables avec une seule requête. Une première version serait (avec un <code>left join</code>, pour récupérer toutes les catégories, même celles qui n'ont pas encore de séries associées) :</p>
+<div class="bloc-code"><div class="bloc-code__langue">sql</div><pre><code class="hljs language-sql"><span class="hljs-keyword">select</span> 
+  category.<span class="hljs-operator">*</span>, 
+  program.id <span class="hljs-keyword">as</span> program_id, 
+  program.title 
+<span class="hljs-keyword">from</span> 
+  category 
+  <span class="hljs-keyword">left</span> <span class="hljs-keyword">join</span> program <span class="hljs-keyword">on</span> program.category_id <span class="hljs-operator">=</span> category.id;
+</code></pre></div>
+<p>Tous les champs de la table <code>category</code> sont sélectionnés avec <code>category.*</code>. L'id de la table <code>program</code> est renommé avec l'alias <code>program_id</code> pour éviter une collision de nom avec l'id de la table <code>category</code>.</p>
+<p>Si une catégorie est associée à plusieurs séries, la requête produira un tableau &quot;applati&quot; avec les données de la catégorie duppliquées comme dans cet exemple :</p>
+<div class="bloc-code"><div class="bloc-code__langue">json</div><pre><code class="hljs language-json"><span class="hljs-punctuation">[</span>
+  <span class="hljs-punctuation">{</span> <span class="hljs-attr">&quot;id&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-number">1</span><span class="hljs-punctuation">,</span> <span class="hljs-attr">&quot;name&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;Comédie&quot;</span><span class="hljs-punctuation">,</span> <span class="hljs-attr">&quot;program_id&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-number">1</span><span class="hljs-punctuation">,</span> <span class="hljs-attr">&quot;title&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;The Good Place&quot;</span> <span class="hljs-punctuation">}</span><span class="hljs-punctuation">,</span>
+  <span class="hljs-punctuation">{</span> <span class="hljs-attr">&quot;id&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-number">1</span><span class="hljs-punctuation">,</span> <span class="hljs-attr">&quot;name&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;Comédie&quot;</span><span class="hljs-punctuation">,</span> <span class="hljs-attr">&quot;program_id&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-number">3</span><span class="hljs-punctuation">,</span> <span class="hljs-attr">&quot;title&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;The office&quot;</span> <span class="hljs-punctuation">}</span><span class="hljs-punctuation">,</span>
+  <span class="hljs-punctuation">{</span> <span class="hljs-attr">&quot;id&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-number">2</span><span class="hljs-punctuation">,</span> <span class="hljs-attr">&quot;name&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;Science-Fiction&quot;</span><span class="hljs-punctuation">,</span> <span class="hljs-attr">&quot;program_id&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-number">2</span><span class="hljs-punctuation">,</span> <span class="hljs-attr">&quot;title&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;Dark&quot;</span> <span class="hljs-punctuation">}</span>
+<span class="hljs-punctuation">]</span>
+</code></pre></div>
+<p>Tu peux produire une version beaucoup mieux structurée pour ton client en regroupant les séries par catégories. Quelque chose comme ça :</p>
+<div class="bloc-code"><div class="bloc-code__langue">json</div><pre><code class="hljs language-json"><span class="hljs-punctuation">[</span>
+  <span class="hljs-punctuation">{</span>
+    <span class="hljs-attr">&quot;id&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-number">1</span><span class="hljs-punctuation">,</span>
+    <span class="hljs-attr">&quot;name&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;Comédie&quot;</span><span class="hljs-punctuation">,</span>
+    <span class="hljs-attr">&quot;programs&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-punctuation">[</span>
+      <span class="hljs-punctuation">{</span> <span class="hljs-attr">&quot;id&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-number">1</span><span class="hljs-punctuation">,</span> <span class="hljs-attr">&quot;title&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;The Good Place&quot;</span> <span class="hljs-punctuation">}</span><span class="hljs-punctuation">,</span>
+      <span class="hljs-punctuation">{</span> <span class="hljs-attr">&quot;id&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-number">3</span><span class="hljs-punctuation">,</span> <span class="hljs-attr">&quot;title&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;The office&quot;</span> <span class="hljs-punctuation">}</span>
+    <span class="hljs-punctuation">]</span>
+  <span class="hljs-punctuation">}</span><span class="hljs-punctuation">,</span>
+  <span class="hljs-punctuation">{</span>
+    <span class="hljs-attr">&quot;id&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-number">2</span><span class="hljs-punctuation">,</span>
+    <span class="hljs-attr">&quot;name&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;Science-Fiction&quot;</span><span class="hljs-punctuation">,</span>
+    <span class="hljs-attr">&quot;programs&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-punctuation">[</span><span class="hljs-punctuation">{</span> <span class="hljs-attr">&quot;id&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-number">2</span><span class="hljs-punctuation">,</span> <span class="hljs-attr">&quot;title&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;Dark&quot;</span> <span class="hljs-punctuation">}</span><span class="hljs-punctuation">]</span>
+  <span class="hljs-punctuation">}</span>
+<span class="hljs-punctuation">]</span>
+</code></pre></div>
+<p>C'est ce que te permet l'option <code>group by</code> en SQL (la requête suivante ne marche pas) :</p>
+<div class="bloc-code"><div class="bloc-code__langue">sql</div><pre><code class="hljs language-sql"><span class="hljs-keyword">select</span> 
+  category.<span class="hljs-operator">*</span> 
+  program.id <span class="hljs-keyword">as</span> program_id, 
+  program.title 
+<span class="hljs-keyword">from</span> 
+  category 
+  <span class="hljs-keyword">left</span> <span class="hljs-keyword">join</span> program <span class="hljs-keyword">on</span> program.category_id <span class="hljs-operator">=</span> category.id 
+<span class="hljs-keyword">group</span> <span class="hljs-keyword">by</span> 
+  category.id
+</code></pre></div>
+<p>Mais dans ce regroupement, tu obtiens plusieurs séries à &quot;faire tenir sur la même ligne&quot; pour chaque catégorie. C'est là que tu dois expliquer en SQL comment construire une <em>agrégation</em>. MySQL fournit des fonctions pour réunir plusieurs champs en un objet JSON puis plusieurs objets en un tableau : <a href="https://dev.mysql.com/doc/refman/8.0/en/json-creation-functions.html#function_json-object" target="_blank" rel="noopener noreferrer">JSON_OBJECT</a> et <a href="https://dev.mysql.com/doc/refman/8.0/en/aggregate-functions.html#function_json-arrayagg" target="_blank" rel="noopener noreferrer">JSON_ARRAYAGG</a>. Avec toutes les pièces du puzzle, tu obtiens :</p>
+<div class="bloc-code"><div class="bloc-code__langue">sql</div><pre><code class="hljs language-sql"><span class="hljs-keyword">select</span> 
+  category.<span class="hljs-operator">*</span>, 
+  <span class="hljs-built_in">JSON_ARRAYAGG</span>(
+    <span class="hljs-built_in">JSON_OBJECT</span>(
+      &quot;id&quot;, program.id, &quot;title&quot;, program.title
+    )
+  ) <span class="hljs-keyword">as</span> programs 
+<span class="hljs-keyword">from</span> 
+  category 
+  <span class="hljs-keyword">left</span> <span class="hljs-keyword">join</span> program <span class="hljs-keyword">on</span> program.category_id <span class="hljs-operator">=</span> category.id 
+<span class="hljs-keyword">group</span> <span class="hljs-keyword">by</span> 
+  category.id
+</code></pre></div>
+</div></li></ol>
+<h3>Edit</h3>
+<div class="table-wrap"><table><thead>
+<tr>
+<th>Nom de l'opération</th>
+<th>Méthode HTTP</th>
+<th>Chemin d'URL</th>
+<th>Corps de la requête</th>
+<th>Opération SQL</th>
+<th>Statut de la réponse</th>
+<th>Corps de la réponse</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Edit (Update)</td>
+<td>PUT</td>
+<td>/categories/:id</td>
+<td>Données mises à jour</td>
+<td>UPDATE</td>
+<td>204 No Content</td>
+<td>(rien)</td>
+</tr>
+</tbody>
+</table></div><ol class="etapes"><li class="etape"><div class="etape__puce">1</div><div class="etape__contenu"><h4 class="etape__titre">Fetch</h4><p>Dans <code>client/src/pages/CategoryEdit.tsx</code> :</p>
+<div class="bloc-code"><div class="bloc-code__langue">typescript</div><pre><code class="hljs language-typescript"><span class="hljs-keyword">import</span> { useEffect, useState } <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;react&quot;</span>;
+<span class="hljs-keyword">import</span> { useNavigate, useParams } <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;react-router-dom&quot;</span>;
+
+<span class="hljs-keyword">import</span> <span class="hljs-title class_">CategoryForm</span> <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;../components/CategoryForm&quot;</span>;
+
+<span class="hljs-keyword">type</span> <span class="hljs-title class_">Category</span> = {
+  <span class="hljs-attr">id</span>: <span class="hljs-built_in">number</span>;
+  <span class="hljs-attr">name</span>: <span class="hljs-built_in">string</span>;
+};
+
+<span class="hljs-keyword">function</span> <span class="hljs-title function_">CategoryEdit</span>(<span class="hljs-params"></span>) {
+  <span class="hljs-comment">// ...</span>
+
+  <span class="hljs-keyword">return</span> (
+    category &amp;&amp; (
+      <span class="language-xml"><span class="hljs-tag">&lt;<span class="hljs-name">CategoryForm</span>
+        <span class="hljs-attr">defaultValue</span>=<span class="hljs-string">{category}</span>
+        <span class="hljs-attr">onSubmit</span>=<span class="hljs-string">{(categoryData)</span> =&gt;</span> {
+          fetch(
+            `${import.meta.env.VITE_API_URL}/api/categories/${category.id}`,
+            {
+              method: &quot;put&quot;,
+              headers: {
+                &quot;Content-Type&quot;: &quot;application/json&quot;,
+              },
+              body: JSON.stringify(categoryData),
+            },
+          ).then((response) =&gt; {
+            if (response.status === 204) {
+              navigate(`/categories/${category.id}`);
+            }
+          });
+        }}
+      &gt;
+        Modifier
+      <span class="hljs-tag">&lt;/<span class="hljs-name">CategoryForm</span>&gt;</span></span>
+    )
+  );
+}
+
+<span class="hljs-keyword">export</span> <span class="hljs-keyword">default</span> <span class="hljs-title class_">CategoryEdit</span>;
+</code></pre></div>
+</div></li><li class="etape"><div class="etape__puce">2</div><div class="etape__contenu"><h4 class="etape__titre">Requête envoyée, en attente d'une réponse</h4><p><img src="images/001-react-et-express-dans-l-architecture-client.png" alt="react et express dans l'architecture client serveur du web" loading="lazy"></p>
+</div></li><li class="etape"><div class="etape__puce">3</div><div class="etape__contenu"><h4 class="etape__titre">Activer le parsing de la requête</h4><p>Le parsing des requêtes est nécessaire pour extraire les données envoyées par le client dans une requête HTTP. C'est le cas ici pour accéder au corps de ta requête PUT.</p>
+<p>Dans <code>server/src/app.ts</code>, le code contient des commentaires pour activer différentes manières d'extraire des données :</p>
+<ul>
+<li><code>express.json()</code> : analyse les requêtes avec des données JSON.</li>
+<li><code>express.urlencoded()</code> : analyse les requêtes avec des données codées en URL.</li>
+<li><code>express.text()</code> : analyse les requêtes avec des données texte brutes.</li>
+<li><code>express.raw()</code> : analyse les requêtes avec des données binaires brutes.</li>
+</ul>
+<p>Si ce n'est pas déjà fait, décommente une ou plusieurs de ces options selon le format des données envoyées par ton client :</p>
+<div class="bloc-code"><div class="bloc-code__langue">diff</div><pre><code class="hljs language-diff"><span class="hljs-deletion">-// app.use(express.json());</span>
+<span class="hljs-addition">+app.use(express.json());</span>
+// app.use(express.urlencoded());
+// app.use(express.text());
+// app.use(express.raw());
+</code></pre></div>
+</div></li><li class="etape"><div class="etape__puce">4</div><div class="etape__contenu"><h4 class="etape__titre">Action</h4><p>Dans <code>server/src/modules/category/categoryActions.ts</code> :</p>
+<div class="bloc-code"><div class="bloc-code__langue">typescript</div><pre><code class="hljs language-typescript"><span class="hljs-keyword">const</span> <span class="hljs-attr">edit</span>: <span class="hljs-title class_">RequestHandler</span> = <span class="hljs-title function_">async</span> (req, res, next) =&gt; {
+  <span class="hljs-keyword">try</span> {
+    <span class="hljs-comment">// Update a specific category based on the provided ID</span>
+    <span class="hljs-keyword">const</span> category = {
+      <span class="hljs-attr">id</span>: <span class="hljs-title class_">Number</span>(req.<span class="hljs-property">params</span>.<span class="hljs-property">id</span>),
+      <span class="hljs-attr">name</span>: req.<span class="hljs-property">body</span>.<span class="hljs-property">name</span>,
+    };
+
+    <span class="hljs-keyword">const</span> affectedRows = <span class="hljs-keyword">await</span> categoryRepository.<span class="hljs-title function_">update</span>(category);
+
+    <span class="hljs-comment">// If the category is not found, respond with HTTP 404 (Not Found)</span>
+    <span class="hljs-comment">// Otherwise, respond with the category in JSON format</span>
+    <span class="hljs-keyword">if</span> (affectedRows === <span class="hljs-number">0</span>) {
+      res.<span class="hljs-title function_">sendStatus</span>(<span class="hljs-number">404</span>);
+    } <span class="hljs-keyword">else</span> {
+      res.<span class="hljs-title function_">sendStatus</span>(<span class="hljs-number">204</span>);
+    }
+  } <span class="hljs-keyword">catch</span> (err) {
+    <span class="hljs-comment">// Pass any errors to the error-handling middleware</span>
+    <span class="hljs-title function_">next</span>(err);
+  }
+};
+</code></pre></div>
+</div></li><li class="etape"><div class="etape__puce">5</div><div class="etape__contenu"><h4 class="etape__titre">Repository</h4><p>Dans <code>server/src/modules/category/categoryRepository.ts</code> :</p>
+<div class="bloc-code"><div class="bloc-code__langue">typescript</div><pre><code class="hljs language-typescript"><span class="hljs-keyword">async</span> <span class="hljs-title function_">update</span>(<span class="hljs-params"><span class="hljs-attr">category</span>: <span class="hljs-title class_">Category</span></span>) {
+  <span class="hljs-comment">// Execute the SQL UPDATE query to update an existing category in the &quot;category&quot; table</span>
+  <span class="hljs-keyword">const</span> [result] = <span class="hljs-keyword">await</span> databaseClient.<span class="hljs-property">query</span>&lt;<span class="hljs-title class_">Result</span>&gt;(
+    <span class="hljs-string">&quot;update category set name = ? where id = ?&quot;</span>,
+    [category.<span class="hljs-property">name</span>, category.<span class="hljs-property">id</span>],
+  );
+
+  <span class="hljs-comment">// Return how many rows were affected</span>
+  <span class="hljs-keyword">return</span> result.<span class="hljs-property">affectedRows</span>;
+}
+</code></pre></div>
+<p>Note le <code>&lt;Result&gt;</code> derrière <code>databaseClient.query</code> : il est en phase la requête UPDATE qui produit un résultat (dont le nombre de lignes affectées : <code>result.affectedRows</code>) et pas des &quot;rows&quot; comme une requête SELECT.</p>
+</div></li></ol>
+<h3>Add</h3>
+<div class="table-wrap"><table><thead>
+<tr>
+<th>Nom de l'opération</th>
+<th>Méthode HTTP</th>
+<th>Chemin d'URL</th>
+<th>Corps de la requête</th>
+<th>Opération SQL</th>
+<th>Statut de la réponse</th>
+<th>Corps de la réponse</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Add (Create)</td>
+<td>POST</td>
+<td>/categories</td>
+<td>Données de la nouvelle catégorie</td>
+<td>INSERT</td>
+<td>201 Created</td>
+<td>Id d'insertion</td>
+</tr>
+</tbody>
+</table></div><ol class="etapes"><li class="etape"><div class="etape__puce">1</div><div class="etape__contenu"><h4 class="etape__titre">Fetch</h4><p>Dans <code>client/src/pages/CategoryNew.tsx</code> :</p>
+<div class="bloc-code"><div class="bloc-code__langue">typescript</div><pre><code class="hljs language-typescript"><span class="hljs-keyword">import</span> { useNavigate } <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;react-router-dom&quot;</span>;
+
+<span class="hljs-keyword">import</span> <span class="hljs-title class_">CategoryForm</span> <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;../components/CategoryForm&quot;</span>;
+
+<span class="hljs-keyword">function</span> <span class="hljs-title function_">CategoryNew</span>(<span class="hljs-params"></span>) {
+  <span class="hljs-keyword">const</span> navigate = <span class="hljs-title function_">useNavigate</span>();
+
+  <span class="hljs-keyword">const</span> newCategory = {
+    <span class="hljs-attr">name</span>: <span class="hljs-string">&quot;&quot;</span>,
+  };
+
+  <span class="hljs-keyword">return</span> (
+    <span class="language-xml"><span class="hljs-tag">&lt;<span class="hljs-name">CategoryForm</span>
+      <span class="hljs-attr">defaultValue</span>=<span class="hljs-string">{newCategory}</span>
+      <span class="hljs-attr">onSubmit</span>=<span class="hljs-string">{(categoryData)</span> =&gt;</span> {
+        fetch(`${import.meta.env.VITE_API_URL}/api/categories`, {
+          method: &quot;post&quot;,
+          headers: {
+            &quot;Content-Type&quot;: &quot;application/json&quot;,
+          },
+          body: JSON.stringify(categoryData),
+        })
+          .then((response) =&gt; response.json())
+          .then((data) =&gt; {
+            navigate(`/categories/${data.insertId}`);
+          });
+      }}
+    &gt;
+      Ajouter
+    <span class="hljs-tag">&lt;/<span class="hljs-name">CategoryForm</span>&gt;</span></span>
+  );
+}
+
+<span class="hljs-keyword">export</span> <span class="hljs-keyword">default</span> <span class="hljs-title class_">CategoryNew</span>;
+</code></pre></div>
+</div></li><li class="etape"><div class="etape__puce">2</div><div class="etape__contenu"><h4 class="etape__titre">Requête envoyée, en attente d'une réponse</h4><p><img src="images/001-react-et-express-dans-l-architecture-client.png" alt="react et express dans l'architecture client serveur du web" loading="lazy"></p>
+</div></li><li class="etape"><div class="etape__puce">3</div><div class="etape__contenu"><h4 class="etape__titre">Activer le parsing de la requête</h4><p>Le parsing des requêtes est nécessaire pour extraire les données envoyées par le client dans une requête HTTP. C'est le cas ici pour accéder au corps de ta requête POST.</p>
+<p>Dans <code>server/src/app.ts</code>, le code contient des commentaires pour activer différentes manières d'extraire des données :</p>
+<ul>
+<li><code>express.json()</code> : analyse les requêtes avec des données JSON.</li>
+<li><code>express.urlencoded()</code> : analyse les requêtes avec des données codées en URL.</li>
+<li><code>express.text()</code> : analyse les requêtes avec des données texte brutes.</li>
+<li><code>express.raw()</code> : analyse les requêtes avec des données binaires brutes.</li>
+</ul>
+<p>Si ce n'est pas déjà fait, décommente une ou plusieurs de ces options selon le format des données envoyées par ton client :</p>
+<div class="bloc-code"><div class="bloc-code__langue">diff</div><pre><code class="hljs language-diff"><span class="hljs-deletion">-// app.use(express.json());</span>
+<span class="hljs-addition">+app.use(express.json());</span>
+// app.use(express.urlencoded());
+// app.use(express.text());
+// app.use(express.raw());
+</code></pre></div>
+</div></li><li class="etape"><div class="etape__puce">4</div><div class="etape__contenu"><h4 class="etape__titre">Action</h4><p>Dans <code>server/src/modules/category/categoryActions.ts</code> :</p>
+<div class="bloc-code"><div class="bloc-code__langue">typescript</div><pre><code class="hljs language-typescript"><span class="hljs-keyword">const</span> <span class="hljs-attr">add</span>: <span class="hljs-title class_">RequestHandler</span> = <span class="hljs-title function_">async</span> (req, res, next) =&gt; {
+  <span class="hljs-keyword">try</span> {
+    <span class="hljs-comment">// Extract the category data from the request body</span>
+    <span class="hljs-keyword">const</span> newCategory = {
+      <span class="hljs-attr">name</span>: req.<span class="hljs-property">body</span>.<span class="hljs-property">name</span>,
+    };
+
+    <span class="hljs-comment">// Create the category</span>
+    <span class="hljs-keyword">const</span> insertId = <span class="hljs-keyword">await</span> categoryRepository.<span class="hljs-title function_">create</span>(newCategory);
+
+    <span class="hljs-comment">// Respond with HTTP 201 (Created) and the ID of the newly inserted item</span>
+    res.<span class="hljs-title function_">status</span>(<span class="hljs-number">201</span>).<span class="hljs-title function_">json</span>({ insertId });
+  } <span class="hljs-keyword">catch</span> (err) {
+    <span class="hljs-comment">// Pass any errors to the error-handling middleware</span>
+    <span class="hljs-title function_">next</span>(err);
+  }
+};
+</code></pre></div>
+</div></li><li class="etape"><div class="etape__puce">5</div><div class="etape__contenu"><h4 class="etape__titre">Repository</h4><p>Dans <code>server/src/modules/category/categoryRepository.ts</code> :</p>
+<div class="bloc-code"><div class="bloc-code__langue">typescript</div><pre><code class="hljs language-typescript"><span class="hljs-keyword">async</span> <span class="hljs-title function_">create</span>(<span class="hljs-params"><span class="hljs-attr">category</span>: <span class="hljs-title class_">Omit</span>&lt;<span class="hljs-title class_">Category</span>, <span class="hljs-string">&quot;id&quot;</span>&gt;</span>) {
+  <span class="hljs-comment">// Execute the SQL INSERT query to add a new category to the &quot;category&quot; table</span>
+  <span class="hljs-keyword">const</span> [result] = <span class="hljs-keyword">await</span> databaseClient.<span class="hljs-property">query</span>&lt;<span class="hljs-title class_">Result</span>&gt;(
+    <span class="hljs-string">&quot;insert into category (name) values (?)&quot;</span>,
+    [category.<span class="hljs-property">name</span>],
+  );
+
+  <span class="hljs-comment">// Return the ID of the newly inserted item</span>
+  <span class="hljs-keyword">return</span> result.<span class="hljs-property">insertId</span>;
+}
+</code></pre></div>
+<p>Note le <code>&lt;Result&gt;</code> derrière <code>databaseClient.query</code> : il est en phase la requête UPDATE qui produit un résultat (dont l'id généré lors de l'insertion : <code>result.insertId</code>) et pas des &quot;rows&quot; comme une requête SELECT.</p>
+</div></li></ol>
+<h3>Destroy</h3>
+<div class="table-wrap"><table><thead>
+<tr>
+<th>Nom de l'opération</th>
+<th>Méthode HTTP</th>
+<th>Chemin d'URL</th>
+<th>Corps de la requête</th>
+<th>Opération SQL</th>
+<th>Statut de la réponse</th>
+<th>Corps de la réponse</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Destroy (Delete)</td>
+<td>DELETE</td>
+<td>/categories/:id</td>
+<td>(rien)</td>
+<td>DELETE</td>
+<td>204 No Content</td>
+<td>(rien)</td>
+</tr>
+</tbody>
+</table></div><ol class="etapes"><li class="etape"><div class="etape__puce">1</div><div class="etape__contenu"><h4 class="etape__titre">Fetch</h4><p>Dans <code>client/src/components/CategoryDeleteForm.tsx</code> :</p>
+<div class="bloc-code"><div class="bloc-code__langue">typescript</div><pre><code class="hljs language-typescript"><span class="hljs-keyword">import</span> <span class="hljs-keyword">type</span> { <span class="hljs-title class_">ReactNode</span> } <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;react&quot;</span>;
+<span class="hljs-keyword">import</span> { useNavigate } <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;react-router-dom&quot;</span>;
+
+<span class="hljs-keyword">type</span> <span class="hljs-title class_">CategoryDeleteFormProps</span> = {
+  <span class="hljs-attr">id</span>: <span class="hljs-built_in">number</span>;
+  <span class="hljs-attr">children</span>: <span class="hljs-title class_">ReactNode</span>;
+};
+
+<span class="hljs-keyword">function</span> <span class="hljs-title function_">CategoryDeleteForm</span>(<span class="hljs-params">{ id, children }: <span class="hljs-title class_">CategoryDeleteFormProps</span></span>) {
+  <span class="hljs-keyword">const</span> navigate = <span class="hljs-title function_">useNavigate</span>();
+
+  <span class="hljs-keyword">return</span> (
+    <span class="language-xml"><span class="hljs-tag">&lt;<span class="hljs-name">form</span>
+      <span class="hljs-attr">onSubmit</span>=<span class="hljs-string">{(event)</span> =&gt;</span> {
+        event.preventDefault();
+
+        fetch(`${import.meta.env.VITE_API_URL}/api/categories/${id}`, {
+          method: &quot;delete&quot;,
+        }).then((response) =&gt; {
+          if (response.status === 204) {
+            navigate(&quot;/categories&quot;);
+          }
+        });
+      }}
+    &gt;
+      <span class="hljs-tag">&lt;<span class="hljs-name">button</span> <span class="hljs-attr">type</span>=<span class="hljs-string">&quot;submit&quot;</span>&gt;</span>{children}<span class="hljs-tag">&lt;/<span class="hljs-name">button</span>&gt;</span>
+    <span class="hljs-tag">&lt;/<span class="hljs-name">form</span>&gt;</span></span>
+  );
+}
+
+<span class="hljs-keyword">export</span> <span class="hljs-keyword">default</span> <span class="hljs-title class_">CategoryDeleteForm</span>;
+</code></pre></div>
+</div></li><li class="etape"><div class="etape__puce">2</div><div class="etape__contenu"><h4 class="etape__titre">Requête envoyée, en attente d'une réponse</h4><p><img src="images/001-react-et-express-dans-l-architecture-client.png" alt="react et express dans l'architecture client serveur du web" loading="lazy"></p>
+</div></li><li class="etape"><div class="etape__puce">3</div><div class="etape__contenu"><h4 class="etape__titre">Action</h4><p>Dans <code>server/src/modules/category/categoryActions.ts</code> :</p>
+<div class="bloc-code"><div class="bloc-code__langue">typescript</div><pre><code class="hljs language-typescript"><span class="hljs-keyword">const</span> <span class="hljs-attr">destroy</span>: <span class="hljs-title class_">RequestHandler</span> = <span class="hljs-title function_">async</span> (req, res, next) =&gt; {
+  <span class="hljs-keyword">try</span> {
+    <span class="hljs-comment">// Delete a specific category based on the provided ID</span>
+    <span class="hljs-keyword">const</span> categoryId = <span class="hljs-title class_">Number</span>(req.<span class="hljs-property">params</span>.<span class="hljs-property">id</span>);
+
+    <span class="hljs-keyword">await</span> categoryRepository.<span class="hljs-title function_">delete</span>(categoryId);
+
+    <span class="hljs-comment">// Respond with HTTP 204 (No Content) anyway</span>
+    res.<span class="hljs-title function_">sendStatus</span>(<span class="hljs-number">204</span>);
+  } <span class="hljs-keyword">catch</span> (err) {
+    <span class="hljs-comment">// Pass any errors to the error-handling middleware</span>
+    <span class="hljs-title function_">next</span>(err);
+  }
+};
+</code></pre></div>
+</div></li><li class="etape"><div class="etape__puce">4</div><div class="etape__contenu"><h4 class="etape__titre">Repository</h4><p>Dans <code>server/src/modules/category/categoryRepository.ts</code> :</p>
+<div class="bloc-code"><div class="bloc-code__langue">typescript</div><pre><code class="hljs language-typescript"><span class="hljs-keyword">async</span> <span class="hljs-title function_">delete</span>(<span class="hljs-params"><span class="hljs-attr">id</span>: <span class="hljs-built_in">number</span></span>) {
+  <span class="hljs-comment">// Execute the SQL DELETE query to delete an existing category from the &quot;category&quot; table</span>
+  <span class="hljs-keyword">const</span> [result] = <span class="hljs-keyword">await</span> databaseClient.<span class="hljs-property">query</span>&lt;<span class="hljs-title class_">Result</span>&gt;(
+    <span class="hljs-string">&quot;delete from category where id = ?&quot;</span>,
+    [id],
+  );
+
+  <span class="hljs-comment">// Return how many rows were affected</span>
+  <span class="hljs-keyword">return</span> result.<span class="hljs-property">affectedRows</span>;
+}
+</code></pre></div>
+<p>Note le <code>&lt;Result&gt;</code> derrière <code>databaseClient.query</code> : il est en phase la requête UPDATE qui produit un résultat (dont le nombre de lignes affectées : <code>result.affectedRows</code>) et pas des &quot;rows&quot; comme une requête SELECT.</p>
+</div></li></ol>
+<h2>Récapitulatif</h2>
+<p>À ce stade, nous avons un CRUD / BREAD complet pour gérer les catégories de notre application. Tu as appris les conventions REST, activé le parsing de JSON, et vu l'implémentation de chaque opération avec une communication entre le client et le serveur.</p>
+<p>Voici un récapitulatif des opérations effectuées :</p>
+<ul>
+<li><strong>Browse</strong> : Récupérer et afficher la liste des ressources.</li>
+<li><strong>Read</strong> : Lire et afficher les détails d'une ressource spécifique.</li>
+<li><strong>Edit</strong> : Modifier une ressource existante.</li>
+<li><strong>Add</strong> : Ajouter une nouvelle ressource.</li>
+<li><strong>Destroy</strong> : Supprimer une ressource existante.</li>
+</ul>
+<p>En t'appuyant sur les exemples fournis, tu devrais être capable de mettre en place un CRUD / BREAD fonctionnel pour gérer chaque ressource de ton application.</p>
+<h2>Challenge</h2>
+<p>Implémente les mêmes fonctionnalités BREAD pour une autre ressource de ton projet Wild Series : les <code>programs</code>. Assure-toi de bien suivre les conventions REST et d'appliquer les bonnes pratiques vues dans cette quête.</p>
+
+  </div>
+  
+</article>
+
+<nav class="nav-quete">
+  <a class="nav-quete__lien nav-quete__lien--prec" href="../../js-monorepo/007-06-js-monorepo-creer-ton-premier-repository/index.html">
+           <span class="nav-quete__sens">← Précédent</span>
+           <span class="nav-quete__titre">06 - JS Monorepo : Créer ton premier Repository</span>
+         </a>
+  <a class="nav-quete__lien nav-quete__lien--suiv" href="../../js-monorepo/009-08-js-monorepo-validation/index.html">
+           <span class="nav-quete__sens">Suivant →</span>
+           <span class="nav-quete__titre">08 - JS Monorepo : Validation</span>
+         </a>
+</nav>
+</main>
+<footer class="pied">
+  <p>Archive personnelle des cours suivis à la Wild Code School. Copie hors ligne à usage strictement privé.</p>
+</footer>
+
+<script src="../../assets/copie-code.js"></script>
+<script src="../../assets/progression.js"></script>
+</body>
+</html>

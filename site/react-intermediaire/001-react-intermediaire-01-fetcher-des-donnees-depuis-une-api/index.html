@@ -1,0 +1,238 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>React Intermédiaire 01 - Fetcher des données depuis une API avec React — Archives WCS</title>
+<link rel="stylesheet" href="../../assets/style.css">
+</head>
+<body style="--teinte:#5B76DF">
+<header class="entete">
+  <a class="entete__marque" href="../../index.html">Archives Wild Code School</a>
+</header>
+<main class="contenu">
+<nav class="ariane"><a href="../../index.html">Accueil</a><span class="ariane__sep">›</span><a href="../../react-intermediaire/index.html">React - Intermédiaire</a><span class="ariane__sep">›</span><span aria-current="page">React Intermédiaire 01 - Fetcher des données depuis une API avec React</span></nav>
+
+<article class="quete">
+  <header class="quete__entete">
+    <a class="pastille pastille--teintee" href="../../react-intermediaire/index.html">React - Intermédiaire</a>
+    <h1>React Intermédiaire 01 - Fetcher des données depuis une API avec React</h1>
+    <p class="quete__meta">Quête 1 sur 4 · 2 images archivées</p>
+  </header>
+  <div class="cours">
+<h2>Objectifs</h2>
+<ul>
+<li>Développer une application pour afficher des informations sur les employés d'une entreprise.</li>
+<li>Récupérer les données des employés via une API avec fetch.</li>
+<li>Afficher les données dans une application.</li>
+</ul>
+<h2>Introduction</h2>
+<p>Dans cette quête, nous allons voir comment nous pouvons utiliser des informations provenant d'une API dans notre application React. Jusqu'à présent, nous avons utilisé des données &quot;codées en dur&quot; pour apprendre les bases de React. Avec une API, nous aurons accès à des données réelles !</p>
+<p>Dans cette quête, tu verras comment injecter des données récupérées d'une API dans des composants React !</p>
+<p><strong>C'est parti !</strong> 🚀</p>
+<p><img src="images/001-introduction.avif" alt="" loading="lazy"></p>
+<h2>Sommaire</h2>
+<h2>Affichage d'un employé</h2>
+<p>Commence par créer une nouvelle application React, que tu peux nommer <code>fetch-employees</code>.</p>
+<h3>Affichage des données d'un employé</h3>
+<p>Créé un composant <code>EmployeeCard</code> dans ton application. Le but de ce composant est uniquement d'afficher des choses :</p>
+<div class="bloc-code"><div class="bloc-code__langue">jsx</div><pre><code class="hljs language-jsx"><span class="hljs-comment">// src/components/EmployeeCard.tsx</span>
+interface <span class="hljs-title class_">EmployeeCardProps</span> {
+  <span class="hljs-attr">employee</span>: {
+    <span class="hljs-attr">name</span>: {
+      <span class="hljs-attr">first</span>: string;
+      <span class="hljs-attr">last</span>: string;
+    };
+    <span class="hljs-attr">email</span>: string;
+    <span class="hljs-attr">picture</span>: {
+      <span class="hljs-attr">medium</span>: string;
+    };
+  };
+}
+ 
+<span class="hljs-keyword">function</span> <span class="hljs-title function_">EmployeeCard</span>(<span class="hljs-params">{ employee }: EmployeeCardProps</span>) {
+  <span class="hljs-keyword">return</span> (
+    <span class="language-xml"><span class="hljs-tag">&lt;<span class="hljs-name">figure</span> <span class="hljs-attr">className</span>=<span class="hljs-string">&#x27;DisplayEmployee&#x27;</span>&gt;</span>
+      <span class="hljs-tag">&lt;<span class="hljs-name">img</span> <span class="hljs-attr">src</span>=<span class="hljs-string">{employee.picture.medium}</span> <span class="hljs-attr">alt</span>=<span class="hljs-string">{employee.name.first}</span> /&gt;</span>
+      <span class="hljs-tag">&lt;<span class="hljs-name">figcaption</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">strong</span>&gt;</span>{employee.name.first} {employee.name.last}<span class="hljs-tag">&lt;/<span class="hljs-name">strong</span>&gt;</span>
+        {employee.email}
+      <span class="hljs-tag">&lt;/<span class="hljs-name">figcaption</span>&gt;</span>
+    <span class="hljs-tag">&lt;/<span class="hljs-name">figure</span>&gt;</span></span>
+  );
+}
+
+<span class="hljs-keyword">export</span> <span class="hljs-keyword">default</span> <span class="hljs-title class_">EmployeeCard</span>;
+</code></pre></div>
+<p>Ce composant sera appelé depuis <code>App</code> comme suit : <code>&lt;EmployeeCard employee={sampleEmployee} /&gt;</code>. Il recevra donc <em>une</em> prop : <code>employee</code>. La syntaxe <code>{ key1, key2, key3 }</code> dans les parenthèses d'une fonction peut s'appliquer lorsque tu sais :</p>
+<ul>
+<li>que le paramètre de la fonction (dans ce cas <code>props</code>) est un objet,</li>
+<li>et qu'il contient les clés <code>key1</code>, <code>key2</code>, <code>key3</code>.</li>
+</ul>
+<p>Dans ce cas, nous savons que <code>props</code> contient une seule clé <code>employee</code>, donc nous pouvons <em>déstructurer</em> les props. <code>employee</code> a la valeur qui aurait normalement été écrite comme <code>props.employee</code>. Tu trouveras un autre exemple dans la ressource suivante, dans la section <a href="https://simonsmith.io/destructuring-objects-as-function-parameters-in-es6#extracting-values-from-a-configuration-object" target="_blank" rel="noopener noreferrer">Extracting values from a configuration object</a>. Cet exemple réduit les répétitions dans le JSX/TSX.</p>
+<h3>Intégration du composant dans l'application</h3>
+<p>Dans le fichier <code>App.tsx</code>, commence par importer le composant <code>EmployeeCard</code> :</p>
+<div class="bloc-code"><div class="bloc-code__langue">javascript</div><pre><code class="hljs language-javascript"><span class="hljs-keyword">import</span> <span class="hljs-title class_">EmployeeCard</span> <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;./components/EmployeeCard&#x27;</span>;
+</code></pre></div>
+<h3>Ajout de données de test</h3>
+<p>Maintenant, tu as besoin d'un employé &quot;test&quot; pour voir si ton premier composant s'affiche correctement ! Déclare un objet employé (insère le code sous les lignes d'importation que tu viens d'ajouter) :</p>
+<div class="bloc-code"><div class="bloc-code__langue">javascript</div><pre><code class="hljs language-javascript"><span class="hljs-keyword">const</span> sampleEmployee = {
+  <span class="hljs-attr">name</span>: {
+    <span class="hljs-attr">first</span>: <span class="hljs-string">&quot;Charlie&quot;</span>,
+    <span class="hljs-attr">last</span>: <span class="hljs-string">&quot;Thompson&quot;</span>,
+  },
+  <span class="hljs-attr">email</span>: <span class="hljs-string">&quot;charlie.thompson@example.com&quot;</span>,
+  <span class="hljs-attr">picture</span>: {
+    <span class="hljs-attr">medium</span>: <span class="hljs-string">&quot;https://randomuser.me/api/portraits/med/men/40.jpg&quot;</span>,
+  },
+};
+</code></pre></div>
+<p>Enfin, après avoir supprimé le JSX inutile retourné par <code>App</code>, appelle <code>EmployeeCard</code> en passant l'employé fictif :</p>
+<div class="bloc-code"><div class="bloc-code__langue">jsx</div><pre><code class="hljs language-jsx">&lt;<span class="hljs-title class_">EmployeeCard</span> employee={sampleEmployee} /&gt;
+</code></pre></div>
+<p>Maintenant, tu peux vérifier que l'affichage est correct dans ton navigateur.</p>
+<a class="ressource" href="https://simonsmith.io/destructuring-objects-as-function-parameters-in-es6#extracting-values-from-a-configuration-object" target="_blank" rel="noopener noreferrer">
+  <div class="ressource__icone">↗</div>
+  <div class="ressource__texte">
+    <div class="ressource__titre">Extraction des valeurs d'un objet de configuration</div>
+    <div class="ressource__desc"><p>Plus d'informations sur la déstructuration</p>
+</div>
+    <div class="ressource__hote">simonsmith.io</div>
+  </div>
+</a>
+<a class="ressource" href="https://wesbos.com/destructuring-objects/" target="_blank" rel="noopener noreferrer">
+  <div class="ressource__icone">↗</div>
+  <div class="ressource__texte">
+    <div class="ressource__titre">Une introduction très simple à la déstructuration des objets JavaScript</div>
+    
+    <div class="ressource__hote">wesbos.com</div>
+  </div>
+</a>
+<h2>Stocker des données récupérées à partir d'une API</h2>
+<p>Nous voulons consommer une API pour obtenir les données d'un employé, au lieu des données factices de <code>sampleEmployee</code>. Le terme &quot;consommer&quot; signifie utiliser ou demander une API.</p>
+<p>L'API que tu vas utiliser est <a href="https://randomuser.me/" target="_blank" rel="noopener noreferrer">Random User</a> qui génère des profils aléatoires très pratiques à des fins de test.</p>
+<p>Après avoir visité la page d'accueil, qui pointe vers la documentation, colle l'URL suivante dans ton navigateur : <a href="https://randomuser.me/api?nat=en" target="_blank" rel="noopener noreferrer">https://randomuser.me/api?nat=en</a>. Il s'agit de l'URL que tu vas demander. Elle renvoie des données au format JSON.</p>
+<p>Pour récupérer ces données avec du code, tu peux utiliser <code>fetch</code> fourni nativement par les navigateurs, ou une bibliothèque tierce telle que Axios.</p>
+<h3>Où les données seront-elles stockées ?</h3>
+<p>Les données dynamiques d'une application sont stockées dans l'état d'un composant, ou réparties dans les états respectifs de plusieurs composants. Ici, nous n'avons qu'une seule variable (l'objet représentant un employé), mais deux composants : <code>App</code> et <code>EmployeeCard</code>. Dans lequel d'entre eux devons-nous stocker les données ?</p>
+<p>La façon d'appeler <code>EmployeeCard</code> depuis <code>App</code> te donne un indice : <code>employee</code> est transmis à <code>EmployeeCard</code> via des props, depuis <code>App</code>. Ainsi, les données de l'employé seront stockées dans l'état de <code>App</code>. <code>EmployeeCard</code> doit rester un &quot;dumb component&quot;, c'est à dire que son seul but est d'afficher les données qui lui sont fournies.</p>
+<p>Cet exemple &quot;simple&quot; est représentatif de la manière dont les informations circulent dans une application React : de haut en bas. Nous parlons d'un flux de données unidirectionnel, comme l'explique <a href="https://flaviocopes.com/react-unidirectional-data-flow/" target="_blank" rel="noopener noreferrer">cette ressource</a>.</p>
+<p>Le composant &quot;parent&quot; effectue les appels d'API et transmet les informations reçues au(x) composant(s) &quot;enfant(s)&quot;.</p>
+<blockquote>
+<p>Essaie de le faire toi-même, ou vérifie la solution donnée à l'étape suivante si tu bloques.</p>
+</blockquote>
+<h3>Consommation d'une API avec React</h3>
+<p>Le composant <code>App</code> dans lequel nous avons supprimé (presque) tout le JSX retourné peut maintenant initialiser l'état :</p>
+<div class="bloc-code"><div class="bloc-code__langue">jsx</div><pre><code class="hljs language-jsx"><span class="hljs-keyword">function</span> <span class="hljs-title function_">App</span>(<span class="hljs-params"></span>) {
+  <span class="hljs-keyword">const</span> [employee, setEmployee] = <span class="hljs-title function_">useState</span>(sampleEmployee);
+
+  <span class="hljs-keyword">return</span> (
+    <span class="language-xml"><span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">className</span>=<span class="hljs-string">&#x27;App&#x27;</span>&gt;</span>
+      <span class="hljs-tag">&lt;<span class="hljs-name">EmployeeCard</span> <span class="hljs-attr">employee</span>=<span class="hljs-string">{sampleEmployee}</span> /&gt;</span>
+    <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span></span>
+  );
+}
+</code></pre></div>
+<p>Nous aurions pu donner une valeur de <code>null</code> à <code>employee</code> comme valeur initiale à l'état. Cela aurait signifié qu'au début de l'application, les données n'auraient pas encore été disponibles. Ici, le fait d'avoir conservé <code>sampleEmployee</code> permet de toujours afficher un employé, même si un appel d'API n'a pas encore été effectué.</p>
+<h3>Passer la valeur depuis le state comme props</h3>
+<p>Maintenant que nous avons initialisé le state avec une valeur <code>employee</code>, nous allons passer ce state à <code>EmployeeCard</code> au lieu de <code>sampleEmployee</code>. A ce stade, cela ne changera rien à l'affichage :</p>
+<div class="bloc-code"><div class="bloc-code__langue">jsx</div><pre><code class="hljs language-jsx">&lt;<span class="hljs-title class_">EmployeeCard</span> employee={employee} /&gt;
+</code></pre></div>
+<h3>Ajout d'un bouton pour envoyer la demande d'API</h3>
+<p>Dans <code>App</code>, sous <code>EmployeeCard</code>, ajoute ce bouton, qui déclenchera une requête lorsqu'il sera cliqué :</p>
+<div class="bloc-code"><div class="bloc-code__langue">jsx</div><pre><code class="hljs language-jsx">&lt;button type=<span class="hljs-string">&quot;button&quot;</span> onClick={getEmployee}&gt;<span class="hljs-title class_">Get</span> employee&lt;/button&gt;
+</code></pre></div>
+<p>Note que la valeur de <code>onClick</code> est une fonction (dont le nom est <code>getEmployee</code>) qui n'existe pas encore : tu vas corriger cela dès maintenant.</p>
+<h3>Création de la fonction</h3>
+<p>Dans le composant <code>App</code>, tu dois maintenant écrire la fonction <code>getEmployee</code>, qui fera l'appel à l'API Random User. Pour effectuer cet appel, tu peux utiliser <code>fetch</code>. Dans <code>App</code>, écris la fonction avant le retour JSX :</p>
+<div class="bloc-code"><div class="bloc-code__langue">javascript</div><pre><code class="hljs language-javascript"><span class="hljs-keyword">const</span> <span class="hljs-title function_">getEmployee</span> = (<span class="hljs-params"></span>) =&gt; {
+  <span class="hljs-comment">// Send the request</span>
+  <span class="hljs-title function_">fetch</span>(<span class="hljs-string">&quot;https://randomuser.me/api?nat=en&quot;</span>)
+    .<span class="hljs-title function_">then</span>(<span class="hljs-function">(<span class="hljs-params">response</span>) =&gt;</span> response.<span class="hljs-title function_">json</span>())
+    .<span class="hljs-title function_">then</span>(<span class="hljs-function">(<span class="hljs-params">data</span>) =&gt;</span> {
+      <span class="hljs-title function_">setEmployee</span>(data.<span class="hljs-property">results</span>[<span class="hljs-number">0</span>]);
+    });
+};
+</code></pre></div>
+<p>L'application devrait alors être fonctionnelle ! L'affichage peut ne pas être mis à jour immédiatement : ceci est dû au temps de latence, entre le moment où <code>fetch</code> émet une <em>requête</em> à l'API, et le moment où il reçoit sa <em>réponse</em>.</p>
+<p>Quelques explications :</p>
+<ul>
+<li>Les <code>.then</code> permettent de spécifier, entre parenthèses, ce qui doit être fait <strong>après avoir reçu les données demandées</strong>, grâce à une <strong>fonction de rappel</strong> (souvent sous forme de fonction fléchée&quot; pour un code plus concis).</li>
+<li>La <code>response</code> est un objet contenant plusieurs méthodes pour extraire les données : parmi elles, nous utilisons <code>.json()</code>.</li>
+<li>Les <code>data</code> seront alors disponibles. La valeur de <code>employee</code> est alors remplacée dans l'état par <code>data.results[0]</code>.</li>
+</ul>
+<p>Ce <code>data.results[0]</code> est digne d'attention : l'étape suivante montre le lien entre la <em>structure</em> des données reçues, et l'extraction des informations nécessaires dans notre code.</p>
+<h3>Extraction des données pertinentes dans la réponse</h3>
+<p>Comprendre <em>comment les données circulent dans une application</em> est l'un des aspects les plus difficiles dans du code, surtout lorsque tu es encore en apprentissage.</p>
+<p>Tu dois visualiser la structure des <code>data</code> qui parviennent à l'application dans le dernier <code>.then</code>. Dans un cas comme celui-ci, n'hésite pas :</p>
+<ul>
+<li>À ajouter un <code>console.log(data);</code> juste avant <code>setEmployee</code> pour inspecter la forme des données reçues.</li>
+<li>À utiliser l'onglet <em>Network</em> dans les outils de développement du navigateur.</li>
+</ul>
+<p>L'objet reçu est très grand, et contient beaucoup de données imbriquées ! Mais il ressemble étrangement à notre faux employé <code>sampleEmployee</code>, avec des données supplémentaires !</p>
+<p>Si tu regardes la structure globale, l'objet reçu (<code>data</code>) n'a que deux clés : <code>info</code> et <code>results</code> ; la dernière est un <em>tableau</em> qui peut contenir <em>plusieurs</em> éléments (l'API est configurable et permet de récupérer plusieurs faux utilisateurs). Comme tu l'as vu ci-dessus, l'élément est récupéré à l'index 0 de ce tableau avec <code>data.results[0]</code>.</p>
+<blockquote>
+<p>Inspecter la <strong>structure</strong> des données reçues t'aidera à écrire le code pour les traiter : ici, nous extrayons les données des employés de <code>data.results[0]</code>. <strong>Pour d'autres API, cela peut être différent!</strong></p>
+</blockquote>
+<p><img src="images/002-extraction-des-donnees-pertinentes-dans-la.gif" alt="" loading="lazy"></p>
+<a class="ressource" href="https://randomuser.me/" target="_blank" rel="noopener noreferrer">
+  <div class="ressource__icone">↗</div>
+  <div class="ressource__texte">
+    <div class="ressource__titre">API</div>
+    <div class="ressource__desc"><p>#api #randomize</p>
+</div>
+    <div class="ressource__hote">randomuser.me</div>
+  </div>
+</a>
+<a class="ressource" href="https://randomuser.me/documentation" target="_blank" rel="noopener noreferrer">
+  <div class="ressource__icone">↗</div>
+  <div class="ressource__texte">
+    <div class="ressource__titre">API Doc</div>
+    <div class="ressource__desc"><p>#documentation</p>
+</div>
+    <div class="ressource__hote">randomuser.me</div>
+  </div>
+</a>
+<h2>Challenge</h2>
+<p>Poste l'application complète et fonctionnelle à partir des étapes de la quête :</p>
+<ul>
+<li>Utilise l'API <a href="https://randomuser.me/documentation" target="_blank" rel="noopener noreferrer">Random User</a>. Tu devras utiliser un state dans ton application avec un profil copié initialement depuis l'API.</li>
+<li>L'application doit comprendre un bouton pour récupérer un profil depuis l'API.</li>
+<li>Fais attention à la <em>structure</em> des données reçues : reçois-tu un tableau ? Un objet ? Le code <code>data.results[0]</code> que nous avons utilisé précédemment devrait t'aider (pense à la destructuration) !</li>
+<li>Poste le lien vers un dépôt GitHub avec ton code en solution.</li>
+</ul>
+<h3>Critères de validation</h3>
+<ul>
+<li>[ ] L'application affiche un profil.</li>
+<li>[ ] Le prénom, le nom, la photo et l'adresse mail du profil sont affichés.</li>
+<li>[ ] Un bouton permet de charger un profil à partir de l'API.</li>
+</ul>
+
+  </div>
+  <section class="ressources-quete">
+  <h2>Ressources partagées sur cette quête</h2>
+  <ul class="ressources-liste">
+    <li><a href="https://www.youtube.com/watch?v=HUTF01zmcDY" target="_blank" rel="noopener noreferrer">Vidéo en français sur comment récupérer les données depuis une API externe avec React</a><span class="ressources-liste__url">https://www.youtube.com/watch?v=HUTF01zmcDY</span></li>
+    <li><a href="https://www.pierre-giraud.com/javascript-apprendre-coder-cours/api-fetch/" target="_blank" rel="noopener noreferrer">Aide à comprendre et à utiliser la méthode fetch()</a><span class="ressources-liste__url">https://www.pierre-giraud.com/javascript-apprendre-coder-cours/api-fetch/</span></li>
+    <li><a href="https://www.youtube.com/watch?v=dnFDcTX_-y0&amp;t=866s" target="_blank" rel="noopener noreferrer">Récupérer des donnée d'une API</a><span class="ressources-liste__url">https://www.youtube.com/watch?v=dnFDcTX_-y0&amp;t=866s</span></li>
+    <li><a href="https://blog.logrocket.com/axios-vs-fetch-best-http-requests/#:~:text=To%20send%20data%2C%20fetch(),stringify%20method" target="_blank" rel="noopener noreferrer">axios vs fetch</a><span class="ressources-liste__url">https://blog.logrocket.com/axios-vs-fetch-best-http-requests/#:~:text=To%20send%20data%2C%20fetch(),stringify%20method</span></li>
+  </ul>
+</section>
+</article>
+
+<nav class="nav-quete">
+  <span class="nav-quete__lien nav-quete__lien--vide"></span>
+  <a class="nav-quete__lien nav-quete__lien--suiv" href="../../react-intermediaire/002-react-intermediaire-02-context-api/index.html">
+           <span class="nav-quete__sens">Suivant →</span>
+           <span class="nav-quete__titre">React Intermédiaire 02 - Context API</span>
+         </a>
+</nav>
+</main>
+<footer class="pied">
+  <p>Archive personnelle des cours suivis à la Wild Code School. Copie hors ligne à usage strictement privé.</p>
+</footer>
+
+<script src="../../assets/copie-code.js"></script>
+<script src="../../assets/progression.js"></script>
+</body>
+</html>

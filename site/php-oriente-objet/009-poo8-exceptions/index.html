@@ -1,0 +1,234 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>POO8 - Exceptions — Archives WCS</title>
+<link rel="stylesheet" href="../../assets/style.css">
+</head>
+<body style="--teinte:#464985">
+<header class="entete">
+  <a class="entete__marque" href="../../index.html">Archives Wild Code School</a>
+</header>
+<main class="contenu">
+<nav class="ariane"><a href="../../index.html">Accueil</a><span class="ariane__sep">›</span><a href="../../php-oriente-objet/index.html">PHP Orienté Objet</a><span class="ariane__sep">›</span><span aria-current="page">POO8 - Exceptions</span></nav>
+
+<article class="quete">
+  <header class="quete__entete">
+    <a class="pastille pastille--teintee" href="../../php-oriente-objet/index.html">PHP Orienté Objet</a>
+    <h1>POO8 - Exceptions</h1>
+    <p class="quete__meta">Quête 9 sur 11</p>
+  </header>
+  <div class="cours">
+<h1>Prérequis</h1>
+<div class="renvois"><div class="renvois__titre">Quêtes liées</div><ul><li><a href="../../php-avance/004-composer-2-psr-4-autoload/index.html">Quête 1144</a></li><li><a href="../../php-oriente-objet/008-poo7-heritage/index.html">Quête 2309</a></li></ul></div>
+<div class="bloc-code"><div class="bloc-code__langue">title-book</div><pre><code class="hljs language-title-book">Introduction
+</code></pre></div>
+<div class="encadre encadre--story"><div class="encadre__titre">Le récit</div><div class="encadre__corps"><p>Il est temps de passer à la branche <strong><a href="https://github.com/WildCodeSchool/php-wildzoo/tree/poo8" target="_blank" rel="noopener noreferrer">poo8</a></strong> de ton Wild zoo. Dans cette quête, tu vas apprendre comment gérer efficacement les erreurs via les exceptions.</p>
+<p>Avant toute chose, une fois ta nouvelle branche récupérée, tu <strong>constateras un léger changement</strong>. Tu n'as maintenant plus les multiples <code>require</code> dans le fichier <em>index.php</em> mais un unique fichier chargeant l'autoload de composer. Eh oui, à partir de cette quête, nous allons utiliser composer, le gestionnaire de paquet de PHP, <strong>pour gérer le chargement automatique de nos classes</strong>, comme tu as pu le voir sur la quête dédiée (en <strong>pré-requis</strong> de cette quête par ailleurs).</p>
+<p>Pour démarrer ton projet, tu dois seulement faire un</p>
+<pre><code>composer install
+</code></pre>
+<p>Un dossier <em>vendor</em> (non versionné) va apparaître. Tu n'as normalement rien d'autre à faire, à partir de maintenant, si tu respectes bien la nomenclature pour les noms de tes <em>namespaces</em>, tu n'auras plus à t'occuper de faire des <code>require</code> :D</p>
+</div></div>
+<h2>🤓 À la fin de cette quête, tu seras capable de :</h2>
+<ul>
+<li>✅ Comprendre le concept d'exception</li>
+<li>✅ Lancer une exception</li>
+<li>✅ Attraper une exception</li>
+</ul>
+<h1>Définition des exceptions</h1>
+<p>La programmation objet a pour but de refléter au mieux la réalité et d'éviter les comportements inappropriés des objets créés. Mais justement, que faire lorsqu'un comportement inaproprié est détecté ?</p>
+<p>Prenons un exemple simple, la méthode <code>setSize()</code> d'<strong>Animal</strong>. Dans son comportement actuel, si l'utilisateur entre une taille impossible (inférieure à zéro), la taille est fixée à zéro.</p>
+<div class="bloc-code"><div class="bloc-code__langue">php</div><pre><code class="hljs language-php"><span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">setSize</span>(<span class="hljs-params"><span class="hljs-keyword">float</span> <span class="hljs-variable">$size</span></span>): <span class="hljs-title">void</span>
+</span>{
+	<span class="hljs-keyword">if</span> (<span class="hljs-variable">$size</span> &lt; <span class="hljs-number">0</span>) {
+	    <span class="hljs-variable">$size</span> = <span class="hljs-number">0</span>;
+	}
+
+	<span class="hljs-variable language_">$this</span>-&gt;size = <span class="hljs-variable">$size</span>;
+}
+</code></pre></div>
+<p>Une autre solution pourrait-être de stopper le code, mais c'est parfois un peu violent car une erreur n'est pas toujours &quot;bloquante&quot;. Une autre possibilité est de renvoyer un message d'erreur, mais cela imposerait de retourner un type <code>void</code> OU <code>string</code>, ce qui n'est pas forcément très logique.
+De plus, si une string est retournée, cela impose à l'utilisateur de gérer l'erreur en l'affichant, or une erreur peut très bien être gérée via un message dans un fichier de log, un envoi d'email à l'administrateur du site, ou un peu de tout cela à la fois.</p>
+<p>Les exceptions sont un moyen élégant d'envoyer à l'utilisateur de la classe, <strong>une information indiquant que quelque chose s'est mal déroulée</strong>, sans parti pris sur la manière de réagir face à cette information. C'est justement à l'utilisateur de la classe de choisir de ce qu'il veut faire de cette information (affichage ou non de l'erreur, enregistrement de l'erreur, sortie ou non du programme, <em>etc.</em>).
+Les exceptions sont elles-mêmes des classes, spécialisées pour la gestion des erreurs, donc très appropriées dans un contexte objet.</p>
+<a class="ressource" href="https://eilgin.github.io/php-the-right-way/#errors_and_exceptions" target="_blank" rel="noopener noreferrer">
+  <div class="ressource__icone">↗</div>
+  <div class="ressource__texte">
+    <div class="ressource__titre">Les erreurs et exceptions</div>
+    <div class="ressource__desc"><p>Une gestion des exceptions avancées</p>
+</div>
+    <div class="ressource__hote">eilgin.github.io</div>
+  </div>
+</a>
+<a class="ressource" href="https://www.php.net/manual/fr/language.exceptions.php" target="_blank" rel="noopener noreferrer">
+  <div class="ressource__icone">↗</div>
+  <div class="ressource__texte">
+    <div class="ressource__titre">Explication de l'exception sur PHP</div>
+    <div class="ressource__desc"><p>Comprendre le fonctionnement des exceptions</p>
+</div>
+    <div class="ressource__hote">php.net</div>
+  </div>
+</a>
+<p>L'exception se passe donc en 2 phases.</p>
+<ol>
+<li>On &quot;lance&quot; une exception à l'endroit où le problème est détecté, s'il y a lieu.</li>
+<li>On exécute le code et on &quot;attrape&quot; la ou les exceptions lancées, puis on décide de comment gérer ce type de problème.</li>
+</ol>
+<h1>Lancer une exception</h1>
+<p>La première étape consiste à lancer un exception, reprenons notre exemple :</p>
+<div class="bloc-code"><div class="bloc-code__langue">php</div><pre><code class="hljs language-php"><span class="hljs-keyword">use</span> <span class="hljs-title">Exception</span>
+
+<span class="hljs-title">class</span> <span class="hljs-title">Animal</span> 
+{
+    //...
+    
+    <span class="hljs-title">public</span> <span class="hljs-keyword">function</span> <span class="hljs-title">setSize</span>(<span class="hljs-title">float</span> $<span class="hljs-title">size</span>): <span class="hljs-title">void</span>
+    {
+	    <span class="hljs-title">if</span> ($<span class="hljs-title">size</span> &lt; 0) {
+	        <span class="hljs-title">throw</span> <span class="hljs-title">new</span> <span class="hljs-title">Exception</span>(&#x27;<span class="hljs-title">The</span> <span class="hljs-title">size</span> <span class="hljs-title">should</span> <span class="hljs-title">be</span> <span class="hljs-title">a</span> <span class="hljs-title">positive</span> <span class="hljs-title">number</span>&#x27;);
+	    }
+
+	    <span class="hljs-variable language_">$this</span>-&gt;size = <span class="hljs-variable">$size</span>;
+    }
+    
+    <span class="hljs-comment">//...</span>
+}
+</code></pre></div>
+<p>Pour <em>lancer</em> l'exception, il faut tout d'abord utiliser le mot clé <code>throw</code>. Ensuite, il faut lui passer une <strong>Exception</strong>. Et les exceptions sont elles-mêmes des classes (intégrées à PHP, note le <code>use Exception</code> en début de fichier). Tu dois donc lancer un object exception. En paramètre, l’exception prendra un message décrivant le problème.</p>
+<p>De plus, le lancement d'une exception n'est pas considéré comme quelque chose &quot;retourné&quot; pour la fonction, cela n'a donc <strong>pas d'impact sur le typage de sortie</strong> (qui reste <code>:void</code> ici)</p>
+<p>🖥️ Pour le moment, l'exception est lancée mais pas &quot;attrapée&quot;. Que se passe t-il si tu essaies de passer une <em>size</em> négative au lion par exemple ?
+Actualise ton interface web, tu dois voir le message suivant à l'écran :</p>
+<div class="encadre encadre--error"><div class="encadre__titre">Important</div><div class="encadre__corps"><p>Fatal error: Uncaught Exception: The size should be a positive number</p>
+</div></div>
+<p>Première constation, lancer une exception sans l'attraper va <strong>stopper l'éxecution du code</strong>, comme si tu avais mis un <code>exit()</code>. Le message indique d'ailleurs bien que l'exception est &quot;Uncaught&quot;, c'est-à-dire non attrapée. Idéalement, toute exception lancée devrait être attrapée, nous allons voir dans la partie suivante comment gérer cela.</p>
+<h1>Attraper une exception</h1>
+<p>L'exception est lancée au moment ou l'on fait le <code>setSize()</code> dans <em>index.php</em> et uniqument si on passe un argument négatif.
+🖥️ Retourne dans <em>index.php</em> et mets à jour le code de cette manière :</p>
+<div class="bloc-code"><div class="bloc-code__langue">php</div><pre><code class="hljs language-php"><span class="hljs-variable">$lion</span> = <span class="hljs-keyword">new</span> <span class="hljs-title class_">Felid</span>(<span class="hljs-string">&#x27;lion&#x27;</span>);
+<span class="hljs-keyword">try</span> {
+    <span class="hljs-variable">$lion</span>-&gt;<span class="hljs-title function_ invoke__">setSize</span>(<span class="hljs-number">100</span>);
+} <span class="hljs-keyword">catch</span>(<span class="hljs-built_in">Exception</span> <span class="hljs-variable">$exception</span>) {
+    <span class="hljs-title function_ invoke__">var_dump</span>(<span class="hljs-variable">$exception</span>-&gt;<span class="hljs-title function_ invoke__">getMessage</span>());
+}
+</code></pre></div>
+<p>Nous utilisons ici une nouvelle structure en deux parties, le bloc try/catch.
+Dans un 1er bloc de type <code>try</code>, tu vas mettre entre accolade tout le code &quot;à tester&quot; (ici juste le <code>setSize()</code> mais il pourrait y avoir plusieurs lignes) . Si aucune exception n'est lancée durant son exécution (pour une size &gt; 0), le code continue alors sans entrer dans le block <code>catch</code>.
+Par contre si une erreur est levée, le block <code>catch</code> prend alors la relève. Teste en mettant -100 en size cette fois, tu vois que le <code>var_dump</code> s'affiche. Au niveau du <code>catch</code>, le paramètre attendu est le type d'Exception (on va voir par la suite qu'il en existe plusieurs) et un nom de variable. Les classes d'exceptions possèdent différentes méthodes, dont <code>getMessage()</code> qui permet d'afficher le message d'erreur indiqué au moment du <code>throw</code>.</p>
+<p>Un <code>var_dump()</code> pour gérer une erreur, ce n'est pas très joli. Tu vas plutôt enregistrer un message dans une variable <code>$errors</code>, comme ceci :</p>
+<div class="bloc-code"><div class="bloc-code__langue">php</div><pre><code class="hljs language-php"><span class="hljs-variable">$lion</span> = <span class="hljs-keyword">new</span> <span class="hljs-title class_">Felid</span>(<span class="hljs-string">&#x27;lion&#x27;</span>);
+<span class="hljs-keyword">try</span> {
+    <span class="hljs-variable">$lion</span>-&gt;<span class="hljs-title function_ invoke__">setSize</span>(<span class="hljs-number">100</span>);
+} <span class="hljs-keyword">catch</span>(<span class="hljs-built_in">Exception</span> <span class="hljs-variable">$exception</span>) {
+    <span class="hljs-variable">$errors</span>[] = <span class="hljs-variable">$exception</span>-&gt;<span class="hljs-title function_ invoke__">getMessage</span>();
+}
+<span class="hljs-variable">$lion</span>-&gt;<span class="hljs-title function_ invoke__">setThreatenedLevel</span>(<span class="hljs-string">&#x27;VU&#x27;</span>);
+</code></pre></div>
+<p>🖥️ La variable, si elle est définie, est gérée ensuite par l'interface pour s'afficher de la manière et à l'endroit souhaité par l'utilisateur de la classe. Actualise, tu vois le nouveau message s'afficher d'une toute autre manière.</p>
+<h2>Les différents types d'exception</h2>
+<p>Nous avons vu la classe principale <strong>Exception</strong>. Mais qui dit classe, dit possibilité d'en hériter. PHP vient donc avec tout une hiérarchie de classe, étendant toutes <strong>Exception</strong> mais chacune appropriée à un type d'erreur spécifique. Il est également possible de définir ses propres classes d'exception si besoin.</p>
+<p>Voici un schéma reprenant les pricipales classes d'exception en PHP
+<img src="https://i.stack.imgur.com/qlTsJ.png" alt="" loading="lazy"></p>
+<p>Le but n'est pas de détailler chacune ici (réfère-toi à la documentation pour cela) mais nous allons plutôt voir comment utiliser ensemble plusieurs exception et ce que cela implique.</p>
+<p>🖥️ Nous allons tout d'abord gérer un nouveau cas d'exception dans <code>setSize()</code>, lançons une exception si la taille est irréaliste, par exemple supérieure à 10000 cm.</p>
+<div class="bloc-code"><div class="bloc-code__langue">php</div><pre><code class="hljs language-php"><span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">setSize</span>(<span class="hljs-params"><span class="hljs-keyword">float</span> <span class="hljs-variable">$size</span></span>): <span class="hljs-title">void</span>
+</span>{
+    <span class="hljs-keyword">if</span> (<span class="hljs-variable">$size</span> &lt; <span class="hljs-number">0</span>) {
+        <span class="hljs-keyword">throw</span> <span class="hljs-keyword">new</span> <span class="hljs-built_in">Exception</span>(<span class="hljs-string">&#x27;The size should be a positive number&#x27;</span>);
+    }
+    <span class="hljs-keyword">if</span>(<span class="hljs-variable">$size</span> &gt; <span class="hljs-number">10000</span>) {
+        <span class="hljs-keyword">throw</span> <span class="hljs-keyword">new</span> <span class="hljs-built_in">RangeException</span>(<span class="hljs-string">&#x27;The &#x27;</span> . <span class="hljs-variable language_">$this</span>-&gt;<span class="hljs-title function_ invoke__">getName</span>() . <span class="hljs-string">&#x27; is too large&#x27;</span>);  
+    }
+
+    <span class="hljs-variable language_">$this</span>-&gt;size = <span class="hljs-variable">$size</span>;
+}
+</code></pre></div>
+<p>Ici, à la différence de l'exemple précédent, c'est la classe <strong><a href="https://www.php.net/manual/fr/class.rangeexception.php" target="_blank" rel="noopener noreferrer">RangeException</a></strong> qui est utilisée (pense à bien ajouter le use en haut de fichier), elle-même héritant de <strong>RuntimeException</strong>, qui hérite à son tour d'<strong>Exception</strong>.</p>
+<div class="encadre encadre--info"><div class="encadre__titre">Info</div><div class="encadre__corps"><p>Les classes filles d'Exception n'ont pas réellement de comportement différent, mais le fait d'avoir différentes clases permet de classifier et différencier plus efficacement les types d'erreurs.</p>
+</div></div>
+<p>🖥️ Retour sur <em>index.php</em>, nous aimerions attraper cette exception si elle est lancée. Modifie <code>$lion-&gt;setSize('XX')</code> afin de créer un cas où l'exception va être lancée, c'est à dire une taille supérieure à 10000. En l'état le bloc <code>try</code> qui entoure que le <code>setSize()</code> attrape bien cette <strong>RangeException</strong> puisqu'elle hérite d'<strong>Exception</strong></p>
+<p>Par contre, nous considérons cette erreur comme moins &quot;grave&quot;, et nous souhaiterions afficher un message d'erreur moins envahissant. L'idée est de différencier le traitement de l'exception en fonction de son type. Pour cela, c'est simple, il suffit de mettre plusieurs <code>catch</code> associé au même <code>try</code></p>
+<div class="bloc-code"><div class="bloc-code__langue">php</div><pre><code class="hljs language-php"><span class="hljs-keyword">try</span> {
+    <span class="hljs-variable">$lion</span>-&gt;<span class="hljs-title function_ invoke__">setSize</span>(<span class="hljs-number">20000</span>);
+} <span class="hljs-keyword">catch</span> (<span class="hljs-built_in">RangeException</span> <span class="hljs-variable">$exception</span>) {
+    <span class="hljs-variable">$smallErrors</span>[]  = <span class="hljs-variable">$exception</span>-&gt;<span class="hljs-title function_ invoke__">getMessage</span>();
+} <span class="hljs-keyword">catch</span> (<span class="hljs-built_in">Exception</span> <span class="hljs-variable">$exception</span>) {
+    <span class="hljs-variable">$errors</span>[]  = <span class="hljs-variable">$exception</span>-&gt;<span class="hljs-title function_ invoke__">getMessage</span>();
+}
+</code></pre></div>
+<p>Ici la <strong>RangeException</strong> va être affichée en tant que &quot;small error&quot;, ce qui donne visuellement un autre affichage plus discret. Le <code>setSize()</code> quant à lui ne s'est pas réalisé, et la taille de ton lion n'est pas de 20 mètres, ouf !</p>
+<div class="encadre encadre--warning"><div class="encadre__titre">Attention</div><div class="encadre__corps"><p>Attention, cette fois ci, PHP ne rentre plus dans le second catch, car il rentre déjà dans le premier, même si RangeException hérite d'Exception. Il faut donc toujours placer tes blocs catch de l'exception la plus précise, à la plus générique, PHP s'arrêtant au premier catch correspondant trouvé.</p>
+</div></div>
+<a class="ressource" href="https://www.php.net/manual/fr/language.exceptions.php#language.exceptions.finally" target="_blank" rel="noopener noreferrer">
+  <div class="ressource__icone">↗</div>
+  <div class="ressource__texte">
+    <div class="ressource__titre">Pour aller plus loin : le block Finally</div>
+    <div class="ressource__desc"><p>Pour information, il existe également un block <code>finally</code> que tu peux mettre <strong>après</strong> les blocs <code>catch</code>. Le code dans ce bloc sera exécuter systématiquement, qu'il y ait eu ou non une exception, et quelque soit le bloc catch exécuté.</p>
+</div>
+    <div class="ressource__hote">php.net</div>
+  </div>
+</a>
+<h2>Challenge</h2>
+<p>Tu vas mettre en application les exceptions sur les niveaux de menace.</p>
+<ul>
+<li>Dans <code>setThreatenedLevel()</code> ajoute une <strong>UnexpectedValueException</strong> , qui sera lancée si le paramètre <code>$threatenedLevel</code> ne fait pas partie du tableau <code>THREATENED_LEVELS</code>.</li>
+<li>Ajoute le try/catch correspondant pour afficher une <code>$errors</code> dans <em>index.php</em>, pour l'<strong>éléphant</strong>.</li>
+<li>Lance une <strong>RuntimeException</strong> toujours dans <code>setThreatenedLevel()</code>, si le paramètre <code>$threatenedLevel</code> vaut 'EX'. Le message sera 'Attention le ' . $this-&gt;getName() . ' ne devrait pas être là si l'espèce est éteinte !&quot;</li>
+<li>Catch cette nouvelle exception pour l'afficher en tant que <code>$smallErrors</code> dans <em>index.php</em></li>
+<li>Poste le code de <code>setThreatenedLevel()</code> et de ton try/catch dans <em>index.php</em> pour l'elephant</li>
+</ul>
+<h2>Validation</h2>
+<ul>
+<li>Les deux exceptions sont lancées et attrapées, les messages d'erreurs s'affichent correctement en fonction de la situation (grosse erreur dans le premier cas, petite erreur si l'espèce est éteinte).</li>
+</ul>
+<p>==$==</p>
+<div class="bloc-code"><div class="bloc-code__langue">php</div><pre><code class="hljs language-php"><span class="hljs-comment">/** Animal.php
+public function setThreatenedLevel(string $threatenedLevel = &#x27;NE&#x27;): void
+{
+    if (!in_array($threatenedLevel, self::THREATENED_LEVELS)) {
+        throw new UnexpectedValueException(&#x27;La menace est incorrecte&#x27;);
+    }
+
+    if($threatenedLevel == &#x27;EX&#x27;) {
+        throw new RuntimeException(&#x27;Le &#x27; . $this-&gt;getName() . &#x27; ne peut être là, cette espèce est éteinte&#x27;);
+    }
+
+    $this-&gt;threatenedLevel = $threatenedLevel;
+}
+</span></code></pre></div>
+<div class="bloc-code"><div class="bloc-code__langue">php</div><pre><code class="hljs language-php"><span class="hljs-comment">/** index.php
+$elephant = new Mammal(&#x27;elephant&#x27;);
+try{
+    $elephant-&gt;setThreatenedLevel(&#x27;EX&#x27;);
+} catch(UnexpectedValueException $exception) {
+    $errors[]  = $exception-&gt;getMessage();
+} catch (RuntimeException $exception) {
+    $smallErrors[]  = $exception-&gt;getMessage();
+}
+</span></code></pre></div>
+<p><img src="http://solution.com" alt="solution" loading="lazy"></p>
+
+  </div>
+  
+</article>
+
+<nav class="nav-quete">
+  <a class="nav-quete__lien nav-quete__lien--prec" href="../../php-oriente-objet/008-poo7-heritage/index.html">
+           <span class="nav-quete__sens">← Précédent</span>
+           <span class="nav-quete__titre">POO7 - Héritage</span>
+         </a>
+  <a class="nav-quete__lien nav-quete__lien--suiv" href="../../php-oriente-objet/010-poo9-abstraction/index.html">
+           <span class="nav-quete__sens">Suivant →</span>
+           <span class="nav-quete__titre">POO9 - Abstraction</span>
+         </a>
+</nav>
+</main>
+<footer class="pied">
+  <p>Archive personnelle des cours suivis à la Wild Code School. Copie hors ligne à usage strictement privé.</p>
+</footer>
+
+<script src="../../assets/copie-code.js"></script>
+<script src="../../assets/progression.js"></script>
+</body>
+</html>

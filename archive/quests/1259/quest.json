@@ -1,0 +1,50 @@
+{
+  "id": 1259,
+  "titre": "👩‍🏫 JS Intermédiaire 01.1 - Introduction à la manipulation du DOM",
+  "titres": {
+    "en": "👩‍🏫 JS Intermediate 01.1 - Introduction to DOM Manipulation",
+    "fr": "👩‍🏫 JS Intermédiaire 01.1 - Introduction à la manipulation du DOM"
+  },
+  "theme": {
+    "id": 91,
+    "slug": "more-javascript",
+    "nom": "JavaScript - Beyond the Basics"
+  },
+  "creeLe": "2020-06-29T19:17:58.771+02:00",
+  "difficulte": "1",
+  "dureeEstimee": 30,
+  "modeValidation": "self",
+  "chapitres": [
+    {
+      "id": 17514,
+      "type": "content",
+      "langue": "fr",
+      "majLe": "2025-03-24T08:49:11.992+01:00",
+      "caracteres": 10957
+    }
+  ],
+  "ressources": [
+    {
+      "link": "https://www.youtube.com/watch?v=W1neKsWdEgA&t=374s",
+      "description": "Si vous préférez voir une explication en vidéo comme moi et en plus en français, il vous suffit tout simplement de cliquer sur ce lien"
+    },
+    {
+      "link": "https://nouvelle-techno.fr/actualites/manipuler-le-dom-en-javascript",
+      "description": "Tout en français et très clair : un véritable MUST !"
+    },
+    {
+      "link": "https://www.youtube.com/watch?v=_1fem_5X0Ko",
+      "description": "explication simple du DOM"
+    },
+    {
+      "link": "https://www.youtube.com/watch?v=UBIfdObb9cY",
+      "description": "une vidéo sur le DOM"
+    },
+    {
+      "link": "https://nouvelle-techno.fr/articles/9-debuter-en-javascript-manipuler-le-document-dom",
+      "description": "Nouveau lien pour remplacer la deuxième suggestion."
+    }
+  ],
+  "urlOrigine": "https://odyssey.wildcodeschool.com/quests/1259",
+  "archiveLe": "2026-09-02T20:54:54.319Z"
+}

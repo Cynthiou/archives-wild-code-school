@@ -1,0 +1,46 @@
+{
+  "id": 1144,
+  "titre": "Composer -  2. PSR-4 & Autoload",
+  "titres": {
+    "en": "Composer -  2. PSR-4 & Autoload",
+    "fr": "Composer -  2. PSR-4 & Autoload"
+  },
+  "theme": {
+    "id": 7,
+    "slug": "php_adv",
+    "nom": "PHP Avancé"
+  },
+  "creeLe": "2020-04-03T11:31:48.755+02:00",
+  "difficulte": "",
+  "dureeEstimee": null,
+  "modeValidation": "student",
+  "chapitres": [
+    {
+      "id": 8134,
+      "type": "content",
+      "langue": "fr",
+      "majLe": "2022-10-11T10:23:09.774+02:00",
+      "caracteres": 8289
+    }
+  ],
+  "ressources": [
+    {
+      "link": "https://coopernet.fr/formation/php/autoload",
+      "description": "Explication plus claire sur comment rajouter le code relatif à l'autoload dans le fichier composer.json"
+    },
+    {
+      "link": "https://grafikart.fr/tutoriels/autoloader-composer-php-1144",
+      "description": "le lien vers la vidéo de Grafikart ne fonctionne pas, mais j'ai trouvé cette vidéo du même auteur sur le même sujet qui serait potentiellement la bonne. De surcroît très instructive."
+    },
+    {
+      "link": "https://www.youtube.com/watch?v=exaTOIhzYdk",
+      "description": "explicite !"
+    },
+    {
+      "link": "https://youtu.be/NLXtGZ6Ilsw?t=600",
+      "description": "En complément à la vidéo de Grafikart, je l'ai trouvé plus pertinente,  notamment pour définir le chemin de APP\\\\"
+    }
+  ],
+  "urlOrigine": "https://odyssey.wildcodeschool.com/quests/1144",
+  "archiveLe": "2026-09-02T23:21:20.634Z"
+}

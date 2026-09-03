@@ -1,0 +1,40 @@
+{
+  "id": 2336,
+  "titre": "👩‍🏫 React Basics 03 - Pokédex - Afficher des données dans un composant",
+  "titres": {
+    "fr": "👩‍🏫 React Basics 03 - Pokédex - Afficher des données dans un composant"
+  },
+  "theme": {
+    "id": 23,
+    "slug": "react",
+    "nom": "React - Bases"
+  },
+  "creeLe": "2022-11-07T14:46:18.131+01:00",
+  "difficulte": "0",
+  "dureeEstimee": null,
+  "modeValidation": "student",
+  "chapitres": [
+    {
+      "id": 17696,
+      "type": "content",
+      "langue": "fr",
+      "majLe": "2025-04-01T18:12:11.905+02:00",
+      "caracteres": 8567
+    },
+    {
+      "id": 12337,
+      "type": "solution",
+      "langue": "fr",
+      "majLe": "2024-10-11T10:16:41.804+02:00",
+      "caracteres": 602
+    }
+  ],
+  "ressources": [
+    {
+      "link": "https://www.youtube.com/watch?v=0EOucUY_F0c&t=18s",
+      "description": "Si tu veux aller plus loin"
+    }
+  ],
+  "urlOrigine": "https://odyssey.wildcodeschool.com/quests/2336",
+  "archiveLe": "2026-09-02T20:55:03.840Z"
+}

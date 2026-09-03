@@ -1,0 +1,348 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>React Intermédiaire 02 - Context API — Archives WCS</title>
+<link rel="stylesheet" href="../../assets/style.css">
+</head>
+<body style="--teinte:#5B76DF">
+<header class="entete">
+  <a class="entete__marque" href="../../index.html">Archives Wild Code School</a>
+</header>
+<main class="contenu">
+<nav class="ariane"><a href="../../index.html">Accueil</a><span class="ariane__sep">›</span><a href="../../react-intermediaire/index.html">React - Intermédiaire</a><span class="ariane__sep">›</span><span aria-current="page">React Intermédiaire 02 - Context API</span></nav>
+
+<article class="quete">
+  <header class="quete__entete">
+    <a class="pastille pastille--teintee" href="../../react-intermediaire/index.html">React - Intermédiaire</a>
+    <h1>React Intermédiaire 02 - Context API</h1>
+    <p class="quete__meta">Quête 2 sur 4 · 3 images archivées</p>
+  </header>
+  <div class="cours">
+<h4>Introduction</h4>
+<p>Dans cette quête, nous allons introduire le concept de Context API dans React. Comme il est indiqué dans la <a href="https://react.dev/learn/passing-data-deeply-with-context" target="_blank" rel="noopener noreferrer">documentation officielle</a>:</p>
+<div class="encadre encadre--story"><div class="encadre__titre">Le récit</div><div class="encadre__corps"><p>Habituellement, vous transmettrez des informations d'un composant parent à un composant enfant via des props. Mais transmettre des props peut devenir verbeux et peu pratique si vous devez les transmettre via de nombreux composants entre des grand-parents et leurs petits enfants, ou si de nombreux composants de votre application ont besoin des mêmes informations. Le contexte permet au composant parent de rendre certaines informations disponibles à n'importe quel composant de l'arborescence située en dessous, quelle que soit sa profondeur, sans les transmettre explicitement via les props.</p>
+</div></div>
+<p><strong>C'est parti!</strong> 🚀</p>
+<p><img src="images/001-image.avif" alt="image" loading="lazy"></p>
+<h4>🤓 À la fin de cette quête, tu pourras :</h4>
+<p>✅ comprendre quand utiliser un contexte
+✅ créer un contexte
+✅ lire les informations d'un contexte</p>
+<h3>🤷 Pourquoi utiliser un contexte ?</h3>
+<p>Un concept courant dans React est connu sous le nom de <strong>prop-drilling</strong> : transmettre les props à travers plusieurs niveaux dans la hiérarchie des composants. Certains composants peuvent même ne pas utiliser le prop reçu : ils la transmettent simplement à un enfant dans l'arborescence des composants. Regardons le schéma suivant :</p>
+<p><img src="images/002-image.png" alt="image" loading="lazy"></p>
+<p>En utilisant un contexte, tu peux stocker un state dans un espace &quot;global&quot;. Ce state va être accessible depuis n'importe quel composant connaissant ton contexte, comme indiqué sur le diagramme suivant :</p>
+<p><img src="images/003-image.png" alt="image" loading="lazy"></p>
+<h3>Comment utiliser l'API de contexte ?</h3>
+<p>Créons une application React qui affichera une liste de films. Nous allons diviser cela en 2 parties : créer un contexte et consommer ses données.</p>
+<h4>Créer un contexte</h4>
+<p>Voyons d'abord comment créer un contexte. Ce contexte permettra de mettre à disposition des valeurs globales :</p>
+<div class="bloc-code"><div class="bloc-code__langue">jsx</div><pre><code class="hljs language-jsx"><span class="hljs-comment">// contexts/MovieContext.js</span>
+<span class="hljs-keyword">import</span> { createContext } <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;react&quot;</span>;
+
+<span class="hljs-keyword">const</span> <span class="hljs-title class_">MovieContext</span> = <span class="hljs-title function_">createContext</span>(<span class="hljs-literal">null</span>);
+
+<span class="hljs-keyword">export</span> <span class="hljs-keyword">default</span> <span class="hljs-title class_">MovieContext</span>;
+</code></pre></div>
+<h4>Fournir un contexte</h4>
+<p>Ensuite, nous récupérons un utilisons le contexte comme un <code>Provider</code>, qui recevra la valeur que nous voulons partager. Le contexte sera disponible pour tous les composants contenus dans le <code>Provider</code> (enfants, petits-enfants...) :</p>
+<div class="bloc-code"><div class="bloc-code__langue">jsx</div><pre><code class="hljs language-jsx"><span class="hljs-comment">// App.js</span>
+<span class="hljs-keyword">import</span> { useState } <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;react&quot;</span>;
+
+<span class="hljs-keyword">import</span> <span class="hljs-title class_">MovieList</span> <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;./components/MovieList&#x27;</span>;
+<span class="hljs-keyword">import</span> <span class="hljs-title class_">MovieContext</span> <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;./contexts/MovieContext&#x27;</span>;
+
+<span class="hljs-keyword">function</span> <span class="hljs-title function_">App</span>(<span class="hljs-params"></span>) {
+  <span class="hljs-keyword">const</span> [movies, setMovies] = <span class="hljs-title function_">useState</span>([
+    {
+      <span class="hljs-attr">movie_id</span>: <span class="hljs-number">1</span>,
+      <span class="hljs-attr">title</span>: <span class="hljs-string">&#x27;Harry Potter and the Sorcerers Stone&#x27;</span>,
+      <span class="hljs-attr">release_year</span>: <span class="hljs-number">2001</span>,
+    },
+    {
+      <span class="hljs-attr">movie_id</span>: <span class="hljs-number">2</span>,
+      <span class="hljs-attr">title</span>: <span class="hljs-string">&#x27;Harry Potter and the Chamber of Secrets&#x27;</span>,
+      <span class="hljs-attr">release_year</span>: <span class="hljs-number">2002</span>,
+    },
+    {
+      <span class="hljs-attr">movie_id</span>: <span class="hljs-number">3</span>,
+      <span class="hljs-attr">title</span>: <span class="hljs-string">&#x27;Harry Potter and the Prison of Azkaban&#x27;</span>,
+      <span class="hljs-attr">release_year</span>: <span class="hljs-number">2004</span>,
+    },
+  ]);
+
+  <span class="hljs-keyword">return</span> (
+    <span class="language-xml"><span class="hljs-tag">&lt;<span class="hljs-name">MovieContext</span> <span class="hljs-attr">value</span>=<span class="hljs-string">{{</span> <span class="hljs-attr">movies:</span> <span class="hljs-attr">movies</span> }}&gt;</span>
+      <span class="hljs-tag">&lt;<span class="hljs-name">MovieList</span> /&gt;</span>
+    <span class="hljs-tag">&lt;/<span class="hljs-name">MovieContext</span>&gt;</span></span>
+  );
+}
+
+<span class="hljs-keyword">export</span> <span class="hljs-keyword">default</span> <span class="hljs-title class_">App</span>;
+</code></pre></div>
+<h4>Consommer un contexte</h4>
+<p>Maintenant, sur le composant où nous souhaitons récupérer le tableau <code>movies</code>, importons le hook <code>useContext</code> pour prévenir que nous allons utiliser un contexte (à donner en paramètre) :</p>
+<div class="bloc-code"><div class="bloc-code__langue">jsx</div><pre><code class="hljs language-jsx"><span class="hljs-comment">// components/MovieList.js</span>
+<span class="hljs-keyword">import</span> { useContext } <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;react&#x27;</span>;
+<span class="hljs-keyword">import</span> <span class="hljs-title class_">MovieContext</span> <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;../contexts/MovieContext&#x27;</span>;
+
+<span class="hljs-keyword">function</span> <span class="hljs-title function_">MovieList</span>(<span class="hljs-params"></span>) {
+  <span class="hljs-keyword">const</span> { movies } = <span class="hljs-title function_">useContext</span>(<span class="hljs-title class_">MovieContext</span>);
+
+  <span class="hljs-keyword">return</span> (
+    <span class="language-xml"><span class="hljs-tag">&lt;<span class="hljs-name">section</span>&gt;</span>
+      <span class="hljs-tag">&lt;<span class="hljs-name">h1</span>&gt;</span>Movie List<span class="hljs-tag">&lt;/<span class="hljs-name">h1</span>&gt;</span>
+    <span class="hljs-tag">&lt;/<span class="hljs-name">section</span>&gt;</span></span>
+  );
+}
+
+<span class="hljs-keyword">export</span> <span class="hljs-keyword">default</span> <span class="hljs-title class_">MovieList</span>;
+</code></pre></div>
+<p>Voici une démo complète avec l'affichage des films :</p>
+<div class="bloc-code"><div class="bloc-code__langue">jsx</div><pre><code class="hljs language-jsx">!--- <span class="hljs-title class_">App</span>.<span class="hljs-property">js</span>
+<span class="hljs-keyword">import</span> { useState } <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;react&quot;</span>;
+
+<span class="hljs-keyword">import</span> <span class="hljs-title class_">MovieList</span> <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;./components/MovieList&quot;</span>;
+<span class="hljs-keyword">import</span> <span class="hljs-title class_">MovieContext</span> <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;./contexts/MovieContext&quot;</span>;
+
+<span class="hljs-keyword">function</span> <span class="hljs-title function_">App</span>(<span class="hljs-params"></span>) {
+  <span class="hljs-keyword">const</span> [movies, setMovies] = <span class="hljs-title function_">useState</span>([
+    {
+      <span class="hljs-attr">movie_id</span>: <span class="hljs-number">1</span>,
+      <span class="hljs-attr">title</span>: <span class="hljs-string">&quot;Harry Potter and the Sorcerers Stone&quot;</span>,
+      <span class="hljs-attr">release_year</span>: <span class="hljs-number">2001</span>,
+    },
+    {
+      <span class="hljs-attr">movie_id</span>: <span class="hljs-number">2</span>,
+      <span class="hljs-attr">title</span>: <span class="hljs-string">&quot;Harry Potter and the Chamber of Secrets&quot;</span>,
+      <span class="hljs-attr">release_year</span>: <span class="hljs-number">2002</span>,
+    },
+    {
+      <span class="hljs-attr">movie_id</span>: <span class="hljs-number">3</span>,
+      <span class="hljs-attr">title</span>: <span class="hljs-string">&quot;Harry Potter and the Prison of Azkaban&quot;</span>,
+      <span class="hljs-attr">release_year</span>: <span class="hljs-number">2004</span>,
+    },
+  ]);
+
+  <span class="hljs-keyword">return</span> (
+    <span class="language-xml"><span class="hljs-tag">&lt;<span class="hljs-name">MovieContext</span> <span class="hljs-attr">value</span>=<span class="hljs-string">{{</span> <span class="hljs-attr">movies:</span> <span class="hljs-attr">movies</span> }}&gt;</span>
+      <span class="hljs-tag">&lt;<span class="hljs-name">MovieList</span> /&gt;</span>
+    <span class="hljs-tag">&lt;/<span class="hljs-name">MovieContext</span>&gt;</span></span>
+  );
+}
+
+<span class="hljs-keyword">export</span> <span class="hljs-keyword">default</span> <span class="hljs-title class_">App</span>;
+!--- components/<span class="hljs-title class_">MovieList</span>.<span class="hljs-property">js</span>
+<span class="hljs-keyword">import</span> { useContext } <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;react&quot;</span>;
+
+<span class="hljs-keyword">import</span> <span class="hljs-title class_">MovieContext</span> <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;../contexts/MovieContext&quot;</span>;
+
+<span class="hljs-keyword">function</span> <span class="hljs-title function_">MovieList</span>(<span class="hljs-params"></span>) {
+  <span class="hljs-keyword">const</span> { movies } = <span class="hljs-title function_">useContext</span>(<span class="hljs-title class_">MovieContext</span>);
+
+  <span class="hljs-keyword">return</span> (
+    <span class="language-xml"><span class="hljs-tag">&lt;<span class="hljs-name">section</span>&gt;</span>
+      <span class="hljs-tag">&lt;<span class="hljs-name">h1</span>&gt;</span>Movie List<span class="hljs-tag">&lt;/<span class="hljs-name">h1</span>&gt;</span>
+      <span class="hljs-tag">&lt;<span class="hljs-name">ul</span>&gt;</span>
+        {movies.map((movie) =&gt; (
+          <span class="hljs-tag">&lt;<span class="hljs-name">li</span> <span class="hljs-attr">key</span>=<span class="hljs-string">{movie.movie_id}</span>&gt;</span>
+            {movie.title} ({movie.release_year})
+          <span class="hljs-tag">&lt;/<span class="hljs-name">li</span>&gt;</span>
+        ))}
+      <span class="hljs-tag">&lt;/<span class="hljs-name">ul</span>&gt;</span>
+    <span class="hljs-tag">&lt;/<span class="hljs-name">section</span>&gt;</span></span>
+  );
+}
+
+<span class="hljs-keyword">export</span> <span class="hljs-keyword">default</span> <span class="hljs-title class_">MovieList</span>;
+!--- contexts/<span class="hljs-title class_">MovieContext</span>.<span class="hljs-property">js</span>
+<span class="hljs-keyword">import</span> { createContext } <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;react&quot;</span>;
+
+<span class="hljs-keyword">const</span> <span class="hljs-title class_">MovieContext</span> = <span class="hljs-title function_">createContext</span>(<span class="hljs-literal">null</span>);
+
+<span class="hljs-keyword">export</span> <span class="hljs-keyword">default</span> <span class="hljs-title class_">MovieContext</span>;
+</code></pre></div>
+<h4>💻 Changer l'état dans le contexte</h4>
+<p>Tu viens de voir comment envoyer un state dans un contexte. Mais le contenu d'un state est sensé varier en fonction des interactions de l'utilisateur.</p>
+<p>Tout comme tu as envoyé la valeur de <code>movies</code> par le <code>Provider</code>, il est possible d'envoyer la fonction <code>setMovies</code> :</p>
+<div class="bloc-code"><div class="bloc-code__langue">jsx</div><pre><code class="hljs language-jsx"><span class="hljs-keyword">return</span> (
+  <span class="language-xml"><span class="hljs-tag">&lt;<span class="hljs-name">MovieContext</span> <span class="hljs-attr">value</span>=<span class="hljs-string">{{</span> <span class="hljs-attr">movies:</span> <span class="hljs-attr">movies</span>, <span class="hljs-attr">setMovies:</span> <span class="hljs-attr">setMovies</span> }}&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">MoviesList</span> /&gt;</span>
+  <span class="hljs-tag">&lt;/<span class="hljs-name">MovieContext</span>&gt;</span></span>
+);
+</code></pre></div>
+<p>Maintenant, tu peux récupérer cette méthode dans le composant <code>MoviesList</code> en utilisant la déstructuration :</p>
+<div class="bloc-code"><div class="bloc-code__langue">jsx</div><pre><code class="hljs language-jsx"><span class="hljs-keyword">const</span> { movies, setMovies } = <span class="hljs-title function_">useContext</span>(<span class="hljs-title class_">MovieContext</span>);
+</code></pre></div>
+<p>Dans un exemple en live:</p>
+<div class="bloc-code"><div class="bloc-code__langue">jsx</div><pre><code class="hljs language-jsx">!--- <span class="hljs-title class_">App</span>.<span class="hljs-property">js</span>
+<span class="hljs-keyword">import</span> { useState } <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;react&quot;</span>;
+
+<span class="hljs-keyword">import</span> <span class="hljs-title class_">MovieList</span> <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;./components/MovieList&quot;</span>;
+<span class="hljs-keyword">import</span> <span class="hljs-title class_">MovieContext</span> <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;./contexts/MovieContext&quot;</span>;
+
+<span class="hljs-keyword">function</span> <span class="hljs-title function_">App</span>(<span class="hljs-params"></span>) {
+  <span class="hljs-keyword">const</span> [movies, setMovies] = <span class="hljs-title function_">useState</span>([
+    {
+      <span class="hljs-attr">movie_id</span>: <span class="hljs-number">1</span>,
+      <span class="hljs-attr">title</span>: <span class="hljs-string">&#x27;Harry Potter and the Sorcerers Stone&#x27;</span>,
+      <span class="hljs-attr">release_year</span>: <span class="hljs-number">2001</span>,
+    },
+    {
+      <span class="hljs-attr">movie_id</span>: <span class="hljs-number">2</span>,
+      <span class="hljs-attr">title</span>: <span class="hljs-string">&#x27;Harry Potter and the Chamber of Secrets&#x27;</span>,
+      <span class="hljs-attr">release_year</span>: <span class="hljs-number">2002</span>,
+    },
+    {
+      <span class="hljs-attr">movie_id</span>: <span class="hljs-number">3</span>,
+      <span class="hljs-attr">title</span>: <span class="hljs-string">&#x27;Harry Potter and the Prison of Azkaban&#x27;</span>,
+      <span class="hljs-attr">release_year</span>: <span class="hljs-number">2004</span>,
+    },
+  ]);
+
+  <span class="hljs-keyword">return</span> (
+    <span class="language-xml"><span class="hljs-tag">&lt;<span class="hljs-name">MovieContext</span> <span class="hljs-attr">value</span>=<span class="hljs-string">{{</span> <span class="hljs-attr">movies:</span> <span class="hljs-attr">movies</span>, <span class="hljs-attr">setMovies:</span> <span class="hljs-attr">setMovies</span> }}&gt;</span>
+      <span class="hljs-tag">&lt;<span class="hljs-name">MovieList</span> /&gt;</span>
+    <span class="hljs-tag">&lt;/<span class="hljs-name">MovieContext</span>&gt;</span></span>
+  );
+}
+
+<span class="hljs-keyword">export</span> <span class="hljs-keyword">default</span> <span class="hljs-title class_">App</span>;
+!--- components/<span class="hljs-title class_">MovieList</span>.<span class="hljs-property">js</span>
+<span class="hljs-keyword">import</span> { useContext } <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;react&quot;</span>;
+
+<span class="hljs-keyword">import</span> <span class="hljs-title class_">MovieContext</span> <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;../contexts/MovieContext&quot;</span>;
+
+<span class="hljs-keyword">function</span> <span class="hljs-title function_">MovieList</span>(<span class="hljs-params"></span>) {
+  <span class="hljs-keyword">const</span> { movies, setMovies } = <span class="hljs-title function_">useContext</span>(<span class="hljs-title class_">MovieContext</span>);
+
+  <span class="hljs-keyword">return</span> (
+    <span class="language-xml"><span class="hljs-tag">&lt;<span class="hljs-name">section</span>&gt;</span>
+      <span class="hljs-tag">&lt;<span class="hljs-name">h1</span>&gt;</span>Movie List<span class="hljs-tag">&lt;/<span class="hljs-name">h1</span>&gt;</span>
+      <span class="hljs-tag">&lt;<span class="hljs-name">ul</span>&gt;</span>
+        {movies.map((movie) =&gt; (
+          <span class="hljs-tag">&lt;<span class="hljs-name">li</span> <span class="hljs-attr">key</span>=<span class="hljs-string">{movie.movie_id}</span>&gt;</span>
+            {movie.title} ({movie.release_year})
+          <span class="hljs-tag">&lt;/<span class="hljs-name">li</span>&gt;</span>
+        ))}
+      <span class="hljs-tag">&lt;/<span class="hljs-name">ul</span>&gt;</span>
+      {movies.length &lt; 4 &amp;&amp; (
+        <span class="hljs-tag">&lt;<span class="hljs-name">button</span>
+          <span class="hljs-attr">onClick</span>=<span class="hljs-string">{()</span> =&gt;</span> {
+            setMovies([
+              ...movies,
+              {
+                movie_id: 4,
+                title: &#x27;Harry Potter and the Goblet of Fire&#x27;,
+                release_year: 2005,
+              },
+            ]);
+          }}
+        &gt;
+          More
+        <span class="hljs-tag">&lt;/<span class="hljs-name">button</span>&gt;</span>
+      )}
+    <span class="hljs-tag">&lt;/<span class="hljs-name">section</span>&gt;</span></span>
+  );
+}
+
+<span class="hljs-keyword">export</span> <span class="hljs-keyword">default</span> <span class="hljs-title class_">MovieList</span>;
+!--- contexts/<span class="hljs-title class_">MovieContext</span>.<span class="hljs-property">js</span>
+<span class="hljs-keyword">import</span> { createContext } <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;react&quot;</span>;
+
+<span class="hljs-keyword">const</span> <span class="hljs-title class_">MovieContext</span> = <span class="hljs-title function_">createContext</span>(<span class="hljs-literal">null</span>);
+
+<span class="hljs-keyword">export</span> <span class="hljs-keyword">default</span> <span class="hljs-title class_">MovieContext</span>;
+</code></pre></div>
+<h3>💪 Challenge</h3>
+<p>Dans ce défi, tu vas réaliser une application simple qui changera le statut de l'utilisateur en un clic !</p>
+<ul>
+<li>fork le code suivant ;</li>
+<li>Dans <code>UserContext.js</code>, créez un contexte <code>UserContext</code> ;</li>
+<li>Crée un state <code>isOnline</code> dans <code>App.js</code> (par défaut défini sur false) avec <code>useState</code> ;</li>
+<li>Importe le contexte dans <code>App.js</code> et utilise le comme un <code>Provider</code> ;</li>
+<li>Passe un objet avec <code>isOnline</code> et <code>setIsOnline</code> comme valeur pour le <code>Provider</code> ;</li>
+<li>Dans <code>UserProfile.js</code>, consomme les données du contexte avec <code>useContext</code> ;</li>
+<li>Modifie le texte pour qu'il affiche &quot;en ligne&quot; si la valeur booléenne est &quot;true&quot;, et &quot;hors ligne&quot; si la valeur est &quot;false&quot; ;</li>
+<li>Ajoute un écouteur d'événement sur le bouton qui appellera <code>setIsOnline</code> et basculera la valeur de <code>isOnline</code>.</li>
+</ul>
+<div class="bloc-code"><div class="bloc-code__langue">jsx</div><pre><code class="hljs language-jsx">!--- <span class="hljs-title class_">App</span>.<span class="hljs-property">js</span>
+<span class="hljs-keyword">import</span> <span class="hljs-string">&quot;./App.css&quot;</span>;
+
+<span class="hljs-keyword">import</span> <span class="hljs-title class_">UserProfile</span> <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;./components/UserProfile&quot;</span>;
+
+<span class="hljs-keyword">function</span> <span class="hljs-title function_">App</span>(<span class="hljs-params"></span>) {
+  <span class="hljs-keyword">return</span> <span class="language-xml"><span class="hljs-tag">&lt;<span class="hljs-name">UserProfile</span> /&gt;</span></span>;
+}
+
+<span class="hljs-keyword">export</span> <span class="hljs-keyword">default</span> <span class="hljs-title class_">App</span>;
+!--- <span class="hljs-title class_">App</span>.<span class="hljs-property">css</span>
+button {
+  box-<span class="hljs-attr">shadow</span>: 0px 10px 14px -7px #<span class="hljs-number">3e7327</span>;
+  <span class="hljs-attr">background</span>: linear-<span class="hljs-title function_">gradient</span>(to bottom, #77b55a <span class="hljs-number">5</span>%, #72b352 <span class="hljs-number">100</span>%);
+  background-<span class="hljs-attr">color</span>: #77b55a;
+  <span class="hljs-attr">border</span>: 1px solid #4b8f29;
+  <span class="hljs-attr">cursor</span>: pointer;
+  <span class="hljs-attr">color</span>: #ffffff;
+  font-<span class="hljs-attr">size</span>: 13px;
+  font-<span class="hljs-attr">weight</span>: bold;
+  <span class="hljs-attr">padding</span>: 6px 12px;
+  text-<span class="hljs-attr">decoration</span>: none;
+  text-<span class="hljs-attr">shadow</span>: 0px 1px 0px #5b8a3c;
+}
+!--- components/<span class="hljs-title class_">UserProfile</span>.<span class="hljs-property">js</span>
+<span class="hljs-keyword">import</span> <span class="hljs-title class_">React</span> <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;react&quot;</span>;
+
+<span class="hljs-keyword">function</span> <span class="hljs-title function_">UserProfile</span>(<span class="hljs-params"></span>) {
+  <span class="hljs-keyword">return</span> (
+    <span class="language-xml"><span class="hljs-tag">&lt;&gt;</span>
+      <span class="hljs-tag">&lt;<span class="hljs-name">p</span>&gt;</span>User is <span class="hljs-tag">&lt;/<span class="hljs-name">p</span>&gt;</span>
+
+      <span class="hljs-tag">&lt;<span class="hljs-name">button</span>&gt;</span>click to change user status <span class="hljs-tag">&lt;/<span class="hljs-name">button</span>&gt;</span>
+    <span class="hljs-tag">&lt;/&gt;</span></span>
+  );
+}
+
+<span class="hljs-keyword">export</span> <span class="hljs-keyword">default</span> <span class="hljs-title class_">UserProfile</span>;
+!--- contexts/<span class="hljs-title class_">UserContext</span>.<span class="hljs-property">js</span>
+<span class="hljs-comment">//create UserContext</span>
+
+<span class="hljs-keyword">export</span> <span class="hljs-keyword">default</span> <span class="hljs-title class_">UserContext</span>;
+</code></pre></div>
+<h4>🧐 Critères de validation</h4>
+<ul>
+<li>[ ] <code>setIsOnline</code> est passé via le <code>Provider</code> du contexte <code>UserContext</code> dans <code>UserProfile.js</code> et appelé lorsque le bouton est cliqué</li>
+<li>[ ] lorsqu'il est cliqué, le bouton doit basculer entre &quot;en ligne&quot; et &quot;hors ligne&quot;</li>
+</ul>
+
+  </div>
+  <section class="ressources-quete">
+  <h2>Ressources partagées sur cette quête</h2>
+  <ul class="ressources-liste">
+    <li><a href="https://youtu.be/AhnPjl5rovQ" target="_blank" rel="noopener noreferrer">React Context : la communication entre composants éloignés. Lior nous fait un exemple sans context, puis démontre l'intérêt de Context</a><span class="ressources-liste__url">https://youtu.be/AhnPjl5rovQ</span></li>
+    <li><a href="https://www.youtube.com/watch?v=WayVzizZRLk&amp;ab_channel=Grafikart.fr" target="_blank" rel="noopener noreferrer">React : Chapitre 23, Les contextes  Grafikart.fr</a><span class="ressources-liste__url">https://www.youtube.com/watch?v=WayVzizZRLk&amp;ab_channel=Grafikart.fr</span></li>
+  </ul>
+</section>
+</article>
+
+<nav class="nav-quete">
+  <a class="nav-quete__lien nav-quete__lien--prec" href="../../react-intermediaire/001-react-intermediaire-01-fetcher-des-donnees-depuis-une-api/index.html">
+           <span class="nav-quete__sens">← Précédent</span>
+           <span class="nav-quete__titre">React Intermédiaire 01 - Fetcher des données depuis une API avec React</span>
+         </a>
+  <a class="nav-quete__lien nav-quete__lien--suiv" href="../../react-intermediaire/003-react-intermediaire-03-1-formulaires-et-composants-controles/index.html">
+           <span class="nav-quete__sens">Suivant →</span>
+           <span class="nav-quete__titre">React Intermédiaire 03.1 - Formulaires et composants contrôlés</span>
+         </a>
+</nav>
+</main>
+<footer class="pied">
+  <p>Archive personnelle des cours suivis à la Wild Code School. Copie hors ligne à usage strictement privé.</p>
+</footer>
+
+<script src="../../assets/copie-code.js"></script>
+<script src="../../assets/progression.js"></script>
+</body>
+</html>

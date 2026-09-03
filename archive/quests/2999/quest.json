@@ -1,0 +1,35 @@
+{
+  "id": 2999,
+  "titre": "HTML & CSS 1 : Bienvenue à bord",
+  "titres": {
+    "fr": "HTML & CSS 1 : Bienvenue à bord"
+  },
+  "theme": {
+    "id": 149,
+    "slug": "web-development",
+    "nom": "Développement Web"
+  },
+  "creeLe": "2024-02-15T14:44:58.968+01:00",
+  "difficulte": "0",
+  "dureeEstimee": null,
+  "modeValidation": "trainer",
+  "chapitres": [
+    {
+      "id": 18471,
+      "type": "content",
+      "langue": "fr",
+      "majLe": "2025-10-15T10:24:08.886+02:00",
+      "caracteres": 7993
+    },
+    {
+      "id": 12429,
+      "type": "solution",
+      "langue": "fr",
+      "majLe": "2024-10-23T18:18:15.190+02:00",
+      "caracteres": 6534
+    }
+  ],
+  "ressources": [],
+  "urlOrigine": "https://odyssey.wildcodeschool.com/quests/2999",
+  "archiveLe": "2026-09-02T23:21:46.921Z"
+}

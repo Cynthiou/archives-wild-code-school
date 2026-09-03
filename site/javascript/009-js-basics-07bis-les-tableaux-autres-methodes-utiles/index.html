@@ -1,0 +1,328 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>👩‍🏫 JS Basics 07bis - Les tableaux - Autres méthodes utiles — Archives WCS</title>
+<link rel="stylesheet" href="../../assets/style.css">
+</head>
+<body style="--teinte:#856400">
+<header class="entete">
+  <a class="entete__marque" href="../../index.html">Archives Wild Code School</a>
+</header>
+<main class="contenu">
+<nav class="ariane"><a href="../../index.html">Accueil</a><span class="ariane__sep">›</span><a href="../../javascript/index.html">JavaScript</a><span class="ariane__sep">›</span><span aria-current="page">👩‍🏫 JS Basics 07bis - Les tableaux - Autres méthodes utiles</span></nav>
+
+<article class="quete">
+  <header class="quete__entete">
+    <a class="pastille pastille--teintee" href="../../javascript/index.html">JavaScript</a>
+    <h1>👩‍🏫 JS Basics 07bis - Les tableaux - Autres méthodes utiles</h1>
+    <p class="quete__meta">Quête 9 sur 11</p>
+  </header>
+  <div class="cours">
+<h2>Objectifs</h2>
+<p>Découvrir les méthodes des tableaux :</p>
+<ul>
+<li><code>includes</code> et <code>indexOf</code> pour déterminer l'existence ou l'emplacement d'une valeur dans un tableau.</li>
+<li><code>join</code> et <code>split</code> pour transformer un tableau en chaine de caractères et vice-versa.</li>
+<li><code>slice</code> pour extraire une partie d'un tableau.</li>
+<li><code>concat</code> et <code>splice</code> pour ajouter/supprimer des elements.</li>
+<li><code>reverse</code> et <code>sort</code> pour ré-ordonner les items.</li>
+</ul>
+<h2>Pré-requis</h2>
+<p>Avoir validé la quête suivante :</p>
+<div class="renvois"><div class="renvois__titre">Quêtes liées</div><ul><li><a href="../../javascript/008-js-basics-07-les-tableaux/index.html">Quête 1281</a></li></ul></div>
+<h2>Introduction</h2>
+<p>Dans la quête précédente, tu as appris comment créer des tableaux, accéder à leurs éléments et récupérer leur taille.
+Tu as aussi pu voir que ces tableaux pouvaient être manipulés grâce à des méthodes telles que <code>push</code>, <code>pop</code>, <code>shift</code> et <code>unshift</code>.
+Durant cette quête, tu vas approfondir tes connaissances sur les tableaux en apprenant à utiliser quelques méthodes de plus, qui te seront probablement utiles pour la suite.</p>
+<h2>Sommaire</h2>
+<h2>Includes</h2>
+<p><code>includes</code> retourne <code>true</code> si l'argument correspond à un élément du tableau ou <code>false</code> sinon.</p>
+<div class="bloc-code"><div class="bloc-code__langue">js</div><pre><code class="hljs language-js"><span class="hljs-keyword">const</span> fruits = [<span class="hljs-string">&quot;Kiwi&quot;</span>, <span class="hljs-string">&quot;Apple&quot;</span>, <span class="hljs-string">&quot;Pineapple&quot;</span>];
+<span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(fruits.<span class="hljs-title function_">includes</span>(<span class="hljs-string">&quot;Kiwi&quot;</span>)); <span class="hljs-comment">// true</span>
+<span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(fruits.<span class="hljs-title function_">includes</span>(<span class="hljs-string">&quot;Banana&quot;</span>)); <span class="hljs-comment">// false</span>
+</code></pre></div>
+<p><strong>🔬 Fais une expérience</strong></p>
+<p>Regarde si le tableau contient la chaine &quot;Lion&quot; (avec un <code>console.log</code>).</p>
+<div class="bloc-code"><div class="bloc-code__langue">js</div><pre><code class="hljs language-js"><span class="hljs-keyword">const</span> animals = [<span class="hljs-string">&quot;Lion&quot;</span>, <span class="hljs-string">&quot;Monkey&quot;</span>, <span class="hljs-string">&quot;Tiger&quot;</span>];
+</code></pre></div>
+<details class="solution"><summary>Voir la solution</summary><div class="solution__corps"><div class="bloc-code"><div class="bloc-code__langue">javascript</div><pre><code class="hljs language-javascript"><span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(animals.<span class="hljs-title function_">includes</span>(<span class="hljs-string">&quot;Lion&quot;</span>)); <span class="hljs-comment">// true</span>
+</code></pre></div>
+</div></details>
+<h2>IndexOf</h2>
+<p><code>indexOf</code> retournera la position (l'index) du premier élément dans le tableau qui correspond à l'argument. <strong>Cette fonction retourne <code>-1</code> si et seulement si aucun élément ne correspond</strong>.</p>
+<div class="bloc-code"><div class="bloc-code__langue">js</div><pre><code class="hljs language-js"><span class="hljs-keyword">const</span> fruits2 = [<span class="hljs-string">&quot;Kiwi&quot;</span>, <span class="hljs-string">&quot;Apple&quot;</span>, <span class="hljs-string">&quot;Pineapple&quot;</span>, <span class="hljs-string">&quot;Kiwi&quot;</span>];
+<span class="hljs-comment">//                 0        1         2          3</span>
+<span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(fruits2.<span class="hljs-title function_">indexOf</span>(<span class="hljs-string">&quot;Kiwi&quot;</span>));
+<span class="hljs-comment">// Will return 0 </span>
+</code></pre></div>
+<p><strong>🔬 Fais une expérience</strong></p>
+<p>En utilisant uniquement la méthode <code>indexOf</code> vue juste avant, essaie d'écrire ta propre version de la fonction <code>includes</code> qu'on appelera <code>arrayIncludes</code> et qui fonctionnera avec deux arguments au lieu d'un : Le premier sera un tableau arbitraire (<em>array</em>) et le second sera une valeur (<em>value</em>) à chercher dans le tableau. Comme la méthode originale <code>includes</code>, ta fonction devra renvoyer  <code>true</code> quand la valeur est dans le tableau et <code>false</code> sinon.</p>
+<div class="bloc-code"><div class="bloc-code__langue">js</div><pre><code class="hljs language-js"><span class="hljs-keyword">function</span> <span class="hljs-title function_">arrayIncludes</span>(<span class="hljs-params">array, value</span>) {
+
+}
+</code></pre></div>
+<details class="solution"><summary>Voir la solution</summary><div class="solution__corps"><div class="bloc-code"><div class="bloc-code__langue">javascript</div><pre><code class="hljs language-javascript"><span class="hljs-keyword">function</span> <span class="hljs-title function_">arrayIncludes</span>(<span class="hljs-params">array, value</span>) {
+  <span class="hljs-keyword">return</span> array.<span class="hljs-title function_">indexOf</span>(value) !== -<span class="hljs-number">1</span>;
+}
+</code></pre></div>
+</div></details>
+<h2>Join</h2>
+<p><code>join</code> transformera un tableau en chaine de caractères. Tu peux spécifier quel caractère utiliser en tant que séparateur :</p>
+<div class="bloc-code"><div class="bloc-code__langue">js</div><pre><code class="hljs language-js"><span class="hljs-keyword">const</span> fruits = [<span class="hljs-string">&quot;Kiwi&quot;</span>, <span class="hljs-string">&quot;Apple&quot;</span>, <span class="hljs-string">&quot;Pineapple&quot;</span>];
+<span class="hljs-keyword">const</span> fruitsString = fruits.<span class="hljs-title function_">join</span>();
+<span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(fruitsString);
+<span class="hljs-comment">// Kiwi,Apple,Pineapple</span>
+
+<span class="hljs-keyword">const</span> fruitsString2 = fruits.<span class="hljs-title function_">join</span>(<span class="hljs-string">&quot;-&quot;</span>);
+<span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(fruitsString2);
+<span class="hljs-comment">// Kiwi-Apple-Pineapple</span>
+
+<span class="hljs-keyword">const</span> fruitsString3 = fruits.<span class="hljs-title function_">join</span>(<span class="hljs-string">&quot;*&quot;</span>);
+<span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(fruitsString3);
+<span class="hljs-comment">// Kiwi*Apple*Pineapple</span>
+</code></pre></div>
+<h2>Split</h2>
+<p>C'est un peu l'opération inverse de <code>join</code>. <code>split</code> part d'une chaine de caractères pour former un tableau. On donne en argument le caractère permettant de séparer les éléments.</p>
+<div class="bloc-code"><div class="bloc-code__langue">js</div><pre><code class="hljs language-js"><span class="hljs-keyword">const</span> fruitsString = <span class="hljs-string">&quot;Kiwi,Apple,Pineapple&quot;</span>
+<span class="hljs-keyword">const</span> fruits = fruitsString.<span class="hljs-title function_">split</span>(<span class="hljs-string">&#x27;,&#x27;</span>);
+<span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(fruits);
+<span class="hljs-comment">// [ &#x27;Kiwi&#x27;, &#x27;Apple&#x27;, &#x27;Pineapple&#x27; ]</span>
+</code></pre></div>
+<p><strong>🔬 Fais une expérience</strong></p>
+<p>En utilisant <code>split</code> et <code>join</code>, essaie de transformer la chaine <code>Wild_Code_School</code> en  <code>Wild Code School</code> en seulement une ligne de JS.</p>
+<div class="bloc-code"><div class="bloc-code__langue">js</div><pre><code class="hljs language-js"><span class="hljs-keyword">const</span> withUnderscores = <span class="hljs-string">&quot;Wild_Code_School&quot;</span>;
+<span class="hljs-comment">//const withSpaces = ;</span>
+<span class="hljs-comment">//console.log(withSpaces);</span>
+</code></pre></div>
+<details class="solution"><summary>Voir la solution</summary><div class="solution__corps"><div class="bloc-code"><div class="bloc-code__langue">javascript</div><pre><code class="hljs language-javascript"><span class="hljs-keyword">const</span> withSpaces = withUnderscores.<span class="hljs-title function_">split</span>(<span class="hljs-string">&#x27;_&#x27;</span>).<span class="hljs-title function_">join</span>(<span class="hljs-string">&#x27; &#x27;</span>);
+</code></pre></div>
+</div></details>
+<h2>Slice</h2>
+<p>La méthode <code>slice</code> peut être utilisée pour créer une copie d'un tableau ou pour obtenir un sous-tableau. Cette méthode accepte deux paramètres optionnels permettant de délimiter la partie du tableau que l'on souhaite extraire. Par exemple :</p>
+<div class="bloc-code"><div class="bloc-code__langue">js</div><pre><code class="hljs language-js"><span class="hljs-keyword">const</span> fruits = [<span class="hljs-string">&#x27;pomme&#x27;</span>, <span class="hljs-string">&#x27;banane&#x27;</span>, <span class="hljs-string">&#x27;orange&#x27;</span>, <span class="hljs-string">&#x27;kiwi&#x27;</span>, <span class="hljs-string">&#x27;mangue&#x27;</span>];
+
+<span class="hljs-comment">// Extraire du 2ème élément (index 1) jusqu&#x27;à la fin</span>
+<span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(fruits.<span class="hljs-title function_">slice</span>(<span class="hljs-number">1</span>)); 
+<span class="hljs-comment">// Résultat : [&#x27;banane&#x27;, &#x27;orange&#x27;, &#x27;kiwi&#x27;, &#x27;mangue&#x27;]</span>
+
+<span class="hljs-comment">// Extraire du 2ème (index 1) au 4ème élément (index 4 exclus)</span>
+<span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(fruits.<span class="hljs-title function_">slice</span>(<span class="hljs-number">1</span>, <span class="hljs-number">4</span>)); 
+<span class="hljs-comment">// Résultat : [&#x27;banane&#x27;, &#x27;orange&#x27;, &#x27;kiwi&#x27;]</span>
+
+<span class="hljs-comment">// Extraire les 2 derniers éléments avec un index négatif</span>
+<span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(fruits.<span class="hljs-title function_">slice</span>(-<span class="hljs-number">2</span>)); 
+<span class="hljs-comment">// Résultat : [&#x27;kiwi&#x27;, &#x27;mangue&#x27;]</span>
+
+<span class="hljs-comment">// Copier tout le tableau</span>
+<span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(fruits.<span class="hljs-title function_">slice</span>()); 
+<span class="hljs-comment">// Résultat : [&#x27;pomme&#x27;, &#x27;banane&#x27;, &#x27;orange&#x27;, &#x27;kiwi&#x27;, &#x27;mangue&#x27;]</span>
+</code></pre></div>
+<p>La méthode <code>slice</code> fonctionne aussi sur les chaînes de caractères.</p>
+<div class="bloc-code"><div class="bloc-code__langue">js</div><pre><code class="hljs language-js"><span class="hljs-keyword">const</span> texte = <span class="hljs-string">&quot;Bonjour le monde&quot;</span>;
+
+<span class="hljs-comment">// Extraire à partir du caractère 8</span>
+<span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(texte.<span class="hljs-title function_">slice</span>(<span class="hljs-number">8</span>)); 
+<span class="hljs-comment">// Résultat : &quot;le monde&quot;</span>
+
+<span class="hljs-comment">// Extraire de l&#x27;index 0 à 7 (exclus)</span>
+<span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(texte.<span class="hljs-title function_">slice</span>(<span class="hljs-number">0</span>, <span class="hljs-number">7</span>)); 
+<span class="hljs-comment">// Résultat : &quot;Bonjour&quot;</span>
+
+<span class="hljs-comment">// Extraire les 5 derniers caractères</span>
+<span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(texte.<span class="hljs-title function_">slice</span>(-<span class="hljs-number">5</span>)); 
+<span class="hljs-comment">// Résultat : &quot;monde&quot;</span>
+</code></pre></div>
+<div class="encadre encadre--info"><div class="encadre__titre">Info</div><div class="encadre__corps"><p><code>slice()</code> ne modifie pas le tableau/string original</p>
+</div></div>
+<h2>Splice</h2>
+<div class="encadre encadre--warning"><div class="encadre__titre">Attention</div><div class="encadre__corps"><p>Attention à ne pas confondre avec la méthode <strong>slice</strong>. Et oui, à une lettre près, tu n'auras pas le même résultat !</p>
+</div></div>
+<p>Cette méthode peut être utilisée pour supprimer et/ou insérer de nouveaux éléments à une position définie dans un tableau.</p>
+<p>Comme arguments, <code>splice</code> prend dans cet ordre :</p>
+<ul>
+<li>L'index de l'élément à supprimer ou à remplacer (obligatoire)</li>
+<li>Le nombre total d'élément(s) à supprimer ou remplacer (optionnel)</li>
+<li>Le nouvel élément à insérer (optionnel)</li>
+<li>Le deuxième nouvel élément à insérer après le premier (optionnel)</li>
+<li>Tu peux en fait mettre un nombre infini d'éléments à insérer dans le tableau en renseignant d'autres arguments.</li>
+</ul>
+<h3>Exemples</h3>
+<p><strong>Gérer une liste de tâches</strong></p>
+<div class="bloc-code"><div class="bloc-code__langue">js</div><pre><code class="hljs language-js"><span class="hljs-keyword">const</span> taches = [<span class="hljs-string">&#x27;réunion&#x27;</span>, <span class="hljs-string">&#x27;appeler client&#x27;</span>, <span class="hljs-string">&#x27;rapport&#x27;</span>, <span class="hljs-string">&#x27;pause café&#x27;</span>, <span class="hljs-string">&#x27;emails&#x27;</span>];
+
+<span class="hljs-comment">// Supprimer une tâche terminée à l&#x27;index 2</span>
+taches.<span class="hljs-title function_">splice</span>(<span class="hljs-number">2</span>, <span class="hljs-number">1</span>);
+<span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(taches); 
+<span class="hljs-comment">// Résultat : [&#x27;réunion&#x27;, &#x27;appeler client&#x27;, &#x27;pause café&#x27;, &#x27;emails&#x27;]</span>
+
+<span class="hljs-comment">// Ajouter une nouvelle tâche urgente en début de liste</span>
+taches.<span class="hljs-title function_">splice</span>(<span class="hljs-number">0</span>, <span class="hljs-number">0</span>, <span class="hljs-string">&#x27;URGENT: bug à corriger&#x27;</span>);
+<span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(taches); 
+<span class="hljs-comment">// Résultat : [&#x27;URGENT: bug à corriger&#x27;, &#x27;réunion&#x27;, &#x27;appeler client&#x27;, &#x27;pause café&#x27;, &#x27;emails&#x27;]</span>
+
+</code></pre></div>
+<p><strong>Modifier des scores de jeu</strong></p>
+<div class="bloc-code"><div class="bloc-code__langue">js</div><pre><code class="hljs language-js"><span class="hljs-keyword">const</span> scores = [<span class="hljs-number">150</span>, <span class="hljs-number">200</span>, <span class="hljs-number">180</span>, <span class="hljs-number">220</span>, <span class="hljs-number">195</span>];
+
+<span class="hljs-comment">// Remplacer le 3ème score</span>
+scores.<span class="hljs-title function_">splice</span>(<span class="hljs-number">2</span>, <span class="hljs-number">1</span>, <span class="hljs-number">250</span>);
+<span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(scores); 
+<span class="hljs-comment">// Résultat : [150, 200, 250, 220, 195]</span>
+
+<span class="hljs-comment">// Supprimer les 2 derniers scores</span>
+scores.<span class="hljs-title function_">splice</span>(-<span class="hljs-number">2</span>);
+<span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(scores); 
+<span class="hljs-comment">// Résultat : [150, 200, 250]</span>
+</code></pre></div>
+<p><strong>Gérer des participants à un événement</strong></p>
+<div class="bloc-code"><div class="bloc-code__langue">js</div><pre><code class="hljs language-js"><span class="hljs-keyword">const</span> participants = [<span class="hljs-string">&#x27;Alice&#x27;</span>, <span class="hljs-string">&#x27;Bob&#x27;</span>, <span class="hljs-string">&#x27;Charlie&#x27;</span>, <span class="hljs-string">&#x27;David&#x27;</span>, <span class="hljs-string">&#x27;Emma&#x27;</span>];
+
+<span class="hljs-comment">// Bob et Charlie annulent, remplacés par Frank</span>
+participants.<span class="hljs-title function_">splice</span>(<span class="hljs-number">1</span>, <span class="hljs-number">2</span>, <span class="hljs-string">&#x27;Frank&#x27;</span>);
+<span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(participants); 
+<span class="hljs-comment">// Résultat : [&#x27;Alice&#x27;, &#x27;Frank&#x27;, &#x27;David&#x27;, &#x27;Emma&#x27;]</span>
+
+<span class="hljs-comment">// Ajouter 2 nouveaux participants après Alice</span>
+participants.<span class="hljs-title function_">splice</span>(<span class="hljs-number">1</span>, <span class="hljs-number">0</span>, <span class="hljs-string">&#x27;Sophie&#x27;</span>, <span class="hljs-string">&#x27;Lucas&#x27;</span>);
+<span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(participants); 
+<span class="hljs-comment">// Résultat : [&#x27;Alice&#x27;, &#x27;Sophie&#x27;, &#x27;Lucas&#x27;, &#x27;Frank&#x27;, &#x27;David&#x27;, &#x27;Emma&#x27;]</span>
+</code></pre></div>
+<p><strong>Manipuler des dates</strong></p>
+<div class="bloc-code"><div class="bloc-code__langue">js</div><pre><code class="hljs language-js"><span class="hljs-keyword">const</span> mois = [<span class="hljs-string">&#x27;janvier&#x27;</span>, <span class="hljs-string">&#x27;février&#x27;</span>, <span class="hljs-string">&#x27;mars&#x27;</span>, <span class="hljs-string">&#x27;juin&#x27;</span>, <span class="hljs-string">&#x27;juillet&#x27;</span>];
+
+<span class="hljs-comment">// Oups, on a oublié avril et mai !</span>
+mois.<span class="hljs-title function_">splice</span>(<span class="hljs-number">3</span>, <span class="hljs-number">0</span>, <span class="hljs-string">&#x27;avril&#x27;</span>, <span class="hljs-string">&#x27;mai&#x27;</span>);
+<span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(mois); 
+<span class="hljs-comment">// Résultat : [&#x27;janvier&#x27;, &#x27;février&#x27;, &#x27;mars&#x27;, &#x27;avril&#x27;, &#x27;mai&#x27;, &#x27;juin&#x27;, &#x27;juillet&#x27;]</span>
+</code></pre></div>
+<p>Pour t'exercer à utiliser <code>splice</code>, tu peux essayer de re-coder <code>push</code>, <code>pop</code>, <code>shift</code>, <code>unshift</code> avec !</p>
+<h2>Concat</h2>
+<p><code>concat</code> fusionnera deux tableaux en un seul :</p>
+<div class="bloc-code"><div class="bloc-code__langue">js</div><pre><code class="hljs language-js"><span class="hljs-keyword">const</span> equipeA = [<span class="hljs-string">&#x27;Alice&#x27;</span>, <span class="hljs-string">&#x27;Bob&#x27;</span>, <span class="hljs-string">&#x27;Charlie&#x27;</span>];
+<span class="hljs-keyword">const</span> equipeB = [<span class="hljs-string">&#x27;David&#x27;</span>, <span class="hljs-string">&#x27;Emma&#x27;</span>];
+
+<span class="hljs-keyword">const</span> touteLequipe = equipeA.<span class="hljs-title function_">concat</span>(equipeB);
+<span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(touteLequipe); 
+<span class="hljs-comment">// Résultat : [&#x27;Alice&#x27;, &#x27;Bob&#x27;, &#x27;Charlie&#x27;, &#x27;David&#x27;, &#x27;Emma&#x27;]</span>
+
+<span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(equipeA); 
+<span class="hljs-comment">// Résultat : [&#x27;Alice&#x27;, &#x27;Bob&#x27;, &#x27;Charlie&#x27;] (inchangé)</span>
+</code></pre></div>
+<h2>Reverse</h2>
+<p><code>reverse</code> mettra les premiers éléments en dernier et les derniers en premier.</p>
+<div class="bloc-code"><div class="bloc-code__langue">js</div><pre><code class="hljs language-js"><span class="hljs-keyword">const</span> playlist = [<span class="hljs-string">&#x27;Chanson A&#x27;</span>, <span class="hljs-string">&#x27;Chanson B&#x27;</span>, <span class="hljs-string">&#x27;Chanson C&#x27;</span>, <span class="hljs-string">&#x27;Chanson D&#x27;</span>];
+
+playlist.<span class="hljs-title function_">reverse</span>();
+<span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(playlist); 
+<span class="hljs-comment">// Résultat : [&#x27;Chanson D&#x27;, &#x27;Chanson C&#x27;, &#x27;Chanson B&#x27;, &#x27;Chanson A&#x27;]</span>
+</code></pre></div>
+<h2>Sort</h2>
+<p>Si tu veux trier les éléments d'un tableau, tu peux utiliser la méthode <code>sort</code> :</p>
+<div class="bloc-code"><div class="bloc-code__langue">js</div><pre><code class="hljs language-js"><span class="hljs-keyword">const</span> fruits2 = [<span class="hljs-string">&quot;Kiwi&quot;</span>, <span class="hljs-string">&quot;Apple&quot;</span>, <span class="hljs-string">&quot;Pineapple&quot;</span>, <span class="hljs-string">&quot;Kiwi&quot;</span>];
+<span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(fruits2.<span class="hljs-title function_">sort</span>());
+<span class="hljs-comment">// [&quot;Apple&quot;, &quot;Kiwi&quot;, &quot;Kiwi&quot;, &quot;Pineapple&quot;]</span>
+</code></pre></div>
+<div class="encadre encadre--warning"><div class="encadre__titre">Attention</div><div class="encadre__corps"><p>Avec des nombres, le résultat peut être un peu surprenant :</p>
+<div class="bloc-code"><div class="bloc-code__langue">javascript</div><pre><code class="hljs language-javascript"><span class="hljs-keyword">const</span> numbers = [<span class="hljs-number">1</span>, <span class="hljs-number">20</span>, <span class="hljs-number">45</span>, <span class="hljs-number">2</span>, <span class="hljs-number">3</span>, <span class="hljs-number">5</span>, <span class="hljs-number">8</span>];
+<span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(numbers.<span class="hljs-title function_">sort</span>());
+<span class="hljs-comment">// [1, 2, 20, 3, 45, 5, 8]</span>
+</code></pre></div>
+</div></div>
+<p>En effet, si tu appelle la méthode <code>sort</code> sans arguments, cette dernière va convertir en interne les éléments du tableau en chaine de caractère et faire un tri par <strong>ordre alphabétique</strong>. Si tu souhaites avec un tri dans l'<strong>ordre numérique</strong>, tu auras besoin de fournir un argument à <code>sort</code> : il s'agit d'une <em>fonction de rappel</em> (<em>callback function</em>) qui indique comment les éléments doivent être ordonnés. Tu peux lire <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/sort#description" target="_blank" rel="noopener noreferrer">cette partie de la documentation</a> pour plus d'informations.</p>
+<div class="bloc-code"><div class="bloc-code__langue">js</div><pre><code class="hljs language-js"><span class="hljs-keyword">const</span> numbers = [<span class="hljs-number">1</span>, <span class="hljs-number">20</span>, <span class="hljs-number">45</span>, <span class="hljs-number">2</span>, <span class="hljs-number">3</span>, <span class="hljs-number">5</span>, <span class="hljs-number">8</span>];
+<span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(numbers.<span class="hljs-title function_">sort</span>(<span class="hljs-keyword">function</span>(<span class="hljs-params">a, b</span>){
+	<span class="hljs-keyword">return</span> a - b;
+}));
+
+<span class="hljs-comment">//syntaxe plus courte</span>
+<span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(numbers.<span class="hljs-title function_">sort</span>(<span class="hljs-function">(<span class="hljs-params">a, b</span>) =&gt;</span> a - b));
+
+<span class="hljs-comment">// [1, 2, 3, 5, 8, 20, 45]</span>
+</code></pre></div>
+<h2>Resources</h2>
+<a class="ressource" href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array#instance_methods" target="_blank" rel="noopener noreferrer">
+  <div class="ressource__icone">↗</div>
+  <div class="ressource__texte">
+    <div class="ressource__titre">MDN - Array</div>
+    <div class="ressource__desc"><p>Tu pourras découvrir ici l'intégralité des méthodes disponibles pour manipuler les tableaux</p>
+</div>
+    <div class="ressource__hote">developer.mozilla.org</div>
+  </div>
+</a>
+<h2>Challenge</h2>
+<p>Dans ce challenge, tu vas pouvoir pratiquer l'utilisation de méthodes communes sur les tableaux.</p>
+<p>Tu vas démarrer avec cette chaine mystérieuse : <code>iu@zfiz)!uzqzf!snoi??alutargnocze&amp;gfuzyafzygfzmgfu%f</code></p>
+<ul>
+<li>Utilise <code>split</code> pour la transformer en tableau, de manière à ce que chaque lettre devienne un élément (une chaine vide devrait être utilisée en tant que séparateur).</li>
+<li>Découpe le tableau avec <code>slice</code>. tu dois extraire un sous tableau qui débute à partir du 15ième (inclus) jusqu'au 32ième élément (exclu). Conseil : rappelle-toi que les index commencent à 0 !</li>
+<li>Utilise <code>splice</code> pour remplacer 2 elements depuis l'index 5 par un unique élément : la lettre <code>t</code>.</li>
+<li>Inverse l'ordre des éléments avec <code>reverse</code>.</li>
+<li>Avec <code>join</code>, re-transforme à nouveau le tableau en chaine de caractères (en utilisant une chaine vide en tant que séparateur).</li>
+</ul>
+<p>Voici ton point de départ :</p>
+<div class="bloc-code"><div class="bloc-code__langue">javascript</div><pre><code class="hljs language-javascript"><span class="hljs-keyword">const</span> mysteriousString = <span class="hljs-string">`iu@zfiz)!uzqzf!snoi??alutargnocze&amp;gfuzyafzygfzmgfu%f`</span>;
+<span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(<span class="hljs-string">&#x27;step 0 : &#x27;</span>,  mysteriousString);
+
+<span class="hljs-comment">// step1 : split the myserious string it into an array, so that each letter becomes an item (the separator should be an empty string).</span>
+<span class="hljs-keyword">const</span> step1 = mysteriousString; <span class="hljs-comment">// TODO : change this line</span>
+<span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(<span class="hljs-string">&#x27;step 1 : &#x27;</span>, step1);
+
+<span class="hljs-comment">// step2 : get a slice of the array : take elements from the 15th included to the 32nd excluded (remember indexes start at 0 !)</span>
+<span class="hljs-keyword">const</span> step2 = step1; <span class="hljs-comment">// TODO : change this line</span>
+<span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(<span class="hljs-string">&#x27;step 2 : &#x27;</span>, step2);
+
+<span class="hljs-comment">// step3 : Splice the array to replace 2 elements from index 5 with only one element : the letter &#x27;t&#x27;</span>
+<span class="hljs-keyword">const</span> step3 = step2.<span class="hljs-title function_">slice</span>(); <span class="hljs-comment">// making a copy</span>
+<span class="hljs-comment">// TODO : call splice on step3 with the correct arguments</span>
+<span class="hljs-comment">// step3.splice(...)</span>
+<span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(<span class="hljs-string">&#x27;step 3 : &#x27;</span>, step3);
+
+<span class="hljs-comment">// step4 : reverse the array</span>
+<span class="hljs-keyword">const</span> step4 = step3; <span class="hljs-comment">// TODO : change this line</span>
+<span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(<span class="hljs-string">&#x27;step 4 : &#x27;</span>, step4);
+
+<span class="hljs-comment">// step5 : each element of the array back into a string (the separator should be an empty string)</span>
+<span class="hljs-keyword">const</span> step5 = step4; <span class="hljs-comment">// TODO : change this line</span>
+<span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(<span class="hljs-string">&#x27;step 5 : &#x27;</span>, step5);
+</code></pre></div>
+<p>Poste ton code en solution quand tu auras terminé.</p>
+<h3>Critères de validation</h3>
+<ul>
+<li>[ ] Les transformations successives ont été réalisées comme décrites dans les instructions</li>
+<li>[ ] Les <code>console.log</code> ne sont pas modifiés</li>
+<li>[ ] Le message final à la dernière étape a du sens</li>
+</ul>
+
+  </div>
+  <section class="ressources-quete">
+  <h2>Ressources partagées sur cette quête</h2>
+  <ul class="ressources-liste">
+    <li><a href="https://www.freecodecamp.org/news/javascript-splice-how-to-use-the-splice-js-array-method/" target="_blank" rel="noopener noreferrer">Explication très claire de Splice ;)</a><span class="ressources-liste__url">https://www.freecodecamp.org/news/javascript-splice-how-to-use-the-splice-js-array-method/</span></li>
+    <li><a href="https://www.youtube.com/watch?v=CSTtfCSAabE" target="_blank" rel="noopener noreferrer">Explication illustrée de slice et splice ;) </a><span class="ressources-liste__url">https://www.youtube.com/watch?v=CSTtfCSAabE</span></li>
+    <li><a href="https://www.youtube.com/watch?v=q8aAbzNKeOA" target="_blank" rel="noopener noreferrer">Courte vidéo en FR pour comprendre rapidement Splice</a><span class="ressources-liste__url">https://www.youtube.com/watch?v=q8aAbzNKeOA</span></li>
+    <li><a href="https://www.linkedin.com/posts/soydemir-emre_javascript-activity-7204409265199935488-EEST?utm_source=share&amp;utm_medium=member_desktop" target="_blank" rel="noopener noreferrer">Je viens de préparer un test pour ceux qui commencent tout juste leurs cours de JavaScript et veulent réviser les concepts de base. J'invite tous ceux intéressés à passer le test. Bonne chance :)</a><span class="ressources-liste__url">https://www.linkedin.com/posts/soydemir-emre_javascript-activity-7204409265199935488-EEST?utm_source=share&amp;utm_medium=member_desktop</span></li>
+  </ul>
+</section>
+</article>
+
+<nav class="nav-quete">
+  <a class="nav-quete__lien nav-quete__lien--prec" href="../../javascript/008-js-basics-07-les-tableaux/index.html">
+           <span class="nav-quete__sens">← Précédent</span>
+           <span class="nav-quete__titre">👩‍🏫 JS Basics 07 - Les tableaux</span>
+         </a>
+  <a class="nav-quete__lien nav-quete__lien--suiv" href="../../javascript/010-js-basics-08-les-boucles/index.html">
+           <span class="nav-quete__sens">Suivant →</span>
+           <span class="nav-quete__titre">👩‍🏫 JS Basics 08 - Les boucles</span>
+         </a>
+</nav>
+</main>
+<footer class="pied">
+  <p>Archive personnelle des cours suivis à la Wild Code School. Copie hors ligne à usage strictement privé.</p>
+</footer>
+
+<script src="../../assets/copie-code.js"></script>
+<script src="../../assets/progression.js"></script>
+</body>
+</html>

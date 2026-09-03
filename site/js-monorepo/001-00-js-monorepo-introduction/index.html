@@ -1,0 +1,259 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>00 - JS Monorepo : Introduction — Archives WCS</title>
+<link rel="stylesheet" href="../../assets/style.css">
+</head>
+<body style="--teinte:#000000">
+<header class="entete">
+  <a class="entete__marque" href="../../index.html">Archives Wild Code School</a>
+</header>
+<main class="contenu">
+<nav class="ariane"><a href="../../index.html">Accueil</a><span class="ariane__sep">›</span><a href="../../js-monorepo/index.html">JS Monorepo</a><span class="ariane__sep">›</span><span aria-current="page">00 - JS Monorepo : Introduction</span></nav>
+
+<article class="quete">
+  <header class="quete__entete">
+    <a class="pastille pastille--teintee" href="../../js-monorepo/index.html">JS Monorepo</a>
+    <h1>00 - JS Monorepo : Introduction</h1>
+    <p class="quete__meta">Quête 1 sur 9 · 6 images archivées</p>
+  </header>
+  <div class="cours">
+<h2>Objectifs</h2>
+<ul>
+<li>Découvrir différentes architectures web</li>
+<li>Comprendre la philosophie de notre monorepo JS</li>
+</ul>
+<h2>Pré-requis</h2>
+<ol class="etapes"><li class="etape"><div class="etape__puce">1</div><div class="etape__contenu"><h4 class="etape__titre">Valider les quêtes suivantes</h4><div class="renvois"><div class="renvois__titre">Quêtes liées</div><ul><li><a href="../../express-js/001-express-101-part-of-your-symphony/index.html">Quête 2933</a></li><li><a href="../../base-de-donnees/003-02-recuperer-des-informations-avec-select/index.html">Quête 484</a></li></ul></div>
+</div></li><li class="etape"><div class="etape__puce">2</div><div class="etape__contenu"><h4 class="etape__titre">Être à l'aise avec l'architecture client-serveur du web</h4><p><img src="images/001-react-et-express-dans-l-architecture-client.png" alt="react et express dans l'architecture client serveur du web" loading="lazy"></p>
+</div></li><li class="etape"><div class="etape__puce">3</div><div class="etape__contenu"><h4 class="etape__titre">Identifier les 3 étapes pour créer une application serveur avec Express</h4><div class="bloc-code"><div class="bloc-code__langue">javascript</div><pre><code class="hljs language-javascript"><span class="hljs-keyword">import</span> express <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;express&quot;</span>;
+
+<span class="hljs-comment">// Création de l&#x27;application Express</span>
+
+<span class="hljs-keyword">const</span> app = <span class="hljs-title function_">express</span>();
+
+<span class="hljs-comment">// Déclaration des routes</span>
+
+<span class="hljs-keyword">const</span> <span class="hljs-title function_">sayHello</span> = (<span class="hljs-params">req, res</span>) =&gt; {
+  res.<span class="hljs-title function_">send</span>(<span class="hljs-string">&quot;Hello World!&quot;</span>);
+};
+
+app.<span class="hljs-title function_">get</span>(<span class="hljs-string">&quot;/&quot;</span>, sayHello);
+
+<span class="hljs-comment">// Écoute du port</span>
+
+<span class="hljs-keyword">const</span> port = <span class="hljs-number">3310</span>;
+
+app.<span class="hljs-title function_">listen</span>(port, <span class="hljs-function">() =&gt;</span> {
+  <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(<span class="hljs-string">`Example app listening on port <span class="hljs-subst">${port}</span>`</span>);
+});
+</code></pre></div>
+</div></li></ol>
+<h2>Introduction</h2>
+<p>Cette quête est une présentation générale de notre framework maison utilisés pendant les projets. Rappelle toi ce schéma :</p>
+<p><img src="images/001-react-et-express-dans-l-architecture-client.png" alt="react et express dans l'architecture client serveur du web" loading="lazy"></p>
+<p>Notre monorepo JS est un framework qui combine une application cliente React et une application serveur avec Express, le tout réuni dans un seul et même projet.</p>
+<p>Plus encore, ce monorepo va te permettre d'aller plus loin sur la partie <code>data</code>. Voici un schéma étendu en ajoutant la communication avec une base de données :</p>
+<p><img src="images/002-architecture-client-serveur-bdd.png" alt="architecture client serveur bdd" loading="lazy"></p>
+<p>Et surtout, nous allons aborder un gros pavé des manuels : l'architecture. Pourquoi parler architecture dans le cadre de la formation alors que nous restons sur des &quot;petits&quot; projets ?</p>
+<p>Une architecture propose une structure claire et organisée pour une application web, permettant une séparation nette des préoccupations. Comprendre une architecture est crucial pour s'intégrer dans le développement d'une application web robuste et évolutive. Avoir un début du culture sur le sujet te permettra de te sentir plus à l'aise pour ton insertion professionnelle.</p>
+<h2>Sommaire</h2>
+<h2>Des architectures (liste non exhaustive)</h2>
+<h3>Architecture MVC</h3>
+<p>L'<strong>architecture MVC (Modèle-Vue-Contrôleur)</strong> est centrée sur 3 responsabilités :</p>
+<ul>
+<li><strong>Modèle</strong> : accéder aux données (le plus souvent d’une base de données, mais pas toujours).</li>
+<li><strong>Vue</strong> : formater le contenu pour le renvoyer au client (en HTML, JSON, CSV…).</li>
+<li><strong>Contrôleur</strong> : orchestrer la totalité (pour faire simple, disons tout ce qui n’est pas de la responsabilité d’un modèle ou d’une vue).</li>
+</ul>
+<p>L'architecture MVC sert de base à beaucoup de framework leaders du marché comme Symfony, Laravel, Spring... C'est quasi un incontournable dans la vie des devs web. Cependant, dans l'univers JavaScript, elle est parfois remplacée par des approches plus modulaires ou adaptées aux spécificités de Node.js (comme les autres architectures que nous allons explorer).</p>
+<a class="ressource" href="https://blog.codeanalogies.com/2016/05/02/model-view-controller-mvc-explained-through-ordering-drinks-at-the-bar/" target="_blank" rel="noopener noreferrer">
+  <div class="ressource__icone">↗</div>
+  <div class="ressource__texte">
+    <div class="ressource__titre">Le Modèle-Vue-Contrôleur (MVC) expliqué à travers la commande de boissons au bar</div>
+    <div class="ressource__desc"><p><img src="images/003-architecture-mvc.webp" alt="" loading="lazy"></p>
+</div>
+    <div class="ressource__hote">blog.codeanalogies.com</div>
+  </div>
+</a>
+<div class="encadre encadre--note encadre--arrow"><div class="encadre__corps"><p>Dans l'ordre :</p>
+<ul>
+<li>Le client (navigateur web, application mobile...) <strong>envoie une requête</strong> au serveur en utilisant une URL et une méthode HTTP (<code>HTTP Request</code>)..</li>
+<li>Le serveur reçoit la requête et, à l'aide d'un <strong>système de routage</strong>, détermine à quel contrôleur passer la requête en fonction de l'URL et de la méthode HTTP.</li>
+<li>Le contrôleur, qui est responsable de la logique pour <strong>traiter la requête</strong>, va utiliser un ou plusieurs modèles pour récupérer les données nécessaires.</li>
+<li>Les modèles, qui gèrent l'accès aux données, vont interroger la base de données pour <strong>récupérer les données</strong> nécessaires via une requête SQL (<code>SQL Query</code>).</li>
+<li>Le contrôleur, après avoir obtenu les données et appliqué la logique nécessaire, <strong>met en forme les données</strong> dans une vue.</li>
+<li>La vue, remplie avec les données, est intégrée dans la <strong>réponse HTTP</strong>.</li>
+<li>Finalement, le serveur <strong>envoie la réponse</strong> générée au client.</li>
+</ul>
+</div></div>
+<h3>Architecture hexagonale</h3>
+<p>L'<strong>architecture hexagonale</strong>, aussi appelée &quot;port and adapter&quot; (ports et adaptateurs), est une façon de structurer une application pour la rendre plus flexible, facile à tester, et indépendante des technologies externes (comme une base de données ou une API).</p>
+<p>Le principe de base :</p>
+<ol>
+<li><strong>Noyau central (domaine)</strong> : contient les règles métier et la logique principale. Il est totalement indépendant des détails techniques.</li>
+<li><strong>Ports</strong> : des interfaces qui définissent les points d'entrée (ex. : API, interface utilisateur) et de sortie (ex. : stockage, communication avec d'autres systèmes).</li>
+<li><strong>Adaptateurs</strong> : des implémentations concrètes qui connectent les ports aux technologies externes (comme une base de données ou une interface utilisateur).</li>
+</ol>
+<p>En isolant le cœur de l'application des détails techniques, une architecture hexagonale permet de facilement remplacer ou modifier des parties externes (comme changer de base de données) sans toucher à la logique métier.</p>
+<p>C'est comme une prise électrique : le noyau est la prise standard, et les adaptateurs permettent de brancher différents appareils selon les besoins.</p>
+<p><img src="images/004-architecture-hexagonale.png" alt="" loading="lazy"></p>
+<div class="encadre encadre--info"><div class="encadre__titre">Info</div><div class="encadre__corps"><p>L'hexagone est une métaphore pour indiquer plusieurs interfaces autour du cœur de l'application. Mais en réalité, il s'agit d'une abstraction ; un cercle ou un carré fonctionnerait tout aussi bien !</p>
+</div></div>
+<h3>Architecture modulaire</h3>
+<p>Une <strong>architecture modulaire</strong>, est une façon d'organiser une application en <strong>modules indépendants</strong> qui regroupent les fonctionnalités liées.</p>
+<p>Chaque module agit comme un &quot;compartiment&quot; contenant tout ce dont il a besoin (comme des contrôleurs, des services, et des modèles) pour remplir une tâche spécifique. Par exemple, un module &quot;utilisateurs&quot; pourrait gérer tout ce qui concerne l'inscription, la connexion et le profil des utilisateurs.</p>
+<p>C'est une architecture utilisée par des frameworks comme Nest.js pour rendre le code <strong>plus clair</strong>, <strong>plus facile à maintenir</strong> et <strong>évolutif</strong>. C'est aussi l'architecture que nous avons choisi pour la partie &quot;serveur&quot; de notre Monorepo JS.</p>
+<h2>Le &quot;JS Monorepo&quot;</h2>
+<p>Le &quot;JS Monorepo&quot; est un framework maison, conçu pour te permettre de travailler sur le développement côté serveur (Express) et côté client (React) dans un seul et même projet.</p>
+<p>À la <code>Wild Code School</code>, nous avons créé notre framework pour 2 raisons principales :</p>
+<ul>
+<li>te permettre de te concentrer sur le développement de ton application sans te soucier de la configuration de l'environnement de travail ;</li>
+<li>te rapprocher des codes complexes que tu pourras rencontrer en milieu professionnel.</li>
+</ul>
+<div class="encadre encadre--warning"><div class="encadre__titre">Attention</div><div class="encadre__corps"><p>Ce Monorepo JS est un framework pédagogique. <strong>Ce n'est pas un outil que tu retrouveras ensuite en entreprise.</strong> Mais son architecture et les styles de code utilisés, inspirés des outils standards de l'industrie, te prépareront à travailler sur des &quot;vrais&quot; projets.</p>
+</div></div>
+<p>Avec ce framework, tu peux :</p>
+<ul>
+<li>Créer un projet complet avec une application cliente React et une application serveur avec Express en quelques minutes.</li>
+<li>Lancer les applications React et Express en parallèle pour travailler sur le développement côté client et côté serveur dans un seul et même projet.</li>
+<li>Profiter d'une architecture modulaire pour structurer ton projet et séparer les préoccupations.</li>
+<li>Utiliser des outils de développement comme Biome, Jest, etc., pour améliorer la qualité de ton code.</li>
+<li>Personnaliser ton projet en fonction de tes besoins et de tes préférences.</li>
+<li>Contribuer à l'amélioration du monorepo en proposant des idées, des suggestions ou des corrections.</li>
+</ul>
+<div class="encadre encadre--note encadre--callout"><div class="encadre__corps"><p>Si tu souhaites contribuer à l'amélioration de ce projet, tu peux le faire en commençant par lire ce document : <a href="https://github.com/WildCodeSchool/create-js-monorepo/blob/main/CONTRIBUTING.md" target="_blank" rel="noopener noreferrer">Contribution</a>.</p>
+</div></div>
+<h3>Visite Guidée</h3>
+<p>Avant que tu crées un projet avec le monorepo, voyons ensemble à quoi tu dois t'attendre.</p>
+<p>Voici un aperçu de l'arborescence de ton projet :</p>
+<p><img src="images/005-structure-des-dossiers.png" alt="structure des dossiers" loading="lazy"></p>
+<p>Cela fait beaucoup de choses, mais voici l'essentiel :</p>
+<ul>
+<li><strong><code>client</code></strong> : Ce dossier contiendra le code de ton application cliente React.</li>
+<li><strong><code>server</code></strong> : Ce dossier contiendra le code de ton application serveur avec Express.</li>
+<li><strong><code>package.json</code></strong> : Ce fichier contiendra les scripts pour &quot;piloter&quot; les 2 dossiers <code>client</code> et <code>server</code>.</li>
+<li><strong><code>README.md</code></strong> : Ce fichier contiendra les informations clés pour démarrer.</li>
+</ul>
+<h3>Côté serveur</h3>
+<p>Le dossier <code>server</code> contiendra le code de ton application serveur avec Express.</p>
+<p>Voici quelques éléments que tu pourras trouver dans ce dossier :</p>
+<div class="bloc-code"><div class="bloc-code__langue">js</div><pre><code class="hljs language-js">server
+├── package.<span class="hljs-property">json</span>
+├── database
+│   └── client.<span class="hljs-property">ts</span>
+└── src
+    ├── app.<span class="hljs-property">ts</span>
+    ├── main.<span class="hljs-property">ts</span>
+    ├── router.<span class="hljs-property">ts</span>
+    └── modules
+        └── ...
+</code></pre></div>
+<p>C'est un parfait miroir de ce que tu as vu sur le schéma au début de cette quête : un serveur web composé d'une application Express et d'un client de base de données.</p>
+<p><img src="images/006-cote-serveur.png" alt="" loading="lazy"></p>
+<p>Une fois encore, tu découvriras chaque partie étape par étape durant ce parcours de quête. Je vais seulement te spoiler le fichier <code>server/index.js</code>.</p>
+<h3>Le fichier main.ts du serveur</h3>
+<p>Le fichier <code>main.ts</code> du dossier <code>server/src</code> est le point d'entrée de ton serveur. C'est ce fichier qui, d'import en import, fera appel à toutes les composantes du projet pour créer, configurer et lancer ton application Express.</p>
+<p>Voici à quoi ressemblera ce fichier <code>main.ts</code> :</p>
+<div class="bloc-code"><div class="bloc-code__langue">typescript</div><pre><code class="hljs language-typescript"><span class="hljs-comment">// Load environment variables from .env file</span>
+<span class="hljs-keyword">import</span> <span class="hljs-string">&quot;dotenv/config&quot;</span>;
+
+<span class="hljs-comment">// Check database connection</span>
+<span class="hljs-comment">// Note: This is optional and can be removed if the database connection</span>
+<span class="hljs-comment">// is not required when starting the application</span>
+<span class="hljs-keyword">import</span> <span class="hljs-string">&quot;../database/checkConnection&quot;</span>;
+
+<span class="hljs-comment">// Import the Express application from ./app</span>
+<span class="hljs-keyword">import</span> app <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;./app&quot;</span>;
+
+<span class="hljs-comment">// Get the port from the environment variables</span>
+<span class="hljs-keyword">const</span> port = process.<span class="hljs-property">env</span>.<span class="hljs-property">APP_PORT</span>;
+
+<span class="hljs-comment">// Start the server and listen on the specified port</span>
+app
+  .<span class="hljs-title function_">listen</span>(port, <span class="hljs-function">() =&gt;</span> {
+    <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">info</span>(<span class="hljs-string">`Server is listening on port <span class="hljs-subst">${port}</span>`</span>);
+  })
+  .<span class="hljs-title function_">on</span>(<span class="hljs-string">&quot;error&quot;</span>, <span class="hljs-function">(<span class="hljs-params"><span class="hljs-attr">err</span>: <span class="hljs-title class_">Error</span></span>) =&gt;</span> {
+    <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">error</span>(<span class="hljs-string">&quot;Error:&quot;</span>, err.<span class="hljs-property">message</span>);
+  });
+</code></pre></div>
+<p>Un peu flou ? Gommons quelques éléments pour y voir plus clair :</p>
+<div class="bloc-code"><div class="bloc-code__langue">typescript</div><pre><code class="hljs language-typescript"><span class="hljs-comment">// ...</span>
+
+<span class="hljs-comment">// Le lien avec la base de données commence à apparaitre</span>
+
+<span class="hljs-keyword">import</span> <span class="hljs-string">&quot;../database/checkConnection&quot;</span>;
+
+<span class="hljs-comment">// ...</span>
+
+<span class="hljs-comment">// Récupération de l&#x27;application Express</span>
+
+<span class="hljs-keyword">import</span> app <span class="hljs-keyword">from</span> <span class="hljs-comment">/* ... */</span>;
+
+<span class="hljs-comment">// La déclaration des routes aurait pu apparaitre</span>
+
+<span class="hljs-comment">/* ici */</span>
+
+<span class="hljs-comment">// Écoute du port</span>
+
+<span class="hljs-keyword">const</span> port = <span class="hljs-comment">/* ... */</span>;
+
+app
+  .<span class="hljs-title function_">listen</span>(port, <span class="hljs-function">() =&gt;</span> {
+    <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">info</span>(<span class="hljs-string">`Server is listening on port <span class="hljs-subst">${port}</span>`</span>);
+  })
+  <span class="hljs-comment">/* ... */</span>;
+</code></pre></div>
+<p>C'est (presque) le même code que celui que nous avons utilisé pour lancer notre serveur Express dans une quête précédente :</p>
+<div class="bloc-code"><div class="bloc-code__langue">javascript</div><pre><code class="hljs language-javascript"><span class="hljs-comment">/* import express from &quot;express&quot;; */</span>
+
+<span class="hljs-comment">// Création de l&#x27;application Express</span>
+
+<span class="hljs-keyword">const</span> app = <span class="hljs-comment">/* express() */</span>;
+
+<span class="hljs-comment">// Déclaration des routes</span>
+
+<span class="hljs-comment">/* ... */</span>
+
+<span class="hljs-comment">// Écoute du port</span>
+
+<span class="hljs-keyword">const</span> port = <span class="hljs-comment">/* 3310 */</span>;
+
+app
+  .<span class="hljs-title function_">listen</span>(port, <span class="hljs-function">() =&gt;</span> {
+    <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(<span class="hljs-string">`Example app listening on port <span class="hljs-subst">${port}</span>`</span>);
+  });
+  <span class="hljs-comment">/* Nous avions mis de côté la gestion des erreurs */</span>
+</code></pre></div>
+<p>C'est normal : même si nous avons construit un framework autour, l'application serveur reste une application Express &quot;comme les autres&quot;.</p>
+<div class="encadre encadre--note encadre--callout"><div class="encadre__corps"><p>Ce que tu appris précédemment sur Express, la déclaration des routes, la construction des réponses HTTP... reste complètement valide.</p>
+<p>Même si tu as l'impression de plonger dans un univers différent dans la suite du parcours, tu pourras toujours te raccrocher à ces notions.</p>
+<div class="renvois"><div class="renvois__titre">Quêtes liées</div><ul><li><a href="../../express-js/001-express-101-part-of-your-symphony/index.html">Quête 2933</a></li></ul></div>
+</div></div>
+<h2>Challenge</h2>
+<p>Afin de voir si tu as bien suivi, voici un quiz pour tester ta compréhension.</p>
+<p>Tu dois répondre correctement à toutes les questions 😉</p>
+
+  </div>
+  
+</article>
+
+<nav class="nav-quete">
+  <span class="nav-quete__lien nav-quete__lien--vide"></span>
+  <a class="nav-quete__lien nav-quete__lien--suiv" href="../../js-monorepo/002-01-js-monorepo-wild-series-la-genese/index.html">
+           <span class="nav-quete__sens">Suivant →</span>
+           <span class="nav-quete__titre">01 - JS Monorepo : Wild Series, la genèse</span>
+         </a>
+</nav>
+</main>
+<footer class="pied">
+  <p>Archive personnelle des cours suivis à la Wild Code School. Copie hors ligne à usage strictement privé.</p>
+</footer>
+
+<script src="../../assets/copie-code.js"></script>
+<script src="../../assets/progression.js"></script>
+</body>
+</html>

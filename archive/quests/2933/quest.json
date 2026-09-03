@@ -1,0 +1,40 @@
+{
+  "id": 2933,
+  "titre": "👩‍🏫 Express 101 : part of your symphony",
+  "titres": {
+    "fr": "👩‍🏫 Express 101 : part of your symphony"
+  },
+  "theme": {
+    "id": 105,
+    "slug": "express-js",
+    "nom": "Express.js"
+  },
+  "creeLe": "2023-12-20T09:39:14.882+01:00",
+  "difficulte": "0",
+  "dureeEstimee": null,
+  "modeValidation": "student",
+  "chapitres": [
+    {
+      "id": 17725,
+      "type": "content",
+      "langue": "fr",
+      "majLe": "2025-04-06T17:08:11.194+02:00",
+      "caracteres": 14199
+    },
+    {
+      "id": 15156,
+      "type": "solution",
+      "langue": "fr",
+      "majLe": "2025-01-25T18:36:38.218+01:00",
+      "caracteres": 328
+    }
+  ],
+  "ressources": [
+    {
+      "link": "https://www.youtube.com/watch?v=Rxgyw21Iycw",
+      "description": "Vidéo explicative pour installer Nodemon "
+    }
+  ],
+  "urlOrigine": "https://odyssey.wildcodeschool.com/quests/2933",
+  "archiveLe": "2026-09-02T20:54:03.754Z"
+}

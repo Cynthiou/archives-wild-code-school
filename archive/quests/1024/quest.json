@@ -1,0 +1,35 @@
+{
+  "id": 1024,
+  "titre": "Node 02 - 🛰️ Utiliser un fichier .env",
+  "titres": {
+    "fr": "Node 02 - 🛰️ Utiliser un fichier .env"
+  },
+  "theme": {
+    "id": 22,
+    "slug": "nodejs",
+    "nom": "Node.js"
+  },
+  "creeLe": "2020-01-09T08:30:35.918+01:00",
+  "difficulte": "",
+  "dureeEstimee": null,
+  "modeValidation": "student",
+  "chapitres": [
+    {
+      "id": 16765,
+      "type": "content",
+      "langue": "fr",
+      "majLe": "2025-02-26T15:49:54.885+01:00",
+      "caracteres": 6749
+    },
+    {
+      "id": 15173,
+      "type": "solution",
+      "langue": "fr",
+      "majLe": "2025-01-27T19:53:11.243+01:00",
+      "caracteres": 320
+    }
+  ],
+  "ressources": [],
+  "urlOrigine": "https://odyssey.wildcodeschool.com/quests/1024",
+  "archiveLe": "2026-09-02T20:53:40.585Z"
+}

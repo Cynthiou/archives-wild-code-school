@@ -1,0 +1,29 @@
+{
+  "id": 1830,
+  "titre": "👩‍🏫 JS Intermédiaire 03 - Affectation par décomposition",
+  "titres": {
+    "en": "👩‍🏫 JS Intermediate 03 - Destructuring assignments",
+    "fr": "👩‍🏫 JS Intermédiaire 03 - Affectation par décomposition"
+  },
+  "theme": {
+    "id": 91,
+    "slug": "more-javascript",
+    "nom": "JavaScript - Beyond the Basics"
+  },
+  "creeLe": "2021-09-30T10:07:35.555+02:00",
+  "difficulte": "2",
+  "dureeEstimee": 30,
+  "modeValidation": "self",
+  "chapitres": [
+    {
+      "id": 10464,
+      "type": "content",
+      "langue": "fr",
+      "majLe": "2023-09-24T15:11:06.731+02:00",
+      "caracteres": 4299
+    }
+  ],
+  "ressources": [],
+  "urlOrigine": "https://odyssey.wildcodeschool.com/quests/1830",
+  "archiveLe": "2026-09-02T20:54:59.530Z"
+}

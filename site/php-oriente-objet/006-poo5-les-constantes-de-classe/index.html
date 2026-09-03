@@ -1,0 +1,192 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>POO5 - Les constantes de classe — Archives WCS</title>
+<link rel="stylesheet" href="../../assets/style.css">
+</head>
+<body style="--teinte:#464985">
+<header class="entete">
+  <a class="entete__marque" href="../../index.html">Archives Wild Code School</a>
+</header>
+<main class="contenu">
+<nav class="ariane"><a href="../../index.html">Accueil</a><span class="ariane__sep">›</span><a href="../../php-oriente-objet/index.html">PHP Orienté Objet</a><span class="ariane__sep">›</span><span aria-current="page">POO5 - Les constantes de classe</span></nav>
+
+<article class="quete">
+  <header class="quete__entete">
+    <a class="pastille pastille--teintee" href="../../php-oriente-objet/index.html">PHP Orienté Objet</a>
+    <h1>POO5 - Les constantes de classe</h1>
+    <p class="quete__meta">Quête 6 sur 11 · 2 images archivées</p>
+  </header>
+  <div class="cours">
+<h1>Prérequis</h1>
+<div class="renvois"><div class="renvois__titre">Quêtes liées</div><ul><li><a href="../../php-oriente-objet/005-poo4-constructeur-et-visibilite/index.html">Quête 2258</a></li></ul></div>
+<div class="bloc-code"><div class="bloc-code__langue">title-book</div><pre><code class="hljs language-title-book">Introduction
+</code></pre></div>
+<div class="encadre encadre--story"><div class="encadre__titre">Le récit</div><div class="encadre__corps"><p>Nouvelle quête, nouvelle branche, passe sur la <strong>poo5</strong> du <a href="https://github.com/WildCodeSchool/php-wildzoo" target="_blank" rel="noopener noreferrer">Wildzoo</a>.
+Dans cette quête tu vas découvrir un nouvel élément de ta classe, les constantes.</p>
+</div></div>
+<div class="encadre encadre--warning"><div class="encadre__titre">Attention</div><div class="encadre__corps"><p>Tu as sans doute déjà vu la notion de constante en PHP, avec le mot clé <code>define()</code>. Ces constantes sont ensuites accessibles partout dans ton script. Cependant, l'objet de cette quête - même s'il y a de forte similitude - porte sur les constantes <strong>de classe</strong>, en POO. Il ne faut donc pas confondre les deux ;-).</p>
+</div></div>
+<h2>🤓 À la fin de cette quête, tu seras capable de :</h2>
+<ul>
+<li>✅ Faire la différence entre variables et constantes</li>
+<li>✅ Créer une constante de classe</li>
+<li>✅ Utiliser une constante de classe</li>
+</ul>
+<h1>Définition</h1>
+<h2>Constante vs Variable</h2>
+<p>Dans une classe, tu as déjà vu les propriétés et les méthodes. Un troisième élément peut y-être défini, les <strong>constantes</strong>.
+À la différence d'une propriété (appelée aussi variable de classe) dont la valeur peut changer d'une instance à l'autre, une constante de classe est un élément <strong>dont la valeur est immuable</strong>, elle sera la même pour tous les objets d'une même classe.</p>
+<p>Comme nous l'avons vu précédemment, chaque instance d'une classe possède des propriétés identiques, mais des valeurs différentes pour ces propriétés. Le nom du lion n'est pas le même que celui du perroquet, de même que sa taille, <em>etc.</em></p>
+<p>Imagine un instant que tu souhaites gérer une unité de longueur pour la taille de tes animaux, en mètres ou en centimètres. Tu fixes une limite, si la taille est inférieure à 100, tu veux l'afficher en centimètre, si la taille est supérieure à 100, tu vas afficher la valeur en mètres. Or, un mètre vaut 100 centimètres. Quelque soit l'animal que tu vas créér, cette données <strong>ne pourra jamais changer</strong>, elle est <strong>constante</strong> et donc commune à tous tes animaux. C'est cela la différence entre une propriété (variable) et une constante de classe.</p>
+<p><strong>La propriété est propre à l'instance, tandis que la constante est propre à la classe !</strong> Pour chaque animal créé, un mètre fera toujours 100cm !</p>
+<p><img src="images/001-animal-sizes.jpg" alt="animal sizes" loading="lazy">
+Dans d'autres contextes, une constante pourrait être la température du zéro absolu, la valeur de pi, le rayon de la terre, la vitesse de la lumière, le nombre de carte dans un jeu de tarot, un tableau contenant les lettres de l'alphabet latin, <em>etc.</em></p>
+<h2>Syntaxe pour créer une constante</h2>
+<p>Pour ajouter une constante à une classe, tu vas utiliser le mot clé <code>const</code> suivi du nom de la constante en majuscule (les mots séparés par des <em>underscores</em>). Attention, contrairement aux variables, il n'y a pas de dollar avant un nom de constante.
+La constante peut avoir une visibilité pour déterminer si elle est visible ou non depuis l'extérieur. Puisqu'une constante n'est pas modifiable, sauf cas particulier elle est généralement définie en <code>public</code>.
+Généralement, dans ta classe, pour faciliter la lisibilité, tu organiseras les éléments dans cet ordre de haut en bas : constantes, propriétés, méthodes (avec le constructeur en premier s'il y a lieu)</p>
+<p>Regarde la <a href="https://www.php.net/manual/fr/language.oop5.constants.php" target="_blank" rel="noopener noreferrer">documentation PHP</a>, elle te montrera quelques cas d'utilisation.</p>
+<div class="bloc-code"><div class="bloc-code__langue">php</div><pre><code class="hljs language-php"><span class="hljs-meta">&lt;?php</span>
+
+<span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Animal</span>
+</span>{
+    <span class="hljs-keyword">public</span> <span class="hljs-keyword">const</span> <span class="hljs-variable constant_">CENTIMETERS_IN_METER</span> = <span class="hljs-number">100</span>;
+
+    <span class="hljs-keyword">private</span> <span class="hljs-keyword">string</span> <span class="hljs-variable">$name</span>;
+    <span class="hljs-keyword">private</span> <span class="hljs-keyword">float</span> <span class="hljs-variable">$size</span> = <span class="hljs-number">100</span>;
+    <span class="hljs-keyword">private</span> <span class="hljs-keyword">bool</span> <span class="hljs-variable">$carnivorous</span> = <span class="hljs-literal">false</span>;
+    <span class="hljs-keyword">private</span> <span class="hljs-keyword">int</span> <span class="hljs-variable">$pawNumber</span>;
+    <span class="hljs-keyword">private</span> <span class="hljs-keyword">string</span> <span class="hljs-variable">$threatenedLevel</span> = <span class="hljs-string">&#x27;NE&#x27;</span>;
+    
+    <span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">__construct</span>(<span class="hljs-params"><span class="hljs-keyword">string</span> <span class="hljs-variable">$name</span>, <span class="hljs-keyword">int</span> <span class="hljs-variable">$pawNumber</span></span>)
+    </span>{
+        <span class="hljs-variable language_">$this</span>-&gt;name = <span class="hljs-variable">$name</span>;
+        <span class="hljs-variable language_">$this</span>-&gt;<span class="hljs-title function_ invoke__">setPawNumber</span>(<span class="hljs-variable">$pawNumber</span>);
+    }
+
+    <span class="hljs-comment">// ....</span>
+}
+</code></pre></div>
+<h3>Depuis l'extérieur d'une classe</h3>
+<p>Pour utiliser une propriété depuis l'extérieur, tu utilises la syntaxe <code>$objet-&gt;propertyName</code>, car la propriété est propre à l'objet.
+Pour la constante, ça n'aurait pas de sens puisqu'elle est liée directement à la classe. Pour y accéder, il faut utiliser la syntaxe <code>ClassName::CONSTANT_NAME</code>.</p>
+<p>🖥️ Dans <em>index.php</em>, affiche la constante avec :</p>
+<div class="bloc-code"><div class="bloc-code__langue">php</div><pre><code class="hljs language-php"><span class="hljs-title function_ invoke__">var_dump</span>(<span class="hljs-title class_">Animal</span>::<span class="hljs-variable constant_">CENTIMETERS_IN_METER</span>);
+</code></pre></div>
+<p>Ce n'est plus une flèche <code>-&gt;</code> qui est utilisée pour la constante, mais un double deux points <code>::</code> (aussi appelé <a href="https://www.php.net/manual/fr/language.oop5.paamayim-nekudotayim.php" target="_blank" rel="noopener noreferrer">opérateur de résolution de portée</a>). La flèche est donc pour ce qui a trait à l'objet, le <code>::</code> pour ce qui a trait à la classe.</p>
+<h3>Depuis l'intérieur d'une classe</h3>
+<p>Depuis l'intérieur d'une classe, pour une propriété tu utilises la syntaxe <code>$this-&gt;propertyName</code>, où <code>$this</code> représente l'objet en cours d'exécution.</p>
+<p>Pour une classe, tu peux toujours utiliser <code>ClassName::CONSTANT_NAME</code>, mais il y a un mot-clé qui permet à une classe de faire référence à elle-même, c'est <code>self</code>. Ainsi à l'intérieur d'elle-même, tu feras plutôt <code>self::CONSTANT_NAME</code>.</p>
+<h1>Quand utiliser des constantes</h1>
+<p>Reprenons l'idée d'afficher la taille en mètres ou centimètres en-dessous ou au-dessus de 100.</p>
+<p>🖥️ Commençons sans constante, ajoute le code de la méthode <code>getSizeWithUnit()</code> à ta classe <strong>Animal</strong>. Cette méthode va nous retourner la taille et l'unité correspondante.</p>
+<div class="bloc-code"><div class="bloc-code__langue">php</div><pre><code class="hljs language-php"><span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">getSizeWithUnit</span>(<span class="hljs-params"></span>) :<span class="hljs-title">string</span>
+</span>{
+    <span class="hljs-keyword">if</span>(<span class="hljs-variable language_">$this</span>-&gt;<span class="hljs-title function_ invoke__">getSize</span>() &lt; <span class="hljs-number">100</span>) {
+        <span class="hljs-keyword">return</span> <span class="hljs-variable language_">$this</span>-&gt;<span class="hljs-title function_ invoke__">getSize</span>() . <span class="hljs-string">&#x27;cm&#x27;</span>;     
+    } <span class="hljs-keyword">else</span> {
+        <span class="hljs-keyword">return</span> (<span class="hljs-variable language_">$this</span>-&gt;<span class="hljs-title function_ invoke__">getSize</span>() / <span class="hljs-number">100</span>) . <span class="hljs-string">&#x27;m&#x27;</span>;
+    }
+}
+</code></pre></div>
+<p>Actualise ton interface, tu devrais voir les unités apparaître (et l'éléphant devrait être à 1m et non 100cm).
+Cependant, dans ce code tu vois deux fois &quot;100&quot;, le premier est la limite à partir de laquelle on souhaite passer de l'affichage en cm à celui en mètre (mais on pourrait fixer abitrairement cette limite à 50 ou 200). La seconde occurence correspond au nombre de cm dans un mètre.</p>
+<p>Transforme maintenant le code en utilisant la constante définie au préalable.</p>
+<div class="bloc-code"><div class="bloc-code__langue">php</div><pre><code class="hljs language-php"><span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">getSizeWithUnit</span>(<span class="hljs-params"></span>) :<span class="hljs-title">string</span>
+</span>{
+    <span class="hljs-keyword">if</span>(<span class="hljs-variable language_">$this</span>-&gt;<span class="hljs-title function_ invoke__">getSize</span>() &lt; <span class="hljs-number">100</span>) {
+        <span class="hljs-keyword">return</span> <span class="hljs-variable language_">$this</span>-&gt;<span class="hljs-title function_ invoke__">getSize</span>() . <span class="hljs-string">&#x27;cm&#x27;</span>;     
+    } <span class="hljs-keyword">else</span> {
+        <span class="hljs-keyword">return</span> (<span class="hljs-variable language_">$this</span>-&gt;<span class="hljs-title function_ invoke__">getSize</span>() / <span class="hljs-built_in">self</span>::<span class="hljs-variable constant_">CENTIMETERS_IN_METER</span>) . <span class="hljs-string">&#x27;m&#x27;</span>;
+    }
+}
+</code></pre></div>
+<p>C'est déjà plus clair : la valeur correspond aux centimètres dans un mètre, il n'y a plus de question à se poser.
+Cependant, il reste le premier &quot;100&quot; écrit &quot;en dur&quot;, directement dans le code. Il faut éviter au maximum d'utiliser ces valeurs écrites directement, qu'on appelle aussi *magic numbers&quot;. C'est une mauvaise pratique car</p>
+<ul>
+<li>on comprend mal à quoi cette valeur sert.</li>
+<li>si tu souhaites modifier cette valeur, il faut potentiellement le faire à plusieurs endroits, ce qui est risque d'erreur.</li>
+</ul>
+<p>🖥️ Ajoute une constante SIZE_UNIT_CHANGE_LIMIT pour remplacer ce <em>magic number</em>. Tu vas obtenir</p>
+<div class="bloc-code"><div class="bloc-code__langue">php</div><pre><code class="hljs language-php">
+<span class="hljs-keyword">public</span> <span class="hljs-keyword">const</span> <span class="hljs-variable constant_">CENTIMETERS_IN_METER</span> = <span class="hljs-number">100</span>;
+<span class="hljs-keyword">public</span> <span class="hljs-keyword">const</span> <span class="hljs-variable constant_">SIZE_UNIT_CHANGE_LIMIT</span> = <span class="hljs-number">100</span>;
+
+<span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">getSizeWithUnit</span>(<span class="hljs-params"></span>) :<span class="hljs-title">string</span>
+</span>{
+    <span class="hljs-keyword">if</span>(<span class="hljs-variable language_">$this</span>-&gt;<span class="hljs-title function_ invoke__">getSize</span>() &lt; <span class="hljs-built_in">self</span>::<span class="hljs-variable constant_">SIZE_UNIT_CHANGE_LIMIT</span>) {
+        <span class="hljs-keyword">return</span> <span class="hljs-variable language_">$this</span>-&gt;<span class="hljs-title function_ invoke__">getSize</span>() . <span class="hljs-string">&#x27;cm&#x27;</span>;     
+    } <span class="hljs-keyword">else</span> {
+        <span class="hljs-keyword">return</span> (<span class="hljs-variable language_">$this</span>-&gt;<span class="hljs-title function_ invoke__">getSize</span>() / <span class="hljs-built_in">self</span>::<span class="hljs-variable constant_">CENTIMETERS_IN_METER</span>) . <span class="hljs-string">&#x27;m&#x27;</span>;
+    }
+}
+</code></pre></div>
+<p>Bravo ! Le code est maintenant plus compréhensible car les valeurs utilisées sont correctement nommées.</p>
+<h1>💪 Challenge</h1>
+<h3>Niveaux de menace</h3>
+<p><img src="images/002-iucn.png" alt="iucn" loading="lazy">
+La propriété <code>$threatenedLevel</code> est de type <code>string</code>. Elle attend une des valeurs de la <em>red list</em> de l'IUCN. Cependant, à l'heure actuelle rien ne t'empêche d'y mettre n'importe quelle donnée.</p>
+<ul>
+<li>Dans le <em>setter</em> <code>setThreatenedLevel()</code>, tu vas faire en sorte de vérifier que le <code>$threatenedLevel</code> en paramètre, fait bien partie des valeurs suivantes :
+<ul>
+<li>NE (Not Evaluated)</li>
+<li>DD (Data Deficient)</li>
+<li>LC (Least Concern)</li>
+<li>NT (Near Threatened)</li>
+<li>VU (Vulnerable)</li>
+<li>EN (Endangered)</li>
+<li>CR (Critically Endangered)</li>
+<li>EW (Extinct in the wild)</li>
+<li>EX (Extinct)</li>
+</ul>
+</li>
+<li>Ces valeurs vont être stockées dans une constante (une constante peut être de type <em>array</em>) nommée <code>THREATENED_LEVELS</code>
+HINT : Utilise la fonction <code>in_array()</code> de PHP</li>
+<li>Poste le code de ta méthode <code>setThreatenedLevel()</code> en solution</li>
+</ul>
+<h3>Critères de validation</h3>
+<ul>
+<li>La constante de classe est correctement définie dans la classe <strong>Animal</strong></li>
+<li>Elle contient un tableau reprenant les niveaux de menace de la <em>red list</em> (NE, DD, LC, NT, VU, EN, CR, EW, EX)</li>
+<li>La méthode <code>setThreatenedLevel()</code> vérifie que le niveau fait bien partie des valeurs de la constante <code>THREATENED_LEVELS</code> (utilisation de <code>in_array()</code>)</li>
+<li>Si le level est autorisé, il est passé à la propriété <code>$threatenedLevel</code></li>
+</ul>
+<p>==$==</p>
+<div class="bloc-code"><div class="bloc-code__langue">php</div><pre><code class="hljs language-php">    <span class="hljs-keyword">public</span> <span class="hljs-keyword">const</span> <span class="hljs-variable constant_">THREATENED_LEVELS</span> = [<span class="hljs-string">&#x27;NE&#x27;</span>, <span class="hljs-string">&#x27;DD&#x27;</span>, <span class="hljs-string">&#x27;LC&#x27;</span>, <span class="hljs-string">&#x27;NT&#x27;</span>, <span class="hljs-string">&#x27;VU&#x27;</span>, <span class="hljs-string">&#x27;EN&#x27;</span>, <span class="hljs-string">&#x27;CR&#x27;</span>, <span class="hljs-string">&#x27;EW&#x27;</span>, <span class="hljs-string">&#x27;EX&#x27;</span>,];
+    
+    <span class="hljs-comment">//...</span>
+
+    <span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">setThreatenedLevel</span>(<span class="hljs-params"><span class="hljs-keyword">string</span> <span class="hljs-variable">$threatenedLevel</span> = <span class="hljs-string">&#x27;NE&#x27;</span></span>): <span class="hljs-title">void</span>
+    </span>{
+        <span class="hljs-keyword">if</span> (<span class="hljs-title function_ invoke__">in_array</span>(<span class="hljs-variable">$threatenedLevel</span>, <span class="hljs-built_in">self</span>::<span class="hljs-variable constant_">THREATENED_LEVELS</span>)) {
+            <span class="hljs-variable language_">$this</span>-&gt;threatenedLevel = <span class="hljs-variable">$threatenedLevel</span>;
+        }
+    }
+</code></pre></div>
+
+  </div>
+  
+</article>
+
+<nav class="nav-quete">
+  <a class="nav-quete__lien nav-quete__lien--prec" href="../../php-oriente-objet/005-poo4-constructeur-et-visibilite/index.html">
+           <span class="nav-quete__sens">← Précédent</span>
+           <span class="nav-quete__titre">POO4 - Constructeur et visibilité</span>
+         </a>
+  <a class="nav-quete__lien nav-quete__lien--suiv" href="../../php-oriente-objet/007-poo6-interaction-entre-objets/index.html">
+           <span class="nav-quete__sens">Suivant →</span>
+           <span class="nav-quete__titre">POO6 - Intéraction entre objets</span>
+         </a>
+</nav>
+</main>
+<footer class="pied">
+  <p>Archive personnelle des cours suivis à la Wild Code School. Copie hors ligne à usage strictement privé.</p>
+</footer>
+
+<script src="../../assets/copie-code.js"></script>
+<script src="../../assets/progression.js"></script>
+</body>
+</html>

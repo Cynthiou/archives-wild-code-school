@@ -1,0 +1,95 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>✏️ Exercise 1 - Naming Variables — Archives WCS</title>
+<link rel="stylesheet" href="../../assets/style.css">
+</head>
+<body style="--teinte:#5F83B2">
+<header class="entete">
+  <a class="entete__marque" href="../../index.html">Archives Wild Code School</a>
+</header>
+<main class="contenu">
+<nav class="ariane"><a href="../../index.html">Accueil</a><span class="ariane__sep">›</span><a href="../../php/index.html">PHP</a><span class="ariane__sep">›</span><span aria-current="page">✏️ Exercise 1 - Naming Variables</span></nav>
+
+<article class="quete">
+  <header class="quete__entete">
+    <a class="pastille pastille--teintee" href="../../php/index.html">PHP</a>
+    <h1>✏️ Exercise 1 - Naming Variables</h1>
+    <p class="quete__meta">Quête 9 sur 14 · 1 image archivée</p>
+  </header>
+  <div class="cours">
+<h1>Introduction</h1>
+<p><img src="images/001-image.jpg" alt="image" loading="lazy"></p>
+<h6>⚠️ Before starting this quest, you must have finished the following quests:</h6>
+<div class="renvois"><div class="renvois__titre">Quêtes liées</div><ul><li><a href="../../php/002-2-les-variables-en-php/index.html">Quête 141</a></li></ul></div>
+<p>In this serie of exercises, you will mainly play with <a href="https://emojipedia.org/nature/" target="_blank" rel="noopener noreferrer">animal emojis</a>. Why? Because emojis are short, fun and animals are cutes !</p>
+<div class="encadre encadre--warning"><div class="encadre__titre">Attention</div><div class="encadre__corps"><p>Emojis are treated as characters (strings), not as image. '🐒' is like an 'A' or a 'W', so you should always use <strong>quotes</strong> around to display it.</p>
+</div></div>
+<h1>💪 Challenge</h1>
+<p>In this challenge, you will have to find a better name for the variable <code>$var</code>, according to the naming rules best practices.</p>
+<ul>
+<li>in English</li>
+<li>no abbreviation</li>
+<li>in camelCase (in PHP, other languages could have other rules for variable format)</li>
+<li><strong>meaningful</strong> that means the variable name should be clear and reflect data it refers to.</li>
+</ul>
+<p>Let's start, copy/paste the code below in your IDE and try to find an appropriate name for each line!</p>
+<div class="encadre encadre--info"><div class="encadre__titre">Info</div><div class="encadre__corps"><h1>💡 Help</h1>
+<p>Brackets <code>[]</code> are used to declare an <em>array</em>, that means a group of data, you will learn more about array very soon. Arrays contain multiple datas, so, most of the time, you should use a <strong>plural</strong> name.</p>
+</div></div>
+<div class="bloc-code"><div class="bloc-code__langue">php</div><pre><code class="hljs language-php"><span class="hljs-variable">$var</span> = <span class="hljs-string">&#x27;🐒&#x27;</span>;
+<span class="hljs-variable">$var</span> = <span class="hljs-string">&#x27;🦍&#x27;</span>;
+<span class="hljs-variable">$var</span> = <span class="hljs-string">&#x27;🦧&#x27;</span>;
+<span class="hljs-variable">$var</span> = <span class="hljs-string">&#x27;🐕&#x27;</span>;
+<span class="hljs-variable">$var</span> = <span class="hljs-string">&#x27;🐺&#x27;</span>;
+<span class="hljs-variable">$var</span> = <span class="hljs-string">&#x27;🦊&#x27;</span>;
+
+<span class="hljs-variable">$var</span> = [<span class="hljs-string">&#x27;🐒&#x27;</span>, <span class="hljs-string">&#x27;🦍&#x27;</span>, <span class="hljs-string">&#x27;🦧&#x27;</span>];
+<span class="hljs-variable">$var</span> = [<span class="hljs-string">&#x27;🐒&#x27;</span>, <span class="hljs-string">&#x27;🦍&#x27;</span>, <span class="hljs-string">&#x27;🦧&#x27;</span>, <span class="hljs-string">&#x27;🐺&#x27;</span>, <span class="hljs-string">&#x27;🐅&#x27;</span>, <span class="hljs-string">&#x27;🐷&#x27;</span>, <span class="hljs-string">&#x27;🐘&#x27;</span>, <span class="hljs-string">&#x27;🐎&#x27;</span>];
+<span class="hljs-variable">$var</span> = [<span class="hljs-string">&#x27;🐋&#x27;</span>, <span class="hljs-string">&#x27;🐬&#x27;</span>];
+<span class="hljs-variable">$var</span> = [<span class="hljs-string">&#x27;🐒&#x27;</span>, <span class="hljs-string">&#x27;🦍&#x27;</span>, <span class="hljs-string">&#x27;🦧&#x27;</span>, <span class="hljs-string">&#x27;🐺&#x27;</span>, <span class="hljs-string">&#x27;🐅&#x27;</span>, <span class="hljs-string">&#x27;🐘&#x27;</span>, <span class="hljs-string">&#x27;🐎&#x27;</span>, <span class="hljs-string">&#x27;🐋&#x27;</span>, <span class="hljs-string">&#x27;🐬&#x27;</span>];
+<span class="hljs-variable">$var</span> = [<span class="hljs-string">&#x27;🐋&#x27;</span>, <span class="hljs-string">&#x27;🐬&#x27;</span>, <span class="hljs-string">&#x27;🐟&#x27;</span>, <span class="hljs-string">&#x27;🐠&#x27;</span>, <span class="hljs-string">&#x27;🐡&#x27;</span>, <span class="hljs-string">&#x27;🦈&#x27;</span>, <span class="hljs-string">&#x27;🐙&#x27;</span>, <span class="hljs-string">&#x27;🐚&#x27;</span>, <span class="hljs-string">&#x27;🦀&#x27;</span>];
+<span class="hljs-variable">$var</span> = [<span class="hljs-string">&#x27;🐟&#x27;</span>, <span class="hljs-string">&#x27;🐠&#x27;</span>, <span class="hljs-string">&#x27;🐡&#x27;</span>, <span class="hljs-string">&#x27;🦈&#x27;</span>];
+<span class="hljs-variable">$var</span> = [<span class="hljs-string">&#x27;🦕&#x27;</span>, <span class="hljs-string">&#x27;🦖&#x27;</span>];
+<span class="hljs-variable">$var</span> = [<span class="hljs-string">&#x27;🦄&#x27;</span>, <span class="hljs-string">&#x27;🐉&#x27;</span>];
+<span class="hljs-variable">$var</span> = [<span class="hljs-string">&#x27;🐄&#x27;</span>, <span class="hljs-string">&#x27;🦃&#x27;</span>, <span class="hljs-string">&#x27;🐓&#x27;</span>, <span class="hljs-string">&#x27;🐷&#x27;</span>, <span class="hljs-string">&#x27;🐑&#x27;</span>, <span class="hljs-string">&#x27;🐐&#x27;</span>, <span class="hljs-string">&#x27;🐎&#x27;</span>, <span class="hljs-string">&#x27;🐇&#x27;</span>];
+<span class="hljs-variable">$var</span> = [<span class="hljs-string">&#x27;🐕&#x27;</span>, <span class="hljs-string">&#x27;🐱&#x27;</span>, <span class="hljs-string">&#x27;🐦&#x27;</span>, <span class="hljs-string">&#x27;🐠&#x27;</span>, <span class="hljs-string">&#x27;🐹&#x27;</span>];
+<span class="hljs-variable">$var</span> = [<span class="hljs-string">&#x27;🦃&#x27;</span>, <span class="hljs-string">&#x27;🐓&#x27;</span>, <span class="hljs-string">&#x27;🐧&#x27;</span>, <span class="hljs-string">&#x27;🕊️&#x27;</span>, <span class="hljs-string">&#x27;🦅&#x27;</span>, <span class="hljs-string">&#x27;🦆&#x27;</span>, <span class="hljs-string">&#x27;🦢&#x27;</span>, <span class="hljs-string">&#x27;🦉&#x27;</span>, <span class="hljs-string">&#x27;🦩&#x27;</span>, <span class="hljs-string">&#x27;🦚&#x27;</span>, <span class="hljs-string">&#x27;🦜&#x27;</span>];
+<span class="hljs-variable">$var</span> = [<span class="hljs-string">&#x27;🐸&#x27;</span>, <span class="hljs-string">&#x27;🐊&#x27;</span>, <span class="hljs-string">&#x27;🐢&#x27;</span>, <span class="hljs-string">&#x27;🦎&#x27;</span>, <span class="hljs-string">&#x27;🐍&#x27;</span>];
+<span class="hljs-variable">$var</span> = [<span class="hljs-string">&#x27;🦋&#x27;</span>, <span class="hljs-string">&#x27;🐜&#x27;</span>, <span class="hljs-string">&#x27;🐝&#x27;</span>, <span class="hljs-string">&#x27;🐞&#x27;</span>, <span class="hljs-string">&#x27;🦗&#x27;</span>, <span class="hljs-string">&#x27;🦟&#x27;</span>];
+<span class="hljs-variable">$var</span> = [<span class="hljs-string">&#x27;🕷️&#x27;</span>, <span class="hljs-string">&#x27;🦂&#x27;</span>];
+<span class="hljs-variable">$var</span> = [<span class="hljs-string">&#x27;🕷️&#x27;</span>, <span class="hljs-string">&#x27;🦂&#x27;</span>, <span class="hljs-string">&#x27;🐍&#x27;</span>];
+<span class="hljs-variable">$var</span> = [<span class="hljs-string">&#x27;🐺&#x27;</span>, <span class="hljs-string">&#x27;🐅&#x27;</span>, <span class="hljs-string">&#x27;🦊&#x27;</span>, <span class="hljs-string">&#x27;🦁&#x27;</span>, <span class="hljs-string">&#x27;🐻&#x27;</span>, <span class="hljs-string">&#x27;🐊&#x27;</span>, <span class="hljs-string">&#x27;🦈&#x27;</span>, <span class="hljs-string">&#x27;🦖&#x27;</span>];
+<span class="hljs-variable">$var</span> = [<span class="hljs-string">&#x27;🐄&#x27;</span>, <span class="hljs-string">&#x27;🐑&#x27;</span>, <span class="hljs-string">&#x27;🐇&#x27;</span>, <span class="hljs-string">&#x27;🐨&#x27;</span>, <span class="hljs-string">&#x27;🦙&#x27;</span>, <span class="hljs-string">&#x27;🦌&#x27;</span>, <span class="hljs-string">&#x27;🐪&#x27;</span>];
+</code></pre></div>
+<h1>🧐 Acceptance criteria</h1>
+<ul>
+<li>[ ] The variable names follow the naming rules.</li>
+<li>[ ] The variable names are understandable.</li>
+</ul>
+
+  </div>
+  
+</article>
+
+<nav class="nav-quete">
+  <a class="nav-quete__lien nav-quete__lien--prec" href="../../php/008-7-debug-toi-meme-en-php/index.html">
+           <span class="nav-quete__sens">← Précédent</span>
+           <span class="nav-quete__titre">7. Debug toi même en PHP</span>
+         </a>
+  <a class="nav-quete__lien nav-quete__lien--suiv" href="../../php/010-exercise-2-operateurs/index.html">
+           <span class="nav-quete__sens">Suivant →</span>
+           <span class="nav-quete__titre">✏️ Exercise 2 - Operateurs</span>
+         </a>
+</nav>
+</main>
+<footer class="pied">
+  <p>Archive personnelle des cours suivis à la Wild Code School. Copie hors ligne à usage strictement privé.</p>
+</footer>
+
+<script src="../../assets/copie-code.js"></script>
+<script src="../../assets/progression.js"></script>
+</body>
+</html>

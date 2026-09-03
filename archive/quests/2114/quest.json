@@ -1,0 +1,34 @@
+{
+  "id": 2114,
+  "titre": "👩‍🏫 Installer et utiliser Visual Studio Code",
+  "titres": {
+    "en": "👩‍🏫 Install and use Visual Studio Code",
+    "fr": "👩‍🏫 Installer et utiliser Visual Studio Code"
+  },
+  "theme": {
+    "id": 55,
+    "slug": "tools",
+    "nom": "Outils"
+  },
+  "creeLe": "2022-06-16T14:39:50.554+02:00",
+  "difficulte": "1",
+  "dureeEstimee": null,
+  "modeValidation": "self",
+  "chapitres": [
+    {
+      "id": 12254,
+      "type": "content",
+      "langue": "fr",
+      "majLe": "2024-09-30T11:39:48.114+02:00",
+      "caracteres": 12243
+    }
+  ],
+  "ressources": [
+    {
+      "link": "https://www.243tech.com/raccourcis-vs-code/",
+      "description": "J'ai trouvé sur le internet les raccourcis en français et agréables à lire"
+    }
+  ],
+  "urlOrigine": "https://odyssey.wildcodeschool.com/quests/2114",
+  "archiveLe": "2026-09-02T20:54:17.688Z"
+}

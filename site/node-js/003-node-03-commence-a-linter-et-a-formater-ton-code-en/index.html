@@ -1,0 +1,213 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Node 03 - 👨🏻‍🚀 Commence à linter et à formater ton code en utilisant Biome — Archives WCS</title>
+<link rel="stylesheet" href="../../assets/style.css">
+</head>
+<body style="--teinte:#333333">
+<header class="entete">
+  <a class="entete__marque" href="../../index.html">Archives Wild Code School</a>
+</header>
+<main class="contenu">
+<nav class="ariane"><a href="../../index.html">Accueil</a><span class="ariane__sep">›</span><a href="../../node-js/index.html">Node.js</a><span class="ariane__sep">›</span><span aria-current="page">Node 03 - 👨🏻‍🚀 Commence à linter et à formater ton code en utilisant Biome</span></nav>
+
+<article class="quete">
+  <header class="quete__entete">
+    <a class="pastille pastille--teintee" href="../../node-js/index.html">Node.js</a>
+    <h1>Node 03 - 👨🏻‍🚀 Commence à linter et à formater ton code en utilisant Biome</h1>
+    <p class="quete__meta">Quête 3 sur 5 · 1 image archivée</p>
+  </header>
+  <div class="cours">
+<h2>Objectifs</h2>
+<ul>
+<li>Comprendre ce qu'est un <strong>linter</strong>.</li>
+<li>Installer et utiliser <strong>Biome</strong>.</li>
+</ul>
+<h2>Pré-requis</h2>
+<ol class="etapes"><li class="etape"><div class="etape__puce">1</div><div class="etape__contenu"><h4 class="etape__titre">Valider la quête suivante</h4><div class="renvois"><div class="renvois__titre">Quêtes liées</div><ul><li><a href="../../node-js/001-node-01-introduction-a-node-js-et-npm/index.html">Quête 1334</a></li></ul></div>
+</div></li></ol>
+<h2>Introduction</h2>
+<p>Les linters sont des outils d’analyse statique du code qui aident à détecter des erreurs, des incohérences de style et des problèmes potentiels avant l'exécution du programme. Ils sont particulièrement utiles pour garantir la qualité du code, améliorer la maintenabilité et assurer la cohérence entre les membres d'une équipe.</p>
+<p>Un linter permet :</p>
+<ul>
+<li>Une <strong>détection d'erreurs précoces</strong> : Il identifie les erreurs courantes de syntaxe et de logique.</li>
+<li>Le <strong>respect de conventions</strong> : Il applique des règles de style uniformes sur l’ensemble du projet.</li>
+<li>L'<strong>amélioration des performances</strong> : Il repère des pratiques inefficaces et des optimisations possibles.</li>
+<li>De <strong>faciliter la relecture de code</strong> : Il réduit les différences de style, permettant de se concentrer sur la logique métier.</li>
+</ul>
+<p>Traditionnellement, l'écosystème JavaScript et TypeScript repose sur <a href="https://eslint.org/" target="_blank" rel="noopener noreferrer">ESLint</a> pour l’analyse statique et <a href="https://prettier.io/" target="_blank" rel="noopener noreferrer">Prettier</a> pour le formatage automatique du code. Cependant, une alternative moderne émerge : <a href="https://biomejs.dev/" target="_blank" rel="noopener noreferrer">Biome</a>.</p>
+<h2>Sommaire</h2>
+<h2>Biome : Une alternative à ESLint + Prettier</h2>
+<p><strong>Biome</strong> est un outil unifié qui remplace <strong>ESLint, Prettier</strong> et d'autres outils d'analyse tout en étant extrêmement rapide et facile à configurer.</p>
+<p>Biome a plusieurs avantages :</p>
+<ul>
+<li>🔄 <strong>Tout-en-un</strong> : Linter, formateur et outil d'analyse.</li>
+<li>🚀 <strong>Ultra rapide</strong> grâce à <strong>Rust</strong>.</li>
+<li>📦 <strong>Aucune dépendance lourde</strong> : Contrairement à ESLint et Prettier qui nécessitent plusieurs configurations et plugins.</li>
+<li>🔧 <strong>Configuration simplifiée</strong> : Facilité d’installation et de maintenance.</li>
+</ul>
+<p>Pour comparer :</p>
+<div class="table-wrap"><table><thead>
+<tr>
+<th>Fonctionnalité</th>
+<th>Biome</th>
+<th>ESLint + Prettier</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Vitesse</strong></td>
+<td>🚀 Ultra rapide</td>
+<td>🐢 Plus lent</td>
+</tr>
+<tr>
+<td><strong>Linter</strong></td>
+<td>✅ Inclus</td>
+<td>✅ Nécessite ESLint</td>
+</tr>
+<tr>
+<td><strong>Formateur</strong></td>
+<td>✅ Inclus</td>
+<td>✅ Prettier requis</td>
+</tr>
+<tr>
+<td><strong>Configuration</strong></td>
+<td>📦 Simple</td>
+<td>⚙️ Parfois complexe</td>
+</tr>
+<tr>
+<td><strong>Dépendances</strong></td>
+<td>📉 Aucune (standalone)</td>
+<td>📦 Plusieurs packages</td>
+</tr>
+</tbody>
+</table></div><h2>Installation et configuration</h2>
+<ol class="etapes"><li class="etape"><div class="etape__puce">1</div><div class="etape__contenu"><h4 class="etape__titre">Initialise un projet node</h4><p>Crée un &quot;bac à sable&quot; pour expérimenter sans risques avec :</p>
+<div class="bloc-code"><div class="bloc-code__langue">bash</div><pre><code class="hljs language-bash"><span class="hljs-built_in">cd</span> ~ <span class="hljs-comment"># Se placer dans le répertoire utilisateur</span>
+<span class="hljs-built_in">mkdir</span> sandbox-biome
+<span class="hljs-built_in">cd</span> sandbox-biome
+npm init -y
+</code></pre></div>
+</div></li><li class="etape"><div class="etape__puce">2</div><div class="etape__contenu"><h4 class="etape__titre">Installe Biome</h4><p>Dans ton projet node, lance la commande :</p>
+<div class="bloc-code"><div class="bloc-code__langue">bash</div><pre><code class="hljs language-bash">npm install --save-dev --save-exact @biomejs/biome
+</code></pre></div>
+<div class="encadre encadre--info"><div class="encadre__titre">Info</div><div class="encadre__corps"><p>L'option <code>--save-exact</code> garantit que tous les membres du projet utilisent la même version de Biome.</p>
+</div></div>
+</div></li><li class="etape"><div class="etape__puce">3</div><div class="etape__contenu"><h4 class="etape__titre">Configure Biome</h4><p>Initialise la configuration de Biome avec :</p>
+<div class="bloc-code"><div class="bloc-code__langue">bash</div><pre><code class="hljs language-bash">npx @biomejs/biome init
+</code></pre></div>
+<p>Cela génère un fichier <code>biome.json</code> avec la configuration par défaut.</p>
+</div></li><li class="etape"><div class="etape__puce">4</div><div class="etape__contenu"><h4 class="etape__titre">Configure Biome dans VSCode</h4><p>Dans <strong>VSCode</strong>, installe l'<a href="https://marketplace.visualstudio.com/items?itemName=biomejs.biome" target="_blank" rel="noopener noreferrer">extension Biome</a>.</p>
+<p>Active ensuite le formatage automatique :</p>
+<ol>
+<li>Ouvre les paramètres (<code>Ctrl + ,</code> sur Windows/Linux, <code>Cmd + ,</code> sur macOS).</li>
+<li>Tape <strong>format</strong> dans la barre de recherche.</li>
+<li>Sélectionne <strong>Biome</strong> comme formateur par défaut dans la liste <code>Editor: Default Formatter</code>.</li>
+<li>Coche la case <code>Editor: Format On Save</code>.</li>
+</ol>
+<p><img src="images/001-installation-et-configuration.png" alt="" loading="lazy"></p>
+</div></li></ol>
+<h2>Utilisation</h2>
+<p>Pour tester, crée un fichier <code>index.js</code> dans ton projet node avec :</p>
+<div class="bloc-code"><div class="bloc-code__langue">javascript</div><pre><code class="hljs language-javascript"><span class="hljs-keyword">let</span> number = <span class="hljs-number">2</span>;
+
+<span class="hljs-keyword">function</span> <span class="hljs-title function_">doubleIt</span> (<span class="hljs-params">value</span>)
+{
+<span class="hljs-keyword">return</span> value * <span class="hljs-number">2</span>;
+}
+
+<span class="hljs-title function_">doubleIt</span>(number);
+</code></pre></div>
+<div class="encadre encadre--warning"><div class="encadre__titre">Attention</div><div class="encadre__corps"><p>Si tu as activé le <code>Format On Save</code> dans VSCode, Biome reformate automatiquement le fichier quand tu sauvegardes :</p>
+<div class="bloc-code"><div class="bloc-code__langue">javascript</div><pre><code class="hljs language-javascript"><span class="hljs-keyword">var</span> number = <span class="hljs-number">2</span>;
+
+<span class="hljs-keyword">function</span> <span class="hljs-title function_">doubleIt</span>(<span class="hljs-params">value</span>) {
+	<span class="hljs-keyword">return</span> value * <span class="hljs-number">2</span>;
+}
+
+<span class="hljs-title function_">doubleIt</span>(number);
+</code></pre></div>
+</div></div>
+<h3>Vérifier un fichier</h3>
+<p>Lance la commande :</p>
+<div class="bloc-code"><div class="bloc-code__langue">bash</div><pre><code class="hljs language-bash">npx @biomejs/biome check index.js
+</code></pre></div>
+<p>Biome affiche des erreurs pour tous ce qui ne respecte pas ses règles de codage :</p>
+<div class="bloc-code"><div class="bloc-code__langue">bash</div><pre><code class="hljs language-bash">index.js:1:1 lint/style/noVar  FIXABLE  ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+  ! This <span class="hljs-built_in">let</span> declares a variable that is only assigned once.
+  
+  &gt; 1 │ <span class="hljs-built_in">let</span> number = 2;
+      │ ^^^^^^^^^^^^^^
+    2 │ 
+    3 │ <span class="hljs-keyword">function</span> doubleIt(value) {
+
+  ℹ <span class="hljs-string">&#x27;number&#x27;</span> is never reassigned.
+    
+  ℹ Unsafe fix: Use <span class="hljs-string">&#x27;const&#x27;</span> instead.
+  
+    1   │ - <span class="hljs-built_in">let</span>·number·=·2;
+      1 │ + const·number·=·2;
+    2 2 │   
+    3 3 │   <span class="hljs-keyword">function</span> doubleIt(value) {
+  
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+  Checked 1 file <span class="hljs-keyword">in</span> 5ms. No fixes applied.
+  Found 1 warning.
+</code></pre></div>
+<p>Ici, tu dois remplacer le mot-clé <code>let</code> par <code>const</code>.</p>
+<h3>Corriger automatiquement les erreurs</h3>
+<p>Utilise l'option <code>--write</code> pour appliquer les corrections :</p>
+<div class="bloc-code"><div class="bloc-code__langue">bash</div><pre><code class="hljs language-bash">npx @biomejs/biome check --write index.js
+</code></pre></div>
+<p>Biome corrigera toutes les erreurs qui peuvent l'être de manière sûre.</p>
+<h2>Résumé</h2>
+<ul>
+<li><strong>Biome</strong> est un outil rapide et tout-en-un qui remplace <strong>ESLint + Prettier</strong>.</li>
+<li>Installe-le avec <code>npm install --save-dev --save-exact @biomejs/biome</code>.</li>
+<li>Crée un fichier de configuration avec <code>npx @biomejs/biome init</code>.</li>
+<li>Vérifie des fichiers avec <code>npx @biomejs/biome check &lt;fichiers&gt;</code>.</li>
+<li>Applique des corrections automatiques avec <code>npx @biomejs/biome check --write &lt;fichiers&gt;</code>.</li>
+</ul>
+<p>Pour en savoir plus :</p>
+<a class="ressource" href="https://biomejs.dev/" target="_blank" rel="noopener noreferrer">
+  <div class="ressource__icone">↗</div>
+  <div class="ressource__texte">
+    <div class="ressource__titre">https://biomejs.dev/</div>
+    <div class="ressource__desc"><p>Site officiel de Biome</p>
+</div>
+    <div class="ressource__hote">biomejs.dev</div>
+  </div>
+</a>
+
+  </div>
+  <section class="ressources-quete">
+  <h2>Ressources partagées sur cette quête</h2>
+  <ul class="ressources-liste">
+    <li><a href="https://www.youtube.com/watch?v=lGCHjQl6XLw&amp;ab_channel=DevTheory" target="_blank" rel="noopener noreferrer">Ca explique comment lier prettier + eslint dans vscode</a><span class="ressources-liste__url">https://www.youtube.com/watch?v=lGCHjQl6XLw&amp;ab_channel=DevTheory</span></li>
+  </ul>
+</section>
+</article>
+
+<nav class="nav-quete">
+  <a class="nav-quete__lien nav-quete__lien--prec" href="../../node-js/002-node-02-utiliser-un-fichier-env/index.html">
+           <span class="nav-quete__sens">← Précédent</span>
+           <span class="nav-quete__titre">Node 02 - 🛰️ Utiliser un fichier .env</span>
+         </a>
+  <a class="nav-quete__lien nav-quete__lien--suiv" href="../../node-js/004-node-04-rechercher-et-choisir-un-paquet-npm-ou-pas/index.html">
+           <span class="nav-quete__sens">Suivant →</span>
+           <span class="nav-quete__titre">Node 04 - 🔧 Rechercher et choisir un paquet npm (ou pas !)</span>
+         </a>
+</nav>
+</main>
+<footer class="pied">
+  <p>Archive personnelle des cours suivis à la Wild Code School. Copie hors ligne à usage strictement privé.</p>
+</footer>
+
+<script src="../../assets/copie-code.js"></script>
+<script src="../../assets/progression.js"></script>
+</body>
+</html>

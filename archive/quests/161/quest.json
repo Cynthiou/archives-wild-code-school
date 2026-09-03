@@ -1,0 +1,28 @@
+{
+  "id": 161,
+  "titre": "Démystifier l'IA Générative : une Introduction Complète",
+  "titres": {
+    "fr": "Démystifier l'IA Générative : une Introduction Complète"
+  },
+  "theme": {
+    "id": 152,
+    "slug": "generative-ai",
+    "nom": "IA Générative"
+  },
+  "creeLe": "2018-04-03T09:44:59.179+02:00",
+  "difficulte": "",
+  "dureeEstimee": null,
+  "modeValidation": "self",
+  "chapitres": [
+    {
+      "id": 18621,
+      "type": "content",
+      "langue": "fr",
+      "majLe": "2025-12-04T09:01:16.797+01:00",
+      "caracteres": 17822
+    }
+  ],
+  "ressources": [],
+  "urlOrigine": "https://odyssey.wildcodeschool.com/quests/161",
+  "archiveLe": "2026-09-02T20:53:16.035Z"
+}

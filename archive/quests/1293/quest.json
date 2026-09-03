@@ -1,0 +1,28 @@
+{
+  "id": 1293,
+  "titre": "Pourquoi le CSS Ça Saoule Souvent ?",
+  "titres": {
+    "fr": "Pourquoi le CSS Ça Saoule Souvent ?"
+  },
+  "theme": {
+    "id": 12,
+    "slug": "html",
+    "nom": "CSS"
+  },
+  "creeLe": "2020-07-15T16:59:53.027+02:00",
+  "difficulte": "",
+  "dureeEstimee": null,
+  "modeValidation": "self",
+  "chapitres": [
+    {
+      "id": 11143,
+      "type": "content",
+      "langue": "fr",
+      "majLe": "2024-02-21T11:57:00.761+01:00",
+      "caracteres": 2562
+    }
+  ],
+  "ressources": [],
+  "urlOrigine": "https://odyssey.wildcodeschool.com/quests/1293",
+  "archiveLe": "2026-09-02T20:52:53.139Z"
+}

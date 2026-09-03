@@ -1,0 +1,96 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Git/GitHub 5 : Merge &amp; Conflits — Archives WCS</title>
+<link rel="stylesheet" href="../../assets/style.css">
+</head>
+<body style="--teinte:#F44F3D">
+<header class="entete">
+  <a class="entete__marque" href="../../index.html">Archives Wild Code School</a>
+</header>
+<main class="contenu">
+<nav class="ariane"><a href="../../index.html">Accueil</a><span class="ariane__sep">›</span><a href="../../git/index.html">Git</a><span class="ariane__sep">›</span><span aria-current="page">Git/GitHub 5 : Merge &amp; Conflits</span></nav>
+
+<article class="quete">
+  <header class="quete__entete">
+    <a class="pastille pastille--teintee" href="../../git/index.html">Git</a>
+    <h1>Git/GitHub 5 : Merge &amp; Conflits</h1>
+    <p class="quete__meta">Quête 5 sur 6 · 1 image archivée</p>
+  </header>
+  <div class="cours">
+<h1>Introduction</h1>
+<p>Si tu n'as jamais entendu parler de conflits dans <strong>git</strong>, ne t'inquiète pas, tu auras à les gérer assez souvent en travaillant sur certains projets d'équipe.</p>
+<p>Les conflits sont généralement inévitables lorsque tu travailles en équipe.</p>
+<p>Dans cette quête, nous allons aborder ce que sont les conflits et comment nous pouvons les gérer.</p>
+<p><img src="images/001-fusion-illustration.jpg" alt="Fusion - illustration" loading="lazy"></p>
+<h2>🤓 <strong>À la fin de cette quête, tu seras en mesure de:</strong></h2>
+<ul>
+<li>✅ Résoudre les conflits liés à la fusion</li>
+<li>✅ Comprendre comment réaliser une fusion</li>
+</ul>
+<hr>
+<h1>⏬ <strong>Git pull, une commande qui te veut du bien</strong></h1>
+<p><strong>Définition</strong></p>
+<p>Lorsque plusieurs personnes collaborent à un même projet, elles <strong>modifient constamment les fichiers</strong>.</p>
+<p>Imagine que tu travailles sur un fichier texte; pendant ce temps, un de tes collègues modifie des lignes sur le même fichier.</p>
+<p>Dans un monde sans Git, pour harmoniser votre travail, tu dois récupérer une copie de ses fichiers et comparer les différences avec ta version, puis copier les lignes de code correspondantes de la nouvelle présentation du texte et les coller dans ton fichier.</p>
+<p>C'est une opération longue et risquée, car tu ne seras peut-être pas en mesure de repérer tous les changements effectués par ton collègue. Et dans un cas réel, tu peux être amené à modifier beaucoup de lignes sur un grand nombre de fichiers, et qu'il y ait non pas un, mais plusieurs autres collègues travaillant simultanément dessus. Cela devient un casse tête très rapidement.</p>
+<p>Heureusement, <strong>Git peut faire ce travail pour toi!</strong>
+C'est ce qu'on appelle une <strong>fusion</strong> (merging). Elle est réalisée par la commande &quot;git pull&quot; (il y a d'autres façons de le faire, mais c'est suffisant pour l'instant), qui te permet de <strong>mettre à jour tes fichiers locaux avec les fichiers distants</strong> (par exemple, sur le repo GitHub).</p>
+<p>Dans la plupart des cas, cette <em>fusion</em> est <strong>automatique</strong> : Git localise de lui-même les différences entre tes fichiers locaux et leurs homologues distants et les intègre dans tes fichiers locaux.</p>
+<p>Pour voir les effets d'un &quot;git pull&quot;, utilise <a href="https://onlywei.github.io/explain-git-with-d3/#pull" target="_blank" rel="noopener noreferrer">cet outil</a> (ne fais pas attention au texte explicatif, il dépasse la portée de cette quête).</p>
+<h1><strong>Conflits de fusion</strong></h1>
+<p>Observe un exemple de conflit et sa résolution dans cette vidéo.</p>
+<a class="video-lien" href="https://www.youtube.com/watch?v=xPKeNPLLss8" target="_blank" rel="noopener noreferrer">
+  <div class="video-lien__play">▶</div>
+  <div class="video-lien__texte">
+    <div class="video-lien__titre">Vidéo YouTube</div>
+    <div class="video-lien__url">https://www.youtube.com/watch?v=xPKeNPLLss8</div>
+  </div>
+</a>
+<hr>
+<h1>💪 Challenge</h1>
+<ol>
+<li>Crée un nouveau dépôt sur GitHub, en cochant &quot;Initialize this repository with a README&quot;.</li>
+<li>Toujours dans GitHub, écris quelques lignes de texte dans le fichier README.md.</li>
+<li>Clone le repo.</li>
+<li>Sur GitHub, écris &quot;REMOTE&quot; sur la première ligne du README.md et fais un commit pour ce changement.</li>
+<li>Localement (sur ton ordinateur), dans ton éditeur de code préféré, modifie également la première ligne du README.md (écris &quot;LOCAL&quot;) et commit la modification.</li>
+<li>Dans ton Terminal, fais un &quot;git pull&quot; et Un joli petit conflit apparaîtra !</li>
+<li>Réouvre ton éditeur, résous le conflit dans le README.md (choisis de garder &quot;LOCAL&quot;) et fais un commit pour ce changement.</li>
+<li>Fais une nouvelle tentative, Git te dira que tu es déjà à jour. Le conflit est réglé !</li>
+<li>Envoie tes modifications au repo distant en faisant un git push origin main.</li>
+<li>Dans GitHub, ouvre le README.md et assure-toi que &quot;LOCAL&quot; est maintenant sur la première ligne. Bien joué !</li>
+<li>Copie le contenu de ton terminal du premier git pull (étape 6 de ces instructions) jusqu'à la fin et colle-le en solution.</li>
+</ol>
+<h1>🧐 Critères de validation</h1>
+<ul>
+<li>[ ] Le contenu du Terminal est bien posté en solution.</li>
+<li>[ ] La première utilisation de git pull provoque un conflit.</li>
+<li>[ ] La deuxième utilisation de git pull indique &quot;déjà à jour&quot; (le conflit a été résolu).</li>
+</ul>
+
+  </div>
+  
+</article>
+
+<nav class="nav-quete">
+  <a class="nav-quete__lien nav-quete__lien--prec" href="../../git/004-git-github-4-branche-et-flow/index.html">
+           <span class="nav-quete__sens">← Précédent</span>
+           <span class="nav-quete__titre">Git/GitHub 4 : Branche et flow</span>
+         </a>
+  <a class="nav-quete__lien nav-quete__lien--suiv" href="../../git/006-utiliser-github/index.html">
+           <span class="nav-quete__sens">Suivant →</span>
+           <span class="nav-quete__titre">Utiliser GitHub</span>
+         </a>
+</nav>
+</main>
+<footer class="pied">
+  <p>Archive personnelle des cours suivis à la Wild Code School. Copie hors ligne à usage strictement privé.</p>
+</footer>
+
+<script src="../../assets/progression.js"></script>
+</body>
+</html>

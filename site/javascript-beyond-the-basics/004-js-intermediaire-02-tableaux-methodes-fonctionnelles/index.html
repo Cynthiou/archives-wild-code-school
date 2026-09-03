@@ -1,0 +1,218 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>👩‍🏫 JS Intermédiaire 02 - Tableaux : méthodes fonctionnelles — Archives WCS</title>
+<link rel="stylesheet" href="../../assets/style.css">
+</head>
+<body style="--teinte:#854200">
+<header class="entete">
+  <a class="entete__marque" href="../../index.html">Archives Wild Code School</a>
+</header>
+<main class="contenu">
+<nav class="ariane"><a href="../../index.html">Accueil</a><span class="ariane__sep">›</span><a href="../../javascript-beyond-the-basics/index.html">JavaScript - Beyond the Basics</a><span class="ariane__sep">›</span><span aria-current="page">👩‍🏫 JS Intermédiaire 02 - Tableaux : méthodes fonctionnelles</span></nav>
+
+<article class="quete">
+  <header class="quete__entete">
+    <a class="pastille pastille--teintee" href="../../javascript-beyond-the-basics/index.html">JavaScript - Beyond the Basics</a>
+    <h1>👩‍🏫 JS Intermédiaire 02 - Tableaux : méthodes fonctionnelles</h1>
+    <p class="quete__meta">Quête 4 sur 8 · 2 images archivées</p>
+  </header>
+  <div class="cours">
+<h6>⚠️ Avant de commencer cette quête, tu dois avoir terminé les quêtes suivantes :</h6>
+<div class="renvois"><div class="renvois__titre">Quêtes liées</div><ul><li><a href="../../javascript/006-js-basics-06-les-fonctions/index.html">Quête 1278</a></li><li><a href="../../javascript/008-js-basics-07-les-tableaux/index.html">Quête 1281</a></li></ul></div>
+<h1>Introduction</h1>
+<p>Dans cette quête, tu apprendras à utiliser les méthodes fonctionnelles sur les tableaux. Ces dernières sont très utilisées en javascript moderne, surtout dans des bibliothèques comme React.</p>
+<p><img src="images/001-image.jpg" alt="image" loading="lazy"></p>
+<h1>🤓 À la fin de cette quête, tu sauras :</h1>
+<p>✅ Comment utiliser la méthode <code>map</code> pour transformer un tableau en un autre tableau
+✅ Comment utiliser la méthode <code>forEach</code> pour itérer sur les éléments d'un tableau
+✅ Comment utiliser la méthode <code>filter</code> pour filter un tableau</p>
+<hr>
+<h2>Map</h2>
+<p>Imagine un tableau de nombres pour lequel tu souhaiterais multiplier tous les éléments par 2, tout en gardant les nombres originaux. Pour le moment, tu sais le faire comme ceci :</p>
+<div class="bloc-code"><div class="bloc-code__langue">js</div><pre><code class="hljs language-js"><span class="hljs-keyword">const</span> numbers = [<span class="hljs-number">1</span>, <span class="hljs-number">2</span>, <span class="hljs-number">5</span>, <span class="hljs-number">7</span>];
+<span class="hljs-keyword">const</span> doubles = [];
+
+<span class="hljs-keyword">for</span> (<span class="hljs-keyword">let</span> i = <span class="hljs-number">0</span>; i &lt; numbers.<span class="hljs-property">length</span>; i++) {
+  <span class="hljs-keyword">const</span> currentNumber = numbers[i];
+  doubles.<span class="hljs-title function_">push</span>(currentNumber * <span class="hljs-number">2</span>);
+}
+
+<span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(doubles); <span class="hljs-comment">// [2, 4, 10, 14]</span>
+</code></pre></div>
+<p>Ca fonctionne, mais le fait de devoir écrire une boucle for, faire évoluer un index et pousser manuellement les éléments dans un tableau est un peu lourd. Heureusement, il y a un meilleur moyen !</p>
+<p><img src="images/002-image.jpg" alt="image" loading="lazy"></p>
+<p><a href="https://www.jbakebwa.dev/posts/js-array-map.html" target="_blank" rel="noopener noreferrer">image source</a></p>
+<p><code>map</code> est une méthode qu'on peut utiliser pour <strong>créer un nouveau tableau</strong> en allant <strong>transformer chaque élément grâce à une fonction de rappel (callback).</strong></p>
+<div class="bloc-code"><div class="bloc-code__langue">javascript</div><pre><code class="hljs language-javascript"><span class="hljs-keyword">const</span> numbers = [<span class="hljs-number">1</span>, <span class="hljs-number">2</span>, <span class="hljs-number">5</span>, <span class="hljs-number">7</span>];
+
+<span class="hljs-keyword">const</span> doubles = numbers.<span class="hljs-title function_">map</span>(<span class="hljs-keyword">function</span> (<span class="hljs-params">currentNumber</span>) {
+  <span class="hljs-keyword">return</span> currentNumber * <span class="hljs-number">2</span>;
+});
+
+<span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(doubles); <span class="hljs-comment">// [2, 4, 10, 14]</span>
+</code></pre></div>
+<p><code>map</code> retourne un nouveau tableau qui a exactement la même taille que le tableau original, mais où les éléments auront été transformés. La fonction de rappel donnée en argument de <code>map</code> est appelée avec chaque élément du tableau original l'un après l'autre et la valeur de retour de ce callback sera la valeur de l'élément dans le nouveau tableau.</p>
+<h3>🔬 Expérience</h3>
+<p>Ce CodeSandbox contient un tableau d'objets des animaux. Utilise <code>map</code> pour créer un nouveau tableau qui contient le nom de l'animal et l'espèce sous forme de phrase.
+Utilise <code>console.log</code> pour afficher le résultat dans la console.</p>
+<p>Le résultat devrait ressembler à cela :</p>
+<div class="bloc-code"><div class="bloc-code__langue">javascript</div><pre><code class="hljs language-javascript">[<span class="hljs-string">&quot;Hector the Beaver&quot;</span>, <span class="hljs-string">&quot;Edouard the Duck&quot;</span>, <span class="hljs-string">&quot;José the Boar&quot;</span>, <span class="hljs-string">&quot;Charlotte the Groundhog&quot;</span>, <span class="hljs-string">&quot;Mireille the Bee&quot;</span>, <span class="hljs-string">&quot;Leon the Hornet&quot;</span>, <span class="hljs-string">&quot;Fedor the Pig&quot;</span>]
+</code></pre></div>
+<div class="bloc-code"><div class="bloc-code__langue">codesandbox</div><pre><code class="hljs language-codesandbox">https://codesandbox.io/s/ex-map-gjep3?file=/src/index.js
+</code></pre></div>
+<div class="bloc-code"><div class="bloc-code__langue">hidden</div><pre><code class="hljs language-hidden">Montrer la solution|||javascript|||Problèmes pour trouver la solution ? |||0|||Cacher
+
+const animals = [
+  { name: &quot;Hector&quot;, species: &quot;Beaver&quot; },
+  { name: &quot;Edouard&quot;, species: &quot;Duck&quot; },
+  { name: &quot;José&quot;, species: &quot;Boar&quot; },
+  { name: &quot;Charlotte&quot;, species: &quot;Groundhog&quot; },
+  { name: &quot;Mireille&quot;, species: &quot;Bee&quot; },
+  { name: &quot;Leon&quot;, species: &quot;Hornet&quot; },
+  { name: &quot;Fedor&quot;, species: &quot;Pig&quot; }
+];
+
+const sentences = animals.map(function (animal) {
+  return `${animal.name} the ${animal.species}`;
+}); 
+
+
+console.log(sentences);
+</code></pre></div>
+<h4>Map avec fonction fléchée</h4>
+<p>Tu peux utiliser une fonction fléchée lorsque tu déclares ta fonction de rappel, voyons un exemple :</p>
+<div class="bloc-code"><div class="bloc-code__langue">javascript</div><pre><code class="hljs language-javascript"><span class="hljs-keyword">const</span> numbers = [<span class="hljs-number">1</span>, <span class="hljs-number">56</span>, <span class="hljs-number">35</span>, <span class="hljs-number">23</span>, <span class="hljs-number">45</span>];
+
+<span class="hljs-keyword">const</span> halfNumbers = numbers.<span class="hljs-title function_">map</span>(<span class="hljs-function"><span class="hljs-params">number</span> =&gt;</span> number / <span class="hljs-number">2</span>);
+
+<span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(halfNumbers);
+</code></pre></div>
+<h3>🔬 Expérience</h3>
+<p>Prends le code précédent avec les animaux et convertis la fonction en une fonction fléchée.</p>
+<div class="bloc-code"><div class="bloc-code__langue">hidden</div><pre><code class="hljs language-hidden">Montrer la solution|||javascript|||Problèmes pour trouver la solution ? |||0|||Cacher
+const animals = [
+  { name: &quot;Hector&quot;, species: &quot;Beaver&quot; },
+  { name: &quot;Edouard&quot;, species: &quot;Duck&quot; },
+  { name: &quot;José&quot;, species: &quot;Boar&quot; },
+  { name: &quot;Charlotte&quot;, species: &quot;Groundhog&quot; },
+  { name: &quot;Mireille&quot;, species: &quot;Bee&quot; },
+  { name: &quot;Leon&quot;, species: &quot;Hornet&quot; },
+  { name: &quot;Fedor&quot;, species: &quot;Pig&quot; }
+];
+
+const sentences = animals.map(animal =&gt; `${animal.name} the ${animal.species}`); 
+
+console.log(sentences);
+</code></pre></div>
+<h4>Le paramètre index</h4>
+<p>Tu peux utiliser plusieurs paramètres donnés à la fonction de rappel. Le premier est l'élément en cours, le deuxième est l'index de l'élément dans le tableau original.
+L'index est similaire à l'index ou l'itérateur que nous utilisons avec une <strong>boucle for</strong>.</p>
+<p>C'est un nombre qui augmentera à chaque itération de la boucle, en partant de zéro.</p>
+<div class="bloc-code"><div class="bloc-code__langue">javascript</div><pre><code class="hljs language-javascript"><span class="hljs-keyword">const</span> animals = [
+  { <span class="hljs-attr">name</span>: <span class="hljs-string">&quot;Hector&quot;</span>, <span class="hljs-attr">species</span>: <span class="hljs-string">&quot;Beaver&quot;</span> },
+  { <span class="hljs-attr">name</span>: <span class="hljs-string">&quot;Edouard&quot;</span>, <span class="hljs-attr">species</span>: <span class="hljs-string">&quot;Duck&quot;</span> },
+  { <span class="hljs-attr">name</span>: <span class="hljs-string">&quot;José&quot;</span>, <span class="hljs-attr">species</span>: <span class="hljs-string">&quot;Boar&quot;</span> },
+  { <span class="hljs-attr">name</span>: <span class="hljs-string">&quot;Charlotte&quot;</span>, <span class="hljs-attr">species</span>: <span class="hljs-string">&quot;Groundhog&quot;</span> },
+  { <span class="hljs-attr">name</span>: <span class="hljs-string">&quot;Mireille&quot;</span>, <span class="hljs-attr">species</span>: <span class="hljs-string">&quot;Bee&quot;</span> },
+  { <span class="hljs-attr">name</span>: <span class="hljs-string">&quot;Leon&quot;</span>, <span class="hljs-attr">species</span>: <span class="hljs-string">&quot;Hornet&quot;</span> },
+  { <span class="hljs-attr">name</span>: <span class="hljs-string">&quot;Fedor&quot;</span>, <span class="hljs-attr">species</span>: <span class="hljs-string">&quot;Pig&quot;</span> }
+];
+
+<span class="hljs-keyword">const</span> sentences = animals.<span class="hljs-title function_">map</span>(<span class="hljs-function">(<span class="hljs-params">animal, index</span>) =&gt;</span> <span class="hljs-string">`<span class="hljs-subst">${animal.name}</span> the <span class="hljs-subst">${animal.species}</span>, the number <span class="hljs-subst">${index}</span>`</span>); 
+
+<span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(sentences);
+
+<span class="hljs-comment">/*
+0: &quot;Hector the Beaver, the number 0&quot;
+1: &quot;Edouard the Duck, the number 1&quot;
+2: &quot;José the Boar, the number 2&quot;
+3: &quot;Charlotte the Groundhog, the number 3&quot;
+4: &quot;Mireille the Bee, the number 4&quot;
+5: &quot;Leon the Hornet, the number 5&quot;
+6: &quot;Fedor the Pig, the number 6&quot;
+*/</span>
+</code></pre></div>
+<h2>ForEach</h2>
+<p>Map n'est pas la seule méthode que tu peux utiliser sur les tableaux, une autre méthode utile est <code>forEach</code>.
+Comme son nom l'indique, <code>forEach</code> effectuera une action pour chaque élément du tableau.</p>
+<div class="bloc-code"><div class="bloc-code__langue">javascript</div><pre><code class="hljs language-javascript"><span class="hljs-keyword">const</span> numbers = [<span class="hljs-number">1</span>, <span class="hljs-number">2</span>, <span class="hljs-number">5</span>, <span class="hljs-number">7</span>];
+numbers.<span class="hljs-title function_">forEach</span>(<span class="hljs-function">(<span class="hljs-params">num</span>) =&gt;</span> <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(num * <span class="hljs-number">2</span>));
+
+<span class="hljs-comment">// 2</span>
+<span class="hljs-comment">// 4</span>
+<span class="hljs-comment">// 10</span>
+<span class="hljs-comment">// 14</span>
+</code></pre></div>
+<h5>Mais attends... C'est quoi la différence avec map ?!</h5>
+<p><code>map</code> va <strong>générer</strong> un nouveau tableau. <code>forEach</code> va juste <strong>faire une action</strong> pour chaque élément du tableau.</p>
+<div class="bloc-code"><div class="bloc-code__langue">javascript</div><pre><code class="hljs language-javascript"><span class="hljs-keyword">let</span> sentences = animals.<span class="hljs-title function_">forEach</span>(
+  <span class="hljs-function">(<span class="hljs-params">animal, index</span>) =&gt;</span> <span class="hljs-string">`<span class="hljs-subst">${animal.name}</span> the <span class="hljs-subst">${animal.species}</span>, the number <span class="hljs-subst">${index}</span>`</span>
+);
+
+<span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(sentences); <span class="hljs-comment">// undefined</span>
+</code></pre></div>
+<p>Ici nous avons fait le même code que celui que nous avons utilisé pour <code>map</code> mais nous avons remplacé map par <code>forEach</code>.</p>
+<h3>🔬 Expérience</h3>
+<p>Utilise tes connaissances de la manipulation du DOM combinées avec la boucle <code>forEach</code> pour afficher une liste d'animaux emojis avec leur nom.</p>
+<div class="bloc-code"><div class="bloc-code__langue">codesandbox</div><pre><code class="hljs language-codesandbox">https://codesandbox.io/s/ex-foreach-139ol
+</code></pre></div>
+<div class="bloc-code"><div class="bloc-code__langue">hidden</div><pre><code class="hljs language-hidden">Montrer la solution|||javascript|||Problèmes pour trouver la solution ? |||0|||Cacher
+const animalList = document.querySelector(&quot;.animal-list&quot;);
+
+animals.forEach((animal) =&gt; {
+  const newAnimal = document.createElement(&quot;li&quot;);
+  newAnimal.innerText = `${animal.emoji} - ${animal.name}`;
+  animalList.appendChild(newAnimal);
+});
+</code></pre></div>
+<h2>Filter</h2>
+<p>La méthode <code>filter</code> crée un nouveau tableau avec seulement les éléments qui vérifient une condition donnée.</p>
+<p>Ex : Nous voulons un nouveau tableau avec seulement les nombres qui sont supérieurs à 5</p>
+<div class="bloc-code"><div class="bloc-code__langue">javascript</div><pre><code class="hljs language-javascript"><span class="hljs-keyword">const</span> myArray = [<span class="hljs-number">3</span>, <span class="hljs-number">2</span>, <span class="hljs-number">40</span>, <span class="hljs-number">15</span>, <span class="hljs-number">20</span>];
+<span class="hljs-keyword">const</span> greaterThanFive = myArray.<span class="hljs-title function_">filter</span>(<span class="hljs-function"><span class="hljs-params">number</span> =&gt;</span> number &gt; <span class="hljs-number">5</span>);
+<span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(greaterThanFive);
+<span class="hljs-comment">// [40, 15, 20]</span>
+</code></pre></div>
+<p>Si et seulement si la valeur de retour du callback est <code>true</code>, l'élément sera copié dans le nouveau tableau.</p>
+<h3>🔬 Expérience</h3>
+<p>Utilise la méthode <code>filter</code> pour créer un nouveau tableau avec uniquement des chats et utilise <code>console.log</code> pour afficher le résultat.</p>
+<div class="bloc-code"><div class="bloc-code__langue">codesandbox</div><pre><code class="hljs language-codesandbox">https://codesandbox.io/s/ex-filter-forked-eqish
+</code></pre></div>
+<div class="bloc-code"><div class="bloc-code__langue">hidden</div><pre><code class="hljs language-hidden">Montrer la solution|||javascript|||Problèmes pour trouver la solution ? |||0|||Cacher
+const onlyCats = animals.filter((animal) =&gt; animal.species === &quot;Cat&quot;);
+// Affiche un tableau avec uniquement des objets chat
+console.log(onlyCats);
+</code></pre></div>
+
+  </div>
+  <section class="ressources-quete">
+  <h2>Ressources partagées sur cette quête</h2>
+  <ul class="ressources-liste">
+    <li><a href="https://www.freecodecamp.org/news/4-main-differences-between-foreach-and-map/" target="_blank" rel="noopener noreferrer">Petite lecture rapide expliquant les différences entre map() et forEach() ! :)</a><span class="ressources-liste__url">https://www.freecodecamp.org/news/4-main-differences-between-foreach-and-map/</span></li>
+    <li><a href="https://www.youtube.com/watch?v=2trphUGce-8" target="_blank" rel="noopener noreferrer">Visualisation claire, sous forme de vidéo, de la différence entre map et forEach</a><span class="ressources-liste__url">https://www.youtube.com/watch?v=2trphUGce-8</span></li>
+  </ul>
+</section>
+</article>
+
+<nav class="nav-quete">
+  <a class="nav-quete__lien nav-quete__lien--prec" href="../../javascript-beyond-the-basics/003-js-intermediaire-01-3-manipulation-du-dom-gestion-des/index.html">
+           <span class="nav-quete__sens">← Précédent</span>
+           <span class="nav-quete__titre">👩‍🏫 JS Intermédiaire 01.3 - Manipulation du DOM - Gestion des événements</span>
+         </a>
+  <a class="nav-quete__lien nav-quete__lien--suiv" href="../../javascript-beyond-the-basics/005-js-intermediaire-02bis-tableaux-d-autres-methodes/index.html">
+           <span class="nav-quete__sens">Suivant →</span>
+           <span class="nav-quete__titre">👩‍🏫 JS Intermédiaire 02bis -Tableaux : d'autres méthodes fonctionnelles</span>
+         </a>
+</nav>
+</main>
+<footer class="pied">
+  <p>Archive personnelle des cours suivis à la Wild Code School. Copie hors ligne à usage strictement privé.</p>
+</footer>
+
+<script src="../../assets/copie-code.js"></script>
+<script src="../../assets/progression.js"></script>
+</body>
+</html>

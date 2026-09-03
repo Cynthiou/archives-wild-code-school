@@ -1,0 +1,28 @@
+{
+  "id": 469,
+  "titre": "Créer avec ChatGPT : Formation Pratique",
+  "titres": {
+    "fr": "Créer avec ChatGPT : Formation Pratique"
+  },
+  "theme": {
+    "id": 152,
+    "slug": "generative-ai",
+    "nom": "IA Générative"
+  },
+  "creeLe": "2019-02-28T15:10:55.318+01:00",
+  "difficulte": "",
+  "dureeEstimee": null,
+  "modeValidation": "self",
+  "chapitres": [
+    {
+      "id": 12391,
+      "type": "content",
+      "langue": "fr",
+      "majLe": "2024-10-16T20:59:30.776+02:00",
+      "caracteres": 18116
+    }
+  ],
+  "ressources": [],
+  "urlOrigine": "https://odyssey.wildcodeschool.com/quests/469",
+  "archiveLe": "2026-09-02T20:53:14.801Z"
+}

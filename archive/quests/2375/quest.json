@@ -1,0 +1,35 @@
+{
+  "id": 2375,
+  "titre": "👩‍🏫 React Basics 05 - Pokédex - Typer les props avec TypeScript",
+  "titres": {
+    "fr": "👩‍🏫 React Basics 05 - Pokédex - Typer les props avec TypeScript"
+  },
+  "theme": {
+    "id": 23,
+    "slug": "react",
+    "nom": "React - Bases"
+  },
+  "creeLe": "2023-01-03T14:16:11.730+01:00",
+  "difficulte": "",
+  "dureeEstimee": null,
+  "modeValidation": "student",
+  "chapitres": [
+    {
+      "id": 17093,
+      "type": "content",
+      "langue": "fr",
+      "majLe": "2025-03-12T09:21:37.393+01:00",
+      "caracteres": 9129
+    },
+    {
+      "id": 12057,
+      "type": "solution",
+      "langue": "fr",
+      "majLe": "2024-09-21T14:37:14.343+02:00",
+      "caracteres": 479
+    }
+  ],
+  "ressources": [],
+  "urlOrigine": "https://odyssey.wildcodeschool.com/quests/2375",
+  "archiveLe": "2026-09-02T20:55:05.519Z"
+}

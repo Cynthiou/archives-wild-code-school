@@ -1,0 +1,40 @@
+{
+  "id": 485,
+  "titre": "03 - Manipulation des données",
+  "titres": {
+    "fr": "03 - Manipulation des données"
+  },
+  "theme": {
+    "id": 8,
+    "slug": "database",
+    "nom": "Base de données"
+  },
+  "creeLe": "2019-03-20T16:10:03.411+01:00",
+  "difficulte": "",
+  "dureeEstimee": null,
+  "modeValidation": "student",
+  "chapitres": [
+    {
+      "id": 12489,
+      "type": "content",
+      "langue": "fr",
+      "majLe": "2024-10-30T15:20:58.398+01:00",
+      "caracteres": 8206
+    },
+    {
+      "id": 12490,
+      "type": "solution",
+      "langue": "fr",
+      "majLe": "2024-10-30T15:20:58.402+01:00",
+      "caracteres": 2025
+    }
+  ],
+  "ressources": [
+    {
+      "link": "https://learnsql.com/blog/mysql-cheat-sheet/",
+      "description": "cheat sheet tres utile quand on debute pour avoir les commande a porter de main"
+    }
+  ],
+  "urlOrigine": "https://odyssey.wildcodeschool.com/quests/485",
+  "archiveLe": "2026-09-02T20:47:22.262Z"
+}

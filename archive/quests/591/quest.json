@@ -1,0 +1,35 @@
+{
+  "id": 591,
+  "titre": "04 - JS Monorepo : Routing avancé",
+  "titres": {
+    "fr": "04 - JS Monorepo : Routing avancé"
+  },
+  "theme": {
+    "id": 43,
+    "slug": "prepa",
+    "nom": "JS Monorepo"
+  },
+  "creeLe": "2019-05-19T23:19:27.402+02:00",
+  "difficulte": "",
+  "dureeEstimee": null,
+  "modeValidation": "student",
+  "chapitres": [
+    {
+      "id": 14877,
+      "type": "content",
+      "langue": "fr",
+      "majLe": "2024-12-21T19:29:17.859+01:00",
+      "caracteres": 22585
+    },
+    {
+      "id": 12620,
+      "type": "solution",
+      "langue": "fr",
+      "majLe": "2024-11-11T12:10:29.543+01:00",
+      "caracteres": 1975
+    }
+  ],
+  "ressources": [],
+  "urlOrigine": "https://odyssey.wildcodeschool.com/quests/591",
+  "archiveLe": "2026-09-02T20:51:57.866Z"
+}

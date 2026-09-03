@@ -1,0 +1,347 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>01 - Introduction aux bases de données relationnelles — Archives WCS</title>
+<link rel="stylesheet" href="../../assets/style.css">
+</head>
+<body style="--teinte:#F7A356">
+<header class="entete">
+  <a class="entete__marque" href="../../index.html">Archives Wild Code School</a>
+</header>
+<main class="contenu">
+<nav class="ariane"><a href="../../index.html">Accueil</a><span class="ariane__sep">›</span><a href="../../base-de-donnees/index.html">Base de données</a><span class="ariane__sep">›</span><span aria-current="page">01 - Introduction aux bases de données relationnelles</span></nav>
+
+<article class="quete">
+  <header class="quete__entete">
+    <a class="pastille pastille--teintee" href="../../base-de-donnees/index.html">Base de données</a>
+    <h1>01 - Introduction aux bases de données relationnelles</h1>
+    <p class="quete__meta">Quête 2 sur 9 · 1 image archivée</p>
+  </header>
+  <div class="cours">
+<h2>Objectifs</h2>
+<ul>
+<li>Comprendre ce qu'est une base de données</li>
+<li>Écrire tes premières requêtes SQL</li>
+<li>Créer ta première base de données</li>
+<li>Importer des données</li>
+</ul>
+<h2>Introduction</h2>
+<p>Bonjour, jeune sorcier. Tu vas apprendre ici de nouveaux <em>sortilèges</em> qui te permettront de créer, gérer et manipuler des données, autant de choses qu’il est indispensable de savoir faire dans le monde magique du développement web (et dans bien d'autres domaines).</p>
+<p>Les bases de données (BDD) vont te permettre de <strong>stocker</strong> des données, de manière <strong>structurée</strong> et organisée, et de les réutiliser facilement. Un registre d’élèves ou encore un livre de sorts sont en quelque sorte des bases de données.</p>
+<h2>Sommaire</h2>
+<h2>Un peu de vocabulaire</h2>
+<p>Cette première vidéo va te permettre de parler <em>le langage</em> base de données. Tu y découvriras une grande partie du vocabulaire utilisé dans le milieu.</p>
+<a class="ressource" href="https://www.youtube.com/watch?v=e8yuiYjRPbU" target="_blank" rel="noopener noreferrer">
+  <div class="ressource__icone">↗</div>
+  <div class="ressource__texte">
+    <div class="ressource__titre">VIDEO : Une courte introduction</div>
+    
+    <div class="ressource__hote">youtube.com</div>
+  </div>
+</a>
+<ul>
+<li><strong>SGBDR</strong> (<strong>S</strong>ystème de <strong>G</strong>estion de <strong>B</strong>ase de <strong>D</strong>onnées <strong>R</strong>elationnelles) : logiciel permettant de créer et administrer des bases de données. Tu peux créer dedans autant de bases de données que tu le souhaites. Il existe de nombreux SGBDR, comme MySQL, PostgreSQL, Oracle, <em>etc.</em></li>
+</ul>
+<div class="encadre encadre--info"><div class="encadre__titre">Info</div><div class="encadre__corps"><p>Tu entendras parfois le terme SGBD (sans le R), mais la plupart des bases de données que tu seras amené(e) à utiliser (dont MySQL) sont relationnelles.</p>
+</div></div>
+<ul>
+<li>
+<p><strong>Base de données</strong> : conteneur permettant de stocker des informations diverses, de manière structurée, dans des tables.</p>
+</li>
+<li>
+<p><strong>Table</strong> : sous-unité d’une base de données, contenant des informations de même type, que l'on peut regrouper par des propriétés communes, ce qui permet de les structurer de manière cohérente. Ainsi, on peut regrouper les informations des &quot;sorciers&quot; (<em>wizard</em>), &quot;écoles&quot; (<em>school</em>) et des &quot;maisons&quot; (<em>house</em>) entre elles. Tu verras par la suite qu’il est également possible de relier les tables entre elles, pour créer des <em>relations</em>.</p>
+</li>
+<li>
+<p><strong>Champ</strong> : propriété qui caractérise chaque donnée d’une table. Par exemple, une table <code>wizard</code> pourra contenir des champs <code>firstname</code>, <code>lastname</code>, <code>birth_place</code>... Les champs possèdent des caractéristiques précises (type, longueur, nullable, unicité, etc.).</p>
+</li>
+<li>
+<p><strong>Clé primaire</strong> : C’est un identifiant <strong>unique</strong> qui permet d’identifier rapidement un enregistrement. La clé primaire est constituée par un (parfois plusieurs) champ(s).</p>
+</li>
+</ul>
+<div class="encadre encadre--info"><div class="encadre__titre">Info</div><div class="encadre__corps"><p>Le plus souvent, le champ servant de clé primaire sera de type entier et auto-incrémenté (de 1 à N) à chaque nouvelle insertion de données dans la table (l’auto-incrémentation est une technique simple pour obtenir un identifiant unique), mais il est possible d’avoir des clés primaires sous d’autres formats.</p>
+</div></div>
+<ul>
+<li><strong>Tuple</strong> : valeurs d’une seule ligne d’une table. Par exemple, pour la table <code>wizard</code>, tu pourras avoir les tuples suivants :
+<ol>
+<li>“Harry”, “Potter”, “Londres”</li>
+<li>“Hermione”, “Granger”, “Londres”</li>
+</ol>
+</li>
+</ul>
+<div class="encadre encadre--warning"><div class="encadre__titre">Attention</div><div class="encadre__corps"><p>Si tu imagines une base de données comme un tableur, la table serait une feuille de tableur, le champ serait une colonne, le tuple une ligne. Par convention, le nom des tables et champs s’écrivent généralement en anglais, en snake_case (underscores séparant les mots). Les noms de tables sont toujours au singulier. Une table <code>wizard</code> va contenir beaucoup de données, mais quand tu nommes une table, il faut considérer uniquement un seul tuple (d’où le singulier).</p>
+</div></div>
+<a class="ressource" href="https://sql.sh/1396-nom-table-colonne" target="_blank" rel="noopener noreferrer">
+  <div class="ressource__icone">↗</div>
+  <div class="ressource__texte">
+    <div class="ressource__titre">Bonnes pratiques de nommage</div>
+    
+    <div class="ressource__hote">sql.sh</div>
+  </div>
+</a>
+<a class="ressource" href="https://www.youtube.com/watch?v=uObfuZXLggk" target="_blank" rel="noopener noreferrer">
+  <div class="ressource__icone">↗</div>
+  <div class="ressource__texte">
+    <div class="ressource__titre">Introduction aux bases de données</div>
+    <div class="ressource__desc"><p>Voici une bonne vue d'ensemble sur les bases de données. Un peu de vocabulaire ainsi qu'un exemple pratique vont te permettre d'avancer plus sereinement.</p>
+</div>
+    <div class="ressource__hote">youtube.com</div>
+  </div>
+</a>
+<h2>Le langage SQL</h2>
+<p>Maintenant que tu as une meilleure vision de ce qu’est une base de données, tu comprends qu’il y a deux parties :</p>
+<ul>
+<li>La structure des données (tables, champs, relations...) qui définissent comment les données vont être organisées.</li>
+</ul>
+<div class="encadre encadre--info"><div class="encadre__titre">Info</div><div class="encadre__corps"><p>Bien structurer ces données est une phase essentielle et complexe, qui demande une bonne compréhension des besoins métiers, et beaucoup de pratique. C’est ce qui s’appelle la <em>modélisation</em> de base de données. Tu verras dans une prochaine quête quelques notions pour t’aider dans cette tâche importante, mais pour l’instant, nous ne nous en occuperons pas.</p>
+</div></div>
+<ul>
+<li>Les données elles-mêmes. Chaque donnée d’un tuple correspond à un champ et doit donc valider les contraintes associées à ce champ. Par exemple, si tu rajoutes un champ <code>birthdate</code> dans la table <code>wizard</code>, tu peux définir que ce champ sera de type “DATE”. Tu ne pourras donc pas y entrer une donnée qui n’est pas sous un format de date compatible. Cela permet de t’assurer de la <strong>cohérence</strong> des données entrées dans ta BDD, ce qui est extrêmement important.</li>
+</ul>
+<p>La création de la base et de ses tables, mais également la manipulation des données (lecture, ajout, modification, suppression) se font toutes deux via des requêtes envoyées au SGBDR, écrites dans un langage particulier appelé SQL (<em>Structured Query Language</em>). Le SQL est un standard implémenté dans tous les principaux SGBDR, ce qui te permet (à quelques spécificités près) d’utiliser aisément n’importe quel SGBDR une fois que tu connais SQL.</p>
+<div class="encadre encadre--info"><div class="encadre__titre">Info</div><div class="encadre__corps"><p>Le SQL permet également d’administrer la base de données, c’est-à-dire de gérer les droits des utilisateurs, effectuer des tâches d’optimisation, <em>etc.</em> Cependant, la plupart de ces notions dépassent le cadre de la formation.</p>
+</div></div>
+<p><a href="https://sql.sh/" target="_blank" rel="noopener noreferrer">Sql.sh</a> est un site très bien documenté, contenant de nombreux cours et tutoriels sur le langage SQL. De nombreuses ressources données dans ce parcours de quête te renverront par la suite vers ce site. Commence par regarder cette vidéo.</p>
+<a class="video-lien" href="https://youtu.be/WolMLUXs_mY" target="_blank" rel="noopener noreferrer">
+  <div class="video-lien__play">▶</div>
+  <div class="video-lien__texte">
+    <div class="video-lien__titre">Vidéo YouTube</div>
+    <div class="video-lien__url">https://youtu.be/WolMLUXs_mY</div>
+  </div>
+</a>
+<h2>Premières requêtes SQL</h2>
+<p>Tu verras la partie <em>manipulation</em> de données dans de prochaines quêtes. Pour le moment, tu vas voir quelques requêtes basiques pour créer une base de données.</p>
+<p>Le SQL se compose de différentes commandes (tu peux les écrire en majuscules pour les faire ressortir) et de différents paramètres choisis par l’utilisateur (à garder en minuscules pour les différencier des commandes). Une requête SQL se termine par un point virgule. Voici donc une liste des premiers “sortilèges” que tu vas pouvoir lancer.</p>
+<ul>
+<li><strong>CREATE DATABASE</strong> : Créer une base de données.
+Par exemple, pour créer une base appelée <code>wild</code>, la syntaxe est la suivante</li>
+</ul>
+<div class="bloc-code"><div class="bloc-code__langue">sql</div><pre><code class="hljs language-sql"><span class="hljs-keyword">CREATE</span> DATABASE wild;
+</code></pre></div>
+<a class="ressource" href="https://mariadb.com/kb/en/library/create-database" target="_blank" rel="noopener noreferrer">
+  <div class="ressource__icone">↗</div>
+  <div class="ressource__texte">
+    <div class="ressource__titre">CREATE DATABASE</div>
+    
+    <div class="ressource__hote">mariadb.com</div>
+  </div>
+</a>
+<ul>
+<li><strong>USE</strong> : Tu peux bien entendu avoir plusieurs BDD en même temps. Pour passer de l’une à l’autre, il faut utiliser la commande USE, par exemple :</li>
+</ul>
+<div class="bloc-code"><div class="bloc-code__langue">sql</div><pre><code class="hljs language-sql">USE wild;
+</code></pre></div>
+<ul>
+<li><strong>CREATE TABLE</strong> : commande pour créer une <strong>table</strong> dans une BDD (une fois que tu t’es placé via USE sur la base de ton choix).
+Lors de la création d’une table, il faut également spécifier les champs qui vont constituer la table, ainsi que les caractéristiques de ces champs (type, contraintes…). La syntaxe est donc un peu plus complexe. Par exemple :</li>
+</ul>
+<div class="bloc-code"><div class="bloc-code__langue">sql</div><pre><code class="hljs language-sql"><span class="hljs-keyword">CREATE TABLE</span> wizard (
+  id <span class="hljs-type">INT</span> <span class="hljs-keyword">NOT NULL</span> AUTO_INCREMENT,
+  firstname <span class="hljs-type">VARCHAR</span>(<span class="hljs-number">100</span>) <span class="hljs-keyword">NOT NULL</span>,
+  lastname <span class="hljs-type">VARCHAR</span>(<span class="hljs-number">100</span>) <span class="hljs-keyword">NOT NULL</span>,
+  birthday <span class="hljs-type">DATE</span> <span class="hljs-keyword">DEFAULT</span> <span class="hljs-keyword">NULL</span>,
+  birth_place <span class="hljs-type">VARCHAR</span>(<span class="hljs-number">255</span>) <span class="hljs-keyword">DEFAULT</span> <span class="hljs-keyword">NULL</span>,
+  biography TEXT <span class="hljs-keyword">DEFAULT</span> <span class="hljs-keyword">NULL</span>,
+  <span class="hljs-keyword">PRIMARY KEY</span> (id)
+);
+</code></pre></div>
+<a class="ressource" href="https://www.khanacademy.org/computing/computer-programming/sql/sql-basics/v/welcome-to-sql" target="_blank" rel="noopener noreferrer">
+  <div class="ressource__icone">↗</div>
+  <div class="ressource__texte">
+    <div class="ressource__titre">CREATE TABLE</div>
+    <div class="ressource__desc"><p>Regarde les 2 premières vidéos (intro SQL et création de table)</p>
+</div>
+    <div class="ressource__hote">khanacademy.org</div>
+  </div>
+</a>
+<p>Ici, la table <code>wizard</code> est créée. Elle contiendra :</p>
+<ul>
+<li>un champ <code>id</code> obligatoire (ne peut pas être NULL) et auto-incrémenté</li>
+<li>des champs <code>firstname</code> et <code>lastname</code> qui sont des chaînes de taille limitée à 100 caractères max et obligatoires car non NULL</li>
+<li>un champ <code>birthday</code> , en format de date mais pouvant être NULL</li>
+<li>un champ <code>birth_place</code> , une chaîne limitée à 255 caractères max, facultatif car peut prendre la valeur NULL</li>
+<li>un champ <code>biography</code> , un bloc de texte long facultatif (pouvant donc être NULL)</li>
+<li>la clé primaire est associée au champ <code>id</code></li>
+</ul>
+<div class="encadre encadre--info"><div class="encadre__titre">Info</div><div class="encadre__corps"><p>Il existe beaucoup d’autres types pour les données. Tu trouveras plus d’informations dans les ressources. Il faut que tu apprennes à les utiliser de la manière la plus adaptée possible.</p>
+</div></div>
+<a class="ressource" href="https://www.w3schools.com/sql/sql_datatypes.asp" target="_blank" rel="noopener noreferrer">
+  <div class="ressource__icone">↗</div>
+  <div class="ressource__texte">
+    <div class="ressource__titre">Les principaux types de champs</div>
+    <div class="ressource__desc"><p>et quelques <a href="https://www.w3schools.com/sql/sql_primarykey.asp" target="_blank" rel="noopener noreferrer">contraintes utiles</a>, à connaître pour créer ou modifier des champs</p>
+</div>
+    <div class="ressource__hote">w3schools.com</div>
+  </div>
+</a>
+<ul>
+<li><strong>SHOW</strong> : la commande <code>SHOW</code> permet d’afficher de nombreux types d’informations sur ce que contient ton SGBDR. Par exemple :
+<code>SHOW DATABASES;</code> permet de lister toutes les BDD<code>SHOW TABLES;</code> permet de lister toutes les tables de la base de données actuellement sélectionnée.</li>
+</ul>
+<a class="ressource" href="https://mariadb.com/kb/en/library/show/" target="_blank" rel="noopener noreferrer">
+  <div class="ressource__icone">↗</div>
+  <div class="ressource__texte">
+    <div class="ressource__titre">Plus sur SHOW</div>
+    
+    <div class="ressource__hote">mariadb.com</div>
+  </div>
+</a>
+<ul>
+<li><strong>DESCRIBE</strong> : permet d’afficher des informations détaillées sur les colonnes d’une table, par ex : <code>DESCRIBE wizard;</code></li>
+</ul>
+<a class="ressource" href="https://mariadb.com/kb/en/library/describe/" target="_blank" rel="noopener noreferrer">
+  <div class="ressource__icone">↗</div>
+  <div class="ressource__texte">
+    <div class="ressource__titre">Plus d’infos sur DESCRIBE</div>
+    
+    <div class="ressource__hote">mariadb.com</div>
+  </div>
+</a>
+<ul>
+<li><strong>ALTER</strong> : il existe de nombreuses commandes commençant par <code>ALTER</code>, qui te permettent de modifier la structure d’une BDD/Table existante.</li>
+</ul>
+<a class="ressource" href="https://sql.sh/cours/alter-table" target="_blank" rel="noopener noreferrer">
+  <div class="ressource__icone">↗</div>
+  <div class="ressource__texte">
+    <div class="ressource__titre">Les commandes ALTER</div>
+    
+    <div class="ressource__hote">sql.sh</div>
+  </div>
+</a>
+<p><img src="images/001-premieres-requetes-sql.gif" alt="" loading="lazy"></p>
+<h2>Challenge</h2>
+<ol class="etapes"><li class="etape"><div class="etape__puce">1</div><div class="etape__contenu"><h4 class="etape__titre">Créer une base de donnée</h4><p>Crée une base de données <code>wild_db_quest</code> et place toi dessus.</p>
+</div></li><li class="etape"><div class="etape__puce">2</div><div class="etape__contenu"><h4 class="etape__titre">Créer une table</h4><p>Exécute le code SQL suivant :</p>
+<div class="bloc-code"><div class="bloc-code__langue">sql</div><pre><code class="hljs language-sql"><span class="hljs-keyword">CREATE TABLE</span> wizard (
+  id <span class="hljs-type">INT</span> <span class="hljs-keyword">NOT NULL</span> AUTO_INCREMENT,
+  firstname <span class="hljs-type">VARCHAR</span>(<span class="hljs-number">100</span>) <span class="hljs-keyword">NOT NULL</span>,
+  lastname <span class="hljs-type">VARCHAR</span>(<span class="hljs-number">100</span>) <span class="hljs-keyword">NOT NULL</span>,
+  birthday <span class="hljs-type">DATE</span> <span class="hljs-keyword">DEFAULT</span> <span class="hljs-keyword">NULL</span>,
+  birth_place <span class="hljs-type">VARCHAR</span>(<span class="hljs-number">255</span>) <span class="hljs-keyword">DEFAULT</span> <span class="hljs-keyword">NULL</span>,
+  biography TEXT <span class="hljs-keyword">DEFAULT</span> <span class="hljs-keyword">NULL</span>,
+  <span class="hljs-keyword">PRIMARY KEY</span> (id)
+);
+</code></pre></div>
+<p>Cela te créera la table <code>wizard</code> comme indiqué dans l’exemple plus haut.</p>
+</div></li><li class="etape"><div class="etape__puce">3</div><div class="etape__contenu"><h4 class="etape__titre">Modifier une table</h4><p>Modifie la table <code>wizard</code> en ajoutant un champ <code>is_muggle</code> de type booléen, obligatoire, qui permettra d’indiquer si le sorcier est ou non un <em>moldu</em>.</p>
+<p>Si tu ne sais pas ce qu’est un <a href="https://fr.wikipedia.org/wiki/Univers_de_Harry_Potter#Moldus" target="_blank" rel="noopener noreferrer">moldu</a>, c’est que tu en es sans doute un toi-même !</p>
+</div></li><li class="etape"><div class="etape__puce">4</div><div class="etape__contenu"><h4 class="etape__titre">Créer une table (bis)</h4><p>Crée une table <code>school</code>, contenant les champs :</p>
+<ul>
+<li><code>id</code> (<strong>clé primaire, entier auto-incrémenté</strong>, ne pouvant pas être NULL)</li>
+<li><code>name</code> (chaîne de caractères de longueur 100, obligatoire = ne pouvant pas être NULL)</li>
+<li><code>capacity</code> (entier, non obligatoire)</li>
+<li><code>country</code> (chaîne de caractères de longueur 255, obligatoire)</li>
+</ul>
+</div></li></ol>
+<p>Exécute les commandes <code>SHOW TABLES</code> et fais un <code>DESCRIBE</code> sur les tables <code>wizard</code> et <code>school</code>.</p>
+<p>Dans ta console, copie les sorties des commandes <code>SHOW TABLES</code> et <code>DESCRIBE</code> et colle le texte en solution.</p>
+<p>À toi de jouer, jeune sorcier !</p>
+<h3>Critères de validation</h3>
+<ul>
+<li>La commande SHOW TABLES montre que la base de données <code>wild_db_quest</code> existe et contient les deux tables <code>wizard</code> et <code>school</code>.</li>
+<li>La table <code>wizard</code> contient un champ <code>is_muggle</code> de type BOOL ou TINYINT(1) et NOT NULL.</li>
+<li>La table <code>school</code> contient les champs <code>id</code>, <code>name</code>, <code>capacity</code> et <code>country</code>, respectivement de type INT, VARCHAR(100), INT et VARCHAR(255).</li>
+<li>Le champ <code>id</code> de la table <code>school</code> est <strong>auto-incrémenté</strong> et est une <strong>clé primaire</strong>.</li>
+</ul>
+<h2>Créer la base de données</h2>
+<div class="bloc-code"><div class="bloc-code__langue">sql</div><pre><code class="hljs language-sql"><span class="hljs-keyword">CREATE</span> DATABASE wild_db_quest;
+USE wild_db_quest;
+</code></pre></div>
+<h2>Créer la table wizard</h2>
+<div class="bloc-code"><div class="bloc-code__langue">sql</div><pre><code class="hljs language-sql"><span class="hljs-keyword">CREATE TABLE</span> wizard (
+  id <span class="hljs-type">INT</span> <span class="hljs-keyword">NOT NULL</span> AUTO_INCREMENT,
+  firstname <span class="hljs-type">VARCHAR</span>(<span class="hljs-number">100</span>) <span class="hljs-keyword">NOT NULL</span>,
+  lastname <span class="hljs-type">VARCHAR</span>(<span class="hljs-number">100</span>) <span class="hljs-keyword">NOT NULL</span>,
+  birthday <span class="hljs-type">DATE</span> <span class="hljs-keyword">DEFAULT</span> <span class="hljs-keyword">NULL</span>,
+  birth_place <span class="hljs-type">VARCHAR</span>(<span class="hljs-number">255</span>) <span class="hljs-keyword">DEFAULT</span> <span class="hljs-keyword">NULL</span>,
+  biography TEXT <span class="hljs-keyword">DEFAULT</span> <span class="hljs-keyword">NULL</span>,
+  <span class="hljs-keyword">PRIMARY KEY</span> (id)
+);
+</code></pre></div>
+<h2>Modifier la table wizard</h2>
+<div class="bloc-code"><div class="bloc-code__langue">sql</div><pre><code class="hljs language-sql"><span class="hljs-keyword">ALTER TABLE</span> wizard
+  <span class="hljs-keyword">ADD</span> is_muggle <span class="hljs-type">BOOLEAN</span> <span class="hljs-keyword">NOT NULL</span> <span class="hljs-keyword">DEFAULT</span> <span class="hljs-number">0</span>;
+</code></pre></div>
+<h2>Créer la table school</h2>
+<div class="bloc-code"><div class="bloc-code__langue">sql</div><pre><code class="hljs language-sql"><span class="hljs-keyword">CREATE TABLE</span> school (
+  id <span class="hljs-type">INT</span> <span class="hljs-keyword">NOT NULL</span> AUTO_INCREMENT,
+  name <span class="hljs-type">VARCHAR</span>(<span class="hljs-number">100</span>) <span class="hljs-keyword">NOT NULL</span>,
+  capacity <span class="hljs-type">INT</span>,
+  country <span class="hljs-type">VARCHAR</span>(<span class="hljs-number">255</span>) <span class="hljs-keyword">NOT NULL</span>,
+  <span class="hljs-keyword">PRIMARY KEY</span> (id)
+);
+</code></pre></div>
+<h2>SHOW TABLES</h2>
+<div class="bloc-code"><pre><code class="hljs language-plaintext">+-------------------------+
+| Tables_in_wild_db_quest |
++-------------------------+
+| school                  |
+| wizard                  |
++-------------------------+
+</code></pre></div>
+<h2>DESCRIBE wizard</h2>
+<div class="bloc-code"><pre><code class="hljs language-plaintext">+-------------+--------------+------+-----+---------+----------------+
+| Field       | Type         | Null | Key | Default | Extra          |
++-------------+--------------+------+-----+---------+----------------+
+| id          | int          | NO   | PRI | NULL    | auto_increment |
+| firstname   | varchar(100) | NO   |     | NULL    |                |
+| lastname    | varchar(100) | NO   |     | NULL    |                |
+| birthday    | date         | YES  |     | NULL    |                |
+| birth_place | varchar(255) | YES  |     | NULL    |                |
+| biography   | text         | YES  |     | NULL    |                |
+| is_muggle   | tinyint(1)   | NO   |     | 0       |                |
++-------------+--------------+------+-----+---------+----------------+
+</code></pre></div>
+<h2>DESCRIBE school</h2>
+<div class="bloc-code"><pre><code class="hljs language-plaintext">+----------+--------------+------+-----+---------+----------------+
+| Field    | Type         | Null | Key | Default | Extra          |
++----------+--------------+------+-----+---------+----------------+
+| id       | int          | NO   | PRI | NULL    | auto_increment |
+| name     | varchar(100) | NO   |     | NULL    |                |
+| capacity | int          | YES  |     | NULL    |                |
+| country  | varchar(255) | NO   |     | NULL    |                |
++----------+--------------+------+-----+---------+----------------+
+</code></pre></div>
+
+  </div>
+  <section class="ressources-quete">
+  <h2>Ressources partagées sur cette quête</h2>
+  <ul class="ressources-liste">
+    <li><a href="https://dev.mysql.com/doc/refman/8.0/en/keywords.html#keywords-in-current-series" target="_blank" rel="noopener noreferrer">Liste des mots-clés et mots réservés MySQL 8.0</a><span class="ressources-liste__url">https://dev.mysql.com/doc/refman/8.0/en/keywords.html#keywords-in-current-series</span></li>
+    <li><a href="https://www.youtube.com/watch?v=e8yuiYjRPbU" target="_blank" rel="noopener noreferrer">nouveau lien de la video youtube celui actuellement present ne fonctionne plus</a><span class="ressources-liste__url">https://www.youtube.com/watch?v=e8yuiYjRPbU</span></li>
+    <li><a href="https://www.tutorialspoint.com/adding-mysql-to-windows-path" target="_blank" rel="noopener noreferrer">Article complementaire pour rajouter mysql au variable d'environnement windows</a><span class="ressources-liste__url">https://www.tutorialspoint.com/adding-mysql-to-windows-path</span></li>
+    <li><a href="https://www.youtube.com/watch?v=oAU7_eKBY1s" target="_blank" rel="noopener noreferrer">permet de comprendre la prise en main sur MySQL Workbench</a><span class="ressources-liste__url">https://www.youtube.com/watch?v=oAU7_eKBY1s</span></li>
+    <li><a href="https://phoenixnap.com/kb/import-and-export-mysql-database" target="_blank" rel="noopener noreferrer">Comment importer une base de données MySQL sous Linux (attention dans les lignes de code à copier, les - sont à rectifier)</a><span class="ressources-liste__url">https://phoenixnap.com/kb/import-and-export-mysql-database</span></li>
+    <li><a href="https://buzut.net/maitrisez-mysql-en-cli/#Gestion-des-bases" target="_blank" rel="noopener noreferrer">Pour avoir quelques commandes SQL en français</a><span class="ressources-liste__url">https://buzut.net/maitrisez-mysql-en-cli/#Gestion-des-bases</span></li>
+    <li><a href="https://www.youtube.com/watch?v=HXV3zeQKqGY&amp;t=4275s" target="_blank" rel="noopener noreferrer">Bon auto pour les bases (en anglais)</a><span class="ressources-liste__url">https://www.youtube.com/watch?v=HXV3zeQKqGY&amp;t=4275s</span></li>
+    <li><a href="https://medium.com/tableplus/getting-started-with-tableplus-1ad69e3a635d" target="_blank" rel="noopener noreferrer">article complémentaire pour découvrir l'interface TablePlus</a><span class="ressources-liste__url">https://medium.com/tableplus/getting-started-with-tableplus-1ad69e3a635d</span></li>
+    <li><a href="https://www.it-connect.fr/importer-un-fichier-sql-en-ligne-de-commande/" target="_blank" rel="noopener noreferrer">Importer un fichier .sql en ligne de commande﻿</a><span class="ressources-liste__url">https://www.it-connect.fr/importer-un-fichier-sql-en-ligne-de-commande/</span></li>
+    <li><a href="https://www.w3schools.com/sql/sql_datatypes.asp" target="_blank" rel="noopener noreferrer">pour les types </a><span class="ressources-liste__url">https://www.w3schools.com/sql/sql_datatypes.asp</span></li>
+    <li><a href="https://waytolearnx.com/2019/09/liste-des-commandes-mysql.html" target="_blank" rel="noopener noreferrer">liste de commande SQL EN FR</a><span class="ressources-liste__url">https://waytolearnx.com/2019/09/liste-des-commandes-mysql.html</span></li>
+    <li><a href="https://www.youtube.com/watch?v=Ecv0PEOvLq0" target="_blank" rel="noopener noreferrer">vidéo claire pour comprendre le SQL</a><span class="ressources-liste__url">https://www.youtube.com/watch?v=Ecv0PEOvLq0</span></li>
+    <li><a href="https://openclassrooms.com/fr/courses/6971126-implementez-vos-bases-de-donnees-relationnelles-avec-sql/7142232-creez-votre-base-de-donnees-bdd" target="_blank" rel="noopener noreferrer">Pour télécharger mySQL sur mac/windows/linux et le paramétrer</a><span class="ressources-liste__url">https://openclassrooms.com/fr/courses/6971126-implementez-vos-bases-de-donnees-relationnelles-avec-sql/7142232-creez-votre-base-de-donnees-bdd</span></li>
+    <li><a href="https://buzut.net/maitrisez-mysql-en-cli/" target="_blank" rel="noopener noreferrer">Les différentes commandes</a><span class="ressources-liste__url">https://buzut.net/maitrisez-mysql-en-cli/</span></li>
+  </ul>
+</section>
+</article>
+
+<nav class="nav-quete">
+  <a class="nav-quete__lien nav-quete__lien--prec" href="../../base-de-donnees/001-00-installer-mysql/index.html">
+           <span class="nav-quete__sens">← Précédent</span>
+           <span class="nav-quete__titre">00 - Installer MySQL</span>
+         </a>
+  <a class="nav-quete__lien nav-quete__lien--suiv" href="../../base-de-donnees/003-02-recuperer-des-informations-avec-select/index.html">
+           <span class="nav-quete__sens">Suivant →</span>
+           <span class="nav-quete__titre">02 - Récupérer des informations avec SELECT</span>
+         </a>
+</nav>
+</main>
+<footer class="pied">
+  <p>Archive personnelle des cours suivis à la Wild Code School. Copie hors ligne à usage strictement privé.</p>
+</footer>
+
+<script src="../../assets/copie-code.js"></script>
+<script src="../../assets/progression.js"></script>
+</body>
+</html>

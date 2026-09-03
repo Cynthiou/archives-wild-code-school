@@ -1,0 +1,40 @@
+# ---------------------------------------------------------------------------
+# Ce qui NE DOIT JAMAIS partir sur GitHub
+# ---------------------------------------------------------------------------
+
+# Profil du navigateur : contient le COOKIE DE SESSION Odyssey.
+# Le publier reviendrait à publier un accès à ton compte.
+.navigateur/
+
+# ---------------------------------------------------------------------------
+# Ce qui n'a pas sa place dans un dépôt
+# ---------------------------------------------------------------------------
+
+# Réinstallable avec : npm ci --ignore-scripts
+node_modules/
+
+# Replays vidéo : ~62 Go, et GitHub refuse tout fichier de plus de 100 Mo
+videos/
+
+# Journaux d'exécution, propres à chaque machine
+logs/
+
+# Fichiers temporaires
+*.part
+*.tmp
+Thumbs.db
+.DS_Store
+
+# ---------------------------------------------------------------------------
+# Ce qui EST versionné, volontairement :
+#   src/          le code de l'outil
+#   site-assets/  la feuille de style
+#   site/         l'archive consultable (170 pages, 442 images)
+#   archive/      les données brutes (Markdown d'origine + manifeste)
+# ---------------------------------------------------------------------------
+
+# Sorties temporaires de l app Claude
+Claude outputs/
+
+# Archive dinstallation, plus utile une fois le projet en place
+outil-archive-wcs.zip

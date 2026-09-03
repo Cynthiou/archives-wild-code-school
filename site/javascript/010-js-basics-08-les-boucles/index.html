@@ -1,0 +1,241 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>👩‍🏫 JS Basics 08 - Les boucles — Archives WCS</title>
+<link rel="stylesheet" href="../../assets/style.css">
+</head>
+<body style="--teinte:#856400">
+<header class="entete">
+  <a class="entete__marque" href="../../index.html">Archives Wild Code School</a>
+</header>
+<main class="contenu">
+<nav class="ariane"><a href="../../index.html">Accueil</a><span class="ariane__sep">›</span><a href="../../javascript/index.html">JavaScript</a><span class="ariane__sep">›</span><span aria-current="page">👩‍🏫 JS Basics 08 - Les boucles</span></nav>
+
+<article class="quete">
+  <header class="quete__entete">
+    <a class="pastille pastille--teintee" href="../../javascript/index.html">JavaScript</a>
+    <h1>👩‍🏫 JS Basics 08 - Les boucles</h1>
+    <p class="quete__meta">Quête 10 sur 11 · 6 images archivées</p>
+  </header>
+  <div class="cours">
+<h2>Objectifs</h2>
+<ul>
+<li>Créer des boucles en JavaScript</li>
+<li>Parcourir des tableaux</li>
+</ul>
+<h2>Pré-requis</h2>
+<p>Avoir validé les quêtes suivantes :</p>
+<div class="renvois"><div class="renvois__titre">Quêtes liées</div><ul><li><a href="../../javascript/001-js-basics-01-qu-est-ce-que-javascript/index.html">Quête 1262</a></li><li><a href="../../javascript/002-js-basics-02-syntaxe-et-concepts-de-base/index.html">Quête 1267</a></li><li><a href="../../javascript/003-js-basics-03-les-variables/index.html">Quête 1268</a></li><li><a href="../../javascript/004-js-basics-04-les-types-de-donnees/index.html">Quête 1269</a></li><li><a href="../../javascript/005-js-basics-05-les-instructions-conditionnelles/index.html">Quête 1270</a></li><li><a href="../../javascript/006-js-basics-06-les-fonctions/index.html">Quête 1278</a></li><li><a href="../../javascript/008-js-basics-07-les-tableaux/index.html">Quête 1281</a></li></ul></div>
+<h2>Introduction</h2>
+<p>Comme mentionné dans les quêtes précédentes, l'un des grands principes en développement est de ne pas se répéter (en anglais &quot;D.R.Y.&quot;, comme <strong>D</strong>on't <strong>R</strong>epeat <strong>Y</strong>ourself).
+Pour éviter d'écrire le même code encore et encore, nous pouvons utiliser quelque chose appelé <strong>boucle</strong>.</p>
+<p><strong>Commençons!</strong></p>
+<p><img src="images/001-escaliers.png" alt="Escaliers" loading="lazy"></p>
+<h2>Sommaire</h2>
+<h2>Qu'est-ce qu'une boucle ?</h2>
+<p><img src="images/002-la-boucle-de-la-course.png" alt="La boucle de la course" loading="lazy"></p>
+<p>Une boucle est un moyen d'exécuter le même code plusieurs fois jusqu'à ce qu'une certaine condition soit remplie.</p>
+<p>Par exemple, imagine une voiture sur une piste de course, la voiture doit faire <strong>x fois le tour</strong> de la piste avant d'atteindre la fin du parcours.</p>
+<p>Exemple d'une boucle:</p>
+<div class="bloc-code"><div class="bloc-code__langue">javascript</div><pre><code class="hljs language-javascript"><span class="hljs-keyword">for</span> (<span class="hljs-keyword">let</span> i = <span class="hljs-number">0</span>; i &lt; <span class="hljs-number">5</span>; i++) {
+  <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(<span class="hljs-string">&quot;Turn number &quot;</span> + i);
+}
+
+<span class="hljs-comment">/*
+Turn number 0
+Turn number 1
+Turn number 2
+Turn number 3
+Turn number 4
+*/</span>
+</code></pre></div>
+<h2>Différents types de boucles</h2>
+<p><img src="images/003-image.png" alt="image" loading="lazy"></p>
+<h3>La boucle &quot;for&quot;</h3>
+<p><img src="images/004-boucle-for.png" alt="Boucle for" loading="lazy"></p>
+<p><code>for</code> nécessite 3 paramètres pour fonctionner:</p>
+<ul>
+<li>Le <strong>premier</strong> est une <strong>variable appelée itérateur</strong>, que nous devons <strong>créer</strong> et fixer à une valeur (ici nous voulons partir de zéro). Cette variable sera notre &quot;compteur&quot;.</li>
+<li>La <strong>seconde</strong> est la <strong>condition que nous voulons vérifier</strong> avant chaque tour de boucle (itération).</li>
+<li>Et la <strong>troisième</strong> est l'incrément. L'incrément sera exécuté à la fin de chaque boucle et, généralement, nous ajoutons un à l'itérateur.</li>
+</ul>
+<p>Voici un exemple:</p>
+<div class="bloc-code"><div class="bloc-code__langue">javascript</div><pre><code class="hljs language-javascript"><span class="hljs-keyword">for</span> (<span class="hljs-keyword">let</span> i = <span class="hljs-number">0</span>; i &lt; <span class="hljs-number">5</span>; i++) {
+  <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(<span class="hljs-string">&quot;Turn number &quot;</span> + i);
+}
+</code></pre></div>
+<p>Dans cet exemple, nous créons d'abord la <strong>variable</strong> <code>i</code> qui est fixée à la valeur <strong>zero.</strong></p>
+<div class="bloc-code"><div class="bloc-code__langue">javascript</div><pre><code class="hljs language-javascript"><span class="hljs-keyword">let</span> i = <span class="hljs-number">0</span>
+</code></pre></div>
+<p>Par convention, <strong>nous appelons souvent cette variable &quot;i&quot;</strong> (signifie <strong>itérateur</strong> ou <strong>index</strong>)</p>
+<p>Ensuite, nous voulons que les instructions dans la boucle soient répétées <strong>tant qu'une certaine condition est vérifiée</strong>. Dans ce cas, nous voulons faire une boucle jusqu'à ce que la valeur de &quot;i&quot; atteigne 5 (donc cinq fois).</p>
+<div class="bloc-code"><div class="bloc-code__langue">javascript</div><pre><code class="hljs language-javascript">i &lt; <span class="hljs-number">5</span>
+</code></pre></div>
+<p>Pour chaque tour de boucle, <strong>nous augmentons la valeur de &quot;i&quot; de un</strong> (afin que la boucle s'arrête à un moment donné).</p>
+<div class="bloc-code"><div class="bloc-code__langue">javascript</div><pre><code class="hljs language-javascript">i++
+</code></pre></div>
+<p>De cette façon, la boucle <strong>partira de 0, et vérifiera à chaque tour si &quot;i&quot; est inférieur à 5.</strong></p>
+<p>Si <strong>Oui</strong> ⇒ Elle <strong>exécutera</strong> le <strong>code</strong> et augmentera la valeur de un. Et ensuite, on recommence.</p>
+<p>Si <strong>Non</strong> ⇒ la boucle s'arrête.</p>
+<div class="bloc-code"><div class="bloc-code__langue">replit</div><pre><code class="hljs language-replit">https://repl.it/@WildCodeSchool/FickleGrownGlobalarrays
+</code></pre></div>
+<div class="encadre encadre--info"><div class="encadre__titre">Info</div><div class="encadre__corps"><p>Clique sur &quot;Play&quot; pour lancer le code. Tu peux également modifier le code et tester différents scénarios par toi-même.</p>
+</div></div>
+<p><strong>🔬 Fais une expérience</strong></p>
+<p>Crée une <strong>boucle for</strong> qui affiche &quot;Number&quot; + la valeur de l'itérateur 10 fois dans la console.</p>
+<div class="bloc-code"><div class="bloc-code__langue">replit</div><pre><code class="hljs language-replit">https://repl.it/@WildCodeSchool/Empty-project
+</code></pre></div>
+<details class="solution"><summary>Voir la solution</summary><div class="solution__corps"><div class="bloc-code"><div class="bloc-code__langue">javascript</div><pre><code class="hljs language-javascript"><span class="hljs-keyword">for</span> (<span class="hljs-keyword">let</span> i = <span class="hljs-number">0</span>; i &lt; <span class="hljs-number">10</span>; i++) {
+  <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(<span class="hljs-string">`Number <span class="hljs-subst">${i}</span>`</span>);
+}
+</code></pre></div>
+</div></details>
+<h3>Parcourir un tableau</h3>
+<p>Tu peux utiliser une boucle pour parcourir un tableau :</p>
+<div class="bloc-code"><div class="bloc-code__langue">javascript</div><pre><code class="hljs language-javascript"><span class="hljs-keyword">const</span> fruits = [<span class="hljs-string">&quot;Apple&quot;</span>, <span class="hljs-string">&quot;Peach&quot;</span>, <span class="hljs-string">&quot;Banana&quot;</span>];
+
+<span class="hljs-keyword">for</span> (<span class="hljs-keyword">let</span> i = <span class="hljs-number">0</span>; i &lt; fruits.<span class="hljs-property">length</span>; i ++) {
+  <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(fruits[i]);
+}
+</code></pre></div>
+<p>Ici, tu peux voir que nous avons un tableau qui contient 3 éléments.</p>
+<p>Nous créons une <strong>boucle for</strong>, dont l'itérateur va de <code>0</code> à <code>fruits.length - 1</code> (soit <code>2</code>, il faut bien comprendre que c'est l'opérateur <code>&lt;</code> qui est utilisé ici, donc <code>i &lt; fruits.length</code> retourne <code>false</code> quand <code>i</code> atteint <code>3</code> et la boucle s'arrête).</p>
+<p>Au premier tour, elle affichera <code>fruits[0]</code>, puis <code>fruits[1]</code> et enfin <code>fruits[2]</code>.</p>
+<div class="bloc-code"><div class="bloc-code__langue">replit</div><pre><code class="hljs language-replit">https://repl.it/@WildCodeSchool/ArtisticChocolateBusinesssoftware
+</code></pre></div>
+<p><strong>🔬 Fais une expérience</strong></p>
+<p>Maintenant, c'est à ton tour !
+Essaye de parcourir avec une boucle le tableau suivant et d'afficher chaque élément dans la console.</p>
+<div class="bloc-code"><div class="bloc-code__langue">replit</div><pre><code class="hljs language-replit">https://repl.it/@WildCodeSchool/ArtisticChocolateBusinesssoftware-2
+</code></pre></div>
+<details class="solution"><summary>Voir la solution</summary><div class="solution__corps"><div class="bloc-code"><div class="bloc-code__langue">javascript</div><pre><code class="hljs language-javascript"><span class="hljs-keyword">for</span> (<span class="hljs-keyword">let</span> i = <span class="hljs-number">0</span>; i &lt; animals.<span class="hljs-property">length</span>; i++) {
+  <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(animals[i]);
+}
+</code></pre></div>
+</div></details>
+<h2>Les boucles &quot;while&quot; et &quot;do...while&quot;</h2>
+<p>Nous avons vu la boucle <code>for</code>. Il existe d'autres façons de créer des boucles.</p>
+<p><img src="images/005-image.png" alt="image" loading="lazy"></p>
+<h3>While</h3>
+<p>Pour utiliser une boucle <code>while</code>, tu dois <strong>créer l'itérateur avant la déclaration de la boucle.</strong></p>
+<p>Passe la condition que tu veux remplir (c'est à dire <code>i &lt; 5</code>) dans les parenthèses <code>()</code>.</p>
+<p>Avec une boucle <strong>while</strong> et <strong>do...while,</strong> il faut faire attention de ne pas oublier d'incrémenter (augmenter) la valeur de <code>i</code>.
+Sinon, cela pourrait provoquer une boucle infinie.
+Si <code>i</code> n'augmente pas, il n'atteint jamais 5, donc la boucle continue et ton ordinateur peut planter.</p>
+<div class="bloc-code"><div class="bloc-code__langue">javascript</div><pre><code class="hljs language-javascript"><span class="hljs-keyword">let</span> i = <span class="hljs-number">0</span>; 
+
+<span class="hljs-keyword">while</span> (i &lt; <span class="hljs-number">5</span>) {
+  <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(<span class="hljs-string">`turn number <span class="hljs-subst">${i}</span>`</span>);
+  i++;
+}
+</code></pre></div>
+<p><strong>🔬 Fais une expérience</strong></p>
+<p>Essaye d'écrire une boucle <code>while</code>, qui commence à 10 et affiche le nombre de 10 à 0 - donc cette fois <strong>i doit être décrémenté</strong> (diminuer).</p>
+<div class="bloc-code"><div class="bloc-code__langue">replit</div><pre><code class="hljs language-replit">https://repl.it/@LonardFlachs/Empty-project
+</code></pre></div>
+<details class="solution"><summary>Voir la solution</summary><div class="solution__corps"><div class="bloc-code"><div class="bloc-code__langue">javascript</div><pre><code class="hljs language-javascript"><span class="hljs-keyword">let</span> i = <span class="hljs-number">10</span>; 
+
+<span class="hljs-keyword">while</span> (i &gt;= <span class="hljs-number">0</span>) {
+  <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(<span class="hljs-string">`turn number <span class="hljs-subst">${i}</span>`</span>);
+  i--;
+}
+</code></pre></div>
+</div></details>
+<h3>Do...While</h3>
+<p><strong><code>do...while</code> est similaire à <code>while</code></strong> mais l'action est exécutée avant de vérifier la condition (la boucle fait donc toujours au moins un tour).</p>
+<div class="bloc-code"><div class="bloc-code__langue">replit</div><pre><code class="hljs language-replit">https://repl.it/@WildCodeSchool/ShadowyTalkativeOutput
+</code></pre></div>
+<h2>Que faire en cas de boucle infinie ?</h2>
+<p><img src="images/006-image.jpg" alt="image" loading="lazy">
+Si tu as lancé une boucle infinie par erreur, ferme immédiatement l'onglet de ton navigateur pour y mettre fin.</p>
+<p>Tu peux également utiliser le <strong>gestionnaire de tâches chrome</strong> pour <strong>finir le processus</strong> ou utiliser le <strong>débogueur du navigateur</strong>.</p>
+<a class="ressource" href="https://dev.to/aej11a/til-how-to-pause-an-infinite-javascript-loop-in-chrome-53gm" target="_blank" rel="noopener noreferrer">
+  <div class="ressource__icone">↗</div>
+  <div class="ressource__texte">
+    <div class="ressource__titre">Comment mettre en pause une boucle JavaScript infinie dans Chrome</div>
+    
+    <div class="ressource__hote">dev.to</div>
+  </div>
+</a>
+<a class="video-lien" href="https://youtu.be/haFYwEBjaTo" target="_blank" rel="noopener noreferrer">
+  <div class="video-lien__play">▶</div>
+  <div class="video-lien__texte">
+    <div class="video-lien__titre">Vidéo YouTube</div>
+    <div class="video-lien__url">https://youtu.be/haFYwEBjaTo</div>
+  </div>
+</a>
+<h2>Portée (scope) / Contexte</h2>
+<p>En Javascript, dès que l'on écrit du code, <strong>le contexte est très important</strong> : <strong>on ne peut pas utiliser une variable déclarée à l'intérieur d'une boucle en dehors de cette dernière</strong>.</p>
+<p>Les accolades  <code>{ }</code> définissent un contexte local.</p>
+<p>Exemple 1 :</p>
+<div class="bloc-code"><div class="bloc-code__langue">javascript</div><pre><code class="hljs language-javascript"><span class="hljs-keyword">let</span> sum = <span class="hljs-number">0</span>;
+
+<span class="hljs-keyword">for</span> (<span class="hljs-keyword">let</span> i = <span class="hljs-number">0</span>; i &lt; <span class="hljs-number">10</span>; i++) {
+  <span class="hljs-keyword">const</span> name = <span class="hljs-string">&quot;Pierre&quot;</span>;
+  <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(name + <span class="hljs-string">&quot; saw &quot;</span> + sum + <span class="hljs-string">&quot; StarWars movies.&quot;</span>);
+  sum++;
+  <span class="hljs-comment">// fonctionne correctement dans le contexte de la boucle</span>
+}
+
+<span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(sum);
+<span class="hljs-comment">// tu verras la valeur de sum</span>
+   
+<span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(name);
+<span class="hljs-comment">// tu verras une erreur &#x27;reference error: name is not defined&#x27;</span>
+</code></pre></div>
+<p>Par exemple, dans ce cas, la variable <code>name</code> sera disponible uniquement dans le contexte de la <strong>boucle</strong> (à l'intérieur des accolades <code>{}</code>) et elle ne sera pas disponible en dehors.</p>
+<p>La variable <code>sum</code> est disponible dans toute la boucle et en dehors, car elle a été créée en dehors du contexte de la <strong>boucle</strong>.</p>
+<p>Si tu crées une variable à l'intérieur d'accolades <code>{}</code>, cette variable sera disponible <strong>uniquement à l'intérieur de ces accolades</strong>.</p>
+<p>Sachant cela maintenant, nous devrions être capables de créer des boucles qui fonctionnent pour nos projets en tenant compte du contexte.</p>
+<p>Une vidéo géniale à propos du scope:</p>
+<a class="video-lien" href="https://www.youtube.com/watch?v=iJKkZA215tQ" target="_blank" rel="noopener noreferrer">
+  <div class="video-lien__play">▶</div>
+  <div class="video-lien__texte">
+    <div class="video-lien__titre">Vidéo YouTube</div>
+    <div class="video-lien__url">https://www.youtube.com/watch?v=iJKkZA215tQ</div>
+  </div>
+</a>
+<h2>Résumé</h2>
+<ul>
+<li>On peut utiliser des <strong>boucles</strong> en Javascript pour <strong>répéter l'exécution d'un bloc de code plusieurs fois</strong></li>
+<li>Il y a différentes boucles, &quot;for&quot; est la plus utilisée mais il y a aussi &quot;while&quot; et &quot;do...while&quot;.</li>
+<li>Faire des erreurs dans tes boucles <strong>peut entraîner une boucle infinie</strong> qui peut faire planter ton programme.</li>
+</ul>
+<h2>Challenge</h2>
+<p>Es-tu prêt à relever un défi ?</p>
+<p>Ton objectif est de décoder un message en utilisant les boucles :</p>
+<div class="bloc-code"><div class="bloc-code__langue">javascript</div><pre><code class="hljs language-javascript"><span class="hljs-comment">// Use a loop to remove the &#x27;X&#x27; and use console.log to reveal the message </span>
+<span class="hljs-keyword">const</span> hiddenMessage = [<span class="hljs-string">&quot;X&quot;</span>, <span class="hljs-string">&quot;X&quot;</span>, <span class="hljs-string">&quot;X&quot;</span>, <span class="hljs-string">&quot;X&quot;</span>, <span class="hljs-string">&quot;W&quot;</span>, <span class="hljs-string">&quot;X&quot;</span>, <span class="hljs-string">&quot;E&quot;</span>,  <span class="hljs-string">&quot;X&quot;</span>, <span class="hljs-string">&quot;X&quot;</span>, <span class="hljs-string">&quot;X&quot;</span>, <span class="hljs-string">&quot;X&quot;</span>, <span class="hljs-string">&quot;X&quot;</span>, <span class="hljs-string">&quot;L&quot;</span>, <span class="hljs-string">&quot;X&quot;</span>, <span class="hljs-string">&quot;X&quot;</span>, <span class="hljs-string">&quot;X&quot;</span>, <span class="hljs-string">&quot;X&quot;</span>, <span class="hljs-string">&quot;X&quot;</span>, <span class="hljs-string">&quot;X&quot;</span>, <span class="hljs-string">&quot;X&quot;</span>, <span class="hljs-string">&quot;X&quot;</span>, <span class="hljs-string">&quot;X&quot;</span>, <span class="hljs-string">&quot;X&quot;</span>, <span class="hljs-string">&quot;X&quot;</span>, <span class="hljs-string">&quot;X&quot;</span>, <span class="hljs-string">&quot;X&quot;</span>, <span class="hljs-string">&quot;X&quot;</span>, <span class="hljs-string">&quot;X&quot;</span>, <span class="hljs-string">&quot;X&quot;</span>, <span class="hljs-string">&quot;X&quot;</span>, <span class="hljs-string">&quot;X&quot;</span>, <span class="hljs-string">&quot;X&quot;</span>, <span class="hljs-string">&quot;X&quot;</span>, <span class="hljs-string">&quot;L&quot;</span>, <span class="hljs-string">&quot;X&quot;</span>, <span class="hljs-string">&quot;X&quot;</span>, <span class="hljs-string">&quot;X&quot;</span>, <span class="hljs-string">&quot;X&quot;</span>, <span class="hljs-string">&quot;X&quot;</span>, <span class="hljs-string">&quot;X&quot;</span>, <span class="hljs-string">&quot;X&quot;</span>, <span class="hljs-string">&quot;X&quot;</span>, <span class="hljs-string">&quot;X&quot;</span>, <span class="hljs-string">&quot; &quot;</span>,<span class="hljs-string">&quot;X&quot;</span>, <span class="hljs-string">&quot;X&quot;</span>, <span class="hljs-string">&quot;X&quot;</span>, <span class="hljs-string">&quot;X&quot;</span>, <span class="hljs-string">&quot;X&quot;</span>, <span class="hljs-string">&quot;X&quot;</span>, <span class="hljs-string">&quot;X&quot;</span>, <span class="hljs-string">&quot;X&quot;</span>, <span class="hljs-string">&quot;D&quot;</span>, <span class="hljs-string">&quot;X&quot;</span>, <span class="hljs-string">&quot;X&quot;</span>, <span class="hljs-string">&quot;X&quot;</span>, <span class="hljs-string">&quot;X&quot;</span>, <span class="hljs-string">&quot;X&quot;</span>, <span class="hljs-string">&quot;X&quot;</span>, <span class="hljs-string">&quot;X&quot;</span>, <span class="hljs-string">&quot;X&quot;</span>, <span class="hljs-string">&quot;X&quot;</span>, <span class="hljs-string">&quot;X&quot;</span>, <span class="hljs-string">&quot;X&quot;</span>, <span class="hljs-string">&quot;X&quot;</span>, <span class="hljs-string">&quot;X&quot;</span>, <span class="hljs-string">&quot;X&quot;</span>, <span class="hljs-string">&quot;X&quot;</span>, <span class="hljs-string">&quot;X&quot;</span>, <span class="hljs-string">&quot;X&quot;</span>, <span class="hljs-string">&quot;X&quot;</span>, <span class="hljs-string">&quot;X&quot;</span>, <span class="hljs-string">&quot;X&quot;</span>, <span class="hljs-string">&quot;X&quot;</span>, <span class="hljs-string">&quot;X&quot;</span>, <span class="hljs-string">&quot;X&quot;</span>, <span class="hljs-string">&quot;X&quot;</span>, <span class="hljs-string">&quot;X&quot;</span>, <span class="hljs-string">&quot;X&quot;</span>, <span class="hljs-string">&quot;X&quot;</span>, <span class="hljs-string">&quot;X&quot;</span>, <span class="hljs-string">&quot;X&quot;</span>, <span class="hljs-string">&quot;X&quot;</span>, <span class="hljs-string">&quot;X&quot;</span>, <span class="hljs-string">&quot;X&quot;</span>, <span class="hljs-string">&quot;X&quot;</span>, <span class="hljs-string">&quot;O&quot;</span>, <span class="hljs-string">&quot;X&quot;</span>, <span class="hljs-string">&quot;X&quot;</span>, <span class="hljs-string">&quot;X&quot;</span>, <span class="hljs-string">&quot;X&quot;</span>, <span class="hljs-string">&quot;X&quot;</span>, <span class="hljs-string">&quot;X&quot;</span>, <span class="hljs-string">&quot;N&quot;</span>, <span class="hljs-string">&quot;X&quot;</span>, <span class="hljs-string">&quot;X&quot;</span>, <span class="hljs-string">&quot;X&quot;</span>, <span class="hljs-string">&quot;X&quot;</span>, <span class="hljs-string">&quot;E&quot;</span>, <span class="hljs-string">&quot;X&quot;</span>, <span class="hljs-string">&quot;X&quot;</span>, <span class="hljs-string">&quot;X&quot;</span>, <span class="hljs-string">&quot;X&quot;</span>, <span class="hljs-string">&quot;X&quot;</span>, <span class="hljs-string">&quot;X&quot;</span>, <span class="hljs-string">&quot;X&quot;</span>, <span class="hljs-string">&quot;X&quot;</span>, <span class="hljs-string">&quot;X&quot;</span>, <span class="hljs-string">&quot;X&quot;</span>, <span class="hljs-string">&quot; &quot;</span>, <span class="hljs-string">&quot;X&quot;</span>, <span class="hljs-string">&quot;!&quot;</span>, <span class="hljs-string">&quot;X&quot;</span>];
+</code></pre></div>
+<p>Ici, nous avons un tableau avec beaucoup de string différentes. Ta mission est d'utiliser une boucle pour ignorer la lettre <strong>&quot;X&quot;</strong> (en utilisant une condition) et <code>console.log</code> pour révéler le message.</p>
+<p>Poste ton code en solution.</p>
+<h3>Critères d'acceptation</h3>
+<ul>
+<li>[ ] Le message secret est décodé</li>
+</ul>
+
+  </div>
+  
+</article>
+
+<nav class="nav-quete">
+  <a class="nav-quete__lien nav-quete__lien--prec" href="../../javascript/009-js-basics-07bis-les-tableaux-autres-methodes-utiles/index.html">
+           <span class="nav-quete__sens">← Précédent</span>
+           <span class="nav-quete__titre">👩‍🏫 JS Basics 07bis - Les tableaux - Autres méthodes utiles</span>
+         </a>
+  <a class="nav-quete__lien nav-quete__lien--suiv" href="../../javascript/011-js-basics-09-les-objets/index.html">
+           <span class="nav-quete__sens">Suivant →</span>
+           <span class="nav-quete__titre">👩‍🏫 JS Basics 09 - Les objets</span>
+         </a>
+</nav>
+</main>
+<footer class="pied">
+  <p>Archive personnelle des cours suivis à la Wild Code School. Copie hors ligne à usage strictement privé.</p>
+</footer>
+
+<script src="../../assets/copie-code.js"></script>
+<script src="../../assets/progression.js"></script>
+</body>
+</html>

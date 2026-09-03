@@ -1,0 +1,45 @@
+{
+  "id": 1278,
+  "titre": "👩‍🏫 JS Basics 06 - Les fonctions",
+  "titres": {
+    "fr": "👩‍🏫 JS Basics 06 - Les fonctions"
+  },
+  "theme": {
+    "id": 9,
+    "slug": "javascript",
+    "nom": "JavaScript"
+  },
+  "creeLe": "2020-07-08T13:14:50.116+02:00",
+  "difficulte": "0",
+  "dureeEstimee": null,
+  "modeValidation": "self",
+  "chapitres": [
+    {
+      "id": 12600,
+      "type": "content",
+      "langue": "fr",
+      "majLe": "2024-11-09T11:16:09.926+01:00",
+      "caracteres": 9018
+    }
+  ],
+  "ressources": [
+    {
+      "link": "https://www.youtube.com/watch?v=QcJi-Tiie_s",
+      "description": "Comprendre facilememnt les fonctions (déclarer, appeler) :)"
+    },
+    {
+      "link": "https://www.youtube.com/watch?v=9OJLxDxyNg4",
+      "description": "Toutes les bases du JS dont les fonctions très bien expliquées en 10min (à 1:23:27) "
+    },
+    {
+      "link": "https://www.youtube.com/watch?v=JljG3Abdcuk&list=PLzyGb02PQ53l0Iy9tVMyYxTzl-0RRufzJ",
+      "description": "Definitely to check out if you need to understand how JS works"
+    },
+    {
+      "link": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Template_literals#string_interpolation",
+      "description": "General information about template literals including string interpolation"
+    }
+  ],
+  "urlOrigine": "https://odyssey.wildcodeschool.com/quests/1278",
+  "archiveLe": "2026-09-02T20:54:40.852Z"
+}

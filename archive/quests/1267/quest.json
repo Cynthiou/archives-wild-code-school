@@ -1,0 +1,53 @@
+{
+  "id": 1267,
+  "titre": "👩‍🏫 JS Basics 02 - Syntaxe et concepts de base",
+  "titres": {
+    "fr": "👩‍🏫 JS Basics 02 - Syntaxe et concepts de base"
+  },
+  "theme": {
+    "id": 9,
+    "slug": "javascript",
+    "nom": "JavaScript"
+  },
+  "creeLe": "2020-07-01T19:05:38.109+02:00",
+  "difficulte": "0",
+  "dureeEstimee": null,
+  "modeValidation": "self",
+  "chapitres": [
+    {
+      "id": 12598,
+      "type": "content",
+      "langue": "fr",
+      "majLe": "2024-11-09T11:13:15.571+01:00",
+      "caracteres": 11801
+    }
+  ],
+  "ressources": [
+    {
+      "link": "https://www.youtube.com/watch?v=JljG3Abdcuk&list=PLzyGb02PQ53l0Iy9tVMyYxTzl-0RRufzJ",
+      "description": "This link is very good to know how JS work"
+    },
+    {
+      "link": "https://developer.mozilla.org/fr/docs/Web/JavaScript/JavaScript_technologies_overview",
+      "description": "Pout en savoir un peu plus sur ECMAScript"
+    },
+    {
+      "link": "https://www.freecodecamp.org/learn/javascript-algorithms-and-data-structures/",
+      "description": "Je pense que tout le monde connait ce site. Ce site est vraiement bien pour apprendre les structures de donées et l'algorithme en JavaScript et pour apprendre React et d'autres langages, perso un peu difficile mais c'est efficace."
+    },
+    {
+      "link": "https://www.youtube.com/watch?v=Ew7KG2j8eII&ab_channel=FromScratch-Led%C3%A9veloppementWebdez%C3%A9ro",
+      "description": "Vidéo que j'ai adoré, en Français pour les bases et la suite ;) "
+    },
+    {
+      "link": "https://developer.mozilla.org/fr/docs/Learn/JavaScript/First_steps/Math",
+      "description": "Mathématique de base en JavaScript  Nombres et Operateurs "
+    },
+    {
+      "link": "https://jeremymouzin.com/blog/les-points-virgules-en-javascript-le-guide-definitif/",
+      "description": "Elle explique que le point-virgule est à la fois obligatoire selon la norme, mais également facultatif car la norme dit aussi que l'interpréteur doit rajouter automatiquement le point-virgule si absent."
+    }
+  ],
+  "urlOrigine": "https://odyssey.wildcodeschool.com/quests/1267",
+  "archiveLe": "2026-09-02T20:54:24.001Z"
+}

@@ -1,0 +1,42 @@
+{
+  "id": 2166,
+  "titre": "Préparation technique",
+  "titres": {
+    "en": "Technical preparation",
+    "fr": "Préparation technique"
+  },
+  "theme": {
+    "id": 155,
+    "slug": "on-boarding-students",
+    "nom": "Onboarding students"
+  },
+  "creeLe": "2022-07-18T11:32:52.568+02:00",
+  "difficulte": "0",
+  "dureeEstimee": null,
+  "modeValidation": "self",
+  "chapitres": [
+    {
+      "id": 16805,
+      "type": "content",
+      "langue": "fr",
+      "majLe": "2025-02-28T16:34:32.691+01:00",
+      "caracteres": 2126
+    }
+  ],
+  "ressources": [
+    {
+      "link": "https://sqlpd.com/",
+      "description": "Pour le SQL, il y a aussi le jeu https://sqlpd.com/  qui est sympa pour une première approche."
+    },
+    {
+      "link": "https://scrimba.com",
+      "description": "Pros: Pour CSS ou javascript, react et  autres sujets.On peut interagir avec le même écran que on voit la vidéo."
+    },
+    {
+      "link": "https://sql.sh/",
+      "description": "Cours et tutoriels sur le langage SQL"
+    }
+  ],
+  "urlOrigine": "https://odyssey.wildcodeschool.com/quests/2166",
+  "archiveLe": "2026-09-02T20:53:37.046Z"
+}

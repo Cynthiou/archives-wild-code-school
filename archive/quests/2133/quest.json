@@ -1,0 +1,54 @@
+{
+  "id": 2133,
+  "titre": "Git/GitHub 1 : Découvrir GitHub",
+  "titres": {
+    "en": "Git/GitHub 1: Discovering GitHub",
+    "fr": "Git/GitHub 1 : Découvrir GitHub"
+  },
+  "theme": {
+    "id": 6,
+    "slug": "git",
+    "nom": "Git"
+  },
+  "creeLe": "2022-06-27T09:41:10.946+02:00",
+  "difficulte": "0",
+  "dureeEstimee": null,
+  "modeValidation": "student",
+  "chapitres": [
+    {
+      "id": 11825,
+      "type": "content",
+      "langue": "fr",
+      "majLe": "2024-07-15T16:25:12.947+02:00",
+      "caracteres": 4289
+    }
+  ],
+  "ressources": [
+    {
+      "link": "https://www.youtube.com/watch?v=eXF0epLeCgo",
+      "description": "Introduction à Github en français"
+    },
+    {
+      "link": "https://grafikart.fr/tutoriels/git-presentation-1090#autoplay",
+      "description": "Un tuto assez complet et bien expliqué pour commencer utiliser git "
+    },
+    {
+      "link": "https://learngitbranching.js.org/?locale=fr_FR",
+      "description": "exo sur git pour bien le prendre  en main :)"
+    },
+    {
+      "link": "https://raw.githubusercontent.com/JustFS/cours-github/master/versionner.png",
+      "description": "GitHub Cheat Sheet / Versionner son travail"
+    },
+    {
+      "link": "https://www.youtube.com/watch?v=gp_k0UVOYMw&list=PLB4ymnBGpxDdK6Mr-RSZDaNIu3boHsZvQ&index=3",
+      "description": "Introduction simple a Git en francais"
+    },
+    {
+      "link": "https://www.youtube.com/playlist?list=PLRqwX-V7Uu6ZF9C0YMKuns9sLDzK6zoiV",
+      "description": "Git and GitHub for Poets: the full playlist including the video shared in the quest."
+    }
+  ],
+  "urlOrigine": "https://odyssey.wildcodeschool.com/quests/2133",
+  "archiveLe": "2026-09-02T20:53:21.635Z"
+}

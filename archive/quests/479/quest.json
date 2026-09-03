@@ -1,0 +1,92 @@
+{
+  "id": 479,
+  "titre": "01 - Introduction aux bases de données relationnelles",
+  "titres": {
+    "fr": "01 - Introduction aux bases de données relationnelles"
+  },
+  "theme": {
+    "id": 8,
+    "slug": "database",
+    "nom": "Base de données"
+  },
+  "creeLe": "2019-03-13T09:52:20.846+01:00",
+  "difficulte": "",
+  "dureeEstimee": null,
+  "modeValidation": "student",
+  "chapitres": [
+    {
+      "id": 12506,
+      "type": "content",
+      "langue": "fr",
+      "majLe": "2024-10-31T16:21:48.446+01:00",
+      "caracteres": 11374
+    },
+    {
+      "id": 12498,
+      "type": "solution",
+      "langue": "fr",
+      "majLe": "2024-10-31T10:56:49.462+01:00",
+      "caracteres": 2251
+    }
+  ],
+  "ressources": [
+    {
+      "link": "https://dev.mysql.com/doc/refman/8.0/en/keywords.html#keywords-in-current-series",
+      "description": "Liste des mots-clés et mots réservés MySQL 8.0"
+    },
+    {
+      "link": "https://www.youtube.com/watch?v=e8yuiYjRPbU",
+      "description": "nouveau lien de la video youtube celui actuellement present ne fonctionne plus"
+    },
+    {
+      "link": "https://www.tutorialspoint.com/adding-mysql-to-windows-path",
+      "description": "Article complementaire pour rajouter mysql au variable d'environnement windows"
+    },
+    {
+      "link": "https://www.youtube.com/watch?v=oAU7_eKBY1s",
+      "description": "permet de comprendre la prise en main sur MySQL Workbench"
+    },
+    {
+      "link": "https://phoenixnap.com/kb/import-and-export-mysql-database",
+      "description": "Comment importer une base de données MySQL sous Linux (attention dans les lignes de code à copier, les - sont à rectifier)"
+    },
+    {
+      "link": "https://buzut.net/maitrisez-mysql-en-cli/#Gestion-des-bases",
+      "description": "Pour avoir quelques commandes SQL en français"
+    },
+    {
+      "link": "https://www.youtube.com/watch?v=HXV3zeQKqGY&t=4275s",
+      "description": "Bon auto pour les bases (en anglais)"
+    },
+    {
+      "link": "https://medium.com/tableplus/getting-started-with-tableplus-1ad69e3a635d",
+      "description": "article complémentaire pour découvrir l'interface TablePlus"
+    },
+    {
+      "link": "https://www.it-connect.fr/importer-un-fichier-sql-en-ligne-de-commande/",
+      "description": "Importer un fichier .sql en ligne de commande﻿"
+    },
+    {
+      "link": "https://www.w3schools.com/sql/sql_datatypes.asp",
+      "description": "pour les types "
+    },
+    {
+      "link": "https://waytolearnx.com/2019/09/liste-des-commandes-mysql.html",
+      "description": "liste de commande SQL EN FR"
+    },
+    {
+      "link": "https://www.youtube.com/watch?v=Ecv0PEOvLq0",
+      "description": "vidéo claire pour comprendre le SQL"
+    },
+    {
+      "link": "https://openclassrooms.com/fr/courses/6971126-implementez-vos-bases-de-donnees-relationnelles-avec-sql/7142232-creez-votre-base-de-donnees-bdd",
+      "description": "Pour télécharger mySQL sur mac/windows/linux et le paramétrer"
+    },
+    {
+      "link": "https://buzut.net/maitrisez-mysql-en-cli/",
+      "description": "Les différentes commandes"
+    }
+  ],
+  "urlOrigine": "https://odyssey.wildcodeschool.com/quests/479",
+  "archiveLe": "2026-09-02T20:47:20.467Z"
+}

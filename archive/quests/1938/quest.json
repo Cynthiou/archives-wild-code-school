@@ -1,0 +1,34 @@
+{
+  "id": 1938,
+  "titre": "👩‍🏫 JS Intermédiaire 05bis - Programmation Orientée Objet - Prototype",
+  "titres": {
+    "en": "👩‍🏫 JS Intermediate 05bis - Object Oriented Programming - Prototypes",
+    "fr": "👩‍🏫 JS Intermédiaire 05bis - Programmation Orientée Objet - Prototype"
+  },
+  "theme": {
+    "id": 91,
+    "slug": "more-javascript",
+    "nom": "JavaScript - Beyond the Basics"
+  },
+  "creeLe": "2022-02-21T10:01:05.315+01:00",
+  "difficulte": "",
+  "dureeEstimee": null,
+  "modeValidation": "self",
+  "chapitres": [
+    {
+      "id": 11153,
+      "type": "content",
+      "langue": "fr",
+      "majLe": "2024-02-21T18:41:29.478+01:00",
+      "caracteres": 7508
+    }
+  ],
+  "ressources": [
+    {
+      "link": "https://www.youtube.com/watch?v=q9eaEnfIfz4",
+      "description": "Voila voila, tout en français et c'est clair"
+    }
+  ],
+  "urlOrigine": "https://odyssey.wildcodeschool.com/quests/1938",
+  "archiveLe": "2026-09-02T20:55:01.162Z"
+}

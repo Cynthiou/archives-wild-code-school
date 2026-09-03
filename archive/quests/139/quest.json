@@ -1,0 +1,28 @@
+{
+  "id": 139,
+  "titre": "3. Les chaînes de caractères en PHP",
+  "titres": {
+    "fr": "3. Les chaînes de caractères en PHP"
+  },
+  "theme": {
+    "id": 25,
+    "slug": "php",
+    "nom": "PHP"
+  },
+  "creeLe": "2018-02-08T17:37:59.968+01:00",
+  "difficulte": "",
+  "dureeEstimee": null,
+  "modeValidation": "student",
+  "chapitres": [
+    {
+      "id": 11403,
+      "type": "content",
+      "langue": "fr",
+      "majLe": "2024-04-15T11:13:47.931+02:00",
+      "caracteres": 15919
+    }
+  ],
+  "ressources": [],
+  "urlOrigine": "https://odyssey.wildcodeschool.com/quests/139",
+  "archiveLe": "2026-09-02T23:21:29.146Z"
+}

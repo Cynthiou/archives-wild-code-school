@@ -1,0 +1,234 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>👩‍🏫 JS Basics 06 - Les fonctions — Archives WCS</title>
+<link rel="stylesheet" href="../../assets/style.css">
+</head>
+<body style="--teinte:#856400">
+<header class="entete">
+  <a class="entete__marque" href="../../index.html">Archives Wild Code School</a>
+</header>
+<main class="contenu">
+<nav class="ariane"><a href="../../index.html">Accueil</a><span class="ariane__sep">›</span><a href="../../javascript/index.html">JavaScript</a><span class="ariane__sep">›</span><span aria-current="page">👩‍🏫 JS Basics 06 - Les fonctions</span></nav>
+
+<article class="quete">
+  <header class="quete__entete">
+    <a class="pastille pastille--teintee" href="../../javascript/index.html">JavaScript</a>
+    <h1>👩‍🏫 JS Basics 06 - Les fonctions</h1>
+    <p class="quete__meta">Quête 6 sur 11 · 5 images archivées</p>
+  </header>
+  <div class="cours">
+<h2>Objectifs</h2>
+<ul>
+<li>Écrire et exécuter des fonctions en JS</li>
+<li>Éviter de te répéter (<strong>D.R.Y : Don't Repeat Yourself</strong>)</li>
+</ul>
+<h2>Pré-requis</h2>
+<p>Avoir validé les quêtes suivantes :</p>
+<div class="renvois"><div class="renvois__titre">Quêtes liées</div><ul><li><a href="../../javascript/001-js-basics-01-qu-est-ce-que-javascript/index.html">Quête 1262</a></li><li><a href="../../javascript/002-js-basics-02-syntaxe-et-concepts-de-base/index.html">Quête 1267</a></li><li><a href="../../javascript/003-js-basics-03-les-variables/index.html">Quête 1268</a></li><li><a href="../../javascript/004-js-basics-04-les-types-de-donnees/index.html">Quête 1269</a></li><li><a href="../../javascript/005-js-basics-05-les-instructions-conditionnelles/index.html">Quête 1270</a></li></ul></div>
+<h2>Introduction</h2>
+<p>Dans les quêtes précédentes, tu as <strong>découvert ce qu'est JavaScript et à quoi ressemble la syntaxe</strong>.
+Tu as également appris à <strong>créer des variables</strong>, manipuler différents <strong>types de données</strong> et écrire des <strong>conditions</strong>. Cette quête va introduire le (vaste) sujet des fonctions en Javascript.</p>
+<p>Voici un des grands principes du développement :</p>
+<div class="encadre encadre--story"><div class="encadre__titre">Le récit</div><div class="encadre__corps"><p>ÉVITE DE TE RÉPÉTER (<strong>D.R.Y : Don't Repeat Yourself</strong>)</p>
+</div></div>
+<p><img src="images/001-this-is-not-the-dry-you-are-looking-for-by.gif" alt="This Is Not The DRY You Are Looking For | by Nicolò Pignatelli ..." loading="lazy"></p>
+<p>Cela signifie que tu ne devrais pas écrire un bout de code qui fait sensiblement la même chose à plusieurs endroits différents.</p>
+<p>Une façon d'éviter de se répéter est de créer des <strong>fonctions</strong>.
+Ce sont des <strong>blocs de code</strong> que l'on peut <strong>exécuter</strong> autant de fois que l'on veut, sans avoir à réécrire les instructions systématiquement.</p>
+<p>En fait, <strong>tu as déjà utilisé des fonctions</strong>. Rappelle-toi des quêtes précédentes avec <code>console.log</code> et <code>prompt</code> ! Maintenant, il est temps d'apprendre à créer tes propres fonctions.</p>
+<p><strong>C'est parti !</strong></p>
+<p><img src="images/002-function-photo.png" alt="Function photo" loading="lazy"></p>
+<h2>Sommaire</h2>
+<h2>Créer une fonction</h2>
+<p><img src="images/003-lego.png" alt="Lego" loading="lazy"></p>
+<p>Pour <strong>déclarer une fonction</strong>, tu peux utiliser le mot clé <code>function</code> suivi du nom de la fonction.</p>
+<div class="bloc-code"><div class="bloc-code__langue">javascript</div><pre><code class="hljs language-javascript"><span class="hljs-keyword">function</span> <span class="hljs-title function_">helloWorld</span> (<span class="hljs-params"></span>){
+  <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(<span class="hljs-string">&quot;Hello,&quot;</span>);
+  <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(<span class="hljs-string">&quot;World!&quot;</span>);
+}
+</code></pre></div>
+<p>Pour <strong>appeler</strong> (exécuter/invoquer) la fonction, tu dois écrire son nom <strong>suivi par des parenthèses</strong> :</p>
+<div class="bloc-code"><div class="bloc-code__langue">javascript</div><pre><code class="hljs language-javascript"><span class="hljs-title function_">helloWorld</span>();
+</code></pre></div>
+<div class="bloc-code"><div class="bloc-code__langue">replit</div><pre><code class="hljs language-replit">https://replit.com/@LonardFlachs/BoilingYellowgreenLegacy
+</code></pre></div>
+<div class="encadre encadre--info"><div class="encadre__titre">Info</div><div class="encadre__corps"><p>Clique sur le bouton &quot;play&quot; pour exécuter le code. Tu peux également modifier le code pour tester les choses par toi-même :)</p>
+</div></div>
+<h2>Paramètres/Arguments d'une fonction</h2>
+<p>Une fonction peut accepter un ou plusieurs <strong>paramètres</strong>.</p>
+<p>Les paramètres sont des <strong>données</strong> que la fonction va prendre en entrée. Ces données seront donc disponibles <strong>dans le contexte de la fonction</strong> afin que cette dernière puisse les manipuler.</p>
+<p>Voici un exemple :</p>
+<p><img src="images/004-image.png" alt="image" loading="lazy"></p>
+<p>Dans cet exemple, on a créé une <strong>fonction</strong> nommée <code>sayHello</code> qui accepte une donnée nommée <code>name</code> en <strong>paramètre</strong>.</p>
+<p>Tu peux <strong>assigner une valeur</strong> à un paramètre entre les <strong>parenthèses</strong> quand tu appelles la fonction.
+Tu dois différencier le paramètre (la variable <code>name</code>) et l'argument (la valeur <code>&quot;Bob&quot;</code>).</p>
+<p>Tu es libre de donner le nom que tu souhaites au paramètre : <code>name</code>, <code>firstName</code> ou quelque chose d'autre.</p>
+<div class="encadre encadre--warning"><div class="encadre__titre">Attention</div><div class="encadre__corps"><p>Attention : Fais tout de même en sorte que ce nom soit suffisamment explicite pour que toi et les autres compreniez directement ce que représente la donnée.</p>
+</div></div>
+<p><strong>🔬 Fais une expérience</strong></p>
+<p>Voici maintenant un exemple d'une fonction qui accepte plusieurs paramètres :</p>
+<div class="bloc-code"><div class="bloc-code__langue">replit</div><pre><code class="hljs language-replit">https://repl.it/@LonardFlachs/SingleSpatialBlogclient
+</code></pre></div>
+<div class="encadre encadre--info"><div class="encadre__titre">Info</div><div class="encadre__corps"><p>Clique sur le bouton &quot;play&quot; pour exécuter le code. Tu dois également modifier le code pour tester les choses par toi-même :)</p>
+</div></div>
+<p>Essaie <strong>d'appeler la fonction</strong> plusieurs fois avec des paramètres différents pour voir ce qu'il se passe.</p>
+<h3>Paramètre par défaut</h3>
+<p>Tu peux définir des valeurs par défaut pour les paramètres de tes fonctions.</p>
+<p>De cette façon, si aucun argument n'est donné à la fonction lors de son appel, une valeur par défaut sera utilisée. C'est un bon moyen de se protéger des erreurs.</p>
+<div class="bloc-code"><div class="bloc-code__langue">javascript</div><pre><code class="hljs language-javascript"><span class="hljs-keyword">function</span> <span class="hljs-title function_">sayHello</span>(<span class="hljs-params">name = <span class="hljs-string">&quot;World&quot;</span></span>) {
+  <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(<span class="hljs-string">`Hello, <span class="hljs-subst">${name}</span>!`</span>);
+}
+
+<span class="hljs-title function_">sayHello</span>();
+<span class="hljs-comment">// Hello, World!</span>
+
+<span class="hljs-title function_">sayHello</span>(<span class="hljs-string">&quot;Bob&quot;</span>);
+<span class="hljs-comment">// Hello, Bob!</span>
+</code></pre></div>
+<h2>Return</h2>
+<p>Tu viens de voir que les paramètres d'une fonction représentent <strong>ses entrées</strong>.
+Mais une fonction peut également produire <strong>une sortie</strong> qu'on appelle <strong>valeur de retour</strong>.</p>
+<div class="bloc-code"><div class="bloc-code__langue">replit</div><pre><code class="hljs language-replit">https://repl.it/@LonardFlachs/YellowishMeanLocations
+</code></pre></div>
+<div class="encadre encadre--info"><div class="encadre__titre">Info</div><div class="encadre__corps"><p>Clique sur le bouton &quot;play&quot; pour exécuter le code. Tu peux également modifier le code pour tester les choses par toi-même :)</p>
+</div></div>
+<p>Dans ce code, on a créé une fonction pour calculer la somme de deux nombres.
+Cette dernière accepte en paramètres les nombres à additionner : <code>a</code> et <code>b</code>.
+La somme <code>a + b</code> est <strong>renvoyée à l'endroit où on a appelé la fonction</strong> grâce au mot-clé <code>return</code>.
+Maintenant, que se passe-t-il exactement à la ligne 4 ? On appelle la fonction <code>sum</code> avec les <strong>arguments</strong> <code>1</code> et <code>2</code>.
+Le code de la fonction est exécuté et <strong>renvoie la valeur</strong> <code>3</code> au code appelant à la ligne 4.
+Une fois exécutée, l'interpréteur Javascript va <strong>substituer l'expression correspondante</strong> à l'appel de la fonction par sa valeur de retour une fois exécutée.
+À ce moment là, tout se passe donc comme si on avait <code>console.log(3)</code> au lieu de <code>console.log(sum(1, 2))</code>.</p>
+<p>Il n'est pas obligatoire de toujours spécifier une valeur de retour.</p>
+<p><strong>Si rien n'est spécifié, la fonction renverra <code>undefined</code> par défaut.</strong></p>
+<div class="encadre encadre--warning"><div class="encadre__titre">Attention</div><div class="encadre__corps"><p>L'utilisation du mot-clé &quot;return&quot; stoppe immédiatement l'exécution de la fonction pour revenir au code appelant. Les lignes de code après un <code>return</code> ne seront donc jamais prises en compte.</p>
+</div></div>
+<div class="bloc-code"><div class="bloc-code__langue">javascript</div><pre><code class="hljs language-javascript"><span class="hljs-keyword">function</span> <span class="hljs-title function_">sum</span>(<span class="hljs-params">a, b</span>){
+  <span class="hljs-keyword">return</span> a + b;
+  <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(a + b); <span class="hljs-comment">// This code will never be run</span>
+}
+<span class="hljs-title function_">sum</span>(<span class="hljs-number">1</span>, <span class="hljs-number">2</span>);
+</code></pre></div>
+<p>Voyons maintenant un exemple un peu plus complexe :</p>
+<div class="bloc-code"><div class="bloc-code__langue">replit</div><pre><code class="hljs language-replit">https://repl.it/@LonardFlachs/StunningChiefButtons
+</code></pre></div>
+<div class="encadre encadre--info"><div class="encadre__titre">Info</div><div class="encadre__corps"><p>Clique sur le bouton &quot;play&quot; pour exécuter le code. Tu peux également modifier le code pour tester les choses par toi-même :)</p>
+</div></div>
+<p>Dans ce code, tu vois une fonction <code>login</code> qui accepte deux paramètres : <code>name</code> (l'identifiant de l'utilisateur) et <code>password</code> (son mot de passe).
+Cette fonction va retourner <code>true</code> ou bien <code>false</code> selon la validité des informations de connexion fournies en paramètres.</p>
+<p>Pour tester la fonction, tu vois 2 variables <code>userName</code> et <code>userPassword</code> qui seront initialisées par l'utilisateur, via <code>prompt</code>.</p>
+<p>Le code vérifie ensuite si la valeur de retour de la fonction login appelée avec les arguments <code>userName</code> et <code>userPassword</code> est <code>true</code>.
+Si c'est le cas, on affiche <code>&quot;Welcome !&quot;</code>, sinon on affiche <code>&quot;Wrong credentials...&quot;</code>.</p>
+<h2>Portée (scope) / Contexte</h2>
+<p>En Javascript, dès que l'on écrit du code, <strong>le contexte est très important</strong>.
+Tu ne peux pas utiliser une variable déclarée dans une fonction en dehors de cette fonction.</p>
+<div class="bloc-code"><div class="bloc-code__langue">javascript</div><pre><code class="hljs language-javascript"><span class="hljs-keyword">function</span> <span class="hljs-title function_">sayMyName</span>(<span class="hljs-params"></span>) {
+  <span class="hljs-keyword">const</span> name = <span class="hljs-string">&quot;Pierre&quot;</span>
+  <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(name)
+  <span class="hljs-comment">// works fine within the context of the function</span>
+}
+
+<span class="hljs-keyword">function</span> <span class="hljs-title function_">sayMyFullName</span>(<span class="hljs-params"></span>) {
+  <span class="hljs-keyword">const</span> lastName = <span class="hljs-string">&#x27;Gerard&#x27;</span>
+  <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(lastName + <span class="hljs-string">&#x27; &#x27;</span> + name)
+  <span class="hljs-comment">// wont work: name is declared in an other function</span>
+}
+
+<span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(lastName + <span class="hljs-string">&#x27; &#x27;</span> + name)
+<span class="hljs-comment">// wont work either: lastname and name only exists inside their functions</span>
+</code></pre></div>
+<p>Par exemple, ici la variable <code>name</code> sera disponible uniquement dans le contexte de <code>sayMyName</code>, pas dans le contexte global.</p>
+<p>La fonction s'exécutera donc dans <strong>son propre contexte</strong> et aura <strong>son propre espace mémoire</strong>.</p>
+<p>Sachant tout cela, nous pouvons créer et appeler des fonctions dans nos projets, mais nous devons tenir compte du contexte.</p>
+<h2>Fonctions fléchées</h2>
+<p><img src="images/005-image.png" alt="image" loading="lazy"></p>
+<p>Les fonctions fléchées sont une autre façon de créer des fonctions. Voici à quoi ressemble la syntaxe :</p>
+<div class="bloc-code"><div class="bloc-code__langue">javascript</div><pre><code class="hljs language-javascript"><span class="hljs-keyword">const</span> <span class="hljs-title function_">myFunction</span> = (<span class="hljs-params">arg1, arg2</span>) =&gt; {
+  <span class="hljs-comment">// Code goes here</span>
+};
+</code></pre></div>
+<p><strong>🔬 Expérience</strong></p>
+<p>Transforme cette fonction en une fonction fléchée</p>
+<div class="bloc-code"><div class="bloc-code__langue">codesandbox</div><pre><code class="hljs language-codesandbox">https://codesandbox.io/s/bind-example-forked-fpty0?fontsize=14&amp;hidenavigation=1&amp;module=%2Fsrc%2Findex.js&amp;theme=dark
+</code></pre></div>
+<details class="solution"><summary>Voir la solution</summary><div class="solution__corps"><div class="bloc-code"><div class="bloc-code__langue">javascript</div><pre><code class="hljs language-javascript"><span class="hljs-keyword">const</span> <span class="hljs-title function_">sayHello</span> = (<span class="hljs-params">name</span>) =&gt; {
+  <span class="hljs-keyword">return</span> <span class="hljs-string">`Hello, <span class="hljs-subst">${name}</span>`</span>;
+};
+
+<span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(<span class="hljs-title function_">sayHello</span>(<span class="hljs-string">&quot;Bob&quot;</span>));
+</code></pre></div>
+</div></details>
+<p>Lorsque tu utilises les <strong>fonctions fléchées</strong>, tu peux rendre le code encore plus court.</p>
+<p>Si tu n'utilises pas les accolades après la flèche, alors ce qui sera après la flèche sera la valeur de retour (<strong>return</strong>) de la <strong>fonction</strong>.</p>
+<div class="bloc-code"><div class="bloc-code__langue">javascript</div><pre><code class="hljs language-javascript"><span class="hljs-keyword">function</span> <span class="hljs-title function_">sum</span>(<span class="hljs-params">a, b</span>) {
+  <span class="hljs-keyword">return</span> a + b
+}
+
+<span class="hljs-comment">// equivalent to</span>
+<span class="hljs-keyword">const</span> <span class="hljs-title function_">sum</span> = (<span class="hljs-params">a, b</span>) =&gt; { <span class="hljs-keyword">return</span> a + b };
+
+<span class="hljs-comment">// also equivalent to</span>
+<span class="hljs-keyword">const</span> <span class="hljs-title function_">sum</span> = (<span class="hljs-params">a, b</span>) =&gt; a + b;
+</code></pre></div>
+<h2>Ressources</h2>
+<a class="ressource" href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Functions" target="_blank" rel="noopener noreferrer">
+  <div class="ressource__icone">↗</div>
+  <div class="ressource__texte">
+    <div class="ressource__titre">MDN - functions in JavaScript</div>
+    <div class="ressource__desc"><p>La section &quot;fonction&quot; de la documentation officielle MDN, une référence !</p>
+</div>
+    <div class="ressource__hote">developer.mozilla.org</div>
+  </div>
+</a>
+<a class="ressource" href="https://codeburst.io/javascript-functions-understanding-the-basics-207dbf42ed99" target="_blank" rel="noopener noreferrer">
+  <div class="ressource__icone">↗</div>
+  <div class="ressource__texte">
+    <div class="ressource__titre">Codeburst.io - JavaScript Functions — Understanding The Basics</div>
+    <div class="ressource__desc"><p>Un article super qui explique ce que sont les fonctions en Javascript</p>
+</div>
+    <div class="ressource__hote">codeburst.io</div>
+  </div>
+</a>
+<p>Une vidéo géniale sur les fonctions :</p>
+<a class="video-lien" href="https://www.youtube.com/watch?v=N8ap4k_1QEQ" target="_blank" rel="noopener noreferrer">
+  <div class="video-lien__play">▶</div>
+  <div class="video-lien__texte">
+    <div class="video-lien__titre">Vidéo YouTube</div>
+    <div class="video-lien__url">https://www.youtube.com/watch?v=N8ap4k_1QEQ</div>
+  </div>
+</a>
+
+  </div>
+  <section class="ressources-quete">
+  <h2>Ressources partagées sur cette quête</h2>
+  <ul class="ressources-liste">
+    <li><a href="https://www.youtube.com/watch?v=QcJi-Tiie_s" target="_blank" rel="noopener noreferrer">Comprendre facilememnt les fonctions (déclarer, appeler) :)</a><span class="ressources-liste__url">https://www.youtube.com/watch?v=QcJi-Tiie_s</span></li>
+    <li><a href="https://www.youtube.com/watch?v=9OJLxDxyNg4" target="_blank" rel="noopener noreferrer">Toutes les bases du JS dont les fonctions très bien expliquées en 10min (à 1:23:27) </a><span class="ressources-liste__url">https://www.youtube.com/watch?v=9OJLxDxyNg4</span></li>
+    <li><a href="https://www.youtube.com/watch?v=JljG3Abdcuk&amp;list=PLzyGb02PQ53l0Iy9tVMyYxTzl-0RRufzJ" target="_blank" rel="noopener noreferrer">Definitely to check out if you need to understand how JS works</a><span class="ressources-liste__url">https://www.youtube.com/watch?v=JljG3Abdcuk&amp;list=PLzyGb02PQ53l0Iy9tVMyYxTzl-0RRufzJ</span></li>
+    <li><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Template_literals#string_interpolation" target="_blank" rel="noopener noreferrer">General information about template literals including string interpolation</a><span class="ressources-liste__url">https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Template_literals#string_interpolation</span></li>
+  </ul>
+</section>
+</article>
+
+<nav class="nav-quete">
+  <a class="nav-quete__lien nav-quete__lien--prec" href="../../javascript/005-js-basics-05-les-instructions-conditionnelles/index.html">
+           <span class="nav-quete__sens">← Précédent</span>
+           <span class="nav-quete__titre">👩‍🏫 JS Basics 05 - Les instructions conditionnelles</span>
+         </a>
+  <a class="nav-quete__lien nav-quete__lien--suiv" href="../../javascript/007-js-basics-06bis-fonctions-d-ordre-superieur/index.html">
+           <span class="nav-quete__sens">Suivant →</span>
+           <span class="nav-quete__titre">👩‍🏫 JS Basics 06bis - Fonctions d'ordre supérieur</span>
+         </a>
+</nav>
+</main>
+<footer class="pied">
+  <p>Archive personnelle des cours suivis à la Wild Code School. Copie hors ligne à usage strictement privé.</p>
+</footer>
+
+<script src="../../assets/copie-code.js"></script>
+<script src="../../assets/progression.js"></script>
+</body>
+</html>

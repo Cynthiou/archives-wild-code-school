@@ -1,0 +1,1122 @@
+{
+  "mesureLe": "2026-09-02T23:57:18.137Z",
+  "totalOctets": 66726558400,
+  "videos": [
+    {
+      "id": 8937,
+      "titre": "TuneLab - On reprend les bases",
+      "categorie": "Live coding",
+      "date": "2026-08-31T00:00:00.000+02:00",
+      "dureeMinutes": 60,
+      "octets": 496373086,
+      "fichier": "Live coding/2026-08-31 - TuneLab - On reprend les bases.mp4"
+    },
+    {
+      "id": 8936,
+      "titre": "SQL - Advanced",
+      "categorie": "Cours",
+      "date": "2026-08-24T00:00:00.000+02:00",
+      "dureeMinutes": 60,
+      "octets": 461266244,
+      "fichier": "Cours/2026-08-24 - SQL - Advanced.mp4"
+    },
+    {
+      "id": 8935,
+      "titre": "Correction : SQL avancé",
+      "categorie": "Live coding",
+      "date": "2026-08-24T00:00:00.000+02:00",
+      "dureeMinutes": 30,
+      "octets": 359687127,
+      "fichier": "Live coding/2026-08-24 - Correction SQL avancé.mp4"
+    },
+    {
+      "id": 8934,
+      "titre": "Atelier carrière #2",
+      "categorie": "Atelier",
+      "date": "2026-08-06T00:00:00.000+02:00",
+      "dureeMinutes": 90,
+      "octets": 1081012700,
+      "fichier": "Atelier/2026-08-06 - Atelier carrière #2.mp4"
+    },
+    {
+      "id": 8933,
+      "titre": "Live Coding : TuneLab #3 - US01 - Ajout d'un album - Backend",
+      "categorie": "Live coding",
+      "date": "2026-08-05T00:00:00.000+02:00",
+      "dureeMinutes": 90,
+      "octets": 410511363,
+      "fichier": "Live coding/2026-08-05 - Live Coding TuneLab #3 - US01 - Ajout d'un album - Backend.mp4"
+    },
+    {
+      "id": 8932,
+      "titre": "Live Coding : TuneLab #3 - US01 - Ajout d'un album - Backend",
+      "categorie": "Live coding",
+      "date": "2026-08-05T00:00:00.000+02:00",
+      "dureeMinutes": 90,
+      "octets": 595231308,
+      "fichier": "Live coding/2026-08-05 - Live Coding TuneLab #3 - US01 - Ajout d'un album - Backend.mp4"
+    },
+    {
+      "id": 8931,
+      "titre": "Live Coding : TuneLab #2 - Seeders",
+      "categorie": "Live coding",
+      "date": "2026-08-05T00:00:00.000+02:00",
+      "dureeMinutes": 120,
+      "octets": 624984051,
+      "fichier": "Live coding/2026-08-05 - Live Coding TuneLab #2 - Seeders.mp4"
+    },
+    {
+      "id": 8930,
+      "titre": "Live Coding : TuneLab #1 - Intro",
+      "categorie": "Live coding",
+      "date": "2026-08-04T00:00:00.000+02:00",
+      "dureeMinutes": 60,
+      "octets": 317211903,
+      "fichier": "Live coding/2026-08-04 - Live Coding TuneLab #1 - Intro.mp4"
+    },
+    {
+      "id": 8929,
+      "titre": "Monorepo - BDD",
+      "categorie": "Cours",
+      "date": "2026-08-04T00:00:00.000+02:00",
+      "dureeMinutes": 60,
+      "octets": 885648276,
+      "fichier": "Cours/2026-08-04 - Monorepo - BDD.mp4"
+    },
+    {
+      "id": 8928,
+      "titre": "Projet - Le backlog",
+      "categorie": "Live coding",
+      "date": "2026-08-03T00:00:00.000+02:00",
+      "dureeMinutes": 60,
+      "octets": 405857708,
+      "fichier": "Live coding/2026-08-03 - Projet - Le backlog.mp4"
+    },
+    {
+      "id": 8927,
+      "titre": "Monorepo - Intro",
+      "categorie": "Cours",
+      "date": "2026-08-03T00:00:00.000+02:00",
+      "dureeMinutes": 90,
+      "octets": 643487915,
+      "fichier": "Cours/2026-08-03 - Monorepo - Intro.mp4"
+    },
+    {
+      "id": 8926,
+      "titre": "Kata By Alexandra",
+      "categorie": "Masterclass",
+      "date": "2026-07-31T00:00:00.000+02:00",
+      "dureeMinutes": 60,
+      "octets": 213760529,
+      "fichier": "Masterclass/2026-07-31 - Kata By Alexandra.mp4"
+    },
+    {
+      "id": 8925,
+      "titre": "Project 3 - Launch",
+      "categorie": "Masterclass",
+      "date": "2026-07-30T00:00:00.000+02:00",
+      "dureeMinutes": 30,
+      "octets": 344789754,
+      "fichier": "Masterclass/2026-07-30 - Project 3 - Launch.mp4"
+    },
+    {
+      "id": 8924,
+      "titre": "Atelier carrière #1",
+      "categorie": "Masterclass",
+      "date": "2026-07-29T00:00:00.000+02:00",
+      "dureeMinutes": 90,
+      "octets": 912298598,
+      "fichier": "Masterclass/2026-07-29 - Atelier carrière #1.mp4"
+    },
+    {
+      "id": 8923,
+      "titre": "Connecter un back à un front",
+      "categorie": "Live coding",
+      "date": "2026-07-24T00:00:00.000+02:00",
+      "dureeMinutes": 90,
+      "octets": 859085441,
+      "fichier": "Live coding/2026-07-24 - Connecter un back à un front.mp4"
+    },
+    {
+      "id": 8922,
+      "titre": "Présentation du titre",
+      "categorie": "Masterclass",
+      "date": "2026-07-23T00:00:00.000+02:00",
+      "dureeMinutes": 120,
+      "octets": 731547493,
+      "fichier": "Masterclass/2026-07-23 - Présentation du titre.mp4"
+    },
+    {
+      "id": 8921,
+      "titre": "Correction : Modélisation",
+      "categorie": "Live coding",
+      "date": "2026-07-23T00:00:00.000+02:00",
+      "dureeMinutes": 90,
+      "octets": 705252476,
+      "fichier": "Live coding/2026-07-23 - Correction Modélisation.mp4"
+    },
+    {
+      "id": 8920,
+      "titre": "Cours : Database modeling",
+      "categorie": "Cours",
+      "date": "2026-07-23T00:00:00.000+02:00",
+      "dureeMinutes": 90,
+      "octets": 427507815,
+      "fichier": "Cours/2026-07-23 - Cours Database modeling.mp4"
+    },
+    {
+      "id": 8919,
+      "titre": "Correction : SQL Intro",
+      "categorie": "Live coding",
+      "date": "2026-07-21T00:00:00.000+02:00",
+      "dureeMinutes": 60,
+      "octets": 203954128,
+      "fichier": "Live coding/2026-07-21 - Correction SQL Intro.mp4"
+    },
+    {
+      "id": 8918,
+      "titre": "Cours : SQL Intro",
+      "categorie": "Cours",
+      "date": "2026-07-21T00:00:00.000+02:00",
+      "dureeMinutes": 75,
+      "octets": 518398576,
+      "fichier": "Cours/2026-07-21 - Cours SQL Intro.mp4"
+    },
+    {
+      "id": 8917,
+      "titre": "Correction CP2",
+      "categorie": "Live coding",
+      "date": "2026-07-20T00:00:00.000+02:00",
+      "dureeMinutes": 105,
+      "octets": 683384373,
+      "fichier": "Live coding/2026-07-20 - Correction CP2.mp4"
+    },
+    {
+      "id": 8916,
+      "titre": "🌈 Projects final demo",
+      "categorie": "Masterclass",
+      "date": "2026-07-17T00:00:00.000+02:00",
+      "dureeMinutes": 60,
+      "octets": 556061314,
+      "fichier": "Masterclass/2026-07-17 - 🌈 Projects final demo.mp4"
+    },
+    {
+      "id": 8915,
+      "titre": "Kata by Sophie",
+      "categorie": "Masterclass",
+      "date": "2026-07-16T00:00:00.000+02:00",
+      "dureeMinutes": 30,
+      "octets": 344700122,
+      "fichier": "Masterclass/2026-07-16 - Kata by Sophie.mp4"
+    },
+    {
+      "id": 8914,
+      "titre": "Correction : Atelier API & Express",
+      "categorie": "Live coding",
+      "date": "2026-07-15T00:00:00.000+02:00",
+      "dureeMinutes": 90,
+      "octets": 649315056,
+      "fichier": "Live coding/2026-07-15 - Correction Atelier API & Express.mp4"
+    },
+    {
+      "id": 8913,
+      "titre": "API & Express",
+      "categorie": "Cours",
+      "date": "2026-07-15T00:00:00.000+02:00",
+      "dureeMinutes": 90,
+      "octets": 466250309,
+      "fichier": "Cours/2026-07-15 - API & Express.mp4"
+    },
+    {
+      "id": 8912,
+      "titre": "Correction : Atelier React Context",
+      "categorie": "Live coding",
+      "date": "2026-07-07T00:00:00.000+02:00",
+      "dureeMinutes": 60,
+      "octets": 1150699964,
+      "fichier": "Live coding/2026-07-07 - Correction Atelier React Context.mp4"
+    },
+    {
+      "id": 8911,
+      "titre": "React - Context",
+      "categorie": "Cours",
+      "date": "2026-07-07T00:00:00.000+02:00",
+      "dureeMinutes": 90,
+      "octets": 622187603,
+      "fichier": "Cours/2026-07-07 - React - Context.mp4"
+    },
+    {
+      "id": 8910,
+      "titre": "Kata by Yannick",
+      "categorie": "Masterclass",
+      "date": "2026-07-02T00:00:00.000+02:00",
+      "dureeMinutes": 30,
+      "octets": 149775020,
+      "fichier": "Masterclass/2026-07-02 - Kata by Yannick.mp4"
+    },
+    {
+      "id": 8909,
+      "titre": "Kata by Guillermo",
+      "categorie": "Masterclass",
+      "date": "2026-07-01T00:00:00.000+02:00",
+      "dureeMinutes": 30,
+      "octets": 332686486,
+      "fichier": "Masterclass/2026-07-01 - Kata by Guillermo.mp4"
+    },
+    {
+      "id": 8908,
+      "titre": "API & fetch",
+      "categorie": "Cours",
+      "date": "2026-06-30T00:00:00.000+02:00",
+      "dureeMinutes": 120,
+      "octets": 716763424,
+      "fichier": "Cours/2026-06-30 - API & fetch.mp4"
+    },
+    {
+      "id": 8907,
+      "titre": "Git workflow",
+      "categorie": "Cours",
+      "date": "2026-06-25T00:00:00.000+02:00",
+      "dureeMinutes": 60,
+      "octets": 576153500,
+      "fichier": "Cours/2026-06-25 - Git workflow.mp4"
+    },
+    {
+      "id": 8906,
+      "titre": "🥋 Kata by Cynthia",
+      "categorie": "Masterclass",
+      "date": "2026-06-25T00:00:00.000+02:00",
+      "dureeMinutes": 30,
+      "octets": 155489617,
+      "fichier": "Masterclass/2026-06-25 - 🥋 Kata by Cynthia.mp4"
+    },
+    {
+      "id": 8905,
+      "titre": "SCRUM",
+      "categorie": "Cours",
+      "date": "2026-06-23T00:00:00.000+02:00",
+      "dureeMinutes": 90,
+      "octets": 561053451,
+      "fichier": "Cours/2026-06-23 - SCRUM.mp4"
+    },
+    {
+      "id": 8904,
+      "titre": "Quête HTML CSS with Claude",
+      "categorie": "Masterclass",
+      "date": "2026-06-22T00:00:00.000+02:00",
+      "dureeMinutes": 90,
+      "octets": 1088757001,
+      "fichier": "Masterclass/2026-06-22 - Quête HTML CSS with Claude.mp4"
+    },
+    {
+      "id": 8903,
+      "titre": "Correction : Atelier Robot Finder",
+      "categorie": "Live coding",
+      "date": "2026-06-16T00:00:00.000+02:00",
+      "dureeMinutes": 90,
+      "octets": 851801240,
+      "fichier": "Live coding/2026-06-16 - Correction Atelier Robot Finder.mp4"
+    },
+    {
+      "id": 8902,
+      "titre": "Correction : Atelier React Router",
+      "categorie": "Live coding",
+      "date": "2026-06-16T00:00:00.000+02:00",
+      "dureeMinutes": 120,
+      "octets": 1231158472,
+      "fichier": "Live coding/2026-06-16 - Correction Atelier React Router.mp4"
+    },
+    {
+      "id": 8901,
+      "titre": "Correction : Atelier - Les donuts",
+      "categorie": "Live coding",
+      "date": "2026-06-11T00:00:00.000+02:00",
+      "dureeMinutes": 90,
+      "octets": 490867390,
+      "fichier": "Live coding/2026-06-11 - Correction Atelier - Les donuts.mp4"
+    },
+    {
+      "id": 8900,
+      "titre": "React - State",
+      "categorie": "Cours",
+      "date": "2026-06-11T00:00:00.000+02:00",
+      "dureeMinutes": 90,
+      "octets": 867955199,
+      "fichier": "Cours/2026-06-11 - React - State.mp4"
+    },
+    {
+      "id": 8899,
+      "titre": "🥋 Kata by Dorian",
+      "categorie": "Masterclass",
+      "date": "2026-06-11T00:00:00.000+02:00",
+      "dureeMinutes": 30,
+      "octets": 282057272,
+      "fichier": "Masterclass/2026-06-11 - 🥋 Kata by Dorian.mp4"
+    },
+    {
+      "id": 8898,
+      "titre": "Correction : Atelier - The Simpsooooons",
+      "categorie": "Live coding",
+      "date": "2026-06-10T00:00:00.000+02:00",
+      "dureeMinutes": 60,
+      "octets": 731109458,
+      "fichier": "Live coding/2026-06-10 - Correction Atelier - The Simpsooooons.mp4"
+    },
+    {
+      "id": 8897,
+      "titre": "React - Props",
+      "categorie": "Cours",
+      "date": "2026-06-10T00:00:00.000+02:00",
+      "dureeMinutes": 90,
+      "octets": 887287493,
+      "fichier": "Cours/2026-06-10 - React - Props.mp4"
+    },
+    {
+      "id": 8896,
+      "titre": "Correction : Atelier - Mon premier composant",
+      "categorie": "Live coding",
+      "date": "2026-06-09T00:00:00.000+02:00",
+      "dureeMinutes": 60,
+      "octets": 310955998,
+      "fichier": "Live coding/2026-06-09 - Correction Atelier - Mon premier composant.mp4"
+    },
+    {
+      "id": 8895,
+      "titre": "React - Basics",
+      "categorie": "Cours",
+      "date": "2026-06-09T00:00:00.000+02:00",
+      "dureeMinutes": 60,
+      "octets": 365900797,
+      "fichier": "Cours/2026-06-09 - React - Basics.mp4"
+    },
+    {
+      "id": 8894,
+      "titre": "Cours : Typescript",
+      "categorie": "Cours",
+      "date": "2026-06-08T00:00:00.000+02:00",
+      "dureeMinutes": 60,
+      "octets": 372578262,
+      "fichier": "Cours/2026-06-08 - Cours Typescript.mp4"
+    },
+    {
+      "id": 8893,
+      "titre": "Correction : Checkpoint 1",
+      "categorie": "Live coding",
+      "date": "2026-06-08T00:00:00.000+02:00",
+      "dureeMinutes": 120,
+      "octets": 1249904911,
+      "fichier": "Live coding/2026-06-08 - Correction Checkpoint 1.mp4"
+    },
+    {
+      "id": 8892,
+      "titre": "🌈 Project 1 final demo",
+      "categorie": "Masterclass",
+      "date": "2026-06-05T00:00:00.000+02:00",
+      "dureeMinutes": 45,
+      "octets": 774670394,
+      "fichier": "Masterclass/2026-06-05 - 🌈 Project 1 final demo.mp4"
+    },
+    {
+      "id": 8891,
+      "titre": "How to do a good demo",
+      "categorie": "Cours",
+      "date": "2026-06-04T00:00:00.000+02:00",
+      "dureeMinutes": 90,
+      "octets": 377687658,
+      "fichier": "Cours/2026-06-04 - How to do a good demo.mp4"
+    },
+    {
+      "id": 8890,
+      "titre": "🥋 Kata by Laurent",
+      "categorie": "Masterclass",
+      "date": "2026-06-03T00:00:00.000+02:00",
+      "dureeMinutes": 30,
+      "octets": 313084282,
+      "fichier": "Masterclass/2026-06-03 - 🥋 Kata by Laurent.mp4"
+    },
+    {
+      "id": 8889,
+      "titre": "Live Coding : Correction NodeJS",
+      "categorie": "Live coding",
+      "date": "2026-06-02T00:00:00.000+02:00",
+      "dureeMinutes": 60,
+      "octets": 429469559,
+      "fichier": "Live coding/2026-06-02 - Live Coding Correction NodeJS.mp4"
+    },
+    {
+      "id": 8888,
+      "titre": "What is Node ?",
+      "categorie": "Cours",
+      "date": "2026-06-02T00:00:00.000+02:00",
+      "dureeMinutes": 60,
+      "octets": 444244927,
+      "fichier": "Cours/2026-06-02 - What is Node.mp4"
+    },
+    {
+      "id": 8887,
+      "titre": "🥋 Kata by Julien D",
+      "categorie": "Masterclass",
+      "date": "2026-06-02T00:00:00.000+02:00",
+      "dureeMinutes": 30,
+      "octets": 767035472,
+      "fichier": "Masterclass/2026-06-02 - 🥋 Kata by Julien D.mp4"
+    },
+    {
+      "id": 8886,
+      "titre": "Support - JS Basics",
+      "categorie": "Support",
+      "date": "2026-06-01T00:00:00.000+02:00",
+      "dureeMinutes": 90,
+      "octets": 1584179332,
+      "fichier": "Support/2026-06-01 - Support - JS Basics.mp4"
+    },
+    {
+      "id": 8885,
+      "titre": "Support - JS Basics",
+      "categorie": "Support",
+      "date": "2026-06-01T00:00:00.000+02:00",
+      "dureeMinutes": 90,
+      "octets": 387318122,
+      "fichier": "Support/2026-06-01 - Support - JS Basics.mp4"
+    },
+    {
+      "id": 8884,
+      "titre": "Veille techno By Josselin",
+      "categorie": "Masterclass",
+      "date": "2026-05-29T00:00:00.000+02:00",
+      "dureeMinutes": 60,
+      "octets": 227717972,
+      "fichier": "Masterclass/2026-05-29 - Veille techno By Josselin.mp4"
+    },
+    {
+      "id": 8883,
+      "titre": "JS DOM Basics",
+      "categorie": "Cours",
+      "date": "2026-05-27T00:00:00.000+02:00",
+      "dureeMinutes": 90,
+      "octets": 690848434,
+      "fichier": "Cours/2026-05-27 - JS DOM Basics.mp4"
+    },
+    {
+      "id": 8882,
+      "titre": "Kata By Julien R",
+      "categorie": "Masterclass",
+      "date": "2026-05-27T00:00:00.000+02:00",
+      "dureeMinutes": 60,
+      "octets": 612793215,
+      "fichier": "Masterclass/2026-05-27 - Kata By Julien R.mp4"
+    },
+    {
+      "id": 8881,
+      "titre": "JS Basics #1",
+      "categorie": "Cours",
+      "date": "2026-05-26T00:00:00.000+02:00",
+      "dureeMinutes": 90,
+      "octets": 874594313,
+      "fichier": "Cours/2026-05-26 - JS Basics #1.mp4"
+    },
+    {
+      "id": 8880,
+      "titre": "Programming Basics",
+      "categorie": "Cours",
+      "date": "2026-05-22T00:00:00.000+02:00",
+      "dureeMinutes": 75,
+      "octets": 1643693072,
+      "fichier": "Cours/2026-05-22 - Programming Basics.mp4"
+    },
+    {
+      "id": 8879,
+      "titre": "Correction : Atelier Git / GitHub",
+      "categorie": "Live coding",
+      "date": "2026-05-21T00:00:00.000+02:00",
+      "dureeMinutes": 90,
+      "octets": 862516993,
+      "fichier": "Live coding/2026-05-21 - Correction Atelier Git GitHub.mp4"
+    },
+    {
+      "id": 8878,
+      "titre": "Git / GitHub",
+      "categorie": "Cours",
+      "date": "2026-05-21T00:00:00.000+02:00",
+      "dureeMinutes": 90,
+      "octets": 1238441477,
+      "fichier": "Cours/2026-05-21 - Git GitHub.mp4"
+    },
+    {
+      "id": 8877,
+      "titre": "Cours : Website Conception",
+      "categorie": "Cours",
+      "date": "2026-05-18T00:00:00.000+02:00",
+      "dureeMinutes": 60,
+      "octets": 462283837,
+      "fichier": "Cours/2026-05-18 - Cours Website Conception.mp4"
+    },
+    {
+      "id": 8876,
+      "titre": "Correction : Atelier Responsive Web Design",
+      "categorie": "Live coding",
+      "date": "2026-05-15T00:00:00.000+02:00",
+      "dureeMinutes": 60,
+      "octets": 737010069,
+      "fichier": "Live coding/2026-05-15 - Correction Atelier Responsive Web Design.mp4"
+    },
+    {
+      "id": 8875,
+      "titre": "Cours : Responsive Web Design",
+      "categorie": "Cours",
+      "date": "2026-05-15T00:00:00.000+02:00",
+      "dureeMinutes": 90,
+      "octets": 1713759364,
+      "fichier": "Cours/2026-05-15 - Cours Responsive Web Design.mp4"
+    },
+    {
+      "id": 8874,
+      "titre": "Correction : Atelier HTML / CSS Basics",
+      "categorie": "Live coding",
+      "date": "2026-05-13T00:00:00.000+02:00",
+      "dureeMinutes": 120,
+      "octets": 1103742877,
+      "fichier": "Live coding/2026-05-13 - Correction Atelier HTML CSS Basics.mp4"
+    },
+    {
+      "id": 8873,
+      "titre": "Cours : CSS Basics",
+      "categorie": "Cours",
+      "date": "2026-05-13T00:00:00.000+02:00",
+      "dureeMinutes": 45,
+      "octets": 699455513,
+      "fichier": "Cours/2026-05-13 - Cours CSS Basics.mp4"
+    },
+    {
+      "id": 8872,
+      "titre": "Cours : HTML Basics",
+      "categorie": "Cours",
+      "date": "2026-05-13T00:00:00.000+02:00",
+      "dureeMinutes": 45,
+      "octets": 576975053,
+      "fichier": "Cours/2026-05-13 - Cours HTML Basics.mp4"
+    },
+    {
+      "id": 8871,
+      "titre": "Correction : Atelier Terminal",
+      "categorie": "Live coding",
+      "date": "2026-05-12T00:00:00.000+02:00",
+      "dureeMinutes": 120,
+      "octets": 592949868,
+      "fichier": "Live coding/2026-05-12 - Correction Atelier Terminal.mp4"
+    },
+    {
+      "id": 8870,
+      "titre": "Cours : Terminal",
+      "categorie": "Cours",
+      "date": "2026-05-12T00:00:00.000+02:00",
+      "dureeMinutes": 90,
+      "octets": 589430804,
+      "fichier": "Cours/2026-05-12 - Cours Terminal.mp4"
+    },
+    {
+      "id": 8735,
+      "titre": "Masterclass Accessibilité",
+      "categorie": "Masterclass",
+      "date": "2025-10-15T00:00:00.000+02:00",
+      "dureeMinutes": 60,
+      "octets": 295602712,
+      "fichier": "Masterclass/2025-10-15 - Masterclass Accessibilité.mp4"
+    },
+    {
+      "id": 8368,
+      "titre": "Masterclass A11y",
+      "categorie": "Masterclass",
+      "date": "2025-06-09T08:54:55.452+02:00",
+      "dureeMinutes": 56,
+      "octets": 295602712,
+      "fichier": "Masterclass/2025-06-09 - Masterclass A11y.mp4"
+    },
+    {
+      "id": 6572,
+      "titre": "masterclass SEO",
+      "categorie": "Masterclass",
+      "date": "2024-07-03T11:25:33.066+02:00",
+      "dureeMinutes": 86,
+      "octets": 960048585,
+      "fichier": "Masterclass/2024-07-03 - masterclass SEO.mp4"
+    },
+    {
+      "id": 6540,
+      "titre": "Anthony | Prisma TS",
+      "categorie": "Live coding",
+      "date": "2024-07-01T00:00:00.000+02:00",
+      "dureeMinutes": 150,
+      "octets": 960138501,
+      "fichier": "Live coding/2024-07-01 - Anthony Prisma TS.mp4"
+    },
+    {
+      "id": 5973,
+      "titre": "MasterClass, CRM and Emailing",
+      "categorie": "Masterclass",
+      "date": "2024-04-25T00:00:00.000+02:00",
+      "dureeMinutes": 60,
+      "octets": 660588167,
+      "fichier": "Masterclass/2024-04-25 - MasterClass, CRM and Emailing.mp4"
+    },
+    {
+      "id": 2669,
+      "titre": "Utiliser le github education pack pour avoir un VPS gratuit chez digital ocean",
+      "categorie": "Divers",
+      "date": "2023-04-05T16:54:40.748+02:00",
+      "dureeMinutes": 15,
+      "octets": 38818691,
+      "fichier": "Divers/2023-04-05 - Utiliser le github education pack pour avoir un VPS gratuit chez digital ocean.mp4"
+    },
+    {
+      "id": 2264,
+      "titre": "Echange avec les alumnis de la Wild - Alternance et insertion professionnelle réussie dans la Tech",
+      "categorie": "Carriere",
+      "date": "2023-02-23T12:05:05.037+01:00",
+      "dureeMinutes": 60,
+      "octets": 391818233,
+      "fichier": "Carriere/2023-02-23 - Echange avec les alumnis de la Wild - Alternance et insertion professionnelle réussie dans la Tech.mp4"
+    },
+    {
+      "id": 2263,
+      "titre": "Etablir sa stratégie de recherche d'emploi, de stage, d'alternance",
+      "categorie": "Carriere",
+      "date": "2023-02-23T12:05:05.037+01:00",
+      "dureeMinutes": 60,
+      "octets": 260674873,
+      "fichier": "Carriere/2023-02-23 - Etablir sa stratégie de recherche d'emploi, de stage, d'alternance.mp4"
+    },
+    {
+      "id": 1963,
+      "titre": "Et pourquoi pas devenir Freelance ?",
+      "categorie": "Carriere",
+      "date": "2022-12-12T14:56:20.497+01:00",
+      "dureeMinutes": 60,
+      "octets": 501389822,
+      "fichier": "Carriere/2022-12-12 - Et pourquoi pas devenir Freelance.mp4"
+    },
+    {
+      "id": 1962,
+      "titre": "LinkedIn : un outil puissant pour cibler les entreprises",
+      "categorie": "Carriere",
+      "date": "2022-12-12T14:56:20.497+01:00",
+      "dureeMinutes": 60,
+      "octets": 277472837,
+      "fichier": "Carriere/2022-12-12 - LinkedIn un outil puissant pour cibler les entreprises.mp4"
+    },
+    {
+      "id": 1961,
+      "titre": "Echange avec les alumnis de la Wild Code School pour une insertion professionnelle réussie ",
+      "categorie": "Carriere",
+      "date": "2022-12-12T14:56:20.497+01:00",
+      "dureeMinutes": 60,
+      "octets": 560270692,
+      "fichier": "Carriere/2022-12-12 - Echange avec les alumnis de la Wild Code School pour une insertion professionnelle réussie.mp4"
+    },
+    {
+      "id": 1960,
+      "titre": "A la découverte du portage salarial ",
+      "categorie": "Carriere",
+      "date": "2022-12-12T14:56:20.497+01:00",
+      "dureeMinutes": 60,
+      "octets": 239107950,
+      "fichier": "Carriere/2022-12-12 - A la découverte du portage salarial.mp4"
+    },
+    {
+      "id": 1959,
+      "titre": "Comment devenir indépendant / freelance pour être son propre patron ?",
+      "categorie": "Carriere",
+      "date": "2022-12-12T14:56:20.497+01:00",
+      "dureeMinutes": 60,
+      "octets": 168267266,
+      "fichier": "Carriere/2022-12-12 - Comment devenir indépendant freelance pour être son propre patron.mp4"
+    },
+    {
+      "id": 1958,
+      "titre": "Surmontez le syndrome de l'imposteur et osez ! ",
+      "categorie": "Carriere",
+      "date": "2022-12-12T14:56:20.497+01:00",
+      "dureeMinutes": 90,
+      "octets": 393689281,
+      "fichier": "Carriere/2022-12-12 - Surmontez le syndrome de l'imposteur et osez !.mp4"
+    },
+    {
+      "id": 1511,
+      "titre": "Push notifications on mobile using React Native and Expo",
+      "categorie": "Atelier",
+      "date": "2022-10-07T11:11:21.154+02:00",
+      "dureeMinutes": 36,
+      "octets": 122202054,
+      "fichier": "Atelier/2022-10-07 - Push notifications on mobile using React Native and Expo.mp4"
+    },
+    {
+      "id": 1456,
+      "titre": "PHP - Workshop Functions",
+      "categorie": "Atelier",
+      "date": "2022-10-03T10:35:53.709+02:00",
+      "dureeMinutes": 13,
+      "octets": 59055027,
+      "fichier": "Atelier/2022-10-03 - PHP - Workshop Functions.mp4"
+    },
+    {
+      "id": 1245,
+      "titre": "Présentation de l'entretien technique ",
+      "categorie": "Carriere",
+      "date": "2022-08-24T09:25:05.211+02:00",
+      "dureeMinutes": 45,
+      "octets": 138616838,
+      "fichier": "Carriere/2022-08-24 - Présentation de l'entretien technique.mp4"
+    },
+    {
+      "id": 1168,
+      "titre": "Fonctionnement d'un cabinet de recrutement et marché de l'emploi Bordelais",
+      "categorie": "Carriere",
+      "date": "2022-07-01T11:57:04.308+02:00",
+      "dureeMinutes": 60,
+      "octets": 313335978,
+      "fichier": "Carriere/2022-07-01 - Fonctionnement d'un cabinet de recrutement et marché de l'emploi Bordelais.mp4"
+    },
+    {
+      "id": 1167,
+      "titre": "Le freelancing et l'entrepreneuriat",
+      "categorie": "Carriere",
+      "date": "2022-07-01T11:57:04.308+02:00",
+      "dureeMinutes": 50,
+      "octets": 175628284,
+      "fichier": "Carriere/2022-07-01 - Le freelancing et l'entrepreneuriat.mp4"
+    },
+    {
+      "id": 1160,
+      "titre": "Tuto : Paramétrer une alerte emploi sur Wilders.co (site emploi \"jobboard\" de la Wild Code School)",
+      "categorie": "Carriere",
+      "date": "2022-06-29T10:32:28.857+02:00",
+      "dureeMinutes": 1,
+      "octets": 7530219,
+      "fichier": "Carriere/2022-06-29 - Tuto Paramétrer une alerte emploi sur Wilders.co (site emploi jobboard de la Wild Code School).mp4"
+    },
+    {
+      "id": 794,
+      "titre": "BBL Déploiement",
+      "categorie": "Masterclass",
+      "date": "2022-04-29T15:02:25.199+02:00",
+      "dureeMinutes": 30,
+      "octets": 93357114,
+      "fichier": "Masterclass/2022-04-29 - BBL Déploiement.mp4"
+    },
+    {
+      "id": 782,
+      "titre": "Guest Speaker Joris Liberati - Gestion de projet ",
+      "categorie": "Masterclass",
+      "date": "2022-04-28T14:05:18.000+02:00",
+      "dureeMinutes": 55,
+      "octets": 273372627,
+      "fichier": "Masterclass/2022-04-28 - Guest Speaker Joris Liberati - Gestion de projet.mp4"
+    },
+    {
+      "id": 684,
+      "titre": "Louis Darques - Flow Agency",
+      "categorie": "Masterclass",
+      "date": "2022-04-13T08:52:16.500+02:00",
+      "dureeMinutes": 62,
+      "octets": 585301821,
+      "fichier": "Masterclass/2022-04-13 - Louis Darques - Flow Agency.mp4"
+    },
+    {
+      "id": 632,
+      "titre": "Guest Speaker Alice Bonhomme-Biais - La technologie et le traitement des données au service d'un impact social",
+      "categorie": "Masterclass",
+      "date": "2022-04-07T08:57:56.000+02:00",
+      "dureeMinutes": 90,
+      "octets": 273024516,
+      "fichier": "Masterclass/2022-04-07 - Guest Speaker Alice Bonhomme-Biais - La technologie et le traitement des données au service d'un impact social.mp4"
+    },
+    {
+      "id": 538,
+      "titre": "Guest Speaker iAdvize - UX Design",
+      "categorie": "Masterclass",
+      "date": "2022-03-30T11:52:22.970+02:00",
+      "dureeMinutes": 60,
+      "octets": 223445860,
+      "fichier": "Masterclass/2022-03-30 - Guest Speaker iAdvize - UX Design.mp4"
+    },
+    {
+      "id": 422,
+      "titre": "Masterclass - Comment faire une bonne présentation ? ",
+      "categorie": "Masterclass",
+      "date": "2022-03-17T09:32:45.492+01:00",
+      "dureeMinutes": 30,
+      "octets": 129561530,
+      "fichier": "Masterclass/2022-03-17 - Masterclass - Comment faire une bonne présentation.mp4"
+    },
+    {
+      "id": 297,
+      "titre": "Guest Speaker Damien BUCHET - React Advanced",
+      "categorie": "Masterclass",
+      "date": "2022-03-03T09:46:36.255+01:00",
+      "dureeMinutes": 60,
+      "octets": 234774821,
+      "fichier": "Masterclass/2022-03-03 - Guest Speaker Damien BUCHET - React Advanced.mp4"
+    },
+    {
+      "id": 303,
+      "titre": "Guest Speaker Gilles TUET - Que faire avec la donnée ? ",
+      "categorie": "Masterclass",
+      "date": "2022-03-03T08:56:08.000+01:00",
+      "dureeMinutes": 90,
+      "octets": 1617605400,
+      "fichier": "Masterclass/2022-03-03 - Guest Speaker Gilles TUET - Que faire avec la donnée.mp4"
+    },
+    {
+      "id": 273,
+      "titre": "Table-ronde avec les alumnis : conseils pour une insertion professionnelle réussie ",
+      "categorie": "Carriere",
+      "date": "2022-03-01T15:47:01.562+01:00",
+      "dureeMinutes": 60,
+      "octets": 450237430,
+      "fichier": "Carriere/2022-03-01 - Table-ronde avec les alumnis conseils pour une insertion professionnelle réussie.mp4"
+    },
+    {
+      "id": 265,
+      "titre": "Comment se rendre visible auprès des recruteurs ?",
+      "categorie": "Carriere",
+      "date": "2022-02-21T15:57:26.675+01:00",
+      "dureeMinutes": 60,
+      "octets": 371105326,
+      "fichier": "Carriere/2022-02-21 - Comment se rendre visible auprès des recruteurs.mp4"
+    },
+    {
+      "id": 236,
+      "titre": "Webinar \"devenir freelance\"",
+      "categorie": "Carriere",
+      "date": "2022-02-03T15:13:26.727+01:00",
+      "dureeMinutes": 60,
+      "octets": 771746518,
+      "fichier": "Carriere/2022-02-03 - Webinar devenir freelance.mp4"
+    },
+    {
+      "id": 235,
+      "titre": "Cryptographie & Authentification",
+      "categorie": "Cours",
+      "date": "2022-01-31T16:23:45.008+01:00",
+      "dureeMinutes": 120,
+      "octets": 563672730,
+      "fichier": "Cours/2022-01-31 - Cryptographie & Authentification.mp4"
+    },
+    {
+      "id": 231,
+      "titre": "Jennifer PRENDKI - Création de modèles d'IA",
+      "categorie": "Masterclass",
+      "date": "2022-01-27T14:49:28.000+01:00",
+      "dureeMinutes": 120,
+      "octets": 629384457,
+      "fichier": "Masterclass/2022-01-27 - Jennifer PRENDKI - Création de modèles d'IA.mp4"
+    },
+    {
+      "id": 228,
+      "titre": "Artisan Développeur - TDD",
+      "categorie": "Masterclass",
+      "date": "2022-01-27T14:13:18.885+01:00",
+      "dureeMinutes": 60,
+      "octets": 652242975,
+      "fichier": "Masterclass/2022-01-27 - Artisan Développeur - TDD.mp4"
+    },
+    {
+      "id": 221,
+      "titre": "Laurent ANDRIAMIFIDY - Architecture des données ",
+      "categorie": "Masterclass",
+      "date": "2022-01-21T09:05:09.264+01:00",
+      "dureeMinutes": 60,
+      "octets": 321330381,
+      "fichier": "Masterclass/2022-01-21 - Laurent ANDRIAMIFIDY - Architecture des données.mp4"
+    },
+    {
+      "id": 217,
+      "titre": "Aborder la vie de freelance et trouver ses premières missions",
+      "categorie": "Carriere",
+      "date": "2022-01-19T15:09:18.280+01:00",
+      "dureeMinutes": 75,
+      "octets": 217096739,
+      "fichier": "Carriere/2022-01-19 - Aborder la vie de freelance et trouver ses premières missions.mp4"
+    },
+    {
+      "id": 216,
+      "titre": "Maximiser sa visibilité et augmenter ses résultats sur Fiverr",
+      "categorie": "Carriere",
+      "date": "2022-01-19T15:09:18.280+01:00",
+      "dureeMinutes": 60,
+      "octets": 199995532,
+      "fichier": "Carriere/2022-01-19 - Maximiser sa visibilité et augmenter ses résultats sur Fiverr.mp4"
+    },
+    {
+      "id": 155,
+      "titre": "HONEYWELL - Cybersécurité dans l'industrie",
+      "categorie": "Masterclass",
+      "date": "2022-01-06T16:18:51.612+01:00",
+      "dureeMinutes": 90,
+      "octets": 294859296,
+      "fichier": "Masterclass/2022-01-06 - HONEYWELL - Cybersécurité dans l'industrie.mp4"
+    },
+    {
+      "id": 154,
+      "titre": "ANSSI - Cybersécurité ",
+      "categorie": "Masterclass",
+      "date": "2022-01-06T16:18:51.612+01:00",
+      "dureeMinutes": 90,
+      "octets": 301480462,
+      "fichier": "Masterclass/2022-01-06 - ANSSI - Cybersécurité.mp4"
+    },
+    {
+      "id": 153,
+      "titre": "Aurélien MEUNIER - Méthodes agiles",
+      "categorie": "Masterclass",
+      "date": "2022-01-06T16:18:51.612+01:00",
+      "dureeMinutes": 90,
+      "octets": 423520842,
+      "fichier": "Masterclass/2022-01-06 - Aurélien MEUNIER - Méthodes agiles.mp4"
+    },
+    {
+      "id": 70,
+      "titre": "Comment réussir son entretien technique  en data analyse ?",
+      "categorie": "Carriere",
+      "date": "2021-12-16T16:27:23.655+01:00",
+      "dureeMinutes": 65,
+      "octets": 334720982,
+      "fichier": "Carriere/2021-12-16 - Comment réussir son entretien technique en data analyse.mp4"
+    },
+    {
+      "id": 69,
+      "titre": "Comment réussir son entretien technique en développement web ?",
+      "categorie": "Carriere",
+      "date": "2021-12-16T16:27:23.655+01:00",
+      "dureeMinutes": 72,
+      "octets": 354029951,
+      "fichier": "Carriere/2021-12-16 - Comment réussir son entretien technique en développement web.mp4"
+    },
+    {
+      "id": 68,
+      "titre": "Qu'est ce qu'un chasseur de tête ? ",
+      "categorie": "Carriere",
+      "date": "2021-12-16T16:27:23.655+01:00",
+      "dureeMinutes": 51,
+      "octets": 203863709,
+      "fichier": "Carriere/2021-12-16 - Qu'est ce qu'un chasseur de tête.mp4"
+    },
+    {
+      "id": 67,
+      "titre": "How to succeed in your job interview ?",
+      "categorie": "Carriere",
+      "date": "2021-12-16T16:27:23.655+01:00",
+      "dureeMinutes": 22,
+      "octets": 83199839,
+      "fichier": "Carriere/2021-12-16 - How to succeed in your job interview.mp4"
+    },
+    {
+      "id": 79,
+      "titre": "Gael MANCEC - RGPD",
+      "categorie": "Masterclass",
+      "date": "2021-12-16T00:00:00.000+01:00",
+      "dureeMinutes": 120,
+      "octets": 343255303,
+      "fichier": "Masterclass/2021-12-16 - Gael MANCEC - RGPD.mp4"
+    },
+    {
+      "id": 78,
+      "titre": "Frédéric FABREGUE - RGPD",
+      "categorie": "Masterclass",
+      "date": "2021-12-16T00:00:00.000+01:00",
+      "dureeMinutes": 90,
+      "octets": 188047205,
+      "fichier": "Masterclass/2021-12-16 - Frédéric FABREGUE - RGPD.mp4"
+    },
+    {
+      "id": 81,
+      "titre": "Elsa MAGNE - UX Design",
+      "categorie": "Masterclass",
+      "date": "2021-12-09T00:00:00.000+01:00",
+      "dureeMinutes": 90,
+      "octets": 369225341,
+      "fichier": "Masterclass/2021-12-09 - Elsa MAGNE - UX Design.mp4"
+    },
+    {
+      "id": 80,
+      "titre": "Elise BOUTIN - Dataviz",
+      "categorie": "Masterclass",
+      "date": "2021-12-09T00:00:00.000+01:00",
+      "dureeMinutes": 90,
+      "octets": 613912365,
+      "fichier": "Masterclass/2021-12-09 - Elise BOUTIN - Dataviz.mp4"
+    },
+    {
+      "id": 61,
+      "titre": "Aline FEBRISSY et Céline LE MARC - UX Design",
+      "categorie": "Masterclass",
+      "date": "2021-12-02T00:00:00.000+01:00",
+      "dureeMinutes": 90,
+      "octets": 265987201,
+      "fichier": "Masterclass/2021-12-02 - Aline FEBRISSY et Céline LE MARC - UX Design.mp4"
+    },
+    {
+      "id": 57,
+      "titre": "Nicolas LAMBERT - Extract Transform Load",
+      "categorie": "Masterclass",
+      "date": "2021-12-02T00:00:00.000+01:00",
+      "dureeMinutes": 90,
+      "octets": 446412496,
+      "fichier": "Masterclass/2021-12-02 - Nicolas LAMBERT - Extract Transform Load.mp4"
+    },
+    {
+      "id": 59,
+      "titre": "Stéphane BOUNMY - No Code",
+      "categorie": "Masterclass",
+      "date": "2021-11-04T00:00:00.000+01:00",
+      "dureeMinutes": 90,
+      "octets": 692968251,
+      "fichier": "Masterclass/2021-11-04 - Stéphane BOUNMY - No Code.mp4"
+    },
+    {
+      "id": 76,
+      "titre": "Cyrille ISTIN et François ARBOGAST - No code ",
+      "categorie": "Masterclass",
+      "date": "2021-10-28T00:00:00.000+02:00",
+      "dureeMinutes": 90,
+      "octets": 679754701,
+      "fichier": "Masterclass/2021-10-28 - Cyrille ISTIN et François ARBOGAST - No code.mp4"
+    },
+    {
+      "id": 60,
+      "titre": "Thibaut COLLETTE - Utilisation des données en mode gestion de projet",
+      "categorie": "Masterclass",
+      "date": "2021-10-28T00:00:00.000+02:00",
+      "dureeMinutes": 90,
+      "octets": 273471442,
+      "fichier": "Masterclass/2021-10-28 - Thibaut COLLETTE - Utilisation des données en mode gestion de projet.mp4"
+    },
+    {
+      "id": 56,
+      "titre": "Gilles TUET - Que faire avec la donnée ? ",
+      "categorie": "Masterclass",
+      "date": "2021-10-28T00:00:00.000+02:00",
+      "dureeMinutes": 90,
+      "octets": 1217181869,
+      "fichier": "Masterclass/2021-10-28 - Gilles TUET - Que faire avec la donnée.mp4"
+    },
+    {
+      "id": 58,
+      "titre": "Sébastien LABBE - Méthodes agiles",
+      "categorie": "Masterclass",
+      "date": "2021-10-07T00:00:00.000+02:00",
+      "dureeMinutes": 90,
+      "octets": 324042702,
+      "fichier": "Masterclass/2021-10-07 - Sébastien LABBE - Méthodes agiles.mp4"
+    },
+    {
+      "id": 243,
+      "titre": "Talk - Passage du titre RNCP (2021-01-28 at 04:32 GMT-8)",
+      "categorie": "Masterclass",
+      "date": "2021-01-28T00:00:00.000+01:00",
+      "dureeMinutes": 73,
+      "octets": 292887114,
+      "fichier": "Masterclass/2021-01-28 - Talk - Passage du titre RNCP (2021-01-28 at 04 32 GMT-8).mp4"
+    }
+  ]
+}

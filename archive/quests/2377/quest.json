@@ -1,0 +1,35 @@
+{
+  "id": 2377,
+  "titre": "👩‍🏫 React Basics 09 - Pokédex - Partager un state",
+  "titres": {
+    "fr": "👩‍🏫 React Basics 09 - Pokédex - Partager un state"
+  },
+  "theme": {
+    "id": 23,
+    "slug": "react",
+    "nom": "React - Bases"
+  },
+  "creeLe": "2023-01-03T14:17:57.916+01:00",
+  "difficulte": "",
+  "dureeEstimee": null,
+  "modeValidation": "student",
+  "chapitres": [
+    {
+      "id": 17109,
+      "type": "content",
+      "langue": "fr",
+      "majLe": "2025-03-12T11:54:09.845+01:00",
+      "caracteres": 7432
+    },
+    {
+      "id": 17110,
+      "type": "solution",
+      "langue": "fr",
+      "majLe": "2025-03-12T11:55:18.942+01:00",
+      "caracteres": 1898
+    }
+  ],
+  "ressources": [],
+  "urlOrigine": "https://odyssey.wildcodeschool.com/quests/2377",
+  "archiveLe": "2026-09-02T20:55:09.133Z"
+}

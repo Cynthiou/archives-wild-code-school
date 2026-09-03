@@ -1,0 +1,28 @@
+{
+  "id": 2249,
+  "titre": "POO3 - Les méthodes",
+  "titres": {
+    "fr": "POO3 - Les méthodes"
+  },
+  "theme": {
+    "id": 70,
+    "slug": "php-object-oriented",
+    "nom": "PHP Orienté Objet"
+  },
+  "creeLe": "2022-09-15T15:33:16.422+02:00",
+  "difficulte": "",
+  "dureeEstimee": null,
+  "modeValidation": "student",
+  "chapitres": [
+    {
+      "id": 9319,
+      "type": "content",
+      "langue": "fr",
+      "majLe": "2023-03-27T08:47:21.707+02:00",
+      "caracteres": 7928
+    }
+  ],
+  "ressources": [],
+  "urlOrigine": "https://odyssey.wildcodeschool.com/quests/2249",
+  "archiveLe": "2026-09-02T20:53:48.020Z"
+}

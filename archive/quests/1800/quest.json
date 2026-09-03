@@ -1,0 +1,28 @@
+{
+  "id": 1800,
+  "titre": "✏️ Exercise 3 - String manipulation",
+  "titres": {
+    "en": "✏️ Exercise 3 - String manipulation"
+  },
+  "theme": {
+    "id": 25,
+    "slug": "php",
+    "nom": "PHP"
+  },
+  "creeLe": "2021-09-07T15:12:06.529+02:00",
+  "difficulte": "1",
+  "dureeEstimee": null,
+  "modeValidation": "self",
+  "chapitres": [
+    {
+      "id": 8048,
+      "type": "content",
+      "langue": "en",
+      "majLe": "2022-09-30T10:01:45.683+02:00",
+      "caracteres": 1702
+    }
+  ],
+  "ressources": [],
+  "urlOrigine": "https://odyssey.wildcodeschool.com/quests/1800",
+  "archiveLe": "2026-09-02T23:21:43.677Z"
+}

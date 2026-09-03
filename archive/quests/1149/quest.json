@@ -1,0 +1,28 @@
+{
+  "id": 1149,
+  "titre": "Composer - 3. Package Management",
+  "titres": {
+    "fr": "Composer - 3. Package Management"
+  },
+  "theme": {
+    "id": 7,
+    "slug": "php_adv",
+    "nom": "PHP Avancé"
+  },
+  "creeLe": "2020-04-07T22:11:14.112+02:00",
+  "difficulte": "",
+  "dureeEstimee": null,
+  "modeValidation": "student",
+  "chapitres": [
+    {
+      "id": 8080,
+      "type": "content",
+      "langue": "fr",
+      "majLe": "2022-10-05T12:03:20.260+02:00",
+      "caracteres": 9006
+    }
+  ],
+  "ressources": [],
+  "urlOrigine": "https://odyssey.wildcodeschool.com/quests/1149",
+  "archiveLe": "2026-09-02T23:21:22.172Z"
+}

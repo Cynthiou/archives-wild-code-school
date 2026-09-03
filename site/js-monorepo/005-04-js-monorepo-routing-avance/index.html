@@ -1,0 +1,713 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>04 - JS Monorepo : Routing avancé — Archives WCS</title>
+<link rel="stylesheet" href="../../assets/style.css">
+</head>
+<body style="--teinte:#000000">
+<header class="entete">
+  <a class="entete__marque" href="../../index.html">Archives Wild Code School</a>
+</header>
+<main class="contenu">
+<nav class="ariane"><a href="../../index.html">Accueil</a><span class="ariane__sep">›</span><a href="../../js-monorepo/index.html">JS Monorepo</a><span class="ariane__sep">›</span><span aria-current="page">04 - JS Monorepo : Routing avancé</span></nav>
+
+<article class="quete">
+  <header class="quete__entete">
+    <a class="pastille pastille--teintee" href="../../js-monorepo/index.html">JS Monorepo</a>
+    <h1>04 - JS Monorepo : Routing avancé</h1>
+    <p class="quete__meta">Quête 5 sur 9 · 3 images archivées</p>
+  </header>
+  <div class="cours">
+<h2>Objectifs</h2>
+<ul>
+<li>Utiliser des paramètres d'URL dans tes routes</li>
+<li>Intégrer des segments dynamiques dans tes chemins</li>
+</ul>
+<h2>Pré-requis</h2>
+<ol class="etapes"><li class="etape"><div class="etape__puce">1</div><div class="etape__contenu"><h4 class="etape__titre">Valider la quête suivante</h4><div class="renvois"><div class="renvois__titre">Quêtes liées</div><ul><li><a href="../../js-monorepo/004-03-js-monorepo-routing/index.html">Quête 590</a></li></ul></div>
+</div></li><li class="etape"><div class="etape__puce">2</div><div class="etape__contenu"><h4 class="etape__titre">Avoir compris le système de routing du Monorepo</h4><p><img src="images/001-modules.png" alt="modules" loading="lazy"></p>
+</div></li><li class="etape"><div class="etape__puce">3</div><div class="etape__contenu"><h4 class="etape__titre">Comprendre le concept de &quot;query string&quot;</h4><p><img src="images/002-pre-requis.png" alt="" loading="lazy"></p>
+<div class="encadre encadre--note encadre--story"><div class="encadre__corps"><p>Une chaîne de requête (<em>query string</em> en anglais) est une partie d'une URL qui attribue des valeurs à des paramètres spécifiques. Ces paramètres de requête sont en général situés après le chemin d'accès, séparés par un point d'interrogation (<code>?</code>). Une chaîne de requête comprend généralement des champs ajoutés à une URL de base par un navigateur Web ou une autre application cliente [...]</p>
+<p>[...] Dans les cas où une logique spéciale est invoquée, la chaîne de requête sera utilisée pour ajouter des options à cette logique et utilisée dans son traitement, en complément du composant de chemin de l'URL.</p>
+<p>(<a href="https://fr.wikipedia.org/wiki/Cha%C3%AEne_de_requ%C3%AAte" target="_blank" rel="noopener noreferrer">https://fr.wikipedia.org/wiki/Chaîne_de_requête</a>)</p>
+</div></div>
+</div></li><li class="etape"><div class="etape__puce">4</div><div class="etape__contenu"><h4 class="etape__titre">Être à l'aise avec la syntaxe des &quot;segment dynamique&quot; dans React Router</h4><div class="bloc-code"><div class="bloc-code__langue">jsx</div><pre><code class="hljs language-jsx"><span class="hljs-keyword">const</span> router = <span class="hljs-title function_">createBrowserRouter</span>([
+  {
+    <span class="hljs-attr">path</span>: <span class="hljs-string">&quot;/articles/:id&quot;</span>,
+    <span class="hljs-attr">element</span>: <span class="language-xml"><span class="hljs-tag">&lt;<span class="hljs-name">Article</span> /&gt;</span></span>,
+  },
+]);
+</code></pre></div>
+<div class="encadre encadre--note encadre--story"><div class="encadre__corps"><p>Dans cet exemple, la route <code>&quot;/articles/:id&quot;</code> est configurée avec un segment dynamique <code>:id</code> : ce sont les <code>:</code> qui indiquent que le segment est dynamique. Cela signifie que l’URL <code>/articles/123</code> correspondra à cette route, où <code>123</code> est un exemple d’identifiant d’article. Grâce à ce segment dynamique, nous pouvons extraire l’identifiant de l’article directement depuis l’URL et l’utiliser pour afficher les détails de l’article correspondant.</p>
+</div></div>
+</div></li></ol>
+<h2>Sommaire</h2>
+<h2>Introduction</h2>
+<p>Dans les épisodes précédents, tu as exploré le système de routing côté serveur dans le Monorepo. Jusqu'à créer une nouvelle route pour récupérer la liste de tes séries.</p>
+<p>Dans le développement web, tu devras souvent proposer des routes plus &quot;fines&quot; pour récupérer une liste filtrée (en fonction de critères de recherche par exemple), voire même des routes pour récupérer une ressource en particulier (ton profil, la page d'une série...).</p>
+<p>Dans cette quête, tu vas utiliser <code>req.query</code> et <code>req.params</code> pour proposer ce genre de fonctionnalités.</p>
+<h2>Avant de commencer</h2>
+<p>Assure-toi de partir d'un code fonctionnel. Depuis la création de ton projet Wild Series, voici les fichiers que tu as ouverts :</p>
+<div class="onglets" data-onglets="4"><input type="radio" name="onglets-13" id="onglets-13-0" class="onglets__radio" checked><input type="radio" name="onglets-13" id="onglets-13-1" class="onglets__radio"><input type="radio" name="onglets-13" id="onglets-13-2" class="onglets__radio"><input type="radio" name="onglets-13" id="onglets-13-3" class="onglets__radio"><div class="onglets__barre"><label class="onglets__label" for="onglets-13-0">server/src/main.ts</label><label class="onglets__label" for="onglets-13-1">server/src/router.ts</label><label class="onglets__label" for="onglets-13-2">server/src/modules/program/programActions.ts</label><label class="onglets__label" for="onglets-13-3">server/src/modules/say/sayActions.ts</label></div><div class="onglets__panneaux"><div class="onglets__panneau"><div class="bloc-code"><div class="bloc-code__langue">typescript</div><pre><code class="hljs language-typescript"><span class="hljs-comment">// Load environment variables from .env file</span>
+<span class="hljs-keyword">import</span> <span class="hljs-string">&quot;dotenv/config&quot;</span>;
+
+<span class="hljs-comment">// Check database connection</span>
+<span class="hljs-comment">// Note: This is optional and can be removed if the database connection</span>
+<span class="hljs-comment">// is not required when starting the application</span>
+<span class="hljs-keyword">import</span> <span class="hljs-string">&quot;../database/checkConnection&quot;</span>;
+
+<span class="hljs-comment">// Import the Express application from ./app</span>
+<span class="hljs-keyword">import</span> app <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;./app&quot;</span>;
+
+<span class="hljs-comment">// Get the port from the environment variables</span>
+<span class="hljs-keyword">const</span> port = process.<span class="hljs-property">env</span>.<span class="hljs-property">APP_PORT</span>;
+
+<span class="hljs-comment">// Start the server and listen on the specified port</span>
+app
+  .<span class="hljs-title function_">listen</span>(port, <span class="hljs-function">() =&gt;</span> {
+    <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">info</span>(<span class="hljs-string">`Server is listening on port <span class="hljs-subst">${port}</span>`</span>);
+  })
+  .<span class="hljs-title function_">on</span>(<span class="hljs-string">&quot;error&quot;</span>, <span class="hljs-function">(<span class="hljs-params"><span class="hljs-attr">err</span>: <span class="hljs-title class_">Error</span></span>) =&gt;</span> {
+    <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">error</span>(<span class="hljs-string">&quot;Error:&quot;</span>, err.<span class="hljs-property">message</span>);
+  });
+</code></pre></div>
+</div><div class="onglets__panneau"><div class="bloc-code"><div class="bloc-code__langue">typescript</div><pre><code class="hljs language-typescript"><span class="hljs-keyword">import</span> express <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;express&quot;</span>;
+
+<span class="hljs-keyword">const</span> router = express.<span class="hljs-title class_">Router</span>();
+
+<span class="hljs-comment">/* ************************************************************************* */</span>
+<span class="hljs-comment">// Define Your API Routes Here</span>
+<span class="hljs-comment">/* ************************************************************************* */</span>
+
+<span class="hljs-comment">// Define item-related routes</span>
+<span class="hljs-keyword">import</span> itemActions <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;./modules/item/itemActions&quot;</span>;
+
+router.<span class="hljs-title function_">get</span>(<span class="hljs-string">&quot;/api/items&quot;</span>, itemActions.<span class="hljs-property">browse</span>);
+router.<span class="hljs-title function_">get</span>(<span class="hljs-string">&quot;/api/items/:id&quot;</span>, itemActions.<span class="hljs-property">read</span>);
+router.<span class="hljs-title function_">post</span>(<span class="hljs-string">&quot;/api/items&quot;</span>, itemActions.<span class="hljs-property">add</span>);
+
+<span class="hljs-comment">// Define program-related routes</span>
+<span class="hljs-keyword">import</span> programActions <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;./modules/program/programActions&quot;</span>;
+
+router.<span class="hljs-title function_">get</span>(<span class="hljs-string">&quot;/api/programs&quot;</span>, programActions.<span class="hljs-property">browse</span>);
+
+<span class="hljs-comment">/* ************************************************************************* */</span>
+
+<span class="hljs-comment">// Declaration of a &quot;Welcome&quot; route</span>
+
+<span class="hljs-keyword">import</span> sayActions <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;./modules/say/sayActions&quot;</span>;
+
+router.<span class="hljs-title function_">get</span>(<span class="hljs-string">&quot;/&quot;</span>, sayActions.<span class="hljs-property">sayWelcome</span>);
+
+<span class="hljs-comment">/* ************************************************************************* */</span>
+
+<span class="hljs-keyword">export</span> <span class="hljs-keyword">default</span> router;
+</code></pre></div>
+</div><div class="onglets__panneau"><div class="bloc-code"><div class="bloc-code__langue">typescript</div><pre><code class="hljs language-typescript"><span class="hljs-comment">// Some data to make the trick</span>
+
+<span class="hljs-keyword">const</span> programs = [
+  {
+    <span class="hljs-attr">id</span>: <span class="hljs-number">1</span>,
+    <span class="hljs-attr">title</span>: <span class="hljs-string">&quot;The Good Place&quot;</span>,
+    <span class="hljs-attr">synopsis</span>:
+      <span class="hljs-string">&quot;À sa mort, Eleanor Shellstrop est envoyée au Bon Endroit, un paradis fantaisiste réservé aux individus exceptionnellement bienveillants. Or Eleanor n&#x27;est pas exactement une « bonne personne » et comprend vite qu&#x27;il y a eu erreur sur la personne. Avec l&#x27;aide de Chidi, sa prétendue âme sœur dans l&#x27;au-delà, la jeune femme est bien décidée à se redécouvrir.&quot;</span>,
+    <span class="hljs-attr">poster</span>:
+      <span class="hljs-string">&quot;https://img.betaseries.com/JwRqyGD3f9KvO_OlfIXHZUA3Ypw=/600x900/smart/https%3A%2F%2Fpictures.betaseries.com%2Ffonds%2Fposter%2F94857341d71c795c69b9e5b23c4bf3e7.jpg&quot;</span>,
+    <span class="hljs-attr">country</span>: <span class="hljs-string">&quot;USA&quot;</span>,
+    <span class="hljs-attr">year</span>: <span class="hljs-number">2016</span>,
+  },
+  {
+    <span class="hljs-attr">id</span>: <span class="hljs-number">2</span>,
+    <span class="hljs-attr">title</span>: <span class="hljs-string">&quot;Dark&quot;</span>,
+    <span class="hljs-attr">synopsis</span>:
+      <span class="hljs-string">&quot;Quatre familles affolées par la disparition d&#x27;un enfant cherchent des réponses et tombent sur un mystère impliquant trois générations qui finit de les déstabiliser.&quot;</span>,
+    <span class="hljs-attr">poster</span>:
+      <span class="hljs-string">&quot;https://img.betaseries.com/zDxfeFudy3HWjxa6J8QIED9iaVw=/600x900/smart/https%3A%2F%2Fpictures.betaseries.com%2Ffonds%2Fposter%2Fc47135385da176a87d0dd9177c5f6a41.jpg&quot;</span>,
+    <span class="hljs-attr">country</span>: <span class="hljs-string">&quot;Allemagne&quot;</span>,
+    <span class="hljs-attr">year</span>: <span class="hljs-number">2017</span>,
+  },
+];
+
+<span class="hljs-comment">// Declare the action</span>
+
+<span class="hljs-keyword">import</span> <span class="hljs-keyword">type</span> { <span class="hljs-title class_">RequestHandler</span> } <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;express&quot;</span>;
+
+<span class="hljs-keyword">const</span> <span class="hljs-attr">browse</span>: <span class="hljs-title class_">RequestHandler</span> = <span class="hljs-function">(<span class="hljs-params">req, res</span>) =&gt;</span> {
+  res.<span class="hljs-title function_">json</span>(programs);
+};
+
+<span class="hljs-comment">// Export it to import it somewhere else</span>
+
+<span class="hljs-keyword">export</span> <span class="hljs-keyword">default</span> { browse };
+</code></pre></div>
+</div><div class="onglets__panneau"><div class="bloc-code"><div class="bloc-code__langue">typescript</div><pre><code class="hljs language-typescript"><span class="hljs-comment">// Declare the action</span>
+
+<span class="hljs-keyword">import</span> <span class="hljs-keyword">type</span> { <span class="hljs-title class_">RequestHandler</span> } <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;express&quot;</span>;
+
+<span class="hljs-keyword">const</span> <span class="hljs-attr">sayWelcome</span>: <span class="hljs-title class_">RequestHandler</span> = <span class="hljs-function">(<span class="hljs-params">req, res</span>) =&gt;</span> {
+  res.<span class="hljs-title function_">send</span>(<span class="hljs-string">&quot;Welcome to Wild Series !&quot;</span>);
+};
+
+<span class="hljs-comment">// Export it to import it somewhere else</span>
+
+<span class="hljs-keyword">export</span> <span class="hljs-keyword">default</span> { sayWelcome };
+</code></pre></div>
+</div></div></div>
+<h2>Qu'est-ce que req.query ?</h2>
+<p>Ouvre ton fichier <code>sayActions.ts</code> et ajoute un <code>console.info</code> comme ceci :</p>
+<div class="onglets" data-onglets="1"><input type="radio" name="onglets-14" id="onglets-14-0" class="onglets__radio" checked><div class="onglets__barre"><label class="onglets__label" for="onglets-14-0">server/src/modules/say/sayActions.ts</label></div><div class="onglets__panneaux"><div class="onglets__panneau"><div class="bloc-code"><div class="bloc-code__langue">typescript</div><pre><code class="hljs language-typescript"><span class="hljs-comment">// Declare the action</span>
+
+<span class="hljs-keyword">import</span> <span class="hljs-keyword">type</span> { <span class="hljs-title class_">RequestHandler</span> } <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;express&quot;</span>;
+
+<span class="hljs-keyword">const</span> <span class="hljs-attr">sayWelcome</span>: <span class="hljs-title class_">RequestHandler</span> = <span class="hljs-function">(<span class="hljs-params">req, res</span>) =&gt;</span> {
+  <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">info</span>(req.<span class="hljs-property">query</span>);
+
+  res.<span class="hljs-title function_">send</span>(<span class="hljs-string">&quot;Welcome to Wild Series !&quot;</span>);
+};
+
+<span class="hljs-comment">// Export it to import it somewhere else</span>
+
+<span class="hljs-keyword">export</span> <span class="hljs-keyword">default</span> { sayWelcome };
+</code></pre></div>
+</div></div></div>
+<p>Ouvre maintenant l'adresse <a href="http://localhost:3310/?name=Jean" target="_blank" rel="noopener noreferrer">http://localhost:3310/?name=Jean</a> dans ton navigateur (pense à relancer ton serveur au besoin avec <code>npm run dev</code>). Dans ton terminal, là où tu as lancé <code>npm run dev</code>, tu devrais voir une ligne similaire à celle-ci :</p>
+<div class="bloc-code"><div class="bloc-code__langue">log</div><pre><code class="hljs language-log">server 16:37:11 { name: 'Jean' }
+</code></pre></div>
+<div class="encadre encadre--note encadre--arrow"><div class="encadre__corps"><p>La partie <code>{ name: 'Jean' }</code> est la valeur de <code>req.query</code> quand ton URL se termine par <code>?name=Jean</code> : l'objet <code>req.query</code> dans Express contient les <strong>paramètres de requête</strong>, les paires clé-valeur de la chaine de requête (la <em>query string</em>).</p>
+</div></div>
+<p>Les paramètres de requête sont des informations envoyées dans l'URL d'une requête, après le symbole <code>?</code>. Tu peux les utiliser pour transmettre des données (non sensibles !!) telles que des critères de filtrage ou de recherche dans une requête HTTP.</p>
+<p>Avec <code>req.query</code>, tu peux accéder à ces données et les utiliser pour modifier le comportement d'une route. Par exemple :</p>
+<div class="bloc-code"><div class="bloc-code__langue">typescript</div><pre><code class="hljs language-typescript"><span class="hljs-comment">// Declare the action</span>
+
+<span class="hljs-keyword">import</span> <span class="hljs-keyword">type</span> { <span class="hljs-title class_">RequestHandler</span> } <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;express&quot;</span>;
+
+<span class="hljs-keyword">const</span> <span class="hljs-attr">sayWelcome</span>: <span class="hljs-title class_">RequestHandler</span> = <span class="hljs-function">(<span class="hljs-params">req, res</span>) =&gt;</span> {
+  <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">info</span>(req.<span class="hljs-property">query</span>);
+
+  res.<span class="hljs-title function_">send</span>(<span class="hljs-string">`Welcome to Wild Series, <span class="hljs-subst">${req.query.name}</span> !`</span>);
+};
+
+<span class="hljs-comment">// Export it to import it somewhere else</span>
+
+<span class="hljs-keyword">export</span> <span class="hljs-keyword">default</span> { sayWelcome };
+</code></pre></div>
+<p>Tu peux voir le message changer avec les URL suivantes :</p>
+<ul>
+<li><a href="http://localhost:3310/?name=Paul" target="_blank" rel="noopener noreferrer">http://localhost:3310/?name=Paul</a></li>
+<li><a href="http://localhost:3310/?name=Anne" target="_blank" rel="noopener noreferrer">http://localhost:3310/?name=Anne</a></li>
+</ul>
+<h3>Exemple d'utilisation</h3>
+<p>Tu peux utiliser <code>req.query</code> pour permettre une recherche dans la liste des séries. Modifie ton fichier <code>programActions.ts</code> pour reproduire ce code :</p>
+<div class="onglets" data-onglets="1"><input type="radio" name="onglets-15" id="onglets-15-0" class="onglets__radio" checked><div class="onglets__barre"><label class="onglets__label" for="onglets-15-0">server/src/modules/program/programActions.ts</label></div><div class="onglets__panneaux"><div class="onglets__panneau"><div class="bloc-code"><div class="bloc-code__langue">typescript</div><pre><code class="hljs language-typescript"><span class="hljs-comment">// Some data to make the trick</span>
+
+<span class="hljs-keyword">const</span> programs = [
+  <span class="hljs-comment">/* ... */</span>
+];
+
+<span class="hljs-comment">// Declare the action</span>
+
+<span class="hljs-keyword">import</span> <span class="hljs-keyword">type</span> { <span class="hljs-title class_">RequestHandler</span> } <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;express&quot;</span>;
+
+<span class="hljs-keyword">const</span> <span class="hljs-attr">browse</span>: <span class="hljs-title class_">RequestHandler</span> = <span class="hljs-function">(<span class="hljs-params">req, res</span>) =&gt;</span> {
+  <span class="hljs-keyword">if</span> (req.<span class="hljs-property">query</span>.<span class="hljs-property">q</span> != <span class="hljs-literal">null</span>) {
+    <span class="hljs-keyword">const</span> filteredPrograms = programs.<span class="hljs-title function_">filter</span>(<span class="hljs-function">(<span class="hljs-params">program</span>) =&gt;</span>
+      program.<span class="hljs-property">synopsis</span>.<span class="hljs-title function_">includes</span>(req.<span class="hljs-property">query</span>.<span class="hljs-property">q</span> <span class="hljs-keyword">as</span> <span class="hljs-built_in">string</span>)
+    );
+
+    res.<span class="hljs-title function_">json</span>(filteredPrograms);
+  } <span class="hljs-keyword">else</span> {
+    res.<span class="hljs-title function_">json</span>(programs);
+  }
+};
+
+<span class="hljs-comment">// Export it to import it somewhere else</span>
+
+<span class="hljs-keyword">export</span> <span class="hljs-keyword">default</span> { browse };
+</code></pre></div>
+</div></div></div>
+<p>Si <code>req.query.q</code> est défini (<code>!= null</code>), le code renverra la liste des séries dont le synopsis contient le texte demandé :</p>
+<div class="bloc-code"><div class="bloc-code__langue">typescript</div><pre><code class="hljs language-typescript"><span class="hljs-comment">// Some data to make the trick</span>
+
+<span class="hljs-keyword">const</span> programs = [
+  <span class="hljs-comment">/* ... */</span>
+];
+
+<span class="hljs-comment">// Declare the action</span>
+
+<span class="hljs-keyword">import</span> <span class="hljs-keyword">type</span> { <span class="hljs-title class_">RequestHandler</span> } <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;express&quot;</span>;
+
+<span class="hljs-keyword">const</span> <span class="hljs-attr">browse</span>: <span class="hljs-title class_">RequestHandler</span> = <span class="hljs-function">(<span class="hljs-params">req, res</span>) =&gt;</span> {
+  <span class="hljs-keyword">if</span> (req.<span class="hljs-property">query</span>.<span class="hljs-property">q</span> != <span class="hljs-literal">null</span>) {
+    <span class="hljs-keyword">const</span> filteredPrograms = programs.<span class="hljs-title function_">filter</span>(<span class="hljs-function">(<span class="hljs-params">program</span>) =&gt;</span>
+      program.<span class="hljs-property">synopsis</span>.<span class="hljs-title function_">includes</span>(req.<span class="hljs-property">query</span>.<span class="hljs-property">q</span> <span class="hljs-keyword">as</span> <span class="hljs-built_in">string</span>)
+    );
+
+    res.<span class="hljs-title function_">json</span>(filteredPrograms);
+  } <span class="hljs-keyword">else</span> {
+    res.<span class="hljs-title function_">json</span>(programs);
+  }
+};
+
+<span class="hljs-comment">// Export it to import it somewhere else</span>
+
+<span class="hljs-keyword">export</span> <span class="hljs-keyword">default</span> { browse };
+</code></pre></div>
+<p>Si tu ouvres l'URL <a href="http://localhost:3310/api/programs?q=Eleanor" target="_blank" rel="noopener noreferrer">http://localhost:3310/api/programs?q=Eleanor</a>, la liste contiendra uniquement la série <em>The Good Place</em>.</p>
+<p>Si tu ouvres l'URL <a href="http://localhost:3310/api/programs" target="_blank" rel="noopener noreferrer">http://localhost:3310/api/programs</a>, <code>req.query.q</code> n'est pas défini. C'est la liste complète qui sera renvoyée :</p>
+<div class="bloc-code"><div class="bloc-code__langue">typescript</div><pre><code class="hljs language-typescript"><span class="hljs-comment">// Some data to make the trick</span>
+
+<span class="hljs-keyword">const</span> programs = [
+  <span class="hljs-comment">/* ... */</span>
+];
+
+<span class="hljs-comment">// Declare the action</span>
+
+<span class="hljs-keyword">import</span> <span class="hljs-keyword">type</span> { <span class="hljs-title class_">RequestHandler</span> } <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;express&quot;</span>;
+
+<span class="hljs-keyword">const</span> <span class="hljs-attr">browse</span>: <span class="hljs-title class_">RequestHandler</span> = <span class="hljs-function">(<span class="hljs-params">req, res</span>) =&gt;</span> {
+  <span class="hljs-keyword">if</span> (req.<span class="hljs-property">query</span>.<span class="hljs-property">q</span> != <span class="hljs-literal">null</span>) {
+    <span class="hljs-keyword">const</span> filteredPrograms = programs.<span class="hljs-title function_">filter</span>(<span class="hljs-function">(<span class="hljs-params">program</span>) =&gt;</span>
+      program.<span class="hljs-property">synopsis</span>.<span class="hljs-title function_">includes</span>(req.<span class="hljs-property">query</span>.<span class="hljs-property">q</span> <span class="hljs-keyword">as</span> <span class="hljs-built_in">string</span>)
+    );
+
+    res.<span class="hljs-title function_">json</span>(filteredPrograms);
+  } <span class="hljs-keyword">else</span> {
+    res.<span class="hljs-title function_">json</span>(programs);
+  }
+};
+
+<span class="hljs-comment">// Export it to import it somewhere else</span>
+
+<span class="hljs-keyword">export</span> <span class="hljs-keyword">default</span> { browse };
+</code></pre></div>
+<p>C'est un exemple de logique que tu peux construire dans une action à partir de <code>req.query</code>. Tu peux prendre un temps pour modifier le code et chercher sur un autre critère (année, pays...) : à toi d'imaginer ton filtre !</p>
+<div class="encadre encadre--note encadre--callout"><div class="encadre__corps"><p>Pourquoi <code>q=</code> dans l'URL ? En soi, tu peux appeler ton paramètre comme tu le souhaites, tant que ton code est cohérent : <code>req.query.toto</code> pour une URL contenant <code>toto=</code>. Pour notre exemple <code>q=</code>, nous avons choisi de <a href="https://www.google.com/search?q=Des+nains+sur+des+%C3%A9paules+de+g%C3%A9ants" target="_blank" rel="noopener noreferrer">copier les géants</a> (prend le temps d'analyser l'URL de ce lien 😉).</p>
+<p>Tu l'as peut être remarqué, mais quand tu lances une recherche depuis la page <a href="https://google.com" target="_blank" rel="noopener noreferrer">https://google.com</a>, le moteur de recherche t'affiche les résultats sur une page dont l'URL commence par <a href="https://google.com/search?q=" target="_blank" rel="noopener noreferrer">https://google.com/search?q=</a> suivi des termes de ta recherche. Cette lettre <code>q</code> est l'abréviation de <em>query</em> (&quot;recherche&quot; en français).</p>
+</div></div>
+<h2>Qu'est-ce que req.params ?</h2>
+<p>Comme <code>req.query</code>, <code>req.params</code> est un objet dans Express que tu peux utiliser pour accéder à des informations de l'URL. Commençons par le rendre visible !</p>
+<p>Ajoute une nouvelle action <code>read</code> dans <code>programActions.ts</code> et une nouvelle route dans <code>api/programs/router.ts</code> :</p>
+<div class="onglets" data-onglets="2"><input type="radio" name="onglets-16" id="onglets-16-0" class="onglets__radio" checked><input type="radio" name="onglets-16" id="onglets-16-1" class="onglets__radio"><div class="onglets__barre"><label class="onglets__label" for="onglets-16-0">server/src/modules/program/programActions.ts</label><label class="onglets__label" for="onglets-16-1">server/src/router.ts</label></div><div class="onglets__panneaux"><div class="onglets__panneau"><div class="bloc-code"><div class="bloc-code__langue">typescript</div><pre><code class="hljs language-typescript"><span class="hljs-comment">// Some data to make the trick</span>
+
+<span class="hljs-keyword">const</span> programs = [
+  <span class="hljs-comment">/* ... */</span>
+];
+
+<span class="hljs-comment">// Declare the action</span>
+
+<span class="hljs-keyword">import</span> <span class="hljs-keyword">type</span> { <span class="hljs-title class_">RequestHandler</span> } <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;express&quot;</span>;
+
+<span class="hljs-keyword">const</span> <span class="hljs-attr">browse</span>: <span class="hljs-title class_">RequestHandler</span> = <span class="hljs-function">(<span class="hljs-params">req, res</span>) =&gt;</span> {
+  <span class="hljs-comment">/* ... */</span>
+};
+
+<span class="hljs-comment">//*****************************************************</span>
+
+<span class="hljs-keyword">const</span> <span class="hljs-attr">read</span>: <span class="hljs-title class_">RequestHandler</span> = <span class="hljs-function">(<span class="hljs-params">req, res</span>) =&gt;</span> {
+  <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">info</span>(req.<span class="hljs-property">params</span>);
+
+  res.<span class="hljs-title function_">send</span>(<span class="hljs-string">`Hello Program <span class="hljs-subst">${req.params.id}</span> !`</span>);
+};
+
+<span class="hljs-comment">//*****************************************************</span>
+
+<span class="hljs-comment">// Export them to import them somewhere else</span>
+
+<span class="hljs-keyword">export</span> <span class="hljs-keyword">default</span> { browse, read };
+</code></pre></div>
+</div><div class="onglets__panneau"><div class="bloc-code"><div class="bloc-code__langue">diff</div><pre><code class="hljs language-diff">// ...
+
+router.get(&quot;/api/programs&quot;, programActions.browse);
+<span class="hljs-addition">+router.get(&quot;/api/programs/:id&quot;, programActions.read);</span>
+
+// ...
+</code></pre></div>
+</div></div></div>
+<div class="encadre encadre--warning"><div class="encadre__titre">Attention</div><div class="encadre__corps"><p>Fais attention à bien exporter <code>read</code> à la fin de ton fichier <code>programActions.ts</code> :</p>
+<div class="bloc-code"><div class="bloc-code__langue">typescript</div><pre><code class="hljs language-typescript"><span class="hljs-keyword">export</span> <span class="hljs-keyword">default</span> { browse, read };
+</code></pre></div>
+</div></div>
+<p>Ouvre l'URL <a href="http://localhost:3310/api/programs/1" target="_blank" rel="noopener noreferrer">http://localhost:3310/api/programs/1</a> dans ton navigateur. Dans ton terminal, là où tu as lancé <code>npm run dev</code>, tu devrais voir une ligne similaire à celle-ci :</p>
+<div class="bloc-code"><div class="bloc-code__langue">log</div><pre><code class="hljs language-log">server 16:37:11 { id: '1' }
+</code></pre></div>
+<div class="encadre encadre--note encadre--arrow"><div class="encadre__corps"><p>La partie <code>{ id: '1' }</code> est la valeur de <code>req.params</code> quand ton URL se termine par <code>/api/programs/1</code> : l'objet <code>req.params</code> dans Express contient les paramètres d'URL, les segments entre 2 <code>/</code> dans l'URL qui matchent avec les marqueurs de ta route comme <code>:id</code>.</p>
+</div></div>
+<p>Le <em>path</em> de ta route &quot;read&quot; a une syntaxe particulière : <code>&quot;api/programs/:id&quot;</code>. Tu indiques ici à ta route qu'elle va recevoir un paramètre appelé <code>id</code> lors de la réception de la requête. Tu récupéreras la valeur de ce paramètre dans <code>req.params</code>.</p>
+<p>Autrement dit, tout ce qui se trouvera après le <code>/api/programs/</code> sera considéré comme étant un <code>id</code> et sera stocké dans <code>req.params</code>. Quelque soit la valeur que tu passes après le <code>/</code>. Ouvre l'URL <a href="http://localhost:3310/api/programs/toto" target="_blank" rel="noopener noreferrer">http://localhost:3310/api/programs/toto</a> et tu obtiendras dans ton terminal :</p>
+<div class="bloc-code"><div class="bloc-code__langue">log</div><pre><code class="hljs language-log">server 16:37:11 { id: 'toto' }
+</code></pre></div>
+<p>Le nom <code>id</code> est comme un nom de variable : c'est toi qui le choisis en fonction de ce que tu prévois de stocker dans ton paramètre. Express n'interprète pas, et ne comprend pas le mot <code>id</code>. Express se base uniquement sur la position des segments de l'URL en repérant les <code>/</code> :</p>
+<p><img src="images/003-api-programs-1-api-programs-id-req-params-id-1.png" alt="/api/programs/1 + /api/programs/:id =&gt; req.params.id = 1" loading="lazy"></p>
+<p>Les paramètres d'URL sont des <strong>parties nommées de l'URL</strong> que tu peux utiliser pour récupérer des valeurs spécifiques envoyées par le client. Comme <code>req.query</code>, une fois les données récupérées, tu peux te servir de <code>req.params</code> pour construire des traitements particuliers.</p>
+<h3>Exemple d'utilisation</h3>
+<p>Tu peux utiliser <code>req.params</code> pour récupérer les données d'une série en particulier à partir de son <code>id</code>. Modifie ton fichier <code>programActions.ts</code> pour reproduire ce code :</p>
+<div class="onglets" data-onglets="1"><input type="radio" name="onglets-17" id="onglets-17-0" class="onglets__radio" checked><div class="onglets__barre"><label class="onglets__label" for="onglets-17-0">server/src/modules/program/programActions.ts</label></div><div class="onglets__panneaux"><div class="onglets__panneau"><div class="bloc-code"><div class="bloc-code__langue">typescript</div><pre><code class="hljs language-typescript"><span class="hljs-comment">// Some data to make the trick</span>
+
+<span class="hljs-keyword">const</span> programs = [
+  <span class="hljs-comment">/* ... */</span>
+];
+
+<span class="hljs-comment">// Declare the action</span>
+
+<span class="hljs-keyword">import</span> <span class="hljs-keyword">type</span> { <span class="hljs-title class_">RequestHandler</span> } <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;express&quot;</span>;
+
+<span class="hljs-keyword">const</span> <span class="hljs-attr">browse</span>: <span class="hljs-title class_">RequestHandler</span> = <span class="hljs-function">(<span class="hljs-params">req, res</span>) =&gt;</span> {
+  <span class="hljs-comment">/* ... */</span>
+};
+
+<span class="hljs-keyword">const</span> <span class="hljs-attr">read</span>: <span class="hljs-title class_">RequestHandler</span> = <span class="hljs-function">(<span class="hljs-params">req, res</span>) =&gt;</span> {
+  <span class="hljs-keyword">const</span> parsedId = <span class="hljs-title class_">Number</span>.<span class="hljs-built_in">parseInt</span>(req.<span class="hljs-property">params</span>.<span class="hljs-property">id</span>);
+
+  <span class="hljs-keyword">const</span> program = programs.<span class="hljs-title function_">find</span>(<span class="hljs-function">(<span class="hljs-params">p</span>) =&gt;</span> p.<span class="hljs-property">id</span> === parsedId);
+
+  <span class="hljs-keyword">if</span> (program != <span class="hljs-literal">null</span>) {
+    res.<span class="hljs-title function_">json</span>(program);
+  } <span class="hljs-keyword">else</span> {
+    res.<span class="hljs-title function_">sendStatus</span>(<span class="hljs-number">404</span>);
+  }
+};
+
+<span class="hljs-comment">// Export them to import them somewhere else</span>
+
+<span class="hljs-keyword">export</span> <span class="hljs-keyword">default</span> { browse, read };
+</code></pre></div>
+</div></div></div>
+<p>L'objet <code>req.params</code> est rempli avec des segments d'URL : tu récupéreras toujours des chaines de caractères. Avant d'utiliser une donnée de <code>req.params</code>, tu dois la convertir dans le bon type. C'est notre cas : nous attendons un nombre dans l'URL pour le comparer aux ids de nos séries :</p>
+<div class="bloc-code"><div class="bloc-code__langue">typescript</div><pre><code class="hljs language-typescript"><span class="hljs-comment">// Some data to make the trick</span>
+
+<span class="hljs-keyword">const</span> programs = [
+  <span class="hljs-comment">/* ... */</span>
+];
+
+<span class="hljs-comment">// Declare the action</span>
+
+<span class="hljs-keyword">import</span> <span class="hljs-keyword">type</span> { <span class="hljs-title class_">RequestHandler</span> } <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;express&quot;</span>;
+
+<span class="hljs-keyword">const</span> <span class="hljs-attr">browse</span>: <span class="hljs-title class_">RequestHandler</span> = <span class="hljs-function">(<span class="hljs-params">req, res</span>) =&gt;</span> {
+  <span class="hljs-comment">/* ... */</span>
+};
+
+<span class="hljs-keyword">const</span> <span class="hljs-attr">read</span>: <span class="hljs-title class_">RequestHandler</span> = <span class="hljs-function">(<span class="hljs-params">req, res</span>) =&gt;</span> {
+  <span class="hljs-keyword">const</span> parsedId = <span class="hljs-title class_">Number</span>.<span class="hljs-built_in">parseInt</span>(req.<span class="hljs-property">params</span>.<span class="hljs-property">id</span>);
+
+  <span class="hljs-keyword">const</span> program = programs.<span class="hljs-title function_">find</span>(<span class="hljs-function">(<span class="hljs-params">p</span>) =&gt;</span> p.<span class="hljs-property">id</span> === parsedId);
+
+  <span class="hljs-keyword">if</span> (program != <span class="hljs-literal">null</span>) {
+    res.<span class="hljs-title function_">json</span>(program);
+  } <span class="hljs-keyword">else</span> {
+    res.<span class="hljs-title function_">sendStatus</span>(<span class="hljs-number">404</span>);
+  }
+};
+
+<span class="hljs-comment">// Export them to import them somewhere else</span>
+
+<span class="hljs-keyword">export</span> <span class="hljs-keyword">default</span> { browse, read };
+</code></pre></div>
+<p>Si <code>program</code> est défini (<code>!= null</code>), le code renvoie les données de la série demandée formatées en JSON. Sinon, c'est un statut 404 (<code>Not Found</code>) qui est renvoyé :</p>
+<div class="bloc-code"><div class="bloc-code__langue">typescript</div><pre><code class="hljs language-typescript"><span class="hljs-comment">// Some data to make the trick</span>
+
+<span class="hljs-keyword">const</span> programs = [
+  <span class="hljs-comment">/* ... */</span>
+];
+
+<span class="hljs-comment">// Declare the action</span>
+
+<span class="hljs-keyword">import</span> <span class="hljs-keyword">type</span> { <span class="hljs-title class_">RequestHandler</span> } <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;express&quot;</span>;
+
+<span class="hljs-keyword">const</span> <span class="hljs-attr">browse</span>: <span class="hljs-title class_">RequestHandler</span> = <span class="hljs-function">(<span class="hljs-params">req, res</span>) =&gt;</span> {
+  <span class="hljs-comment">/* ... */</span>
+};
+
+<span class="hljs-keyword">const</span> <span class="hljs-attr">read</span>: <span class="hljs-title class_">RequestHandler</span> = <span class="hljs-function">(<span class="hljs-params">req, res</span>) =&gt;</span> {
+  <span class="hljs-keyword">const</span> parsedId = <span class="hljs-title class_">Number</span>.<span class="hljs-built_in">parseInt</span>(req.<span class="hljs-property">params</span>.<span class="hljs-property">id</span>);
+
+  <span class="hljs-keyword">const</span> program = programs.<span class="hljs-title function_">find</span>(<span class="hljs-function">(<span class="hljs-params">p</span>) =&gt;</span> p.<span class="hljs-property">id</span> === parsedId);
+
+  <span class="hljs-keyword">if</span> (program != <span class="hljs-literal">null</span>) {
+    res.<span class="hljs-title function_">json</span>(program);
+  } <span class="hljs-keyword">else</span> {
+    res.<span class="hljs-title function_">sendStatus</span>(<span class="hljs-number">404</span>);
+  }
+};
+
+<span class="hljs-comment">// Export them to import them somewhere else</span>
+
+<span class="hljs-keyword">export</span> <span class="hljs-keyword">default</span> { browse, read };
+</code></pre></div>
+<p>Tu peux tester avec les URL suivantes :</p>
+<ul>
+<li><a href="http://localhost:3310/api/programs/1" target="_blank" rel="noopener noreferrer">http://localhost:3310/api/programs/1</a> : The Good Place</li>
+<li><a href="http://localhost:3310/api/programs/2" target="_blank" rel="noopener noreferrer">http://localhost:3310/api/programs/2</a> : Dark</li>
+<li><a href="http://localhost:3310/api/programs/0" target="_blank" rel="noopener noreferrer">http://localhost:3310/api/programs/0</a> : 404 (Not Found)</li>
+</ul>
+<h2>Récapitulatif</h2>
+<p>Pour récupérer des informations depuis l'URL, Express te fournit 2 objets :</p>
+<ul>
+<li>L'objet <code>req.query</code> te donne accès aux paires clé-valeur de la <em>query string</em>. Tu peux l'utiliser pour récupérer le <code>&quot;Eleanor&quot;</code> dans <code>/api/programs?q=Eleanor</code>.</li>
+<li>L'objet <code>req.params</code> te donne accès aux valeurs des segments dynamiques de ta route. Tu peux l'utiliser pour récupérer le <code>&quot;1&quot;</code> dans <code>/api/programs/1</code>.</li>
+<li>Utilise <code>req.query</code> quand tu veux récupérer une partie d'une liste (toutes les séries dont la catégorie est &quot;Comédie&quot;, tous les utilisateurs dont le nom commence par un &quot;A&quot;...) et <code>req.params</code> quand tu veux récupérer un seul objet (la série pour une page dédiée, mon profil utilisateur...).</li>
+</ul>
+<h2>Avant de finir</h2>
+<p>Voici le code que tu devrais avoir dans ton projet Wild Series à ce stade :</p>
+<div class="onglets" data-onglets="2"><input type="radio" name="onglets-18" id="onglets-18-0" class="onglets__radio" checked><input type="radio" name="onglets-18" id="onglets-18-1" class="onglets__radio"><div class="onglets__barre"><label class="onglets__label" for="onglets-18-0">server/src/router.ts</label><label class="onglets__label" for="onglets-18-1">server/src/modules/program/programActions.ts</label></div><div class="onglets__panneaux"><div class="onglets__panneau"><div class="bloc-code"><div class="bloc-code__langue">typescript</div><pre><code class="hljs language-typescript"><span class="hljs-keyword">import</span> express <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;express&quot;</span>;
+
+<span class="hljs-keyword">const</span> router = express.<span class="hljs-title class_">Router</span>();
+
+<span class="hljs-comment">/* ************************************************************************* */</span>
+<span class="hljs-comment">// Define Your API Routes Here</span>
+<span class="hljs-comment">/* ************************************************************************* */</span>
+
+<span class="hljs-comment">// Define item-related routes</span>
+<span class="hljs-keyword">import</span> itemActions <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;./modules/item/itemActions&quot;</span>;
+
+router.<span class="hljs-title function_">get</span>(<span class="hljs-string">&quot;/api/items&quot;</span>, itemActions.<span class="hljs-property">browse</span>);
+router.<span class="hljs-title function_">get</span>(<span class="hljs-string">&quot;/api/items/:id&quot;</span>, itemActions.<span class="hljs-property">read</span>);
+router.<span class="hljs-title function_">post</span>(<span class="hljs-string">&quot;/api/items&quot;</span>, itemActions.<span class="hljs-property">add</span>);
+
+<span class="hljs-comment">// Define program-related routes</span>
+<span class="hljs-keyword">import</span> programActions <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;./modules/program/programActions&quot;</span>;
+
+router.<span class="hljs-title function_">get</span>(<span class="hljs-string">&quot;/api/programs&quot;</span>, programActions.<span class="hljs-property">browse</span>);
+router.<span class="hljs-title function_">get</span>(<span class="hljs-string">&quot;/api/programs/:id&quot;</span>, programActions.<span class="hljs-property">read</span>);
+
+<span class="hljs-comment">/* ************************************************************************* */</span>
+
+<span class="hljs-comment">// Declaration of a &quot;Welcome&quot; route</span>
+
+<span class="hljs-keyword">import</span> sayActions <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;./modules/say/sayActions&quot;</span>;
+
+router.<span class="hljs-title function_">get</span>(<span class="hljs-string">&quot;/&quot;</span>, sayActions.<span class="hljs-property">sayWelcome</span>);
+
+<span class="hljs-comment">/* ************************************************************************* */</span>
+
+<span class="hljs-keyword">export</span> <span class="hljs-keyword">default</span> router;
+</code></pre></div>
+</div><div class="onglets__panneau"><div class="bloc-code"><div class="bloc-code__langue">typescript</div><pre><code class="hljs language-typescript"><span class="hljs-comment">// Some data to make the trick</span>
+
+<span class="hljs-keyword">const</span> programs = [
+  {
+    <span class="hljs-attr">id</span>: <span class="hljs-number">1</span>,
+    <span class="hljs-attr">title</span>: <span class="hljs-string">&quot;The Good Place&quot;</span>,
+    <span class="hljs-attr">synopsis</span>:
+      <span class="hljs-string">&quot;À sa mort, Eleanor Shellstrop est envoyée au Bon Endroit, un paradis fantaisiste réservé aux individus exceptionnellement bienveillants. Or Eleanor n&#x27;est pas exactement une « bonne personne » et comprend vite qu&#x27;il y a eu erreur sur la personne. Avec l&#x27;aide de Chidi, sa prétendue âme sœur dans l&#x27;au-delà, la jeune femme est bien décidée à se redécouvrir.&quot;</span>,
+    <span class="hljs-attr">poster</span>:
+      <span class="hljs-string">&quot;https://img.betaseries.com/JwRqyGD3f9KvO_OlfIXHZUA3Ypw=/600x900/smart/https%3A%2F%2Fpictures.betaseries.com%2Ffonds%2Fposter%2F94857341d71c795c69b9e5b23c4bf3e7.jpg&quot;</span>,
+    <span class="hljs-attr">country</span>: <span class="hljs-string">&quot;USA&quot;</span>,
+    <span class="hljs-attr">year</span>: <span class="hljs-number">2016</span>,
+  },
+  {
+    <span class="hljs-attr">id</span>: <span class="hljs-number">2</span>,
+    <span class="hljs-attr">title</span>: <span class="hljs-string">&quot;Dark&quot;</span>,
+    <span class="hljs-attr">synopsis</span>:
+      <span class="hljs-string">&quot;Quatre familles affolées par la disparition d&#x27;un enfant cherchent des réponses et tombent sur un mystère impliquant trois générations qui finit de les déstabiliser.&quot;</span>,
+    <span class="hljs-attr">poster</span>:
+      <span class="hljs-string">&quot;https://img.betaseries.com/zDxfeFudy3HWjxa6J8QIED9iaVw=/600x900/smart/https%3A%2F%2Fpictures.betaseries.com%2Ffonds%2Fposter%2Fc47135385da176a87d0dd9177c5f6a41.jpg&quot;</span>,
+    <span class="hljs-attr">country</span>: <span class="hljs-string">&quot;Allemagne&quot;</span>,
+    <span class="hljs-attr">year</span>: <span class="hljs-number">2017</span>,
+  },
+];
+
+<span class="hljs-comment">// Declare the actions</span>
+
+<span class="hljs-keyword">import</span> <span class="hljs-keyword">type</span> { <span class="hljs-title class_">RequestHandler</span> } <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;express&quot;</span>;
+
+<span class="hljs-keyword">const</span> <span class="hljs-attr">browse</span>: <span class="hljs-title class_">RequestHandler</span> = <span class="hljs-function">(<span class="hljs-params">req, res</span>) =&gt;</span> {
+  <span class="hljs-keyword">if</span> (req.<span class="hljs-property">query</span>.<span class="hljs-property">q</span> != <span class="hljs-literal">null</span>) {
+    <span class="hljs-keyword">const</span> filteredPrograms = programs.<span class="hljs-title function_">filter</span>(<span class="hljs-function">(<span class="hljs-params">program</span>) =&gt;</span>
+      program.<span class="hljs-property">synopsis</span>.<span class="hljs-title function_">includes</span>(req.<span class="hljs-property">query</span>.<span class="hljs-property">q</span> <span class="hljs-keyword">as</span> <span class="hljs-built_in">string</span>)
+    );
+
+    res.<span class="hljs-title function_">json</span>(filteredPrograms);
+  } <span class="hljs-keyword">else</span> {
+    res.<span class="hljs-title function_">json</span>(programs);
+  }
+};
+
+<span class="hljs-keyword">const</span> <span class="hljs-attr">read</span>: <span class="hljs-title class_">RequestHandler</span> = <span class="hljs-function">(<span class="hljs-params">req, res</span>) =&gt;</span> {
+  <span class="hljs-keyword">const</span> parsedId = <span class="hljs-title class_">Number</span>.<span class="hljs-built_in">parseInt</span>(req.<span class="hljs-property">params</span>.<span class="hljs-property">id</span>);
+
+  <span class="hljs-keyword">const</span> program = programs.<span class="hljs-title function_">find</span>(<span class="hljs-function">(<span class="hljs-params">p</span>) =&gt;</span> p.<span class="hljs-property">id</span> === parsedId);
+
+  <span class="hljs-keyword">if</span> (program != <span class="hljs-literal">null</span>) {
+    res.<span class="hljs-title function_">json</span>(program);
+  } <span class="hljs-keyword">else</span> {
+    res.<span class="hljs-title function_">sendStatus</span>(<span class="hljs-number">404</span>);
+  }
+};
+
+<span class="hljs-comment">// Export them to import them somewhere else</span>
+
+<span class="hljs-keyword">export</span> <span class="hljs-keyword">default</span> { browse, read };
+</code></pre></div>
+</div></div></div>
+<p>Teste ces URLs dans ton navigateur pour t'assurer que ton serveur est fonctionnel avant d'attaquer le challenge :</p>
+<ul>
+<li><a href="http://localhost:3310/api/programs" target="_blank" rel="noopener noreferrer">http://localhost:3310/api/programs</a> =&gt; un tableau avec <em>The Good Place</em> et <em>Dark</em></li>
+<li><a href="http://localhost:3310/api/programs?q=Eleanor" target="_blank" rel="noopener noreferrer">http://localhost:3310/api/programs?q=Eleanor</a> =&gt; un tableau avec uniquement <em>The Good Place</em></li>
+<li><a href="http://localhost:3310/api/programs/1" target="_blank" rel="noopener noreferrer">http://localhost:3310/api/programs/1</a> =&gt; un objet avec les données de la série <em>The Good Place</em></li>
+<li><a href="http://localhost:3310/api/programs/0" target="_blank" rel="noopener noreferrer">http://localhost:3310/api/programs/0</a> =&gt; une erreur 404</li>
+</ul>
+<h2>Challenge</h2>
+<p>Tu as mis en place des routes côté serveur pour &quot;browse&quot; et &quot;read&quot; les séries :</p>
+<div class="colonnes"><div class="colonne"><p><strong>User stories</strong> 📋</p>
+<div class="encadre encadre--note encadre--callout"><div class="encadre__corps"><p>en tant que contributeur, je souhaite ajouter une série</p>
+</div></div>
+<div class="encadre encadre--note encadre--callout"><div class="encadre__corps"><p>en tant que contributeur, je souhaite modifier une série</p>
+</div></div>
+<div class="encadre encadre--note encadre--callout"><div class="encadre__corps"><p>en tant que contributeur, je souhaite supprimer une série</p>
+</div></div>
+</div><div class="colonne"><p><strong>In progress</strong> 🤸</p>
+</div><div class="colonne"><p><strong>In review</strong> 🧐</p>
+<div class="encadre encadre--note encadre--callout"><div class="encadre__corps"><p>en tant que visiteur, je souhaite récupérer la liste des séries</p>
+</div></div>
+<div class="encadre encadre--note encadre--callout"><div class="encadre__corps"><p>en tant que visiteur, je souhaite récupérer les données d'une série</p>
+</div></div>
+</div><div class="colonne"><p><strong>Done</strong> ✅</p>
+<div class="encadre encadre--note encadre--callout"><div class="encadre__corps"><p>initialisation du projet</p>
+</div></div>
+</div></div>
+<p>Avant de les passer en &quot;<strong>Done</strong> ✅&quot;, tu vas faire un &quot;browse&quot; et un &quot;read&quot; pour les catégories afin de reprendre les notions de cette quête.</p>
+<ul>
+<li>Créé un fichier <code>server/src/modules/category/categoryActions.ts</code> avec des données &quot;en dur&quot; :</li>
+</ul>
+<div class="onglets" data-onglets="1"><input type="radio" name="onglets-19" id="onglets-19-0" class="onglets__radio" checked><div class="onglets__barre"><label class="onglets__label" for="onglets-19-0">server/src/modules/category/categoryActions.ts</label></div><div class="onglets__panneaux"><div class="onglets__panneau"><div class="bloc-code"><div class="bloc-code__langue">typescript</div><pre><code class="hljs language-typescript"><span class="hljs-comment">// Some data to make the trick</span>
+
+<span class="hljs-keyword">const</span> categories = [
+  {
+    <span class="hljs-attr">id</span>: <span class="hljs-number">1</span>,
+    <span class="hljs-attr">name</span>: <span class="hljs-string">&quot;Comédie&quot;</span>,
+  },
+  {
+    <span class="hljs-attr">id</span>: <span class="hljs-number">2</span>,
+    <span class="hljs-attr">name</span>: <span class="hljs-string">&quot;Science-Fiction&quot;</span>,
+  },
+];
+
+<span class="hljs-comment">// Declare the actions</span>
+
+<span class="hljs-comment">/* Here you code */</span>
+
+<span class="hljs-comment">// Export them to import them somewhere else</span>
+
+<span class="hljs-keyword">export</span> <span class="hljs-keyword">default</span> { <span class="hljs-comment">/* Here you export */</span> };
+</code></pre></div>
+</div></div></div>
+<p>Complète <code>categoryActions.ts</code> et met à jour <code>router.ts</code> pour ajouter 2 routes à ton serveur :</p>
+<ul>
+<li>GET <code>/api/categories</code> qui renvoie la liste des catégories.</li>
+<li>GET <code>/api/categories/:id</code> qui renvoie une catégorie en particulier.</li>
+</ul>
+<p>Pousse ton projet sur GitHub, et partage le lien de ton dépôt pour valider ta quête.</p>
+<h3>Critères de validation</h3>
+<ul>
+<li>[ ] Le projet est disponible sur GitHub.</li>
+<li>[ ] Quand tu clones le projet et lance les applications avec <code>npm run dev</code> :
+<ul>
+<li>[ ] La page <a href="http://localhost:3310/api/categories" target="_blank" rel="noopener noreferrer">http://localhost:3310/api/categories</a> affiche la liste des catégories dans ton navigateur.</li>
+<li>[ ] La page <a href="http://localhost:3310/api/categories/1" target="_blank" rel="noopener noreferrer">http://localhost:3310/api/categories/1</a> affiche la catégorie &quot;Comédie&quot; dans ton navigateur.</li>
+</ul>
+</li>
+</ul>
+<div class="onglets" data-onglets="2"><input type="radio" name="onglets-20" id="onglets-20-0" class="onglets__radio" checked><input type="radio" name="onglets-20" id="onglets-20-1" class="onglets__radio"><div class="onglets__barre"><label class="onglets__label" for="onglets-20-0">server/src/modules/category/categoryActions.ts</label><label class="onglets__label" for="onglets-20-1">server/src/router.ts</label></div><div class="onglets__panneaux"><div class="onglets__panneau"><div class="bloc-code"><div class="bloc-code__langue">typescript</div><pre><code class="hljs language-typescript"><span class="hljs-comment">// Some data to make the trick</span>
+
+<span class="hljs-keyword">const</span> categories = [
+  {
+    <span class="hljs-attr">id</span>: <span class="hljs-number">1</span>,
+    <span class="hljs-attr">name</span>: <span class="hljs-string">&quot;Comédie&quot;</span>,
+  },
+  {
+    <span class="hljs-attr">id</span>: <span class="hljs-number">2</span>,
+    <span class="hljs-attr">name</span>: <span class="hljs-string">&quot;Science-Fiction&quot;</span>,
+  },
+];
+
+<span class="hljs-comment">// Declare the actions</span>
+
+<span class="hljs-keyword">import</span> <span class="hljs-keyword">type</span> { <span class="hljs-title class_">RequestHandler</span> } <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;express&quot;</span>;
+
+<span class="hljs-keyword">const</span> <span class="hljs-attr">browse</span>: <span class="hljs-title class_">RequestHandler</span> = <span class="hljs-function">(<span class="hljs-params">req, res</span>) =&gt;</span> {
+  res.<span class="hljs-title function_">json</span>(categories);
+};
+
+<span class="hljs-keyword">const</span> <span class="hljs-attr">read</span>: <span class="hljs-title class_">RequestHandler</span> = <span class="hljs-function">(<span class="hljs-params">req, res</span>) =&gt;</span> {
+  <span class="hljs-keyword">const</span> parsedId = <span class="hljs-title class_">Number</span>.<span class="hljs-built_in">parseInt</span>(req.<span class="hljs-property">params</span>.<span class="hljs-property">id</span>);
+
+  <span class="hljs-keyword">const</span> category = categories.<span class="hljs-title function_">find</span>(<span class="hljs-function">(<span class="hljs-params">p</span>) =&gt;</span> p.<span class="hljs-property">id</span> === parsedId);
+
+  <span class="hljs-keyword">if</span> (category != <span class="hljs-literal">null</span>) {
+    res.<span class="hljs-title function_">json</span>(category);
+  } <span class="hljs-keyword">else</span> {
+    res.<span class="hljs-title function_">sendStatus</span>(<span class="hljs-number">404</span>);
+  }
+};
+
+<span class="hljs-comment">// Export them to import them somewhere else</span>
+
+<span class="hljs-keyword">export</span> <span class="hljs-keyword">default</span> { browse, read };
+</code></pre></div>
+</div><div class="onglets__panneau"><div class="bloc-code"><div class="bloc-code__langue">typescript</div><pre><code class="hljs language-typescript"><span class="hljs-keyword">import</span> express <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;express&quot;</span>;
+
+<span class="hljs-keyword">const</span> router = express.<span class="hljs-title class_">Router</span>();
+
+<span class="hljs-comment">/* ************************************************************************* */</span>
+<span class="hljs-comment">// Define Your API Routes Here</span>
+<span class="hljs-comment">/* ************************************************************************* */</span>
+
+<span class="hljs-comment">// Define item-related routes</span>
+<span class="hljs-keyword">import</span> itemActions <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;./modules/item/itemActions&quot;</span>;
+
+router.<span class="hljs-title function_">get</span>(<span class="hljs-string">&quot;/api/items&quot;</span>, itemActions.<span class="hljs-property">browse</span>);
+router.<span class="hljs-title function_">get</span>(<span class="hljs-string">&quot;/api/items/:id&quot;</span>, itemActions.<span class="hljs-property">read</span>);
+router.<span class="hljs-title function_">post</span>(<span class="hljs-string">&quot;/api/items&quot;</span>, itemActions.<span class="hljs-property">add</span>);
+
+<span class="hljs-comment">// Define program-related routes</span>
+<span class="hljs-keyword">import</span> programActions <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;./modules/program/programActions&quot;</span>;
+
+router.<span class="hljs-title function_">get</span>(<span class="hljs-string">&quot;/api/programs&quot;</span>, programActions.<span class="hljs-property">browse</span>);
+router.<span class="hljs-title function_">get</span>(<span class="hljs-string">&quot;/api/programs/:id&quot;</span>, programActions.<span class="hljs-property">read</span>);
+
+<span class="hljs-comment">// Define category-related routes</span>
+<span class="hljs-keyword">import</span> categoryActions <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;./modules/category/categoryActions&quot;</span>;
+
+router.<span class="hljs-title function_">get</span>(<span class="hljs-string">&quot;/api/categories&quot;</span>, categoryActions.<span class="hljs-property">browse</span>);
+router.<span class="hljs-title function_">get</span>(<span class="hljs-string">&quot;/api/categories/:id&quot;</span>, categoryActions.<span class="hljs-property">read</span>);
+
+<span class="hljs-comment">/* ************************************************************************* */</span>
+
+<span class="hljs-comment">// Declaration of a &quot;Welcome&quot; route</span>
+
+<span class="hljs-keyword">import</span> sayActions <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;./modules/say/sayActions&quot;</span>;
+
+router.<span class="hljs-title function_">get</span>(<span class="hljs-string">&quot;/&quot;</span>, sayActions.<span class="hljs-property">sayWelcome</span>);
+
+<span class="hljs-comment">/* ************************************************************************* */</span>
+
+<span class="hljs-keyword">export</span> <span class="hljs-keyword">default</span> router;
+</code></pre></div>
+</div></div></div>
+
+  </div>
+  
+</article>
+
+<nav class="nav-quete">
+  <a class="nav-quete__lien nav-quete__lien--prec" href="../../js-monorepo/004-03-js-monorepo-routing/index.html">
+           <span class="nav-quete__sens">← Précédent</span>
+           <span class="nav-quete__titre">03 - JS Monorepo : Routing</span>
+         </a>
+  <a class="nav-quete__lien nav-quete__lien--suiv" href="../../js-monorepo/006-05-js-monorepo-mettre-en-place-une-base-de-donnees/index.html">
+           <span class="nav-quete__sens">Suivant →</span>
+           <span class="nav-quete__titre">05 - JS Monorepo : Mettre en place une base de données</span>
+         </a>
+</nav>
+</main>
+<footer class="pied">
+  <p>Archive personnelle des cours suivis à la Wild Code School. Copie hors ligne à usage strictement privé.</p>
+</footer>
+
+<script src="../../assets/copie-code.js"></script>
+<script src="../../assets/progression.js"></script>
+</body>
+</html>

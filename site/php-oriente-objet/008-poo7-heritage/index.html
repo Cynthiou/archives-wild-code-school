@@ -1,0 +1,346 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>POO7 - Héritage — Archives WCS</title>
+<link rel="stylesheet" href="../../assets/style.css">
+</head>
+<body style="--teinte:#464985">
+<header class="entete">
+  <a class="entete__marque" href="../../index.html">Archives Wild Code School</a>
+</header>
+<main class="contenu">
+<nav class="ariane"><a href="../../index.html">Accueil</a><span class="ariane__sep">›</span><a href="../../php-oriente-objet/index.html">PHP Orienté Objet</a><span class="ariane__sep">›</span><span aria-current="page">POO7 - Héritage</span></nav>
+
+<article class="quete">
+  <header class="quete__entete">
+    <a class="pastille pastille--teintee" href="../../php-oriente-objet/index.html">PHP Orienté Objet</a>
+    <h1>POO7 - Héritage</h1>
+    <p class="quete__meta">Quête 8 sur 11 · 2 images archivées</p>
+  </header>
+  <div class="cours">
+<h1>Prérequis</h1>
+<div class="renvois"><div class="renvois__titre">Quêtes liées</div><ul><li><a href="../../php-oriente-objet/007-poo6-interaction-entre-objets/index.html">Quête 2295</a></li></ul></div>
+<div class="bloc-code"><div class="bloc-code__langue">title-book</div><pre><code class="hljs language-title-book">Introduction
+</code></pre></div>
+<div class="encadre encadre--story"><div class="encadre__titre">Le récit</div><div class="encadre__corps"><p>Il est temps de passer à la branche <strong>poo7</strong> de ton Wild zoo. Dans cette quête, tu vas découvrir le concept d'héritage, très important en programmation orientée objet pour limiter la duplication du code et simplifier son évolution. Nous allons l'appliquer ici à la classification des animaux de ton zoo.</p>
+<p><img src="images/001-image.png" alt="image" loading="lazy"></p>
+</div></div>
+<h2>🤓 À la fin de cette quête, tu seras capable de :</h2>
+<ul>
+<li>✅ Comprendre le concept d'héritage</li>
+<li>✅ Créer et utiliser des classes filles</li>
+</ul>
+<h1>Définition de l'héritage</h1>
+<p>Pour le moment, tu crées divers animaux depuis ton unique classe <strong>Animal</strong>. Cependant, plus ton zoo va se développer, plus tu rencontras des cas particuliers pour les animaux. Leur condition de vie idéale (température, humidité, luminosité...), leur régime alimentaire (viande, graines, végétaux, un peu de tout...), leur moyen de se déplacer (sur le sol, en volant, en nageant...), leur façon de se reproduire (temps de gestation, ovipare ou vivipare...). Tu l'as compris, chaque animal à ses propres contraintes, ce qui est tout à fait normal !</p>
+<p>Si tu essaies de prendre en compte tout cela, ta classe <strong>Animal</strong> va très vite devenir énorme et difficile à maintenir. Par exemple pour un poisson, tu sais que le nombre de pattes sera toujours zéro, cette information ne sera donc pas très pertinente, par contre tu seras davantage intéressé par le nombre de nageoires (<em>fin</em> en anglais). Pour un céphalopode, c'est plus le nombre de tentacules qui va t'intéresser, <em>etc.</em> Tu risques de te retrouver avec :</p>
+<div class="bloc-code"><div class="bloc-code__langue">php</div><pre><code class="hljs language-php"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Animal</span>
+</span>{
+    <span class="hljs-keyword">private</span> <span class="hljs-keyword">string</span> <span class="hljs-variable">$name</span>;
+    <span class="hljs-keyword">private</span> <span class="hljs-keyword">int</span> <span class="hljs-variable">$pawNumber</span>;
+    <span class="hljs-keyword">private</span> <span class="hljs-keyword">int</span> <span class="hljs-variable">$finNumber</span>; 
+    <span class="hljs-keyword">private</span> <span class="hljs-keyword">int</span> <span class="hljs-variable">$tentacleNumber</span>;   
+    <span class="hljs-comment">// ...</span>
+}
+</code></pre></div>
+<p>Et on pourrait continuer longtemps avec plein d'autres cas plus ou moins particuliers. Pour le moment, <code>$pawNumber</code> est dans le <code>__construct()</code>, faut-il ajouter <code>$finNumber</code> et <code>$tentacleNumber</code> également dans le constructeur ?
+Notre lion va donc finir par avoir plein de propriétés qui lui sont inutiles (et les éventuelles <em>getters</em> et <em>setters</em> correspondant). Est-ce une utilisation logique de pouvoir faire <code>$lion-&gt;getTentacleNumber()</code> ? Ceci n'est qu'un exemple très limité, tu peux facilement imaginer les dizaines d'autres propriétés/méthodes que la classe <strong>Animal</strong> pourrait avoir, avec pour chaque animal, une majorité qui ne le concerne même pas !</p>
+<p>🛑 STOP. C'est justement ce type de problème que cherche à corriger l'héritage ! Si les objets deviennent trop différents les uns des autres, il est sans doute temps de les regrouper ensemble ceux qui ont des caractéristiques communes et créer une nouvelle classe pour eux.</p>
+<p>Pour les animaux, ce n'est pas trop compliqué, nous avons déjà l'habitude de les classer. Sans être trop regardant sur la rigueur scientifique, nous pouvons facilement dégager de grands groupes qui parlent à tout le monde : les mammifères, les oiseaux, les poissons, les reptiles, les mollusques...</p>
+<p>On voit que (sauf exception), tous les mamifères ont 4 pattes, les oiseaux 2 et les poissons aucune. Les poissons ont par contre des nageoires.</p>
+<p>Ne modifie rien dans ton code pour le moment, mais imaginons que l'on souhaite séparer <strong>Mammal</strong>, <strong>Bird</strong>, <strong>Fish</strong> dans différentes classes, la propriété <code>$finNumber</code> pourra être définie uniquement dans <strong>Fish</strong>, tandis que <code>$pawNumber</code> pourra prendre une valeur par défaut à 0, 2 et 4 en fonction du type d'animal.</p>
+<div class="bloc-code"><div class="bloc-code__langue">php</div><pre><code class="hljs language-php"><span class="hljs-comment">// Mammal.php</span>
+<span class="hljs-keyword">namespace</span> <span class="hljs-title class_">App</span>;
+
+<span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Mammal</span>
+</span>{
+    <span class="hljs-keyword">private</span> <span class="hljs-keyword">string</span> <span class="hljs-variable">$name</span>;
+    <span class="hljs-keyword">private</span> <span class="hljs-keyword">float</span> <span class="hljs-variable">$size</span> = <span class="hljs-number">100</span>;
+    <span class="hljs-keyword">private</span> <span class="hljs-keyword">bool</span> <span class="hljs-variable">$carnivorous</span> = <span class="hljs-literal">false</span>;
+    <span class="hljs-keyword">private</span> <span class="hljs-keyword">int</span> <span class="hljs-variable">$pawNumber</span> = <span class="hljs-number">4</span>;
+    <span class="hljs-keyword">private</span> <span class="hljs-keyword">string</span> <span class="hljs-variable">$threatenedLevel</span> = <span class="hljs-string">&#x27;NE&#x27;</span>;
+    <span class="hljs-comment">//...</span>
+}
+</code></pre></div>
+<div class="bloc-code"><div class="bloc-code__langue">php</div><pre><code class="hljs language-php"><span class="hljs-comment">// Bird.php</span>
+<span class="hljs-keyword">namespace</span> <span class="hljs-title class_">App</span>;
+
+<span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Bird</span>
+</span>{
+    <span class="hljs-keyword">private</span> <span class="hljs-keyword">string</span> <span class="hljs-variable">$name</span>;
+    <span class="hljs-keyword">private</span> <span class="hljs-keyword">float</span> <span class="hljs-variable">$size</span> = <span class="hljs-number">100</span>;
+    <span class="hljs-keyword">private</span> <span class="hljs-keyword">bool</span> <span class="hljs-variable">$carnivorous</span> = <span class="hljs-literal">false</span>;
+    <span class="hljs-keyword">private</span> <span class="hljs-keyword">int</span> <span class="hljs-variable">$pawNumber</span> = <span class="hljs-number">2</span>;
+    <span class="hljs-keyword">private</span> <span class="hljs-keyword">string</span> <span class="hljs-variable">$threatenedLevel</span> = <span class="hljs-string">&#x27;NE&#x27;</span>;
+    <span class="hljs-comment">//...</span>
+}
+</code></pre></div>
+<div class="bloc-code"><div class="bloc-code__langue">php</div><pre><code class="hljs language-php"><span class="hljs-comment">// Fish.php</span>
+<span class="hljs-keyword">namespace</span> <span class="hljs-title class_">App</span>;
+
+<span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Fish</span>
+</span>{
+    <span class="hljs-keyword">private</span> <span class="hljs-keyword">string</span> <span class="hljs-variable">$name</span>;
+    <span class="hljs-keyword">private</span> <span class="hljs-keyword">float</span> <span class="hljs-variable">$size</span> = <span class="hljs-number">100</span>;
+    <span class="hljs-keyword">private</span> <span class="hljs-keyword">bool</span> <span class="hljs-variable">$carnivorous</span> = <span class="hljs-literal">false</span>;
+    <span class="hljs-keyword">private</span> <span class="hljs-keyword">int</span> <span class="hljs-variable">$pawNumber</span> = <span class="hljs-number">0</span>;
+    <span class="hljs-keyword">private</span> <span class="hljs-keyword">int</span> <span class="hljs-variable">$finNumber</span> = <span class="hljs-number">2</span>;
+    <span class="hljs-keyword">private</span> <span class="hljs-keyword">string</span> <span class="hljs-variable">$threatenedLevel</span> = <span class="hljs-string">&#x27;NE&#x27;</span>;
+    <span class="hljs-comment">//...</span>
+}
+</code></pre></div>
+<p>Une partie du problème est ainsi résolu, <strong>cependant une énorme partie du code est répétée</strong> entre chaque classe. Effectivement, bien que différents, les mammifères, poissons et oiseaux ont tout de même beaucoup de caractéristiques communes, par exemple un nom, une taille, un niveau de vulnérabilité, <em>etc.</em></p>
+<h1>Créer des classes filles</h1>
+<p>Chaque groupe d'animal hérite donc d'un certain nombre de caractéristiques communes à tous les animaux, mais possède des caractéristiques propres. Nous allons donc conserver la classe <strong>Animal</strong> qui contient ce socle commun, et les classes <strong>Mammal</strong>, <strong>Bird</strong> et <strong>Fish</strong> vont hériter d'elle, et donc de toutes ses propriétés, méthodes et constantes. <strong>Animal</strong> sera la classe <em>mère</em> et les trois autres, les classes <em>filles</em>.
+Nous allons les laisser vide pour le moment, puis spécifier de nouvelles caractéristiques propres à chaque fille.</p>
+<p>🖥️ À toi de jouer pour créer les classes de cette manière :</p>
+<div class="bloc-code"><div class="bloc-code__langue">php</div><pre><code class="hljs language-php"><span class="hljs-keyword">namespace</span> <span class="hljs-title class_">App</span>;
+
+<span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Animal</span>
+</span>{
+    <span class="hljs-keyword">private</span> <span class="hljs-keyword">string</span> <span class="hljs-variable">$name</span>;
+    <span class="hljs-keyword">private</span> <span class="hljs-keyword">float</span> <span class="hljs-variable">$size</span> = <span class="hljs-number">100</span>;
+    <span class="hljs-keyword">private</span> <span class="hljs-keyword">bool</span> <span class="hljs-variable">$carnivorous</span> = <span class="hljs-literal">false</span>;
+    <span class="hljs-keyword">private</span> <span class="hljs-keyword">int</span> <span class="hljs-variable">$pawNumber</span>;
+    <span class="hljs-keyword">private</span> <span class="hljs-keyword">string</span> <span class="hljs-variable">$threatenedLevel</span> = <span class="hljs-string">&#x27;NE&#x27;</span>;
+    <span class="hljs-comment">//...</span>
+}
+</code></pre></div>
+<div class="bloc-code"><div class="bloc-code__langue">php</div><pre><code class="hljs language-php"><span class="hljs-keyword">namespace</span> <span class="hljs-title class_">App</span>;
+
+<span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Mammal</span> <span class="hljs-keyword">extends</span> <span class="hljs-title">Animal</span>
+</span>{
+}
+</code></pre></div>
+<div class="bloc-code"><div class="bloc-code__langue">php</div><pre><code class="hljs language-php"><span class="hljs-keyword">namespace</span> <span class="hljs-title class_">App</span>;
+
+<span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Bird</span> <span class="hljs-keyword">extends</span> <span class="hljs-title">Animal</span>
+</span>{
+}
+</code></pre></div>
+<div class="bloc-code"><div class="bloc-code__langue">php</div><pre><code class="hljs language-php"><span class="hljs-keyword">namespace</span> <span class="hljs-title class_">App</span>;
+
+<span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Fish</span> <span class="hljs-keyword">extends</span> <span class="hljs-title">Animal</span>
+</span>{
+}
+</code></pre></div>
+<p>Niveau syntaxe, le nouveau mot-clé <code>extends</code> apparaît après le nom de la classe, pour indiquer de quelle classe nous souhaitons hériter.
+Ici les 3 nouvelles étendent la classe <strong>Animal</strong>. Il faut bien comprendre que le fait d'hériter récupère <strong>toutes les constantes, propriétés et méthodes</strong> de la classe mère, sans avoir besoin de les réécrire.
+Quelques règles à savoir :</p>
+<ul>
+<li>une classe ne peut hériter que d'une seule mère (mais une classe mère peut avoir plusieurs filles)</li>
+<li>une classe fille peut elle même être mère d'une autre classe (il peut y avoir autant de niveau d'héritage que l'on veut). Ainsi une classe &quot;petite-fille&quot; hérite des caractéristiques de sa &quot;grand-mère&quot;.</li>
+</ul>
+<p>🖥️ Dans ton fichier <em>index.php</em>, modifie juste l'instanciation du lion pour utiliser <strong>Mammal</strong> à la place d'<strong>Animal</strong>.</p>
+<div class="bloc-code"><div class="bloc-code__langue">php</div><pre><code class="hljs language-php"><span class="hljs-variable">$lion</span> = <span class="hljs-keyword">new</span> <span class="hljs-title class_">Mammal</span>(<span class="hljs-string">&#x27;lion&#x27;</span>, <span class="hljs-number">4</span>);
+</code></pre></div>
+<p>Sur l'interface web, tu verras qu'une nouvelle indication apparaît en haut à droite de chaque animal. Elle t'indique les relations d'héritage de ton animal. Au niveau du lion, tu dois avoir <strong>Animal</strong> et <strong>Mammal</strong>, avec une flèche entre les deux symbolisant l'héritage.</p>
+<h2>Constructeur</h2>
+<p>Il est intéressant d'utiliser l'héritage si la classe fille possède une ou plusieurs caractéristiques plus spécifiques que la classe mère (qui doit être plus généraliste). Ici cela se traduit par exemple par le nombre de pattes qui est différent pour chaque classe fille. Pour modifier une propriété, tu es obligé de la réécrire dans la fille (par exemple <code>$pawNumber</code>). Les autres propriétés que tu ne réécris pas sont héritées automatiquement avec la même valeur que dans la classe mère. Tu peux en profiter pour changer la valeur par défaut des propriétés, ce qui nous arrange ici car nous partons du principe que tous les mammifères ont 4 pattes, tous les oiseaux 2 pattes, les poissons zéro, <em>etc.</em></p>
+<div class="bloc-code"><div class="bloc-code__langue">php</div><pre><code class="hljs language-php"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Mammal</span> <span class="hljs-keyword">extends</span> <span class="hljs-title">Animal</span>
+</span>{
+    <span class="hljs-keyword">private</span> <span class="hljs-variable">$pawNumber</span> = <span class="hljs-number">4</span>;
+    
+    <span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">__construct</span>(<span class="hljs-params"><span class="hljs-keyword">string</span> <span class="hljs-variable">$name</span></span>)
+    </span>{
+        <span class="hljs-built_in">parent</span>::<span class="hljs-title function_ invoke__">__construct</span>(<span class="hljs-variable">$name</span>, <span class="hljs-variable">$this</span>-&gt;pawNumber);
+    }
+}
+</code></pre></div>
+<p>Pour les mammifères, le nombre de pattes sera 4 par défaut. L'information du nombre de pattes n'est donc plus nécessaire au moment de l'instanciation d'un mammifère, car on connaît ce nombre.
+Une classe fille hérite de toutes les méthodes de sa mère, <strong>constructeur inclus</strong>. Nous devons donc réécrire le constructeur pour qu'il ne prenne plus que le <code>$name</code> en paramètre, et non plus le nombre de pattes ! Cependant le constructeur de la classe mère exécute du code que l'on souhaiterait peut-être conserver. Dans ce cas, tu peux explicitement appelé la méthode de la classe parente depuis la classe fille, à l'aide du mot-clé <code>parent::</code>) et lui passer cette fois les 2 paramètres nécessaire dans <strong>Animal</strong> (le nom ET les pattes).</p>
+<p>🖥️ Au final, ce bout de code te permet maintenant d'écrire dans <em>index.php</em></p>
+<div class="bloc-code"><div class="bloc-code__langue">php</div><pre><code class="hljs language-php"><span class="hljs-variable">$lion</span> = <span class="hljs-keyword">new</span> <span class="hljs-title class_">Mammal</span>(<span class="hljs-string">&#x27;lion&#x27;</span>);
+</code></pre></div>
+<p>Dans l'interface, tu vois que le nombre de patte du lion est toujours de 4 !</p>
+<h2>Protected</h2>
+<p>Dans une fille, tu peux ajouter de nouvelles propriétés et méthodes, mais également <strong>modifier le comportement</strong> par rapport à la mère.
+Pour les mammifères, tu veux que le texte de la méthode <code>speak()</code> soit un peu plus personnalisé, et change en &quot;Bienvenue humain, moi aussi je suis un mammifère et mon nom est <nom>&quot;.</p>
+<p>🖥️ Cela semble facile, il suffit de reprendre le code dans la classe <strong>Mammal</strong> pour le modifier.
+Dans l'interface, tu vois que le nombre de pattes du lion est toujours de 4 !</p>
+<div class="bloc-code"><div class="bloc-code__langue">php</div><pre><code class="hljs language-php"><span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">speak</span>(<span class="hljs-params"><span class="hljs-keyword">string</span> <span class="hljs-variable">$lang</span> = <span class="hljs-string">&#x27;fr&#x27;</span></span>): <span class="hljs-title">string</span>
+</span>{
+    <span class="hljs-keyword">if</span> (<span class="hljs-variable">$lang</span> === <span class="hljs-string">&#x27;fr&#x27;</span>) {
+        <span class="hljs-variable">$message</span> = <span class="hljs-string">&#x27;Bienvenue humain, moi aussi je suis un mammifère et mon nom est &#x27;</span>;
+    } <span class="hljs-keyword">else</span> {
+        <span class="hljs-variable">$message</span> = <span class="hljs-string">&#x27;Welcome human, I\&#x27;am a mammal too and my name is  &#x27;</span>;
+    }
+
+    <span class="hljs-keyword">return</span> <span class="hljs-variable">$message</span> . <span class="hljs-variable language_">$this</span>-&gt;name;
+}
+</code></pre></div>
+<p>Ouvre ton <em>index.php</em> et <strong>passe ta souris</strong> sur le lion, tu obtiens une vilaine erreur</p>
+<div class="encadre encadre--error"><div class="encadre__titre">Important</div><div class="encadre__corps"><p>Warning: Undefined property: App\Mammal::$name in ...</p>
+</div></div>
+<p>Essayons de comprendre. <strong>Mammal</strong> hérite d'<strong>Animal</strong>, donc récupère automatiquement la propriété <code>$name</code> et la méthode <code>speak()</code>. En réécrivant <code>speak()</code> dans <strong>Mammal</strong>, tu spécifies l'utilisation de <code>$this-&gt;name</code> directement depuis la classe fille. Or, cette propriété <code>$name</code> est <strong>private</strong>, ce qui signifie que tu n'as <strong>pas le droit de l'utiliser en dehors de sa classe Animal</strong>. Mais c'est ce que tu fais car, même si Mammal hérite d'Animal, c'est une classe différente, tu n'as donc pas le droit d'y utiliser une propriété privée, même héritée !
+Ce n'est pas très pratique d'hériter de choses qu'on ne pourrait pas manipuler... C'est là qu'arrive une nouvelle visibilité, <em>protected</em>, qui vient compléter <em>public</em> et <em>private</em>. Une propriété (ou une méthode) <em>protected</em> ne pourra toujours pas être utilisée dans un script externe <strong>MAIS</strong> pourra être utilisé dans une classe descendante.</p>
+<p>🖥️ Dans <strong>Animal</strong> passe la propriété <code>$name</code> en <em>protected</em> au lieu de <em>private</em>. Réactualise. Le message d'erreur a disparu, la classe <strong>Mammal</strong> a le droit d'accès à <code>$name</code>.</p>
+<div class="encadre encadre--warning"><div class="encadre__titre">Attention</div><div class="encadre__corps"><p>Tu peux modifier une visiblité de propriété/méthode/constante dans une classe fille, mais jamais vers un niveau plus restrictif. C'est-à-dire qu'un propriété <em>protected</em> pourrait passer <em>public</em> chez une fille, mais jamais <em>private</em>.</p>
+</div></div>
+<p>Comme cela a été évoqué plus haut, l'héritage n'est pas limité à une génération. Cela signifie que tu peux créer une classe fille de <strong>Mammal</strong>, <strong>Felid</strong> <em>etc.</em> et chaque fille hérite des caractéristiques de tous ces ancêtres, de manière cumulative. Si un comportement a été entre temps modifié dans la hiérarchie, c'est ce dernier (plus précis, plus proche) qui est hérité.</p>
+<p>🖥️ Créer la classe <strong>Felid</strong>, héritant de <strong>Mammal</strong>.</p>
+<ul>
+<li>Dans <strong>Felid</strong>, mets la propriété <code>$carnivorous</code> à <code>true</code> par défaut car les félins sont carnivores.</li>
+<li>Modifie ton <em>index.php</em> afin que le lion soit une instance de <strong>Felid</strong>. Pense à bien ajouter tes <code>require</code> dans le bon ordre d'utilisation (<em>Mammal.php</em> avant <em>Felid.php</em>) et enlève la ligne <code>$lion-&gt;setCarnivorous(true)</code> dans <em>index.php</em></li>
+</ul>
+<p>Regarde ton interface... Étrange, le lion est devenu végétarien (et du coup &quot;non dangereux&quot; au passage.
+Pourquoi, alors que tu as bien spécifié que <code>$carnivorous</code> valait &quot;true&quot; pour les félins ? C'est encore une fois un problème de visibilité. Lorsque tu écris <code>private bool $carnivorous = true</code>, tu &quot;écrases&quot; la propriété du parent. Cependant, quand tu affiches le régime alimentaire, c'est le <em>getter</em> <code>isCarnivorous()</code> d'<strong>Animal</strong> qui est utilisé. Quand il est exécuté, c'est la propriété d'<strong>Animal</strong> (à <em>false</em> par défaut) qui est utilisée, car celle de <strong>Felid</strong> est considérée comme une nouvelle propriété, sa valeur ne &quot;remonte&quot; pas à <strong>Animal</strong>. Pour que la nouvelle valeur de la fille soit bien prise en compte, il faut passer la propriété en <em>protected</em> dans <strong>Animal</strong> ainsi que dans <strong>Felid</strong> !</p>
+<p>🖥️ Modifie et réactualise, c'est normalement corrigé.</p>
+<ul>
+<li>Fais en sorte que l'éléphant soit une instance de <strong>Mammal</strong> et le parrot une instance de <strong>Bird</strong>.</li>
+<li>L'éléphant et le lion utilisent tout deux la nouvelle phrase propre aux mammifères uniquement, contrairement au perroquet.
+Sur l'interface, tu dois voir le petit schéma des relations se mettre à jour.</li>
+</ul>
+<h2>Final</h2>
+<p><img src="images/002-image.png" alt="image" loading="lazy"></p>
+<p>Sur ce schéma issue de <a href="https://en.wikipedia.org/wiki/Mammal" target="_blank" rel="noopener noreferrer">Wikipédia</a> tu vois que la classification pour les mammifères est très complexe, et il y a une quinzaines d'embranchements avant d'arriver jusqu'aux félins. Il n'y a pas vraiment d'utilité de créer 15 classes entre <strong>Mammal</strong> et <strong>Felid</strong>, pour lesquelles les différences ne sont pas forcément pertinentes du point de vue d'un zoo. Il faut donc choisir le niveau de détail pertinent au problème. De même, il faut choisir jusqu'à quel niveau de précision l'on souhaite aller. Faut-il s’arrêter au <strong>Felid</strong>, où faut-il créer des classes filles pour les sous-types de félins ? Faut-il créer une classe pour chaque espèces ? Tous ces choix peuvent être pertinents, encore une fois c'est une question de logique métier. Le but pour le zoo est-il d'avoir une fiche d'identité pour chaque type animal (dans ce cas s'arrêter au <strong>Felid</strong>) et instancier un objet par espèce (lion, tigre, panthère...) est suffisant. Si l'objectif est par contre de recenser chaque animal du zoo, pousser jusqu'à l'espèce devient pertinent. En effet, il y aura plusieurs lions avec chacun un age, un genre, une taille différente...
+Nous allons faire le choix de rester au point du vue de la description d'une espèce dans sa globalité, donc nous allons nous arrêter au <strong>Felid</strong> qui semble un niveau de détail suffisant.</p>
+<p>Mais comment faire pour être sûr que, par la suite, personne ne créé une classe <strong>Lion</strong> depuis <strong>Felid</strong> ? La POO apporte ici une solution très simple, avec un nouveau mot-clé, <code>final</code>.</p>
+<div class="bloc-code"><div class="bloc-code__langue">php</div><pre><code class="hljs language-php"><span class="hljs-keyword">final</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Felid</span> 
+</span>{
+    <span class="hljs-comment">// ....</span>
+}
+</code></pre></div>
+<p>Ce mot clé <strong>interdit</strong> de créer une classe qui va hériter de <strong>Felid</strong>.</p>
+<p>🖥️ Ajoute le mot clé final sur <strong>Felid</strong>, créé une classe <strong>Lion</strong> héritant de <strong>Felid</strong>, puis modifie le <strong>index.php</strong> pour ajouter le require de <em>Lion.php</em>. Tu obtiens une erreur car <strong>Felid</strong> est une classe finale, tu ne peux pas en hériter !</p>
+<div class="encadre encadre--error"><div class="encadre__titre">Important</div><div class="encadre__corps"><p>Fatal error: Class App\Lion cannot extend final class App\Felid in ...</p>
+</div></div>
+<p>Supprime la classe <strong>Lion</strong> et enlève le require.
+Actualise, le message d'erreur disparaît. Sur le schéma d'héritage du Lion, un 🚫 est apparue à côté de <strong>Felid</strong> pour spécifier que la classe n'est plus héritable.</p>
+<h2>Typage</h2>
+<p>Si on se place sur la classe <strong>Area</strong> cette fois, la méthode <code>addAmimal()</code> prend en paramètre un objet de type <strong>Animal</strong>. Or, ton lion dans la savane est de type Mammal maintenant ? Pourtant il n'y a pas d'erreur... C'est dû au fait qu'une classe fille hérite également de tous les types de ses ancêtres, ce qui te permet de typer dans une méthode avec un type générique (ici l'Animal) sans te soucier si l'objet passé sera de type <strong>Animal</strong> où l'un de ses descendant <strong>Mammal</strong>, <strong>Bird</strong>, <strong>Feline</strong>, etc. C'est le concept de <strong>polymorphisme</strong> en programmation orientée objet.</p>
+<h1>Challenge</h1>
+<ul>
+<li>Fait en sorte de créer cette architecture des <strong>classes</strong> pour organiser ton zoo.</li>
+<li>Les animaux à créer depuis ces classes sont spécifiés entre [crochets], il y en a 10.</li>
+<li>Mets à jours les constructeurs pour ne plus avoir à spécifier le nombre de pattes dans les classes où cela est nécessaire.</li>
+<li>N'oublie pas de mettre à jour le tableau <code>$animals</code> dans ton fichier <em>index.php</em></li>
+</ul>
+<blockquote>
+<ul>
+<li>Animal
+<ul>
+<li>Mammal (4 pattes) [Elephant]
+<ul>
+<li>final Feline (carnivore) [Lion][Tiger]</li>
+<li>final Equid (non carnivore) [Zebra]</li>
+</ul>
+</li>
+<li>Bird (2 pattes) [Parrot]</li>
+<li>Reptile
+<ul>
+<li>final Crocodilian (4 pattes, carnivore) [Alligator]</li>
+<li>final Snake (0 patte, carnivore) [Python]</li>
+</ul>
+</li>
+<li>Arthropode
+<ul>
+<li>Arachnide (8 pattes) [Scorpio]
+<ul>
+<li>final Spider (carnivore) [Tarantula]</li>
+</ul>
+</li>
+<li>Insect (6 pattes) [Bee]</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</blockquote>
+<p>Poste une capture d'écran de ton interface une fois les 10 animaux instanciés, l'encadré sur les classes parentes pour chaque animal, doit refléter les instructions ci-dessus.</p>
+<p>✨ <strong>Remarque :</strong> pour gagner du temps, tu n'es pas obligé de mettre les animaux dans les bonnes zones et de spécifier les tailles et niveaux de menace.</p>
+<h2>Validation</h2>
+<ul>
+<li>La capture contient bien les 10 animaux (éléphant, lion, tigre, zèbre, perroquet, alligator, python, scorpion, tarentule, abeille)</li>
+<li>Chacun hérite d'au moins une classe (pour l'éléphant et le perroquet), au plus de 3 autres classes (pour la tarentule)</li>
+<li>Les classes finales sont bien signalées par l'icône 🚫.</li>
+</ul>
+<p>==$==</p>
+<div class="bloc-code"><div class="bloc-code__langue">php</div><pre><code class="hljs language-php"><span class="hljs-keyword">require</span> <span class="hljs-keyword">__DIR__</span> . <span class="hljs-string">&#x27;/../src/Animal.php&#x27;</span>;
+<span class="hljs-keyword">require</span> <span class="hljs-keyword">__DIR__</span> . <span class="hljs-string">&#x27;/../src/Area.php&#x27;</span>;
+<span class="hljs-keyword">require</span> <span class="hljs-keyword">__DIR__</span> . <span class="hljs-string">&#x27;/../src/Mammal.php&#x27;</span>;
+<span class="hljs-keyword">require</span> <span class="hljs-keyword">__DIR__</span> . <span class="hljs-string">&#x27;/../src/Equid.php&#x27;</span>;
+<span class="hljs-keyword">require</span> <span class="hljs-keyword">__DIR__</span> . <span class="hljs-string">&#x27;/../src/Arthropode.php&#x27;</span>;
+<span class="hljs-keyword">require</span> <span class="hljs-keyword">__DIR__</span> . <span class="hljs-string">&#x27;/../src/Arachnide.php&#x27;</span>;
+<span class="hljs-keyword">require</span> <span class="hljs-keyword">__DIR__</span> . <span class="hljs-string">&#x27;/../src/Insect.php&#x27;</span>;
+<span class="hljs-keyword">require</span> <span class="hljs-keyword">__DIR__</span> . <span class="hljs-string">&#x27;/../src/Spider.php&#x27;</span>;
+<span class="hljs-keyword">require</span> <span class="hljs-keyword">__DIR__</span> . <span class="hljs-string">&#x27;/../src/Bird.php&#x27;</span>;
+<span class="hljs-keyword">require</span> <span class="hljs-keyword">__DIR__</span> . <span class="hljs-string">&#x27;/../src/Reptile.php&#x27;</span>;
+<span class="hljs-keyword">require</span> <span class="hljs-keyword">__DIR__</span> . <span class="hljs-string">&#x27;/../src/Crocodilian.php&#x27;</span>;
+<span class="hljs-keyword">require</span> <span class="hljs-keyword">__DIR__</span> . <span class="hljs-string">&#x27;/../src/Snake.php&#x27;</span>;
+<span class="hljs-keyword">require</span> <span class="hljs-keyword">__DIR__</span> . <span class="hljs-string">&#x27;/../src/Felid.php&#x27;</span>;
+
+<span class="hljs-keyword">use</span> <span class="hljs-title">App</span>\<span class="hljs-title">Area</span>;
+<span class="hljs-keyword">use</span> <span class="hljs-title">App</span>\<span class="hljs-title">Animal</span>;
+<span class="hljs-keyword">use</span> <span class="hljs-title">App</span>\<span class="hljs-title">Arachnide</span>;
+<span class="hljs-keyword">use</span> <span class="hljs-title">App</span>\<span class="hljs-title">Bird</span>;
+<span class="hljs-keyword">use</span> <span class="hljs-title">App</span>\<span class="hljs-title">Crocodilian</span>;
+<span class="hljs-keyword">use</span> <span class="hljs-title">App</span>\<span class="hljs-title">Equid</span>;
+<span class="hljs-keyword">use</span> <span class="hljs-title">App</span>\<span class="hljs-title">Felid</span>;
+<span class="hljs-keyword">use</span> <span class="hljs-title">App</span>\<span class="hljs-title">Insect</span>;
+<span class="hljs-keyword">use</span> <span class="hljs-title">App</span>\<span class="hljs-title">Mammal</span>;
+<span class="hljs-keyword">use</span> <span class="hljs-title">App</span>\<span class="hljs-title">Snake</span>;
+<span class="hljs-keyword">use</span> <span class="hljs-title">App</span>\<span class="hljs-title">Spider</span>;
+
+<span class="hljs-variable">$elephant</span> = <span class="hljs-keyword">new</span> <span class="hljs-title class_">Mammal</span>(<span class="hljs-string">&#x27;elephant&#x27;</span>);
+<span class="hljs-variable">$elephant</span>-&gt;<span class="hljs-title function_ invoke__">setThreatenedLevel</span>(<span class="hljs-string">&#x27;LC&#x27;</span>);
+<span class="hljs-variable">$elephant</span>-&gt;<span class="hljs-title function_ invoke__">setSize</span>(<span class="hljs-number">400</span>);
+
+<span class="hljs-variable">$lion</span> = <span class="hljs-keyword">new</span> <span class="hljs-title class_">Felid</span>(<span class="hljs-string">&#x27;lion&#x27;</span>);
+<span class="hljs-variable">$lion</span>-&gt;<span class="hljs-title function_ invoke__">setSize</span>(<span class="hljs-number">100</span>);
+<span class="hljs-variable">$lion</span>-&gt;<span class="hljs-title function_ invoke__">setThreatenedLevel</span>(<span class="hljs-string">&#x27;VU&#x27;</span>);
+
+<span class="hljs-variable">$tiger</span> = <span class="hljs-keyword">new</span> <span class="hljs-title class_">Felid</span>(<span class="hljs-string">&#x27;tiger&#x27;</span>);
+<span class="hljs-variable">$tiger</span>-&gt;<span class="hljs-title function_ invoke__">setSize</span>(<span class="hljs-number">150</span>);
+<span class="hljs-variable">$tiger</span>-&gt;<span class="hljs-title function_ invoke__">setThreatenedLevel</span>(<span class="hljs-string">&#x27;EN&#x27;</span>);
+
+<span class="hljs-variable">$zebra</span> = <span class="hljs-keyword">new</span> <span class="hljs-title class_">Equid</span>(<span class="hljs-string">&#x27;zebra&#x27;</span>);
+<span class="hljs-variable">$zebra</span>-&gt;<span class="hljs-title function_ invoke__">setSize</span>(<span class="hljs-number">120</span>);
+<span class="hljs-variable">$zebra</span>-&gt;<span class="hljs-title function_ invoke__">setThreatenedLevel</span>(<span class="hljs-string">&#x27;EN&#x27;</span>);
+
+<span class="hljs-variable">$parrot</span> = <span class="hljs-keyword">new</span> <span class="hljs-title class_">Bird</span>(<span class="hljs-string">&#x27;parrot&#x27;</span>);
+<span class="hljs-variable">$parrot</span>-&gt;<span class="hljs-title function_ invoke__">setSize</span>(<span class="hljs-number">30</span>);
+
+<span class="hljs-variable">$alligator</span> = <span class="hljs-keyword">new</span> <span class="hljs-title class_">Crocodilian</span>(<span class="hljs-string">&#x27;alligator&#x27;</span>);
+<span class="hljs-variable">$alligator</span>-&gt;<span class="hljs-title function_ invoke__">setSize</span>(<span class="hljs-number">180</span>);
+
+<span class="hljs-variable">$python</span> = <span class="hljs-keyword">new</span> <span class="hljs-title class_">Snake</span>(<span class="hljs-string">&#x27;python&#x27;</span>);
+<span class="hljs-variable">$python</span>-&gt;<span class="hljs-title function_ invoke__">setSize</span>(<span class="hljs-number">300</span>);
+
+<span class="hljs-variable">$tarantula</span> = <span class="hljs-keyword">new</span> <span class="hljs-title class_">Spider</span>(<span class="hljs-string">&#x27;tarantula&#x27;</span>);
+<span class="hljs-variable">$tarantula</span>-&gt;<span class="hljs-title function_ invoke__">setSize</span>(<span class="hljs-number">10</span>);
+
+<span class="hljs-variable">$scorpio</span> = <span class="hljs-keyword">new</span> <span class="hljs-title class_">Arachnide</span>(<span class="hljs-string">&#x27;scorpio&#x27;</span>);
+<span class="hljs-variable">$scorpio</span>-&gt;<span class="hljs-title function_ invoke__">setSize</span>(<span class="hljs-number">15</span>);
+<span class="hljs-variable">$scorpio</span>-&gt;<span class="hljs-title function_ invoke__">setCarnivorous</span>(<span class="hljs-literal">true</span>);
+
+<span class="hljs-variable">$bee</span> = <span class="hljs-keyword">new</span> <span class="hljs-title class_">Insect</span>(<span class="hljs-string">&#x27;bee&#x27;</span>);
+<span class="hljs-variable">$bee</span>-&gt;<span class="hljs-title function_ invoke__">setSize</span>(<span class="hljs-number">2</span>);
+
+<span class="hljs-variable">$animals</span> = [<span class="hljs-variable">$elephant</span>, <span class="hljs-variable">$lion</span>, <span class="hljs-variable">$tiger</span>, <span class="hljs-variable">$zebra</span>, <span class="hljs-variable">$parrot</span>, <span class="hljs-variable">$alligator</span>, <span class="hljs-variable">$python</span>, <span class="hljs-variable">$scorpio</span>, <span class="hljs-variable">$tarantula</span>, <span class="hljs-variable">$bee</span>];
+</code></pre></div>
+
+  </div>
+  
+</article>
+
+<nav class="nav-quete">
+  <a class="nav-quete__lien nav-quete__lien--prec" href="../../php-oriente-objet/007-poo6-interaction-entre-objets/index.html">
+           <span class="nav-quete__sens">← Précédent</span>
+           <span class="nav-quete__titre">POO6 - Intéraction entre objets</span>
+         </a>
+  <a class="nav-quete__lien nav-quete__lien--suiv" href="../../php-oriente-objet/009-poo8-exceptions/index.html">
+           <span class="nav-quete__sens">Suivant →</span>
+           <span class="nav-quete__titre">POO8 - Exceptions</span>
+         </a>
+</nav>
+</main>
+<footer class="pied">
+  <p>Archive personnelle des cours suivis à la Wild Code School. Copie hors ligne à usage strictement privé.</p>
+</footer>
+
+<script src="../../assets/copie-code.js"></script>
+<script src="../../assets/progression.js"></script>
+</body>
+</html>

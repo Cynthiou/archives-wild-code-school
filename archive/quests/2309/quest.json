@@ -1,0 +1,28 @@
+{
+  "id": 2309,
+  "titre": "POO7 - Héritage",
+  "titres": {
+    "fr": "POO7 - Héritage"
+  },
+  "theme": {
+    "id": 70,
+    "slug": "php-object-oriented",
+    "nom": "PHP Orienté Objet"
+  },
+  "creeLe": "2022-10-14T16:02:41.990+02:00",
+  "difficulte": "",
+  "dureeEstimee": null,
+  "modeValidation": "student",
+  "chapitres": [
+    {
+      "id": 11518,
+      "type": "content",
+      "langue": "fr",
+      "majLe": "2024-05-16T12:11:24.427+02:00",
+      "caracteres": 18852
+    }
+  ],
+  "ressources": [],
+  "urlOrigine": "https://odyssey.wildcodeschool.com/quests/2309",
+  "archiveLe": "2026-09-02T20:53:53.855Z"
+}

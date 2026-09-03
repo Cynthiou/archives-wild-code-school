@@ -1,0 +1,159 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>POO1 - Introduction à la Programmation Orientée Objet — Archives WCS</title>
+<link rel="stylesheet" href="../../assets/style.css">
+</head>
+<body style="--teinte:#464985">
+<header class="entete">
+  <a class="entete__marque" href="../../index.html">Archives Wild Code School</a>
+</header>
+<main class="contenu">
+<nav class="ariane"><a href="../../index.html">Accueil</a><span class="ariane__sep">›</span><a href="../../php-oriente-objet/index.html">PHP Orienté Objet</a><span class="ariane__sep">›</span><span aria-current="page">POO1 - Introduction à la Programmation Orientée Objet</span></nav>
+
+<article class="quete">
+  <header class="quete__entete">
+    <a class="pastille pastille--teintee" href="../../php-oriente-objet/index.html">PHP Orienté Objet</a>
+    <h1>POO1 - Introduction à la Programmation Orientée Objet</h1>
+    <p class="quete__meta">Quête 1 sur 11 · 1 image archivée</p>
+  </header>
+  <div class="cours">
+<div class="bloc-code"><div class="bloc-code__langue">title-book</div><pre><code class="hljs language-title-book">Introduction
+</code></pre></div>
+<div class="encadre encadre--story"><div class="encadre__titre">Le récit</div><div class="encadre__corps"><p>Bienvenue au Wild Zoo !</p>
+<p>Dans cette série de quêtes, tu vas découvrir les bases de la programmation orientée objet.
+Pour t'aider à mieux comprendre ces nombreux concepts, tu travailleras sur le thème d'un parc zoologique et une interface web te sera fournie, évoluant de quête en quête. Elle te permettra ainsi de &quot;visualiser&quot; les différents concepts que tu vas manipuler (classe, objet, héritage, abstraction, interface, exception...).
+Un dépôt git t'accompagnera tout au long des quêtes, tu devras te positionner sur la branche correspondant à la quête en cours (<em>poo1</em>, <em>poo2</em>... il n'y a pas de branche <em>main</em>), puis lancer ton serveur PHP. Les instructions de la quête t'indiqueront ensuite les fichiers à modifier, pas à pas, et les impacts que cela aura sur l'interface web. Les zones que tu as le droit de modifier seront clairement indiquées. Le reste du code fourni permet de gérer tout l'affichage, tu n'as pas à y toucher (mais tu as le droit de le regarder si tu es curieux :D)
+🖥️ Commence par récupérer ce <a href="https://github.com/WildCodeSchool/php-wildzoo" target="_blank" rel="noopener noreferrer">dépôt du Wild Zoo</a> et place toi sur la branche <strong>poo1</strong>, puis lance ton serveur sur le dossier public (<code>php -S localhost:8000 -t public</code>).
+Tu devrais obtenir une page qui ressemble à :</p>
+<p><img src="images/001-wildzoo-home.png" alt="wildzoo home" loading="lazy">
+C'est bon ? La visite peut commencer !</p>
+</div></div>
+<h2>🤓 À la fin de cette quête, tu seras capable de :</h2>
+<ul>
+<li>✅ Comprendre ce qu'est la POO et pourquoi l'utiliser,</li>
+<li>✅ Définir une classe,</li>
+<li>✅ Instancier un objet.</li>
+</ul>
+<h1>Qu'est-ce que la POO ?</h1>
+<p>La <strong>Programmation Orientée Objet</strong> ou <strong>POO</strong> est un <em>paradigme</em> de programmation, né dans les années 60. Un <strong>paradigme</strong>, c'est une manière de (conce)voir les choses. Tu connais déjà la programmation procédurale (une instruction après l'autre), c'est ce que tu as fais jusqu'à maintenant en PHP.
+La POO est utilisée dans de nombreux langages, de manière plus ou moins poussée, parmi lesquels C++, Java, Python, Ruby, PHP, <em>etc.</em> On utilise le terme de &quot;langage objet&quot; pour désigner un langage implémentant le modèle de Programmation Orientée Objet. Certains langages comme Java ne fonctionnent qu'en POO, tandis que d'autres comme PHP, permettent de programmer en objet ou non.</p>
+<div class="encadre encadre--warning"><div class="encadre__titre">Attention</div><div class="encadre__corps"><h1>Remarque</h1>
+<p>En anglais, POO s'écrit OOP (Object Oriented Programming); poo signifiant tout à fait autre chose. Ne sois pas étonné des résultats étranges que tu pourrais trouver suite à des recherches sur internet. Petit rappel au passage : effectue toujours tes recherches en anglais, cela évitera bien des quiproquos ;-)</p>
+</div></div>
+<h1>Pourquoi faire de la POO ?</h1>
+<p>Lorsque tu dois manipuler des données, jusqu'à maintenant, tu stockes généralement les informations dans des variables. Puis lorsque tu dois interagir sur ces données, tu vas par exemple les passer en paramètre à une fonction, qui te retournera un résultat, qui lui même pourra être stocké dans une autre variable, passée à une autre fonction, <em>etc</em>.</p>
+<p>Commençons à nous projeter dans notre zoo. Tu dois gérer des animaux de toutes sortes (des poissons, des insectes, des mammifères de toutes tailles, avec des régimes alimentaires différents...).</p>
+<div class="bloc-code"><div class="bloc-code__langue">php</div><pre><code class="hljs language-php"><span class="hljs-variable">$lion</span> = [<span class="hljs-string">&#x27;name&#x27;</span> =&gt; <span class="hljs-string">&#x27;lion&#x27;</span>, <span class="hljs-string">&#x27;size&#x27;</span> =&gt; <span class="hljs-number">100</span>, <span class="hljs-string">&#x27;isCarnivorous&#x27;</span> =&gt; <span class="hljs-literal">true</span>, <span class="hljs-string">&#x27;pawNumber&#x27;</span> =&gt; <span class="hljs-number">4</span>];
+<span class="hljs-variable">$elephant</span> = [<span class="hljs-string">&#x27;name&#x27;</span> =&gt; <span class="hljs-string">&#x27;elephant&#x27;</span>, <span class="hljs-string">&#x27;size&#x27;</span>=&gt;<span class="hljs-number">1000</span>, <span class="hljs-string">&#x27;isCarnivorous&#x27;</span> =&gt; <span class="hljs-literal">false</span>, <span class="hljs-string">&#x27;pawNumber&#x27;</span> =&gt; <span class="hljs-number">4</span>];
+<span class="hljs-variable">$parrot</span>  = [<span class="hljs-string">&#x27;name&#x27;</span> =&gt; <span class="hljs-string">&#x27;parrot&#x27;</span>, <span class="hljs-string">&#x27;size&#x27;</span> =&gt; <span class="hljs-number">10</span>, <span class="hljs-string">&#x27;isCarnivorous&#x27;</span> =&gt; <span class="hljs-literal">true</span>, <span class="hljs-string">&#x27;pawNumber&#x27;</span> =&gt; <span class="hljs-number">2</span>];
+</code></pre></div>
+<p>Tout fonctionne très bien. Cependant, au fur et à mesure que ton application va se complexifier, tu vas ajouter de nouvelles clés à ton tableau associatif, qui risque de devenir difficile à lire.
+Le problème majeur ici, c'est que rien ne formalise clairement ce qu'est un animal. Un futur développeur pourrait très bien écrire :</p>
+<div class="bloc-code"><div class="bloc-code__langue">php</div><pre><code class="hljs language-php"><span class="hljs-variable">$spider</span> = [<span class="hljs-string">&#x27;description&#x27;</span> =&gt; <span class="hljs-string">&#x27;spider&#x27;</span>, <span class="hljs-string">&#x27;size&#x27;</span> =&gt; <span class="hljs-string">&#x27;small&#x27;</span>, <span class="hljs-string">&#x27;paws&#x27;</span> =&gt; <span class="hljs-number">8</span>];
+</code></pre></div>
+<p>Ce tableau est tout à fait acceptable pour définir un nouvel animal, mais il n'est pas cohérent avec les autres. À un moment donné, la manipulation de ces tableaux risque de poser problème.</p>
+<p>Le constat est qu'en programmation procédurale, il n'y a rien qui &quot;force&quot; une manière d'uniformiser un concept (ici, l'animal).
+Tout repose sur le développeur, qui doit suivre un format précis. C'est possible avec une bonne documentation, mais cela augmente les risques d'erreurs ou d'incohérences au fur et à mesure qu'un projet se complexifie et que le nombre de développeurs augmente. L'idée est de trouver un moyen de ne plus faire reposer cette recherche de cohérence sur le développeur, mais dans le code lui-même.
+Cette vidéo introduit très bien le concept de POO en reprenant les différences avec la programmation procédurale. Si tu ne comprends pas tous les termes pour le moment pas de panique, cela sera plus clair au fur et à mesure de ton avancée sur les quêtes.</p>
+<a class="video-lien" href="https://www.youtube.com/watch?v=jexyOTLa62c" target="_blank" rel="noopener noreferrer">
+  <div class="video-lien__play">▶</div>
+  <div class="video-lien__texte">
+    <div class="video-lien__titre">Vidéo YouTube</div>
+    <div class="video-lien__url">https://www.youtube.com/watch?v=jexyOTLa62c</div>
+  </div>
+</a>
+<h1>C'est la classe !</h1>
+<p>La POO apporte une solution au problème exposé précédemment. Elle repose en effet sur un élément fondamental : la <strong>classe</strong>.
+La <strong>classe</strong> permet de définir/modéliser un concept à manipuler. Cette modélisation est la partie la plus importante, il faut décider de ce dont tu as besoin pour définir correctement un concept.</p>
+<p>Reprenons l'exemple de l'animal. On va décider pour le moment qu'un animal est représenté par 4 caractéristiques : son nom, sa taille, son régime alimentaire et son nombre de pattes. Voilà à quoi va ressembler la classe Animal :</p>
+<div class="bloc-code"><div class="bloc-code__langue">php</div><pre><code class="hljs language-php"><span class="hljs-meta">&lt;?php</span>
+<span class="hljs-comment">// src/Animal.php</span>
+<span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Animal</span>
+</span>{
+    <span class="hljs-keyword">public</span> <span class="hljs-keyword">string</span> <span class="hljs-variable">$name</span>;
+    
+<span class="hljs-comment">// size expressed in whatever unit    </span>
+    
+    <span class="hljs-keyword">public</span> <span class="hljs-keyword">int</span> <span class="hljs-variable">$pawNumber</span>;
+    
+    <span class="hljs-keyword">public</span> <span class="hljs-keyword">bool</span> <span class="hljs-variable">$isCarnivorous</span>;
+}
+</code></pre></div>
+<p>Ouvre le fichier <em>src/Animal.php</em>, tu dois y trouver le même code.</p>
+<p>Décortiquons un peu ces lignes. Tout d'abord, côté bonnes pratiques en PHP, chaque classe doit être définie dans son propre fichier, et ce fichier doit avoir exactement le même nom que la classe (ici, la classe <strong>Animal</strong> se trouve dans le fichier <em>Animal.php</em>).</p>
+<div class="encadre encadre--error"><div class="encadre__titre">Important</div><div class="encadre__corps"><h1>Important</h1>
+<p>Même si ce n'est pas une obligation de PHP (tu pourrais mettre plusieurs classes dans un même fichier), si tu ne suis pas cette règle, <strong>ton code ne fonctionnera plus dès que tu utiliseras d'autres concepts comme les namespaces et l'autoloading</strong> (abordés dans une future quête). Donc garde en tête <strong>une classe = un fichier du même nom</strong>.</p>
+</div></div>
+<p>Ensuite, une classe se définit via le mot clé <em>class</em>, suivi du nom de la classe en PascalCase (ou UpperCamelCase, c'est comme le camelCase mais ça commence par une majuscule), et doit toujours suivre les bonnes pratiques de nommage : intelligible, en anglais, <em>etc</em>.
+Les accolades (la première étant à la ligne selon les normes PSR) permettent de définir le corps de la classe et tu devras tout écrire à l'intérieur de celles-ci.</p>
+<div class="encadre encadre--warning"><div class="encadre__titre">Attention</div><div class="encadre__corps"><p>Garde en tête qu'il n'y a pas de définition absolue d'un concept, cela dépend avant tout du <strong>contexte métier</strong>, un animal pourra être défini différemment si tu l'utilises dans le cadre d'un zoo, d'un cabinet de vétérinaire, d'une étude de biodiversité...)</p>
+</div></div>
+<p>Dans ces accolades, nous retrouvons les quatre informations qui, dans le cas du Wild zoo, sont utiles pour définir un Animal. Ces informations sont appelées <strong>propriétés</strong> (ou parfois arguments) et peuvent prendre des valeurs. La classe pourra également contenir des <strong>méthodes</strong> (des fonctions internes à la classes) afin de manipuler ses propriétés. Nous reviendrons plus en détail sur ces notions dans les prochaines quêtes.</p>
+<h1>Classe vs Objet</h1>
+<p>À partir de cette classe Animal, que tu peux comparer à un <em>moule</em>, il va être possible de créer différents animaux. C'est ce qu'on appelle les <strong>objets</strong> ou <strong>instance d'une classe</strong>. Ainsi la classe est la définition générique, l'objet est <strong>un</strong> représentant de cette classe, avec des valeurs spécifiques pour ses propriétés.</p>
+<p>Pour créer/instancier des objets, nous allons travailler dans le fichier <em>public/index.php</em> du projet Wild Zoo (tu trouveras sensiblement le même code dans le fichier, il faut juste le décommenter)  :</p>
+<div class="bloc-code"><div class="bloc-code__langue">php</div><pre><code class="hljs language-php"><span class="hljs-meta">&lt;?php</span>
+<span class="hljs-comment">// public/index.php</span>
+
+<span class="hljs-keyword">require</span> <span class="hljs-keyword">__DIR__</span> . <span class="hljs-string">&#x27;/../src/Animal.php&#x27;</span>;
+
+<span class="hljs-variable">$animal1</span> = <span class="hljs-keyword">new</span> <span class="hljs-title class_">Animal</span>();
+<span class="hljs-variable">$animal2</span> = <span class="hljs-keyword">new</span> <span class="hljs-title class_">Animal</span>();
+</code></pre></div>
+<p>Tu dois d'abord <em>require</em> (c'est à dire spécifier qu'on a besoin d'importer tel fichier) la classe que tu souhaites utiliser, ici Animal dans le dossier <em>src/</em>.</p>
+<p>Puis tu vas utiliser le mot clé <code>new</code> pour instancier ton objet. Tu peux créer autant d'objets que tu le souhaites à partir d'une même classe, ils auront chacun les mêmes propriétés, mais avec des valeurs différentes. Ces différents <strong>objets</strong> issus de la même classe s'appellent des <strong>instances</strong>. Toutes ces instances suivent un même schéma et c'est ça qui est vraiment intéressant avec la POO. Un objet contient des propriétés qui lui sont indissociables, puisque définis à l'intérieur de la classe, c'est ce qu'on nomme l'<em>encapsulation</em>.</p>
+<p>Tu verras dans la prochaine quête comment modifier les valeurs des propriétés de cet objet, mais comprend qu'un utilisateur de ta classe ne pourra pas créer un objet Animal qui ne suivrait pas la définition faite dans la classe. Le problème rencontré avec l'utilisation d'un tableau est donc résolu. Tu verras par la suite plein d'autres mécanismes que propose la POO pour des cas plus complexes.
+Regarde dans ton navigateur, tu vois apparaitre les 2 animaux (pour l'instant indéfinis puisque les propriétés n'ont pas de valeur).</p>
+<p>🖥️ Effectue maintenant un <code>var_dump()</code> de <code>$animal1</code> puis de <code>$animal2</code>, tu devrais voir quelque chose comme :</p>
+<div class="bloc-code"><div class="bloc-code__langue">shell</div><pre><code class="hljs language-shell">object(Animal)[1]
+  public string <span class="hljs-string">&#x27;name&#x27;</span> =&gt; *uninitialized*
+  public <span class="hljs-built_in">float</span> <span class="hljs-string">&#x27;size&#x27;</span> =&gt; *uninitialized*
+  public int <span class="hljs-string">&#x27;pawNumber&#x27;</span> =&gt; *uninitialized*
+  public int <span class="hljs-string">&#x27;isCarnivorous&#x27;</span> =&gt; *uninitialized*
+
+object(Animal)[2]
+  public string <span class="hljs-string">&#x27;name&#x27;</span> =&gt; *uninitialized*
+  public <span class="hljs-built_in">float</span> <span class="hljs-string">&#x27;size&#x27;</span> =&gt; *uninitialized*
+  public int <span class="hljs-string">&#x27;pawNumber&#x27;</span> =&gt; *uninitialized*
+  public int <span class="hljs-string">&#x27;isCarnivorous&#x27;</span> =&gt; *uninitialized*
+</code></pre></div>
+<p>Les résultats sont similaires (aucune valeur n'est encore affectée aux propriétés) mais l'identifiant de l'objet (entre les crochets sur la première ligne du <code>var_dump()</code>), diffère. Chaque objet est bien <strong>unique</strong> et pourra évoluer au fil du temps sans impacter les autres objets de la même classe. Tu peux ensuite retirer les <code>var_dump</code>.</p>
+<p>🖥️ Instancie un objet <code>$animal3</code> et ajoute le au tableau <code>$animals</code>. Si tu réactualises, l'interface prends bien en compte ce nouvel animal ! Super, ton zoo se remplit ;-)</p>
+<a class="ressource" href="https://fr.wikipedia.org/wiki/Programmation_orient%C3%A9e_objet" target="_blank" rel="noopener noreferrer">
+  <div class="ressource__icone">↗</div>
+  <div class="ressource__texte">
+    <div class="ressource__titre">Les classes et objets | Wikipedia</div>
+    <div class="ressource__desc"><p>Qu'est-ce que l'objet ?</p>
+</div>
+    <div class="ressource__hote">fr.wikipedia.org</div>
+  </div>
+</a>
+<h1>💪 Challenge</h1>
+<ul>
+<li>Dans ton navigateur, tu dois voir les trois animaux correspondants aux trois objets instanciés.</li>
+<li>Répond ensuite au quizz pour valider la quête.</li>
+</ul>
+
+  </div>
+  
+</article>
+
+<nav class="nav-quete">
+  <span class="nav-quete__lien nav-quete__lien--vide"></span>
+  <a class="nav-quete__lien nav-quete__lien--suiv" href="../../php-oriente-objet/002-poo10-interfaces/index.html">
+           <span class="nav-quete__sens">Suivant →</span>
+           <span class="nav-quete__titre">POO10 - Interfaces</span>
+         </a>
+</nav>
+</main>
+<footer class="pied">
+  <p>Archive personnelle des cours suivis à la Wild Code School. Copie hors ligne à usage strictement privé.</p>
+</footer>
+
+<script src="../../assets/copie-code.js"></script>
+<script src="../../assets/progression.js"></script>
+</body>
+</html>

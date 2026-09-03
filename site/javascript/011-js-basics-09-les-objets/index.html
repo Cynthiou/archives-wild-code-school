@@ -1,0 +1,329 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>👩‍🏫 JS Basics 09 - Les objets — Archives WCS</title>
+<link rel="stylesheet" href="../../assets/style.css">
+</head>
+<body style="--teinte:#856400">
+<header class="entete">
+  <a class="entete__marque" href="../../index.html">Archives Wild Code School</a>
+</header>
+<main class="contenu">
+<nav class="ariane"><a href="../../index.html">Accueil</a><span class="ariane__sep">›</span><a href="../../javascript/index.html">JavaScript</a><span class="ariane__sep">›</span><span aria-current="page">👩‍🏫 JS Basics 09 - Les objets</span></nav>
+
+<article class="quete">
+  <header class="quete__entete">
+    <a class="pastille pastille--teintee" href="../../javascript/index.html">JavaScript</a>
+    <h1>👩‍🏫 JS Basics 09 - Les objets</h1>
+    <p class="quete__meta">Quête 11 sur 11 · 2 images archivées</p>
+  </header>
+  <div class="cours">
+<h2>Objectifs</h2>
+<ul>
+<li>Créer des objets littéraux</li>
+<li>Lire et écrire des propriétés sur les objets</li>
+</ul>
+<h2>Pré-requis</h2>
+<p>Avoir validé les quêtes suivantes :</p>
+<div class="renvois"><div class="renvois__titre">Quêtes liées</div><ul><li><a href="../../javascript/001-js-basics-01-qu-est-ce-que-javascript/index.html">Quête 1262</a></li><li><a href="../../javascript/002-js-basics-02-syntaxe-et-concepts-de-base/index.html">Quête 1267</a></li><li><a href="../../javascript/003-js-basics-03-les-variables/index.html">Quête 1268</a></li><li><a href="../../javascript/004-js-basics-04-les-types-de-donnees/index.html">Quête 1269</a></li><li><a href="../../javascript/005-js-basics-05-les-instructions-conditionnelles/index.html">Quête 1270</a></li><li><a href="../../javascript/006-js-basics-06-les-fonctions/index.html">Quête 1278</a></li><li><a href="../../javascript/008-js-basics-07-les-tableaux/index.html">Quête 1281</a></li><li><a href="../../javascript/010-js-basics-08-les-boucles/index.html">Quête 1283</a></li></ul></div>
+<h2>Introduction</h2>
+<p>Dans les quêtes précédentes, tu as <strong>découvert ce qu'est JavaScript et à quoi ressemble la syntaxe</strong>.</p>
+<p>Nous avons aussi appris à <strong>créer des variables et les différents types de données que nous pouvons utiliser en JavaScript</strong>.
+Nous avons également appris à <strong>créer et à manipuler des tableaux.</strong></p>
+<p>Dans cette quête, nous verrons <strong>comment créer et manipuler des objets en JavaScript.</strong></p>
+<p><strong>C'est parti!</strong></p>
+<h2>Sommaire</h2>
+<h2>Que sont les objets ?</h2>
+<p><img src="images/001-pommes.png" alt="Pommes" loading="lazy"></p>
+<p>Les objets en Javascript sont comme les objets qui t'entourent.</p>
+<p>Ce sont des sortes de conteneurs, qui contiennent des propriétés qui caractérisent l'objet.</p>
+<p>Par exemple, prenons une pomme.</p>
+<p>Une pomme a une couleur verte (<em>&quot;#00FF00&quot;</em>), un diamètre de 10cm, etc, etc.</p>
+<p>Essayons de décrire une pomme en JavaScript !</p>
+<div class="bloc-code"><div class="bloc-code__langue">javascript</div><pre><code class="hljs language-javascript"><span class="hljs-keyword">const</span> apple = {
+  <span class="hljs-attr">color</span>: <span class="hljs-string">&quot;#00FF00&quot;</span>, 
+  <span class="hljs-attr">diameter</span>: <span class="hljs-number">10</span>,
+  <span class="hljs-attr">isEaten</span>: <span class="hljs-literal">false</span>,
+  <span class="hljs-attr">vitamins</span>: [<span class="hljs-string">&quot;A&quot;</span>, <span class="hljs-string">&quot;B1&quot;</span>, <span class="hljs-string">&quot;B2&quot;</span>, <span class="hljs-string">&quot;B6&quot;</span>, <span class="hljs-string">&quot;C&quot;</span>], 
+  <span class="hljs-attr">variety</span>: { <span class="hljs-attr">code</span>: <span class="hljs-number">576</span>, <span class="hljs-attr">name</span>: <span class="hljs-string">&quot;Granny Smith&quot;</span> },
+  <span class="hljs-attr">gather</span>: <span class="hljs-keyword">function</span> (<span class="hljs-params"></span>) {
+    <span class="hljs-keyword">return</span> <span class="hljs-string">&quot;Here&#x27;s one apple!&quot;</span>;
+  }
+};
+</code></pre></div>
+<p>Les objets sont créés à l'aide d'accolades (<em>🇬🇧 curly braces</em>) : <code>{}</code>.</p>
+<p>A l'intérieur de l'objet, on peut créer des <strong>clés</strong> (<em>ex : color)</em> et associer à ces clés des <strong>valeurs</strong> en séparant clé et valeur par <code>:</code>.</p>
+<p>Chaque paire clé/valeur doit être séparée par une virgule.</p>
+<p>La valeur que tu mets peut être n'importe quel type de données JavaScript.</p>
+<p>Par exemple, comme une pomme peut être source de <strong>plusieurs vitamines</strong>, on a utilisé un tableau pour les représenter.</p>
+<p>Comme tu peux le voir, un objet peut être imbriqué dans autre objet ! Ici, notre pomme appartient à une variété représentée par un objet.</p>
+<p>Nous avons aussi donné à la pomme une <strong>fonction (appelée méthode)</strong> pour cueillir le fruit !</p>
+<h2>Accéder aux propriétés d'un objet</h2>
+<p>Nous pouvons accéder à une propriété de l'objet en utilisant <code>.</code> ou <code>[]</code>.</p>
+<p>Par exemple, si nous voulons accéder a la propriété <code>color</code> de l'objet <code>apple</code>, il suffit d'écrire <code>apple.color</code> ou <code>apple['color']</code>.</p>
+<div class="bloc-code"><div class="bloc-code__langue">javascript</div><pre><code class="hljs language-javascript">apple.<span class="hljs-property">color</span>;
+<span class="hljs-comment">// &quot;#00FF00&quot;</span>
+apple[<span class="hljs-string">&#x27;color&#x27;</span>];
+<span class="hljs-comment">// &quot;#00FF00&quot;</span>
+</code></pre></div>
+<p>La plupart du temps, tu utiliseras un point pour accéder à une propriété (<code>apple.color</code>), mais les <strong>crochets peuvent aussi être très utiles</strong> par exemple dans le cas où tu souhaites <strong>utiliser une variable pour accéder à une valeur.</strong></p>
+<div class="bloc-code"><div class="bloc-code__langue">js</div><pre><code class="hljs language-js"><span class="hljs-keyword">const</span> apple = {
+  <span class="hljs-attr">color</span>: <span class="hljs-string">&quot;#00FF00&quot;</span>, 
+  <span class="hljs-attr">diameter</span>: <span class="hljs-number">10</span>,
+  <span class="hljs-attr">isEaten</span>: <span class="hljs-literal">false</span>,
+  <span class="hljs-attr">vitamins</span>: [<span class="hljs-string">&quot;A&quot;</span>, <span class="hljs-string">&quot;B1&quot;</span>, <span class="hljs-string">&quot;B2&quot;</span>, <span class="hljs-string">&quot;B6&quot;</span>, <span class="hljs-string">&quot;C&quot;</span>], 
+  <span class="hljs-attr">variety</span>: { <span class="hljs-attr">code</span>: <span class="hljs-number">576</span>, <span class="hljs-attr">name</span>: <span class="hljs-string">&quot;Granny Smith&quot;</span> },
+  <span class="hljs-attr">gather</span>: <span class="hljs-keyword">function</span> (<span class="hljs-params"></span>) {
+    <span class="hljs-keyword">return</span> <span class="hljs-string">&quot;Here&#x27;s one apple!&quot;</span>;
+  }
+};
+<span class="hljs-keyword">let</span> selectedProperty = <span class="hljs-string">&quot;color&quot;</span>;
+<span class="hljs-comment">//selectedProperty = prompt(&#x27;Tape la propriété que tu veux afficher&#x27;) ;</span>
+<span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(apple[selectedProperty]) ;
+</code></pre></div>
+<div class="encadre encadre--info"><div class="encadre__titre">Info</div><div class="encadre__corps"><p>Décommente la ligne <code>//selectedProperty = prompt(…</code> pour saisir et tester une autre propriété.</p>
+</div></div>
+<p><strong>🔬 Expérimente</strong></p>
+<ul>
+<li>
+<p>Crée un objet <code>billyTheCat</code></p>
+<ul>
+<li>il doit avoir une propriété <code>name</code>,</li>
+<li>une propriété <code>color</code>,</li>
+<li>une propriété <code>favouriteFoods</code> (un tableau avec plusieurs entrées),</li>
+<li>une propriété <code>isHungry</code> définie à true</li>
+<li>et une méthode <code>meow</code> qui imprime &quot;Meooow&quot; dans la console</li>
+</ul>
+</li>
+<li>
+<p>Ensuite, crée une variable <code>selectedProperty</code> et, à l'aide de prompt, demande à l'utilisateur de choisir la propriété de l'objet qu'il veut afficher.</p>
+</li>
+<li>
+<p>Enfin, utilise console.log pour afficher la bonne propriété (en utilisant des crochets <code>[]</code>).</p>
+</li>
+</ul>
+<div class="bloc-code"><div class="bloc-code__langue">js</div><pre><code class="hljs language-js"><span class="hljs-keyword">const</span> billyTheCat = {
+<span class="hljs-comment">//...</span>
+};
+</code></pre></div>
+<div class="encadre encadre--info"><div class="encadre__titre">Info</div><div class="encadre__corps"><p>Clique sur play pour lancer le code. Tu peux aussi changer le code pour tester des choses par toi-même</p>
+</div></div>
+<details class="solution"><summary>Voir la solution</summary><div class="solution__corps"><div class="bloc-code"><div class="bloc-code__langue">javascript</div><pre><code class="hljs language-javascript"><span class="hljs-keyword">const</span> billyTheCat = {
+  <span class="hljs-attr">name</span>: <span class="hljs-string">&quot;Billy&quot;</span>, 
+  <span class="hljs-attr">color</span>: <span class="hljs-string">&quot;Ginger&quot;</span>, 
+  <span class="hljs-attr">favouriteFoods</span>: [<span class="hljs-string">&quot;Fish&quot;</span>, <span class="hljs-string">&quot;Chicken&quot;</span>], 
+  <span class="hljs-attr">isHungry</span>: <span class="hljs-literal">false</span>, 
+  <span class="hljs-attr">meow</span>: <span class="hljs-keyword">function</span> (<span class="hljs-params"></span>) {
+    <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(<span class="hljs-string">&quot;Meoooow&quot;</span>)
+  }
+};
+
+<span class="hljs-keyword">const</span> selectedProperty = <span class="hljs-title function_">prompt</span>(<span class="hljs-string">&quot;Select a property&quot;</span>);
+<span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(billyTheCat[selectedProperty]);
+</code></pre></div>
+</div></details>
+<h3>Ajouter ou modifier la propriété d'un objet</h3>
+<p>Pour ajouter une propriété à un objet, il suffit de la définir comme ceci :</p>
+<div class="bloc-code"><div class="bloc-code__langue">js</div><pre><code class="hljs language-js"><span class="hljs-keyword">const</span> apple = {
+  <span class="hljs-attr">color</span>: <span class="hljs-string">&quot;#00FF00&quot;</span>, 
+  <span class="hljs-attr">diameter</span>: <span class="hljs-number">10</span>,
+  <span class="hljs-attr">isEaten</span>: <span class="hljs-literal">false</span>,
+  <span class="hljs-attr">vitamins</span>: [<span class="hljs-string">&quot;A&quot;</span>, <span class="hljs-string">&quot;B1&quot;</span>, <span class="hljs-string">&quot;B2&quot;</span>, <span class="hljs-string">&quot;B6&quot;</span>, <span class="hljs-string">&quot;C&quot;</span>], 
+  <span class="hljs-attr">variety</span>: { <span class="hljs-attr">code</span>: <span class="hljs-number">576</span>, <span class="hljs-attr">name</span>: <span class="hljs-string">&quot;Granny Smith&quot;</span> },
+  <span class="hljs-attr">gather</span>: <span class="hljs-keyword">function</span> (<span class="hljs-params"></span>) {
+    <span class="hljs-keyword">return</span> <span class="hljs-string">&quot;Here&#x27;s one apple!&quot;</span>;
+  }
+};
+
+apple.<span class="hljs-property">growsOn</span> = <span class="hljs-string">&quot;Tree&quot;</span> ;
+
+<span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(apple)
+</code></pre></div>
+<p>De même, pour donner une autre valeur à la propriété d'un objet, il suffit d'utiliser le symbole égal <code>=</code>.</p>
+<div class="bloc-code"><div class="bloc-code__langue">javascript</div><pre><code class="hljs language-javascript">apple.<span class="hljs-property">color</span> = <span class="hljs-string">&quot;Red&quot;</span> ;
+</code></pre></div>
+<h3>Supprimer une propriété</h3>
+<p>On peut utiliser <code>delete</code> pour supprimer une propriété.</p>
+<div class="bloc-code"><div class="bloc-code__langue">js</div><pre><code class="hljs language-js"><span class="hljs-keyword">const</span> apple = {
+  <span class="hljs-attr">color</span>: <span class="hljs-string">&quot;#00FF00&quot;</span>, 
+  <span class="hljs-attr">diameter</span>: <span class="hljs-number">10</span>,
+  <span class="hljs-attr">isEaten</span>: <span class="hljs-literal">false</span>,
+  <span class="hljs-attr">vitamins</span>: [<span class="hljs-string">&quot;A&quot;</span>, <span class="hljs-string">&quot;B1&quot;</span>, <span class="hljs-string">&quot;B2&quot;</span>, <span class="hljs-string">&quot;B6&quot;</span>, <span class="hljs-string">&quot;C&quot;</span>], 
+  <span class="hljs-attr">variety</span>: { <span class="hljs-attr">code</span>: <span class="hljs-number">576</span>, <span class="hljs-attr">name</span>: <span class="hljs-string">&quot;Granny Smith&quot;</span> },
+  <span class="hljs-attr">gather</span>: <span class="hljs-keyword">function</span> (<span class="hljs-params"></span>) {
+    <span class="hljs-keyword">return</span> <span class="hljs-string">&quot;Here&#x27;s one apple!&quot;</span>;
+  }
+};
+
+<span class="hljs-keyword">delete</span> apple.<span class="hljs-property">variety</span>.<span class="hljs-property">name</span>;
+<span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(apple)
+</code></pre></div>
+<h2>Combiner des tableaux et des objets</h2>
+<p>Et si nous pouvions <strong>combiner des tableaux avec des objets?</strong></p>
+<p>Par exemple, nous avons beaucoup de fruits différents, pas seulement des pommes.
+Et si nous voulions décrire <strong>tous les fruits?</strong></p>
+<p>Et bien, nous pourrions mettre nos objets dans un tableau !</p>
+<div class="bloc-code"><div class="bloc-code__langue">javascript</div><pre><code class="hljs language-javascript"><span class="hljs-keyword">const</span> fruits = [
+  { <span class="hljs-attr">name</span>: <span class="hljs-string">&quot;apple&quot;</span>, <span class="hljs-attr">color</span>: <span class="hljs-string">&quot;green&quot;</span> },
+  { <span class="hljs-attr">name</span>: <span class="hljs-string">&quot;Pineapple&quot;</span>, <span class="hljs-attr">color</span>:<span class="hljs-string">&quot;yellow&quot;</span> },
+  { <span class="hljs-attr">name</span>: <span class="hljs-string">&quot;Orange&quot;</span>, <span class="hljs-attr">color</span>:<span class="hljs-string">&quot;orange&quot;</span> },
+  { <span class="hljs-attr">name</span>: <span class="hljs-string">&quot;Cherry&quot;</span>, <span class="hljs-attr">color</span>:<span class="hljs-string">&quot;red&quot;</span> },
+];
+</code></pre></div>
+<p><strong>🔬 Expérimente</strong></p>
+<p>Crée un tableau d'objets <code>animals</code>, le tableau doit contenir différents animaux, leur nom, leur espèce et leur son.
+(ex. pour un animal : name: <strong>Billy</strong>, species: <strong>Cat</strong>, sound: <strong>Meow</strong>)</p>
+<p><strong>Bonus:</strong>
+Utilise une boucle pour afficher le son de chaque animal dans la console.</p>
+<div class="bloc-code"><div class="bloc-code__langue">js</div><pre><code class="hljs language-js">
+</code></pre></div>
+<details class="solution"><summary>Voir la solution</summary><div class="solution__corps"><div class="bloc-code"><div class="bloc-code__langue">javascript</div><pre><code class="hljs language-javascript"><span class="hljs-keyword">const</span> animals = [
+  { <span class="hljs-attr">name</span>:<span class="hljs-string">&quot;Billy&quot;</span>, <span class="hljs-attr">species</span>:<span class="hljs-string">&quot;Cat&quot;</span>, <span class="hljs-attr">sound</span>:<span class="hljs-string">&quot;Meow&quot;</span> },
+  { <span class="hljs-attr">name</span>:<span class="hljs-string">&quot;Bob&quot;</span>, <span class="hljs-attr">species</span>:<span class="hljs-string">&quot;Dog&quot;</span>, <span class="hljs-attr">sound</span>:<span class="hljs-string">&quot;Woof&quot;</span> },
+  { <span class="hljs-attr">name</span>:<span class="hljs-string">&quot;Jimmy&quot;</span>, <span class="hljs-attr">species</span>:<span class="hljs-string">&quot;Squirrel&quot;</span>, <span class="hljs-attr">sound</span>:<span class="hljs-string">&quot;Chit&quot;</span> },
+];
+
+<span class="hljs-keyword">for</span> (<span class="hljs-keyword">let</span> i = <span class="hljs-number">0</span>; i &lt; animals.<span class="hljs-property">length</span>; i++) {
+  <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(animals[i].<span class="hljs-property">sound</span>);
+}
+</code></pre></div>
+</div></details>
+<h2>Objets dans la console du navigateur</h2>
+<p>Essaie d'afficher ce tableau d'objets dans la console du navigateur, tu devrais pouvoir naviguer en cliquant sur les petites flèches à gauche.</p>
+<p><img src="images/002-objet-chrome.gif" alt="Objet chrome" loading="lazy"></p>
+<h3>What is &quot;this&quot; ?</h3>
+<p>Le mot-clé <code>this</code> se réfère à l'objet courant sur lequel la méthode est appelée. Plus précisément, <strong><code>this</code> désigne ce qui précède le <code>.</code> lors de l'appel d'une méthode.</strong></p>
+<p>Voyons un exemple concret :</p>
+<div class="bloc-code"><div class="bloc-code__langue">javascript</div><pre><code class="hljs language-javascript"><span class="hljs-keyword">const</span> person1 = {
+  <span class="hljs-attr">name</span>: <span class="hljs-string">&quot;Bob&quot;</span>, 
+  <span class="hljs-attr">age</span>: <span class="hljs-number">30</span>, 
+  <span class="hljs-attr">sayHello</span>: <span class="hljs-keyword">function</span> (<span class="hljs-params"></span>) {
+    <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(<span class="hljs-string">`Hi, I&#x27;m <span class="hljs-subst">${<span class="hljs-variable language_">this</span>.name}</span>`</span>);
+  }
+};
+
+person1.<span class="hljs-title function_">sayHello</span>();
+<span class="hljs-comment">// Puisque &quot;this&quot; à la line 5 se réfère à ce qui précède le &quot;.&quot; à la line 9 (person1),</span>
+<span class="hljs-comment">// &quot;this.name&quot; vaudra &quot;Bob&quot;, donc la méthode affichera &quot;Hi, I&#x27;m Bob&quot;</span>
+</code></pre></div>
+<p>Voyons un exemple plus avancé :</p>
+<div class="bloc-code"><div class="bloc-code__langue">js</div><pre><code class="hljs language-js"><span class="hljs-keyword">const</span> pomme = {
+  <span class="hljs-attr">nom</span>: <span class="hljs-string">&#x27;Pomme&#x27;</span>,
+  <span class="hljs-attr">isEaten</span>: <span class="hljs-literal">false</span>,
+  
+  <span class="hljs-attr">eat</span>: <span class="hljs-keyword">function</span>(<span class="hljs-params"></span>) {
+    <span class="hljs-keyword">if</span> (<span class="hljs-variable language_">this</span>.<span class="hljs-property">isEaten</span>) {
+      <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(<span class="hljs-string">&#x27;Cette pomme a déjà été mangée !&#x27;</span>);
+    } <span class="hljs-keyword">else</span> {
+      <span class="hljs-variable language_">this</span>.<span class="hljs-property">isEaten</span> = <span class="hljs-literal">true</span>;
+      <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(<span class="hljs-string">&#x27;Miam ! Vous venez de manger la pomme.&#x27;</span>);
+    }
+  }
+};
+
+<span class="hljs-comment">// Exemples d&#x27;utilisation :</span>
+pomme.<span class="hljs-title function_">eat</span>(); 
+<span class="hljs-comment">// Affiche : &quot;Miam ! Vous venez de manger la pomme.&quot;</span>
+
+pomme.<span class="hljs-title function_">eat</span>(); 
+<span class="hljs-comment">// Affiche : &quot;Cette pomme a déjà été mangée !&quot;</span>
+
+<span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(pomme.<span class="hljs-property">isEaten</span>); 
+<span class="hljs-comment">// Résultat : true</span>
+</code></pre></div>
+<p>Prends le temps de regarder le code et essaie de le comprendre.</p>
+<p>Ce qui se passe dans ce code, c'est que notre pomme a un état, <strong>isEaten</strong> qui est <code>false</code> par défaut.</p>
+<p>Lorsqu'on invoque la méthode <strong>eat</strong> on vérifie si le fruit a déjà été mangé, si oui, alors on affiche que le fruit a déjà été mangé, si non, on change la valeur de <code>isEaten</code> en true.</p>
+<p>Ne t'inquiète pas si cela n'est pas clair à 100% pour le moment, nous en parlerons plus tard.</p>
+<p><strong>🔬 Expérimente</strong></p>
+<p>Billy the Cat est de retour, essaye d'implémenter une méthode <code>feed</code> qui change la valeur de <code>isHungry</code> en <code>false</code> quand on l'invoque.</p>
+<p>La méthode doit vérifier la valeur de <code>isHungry</code>, si Billy n'a pas faim, elle devrait afficher que Billy n'a pas faim dans la console; s'il a faim, elle devrait changer le booléen pour qu'il soit <code>false</code>.</p>
+<div class="bloc-code"><div class="bloc-code__langue">js</div><pre><code class="hljs language-js"><span class="hljs-keyword">const</span>  billyTheCat = {
+  <span class="hljs-attr">name</span>: <span class="hljs-string">&quot;Billy&quot;</span>, 
+  <span class="hljs-attr">species</span>: <span class="hljs-string">&quot;Cat&quot;</span>, 
+  <span class="hljs-attr">isHungry</span>: <span class="hljs-literal">true</span>, 
+  <span class="hljs-attr">feed</span>:<span class="hljs-keyword">function</span>(<span class="hljs-params"></span>){
+    <span class="hljs-comment">// Solution goes here</span>
+  }
+}
+
+</code></pre></div>
+<details class="solution"><summary>Voir la solution</summary><div class="solution__corps"><div class="bloc-code"><div class="bloc-code__langue">javascript</div><pre><code class="hljs language-javascript"><span class="hljs-keyword">const</span>  billyTheCat = {
+  <span class="hljs-attr">name</span>: <span class="hljs-string">&quot;Billy&quot;</span>,
+  <span class="hljs-attr">species</span>: <span class="hljs-string">&quot;Cat&quot;</span>,
+  <span class="hljs-attr">isHungry</span>: <span class="hljs-literal">true</span>,
+  <span class="hljs-attr">feed</span>: <span class="hljs-keyword">function</span> (<span class="hljs-params"></span>) {
+    <span class="hljs-keyword">if</span> (<span class="hljs-variable language_">this</span>.<span class="hljs-property">isHungry</span>) {
+      <span class="hljs-variable language_">this</span>.<span class="hljs-property">isHungry</span> = <span class="hljs-literal">false</span>;
+      <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(<span class="hljs-string">`<span class="hljs-subst">${<span class="hljs-variable language_">this</span>.name}</span> is  eating...`</span>);
+    } <span class="hljs-keyword">else</span> {
+      <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(<span class="hljs-string">`<span class="hljs-subst">${<span class="hljs-variable language_">this</span>.name}</span> is not hungry`</span>);
+    }
+  }
+};
+
+billyTheCat.<span class="hljs-title function_">feed</span>();
+billyTheCat.<span class="hljs-title function_">feed</span>(); 
+</code></pre></div>
+</div></details>
+<h2>En JavaScript, tous les objets sont uniques</h2>
+<p><strong>Les opérateurs d'égalité appliqués aux objets ne comparent pas ce qui se trouve à l'intérieur des objets, mais plutôt les endroits en mémoire où les objets sont stockés</strong>.</p>
+<p>Si tu prends deux objets, avec exactement les mêmes paires clé/valeur, ils ne seront jamais considérés comme &quot;égaux&quot; avec les opérateurs <code>===</code>, <code>!==</code>, <code>==</code> ou <code>!=</code>.</p>
+<div class="bloc-code"><div class="bloc-code__langue">javascript</div><pre><code class="hljs language-javascript"><span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>({} === {});
+<span class="hljs-comment">// false</span>
+<span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>({ <span class="hljs-attr">name</span>: <span class="hljs-string">&quot;Billy&quot;</span>, <span class="hljs-attr">species</span>:<span class="hljs-string">&quot;Cat&quot;</span> } === { <span class="hljs-attr">name</span>: <span class="hljs-string">&quot;Billy&quot;</span>, <span class="hljs-attr">species</span>:<span class="hljs-string">&quot;Cat&quot;</span> });
+<span class="hljs-comment">// false</span>
+<span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>({ <span class="hljs-attr">name</span>: <span class="hljs-string">&quot;Billy&quot;</span>, <span class="hljs-attr">species</span>:<span class="hljs-string">&quot;Cat&quot;</span> } == { <span class="hljs-attr">name</span>: <span class="hljs-string">&quot;Billy&quot;</span>, <span class="hljs-attr">species</span>:<span class="hljs-string">&quot;Cat&quot;</span> });
+<span class="hljs-comment">// false</span>
+</code></pre></div>
+<p>A chaque fois que nous écrivons <code>{}</code> pour décrire un objet, l'interpréteur Javascript ira créer un nouvel objet en mémoire**, c'est pourquoi on peut dire qu'en JS, chaque objet est &quot;unique&quot;.</p>
+<h2>Résumé</h2>
+<ul>
+<li>Un objet en JavaScript est un conteneur qui peut avoir un ensemble de paires &quot;clé/valeur&quot;</li>
+<li>Tu peux accéder à la propriété d'un objet en utilisant le point <code>.</code> ou les crochets <code>[]</code>.</li>
+<li>Tous les objets sont uniques, même s'ils ont les mêmes propriétés et méthodes</li>
+<li>Tu peux créer ou modifier une propriété en lui attribuant le symbole égal <code>=</code>.
+ex: <code>apple.color = &quot;red&quot;</code></li>
+</ul>
+<h2>Ressources</h2>
+<a class="ressource" href="https://developer.mozilla.org/fr/docs/Web/JavaScript/Guide/Utiliser_les_objets" target="_blank" rel="noopener noreferrer">
+  <div class="ressource__icone">↗</div>
+  <div class="ressource__texte">
+    <div class="ressource__titre">MDN - Travailler avec des objets</div>
+    <div class="ressource__desc"><p>Belle ressource avec des explications claires sur les objets</p>
+</div>
+    <div class="ressource__hote">developer.mozilla.org</div>
+  </div>
+</a>
+<a class="ressource" href="https://javascript.info/object" target="_blank" rel="noopener noreferrer">
+  <div class="ressource__icone">↗</div>
+  <div class="ressource__texte">
+    <div class="ressource__titre">Javascript.info - Objets</div>
+    <div class="ressource__desc"><p>Très bonne ressource, information claire et facile à lire</p>
+</div>
+    <div class="ressource__hote">javascript.info</div>
+  </div>
+</a>
+
+  </div>
+  
+</article>
+
+<nav class="nav-quete">
+  <a class="nav-quete__lien nav-quete__lien--prec" href="../../javascript/010-js-basics-08-les-boucles/index.html">
+           <span class="nav-quete__sens">← Précédent</span>
+           <span class="nav-quete__titre">👩‍🏫 JS Basics 08 - Les boucles</span>
+         </a>
+  <span class="nav-quete__lien nav-quete__lien--vide"></span>
+</nav>
+</main>
+<footer class="pied">
+  <p>Archive personnelle des cours suivis à la Wild Code School. Copie hors ligne à usage strictement privé.</p>
+</footer>
+
+<script src="../../assets/copie-code.js"></script>
+<script src="../../assets/progression.js"></script>
+</body>
+</html>

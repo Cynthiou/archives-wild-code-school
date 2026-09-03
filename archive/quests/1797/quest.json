@@ -1,0 +1,29 @@
+{
+  "id": 1797,
+  "titre": "Node 04 - 🔧 Rechercher et choisir un paquet npm (ou pas !)",
+  "titres": {
+    "en": "Node 02 - 🔧 Searching and choosing an npm package (or not !)",
+    "fr": "Node 04 - 🔧 Rechercher et choisir un paquet npm (ou pas !)"
+  },
+  "theme": {
+    "id": 22,
+    "slug": "nodejs",
+    "nom": "Node.js"
+  },
+  "creeLe": "2021-09-07T10:46:23.210+02:00",
+  "difficulte": "0",
+  "dureeEstimee": null,
+  "modeValidation": "self",
+  "chapitres": [
+    {
+      "id": 16968,
+      "type": "content",
+      "langue": "fr",
+      "majLe": "2025-03-06T15:37:25.229+01:00",
+      "caracteres": 12949
+    }
+  ],
+  "ressources": [],
+  "urlOrigine": "https://odyssey.wildcodeschool.com/quests/1797",
+  "archiveLe": "2026-09-02T20:53:42.651Z"
+}

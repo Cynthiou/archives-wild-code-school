@@ -1,0 +1,162 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Installer et configurer Node — Archives WCS</title>
+<link rel="stylesheet" href="../../assets/style.css">
+</head>
+<body style="--teinte:#000000">
+<header class="entete">
+  <a class="entete__marque" href="../../index.html">Archives Wild Code School</a>
+</header>
+<main class="contenu">
+<nav class="ariane"><a href="../../index.html">Accueil</a><span class="ariane__sep">›</span><a href="../../developpement-web/index.html">Développement Web</a><span class="ariane__sep">›</span><span aria-current="page">Installer et configurer Node</span></nav>
+
+<article class="quete">
+  <header class="quete__entete">
+    <a class="pastille pastille--teintee" href="../../developpement-web/index.html">Développement Web</a>
+    <h1>Installer et configurer Node</h1>
+    <p class="quete__meta">Quête 6 sur 11</p>
+  </header>
+  <div class="cours">
+<h2>Objectifs</h2>
+<ul>
+<li>Installer node</li>
+<li>Configurer un premier projet</li>
+</ul>
+<h2>Pré-requis</h2>
+<ol class="etapes"><li class="etape"><div class="etape__puce">1</div><div class="etape__contenu"><h4 class="etape__titre">Connaitre les bases du langage JavaScript</h4><div class="bloc-code"><div class="bloc-code__langue">javascript</div><pre><code class="hljs language-javascript"><span class="hljs-keyword">let</span> order = <span class="hljs-literal">null</span>;
+<span class="hljs-keyword">let</span> isConfirmed = <span class="hljs-literal">false</span>;
+
+<span class="hljs-keyword">while</span> (isConfirmed === <span class="hljs-literal">false</span>) {
+  order = <span class="hljs-title function_">prompt</span>(<span class="hljs-string">&quot;thé ou café ?&quot;</span>);
+
+  isConfirmed = <span class="hljs-title function_">confirm</span>(<span class="hljs-string">`confirmer votre commande : <span class="hljs-subst">${order}</span>`</span>);
+}
+
+<span class="hljs-title function_">alert</span>(<span class="hljs-string">`votre <span class="hljs-subst">${order}</span> sera prêt dans une minute`</span>);
+</code></pre></div>
+</div></li><li class="etape"><div class="etape__puce">2</div><div class="etape__contenu"><h4 class="etape__titre">Être à l'aise avec l'utilisation du terminal</h4><div class="bloc-code"><div class="bloc-code__langue">bash</div><pre><code class="hljs language-bash"><span class="hljs-built_in">mkdir</span> my-project
+<span class="hljs-built_in">cd</span> my-project
+</code></pre></div>
+</div></li><li class="etape"><div class="etape__puce">3</div><div class="etape__contenu"><h4 class="etape__titre">Savoir installer un logiciel sur ton système</h4><div class="onglets" data-onglets="3"><input type="radio" name="onglets-4" id="onglets-4-0" class="onglets__radio" checked><input type="radio" name="onglets-4" id="onglets-4-1" class="onglets__radio"><input type="radio" name="onglets-4" id="onglets-4-2" class="onglets__radio"><div class="onglets__barre"><label class="onglets__label" for="onglets-4-0">Ubuntu</label><label class="onglets__label" for="onglets-4-1">Mac OS</label><label class="onglets__label" for="onglets-4-2">Windows</label></div><div class="onglets__panneaux"><div class="onglets__panneau"><div class="bloc-code"><div class="bloc-code__langue">bash</div><pre><code class="hljs language-bash"><span class="hljs-built_in">sudo</span> apt install &lt;something&gt;
+</code></pre></div>
+</div><div class="onglets__panneau"><div class="bloc-code"><div class="bloc-code__langue">bash</div><pre><code class="hljs language-bash">brew install &lt;something&gt;
+</code></pre></div>
+</div><div class="onglets__panneau"><p>Télécharger le programme d'installation et double-cliquer dessus.</p>
+</div></div></div>
+</div></li></ol>
+<h2>Introduction</h2>
+<p>Tu sais exécuter du JavaScript dans ton navigateur, en utilisant une balise <code>&lt;script&gt;</code> ou en tapant du code dans la console de l'inspecteur.</p>
+<p>Dans cette quête, tu vas utiliser un environnement d'exécution <em>en dehors</em> du navigateur : <strong>Node.js</strong>. Avec &quot;node&quot;, tu vas exécuter du JavaScript dans ton terminal et créer tes propres <strong>packages</strong>.</p>
+<h2>Sommaire</h2>
+<h2>Pourquoi Node.js ?</h2>
+<p>Node.js a été créé en 2009 par Ryan Dahl. Aujourd'hui, il est utilisé par des millions de développeurs pour construire des applications web et des services. Fun fact : Netflix et LinkedIn utilisent Node.js pour leurs serveurs !</p>
+<h2>Installation</h2>
+<p>Commence par l'installer sur ta machine et par découvrir son écosystème en suivant cette quête :</p>
+<div class="renvois"><div class="renvois__titre">Quêtes liées</div><ul><li><a href="../../node-js/001-node-01-introduction-a-node-js-et-npm/index.html">Quête 1334</a></li></ul></div>
+<div class="bloc-code"><div class="bloc-code__langue">quiz</div><pre><code class="hljs language-quiz">true|||true|||true
+# Quelle est la commande pour vérifier la version de Node.js installée ?
+[x] node --version
+[] apt version node
+# Quelle est la commande pour initialiser un projet Node.js ?
+[x] npm init
+[] npm run start
+</code></pre></div>
+<h3>Configurer son environnement</h3>
+<p>Comprendre la notion d'environnement de développement est crucial. Suis cette quête pour apprendre à configurer ton environnement :</p>
+<div class="renvois"><div class="renvois__titre">Quêtes liées</div><ul><li><a href="../../node-js/002-node-02-utiliser-un-fichier-env/index.html">Quête 1024</a></li></ul></div>
+<div class="bloc-code"><div class="bloc-code__langue">quiz</div><pre><code class="hljs language-quiz">true|||true|||true
+# Quel est le rôle du fichier .env dans un projet ?
+[x] définir des variables d'environnement
+[] écrire des scripts dans le langage env
+# Comment exécuter un fichier JavaScript avec Node.js ?
+[x] avec la commande &quot;node&quot;
+[] avec la commande &quot;node-exec&quot;
+</code></pre></div>
+<h2>Faire du code de qualité</h2>
+<p>La qualité du code est essentielle pour tout projet. Apprends comment écrire du code propre et maintenable en suivant cette quête :</p>
+<div class="renvois"><div class="renvois__titre">Quêtes liées</div><ul><li><a href="../../node-js/003-node-03-commence-a-linter-et-a-formater-ton-code-en/index.html">Quête 1387</a></li></ul></div>
+<div class="bloc-code"><div class="bloc-code__langue">quiz</div><pre><code class="hljs language-quiz">true|||true|||true
+# Qu'est-ce qu'un linter ?
+[x] un outil qui analyse le code source pour détecter les erreurs, les vulnérabilités et les problèmes de style afin d'améliorer la qualité du code
+[] un outil qui affiche plein de messages dans la console alors que mon code marche
+# Comment configurer Biome dans un projet Node.js ?
+[x] npx @biomejs/biome init
+[] Créer un fichier biomerc.json
+</code></pre></div>
+<h2>Utiliser des packages existants</h2>
+<p>Le site <a href="https://www.npmjs.com/" target="_blank" rel="noopener noreferrer">https://www.npmjs.com/</a> référence beaucoup de bibliothèques (des packages) publiés par des développeurs et des développeuses du monde entier pour te faciliter la vie.</p>
+<div class="renvois"><div class="renvois__titre">Quêtes liées</div><ul><li><a href="../../node-js/004-node-04-rechercher-et-choisir-un-paquet-npm-ou-pas/index.html">Quête 1797</a></li></ul></div>
+<p>Pense à d'autres projets simples où tu pourrais utiliser des paquets NPM. Note tes idées pour de futurs projets.</p>
+<h2>Pour aller plus loin</h2>
+<p>Ta future entreprise peut utiliser une des alternatives à <code>npm</code>, comme <code>pnpm</code> ou <code>yarn</code>. D'autres concepts avancés se cachent dans ton fichier <code>package.json</code>. Si tu veux les découvrir maintenant, tu peux regarder cette quête :</p>
+<div class="renvois"><div class="renvois__titre">Quêtes liées</div><ul><li><a href="../../node-js/005-node-05-concepts-avances-et-alternatives-a-la-cli-de-npm/index.html">Quête 1820</a></li></ul></div>
+<h2>Challenge</h2>
+<p>Dans ce défi, tu devras installer un paquet appelé CowSay. C'est un paquet qui affichera dans ton terminal une petite vache avec le message de ton choix :</p>
+<div class="bloc-code"><pre><code class="hljs language-plaintext"> ______________________________
+&lt; Hello I&#x27;m Romain from Reims! &gt;
+ ------------------------------
+        \   ^__^
+         \  (oo)\_______
+            (__)\       )\/\
+                ||----w |
+                ||     ||
+</code></pre></div>
+<h3>Étapes</h3>
+<ol>
+<li>Crée un nouveau dossier avec le nom de ton choix et initialise un projet dedans avec <code>npm</code>.</li>
+</ol>
+<div class="encadre encadre--warning"><div class="encadre__titre">Attention</div><div class="encadre__corps"><p>Tu vas utiliser pour cet exercice la syntaxe <a href="https://developer.mozilla.org/fr/docs/Web/JavaScript/Guide/Modules" target="_blank" rel="noopener noreferrer">ESM</a> : <code>import</code> pour importer un module, et <code>&quot;type&quot;: &quot;module&quot;</code> dans ton <code>package.json</code>.</p>
+</div></div>
+<ol start="2">
+<li>Crée un fichier <code>.env</code> et un fichier <code>index.js</code> dans ton projet.</li>
+<li>Dans ton fichier <code>.env</code>, crée une variable <code>NAME</code> avec ton nom et une variable <code>CAMPUS</code> avec le nom de ton campus.</li>
+<li>Installe le module <code>cowsay</code>. Lis la <a href="https://www.npmjs.com/package/cowsay" target="_blank" rel="noopener noreferrer">documentation</a> pour apprendre à l'utiliser dans ton fichier <code>index.js</code>.</li>
+<li>Exécute ton fichier <code>index.js</code> à l'aide de la commande <code>node</code> et assure-toi que la vache affiche un message qui utilise les informations de ton fichier <code>.env</code>.</li>
+<li>Crée maintenant un fichier <code>.gitignore</code> afin d'ignorer ton dossier <code>node_modules</code> et ton fichier <code>.env</code>. Push ton travail sur GitHub. Partage le lien du repo comme solution du challenge.</li>
+</ol>
+<h3>Critères de validation</h3>
+<ul>
+<li>[ ] Le module <code>cowsay</code> est installé et correctement utilisé.</li>
+<li>[ ] Le dossier <code>node_modules</code> et le fichier <code>.env</code> ne sont pas dans le dépôt GitHub.</li>
+</ul>
+<h2>Une solution possible</h2>
+<div class="bloc-code"><div class="bloc-code__langue">javascript</div><pre><code class="hljs language-javascript"><span class="hljs-keyword">import</span> { say } <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;cowsay&quot;</span>;
+
+<span class="hljs-keyword">const</span> { <span class="hljs-variable constant_">NAME</span>, <span class="hljs-variable constant_">CAMPUS</span> } = process.<span class="hljs-property">env</span>;
+
+<span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(<span class="hljs-title function_">say</span>({ <span class="hljs-attr">text</span>: <span class="hljs-string">`Hello I&#x27;m <span class="hljs-subst">${NAME}</span> from <span class="hljs-subst">${CAMPUS}</span>!`</span> }));
+</code></pre></div>
+
+  </div>
+  <section class="ressources-quete">
+  <h2>Ressources partagées sur cette quête</h2>
+  <ul class="ressources-liste">
+    <li><a href="https://www.youtube.com/watch?v=EqqugQn4KIc" target="_blank" rel="noopener noreferrer">petite vidéo pour le gitignore :) </a><span class="ressources-liste__url">https://www.youtube.com/watch?v=EqqugQn4KIc</span></li>
+    <li><a href="https://adamcoster.com/blog/commonjs-and-esm-importexport-compatibility-examples" target="_blank" rel="noopener noreferrer">Pour mieux comprendre quand on peut utiliser require() et quand on peut utiliser import</a><span class="ressources-liste__url">https://adamcoster.com/blog/commonjs-and-esm-importexport-compatibility-examples</span></li>
+    <li><a href="https://www.sitepoint.com/understanding-module-exports-exports-node-js/" target="_blank" rel="noopener noreferrer">Des informations intéressantes sur le module.export</a><span class="ressources-liste__url">https://www.sitepoint.com/understanding-module-exports-exports-node-js/</span></li>
+  </ul>
+</section>
+</article>
+
+<nav class="nav-quete">
+  <a class="nav-quete__lien nav-quete__lien--prec" href="../../developpement-web/005-installer-et-configurer-mysql/index.html">
+           <span class="nav-quete__sens">← Précédent</span>
+           <span class="nav-quete__titre">Installer et configurer MySQL</span>
+         </a>
+  <a class="nav-quete__lien nav-quete__lien--suiv" href="../../developpement-web/007-js-first-script/index.html">
+           <span class="nav-quete__sens">Suivant →</span>
+           <span class="nav-quete__titre">JS - First script</span>
+         </a>
+</nav>
+</main>
+<footer class="pied">
+  <p>Archive personnelle des cours suivis à la Wild Code School. Copie hors ligne à usage strictement privé.</p>
+</footer>
+
+<script src="../../assets/copie-code.js"></script>
+<script src="../../assets/progression.js"></script>
+</body>
+</html>

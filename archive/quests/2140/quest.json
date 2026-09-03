@@ -1,0 +1,28 @@
+{
+  "id": 2140,
+  "titre": "👩‍🏫 HTML - Chapitre 8 | Les tableaux",
+  "titres": {
+    "fr": "👩‍🏫 HTML - Chapitre 8 | Les tableaux"
+  },
+  "theme": {
+    "id": 104,
+    "slug": "html5",
+    "nom": "HTML"
+  },
+  "creeLe": "2022-06-29T10:29:40.926+02:00",
+  "difficulte": "1",
+  "dureeEstimee": null,
+  "modeValidation": "self",
+  "chapitres": [
+    {
+      "id": 11888,
+      "type": "content",
+      "langue": "fr",
+      "majLe": "2024-07-29T17:05:15.307+02:00",
+      "caracteres": 3772
+    }
+  ],
+  "ressources": [],
+  "urlOrigine": "https://odyssey.wildcodeschool.com/quests/2140",
+  "archiveLe": "2026-09-02T23:22:14.468Z"
+}

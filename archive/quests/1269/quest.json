@@ -1,0 +1,37 @@
+{
+  "id": 1269,
+  "titre": "👩‍🏫 JS Basics 04 - Les types de données",
+  "titres": {
+    "fr": "👩‍🏫 JS Basics 04 - Les types de données"
+  },
+  "theme": {
+    "id": 9,
+    "slug": "javascript",
+    "nom": "JavaScript"
+  },
+  "creeLe": "2020-07-01T20:16:27.861+02:00",
+  "difficulte": "0",
+  "dureeEstimee": null,
+  "modeValidation": "self",
+  "chapitres": [
+    {
+      "id": 17280,
+      "type": "content",
+      "langue": "fr",
+      "majLe": "2025-03-13T17:25:23.112+01:00",
+      "caracteres": 6419
+    }
+  ],
+  "ressources": [
+    {
+      "link": "https://www.pierre-giraud.com/javascript-apprendre-coder-cours/type-donnee/",
+      "description": "Très bien fait"
+    },
+    {
+      "link": "https://tc39.es/ecma262/#sec-ecmascript-data-types-and-values",
+      "description": "Current ECMAScript specification"
+    }
+  ],
+  "urlOrigine": "https://odyssey.wildcodeschool.com/quests/1269",
+  "archiveLe": "2026-09-02T20:54:31.510Z"
+}

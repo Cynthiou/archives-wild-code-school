@@ -1,0 +1,28 @@
+{
+  "id": 2456,
+  "titre": "POO10 - Interfaces",
+  "titres": {
+    "fr": "POO10 - Interfaces"
+  },
+  "theme": {
+    "id": 70,
+    "slug": "php-object-oriented",
+    "nom": "PHP Orienté Objet"
+  },
+  "creeLe": "2023-02-23T18:05:51.889+01:00",
+  "difficulte": "2",
+  "dureeEstimee": null,
+  "modeValidation": "student",
+  "chapitres": [
+    {
+      "id": 8944,
+      "type": "content",
+      "langue": "fr",
+      "majLe": "2023-02-23T18:05:51.892+01:00",
+      "caracteres": 13742
+    }
+  ],
+  "ressources": [],
+  "urlOrigine": "https://odyssey.wildcodeschool.com/quests/2456",
+  "archiveLe": "2026-09-02T20:53:45.744Z"
+}

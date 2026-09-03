@@ -1,0 +1,245 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Twig - 01. Démarrage et utilisation — Archives WCS</title>
+<link rel="stylesheet" href="../../assets/style.css">
+</head>
+<body style="--teinte:#745089">
+<header class="entete">
+  <a class="entete__marque" href="../../index.html">Archives Wild Code School</a>
+</header>
+<main class="contenu">
+<nav class="ariane"><a href="../../index.html">Accueil</a><span class="ariane__sep">›</span><a href="../../php-avance/index.html">PHP Avancé</a><span class="ariane__sep">›</span><span aria-current="page">Twig - 01. Démarrage et utilisation</span></nav>
+
+<article class="quete">
+  <header class="quete__entete">
+    <a class="pastille pastille--teintee" href="../../php-avance/index.html">PHP Avancé</a>
+    <h1>Twig - 01. Démarrage et utilisation</h1>
+    <p class="quete__meta">Quête 9 sur 11</p>
+  </header>
+  <div class="cours">
+<p><strong>⚠️ Avant de commencer cette quête, tu dois avoir terminé la quête suivante :</strong>
+​</p>
+<div class="renvois"><div class="renvois__titre">Quêtes liées</div><ul><li><a href="../../php-avance/005-composer-1-installation/index.html">Quête 1624</a></li></ul></div>
+<div class="bloc-code"><div class="bloc-code__langue">title-book</div><pre><code class="hljs language-title-book">Introduction
+</code></pre></div>
+<p>Jusqu'à maintenant, tu insérais du PHP directement dans tes pages HTML. Cependant, cette approche reste souvent peu lisible et laborieuse à écrire, par exemple :</p>
+<div class="bloc-code"><div class="bloc-code__langue">php</div><pre><code class="hljs language-php">&lt;ul&gt;
+<span class="hljs-meta">&lt;?php</span> <span class="hljs-keyword">foreach</span> (<span class="hljs-variable">$contacts</span> <span class="hljs-keyword">as</span> <span class="hljs-variable">$contact</span>) : <span class="hljs-meta">?&gt;</span>
+&lt;li&gt;
+    &lt;a href=<span class="hljs-string">&quot;show.php?id=&lt;?= <span class="hljs-subst">$contact</span>[&#x27;id&#x27;] ?&gt;&quot;</span>&gt;<span class="hljs-meta">&lt;?=</span> <span class="hljs-variable">$contact</span>[<span class="hljs-string">&#x27;firstname&#x27;</span>] . <span class="hljs-string">&#x27; &#x27;</span> . <span class="hljs-variable">$contact</span>[<span class="hljs-string">&#x27;lastname&#x27;</span>] <span class="hljs-meta">?&gt;</span>&lt;/a&gt;
+&lt;/li&gt;
+<span class="hljs-meta">&lt;?php</span> <span class="hljs-keyword">endforeach</span>; <span class="hljs-meta">?&gt;</span>
+&lt;ul&gt;
+
+</code></pre></div>
+<p>Dans un souci de séparation et d’architecture du code, nous avons besoin dorénavant de bien compartimenter notre code.</p>
+<p>Pour réaliser cela, des moteurs de templates ont été créés. Twig (développé par l’équipe de Symfony) est aujourd’hui l’un des plus populaires. </p>
+<p>Un moteur de template est un outil qui va vous permettre de simplifier la syntaxe de la partie front de votre site. Dans notre cas, il va permettre la séparation entre le HTML et le PHP.</p>
+<h2>🤓 À la fin de cette quête, tu seras capable de :</h2>
+<ul>
+<li>✅ Comprendre le fonctionnement d'un moteur de <em>templates</em></li>
+<li>✅ Utiliser Twig</li>
+</ul>
+<h1>Introduction aux moteurs de <em>templates</em></h1>
+<p>En développant votre application web, vos pages vont devenir de plus en plus complexe. De plus en plus de code logique (validation et gestion des formulaires, requêtes SQL, <em>etc.</em>) se mélangera avec votre affichage HTML (les vues de votre site).</p>
+<p>Si vous souhaitez qu’un designer ou qu’un intégrateur travaille dessus, ces derniers devront faire un travail de séparation qui ne correspond pas aux taches de leur métier.</p>
+<p>La solution va donc être de séparer les vues de la logique. Cette séparation est utilisée dans l'architecture MVC (Modèle, Vue, Contrôleur) que tu vas largement utiliser.</p>
+<p>Afin de rendre nos vues les plus adaptées à une potentielle modification d’un designer ou d’un intégrateur, nous avons choisi d’utiliser un moteur de template et, dans notre cas, Twig. D’autres existent tel que Blade ou encore Smarty.</p>
+<p>Twig possède sa propre syntaxe, qu’il va traduire à l’exécution en HTML / PHP. Enfin, la dernière étape reste inchangée. Le code PHP est interprété, et seul du HTML est envoyé à ton navigateur (le code source HTML que tu peux voir).</p>
+<p>Les avantages des moteurs de <em>templates</em> sont multiples :</p>
+<ul>
+<li>
+<p>Lisibilité : la syntaxe est souvent plus compréhensible que le PHP &quot;pur&quot;, et de ce fait plus facile à apprendre et/ou lire par des intégrateurs/graphistes qui ne connaîtraient pas la syntaxe du PHP.</p>
+</li>
+<li>
+<p>Facilité : le code est plus facile à écrire et apporte des raccourcis, des fonctionnalités difficilement adaptables en PHP pur, sans écrire beaucoup de code.</p>
+</li>
+<li>
+<p>Meilleure séparation du code : il n'y a plus directement de PHP dans les fichiers de vue. La maintenabilité s'en trouve généralement améliorée. En effet, les <em>templates</em> ne sont pas censés contenir de logique complexe, ce sont juste des réceptacles pour accueillir des données dynamiques.</p>
+</li>
+<li>
+<p>Héritage : comme pour la POO, il est possible de mettre en place un système d'héritage entre <em>templates</em>. Cela facilite la réutilisabilité de certaines parties, et limite grandement les répétitions d'une vue à l'autre. Un gain de temps non négligeable !</p>
+</li>
+<li>
+<p>Système de cache : les moteurs de <em>templates</em> modernes sont accompagnés d'un système de cache performant qui assure un affichage des pages optimisé en terme de rapidité.</p>
+</li>
+<li>
+<p>Sécurisation des variables : Au revoir les <code>htmlentities()</code> et autres fonctions d'échappement. Tout cela est pris en compte automatiquement.</p>
+</li>
+<li>
+<p>Les <em>templates</em> peuvent également être utilisés pour générer des e-mails HTML, du XML, des PDF, <em>etc</em>.</p>
+</li>
+</ul>
+<a class="ressource" href="https://eilgin.github.io/php-the-right-way/#templating" target="_blank" rel="noopener noreferrer">
+  <div class="ressource__icone">↗</div>
+  <div class="ressource__texte">
+    <div class="ressource__titre">Intérêt d'utiliser des moteurs de templates en PHP</div>
+    <div class="ressource__desc"><p>Pour information, l'ensemble de ce site &quot;La bonne manière en PHP&quot; est une mine d'or d'informations sur tout ce qu'un développeur PHP doit connaître.</p>
+</div>
+    <div class="ressource__hote">eilgin.github.io</div>
+  </div>
+</a>
+<h3>Intégrer Twig dans un projet PHP</h3>
+<p>Bien qu'initialement créé pour être utilisé dans un projet Symfony, Twig, comme beaucoup d'autres <em>composants</em> ou <em>librairies,</em> peut être installé indépendamment et utilisé dans tout type de projet. Cela signifie que tu peux utiliser les capacités de Twig dans un projet qui n'implémente aucun <em>framework</em>.</p>
+<div class="encadre encadre--info"><div class="encadre__titre">Info</div><div class="encadre__corps"><p>Avant de commencer, tu vas récupérer du code depuis un dépôt Github pour réaliser cette quête.
+Rend-toi sur <a href="https://github.com/WildCodeSchool/quest-twig" target="_blank" rel="noopener noreferrer">https://github.com/WildCodeSchool/quest-twig</a> et clic sur &quot;Use this template&quot; afin d'obtenir un nouveau <em>repository</em> personnel.
+Ensuite clone ce nouveau dépôt personnel dans un répertoire local de ta machine.
+Et voilà tu as à présent un micro projet qui intègre le moteur Twig.</p>
+</div></div>
+<div class="encadre encadre--warning"><div class="encadre__titre">Attention</div><div class="encadre__corps"><p>Twig est un moteur de rendu pour PHP, qui normalement s'installe via Composer.</p>
+<p>Si l'appel à Twig dans les fichiers est déjà en place, il faut néanmoins demander à composer de télécharger le code PHP de cette librairie dont on dépend maintenant. Depuis la racine du dossier tu dois donc exécuter <code>composer install</code>. Tu vois ainsi les fichiers se télécharger.</p>
+</div></div>
+<div class="encadre encadre--error"><div class="encadre__titre">Important</div><div class="encadre__corps"><p>Il se peut qu'à l'installation de Twig via composer, on t'indique une erreur avec comme raison une &quot;extension php manquante&quot;. Il s'agit surement de la librairie <code>php-xml</code>. Comme il s'agit d'une extension PHP, celle ci ne peut s'installer via composer. Elle nécessite plutôt une installation via brew (Mac OS), apt (Linux) ou via des fichiers <code>.dll</code> (Windows) <a href="https://www.php.net/manual/fr/install.pecl.windows.php" target="_blank" rel="noopener noreferrer">Installer une extension PHP sous Windows</a></p>
+</div></div>
+<div class="encadre encadre--success"><div class="encadre__titre">Bravo</div><div class="encadre__corps"><p>Mais tout va bien se passer. Promis. 🤓</p>
+</div></div>
+<p>Revenons au repository que tu viens de cloner. Une configuration basique de Twig y est déjà faite.</p>
+<p>Deux fichiers sont présentés ici :</p>
+<ul>
+<li>Le fichier de configuration Twig présent dans ton dossier <code>/config</code>.</li>
+<li>Le fichier index.php présent dans ton dossier <code>/public</code> qui est ta page d'accueil accessible à l'utilisateur.</li>
+</ul>
+<h5><code>config/twig.php</code>:</h5>
+<div class="bloc-code"><div class="bloc-code__langue">php</div><pre><code class="hljs language-php">
+<span class="hljs-comment">// tu indiques ici à Twig où aller chercher tes fichiers de vues</span>
+<span class="hljs-variable">$loader</span> = <span class="hljs-keyword">new</span> <span class="hljs-title class_">Twig\Loader\FilesystemLoader</span>(<span class="hljs-keyword">__DIR__</span> . <span class="hljs-string">&#x27;/../src/View&#x27;</span>);
+<span class="hljs-variable">$twig</span> = <span class="hljs-keyword">new</span> <span class="hljs-title class_">Twig\Environment</span>(<span class="hljs-variable">$loader</span>, [<span class="hljs-string">&#x27;debug&#x27;</span> =&gt; <span class="hljs-literal">true</span>]);
+
+</code></pre></div>
+<ul>
+<li>
+<p>Le loader (La classe <code>Twig\Loader\FilesystemLoader</code>) est un objet que tu vas utiliser afin de configurer ton environnement. Celui ci demande un paramètre, qui sera le répertoire dans lequel tes fichiers de vues en <code>*.twig</code> se trouveront.</p>
+</li>
+<li>
+<p>Un nouvel objet de classe <code>TwigEnvironment</code> sera ensuite créé. Celui ci prend l'objet loader en paramètre et sera accessible à tous les autres fichiers qui utiliseront un <code>require</code> de ce fichier de configuration</p>
+</li>
+</ul>
+<h5><code>public/index.php</code>:</h5>
+<div class="bloc-code"><div class="bloc-code__langue">php</div><pre><code class="hljs language-php">
+<span class="hljs-comment">// Get a $twig object from this file.</span>
+<span class="hljs-keyword">require_once</span> <span class="hljs-keyword">__DIR__</span> . <span class="hljs-string">&#x27;/../config/twig.php&#x27;</span>;
+
+<span class="hljs-variable">$name</span> = <span class="hljs-string">&#x27;Wilder&#x27;</span>;
+
+<span class="hljs-keyword">echo</span> <span class="hljs-variable">$twig</span>-&gt;<span class="hljs-title function_ invoke__">render</span>(<span class="hljs-string">&#x27;home.html.twig&#x27;</span>, [<span class="hljs-string">&#x27;name&#x27;</span> =&gt; <span class="hljs-variable">$name</span>]);
+
+</code></pre></div>
+<ul>
+<li>Enfin, pour afficher un fichier de vue, tu utiliseras la méthode <code>render</code> de ton objet <code>TwigEnvironment</code> précédemment créé. Celle ci prend en premier paramètre le nom du fichier de vue (qui doit se trouver dans le répertoire configuré dans le loader). En second paramètre, tu passeras à la méthode render un tableau contenant toutes les variables que tu souhaites afficher dynamiquement dans ta vue.</li>
+</ul>
+<div class="encadre encadre--info"><div class="encadre__titre">Info</div><div class="encadre__corps"><h1>Note importante</h1>
+<p>Le fichier de vue ne sera plus un fichier <em>.php</em> mais un fichier d'extension <em><strong>.html.twig</strong></em>. C'est une convention. Tu pourrais mettre n'importe quelle extension, tant que Twig arrive à accéder à ton fichier, il le lira et interprètera le contenu.</p>
+</div></div>
+<h1>Utiliser Twig</h1>
+<h3>La syntaxe de base de Twig</h3>
+<p>Commence par regarder cette nouvelle vidéo pour en apprendre davantage sur la syntaxe de base de Twig (déclaration de variables, <code>if</code>, <code>for</code>), <em>etc.</em></p>
+<a class="video-lien" href="https://www.youtube.com/watch?v=mimZikLd6NA" target="_blank" rel="noopener noreferrer">
+  <div class="video-lien__play">▶</div>
+  <div class="video-lien__texte">
+    <div class="video-lien__titre">Vidéo YouTube</div>
+    <div class="video-lien__url">https://www.youtube.com/watch?v=mimZikLd6NA</div>
+  </div>
+</a>
+<p>N'hésite pas à parcourir également la <a href="https://twig.symfony.com/doc/3.x/" target="_blank" rel="noopener noreferrer">documentation officielle</a> qui reprend les syntaxes des structures de contrôle, mais également les nombreux filtres existants qui te feront gagner beaucoup de temps.</p>
+<h3>Composition d'une page</h3>
+<div class="encadre encadre--warning"><div class="encadre__titre">Attention</div><div class="encadre__corps"><p>Avant de commencer à coder, lis bien les explications ci-dessous 👇</p>
+</div></div>
+<p>Afin de créer un template Twig, tu peux partir d'une page contenant une structure HTML basique.
+Ensuite tu peux y insérer des éléments dynamiques, et des structures de contrôles (conditions, boucles...)
+Tout ça, tu viens de le voir dans la vidéo juste avant.</p>
+<p>Nous allons te montrer comment passer à tes templates Twig, des variables définies dans tes fichiers PHP.</p>
+<p>Lors de l'appel à la vue (au template Twig), tu utilises la fonction <code>render()</code>. Et bien, tout simplement, il faudra ajouter en deuxième paramètre de cette fonction (le premier étant le chemin du fichier Twig concerné), un tableau associatif contenant la liste des variables que tu souhaites utiliser dans ton template.</p>
+<p>Voici un exemple avec la variable <code>$name</code> :</p>
+<div class="bloc-code"><div class="bloc-code__langue">php</div><pre><code class="hljs language-php">
+<span class="hljs-comment">// Get a $twig object from this file.</span>
+<span class="hljs-keyword">require_once</span> <span class="hljs-keyword">__DIR__</span> . <span class="hljs-string">&#x27;/../config/twig.php&#x27;</span>;
+<span class="hljs-variable">$name</span> = <span class="hljs-string">&#x27;Wilder&#x27;</span>;
+<span class="hljs-keyword">echo</span> <span class="hljs-variable">$twig</span>-&gt;<span class="hljs-title function_ invoke__">render</span>(<span class="hljs-string">&#x27;home.html.twig&#x27;</span>, [<span class="hljs-string">&#x27;name&#x27;</span> =&gt; <span class="hljs-variable">$name</span>]);
+</code></pre></div>
+<p>Et dans le template <code>src/View/home.html.twig</code> :</p>
+<div class="bloc-code"><div class="bloc-code__langue">twig</div><pre><code class="hljs language-twig"><span class="language-xml"><span class="hljs-meta">&lt;!doctype <span class="hljs-keyword">html</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">html</span> <span class="hljs-attr">lang</span>=<span class="hljs-string">&quot;fr&quot;</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">head</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">meta</span> <span class="hljs-attr">charset</span>=<span class="hljs-string">&quot;utf-8&quot;</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">meta</span> <span class="hljs-attr">name</span>=<span class="hljs-string">&quot;viewport&quot;</span> <span class="hljs-attr">content</span>=<span class="hljs-string">&quot;width=device-width, initial-scale=1&quot;</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">title</span>&gt;</span>Bonjour<span class="hljs-tag">&lt;/<span class="hljs-name">title</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">link</span> <span class="hljs-attr">rel</span>=<span class="hljs-string">&quot;icon&quot;</span> <span class="hljs-attr">href</span>=<span class="hljs-string">&quot;/assets/images/favicon.png&quot;</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">link</span> <span class="hljs-attr">rel</span>=<span class="hljs-string">&quot;stylesheet&quot;</span> <span class="hljs-attr">href</span>=<span class="hljs-string">&quot;/assets/css/styles.css&quot;</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">head</span>&gt;</span>
+
+<span class="hljs-tag">&lt;<span class="hljs-name">body</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">h1</span>&gt;</span>Bonjour </span><span class="hljs-template-variable">{{ name }}</span><span class="language-xml"> !<span class="hljs-tag">&lt;/<span class="hljs-name">h1</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">body</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">html</span>&gt;</span>
+</span></code></pre></div>
+<p>Ainsi la page affichera : <strong>&quot;Hello Wilder !&quot;</strong> Tu remarques que la méthode <code>render()</code> de Twig ne fait que te renvoyer une (longue) chaîne de caractères contenant le HTML à afficher sur la page. Il faut donc bien penser à l'afficher via un <code>echo</code>.</p>
+<h3>Le debug</h3>
+<p>Twig nous apporte un outil améliorant considérablement la façon dont nous allons débugger notre code.
+Il s'agit de la méthode <code>dump()</code>, qui s'utilise comme un <code>var_dump</code>, mais dans une page Twig.
+Cette extension n'est pas installée par défaut dans Twig, mais nous l'avons ajouter dans le fichier de configuration de Twig (cf. <code>config/twig.php</code> :  <code>$twig-&gt;addExtension(new DebugExtension());</code>)</p>
+<div class="bloc-code"><div class="bloc-code__langue">twig</div><pre><code class="hljs language-twig"><span class="language-xml">
+</span><span class="hljs-template-variable">{{ <span class="hljs-name">dump</span>(variableIWantToExamine) }}</span><span class="language-xml">
+
+</span></code></pre></div>
+<p>L'affichage obtenu est particulièrement utile quand il s'agit d'examiner un objet ou un tableau.</p>
+<p>Pour plus d'informations =&gt; <a href="https://twig.symfony.com/doc/3.x/functions/dump.html" target="_blank" rel="noopener noreferrer">documentation !</a>.</p>
+<h1>💪 Challenge</h1>
+<h3>Mise en place de Twig</h3>
+<div class="encadre encadre--info"><div class="encadre__titre">Info</div><div class="encadre__corps"><p>N'hésite pas à t'aider du code présenté précédemment pour avancer sur ce challenge</p>
+</div></div>
+<ul>
+<li>Dans un nouveau fichier <em>/public/products.php</em>, ajoute l'initialisation du tableau ci-dessous :</li>
+</ul>
+<div class="bloc-code"><div class="bloc-code__langue">php</div><pre><code class="hljs language-php"><span class="hljs-variable">$products</span> = [<span class="hljs-string">&#x27;guitare&#x27;</span>, <span class="hljs-string">&#x27;bass&#x27;</span>, <span class="hljs-string">&#x27;bonjo&#x27;</span>, <span class="hljs-string">&#x27;cithare&#x27;</span>, <span class="hljs-string">&#x27;lyre&#x27;</span>, <span class="hljs-string">&#x27;harpe&#x27;</span>];
+</code></pre></div>
+<p><em>Tu peux changer le nom des produits si tu te sens inspiré ;-)</em></p>
+<ul>
+<li>Crée une vue <code>products.html.twig</code> dans le dossier <code>src/View/</code>, reprenant une structure HTML de base.</li>
+<li>Depuis ton nouveau fichier products.php appelle ton template <code>products.html.twig</code> en lui passant ton tableau <code>$products</code> via l’appel à la méthode <code>render()</code> de l'objet <code>$twig</code>.</li>
+<li>Dans cette vue, <strong>en utilisant la syntaxe de Twig</strong>, tu dois boucler sur le tableau et afficher les produits dans une liste HTML.</li>
+<li>Puis sous la liste des produits, affiche le resultat d'un <code>dump()</code> du tableau de produit que tu as envoyé à ta page Twig.</li>
+<li>Envoie le résultat sur un dépôt GitHub et poste le lien en solution</li>
+</ul>
+<h3>Critères de validation</h3>
+<ul>
+<li>Pour corriger, clone le projet et pense à lancer un <code>composer install</code>.</li>
+<li>Il y a un fichier Twig <code>products.html.twig</code> dans le dossier de <em>src/View</em>.</li>
+<li>La syntaxe de Twig est correctement utilisée (il doit y avoir au minimum une boucle).</li>
+<li>Dans ton navigateur, la page <em>product.php</em> affiche bien les 6 produits dans une liste. Ainsi que le résultat <code>dump()</code> du tableau de produit.</li>
+</ul>
+
+  </div>
+  <section class="ressources-quete">
+  <h2>Ressources partagées sur cette quête</h2>
+  <ul class="ressources-liste">
+    <li><a href="https://openclassrooms.com/fr/courses/5489656-construisez-un-site-web-a-l-aide-du-framework-symfony-5/5517021-dynamisez-vos-vues-a-l-aide-de-twig" target="_blank" rel="noopener noreferrer">Première approche de Twig</a><span class="ressources-liste__url">https://openclassrooms.com/fr/courses/5489656-construisez-un-site-web-a-l-aide-du-framework-symfony-5/5517021-dynamisez-vos-vues-a-l-aide-de-twig</span></li>
+    <li><a href="https://iner-dukoid.developpez.com/tutoriels/web/moteur-template-twig/" target="_blank" rel="noopener noreferrer">Coucou slice</a><span class="ressources-liste__url">https://iner-dukoid.developpez.com/tutoriels/web/moteur-template-twig/</span></li>
+    <li><a href="https://www.smashingmagazine.com/2011/10/getting-started-with-php-templating/" target="_blank" rel="noopener noreferrer">Ressource additionnelle (en anglais) pour expliquer comment utiliser Twig</a><span class="ressources-liste__url">https://www.smashingmagazine.com/2011/10/getting-started-with-php-templating/</span></li>
+    <li><a href="https://stackoverflow.com/questions/74095851/vs-code-extension-for-autocompleting-html-tag-in-twig-files-in-symfony-6-project" target="_blank" rel="noopener noreferrer">Pour remettre les raccourcis et l'autocomplétion HTML dans les fichiers twig :</a><span class="ressources-liste__url">https://stackoverflow.com/questions/74095851/vs-code-extension-for-autocompleting-html-tag-in-twig-files-in-symfony-6-project</span></li>
+    <li><a href="https://twig.symfony.com/doc/3.x/intro.html" target="_blank" rel="noopener noreferrer">twig</a><span class="ressources-liste__url">https://twig.symfony.com/doc/3.x/intro.html</span></li>
+  </ul>
+</section>
+</article>
+
+<nav class="nav-quete">
+  <a class="nav-quete__lien nav-quete__lien--prec" href="../../php-avance/008-pdo-un-ami-pour-la-vie/index.html">
+           <span class="nav-quete__sens">← Précédent</span>
+           <span class="nav-quete__titre">PDO, un ami pour la vie.</span>
+         </a>
+  <a class="nav-quete__lien nav-quete__lien--suiv" href="../../php-avance/010-twig-02-heritage-et-inclusion/index.html">
+           <span class="nav-quete__sens">Suivant →</span>
+           <span class="nav-quete__titre">Twig - 02. Héritage et inclusion</span>
+         </a>
+</nav>
+</main>
+<footer class="pied">
+  <p>Archive personnelle des cours suivis à la Wild Code School. Copie hors ligne à usage strictement privé.</p>
+</footer>
+
+<script src="../../assets/copie-code.js"></script>
+<script src="../../assets/progression.js"></script>
+</body>
+</html>

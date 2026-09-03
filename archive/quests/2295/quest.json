@@ -1,0 +1,28 @@
+{
+  "id": 2295,
+  "titre": "POO6 - Intéraction entre objets",
+  "titres": {
+    "fr": "POO6 - Intéraction entre objets"
+  },
+  "theme": {
+    "id": 70,
+    "slug": "php-object-oriented",
+    "nom": "PHP Orienté Objet"
+  },
+  "creeLe": "2022-10-07T10:37:05.221+02:00",
+  "difficulte": "",
+  "dureeEstimee": null,
+  "modeValidation": "student",
+  "chapitres": [
+    {
+      "id": 9532,
+      "type": "content",
+      "langue": "fr",
+      "majLe": "2023-04-06T08:05:48.050+02:00",
+      "caracteres": 10801
+    }
+  ],
+  "ressources": [],
+  "urlOrigine": "https://odyssey.wildcodeschool.com/quests/2295",
+  "archiveLe": "2026-09-02T20:53:53.126Z"
+}

@@ -1,0 +1,306 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>👩‍🏫 HTML - Chapitre 4 | Les liens hypertexte — Archives WCS</title>
+<link rel="stylesheet" href="../../assets/style.css">
+</head>
+<body style="--teinte:#a03737">
+<header class="entete">
+  <a class="entete__marque" href="../../index.html">Archives Wild Code School</a>
+</header>
+<main class="contenu">
+<nav class="ariane"><a href="../../index.html">Accueil</a><span class="ariane__sep">›</span><a href="../../html/index.html">HTML</a><span class="ariane__sep">›</span><span aria-current="page">👩‍🏫 HTML - Chapitre 4 | Les liens hypertexte</span></nav>
+
+<article class="quete">
+  <header class="quete__entete">
+    <a class="pastille pastille--teintee" href="../../html/index.html">HTML</a>
+    <h1>👩‍🏫 HTML - Chapitre 4 | Les liens hypertexte</h1>
+    <p class="quete__meta">Quête 4 sur 9</p>
+  </header>
+  <div class="cours">
+<h2>Objectifs</h2>
+<ul>
+<li>Utiliser correctement les liens hypertextes en HTML</li>
+</ul>
+<h2>Pré-requis</h2>
+<ol class="etapes"><li class="etape"><div class="etape__puce">1</div><div class="etape__contenu"><h4 class="etape__titre">Valider la quête suivante</h4><div class="renvois"><div class="renvois__titre">Quêtes liées</div><ul><li><a href="../../html/001-html-chapitre-1-introduction-au-html/index.html">Quête 2113</a></li></ul></div>
+</div></li><li class="etape"><div class="etape__puce">2</div><div class="etape__contenu"><h4 class="etape__titre">Être à l'aise avec l'utilisation des attributs HTML</h4><div class="bloc-code"><div class="bloc-code__langue">html</div><pre><code class="hljs language-html"><span class="hljs-tag">&lt;<span class="hljs-name">img</span> <span class="hljs-attr">src</span>=<span class="hljs-string">&quot;https://placekitten.com/200/287&quot;</span> <span class="hljs-attr">alt</span>=<span class="hljs-string">&quot;A cute cat&quot;</span> /&gt;</span>
+</code></pre></div>
+</div></li></ol>
+<h2>Introduction</h2>
+<p>Précédemment, tu as vu les principes de bases du langage HTML.</p>
+<p>Dans cette quête nous allons voir un peu plus en détail comment fonctionnent les liens hypertextes pour naviguer entre plusieurs pages web.</p>
+<h2>Sommaire</h2>
+<h2>Qu'est-ce qu'un lien hypertexte ?</h2>
+<p>Un lien hypertexte est un lien qui permet de naviguer d'une page à une autre, en cliquant dessus.</p>
+<p>Les liens hypertextes sont tout ce qui a fait du HTML une révolution à l'époque de sa création dans les années 1990. Le terme &quot;hypertexte&quot; a été introduit par Ted Nelson en 1965, et l'idée est bien plus ancienne encore. Mais le web en est la réalisation la plus aboutie. N'importe quel document du web peut être lié à un autre, quel que soit l'endroit où ces documents sont stockés.</p>
+<p>Un lien hypertexte peut rediriger vers un contenu externe (via une url) ou un contenu interne (via un chemin d'accès).</p>
+<h2>La balise <a></h2>
+<p>Les liens hypertextes sont créés avec la balise <code>&lt;a&gt;</code>. Tu peux spécifier ensuite la destination grâce à l'attribut &quot;href&quot; comme suit :</p>
+<div class="bloc-code"><div class="bloc-code__langue">html</div><pre><code class="hljs language-html"><span class="hljs-tag">&lt;<span class="hljs-name">p</span>&gt;</span>Retourner sur la <span class="hljs-tag">&lt;<span class="hljs-name">a</span> <span class="hljs-attr">href</span>=<span class="hljs-string">&quot;home.html&quot;</span>&gt;</span>page d&#x27;accueil<span class="hljs-tag">&lt;/<span class="hljs-name">a</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">p</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">p</span>&gt;</span>Visiter notre <span class="hljs-tag">&lt;<span class="hljs-name">a</span> <span class="hljs-attr">href</span>=<span class="hljs-string">&quot;https://facebook.com/wildcodeschool&quot;</span>&gt;</span>page facebook<span class="hljs-tag">&lt;/<span class="hljs-name">a</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">p</span>&gt;</span>
+</code></pre></div>
+<p>Lorsque le fichier est dans le même dossier que la page qui contient le lien, tu peux donner le chemin d'accès du fichier :</p>
+<div class="bloc-code"><div class="bloc-code__langue">html</div><pre><code class="hljs language-html"><span class="hljs-tag">&lt;<span class="hljs-name">p</span>&gt;</span>Retourner sur la <span class="hljs-tag">&lt;<span class="hljs-name">a</span> <span class="hljs-attr">href</span>=<span class="hljs-string">&quot;home.html&quot;</span>&gt;</span>page d&#x27;accueil<span class="hljs-tag">&lt;/<span class="hljs-name">a</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">p</span>&gt;</span>
+</code></pre></div>
+<p>Tu peux définir ton chemin à partir de la racine du site en commençant par le caractère <code>/</code> :</p>
+<div class="bloc-code"><div class="bloc-code__langue">html</div><pre><code class="hljs language-html"><span class="hljs-tag">&lt;<span class="hljs-name">p</span>&gt;</span>Découvrez <span class="hljs-tag">&lt;<span class="hljs-name">a</span> <span class="hljs-attr">href</span>=<span class="hljs-string">&quot;/pages/about.html&quot;</span>&gt;</span>plus d&#x27;infos<span class="hljs-tag">&lt;/<span class="hljs-name">a</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">p</span>&gt;</span>
+</code></pre></div>
+<p>Si le fichier est dans un dossier parent, tu dois utiliser <code>../</code> pour sortir du dossier dans lequel est la page courante suivi du nom du fichier ou du dossier :</p>
+<div class="bloc-code"><div class="bloc-code__langue">html</div><pre><code class="hljs language-html"><span class="hljs-tag">&lt;<span class="hljs-name">p</span>&gt;</span>Retourner sur la <span class="hljs-tag">&lt;<span class="hljs-name">a</span> <span class="hljs-attr">href</span>=<span class="hljs-string">&quot;../home.html&quot;</span>&gt;</span>page d&#x27;accueil<span class="hljs-tag">&lt;/<span class="hljs-name">a</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">p</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">p</span>&gt;</span>Consulter <span class="hljs-tag">&lt;<span class="hljs-name">a</span> <span class="hljs-attr">href</span>=<span class="hljs-string">&quot;../assets/cv.pdf&quot;</span>&gt;</span>Mon CV<span class="hljs-tag">&lt;/<span class="hljs-name">a</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">p</span>&gt;</span>
+</code></pre></div>
+<h3>Liens d'ancrage</h3>
+<p>Tu peux créer des liens qui redirigent vers une partie de la page.</p>
+<p>Pour cela tu dois ajouter un id sur l'élément vers lequel tu veux pointer :</p>
+<div class="bloc-code"><div class="bloc-code__langue">html</div><pre><code class="hljs language-html"><span class="hljs-tag">&lt;<span class="hljs-name">h2</span> <span class="hljs-attr">id</span>=<span class="hljs-string">&quot;citation&quot;</span>&gt;</span>Citation sur les chats<span class="hljs-tag">&lt;/<span class="hljs-name">h2</span>&gt;</span>
+</code></pre></div>
+<p>Et mettre un lien dans la page avec dans l'attribut <code>href</code> le symbole &quot;#&quot; suivi du nom de l'id :</p>
+<div class="bloc-code"><div class="bloc-code__langue">html</div><pre><code class="hljs language-html"><span class="hljs-tag">&lt;<span class="hljs-name">a</span> <span class="hljs-attr">href</span>=<span class="hljs-string">&quot;#citation&quot;</span>&gt;</span>Voir notre dernière citation sur les chats<span class="hljs-tag">&lt;/<span class="hljs-name">a</span>&gt;</span>
+</code></pre></div>
+<h3>Envoyer un email ou rediriger vers un client d'appel téléphonique</h3>
+<p>Tu peux utiliser dans l'attribut <code>href</code> le protocole <code>mailto</code>. Ce protocole indique au navigateur que le lien pointe vers une adresse mail :</p>
+<div class="bloc-code"><div class="bloc-code__langue">html</div><pre><code class="hljs language-html"><span class="hljs-tag">&lt;<span class="hljs-name">p</span>&gt;</span><span class="hljs-tag">&lt;<span class="hljs-name">a</span> <span class="hljs-attr">href</span>=<span class="hljs-string">&quot;mailto:bob.smith@gmail.com&quot;</span>&gt;</span>M&#x27;envoyer un email<span class="hljs-tag">&lt;/<span class="hljs-name">a</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">p</span>&gt;</span>
+</code></pre></div>
+<p>Cliquer sur un lien &quot;mailto&quot; ouvrira généralement un client de messagerie.</p>
+<p>De la même manière, tu peux pointer vers un numéro téléphonique en utilisant le protocle <code>tel:</code> dans l'attribut &quot;href&quot; :</p>
+<div class="bloc-code"><div class="bloc-code__langue">html</div><pre><code class="hljs language-html"><span class="hljs-tag">&lt;<span class="hljs-name">p</span>&gt;</span><span class="hljs-tag">&lt;<span class="hljs-name">a</span> <span class="hljs-attr">href</span>=<span class="hljs-string">&quot;tel:+3361020304&quot;</span>&gt;</span>Me contacter par Téléphone<span class="hljs-tag">&lt;/<span class="hljs-name">a</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">p</span>&gt;</span>
+</code></pre></div>
+<p>Cette fonctionnalité est particulièrement utile quand la page est affichée sur un téléphone : elle permet d'appeler le numéro pointé d'un simple clic.</p>
+<h3>Title</h3>
+<p>Tu peux donner un titre à tes liens avec l'attribut <code>title</code>.</p>
+<p>Donner un titre au lien est une excellente pratique pour l'accessibilité car il permet de donner plus de contexte aux utilisateurs de lecteurs d'écrans.</p>
+<p>L'information sera également visible lorsque tes utilisateurs passeront leurs curseurs sur le lien.</p>
+<div class="bloc-code"><div class="bloc-code__langue">html</div><pre><code class="hljs language-html"><span class="hljs-tag">&lt;<span class="hljs-name">p</span>&gt;</span>Visiter notre <span class="hljs-tag">&lt;<span class="hljs-name">a</span> <span class="hljs-attr">href</span>=<span class="hljs-string">&quot;https://facebook.com/wildcodeschool&quot;</span> <span class="hljs-attr">title</span>=<span class="hljs-string">&quot;Retrouvez toute l&#x27;actualité de la Wild Code School et les derners événements sur notre page Facebook&quot;</span>&gt;</span>page facebook<span class="hljs-tag">&lt;/<span class="hljs-name">a</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">p</span>&gt;</span>
+</code></pre></div>
+<h3>Target</h3>
+<p>Tu peux spécifier comment ouvrir le lien grâce à l'attribut <code>target</code>.</p>
+<p>Par exemple, en donnant la valeur <code>_blank</code>, la page s'ouvrira dans un nouvel onglet (par défaut la page s'ouvrira dans le même onglet que la page du lien) :</p>
+<div class="bloc-code"><div class="bloc-code__langue">html</div><pre><code class="hljs language-html"><span class="hljs-tag">&lt;<span class="hljs-name">p</span>&gt;</span>Visiter <span class="hljs-tag">&lt;<span class="hljs-name">a</span> <span class="hljs-attr">href</span>=<span class="hljs-string">&quot;https://facebook.com/wildcodeschool&quot;</span> <span class="hljs-attr">target</span>=<span class="hljs-string">&quot;_blank&quot;</span>&gt;</span>notre page facebook<span class="hljs-tag">&lt;/<span class="hljs-name">a</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">p</span>&gt;</span>
+</code></pre></div>
+<h3>Download</h3>
+<p>Lorsque ton lien contient une ressource à télécharger, tu peux donner un nom de fichier d'enregistrement par défaut avec l'attribut <code>download</code> :</p>
+<div class="bloc-code"><div class="bloc-code__langue">html</div><pre><code class="hljs language-html"><span class="hljs-tag">&lt;<span class="hljs-name">p</span>&gt;</span>Télécharger<span class="hljs-tag">&lt;<span class="hljs-name">a</span> <span class="hljs-attr">href</span>=<span class="hljs-string">&quot;../assets/cv.pdf&quot;</span> <span class="hljs-attr">download</span>=<span class="hljs-string">&quot;cv-bob-smith.pdf&quot;</span>&gt;</span>Mon CV<span class="hljs-tag">&lt;/<span class="hljs-name">a</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">p</span>&gt;</span>
+</code></pre></div>
+<h2>Bonnes pratiques</h2>
+<p>Le texte de tes liens doit toujours être <strong>clair</strong>. Le texte est utilisé par les moteurs de recherches pour détecter les liens, et les utilisateurs de lecteurs d'écran sautent souvent de lien en lien : ils entendent donc parfois le nom des liens sans le contexte de la phrase.</p>
+<p>Par exemple dans la phrase &quot;Cliquez ici pour accéder à notre page facebook&quot; il est plus judicieux de mettre le lien sur &quot;notre page facebook&quot; que sur &quot;Cliquez ici&quot;.</p>
+<h2>Résumé</h2>
+<ul>
+<li>
+<p>Les liens hypertextes permettent de lier des pages les unes aux autres afin de permettre aux utilisateurs de naviguer entre les différentes pages.</p>
+</li>
+<li>
+<p>Les liens sont créés avec la balise <code>&lt;a&gt;</code>.</p>
+</li>
+<li>
+<p>L'attribut <code>href</code> permet de donner la destination du lien.</p>
+</li>
+<li>
+<p>Un lien peut mener vers une ressource interne ou externe.</p>
+</li>
+<li>
+<p>Tu dois toujours être explicite dans le texte de tes liens.</p>
+</li>
+</ul>
+<h2>Challenge</h2>
+<p>Crée une nouvelle page HTML pour pratiquer les liens. Cette page devra contenir:</p>
+<ul>
+<li>Une liste non ordonnée avec
+<ul>
+<li>Un lien vers une page interne</li>
+<li>Un lien vers une page externe</li>
+<li>Un lien de téléchargement vers un document interne</li>
+</ul>
+</li>
+<li>De nombreux paragraphes pour que la page soit longue. Tu peux utiliser du faux texte comme le lorem ipsum pour remplir la page : sur Visual Studio tu peux taper lorem suivi de shift pour écrire du lorem ipsum, si tu ajoutes *10 tu auras 10 paragraphes, *100, 100, etc.</li>
+<li>Un lien d'ancrage en bas de la page pour retourner au début de la page.</li>
+</ul>
+<p>Les liens doivent avoir des titres et être explicites.</p>
+<h3>Critères de validation</h3>
+<ul>
+<li>[ ] La structure de base du document HTML est respectée</li>
+<li>[ ] Les liens sont clairs et explicites</li>
+<li>[ ] Les liens contiennent des titres</li>
+<li>[ ] Un lien vers une page interne et un lien vers une page externe sont présents</li>
+<li>[ ] Un lien d'ancrage est présent et redirige vers le haut de la page</li>
+</ul>
+<details class="solution"><summary>Voir la solution</summary><div class="solution__corps"><div class="bloc-code"><div class="bloc-code__langue">html</div><pre><code class="hljs language-html"><span class="hljs-meta">&lt;!DOCTYPE <span class="hljs-keyword">html</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">html</span> <span class="hljs-attr">lang</span>=<span class="hljs-string">&quot;en&quot;</span>&gt;</span>
+
+<span class="hljs-tag">&lt;<span class="hljs-name">head</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">meta</span> <span class="hljs-attr">charset</span>=<span class="hljs-string">&quot;UTF-8&quot;</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">meta</span> <span class="hljs-attr">http-equiv</span>=<span class="hljs-string">&quot;X-UA-Compatible&quot;</span> <span class="hljs-attr">content</span>=<span class="hljs-string">&quot;IE=edge&quot;</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">meta</span> <span class="hljs-attr">name</span>=<span class="hljs-string">&quot;viewport&quot;</span> <span class="hljs-attr">content</span>=<span class="hljs-string">&quot;width=device-width, initial-scale=1.0&quot;</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">title</span>&gt;</span>Links practice page<span class="hljs-tag">&lt;/<span class="hljs-name">title</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">head</span>&gt;</span>
+
+<span class="hljs-tag">&lt;<span class="hljs-name">body</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">h1</span> <span class="hljs-attr">id</span>=<span class="hljs-string">&quot;page-title&quot;</span>&gt;</span>Bienvenue sur mon site internet<span class="hljs-tag">&lt;/<span class="hljs-name">h1</span>&gt;</span>
+
+    <span class="hljs-tag">&lt;<span class="hljs-name">ul</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">li</span>&gt;</span><span class="hljs-tag">&lt;<span class="hljs-name">a</span> <span class="hljs-attr">href</span>=<span class="hljs-string">&quot;about.html&quot;</span> <span class="hljs-attr">title</span>=<span class="hljs-string">&quot;Découvrez en plus à propos de moi sur cette page!&quot;</span>&gt;</span>À propos<span class="hljs-tag">&lt;/<span class="hljs-name">a</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">li</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">li</span>&gt;</span> Découvrez la
+            <span class="hljs-tag">&lt;<span class="hljs-name">a</span> <span class="hljs-attr">href</span>=<span class="hljs-string">&quot;https://facebook.com/wildcodeschool&quot;</span>
+                <span class="hljs-attr">title</span>=<span class="hljs-string">&quot;Découvrez la page Facebook de mon école, la Wild Code School&quot;</span>&gt;</span>page Facebook de la Wild Code
+                School<span class="hljs-tag">&lt;/<span class="hljs-name">a</span>&gt;</span>
+        <span class="hljs-tag">&lt;/<span class="hljs-name">li</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">li</span>&gt;</span>
+            <span class="hljs-tag">&lt;<span class="hljs-name">a</span> <span class="hljs-attr">href</span>=<span class="hljs-string">&quot;cv.pdf&quot;</span> <span class="hljs-attr">title</span>=<span class="hljs-string">&quot;Télécharger mon CV&quot;</span> <span class="hljs-attr">download</span>=<span class="hljs-string">&quot;cv-bob-smith.pdf&quot;</span>&gt;</span>Télécharger mon CV<span class="hljs-tag">&lt;/<span class="hljs-name">a</span>&gt;</span>
+        <span class="hljs-tag">&lt;/<span class="hljs-name">li</span>&gt;</span>
+    <span class="hljs-tag">&lt;/<span class="hljs-name">ul</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">p</span>&gt;</span>Lorem ipsum dolor sit amet consectetur adipisicing elit. Fugiat repellendus, ipsa deleniti possimus, quaerat
+        maiores, illum quis accusamus sequi ullam sunt autem. Optio impedit expedita repellendus possimus qui est odit!
+        Lorem ipsum dolor sit amet consectetur adipisicing elit. Distinctio reiciendis corporis ad rerum dolorem dolore,
+        voluptate laboriosam eaque sint obcaecati iure architecto officiis quasi nobis dicta repellendus hic incidunt
+        quos.
+        Ratione quo facere sequi odit! Alias perferendis, sapiente neque quaerat quas, voluptatem placeat ex unde nulla
+        sit voluptas sequi earum rerum autem culpa ullam modi dicta quae! Doloremque, repellat quos!
+        Consequatur autem minus nisi quasi sed nesciunt et omnis? Eos incidunt consequuntur molestias id quis delectus
+        minima, cumque facere enim et quasi, possimus accusamus asperiores dolor dolorum eius nihil? Recusandae!
+        Debitis, iusto sapiente. Nisi obcaecati culpa modi, voluptates assumenda quisquam repellat temporibus corporis
+        mollitia, quaerat sed! Est necessitatibus modi iste provident asperiores. Perferendis ipsa quia iure facilis
+        reprehenderit modi rerum.
+        Voluptatibus, blanditiis voluptate libero odit quod ut impedit laboriosam quaerat incidunt obcaecati ab quidem
+        eos, qui a similique minus! Cumque nemo, numquam perspiciatis vel repudiandae provident voluptatem sunt ipsam
+        nihil!
+        Ipsam, hic dignissimos aliquam itaque quam minima quos sit iusto vero quaerat asperiores deleniti cum nostrum
+        tempore, autem nemo a recusandae nesciunt. Voluptatum voluptas natus, veritatis dolorum saepe error nisi?
+        Beatae earum provident impedit ut quibusdam quos aliquam nobis saepe et magni aliquid voluptatum veritatis
+        quidem, nihil rerum. Quas perferendis facere inventore mollitia quod minus nam dolorum praesentium, delectus
+        facilis.
+        Amet, voluptas inventore ipsa blanditiis quo atque a quas sed aliquam voluptatem iure cupiditate, commodi
+        incidunt fugit vero temporibus. Unde mollitia velit debitis cupiditate ipsa numquam laboriosam assumenda sint
+        natus.
+        Quaerat amet sapiente cupiditate enim, tempora nihil asperiores porro laborum ab quod expedita nulla fugiat
+        consectetur? Porro repudiandae alias aperiam mollitia eos quia? Porro tempore ab at voluptatem, commodi fugit.
+        Explicabo illo modi minima quae odio veritatis optio incidunt voluptates dolorum soluta officiis eaque dolor,
+        ipsa quaerat unde repellendus ducimus sed nulla numquam hic similique alias id exercitationem corrupti! Cumque!
+        Lorem ipsum dolor sit amet consectetur, adipisicing elit. Nesciunt doloremque eaque saepe eveniet dolor
+        architecto suscipit assumenda, voluptatibus expedita, veniam quo numquam illum possimus deserunt, debitis libero
+        tempora! Reprehenderit, ducimus?
+        Architecto repudiandae eum quae unde ex sapiente molestias! Vel cupiditate laboriosam minus dolore minima?
+        Aperiam sed possimus consectetur, explicabo nisi similique, libero saepe est, laudantium natus iusto? Ea, quidem
+        iure?
+        Aliquam consectetur minima natus repudiandae impedit velit dolorem et cum nemo nam! Aspernatur molestiae odit
+        vero necessitatibus. Voluptatum ipsa in labore, recusandae eaque facere, sit nemo odio at illo fugit!
+        Iste laboriosam officia minima doloremque veniam, maiores suscipit tempore fugiat itaque tenetur incidunt
+        expedita vitae dolore praesentium, laudantium et nostrum cumque, aliquam reprehenderit. Accusamus quasi maxime
+        fugiat iure magnam qui.
+        Officiis adipisci, obcaecati fugit architecto vitae, modi harum perferendis porro, doloremque id nihil similique
+        fugiat veritatis maiores facere temporibus. Fugit rerum veniam veritatis esse maiores modi! Recusandae assumenda
+        sequi sunt?
+        Excepturi, perferendis? Dolor deserunt, quis eius nulla a consectetur architecto magnam reprehenderit sunt quo
+        asperiores labore minima, voluptatum saepe dolorem quod facere cum ab harum at optio! Repellat, totam tenetur?
+        Quae nemo iure adipisci nostrum quod praesentium quaerat ut obcaecati, nam libero accusantium id maxime ipsum
+        provident numquam, reiciendis excepturi saepe eius facilis dolore, iste recusandae magnam quisquam sapiente!
+        Excepturi?
+        Officia, soluta qui sapiente sint at optio quas necessitatibus eum quod! Eius expedita assumenda quas quis
+        suscipit asperiores inventore illo earum pariatur ab aspernatur quibusdam quaerat, quasi fuga alias. Neque!
+        Eum sapiente qui perferendis, vero repudiandae error dolores optio consequatur ut, nisi id explicabo. Voluptate
+        nulla corrupti veritatis necessitatibus officia. Temporibus maxime minima inventore perspiciatis corporis eius,
+        ex culpa? Mollitia.
+        Numquam culpa quidem quod dolore suscipit repudiandae quis porro a architecto esse magni itaque quaerat eligendi
+        placeat laudantium, hic voluptate quae cum voluptas unde asperiores dicta explicabo nostrum debitis? Quaerat?
+        Tempora voluptate quos ipsum amet possimus nihil, aspernatur voluptas perferendis nulla omnis obcaecati iste
+        molestiae reprehenderit! Quas sed, quos, tempore quisquam non corrupti eligendi aliquam itaque soluta rerum
+        laudantium explicabo!
+        Sunt, earum! Laborum magnam, cupiditate facilis aliquam libero odit corrupti obcaecati delectus ratione iste
+        quibusdam cumque quo beatae laboriosam velit impedit pariatur fugiat. Eum, assumenda. Neque deserunt at
+        distinctio earum?
+        Laboriosam necessitatibus, labore suscipit in minus consequuntur obcaecati numquam alias ratione, consectetur
+        repellendus voluptatibus enim delectus dignissimos natus. Vero ea sed dicta inventore voluptas alias. Quae quod
+        aliquid aperiam omnis.
+        Dicta itaque aperiam atque maiores nihil molestiae cum earum vel culpa voluptatibus, blanditiis cupiditate nobis
+        aspernatur molestias. Architecto facilis itaque atque minima cumque, sit odio praesentium maiores, veritatis
+        vitae cupiditate.
+        Perferendis dolorum qui aliquam dolores consectetur exercitationem in, velit non laboriosam modi sunt maxime
+        voluptate, doloribus porro eius. Harum, ullam incidunt magnam nisi error porro ipsa aspernatur hic quasi totam.
+        Perferendis officia adipisci tenetur eius soluta inventore. Minima facere nam sapiente excepturi optio
+        voluptatibus provident error, inventore consectetur aliquid laudantium mollitia molestiae esse doloremque ex
+        delectus? Debitis quibusdam optio dolorem.
+        Quis alias cumque iusto architecto earum consectetur ipsam officia minima error exercitationem, odio illo rerum
+        ipsa reiciendis molestiae nisi quidem quasi laboriosam! Necessitatibus odit sint doloribus quaerat dignissimos
+        labore et.
+        Earum eligendi amet, ex cumque deleniti, debitis aut ut aperiam labore eos quaerat quasi distinctio quibusdam
+        nesciunt tempora eaque. Animi nam blanditiis cum quos veritatis dolore ipsam iste dolores neque.
+        Nostrum, maxime? Omnis nisi, neque officia explicabo nobis accusantium provident, corporis cumque aliquid, iusto
+        nam ratione quaerat libero veniam placeat repellendus fugit consectetur dolores fugiat corrupti dicta vitae.
+        Consequatur, dicta!
+        Odit quasi voluptatem quo quidem fuga harum odio voluptatibus dolor praesentium dignissimos debitis, incidunt
+        laborum inventore eum nisi repellat rerum eveniet! Quos nobis ea dignissimos magnam, laudantium culpa voluptatum
+        hic.
+        Voluptatum, soluta harum fugit minus, nostrum, aut facere dolorem quasi voluptas vel ad. Maxime repudiandae
+        voluptate earum nemo quaerat suscipit quis harum, quam dolorum natus dignissimos tempore expedita sunt nostrum.
+        Dolore aperiam repellendus mollitia nesciunt minima, corrupti obcaecati libero officiis. Mollitia asperiores
+        exercitationem, illum qui, quisquam cumque atque voluptates velit voluptatum repellat maxime rerum iure id eaque
+        alias consequatur perferendis.
+        Doloribus impedit, at facilis, inventore provident porro deleniti aperiam esse quisquam optio illum ratione
+        nesciunt delectus! Earum mollitia, saepe possimus a debitis facilis, est iure alias repellat nemo voluptatum
+        nobis!
+        Tempora repudiandae, ipsa recusandae autem voluptatem cumque repellendus quibusdam adipisci laboriosam itaque,
+        aperiam suscipit molestiae alias qui neque. Minima deleniti laborum doloribus blanditiis eius unde saepe
+        voluptatum enim error at.
+        Maxime illo fugit doloremque rerum natus quam, eos laudantium sed minus nostrum ratione rem necessitatibus
+        facere nihil officia quasi, veritatis similique perspiciatis reprehenderit enim temporibus culpa harum cum!
+        Quam, ipsa.
+        Dolorem facere nesciunt, blanditiis dolor expedita eum unde non obcaecati iste dolores doloremque error
+        laudantium voluptatum itaque voluptatibus. Molestias ratione totam adipisci at soluta vel eveniet animi delectus
+        harum error!
+        Numquam rem impedit illum sequi eveniet voluptatibus libero consectetur aperiam ea, labore autem nulla esse
+        explicabo voluptates necessitatibus. Dolores, omnis asperiores. Ducimus quo dolorum iusto sapiente illo vitae
+        quis culpa.
+        Sed possimus nulla quam, voluptates quibusdam distinctio ipsum illum placeat facilis nam suscipit cum eligendi.
+        Doloremque porro, error eveniet iusto veritatis dicta illo, hic dolores culpa quidem numquam, odit nostrum.
+        Repudiandae ipsum praesentium ipsam aliquam, adipisci exercitationem at rem dolores accusantium odio, incidunt
+        cumque possimus, sit provident? Aspernatur, quos vel soluta doloribus fugiat, sit itaque eligendi odit explicabo
+        aliquid culpa.
+        Exercitationem impedit incidunt rem in praesentium eos, magni, omnis nisi odio mollitia ad, dicta possimus nemo
+        accusamus ipsam illum. Corrupti at temporibus officia sunt. Optio ullam impedit officiis iusto qui.
+        Sunt cupiditate magnam sed! A in blanditiis eos. Odio, vel! Assumenda nostrum aspernatur ratione velit sint
+        tempora expedita. Ducimus eveniet sequi cupiditate consectetur impedit, atque voluptates nobis tenetur
+        consequuntur fugiat.
+        Magni, voluptatem. Suscipit iste perferendis, ad voluptatum accusantium ut voluptas perspiciatis maiores, porro
+        fugiat odio laborum. Nulla, recusandae asperiores quasi eligendi similique eum facilis perferendis? Voluptate
+        modi asperiores quas accusamus?
+        Itaque harum aperiam consequatur repudiandae autem soluta vel commodi reprehenderit nihil! Repellat eum rem
+        vitae suscipit sapiente in doloremque, libero sequi laborum, iste praesentium, at tenetur nisi. Saepe, alias
+        natus.
+
+    <span class="hljs-tag">&lt;<span class="hljs-name">p</span>&gt;</span><span class="hljs-tag">&lt;<span class="hljs-name">a</span> <span class="hljs-attr">href</span>=<span class="hljs-string">&quot;#page-title&quot;</span>&gt;</span>Retourner en haut de la page<span class="hljs-tag">&lt;/<span class="hljs-name">a</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">p</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">body</span>&gt;</span>
+
+<span class="hljs-tag">&lt;/<span class="hljs-name">html</span>&gt;</span>
+</code></pre></div>
+</div></details>
+
+  </div>
+  <section class="ressources-quete">
+  <h2>Ressources partagées sur cette quête</h2>
+  <ul class="ressources-liste">
+    <li><a href="https://ronan-hello.fr/series/html/liens-hypertextes" target="_blank" rel="noopener noreferrer">Un complément sur l'utilisation des liens hypertexte et la sécurité avec l'utilisation de l'attibut &quot;rel&quot; pour les liens sortant.</a><span class="ressources-liste__url">https://ronan-hello.fr/series/html/liens-hypertextes</span></li>
+  </ul>
+</section>
+</article>
+
+<nav class="nav-quete">
+  <a class="nav-quete__lien nav-quete__lien--prec" href="../../html/003-html-chapitre-3-l-ecrit-sous-toutes-ses-formes/index.html">
+           <span class="nav-quete__sens">← Précédent</span>
+           <span class="nav-quete__titre">👩‍🏫 HTML - Chapitre 3 |  L'écrit sous toutes ses formes</span>
+         </a>
+  <a class="nav-quete__lien nav-quete__lien--suiv" href="../../html/005-html-chapitre-5-structure-et-semantique/index.html">
+           <span class="nav-quete__sens">Suivant →</span>
+           <span class="nav-quete__titre">👩‍🏫 HTML - Chapitre 5 |  Structure et sémantique</span>
+         </a>
+</nav>
+</main>
+<footer class="pied">
+  <p>Archive personnelle des cours suivis à la Wild Code School. Copie hors ligne à usage strictement privé.</p>
+</footer>
+
+<script src="../../assets/copie-code.js"></script>
+<script src="../../assets/progression.js"></script>
+</body>
+</html>

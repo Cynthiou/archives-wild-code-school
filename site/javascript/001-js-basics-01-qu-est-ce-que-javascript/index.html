@@ -1,0 +1,181 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>👩‍🏫 JS Basics 01 - Qu'est-ce que JavaScript — Archives WCS</title>
+<link rel="stylesheet" href="../../assets/style.css">
+</head>
+<body style="--teinte:#856400">
+<header class="entete">
+  <a class="entete__marque" href="../../index.html">Archives Wild Code School</a>
+</header>
+<main class="contenu">
+<nav class="ariane"><a href="../../index.html">Accueil</a><span class="ariane__sep">›</span><a href="../../javascript/index.html">JavaScript</a><span class="ariane__sep">›</span><span aria-current="page">👩‍🏫 JS Basics 01 - Qu'est-ce que JavaScript</span></nav>
+
+<article class="quete">
+  <header class="quete__entete">
+    <a class="pastille pastille--teintee" href="../../javascript/index.html">JavaScript</a>
+    <h1>👩‍🏫 JS Basics 01 - Qu'est-ce que JavaScript</h1>
+    <p class="quete__meta">Quête 1 sur 11 · 7 images archivées</p>
+  </header>
+  <div class="cours">
+<h2>Objectifs</h2>
+<ul>
+<li>Comprendre ce qu'est JavaScript</li>
+<li>Découvrir ce que tu peux faire avec</li>
+</ul>
+<h2>Introduction</h2>
+<p>Pour commencer ton périple, et avant de coder, tu dois comprendre ce qu'est JavaScript, et comment il fonctionne.</p>
+<p>Dans cette quête, tu vas voir <strong>ce qu'est JavaScript</strong>, quelle est son histoire, et ce que tu peux faire avec.</p>
+<p><img src="images/001-image.png" alt="image" loading="lazy"></p>
+<h2>Sommaire</h2>
+<h2>Définition</h2>
+<p>Tu sais que l'<strong>HTML</strong> définit <strong>la structure</strong> d'une page web.
+Le CSS donne du style aux pages.</p>
+<p><strong>Mais du coup, quel est le rôle du JS ici ?</strong>
+C'est un langage de programmation qui ajoute de l'interactivité aux pages web.</p>
+<p><img src="images/002-source-hostgator-on-giphy.gif" alt="Source: HostGator on Giphy" loading="lazy"><em>Source: <a href="https://giphy.com/gifs/HostGator-webhosting-hostgator-webhost-fuJPZBIIqzbt1kAYVc" target="_blank" rel="noopener noreferrer">HostGator on Giphy</a></em></p>
+<h2>L'histoire de JS</h2>
+<p>JavaScript a été conçu pour être utilisé côté <strong>frontend</strong> (dans le navigateur donc). Mais depuis <strong>2009</strong>, il est possible de créer du code <strong>backend</strong> (côté serveur donc) avec <strong>NodeJS</strong> ! 🔥</p>
+<p><img src="images/003-portrait-of-brian-eich.png" alt="Portrait of Brian Eich" loading="lazy"></p>
+<blockquote>
+<p>🤓 Selon la légende, Brendan Eich a écrit JavaScript en 10 jours</p>
+</blockquote>
+<p><strong>📚 Pour connaître l'historique du JS, regarde cette courte vidéo:</strong></p>
+<a class="video-lien" href="https://www.youtube.com/watch?v=Sh6lK57Cuk4" target="_blank" rel="noopener noreferrer">
+  <div class="video-lien__play">▶</div>
+  <div class="video-lien__texte">
+    <div class="video-lien__titre">Vidéo YouTube</div>
+    <div class="video-lien__url">https://www.youtube.com/watch?v=Sh6lK57Cuk4</div>
+  </div>
+</a>
+<div class="encadre encadre--warning"><div class="encadre__titre">Attention</div><div class="encadre__corps"><p>Bien que leurs <strong>noms</strong> semblent <strong>similaires</strong>, JavaScript est totalement <strong>différent de Java</strong>.
+JS est appelé <strong>Java</strong>Script car quand il a été créé, <strong>Java était populaire</strong>, donc les créateurs ont pensé qu'ajouter <strong>Java</strong> dans son nom le rendrait plus accessible.</p>
+<p><img src="images/004-java-is-to-javascript-as-ham-is-to-hamster.png" alt="Java is to JavaScript as Ham is to Hamster" loading="lazy"></p>
+<blockquote>
+<p>Source: <a href="https://www.seguetech.com/" target="_blank" rel="noopener noreferrer">Segue Technologies</a></p>
+</blockquote>
+</div></div>
+<h2>ECMAScript Standards</h2>
+<p>Comme tout langage de programmation, <strong>JavaScript a son lot de règles et de spécifications</strong>.
+Ces specs sont implémentées dans un standard appelé <strong>ECMAScript</strong> (<strong>ES</strong>).
+Chaque nouvelle version d'ECMAScript vient avec des nouvelles <strong>features</strong>, des nouvelles <strong>normes</strong> sur la <strong>façon d'écrire le JavaScript</strong>.
+Tu as pu entendre parler de <strong>ES6</strong> qui a été introduit en 2015 et a ajouté de nombreuses fonctionnalités au langage. JavaScript à partir d'ES6 et au-delà (ES6+) est parfois appelé le &quot;JavaScript moderne&quot;.</p>
+<p><img src="images/005-illustration-of-the-evolution-of-ecmascript.png" alt="Illustration of the evolution of ECMAScript" loading="lazy"></p>
+<blockquote>
+<p><strong>image source:</strong> <a href="https://engineering.carsguide.com.au/javascript-context-ecmascript-84d709ef9165" target="_blank" rel="noopener noreferrer">https://engineering.carsguide.com.au/javascript-context-ecmascript-84d709ef9165</a></p>
+</blockquote>
+<p>Si tu es curieux, tu peux jeter un coup d’œil aux spécifications ici.</p>
+<a class="ressource" href="https://tc39.es/ecma262/" target="_blank" rel="noopener noreferrer">
+  <div class="ressource__icone">↗</div>
+  <div class="ressource__texte">
+    <div class="ressource__titre">ECMAScript 2025 Language Specifications</div>
+    <div class="ressource__desc"><p>Ce lien pointe vers la spécification officielle d'ECMAScript. Ce n'est pas un document accessible pour les débutants. Mais il peut permettre de comprendre comment JS fonctionne &quot;sous le capot&quot;. Jette y un coup d'oeil et garde le lien pour y revenir plus tard ;)</p>
+</div>
+    <div class="ressource__hote">tc39.es</div>
+  </div>
+</a>
+<h2>Que peut-on faire avec JavaScript?</h2>
+<p>Eh bien on peut:</p>
+<ul>
+<li><a href="https://www.netflix.com/" target="_blank" rel="noopener noreferrer">Créer une plateforme de streaming comme Netflix</a></li>
+<li><a href="https://cineshader.com/" target="_blank" rel="noopener noreferrer">Créer des animations 3D</a></li>
+<li><a href="https://play2048.co/" target="_blank" rel="noopener noreferrer">Créer des jeux</a></li>
+<li><a href="https://p5js.org/sketches/2213463/" target="_blank" rel="noopener noreferrer">Créer de l'art</a></li>
+<li><a href="https://lab.reaal.me/jsrobot/" target="_blank" rel="noopener noreferrer">Créer des robots</a></li>
+<li><a href="https://twitter.com/jason_mayes/status/1267227834096861184?lang=fr" target="_blank" rel="noopener noreferrer">Créer des interfaces pour des navettes spatiales</a></li>
+<li><a href="https://www.facebook.com/" target="_blank" rel="noopener noreferrer">Créer un fameux réseau social</a></li>
+<li>Et encore bien d'autres choses...</li>
+</ul>
+<h2>Syntaxe de base</h2>
+<h3>Hello World</h3>
+<p>La manière la plus simple d'expliquer la syntaxe d'un langage de programmation est d'écrire un programme <strong>&quot;Hello, World!&quot;</strong>.
+&quot;Hello, World!&quot; est un programme <strong>qui écrit le texte &quot;Hello, World!&quot;</strong>.</p>
+<p><img src="images/006-hello-world.png" alt="Hello, World!" loading="lazy">Le but ? Donner une idée de la structure et de la syntaxe du langage utilisé.</p>
+<div class="bloc-code"><div class="bloc-code__langue">javascript</div><pre><code class="hljs language-javascript"><span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(<span class="hljs-string">&quot;Hello, World!&quot;</span>);
+</code></pre></div>
+<p>Tu as ici un &quot;Hello, world!&quot; en JS. Ça semble assez simple non ?
+Si tu es curieux et que tu souhaites voir d'autres programmes &quot;Hello, world!&quot;, regarde cet article sur Wikipedia :</p>
+<a class="ressource" href="https://en.wikipedia.org/wiki/%22Hello,_World!%22_program#Examples" target="_blank" rel="noopener noreferrer">
+  <div class="ressource__icone">↗</div>
+  <div class="ressource__texte">
+    <div class="ressource__titre">'Hello, World!' dans différents langages de programmation</div>
+    <div class="ressource__desc"><p>Dans cet article, tu verras comment écrire 'Hello, world!' dans différents langages de programmation.</p>
+</div>
+    <div class="ressource__hote">en.wikipedia.org</div>
+  </div>
+</a>
+<blockquote>
+<p>😅 L'un des pires programme &quot;Hello, world!&quot;, est celui d'un langage appelé <strong>malbolge</strong>.
+Malbolge est un langage de programmation conçu dans l'unique idée de créer un langage horrible et difficile !
+Voici un &quot;Hello, world!&quot; en malbolge...</p>
+</blockquote>
+<div class="bloc-code"><pre><code class="hljs language-plaintext">(=&lt;`#9]~6ZY32Vx/4Rs+0No-&amp;Jk)&quot;Fh}|Bcy?`=*z]Kw%oG4UUS0/@-ejc(:&#x27;8dc
+</code></pre></div>
+<h2>Comment fonctionne JavaScript ?</h2>
+<p>JavaScript est ce qu'on appelle un langage <strong>haut-niveau</strong>.
+Cela signifie que <strong>JavaScript est éloigné du langage machine</strong>.
+Tout le code que l'on exécute sur notre machine est transformé en code binaire (<strong>0 et 1</strong>).
+JavaScript est plus proche du <strong>langage humain que du langage machine</strong>.
+Un langage de programmation seul est quelque peu inutile, c'est comme parler un langage que personne ne comprend.</p>
+<p>Mais, comment JavaScript est transformé en <strong>langage machine</strong> ?
+Ton navigateur a le pouvoir de traduire ton code JS en langage machine avec ce qu'on appelle un <strong>Moteur JavaScript (JS Engine)</strong>.
+Ce moteur (par exemple le moteur <strong>V8</strong> dans Google Chrome) va &quot;lire&quot; notre JS et le traduire, ce qui fait que notre ordinateur va le comprendre.</p>
+<p><img src="images/007-javascript-engine-schema.png" alt="JavaScript Engine Schema" loading="lazy">image source : <a href="https://medium.com/@zoebai_70369/javascript-engine-368037453a1c" target="_blank" rel="noopener noreferrer">https://medium.com/@zoebai_70369/javascript-engine-368037453a1c</a></p>
+<h2>Résumé</h2>
+<ul>
+<li>JavaScript n'a rien à voir avec Java</li>
+<li>JavaScript est un langage de programmation haut-niveau.</li>
+<li>ECMAScript est le standard qui définit les règles et spécifications de JavaScript</li>
+<li>Tu peux utiliser JavaScript côté frontend et backend (grâce à NodeJS)</li>
+</ul>
+<a class="ressource" href="https://developer.mozilla.org/en-US/docs/Learn/JavaScript/First_steps/What_is_JavaScript" target="_blank" rel="noopener noreferrer">
+  <div class="ressource__icone">↗</div>
+  <div class="ressource__texte">
+    <div class="ressource__titre">What is JavaScript?</div>
+    <div class="ressource__desc"><p>Une très bonne ressource qui explique ce qu'est JavaScript</p>
+</div>
+    <div class="ressource__hote">developer.mozilla.org</div>
+  </div>
+</a>
+<a class="ressource" href="https://javascript.info/intro" target="_blank" rel="noopener noreferrer">
+  <div class="ressource__icone">↗</div>
+  <div class="ressource__texte">
+    <div class="ressource__titre">An Introduction to JavaScript</div>
+    <div class="ressource__desc"><p>Une autre très bonne ressource qui explique tout ce dont tu as besoin de savoir sur JavaScript.</p>
+</div>
+    <div class="ressource__hote">javascript.info</div>
+  </div>
+</a>
+
+  </div>
+  <section class="ressources-quete">
+  <h2>Ressources partagées sur cette quête</h2>
+  <ul class="ressources-liste">
+    <li><a href="https://www.javascriptdezero.com/module-debutant" target="_blank" rel="noopener noreferrer">Je vous recommande le site de Jérémy. C'est très bien expliqué et de plus, c'est en français. Un must...</a><span class="ressources-liste__url">https://www.javascriptdezero.com/module-debutant</span></li>
+    <li><a href="https://www.youtube.com/watch?v=t1ZpiggamPI&amp;list=PLQkrqTy7RjTF9p3uKgjOpcfLcjJ5i2i_7" target="_blank" rel="noopener noreferrer">Une autre source tout aussi bien faite !</a><span class="ressources-liste__url">https://www.youtube.com/watch?v=t1ZpiggamPI&amp;list=PLQkrqTy7RjTF9p3uKgjOpcfLcjJ5i2i_7</span></li>
+    <li><a href="https://infodocbib.net/2020/12/javascript/" target="_blank" rel="noopener noreferrer">Entre le Vanilla, les Linters, les standards Airbnb ou Google, ECMA, Typescript, NodeJS, les transpilers et polyfills… Il y a de quoi se perdre. Voici de quoi y voir plus clair.</a><span class="ressources-liste__url">https://infodocbib.net/2020/12/javascript/</span></li>
+    <li><a href="https://codecombat.com/" target="_blank" rel="noopener noreferrer">Funny dungeon-like game to learn / revise JS bases. (+ it's completely free and you don't even need any account)</a><span class="ressources-liste__url">https://codecombat.com/</span></li>
+    <li><a href="https://fr.javascript.info/intro" target="_blank" rel="noopener noreferrer">Plutôt complet et en français.</a><span class="ressources-liste__url">https://fr.javascript.info/intro</span></li>
+    <li><a href="https://www.youtube.com/watch?v=cdDPQkF7hRA" target="_blank" rel="noopener noreferrer">Une courte introduction en français à l'histoire de Javascript, c'est bien fait et plaisant à regarder</a><span class="ressources-liste__url">https://www.youtube.com/watch?v=cdDPQkF7hRA</span></li>
+  </ul>
+</section>
+</article>
+
+<nav class="nav-quete">
+  <span class="nav-quete__lien nav-quete__lien--vide"></span>
+  <a class="nav-quete__lien nav-quete__lien--suiv" href="../../javascript/002-js-basics-02-syntaxe-et-concepts-de-base/index.html">
+           <span class="nav-quete__sens">Suivant →</span>
+           <span class="nav-quete__titre">👩‍🏫 JS Basics 02 - Syntaxe et concepts de base</span>
+         </a>
+</nav>
+</main>
+<footer class="pied">
+  <p>Archive personnelle des cours suivis à la Wild Code School. Copie hors ligne à usage strictement privé.</p>
+</footer>
+
+<script src="../../assets/copie-code.js"></script>
+<script src="../../assets/progression.js"></script>
+</body>
+</html>

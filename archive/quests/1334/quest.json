@@ -1,0 +1,61 @@
+{
+  "id": 1334,
+  "titre": "Node 01 - 👩‍🏫 Introduction à Node.js et npm",
+  "titres": {
+    "fr": "Node 01 - 👩‍🏫 Introduction à Node.js et npm"
+  },
+  "theme": {
+    "id": 22,
+    "slug": "nodejs",
+    "nom": "Node.js"
+  },
+  "creeLe": "2020-08-16T18:27:29.351+02:00",
+  "difficulte": "0",
+  "dureeEstimee": null,
+  "modeValidation": "self",
+  "chapitres": [
+    {
+      "id": 17372,
+      "type": "content",
+      "langue": "fr",
+      "majLe": "2025-03-17T12:18:43.450+01:00",
+      "caracteres": 11544
+    }
+  ],
+  "ressources": [
+    {
+      "link": "https://practicalprogramming.fr/nodejs",
+      "description": "le guide complet pour tout comprendre du javascript serveur"
+    },
+    {
+      "link": "https://docs.microsoft.com/fr-fr/windows/dev-environment/javascript/nodejs-on-windows",
+      "description": "Pour les gens sous Windows c'est par là que ça se passe"
+    },
+    {
+      "link": "https://www.youtube.com/watch?v=97rRv9xy2iw&list=PL4NbGBfr4aJk5ATFWA-8UkvL8LbHqpS-v&index=4",
+      "description": "Pour mieux comprendre ce qu'est Node.js"
+    },
+    {
+      "link": "https://kinsta.com/fr/blog/comment-installer-node-js/",
+      "description": "une aide pour installer sur windows, avec en plus des explications nodejs assez sympa"
+    },
+    {
+      "link": "https://www.youtube.com/watch?v=P3aKRdUyr0s",
+      "description": "Very easy friendly explanation "
+    },
+    {
+      "link": "https://medium.com/devops-techable/how-to-install-nvm-node-version-manager-on-macos-with-homebrew-1bc10626181",
+      "description": "Une aide pour installer nvm sous macOS si vous utilisez `zsh`."
+    },
+    {
+      "link": "https://www.freecodecamp.org/news/how-to-install-node-js-on-ubuntu-and-update-npm-to-the-latest-version/",
+      "description": "au top"
+    },
+    {
+      "link": "https://github.com/coreybutler/nvm-windows/releases",
+      "description": "Pour les windows télécharger nvm-setup.exe :)"
+    }
+  ],
+  "urlOrigine": "https://odyssey.wildcodeschool.com/quests/1334",
+  "archiveLe": "2026-09-02T20:53:39.486Z"
+}

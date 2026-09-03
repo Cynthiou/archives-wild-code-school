@@ -1,0 +1,60 @@
+{
+  "id": 2374,
+  "titre": "👩‍🏫 React Basics 04 - Pokédex - Passer des props",
+  "titres": {
+    "fr": "👩‍🏫 React Basics 04 - Pokédex - Passer des props"
+  },
+  "theme": {
+    "id": 23,
+    "slug": "react",
+    "nom": "React - Bases"
+  },
+  "creeLe": "2023-01-03T14:15:24.864+01:00",
+  "difficulte": "",
+  "dureeEstimee": null,
+  "modeValidation": "student",
+  "chapitres": [
+    {
+      "id": 17699,
+      "type": "content",
+      "langue": "fr",
+      "majLe": "2025-04-02T08:27:01.922+02:00",
+      "caracteres": 12421
+    },
+    {
+      "id": 17091,
+      "type": "solution",
+      "langue": "fr",
+      "majLe": "2025-03-12T08:58:49.983+01:00",
+      "caracteres": 800
+    }
+  ],
+  "ressources": [
+    {
+      "link": "https://fr.reactjs.org/docs/components-and-props.html",
+      "description": "si quelqu’un est en difficulté pour la façon dont il est expliqué sur ces quetes"
+    },
+    {
+      "link": "https://www.freecodecamp.org/news/how-to-use-props-in-react/",
+      "description": "Simple et clair au niveau des liens"
+    },
+    {
+      "link": "https://www.youtube.com/watch?v=PvndxDHVaW8",
+      "description": "vidéo explicative sur les props en français"
+    },
+    {
+      "link": "https://www.youtube.com/watch?v=en0If_3jkRU",
+      "description": "N'hésitez pas, cette vidéo m'a bien aidé pour comprendre le cours"
+    },
+    {
+      "link": "https://dmitripavlutin.com/react-props/",
+      "description": "explique simplement, en anglais"
+    },
+    {
+      "link": "https://www.youtube.com/watch?v=kHJSNFU7H4U",
+      "description": "petite vidéo (en anglais) qui peut aider a comprendre les props"
+    }
+  ],
+  "urlOrigine": "https://odyssey.wildcodeschool.com/quests/2374",
+  "archiveLe": "2026-09-02T20:55:04.663Z"
+}

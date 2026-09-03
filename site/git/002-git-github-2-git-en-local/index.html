@@ -1,0 +1,191 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Git/GitHub 2 : Git en local — Archives WCS</title>
+<link rel="stylesheet" href="../../assets/style.css">
+</head>
+<body style="--teinte:#F44F3D">
+<header class="entete">
+  <a class="entete__marque" href="../../index.html">Archives Wild Code School</a>
+</header>
+<main class="contenu">
+<nav class="ariane"><a href="../../index.html">Accueil</a><span class="ariane__sep">›</span><a href="../../git/index.html">Git</a><span class="ariane__sep">›</span><span aria-current="page">Git/GitHub 2 : Git en local</span></nav>
+
+<article class="quete">
+  <header class="quete__entete">
+    <a class="pastille pastille--teintee" href="../../git/index.html">Git</a>
+    <h1>Git/GitHub 2 : Git en local</h1>
+    <p class="quete__meta">Quête 2 sur 6 · 2 images archivées</p>
+  </header>
+  <div class="cours">
+<h1>Introduction</h1>
+<p>Maintenant que tu connais les bases de ce qu'est git et comment créer un dépôt GitHub, il est temps d'apprendre <strong>comment nous pouvons utiliser git sur notre machine locale.</strong></p>
+<p><img src="images/001-github.jpg" alt="Github" loading="lazy"></p>
+<h2></h2>
+<h2>🤓 <strong>À la fin de cette quête, tu seras en mesure de:</strong></h2>
+<ul>
+<li>✅ comprendre la <strong>structure d'un dépôt Git local</strong> (<em>répertoire de travail</em>, <em>répertoire intermédiaire</em>, <em>dépôt</em>)</li>
+<li>✅ Initialiser un <strong>dépôt Git local</strong> sur ton ordinateur</li>
+<li>✅ Sauvegarder <strong>les modifications de fichiers</strong> dans un dépôt Git local</li>
+</ul>
+<hr>
+<h1><strong>Anatomie d'un dépôt local Git</strong></h1>
+<p><strong>Théorie</strong></p>
+<p>Contrairement à GitHub, qui est un site Web, Git est un logiciel que tu installes sur ton ordinateur.</p>
+<p><em>Puisque tout se passe sur ton ordinateur, nous parlons de Git local.</em></p>
+<p>Voici la structure typique d'un dépôt sur ta machine locale selon Git :</p>
+<p><img src="images/002-image.png" alt="image" loading="lazy">
+<em>Les flèches <code>add</code>, <code>commit</code> et <code>checkout</code> correspondent aux commandes Git que tu verras plus tard, ne t'en préoccupe pas trop pour le moment !</em></p>
+<p>Cette vidéo t'expliquera plus en détail la structure:</p>
+<a class="video-lien" href="https://www.youtube.com/watch?v=n-p1RUmdl9M" target="_blank" rel="noopener noreferrer">
+  <div class="video-lien__play">▶</div>
+  <div class="video-lien__texte">
+    <div class="video-lien__titre">Vidéo YouTube</div>
+    <div class="video-lien__url">https://www.youtube.com/watch?v=n-p1RUmdl9M</div>
+  </div>
+</a>
+<p><strong>Entraine toi</strong></p>
+<p>Tu as peut-être déjà remarqué que le flux de travail Git (créer / modifier un fichier, valider pour enregistrer la modification) ressemble beaucoup à ce que tu as fait sur GitHub dans la quête précédente.</p>
+<p>Sauf que GitHub propose une interface utilisateur graphique (<em>GUI</em> en abrégé), tandis que Git s'exécute en ligne de commande (<em>CLI</em> en abréviation anglaise), c'est-à-dire dans ton terminal.</p>
+<p>Tu vas donc répéter ce que tu as déjà fait sur GitHub, mais cette fois sur ta machine locale!
+Avant tout, tu vas installer git sur ton système.</p>
+<div class="onglets" data-onglets="3"><input type="radio" name="onglets-6" id="onglets-6-0" class="onglets__radio" checked><input type="radio" name="onglets-6" id="onglets-6-1" class="onglets__radio"><input type="radio" name="onglets-6" id="onglets-6-2" class="onglets__radio"><div class="onglets__barre"><label class="onglets__label" for="onglets-6-0">Linux</label><label class="onglets__label" for="onglets-6-1">Mac</label><label class="onglets__label" for="onglets-6-2">Windows</label></div><div class="onglets__panneaux"><div class="onglets__panneau"><p>Sur Linux, git pourrait déjà être installé. Vérifie en entrant cette commande dans ton terminal =&gt; <code>git --version</code> (Le résultat doit être git version 2.**.*)</p>
+<p>Sinon, tu vas devoir l'installer par toi même.
+Clique sur ce lien (<a href="https://git-scm.com/download/linux" target="_blank" rel="noopener noreferrer">https://git-scm.com/download/linux</a>)</p>
+<p>Dans ton terminal, vérifie ton installation en tapant <strong>git --version</strong></p>
+<p>Puis dans ton terminal, tu vas renseigner ton nom d'utilisateur et ton email (les mêmes que sur la plateforme github)</p>
+<ol>
+<li>Renseigne ton nom d'utilisateur: <code>git config --global user.name &quot;FIRST_NAME LAST_NAME&quot;</code></li>
+<li>Renseigne ton email : <code>git config --global user.email &quot;MY_NAME@example.com&quot;</code></li>
+<li>Ajoute aussi cette configuration (c'est un peu tôt pour t'expliquer en détail mais si tu ne le fais pas git va te poser la question quand tu essaieras de récupérer du code distant) <code>git config --global pull.rebase false</code></li>
+<li>Enfin, termine par cette dernière configuration, qui configure git pour utiliser le nom &quot;main&quot; et non plus &quot;master&quot; comme branche par défaut, ce qui te facilitera la vie quand tu vas utiliser Github (qui lui utilise le nom &quot;main&quot;) <code>git config --global init.defaultBranch main</code></li>
+</ol>
+</div><div class="onglets__panneau"><p>Pour installer git sur Mac, clique sur ce lien (<a href="https://git-scm.com/download/mac" target="_blank" rel="noopener noreferrer">https://git-scm.com/download/mac</a>)</p>
+<p>Dans ton terminal, vérifie ton installation en tapant <strong>git --version</strong></p>
+<p>Puis dans ton terminal, tu vas renseigner ton nom d'utilisateur et ton email (les mêmes que sur la plateforme github)</p>
+<ol>
+<li>Renseigne ton nom d'utilisateur: <code>git config --global user.name &quot;FIRST_NAME LAST_NAME&quot;</code></li>
+<li>Renseigne ton email : <code>git config --global user.email &quot;MY_NAME@example.com&quot;</code></li>
+<li>Ajoute aussi cette configuration (c'est un peu tôt pour t'expliquer en détail mais si tu ne le fais pas git va te poser la question quand tu essaieras de récupérer du code distant) <code>git config --global pull.rebase false</code></li>
+<li>Enfin, termine par cette dernière configuration, qui configure git pour utiliser le nom &quot;main&quot; et non plus &quot;master&quot; comme branche par défaut, ce qui te facilitera la vie quand tu vas utiliser Github (qui lui utilise le nom &quot;main&quot;) <code>git config --global init.defaultBranch main</code></li>
+</ol>
+</div><div class="onglets__panneau"><p>Pour Windows, tu dois installer un nouveau terminal : Git Bash.</p>
+<p>Peut-être que tu l'as déjà installé sur ta machine. Si c'est le cas, tu peux passer à la suite. Sinon, clique sur ce lien (<a href="https://gitforwindows.org/" target="_blank" rel="noopener noreferrer">https://gitforwindows.org/</a>) puis sur Download, exécute l'installeur et suis les instructions suivantes :</p>
+<ol class="etapes"><li class="etape"><div class="etape__puce">1</div><div class="etape__contenu"><h4 class="etape__titre">Etape 1</h4><p>Accepte la licence d'utilisation.</p>
+</div></li><li class="etape"><div class="etape__puce">2</div><div class="etape__contenu"><h4 class="etape__titre">Etape 2</h4><p>Coche les options suivantes :</p>
+<ul>
+<li>Windows Explorer Integration
+<ul>
+<li>Git Bash Here</li>
+</ul>
+</li>
+<li>Git LFS (Large File Support)</li>
+<li>Associate .git* configuration files with the default text editor</li>
+<li>Associate .sh files to be run with Bash</li>
+<li>Add a Git Bash Profile to Windows Terminal</li>
+<li>Scalar (Git add-on to manage large-scale repositories)</li>
+</ul>
+</div></li><li class="etape"><div class="etape__puce">3</div><div class="etape__contenu"><h4 class="etape__titre">Etape 3</h4><p>Choisis : &quot;<em>Use Visual Studio Code as Git's default editor</em>&quot;.</p>
+</div></li><li class="etape"><div class="etape__puce">4</div><div class="etape__contenu"><h4 class="etape__titre">Etape 4</h4><p>Coche &quot;<em>Override the default branch name for new repositories</em>&quot; et dans le champ de texte garde l'option proposée <code>main</code>.</p>
+</div></li><li class="etape"><div class="etape__puce">5</div><div class="etape__contenu"><h4 class="etape__titre">Etape 5</h4><p>Coche l'option recommandée &quot;<em>Git from the command line and also from 3rd-party software</em>&quot;.</p>
+</div></li><li class="etape"><div class="etape__puce">6</div><div class="etape__contenu"><h4 class="etape__titre">Etape 6</h4><p>Coche l'option &quot;<em>Use bundled OpenSSH</em>&quot;.</p>
+</div></li><li class="etape"><div class="etape__puce">7</div><div class="etape__contenu"><h4 class="etape__titre">Etape 7</h4><p>Coche l'option &quot;<em>Use the OpenSSL library</em>&quot;.</p>
+</div></li><li class="etape"><div class="etape__puce">8</div><div class="etape__contenu"><h4 class="etape__titre">Etape 8</h4><p>Coche l'option &quot;<em>Checkout as-is, commit Unix-style line endings</em>&quot;.</p>
+<div class="encadre encadre--info"><div class="encadre__titre">Info</div><div class="encadre__corps"><p>Cette option change le caractère invisible utilisé en fin de ligne qui est le CRLF pour Windows (&quot;\r\n&quot;) et le LF pour Linux et Mac (&quot;\n&quot;).
+Sur un projet de groupe, avec des contributeurs pouvant avoir des OS différents, il est souvent préférable de configurer git localement pour faire des commits de type LF. Pour ce qui est du checkout, le &quot;as-is&quot; permettra d'éviter d'avoir des erreurs sur toutes les lignes sous Windows si un linter est configuré pour demander des fins de ligne en LF.</p>
+</div></div>
+</div></li><li class="etape"><div class="etape__puce">9</div><div class="etape__contenu"><h4 class="etape__titre">Etape 9</h4><p>Coche l'option &quot;<em>Use MinTTY (the default terminal of MSYS2)</em>&quot;.</p>
+</div></li><li class="etape"><div class="etape__puce">10</div><div class="etape__contenu"><h4 class="etape__titre">Etape 10</h4><p>Garde l'option par défaut (&quot;<em>Default (fast-forward or merge)</em>&quot;).</p>
+</div></li><li class="etape"><div class="etape__puce">11</div><div class="etape__contenu"><h4 class="etape__titre">Etape 11</h4><p>Sélectionne &quot;<em>None</em>&quot;, il n'est pas utile d'installer le Git Credential Manager car tu verras comment mettre en place l'authentification par clé SSH par la suite.</p>
+</div></li><li class="etape"><div class="etape__puce">12</div><div class="etape__contenu"><h4 class="etape__titre">Etape 12</h4><p>Coche les deux options :</p>
+<ul>
+<li>Enable file system caching</li>
+<li>Enable symbolic links</li>
+</ul>
+</div></li><li class="etape"><div class="etape__puce">13</div><div class="etape__contenu"><h4 class="etape__titre">Etape 13</h4><p>Coche &quot;<em>Enable experimental support for pseudo consoles</em>&quot;. Tu peux aussi si tu le souhaites cocher la seconde option &quot;<em>Enable experimental built-in fyle system monitor</em>&quot;.</p>
+<div class="encadre encadre--error"><div class="encadre__titre">Important</div><div class="encadre__corps"><p>Il est très important à ce stade de bien cocher la première option, sinon tu risques d'avoir des problèmes pour utiliser certaines fonctionnalités et devoir préfixer la majorité de tes commandes par winpty. En activant le support expérimental, tu pourras utiliser normalement le terminal comme sur un système Unix.</p>
+</div></div>
+</div></li><li class="etape"><div class="etape__puce">14</div><div class="etape__contenu"><h4 class="etape__titre">Etape 14</h4><p>Procède à l'installation.</p>
+</div></li></ol>
+<p>Dans ton terminal, vérifie ton installation en tapant <strong>git --version</strong></p>
+<p>Puis dans ton terminal, tu vas renseigner ton nom d'utilisateur et ton email (les mêmes que sur la plateforme github)</p>
+<ol>
+<li>Renseigne ton nom d'utilisateur: <code>git config --global user.name &quot;FIRST_NAME LAST_NAME&quot;</code></li>
+<li>Renseigne ton email : <code>git config --global user.email &quot;MY_NAME@example.com&quot;</code></li>
+<li>Ajoute aussi cette configuration (c'est un peu tôt pour t'expliquer en détail mais si tu ne le fais pas git va te poser la question quand tu essaieras de récupérer du code distant) <code>git config --global pull.rebase false</code></li>
+<li>Enfin, termine par cette dernière configuration, qui configure git pour utiliser le nom &quot;main&quot; et non plus &quot;master&quot; comme branche par défaut, ce qui te facilitera la vie quand tu vas utiliser Github (qui lui utilise le nom &quot;main&quot;) <code>git config --global init.defaultBranch main</code></li>
+</ol>
+</div></div></div>
+<h1>☝️Résumé</h1>
+<ul>
+<li>Git est un système de contrôle de version</li>
+<li>Git t'aide à conserver l'historique de tes fichiers et à travailler en équipe</li>
+<li>Github est une plateforme en ligne qui propose des services tels que <strong>l'hébergement de code</strong> mais c'est aussi un réseau social où tu peux participer à des projets open source, partager et découvrir de nouveaux projets.</li>
+</ul>
+<hr>
+<p>Pour réaliser le challenge retiens bien ce qui suit :</p>
+<ul>
+<li>Quelle commande te permet de transformer un dossier classique en un projet git local ? <code>git init</code></li>
+<li>Quelle est la commande pour placer un fichier dans le répertoire intermédiaire (staging) ? <code>git add</code></li>
+<li>Quelle commande utilises tu pour réaliser un commit ? <code>git commit</code></li>
+</ul>
+<h1>💪 Challenge</h1>
+<ol>
+<li>Crée un nouveau répertoire nommé <code>wild-git</code> et déplace-toi dedans depuis ton terminal</li>
+<li>Quand tu t'es assuré d'être dans le bon dossier, initialise un nouveau dépôt git pour transformer ton dossier en un projet git local</li>
+<li>Crée un fichier vide nommé &quot;wild.txt&quot;</li>
+<li>Ajoute ce fichier à l'index de git (aussi appelé <em>staging</em>)</li>
+<li>Commite ce fichier avec le message suivant &quot;At Wild Code School, we code without shoes.&quot;</li>
+<li>Écrit la commande suivante <code>git log -p</code> et colle le résultat en solution du challenge</li>
+</ol>
+<h1>🧐 Critères de validation :</h1>
+<ul>
+<li>[ ] La solution contient le message suivant : &quot;At Wild Code School, we code without shoes.&quot;</li>
+</ul>
+
+  </div>
+  <section class="ressources-quete">
+  <h2>Ressources partagées sur cette quête</h2>
+  <ul class="ressources-liste">
+    <li><a href="https://people.irisa.fr/Anthony.Baire/git/git-for-beginners-handout.pdf" target="_blank" rel="noopener noreferrer">pdf avec des commandes de base pour GIT</a><span class="ressources-liste__url">https://people.irisa.fr/Anthony.Baire/git/git-for-beginners-handout.pdf</span></li>
+    <li><a href="https://training.github.com/downloads/fr/github-git-cheat-sheet/" target="_blank" rel="noopener noreferrer">Petit cheat sheet pour git bien pratique</a><span class="ressources-liste__url">https://training.github.com/downloads/fr/github-git-cheat-sheet/</span></li>
+    <li><a href="https://www.youtube.com/watch?v=gp_k0UVOYMw" target="_blank" rel="noopener noreferrer">Comprendre le fonctionnement de Git de façon simplifiée</a><span class="ressources-liste__url">https://www.youtube.com/watch?v=gp_k0UVOYMw</span></li>
+    <li><a href="https://www.youtube.com/watch?v=syXt9-AdfPs&amp;t=319s" target="_blank" rel="noopener noreferrer">Video FR sur &quot;git init&quot; &quot;git add&quot; et &quot;git commit&quot;</a><span class="ressources-liste__url">https://www.youtube.com/watch?v=syXt9-AdfPs&amp;t=319s</span></li>
+    <li><a href="https://doc.ubuntu-fr.org/git" target="_blank" rel="noopener noreferrer">commande Linux</a><span class="ressources-liste__url">https://doc.ubuntu-fr.org/git</span></li>
+    <li><a href="https://www.youtube.com/watch?v=hPfgekYUKgk&amp;ab_channel=LaCapsule" target="_blank" rel="noopener noreferrer">Vidéo en français qui explique bien tout le process pour travailler sur git et git hub en 30 min</a><span class="ressources-liste__url">https://www.youtube.com/watch?v=hPfgekYUKgk&amp;ab_channel=LaCapsule</span></li>
+    <li><a href="https://github.com/JustFS/cours-github/blob/master/versionner.png" target="_blank" rel="noopener noreferrer">Condensé des raccourci Git</a><span class="ressources-liste__url">https://github.com/JustFS/cours-github/blob/master/versionner.png</span></li>
+    <li><a href="https://gist.github.com/YannBouyeron/7f7c5486b5daa20c2a6080f67b2af344" target="_blank" rel="noopener noreferrer">Quelques bases plutôt bien expliquée !</a><span class="ressources-liste__url">https://gist.github.com/YannBouyeron/7f7c5486b5daa20c2a6080f67b2af344</span></li>
+    <li><a href="https://git-scm.com/book/fr/v2/Les-bases-de-Git-D%C3%A9marrer-un-d%C3%A9p%C3%B4t-Git" target="_blank" rel="noopener noreferrer">petite lecture sur les bases </a><span class="ressources-liste__url">https://git-scm.com/book/fr/v2/Les-bases-de-Git-D%C3%A9marrer-un-d%C3%A9p%C3%B4t-Git</span></li>
+    <li><a href="https://www.youtube.com/watch?v=tRZGeaHPoaw&amp;list=PLB4ymnBGpxDdK6Mr-RSZDaNIu3boHsZvQ&amp;index=5&amp;t=2465s" target="_blank" rel="noopener noreferrer">Super ressource en anglais !</a><span class="ressources-liste__url">https://www.youtube.com/watch?v=tRZGeaHPoaw&amp;list=PLB4ymnBGpxDdK6Mr-RSZDaNIu3boHsZvQ&amp;index=5&amp;t=2465s</span></li>
+    <li><a href="https://www.delftstack.com/fr/howto/git/" target="_blank" rel="noopener noreferrer">Quelques explications sur les différentes commandes GIT</a><span class="ressources-liste__url">https://www.delftstack.com/fr/howto/git/</span></li>
+    <li><a href="https://www.atlassian.com/fr/git/tutorials/saving-changes/git-commit" target="_blank" rel="noopener noreferrer">Cours écrit sur les bases git dont la solution pour le message en autre</a><span class="ressources-liste__url">https://www.atlassian.com/fr/git/tutorials/saving-changes/git-commit</span></li>
+    <li><a href="https://www.yoozio.com/erreur-git-apres-mise-a-jour-de-mac-os-high-sierra-xcrun-error-invalid-active-developer-path-85/" target="_blank" rel="noopener noreferrer">Pour ceux qui sont sur mac, ce lien est très très important !</a><span class="ressources-liste__url">https://www.yoozio.com/erreur-git-apres-mise-a-jour-de-mac-os-high-sierra-xcrun-error-invalid-active-developer-path-85/</span></li>
+    <li><a href="https://www.youtube.com/watch?v=UFEby2zo-9E&amp;ab_channel=LearnWebCode" target="_blank" rel="noopener noreferrer">Good explanation with example how to create local repo and work in</a><span class="ressources-liste__url">https://www.youtube.com/watch?v=UFEby2zo-9E&amp;ab_channel=LearnWebCode</span></li>
+    <li><a href="https://docs.github.com/en/authentication/connecting-to-github-with-ssh" target="_blank" rel="noopener noreferrer">les étapes pour mettre en place l'authentification par clé SSH avec Git</a><span class="ressources-liste__url">https://docs.github.com/en/authentication/connecting-to-github-with-ssh</span></li>
+    <li><a href="https://education.github.com/git-cheat-sheet-education.pdf" target="_blank" rel="noopener noreferrer">Cheat sheet pour comande git</a><span class="ressources-liste__url">https://education.github.com/git-cheat-sheet-education.pdf</span></li>
+    <li><a href="https://www.youtube.com/watch?v=tRZGeaHPoaw" target="_blank" rel="noopener noreferrer">Git and GitHub Tutorial (Jun22, 46min, time-stamped sections)</a><span class="ressources-liste__url">https://www.youtube.com/watch?v=tRZGeaHPoaw</span></li>
+    <li><a href="https://adeniyekehinde0.medium.com/creating-a-index-html-file-using-git-881007727411" target="_blank" rel="noopener noreferrer">Creer un fichier HTML</a><span class="ressources-liste__url">https://adeniyekehinde0.medium.com/creating-a-index-html-file-using-git-881007727411</span></li>
+  </ul>
+</section>
+</article>
+
+<nav class="nav-quete">
+  <a class="nav-quete__lien nav-quete__lien--prec" href="../../git/001-git-github-1-decouvrir-github/index.html">
+           <span class="nav-quete__sens">← Précédent</span>
+           <span class="nav-quete__titre">Git/GitHub 1 : Découvrir GitHub</span>
+         </a>
+  <a class="nav-quete__lien nav-quete__lien--suiv" href="../../git/003-git-github-3-remote/index.html">
+           <span class="nav-quete__sens">Suivant →</span>
+           <span class="nav-quete__titre">Git/GitHub 3 : Remote</span>
+         </a>
+</nav>
+</main>
+<footer class="pied">
+  <p>Archive personnelle des cours suivis à la Wild Code School. Copie hors ligne à usage strictement privé.</p>
+</footer>
+
+<script src="../../assets/progression.js"></script>
+</body>
+</html>

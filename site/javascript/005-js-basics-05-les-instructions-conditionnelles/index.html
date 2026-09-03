@@ -1,0 +1,444 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>👩‍🏫 JS Basics 05 - Les instructions conditionnelles — Archives WCS</title>
+<link rel="stylesheet" href="../../assets/style.css">
+</head>
+<body style="--teinte:#856400">
+<header class="entete">
+  <a class="entete__marque" href="../../index.html">Archives Wild Code School</a>
+</header>
+<main class="contenu">
+<nav class="ariane"><a href="../../index.html">Accueil</a><span class="ariane__sep">›</span><a href="../../javascript/index.html">JavaScript</a><span class="ariane__sep">›</span><span aria-current="page">👩‍🏫 JS Basics 05 - Les instructions conditionnelles</span></nav>
+
+<article class="quete">
+  <header class="quete__entete">
+    <a class="pastille pastille--teintee" href="../../javascript/index.html">JavaScript</a>
+    <h1>👩‍🏫 JS Basics 05 - Les instructions conditionnelles</h1>
+    <p class="quete__meta">Quête 5 sur 11 · 6 images archivées</p>
+  </header>
+  <div class="cours">
+<h2>Objectifs</h2>
+<ul>
+<li>Écrire des conditions en Javascript</li>
+</ul>
+<h2>Pré-requis</h2>
+<p>Avoir validé les quêtes suivantes :</p>
+<div class="renvois"><div class="renvois__titre">Quêtes liées</div><ul><li><a href="../../javascript/001-js-basics-01-qu-est-ce-que-javascript/index.html">Quête 1262</a></li><li><a href="../../javascript/002-js-basics-02-syntaxe-et-concepts-de-base/index.html">Quête 1267</a></li><li><a href="../../javascript/003-js-basics-03-les-variables/index.html">Quête 1268</a></li><li><a href="../../javascript/004-js-basics-04-les-types-de-donnees/index.html">Quête 1269</a></li></ul></div>
+<h2>Introduction</h2>
+<p>Dans les quêtes précédentes, tu as pu découvrir <strong>ce qu'est Javascript et à quoi ressemble sa syntaxe</strong>.
+Tu as également appris comment <strong>créer des variables</strong> et quels sont les différents <strong>types de données</strong> que l'on peut manipuler.</p>
+<p>Dans cette quête, tu apprendras <strong>comment écrire des instructions conditionnelles</strong> en Javascript.</p>
+<p><strong>Les instructions conditionnelles</strong> sont un concept essentiel en programmation. Elles permettent aux programmes de <strong>prendre des décisions</strong>.
+Un programme incapable de prendre une décision se révèle plutôt inutile : c'est grâce à une logique conditionnelle qu'il est possible de savoir si tu es authentifié ou non sur un site web par exemple.</p>
+<p><strong>C'est parti !</strong></p>
+<p><strong><img src="images/001-train-forest.png" alt="Train forest" loading="lazy"></strong></p>
+<h2>Sommaire</h2>
+<h2>Si...Sinon</h2>
+<p>Pour écrire des conditions en Javascript, tu peux utiliser la structure <strong>&quot;if...else&quot;</strong>.</p>
+<p><img src="images/002-autoroute-a-plusieurs-voies.png" alt="Autoroute à plusieurs voies" loading="lazy"></p>
+<p>L'instruction <code>if</code> permet de vérifier une condition (précisée entre les parenthèses). <strong>Si la condition est évaluée comme vraie</strong>, le code est alors exécuté. Sinon, le code est ignoré.</p>
+<div class="bloc-code"><div class="bloc-code__langue">javascript</div><pre><code class="hljs language-javascript"><span class="hljs-keyword">if</span> (condition) {
+  <span class="hljs-comment">// Do something if the condition is true</span>
+}
+</code></pre></div>
+<p>Nous pouvons ajouter une <strong>autre instruction</strong>, dans le cas où <strong>la condition est évaluée comme étant fausse</strong>.</p>
+<div class="bloc-code"><div class="bloc-code__langue">javascript</div><pre><code class="hljs language-javascript"><span class="hljs-keyword">else</span> {
+  <span class="hljs-comment">// Do something if the condition is false</span>
+}
+</code></pre></div>
+<p>Voici un exemple concret :</p>
+<div class="bloc-code"><div class="bloc-code__langue">javascript</div><pre><code class="hljs language-javascript"><span class="hljs-keyword">const</span> name = <span class="hljs-string">&quot;Paul&quot;</span>;
+
+<span class="hljs-keyword">if</span> (name === <span class="hljs-string">&quot;Paul&quot;</span>) {
+  <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(<span class="hljs-string">&quot;Welcome, Paul&quot;</span>);
+} <span class="hljs-keyword">else</span> {
+  <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(<span class="hljs-string">&quot;Go away!&quot;</span>);
+}
+</code></pre></div>
+<p>Dans cet exemple, on créé d'abord une <strong>variable</strong> <code>name</code> et on lui attribue la <strong>valeur &quot;Paul &quot;</strong>.</p>
+<p>Ensuite, on compare la valeur assignée à cette variable avec la chaîne &quot;Paul&quot;.
+Si le résultat est vrai, alors on affiche  <strong>&quot;Welcome, Paul &quot;</strong> sinon on affiche <strong>&quot;Go away!&quot;.</strong></p>
+<div class="encadre encadre--warning"><div class="encadre__titre">Attention</div><div class="encadre__corps"><p>Attention, Javascript est sensible à la casse. Ce qui signifie que &quot;Paul&quot; n'est pas équivalent à &quot;paul&quot; !</p>
+</div></div>
+<p><strong>🔬 Expérience</strong></p>
+<p>Créé une condition <code>if...else</code> qui vérifie si le nom est égal à &quot;Bob&quot; ; si oui, affiche  &quot;Hello Bob!&quot; ; si non, affiche &quot;You're not Bob, go away!&quot;</p>
+<div class="bloc-code"><div class="bloc-code__langue">replit</div><pre><code class="hljs language-replit">https://repl.it/@WildCodeSchool/ifelse
+</code></pre></div>
+<div class="encadre encadre--info"><div class="encadre__titre">Info</div><div class="encadre__corps"><p>Clique sur le bouton &quot;play&quot; pour exécuter le code. Il est toujours conseillé d'essayer de modifier le code pour le prendre en main.</p>
+</div></div>
+<details class="solution"><summary>Voir la solution</summary><div class="solution__corps"><div class="bloc-code"><div class="bloc-code__langue">javascript</div><pre><code class="hljs language-javascript"><span class="hljs-keyword">const</span> person = <span class="hljs-string">&quot;Not Bob&quot;</span>;
+
+<span class="hljs-keyword">if</span> (person === <span class="hljs-string">&quot;Bob&quot;</span>) {
+  <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(<span class="hljs-string">&quot;Hello, Bob!&quot;</span>);
+} <span class="hljs-keyword">else</span> {
+  <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(<span class="hljs-string">&quot;You&#x27;re not Bob, go away!&quot;</span>);
+}
+</code></pre></div>
+</div></details>
+<h3>Prompt</h3>
+<p>Pour rendre les exemples un peu plus interactifs, tu peux utiliser une fonction nommée <code>prompt</code>.</p>
+<p><img src="images/003-question.png" alt="Question" loading="lazy">
+<strong>prompt</strong> est une fonction qui va <strong>afficher une boite de dialogue permettant à l'utilisateur d'entrer du texte</strong>.</p>
+<div class="bloc-code"><div class="bloc-code__langue">javascript</div><pre><code class="hljs language-javascript"><span class="hljs-keyword">const</span> userName = <span class="hljs-title function_">prompt</span>(<span class="hljs-string">&quot;What&#x27;s your name?&quot;</span>);
+</code></pre></div>
+<p><img src="images/004-prompt-screenshot.png" alt="prompt screenshot" loading="lazy"></p>
+<p>Écris le code précédent dans la console du navigateur et utilise la méthode <code>console.log</code> pour afficher la valeur de la variable <code>userName</code>.</p>
+<p>Tu verras ensuite le texte entré dans la boîte de dialogue s'afficher dans la console.</p>
+<div class="bloc-code"><div class="bloc-code__langue">javascript</div><pre><code class="hljs language-javascript"><span class="hljs-keyword">const</span> userName = <span class="hljs-title function_">prompt</span>(<span class="hljs-string">&quot;What&#x27;s your name?&quot;</span>);
+<span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(userName);
+</code></pre></div>
+<p>Voici un exemple utilisant <a href="http://repl.it" target="_blank" rel="noopener noreferrer">repl.it</a> qui execute le code grâce à Node.js.</p>
+<p>La fonction <code>prompt</code> dans cet environnement fonctionne différemment que l'exemple dans le navigateur : prompt demandera ici de saisir le texte dans le terminal.</p>
+<div class="bloc-code"><div class="bloc-code__langue">replit</div><pre><code class="hljs language-replit">https://repl.it/@WildCodeSchool/WholeConcernedAdware-1
+</code></pre></div>
+<div class="encadre encadre--info"><div class="encadre__titre">Info</div><div class="encadre__corps"><p>Clique sur le bouton &quot;play&quot; pour exécuter le code. Il est toujours conseillé d'essayer de modifier le code pour le prendre en main.</p>
+</div></div>
+<p><strong>🔬 Expérience</strong></p>
+<p>Ok ! Maintenant tu sais comment utiliser <code>prompt</code> et la structure de contrôle <code>if...else</code>. Écris un programme qui:</p>
+<ol>
+<li>demande à l'utilisateur de saisir un mot de passe ;</li>
+<li>compare ce dernier à une chaîne de caractères choisie (par exemple &quot;secret&quot;).</li>
+<li>Si les mots de passe correspondent: affiche &quot;Welcome! 👋&quot; dans la console ;</li>
+<li>Sinon, affiche &quot;Wrong password! ❌&quot;.</li>
+</ol>
+<div class="bloc-code"><div class="bloc-code__langue">replit</div><pre><code class="hljs language-replit">https://repl.it/@WildCodeSchool/Exercice-prompt
+</code></pre></div>
+<details class="solution"><summary>Voir la solution</summary><div class="solution__corps"><div class="bloc-code"><div class="bloc-code__langue">javascript</div><pre><code class="hljs language-javascript"><span class="hljs-comment">//  We create the variable password and we assign the result of prompt on it</span>
+<span class="hljs-keyword">const</span> password = <span class="hljs-title function_">prompt</span>(<span class="hljs-string">&quot;What is the magic password?&quot;</span>);
+
+<span class="hljs-comment">// We compare the value assigned to pass to the string &quot;secret&quot;</span>
+<span class="hljs-keyword">if</span> (password === <span class="hljs-string">&quot;secret&quot;</span>) {
+  <span class="hljs-comment">// If the pass matches the string we print Welcome</span>
+  <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(<span class="hljs-string">&quot;Welcome! 👋&quot;</span>);
+} <span class="hljs-keyword">else</span> {
+  <span class="hljs-comment">// If the pass doesn&#x27;t match the string we print Welcome</span>
+  <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(<span class="hljs-string">&quot;Wrong password! ❌&quot;</span>);	
+}
+</code></pre></div>
+</div></details>
+<h3>Utiliser prompt avec des nombres</h3>
+<p>Lors de l'utilisation de <code>prompt</code>, ce que l'utilisateur va taper dans la fenêtre de l'invite sera considéré comme une chaîne de caractères.
+Si tu veux travailler avec des nombres, tu dois convertir la chaîne de caractères en un nombre. Pour cela, tu peux utiliser la fonction <code>parseInt</code>.</p>
+<div class="bloc-code"><div class="bloc-code__langue">javascript</div><pre><code class="hljs language-javascript"><span class="hljs-keyword">const</span> age = <span class="hljs-title function_">prompt</span>(<span class="hljs-string">&quot;How old are you?&quot;</span>);
+<span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(<span class="hljs-title function_">typeof</span>(age));
+<span class="hljs-comment">// String</span>
+
+<span class="hljs-keyword">const</span> ageNumber = <span class="hljs-built_in">parseInt</span>(age);
+<span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(<span class="hljs-title function_">typeof</span>(ageNumber));
+<span class="hljs-comment">// Number</span>
+</code></pre></div>
+<a class="ressource" href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/parseInt" target="_blank" rel="noopener noreferrer">
+  <div class="ressource__icone">↗</div>
+  <div class="ressource__texte">
+    <div class="ressource__titre">parseInt() MDN</div>
+    
+    <div class="ressource__hote">developer.mozilla.org</div>
+  </div>
+</a>
+<h2>Else if</h2>
+<p>Parfois, on peut avoir plus d'une condition. Par exemple, imagine que tu souhaites permettre à plusieurs personnes de jouer avec ton programme d'avant.</p>
+<p>Avec la structure <code>if...else</code> uniquement, cela va générer beaucoup d'instructions imbriquées les unes dans les autres.
+Tu vas heureusement pouvoir gérer des &quot;embranchements&quot; pour traiter plus de cas avec <code>else if</code> !</p>
+<p><img src="images/005-embranchements.png" alt="Embranchements" loading="lazy"></p>
+<p>Tu dois écrire <code>else if</code> après un <code>if</code> et avant un <code>else</code>, et tu <strong>dois</strong> utiliser une condition entre parenthèses.</p>
+<div class="bloc-code"><div class="bloc-code__langue">javascript</div><pre><code class="hljs language-javascript"><span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span> (condition) {
+  <span class="hljs-comment">// ...</span>
+}
+</code></pre></div>
+<div class="bloc-code"><div class="bloc-code__langue">replit</div><pre><code class="hljs language-replit">https://repl.it/@WildCodeSchool/Else-if
+</code></pre></div>
+<p>On stocke la saisie de l'utilisateur dans une variable appelée <code>user</code>.
+Ensuite, on <em><strong>compare</strong></em> la valeur saisie avec <code>Paul</code> puis <code>John</code> pour voir si une d'entre elles correspond.</p>
+<p>On peut avoir autant de <code>else if</code> que l'on veut.
+Le dernier <code>else</code> correspondra toujours à <strong>tous les autres cas</strong>.</p>
+<p><strong>🔬 Expérience</strong></p>
+<p>Ecris un programme qui demande à l'utilisateur d'entrer son age (en utilisant <code>prompt</code>), et qui affiche ensuite un message en fonction de sa tranche d'âge :</p>
+<ul>
+<li>Si l'age est inférieur à 3 : &quot;Hello, Baby 🍼!&quot;</li>
+<li>Si l'age est inférieur à 18: &quot;Hi! 👋&quot;</li>
+<li>Si l'age est inférieur à 100: &quot;Greetings 🖖&quot;</li>
+<li>Dans les autres cas: &quot;Wow... 😲&quot;</li>
+</ul>
+<div class="bloc-code"><div class="bloc-code__langue">replit</div><pre><code class="hljs language-replit">https://repl.it/@WildCodeSchool/Exercise-else-if
+</code></pre></div>
+<details class="solution"><summary>Voir la solution</summary><div class="solution__corps"><div class="bloc-code"><div class="bloc-code__langue">javascript</div><pre><code class="hljs language-javascript"><span class="hljs-keyword">const</span> userAge = <span class="hljs-built_in">parseInt</span>(<span class="hljs-title function_">prompt</span>(<span class="hljs-string">&quot;How old are you?&quot;</span>));
+
+<span class="hljs-keyword">if</span> (userAge &lt; <span class="hljs-number">3</span>) {
+  <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(<span class="hljs-string">&quot;Hello, Baby 🍼!&quot;</span>);
+} <span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span> (userAge &lt; <span class="hljs-number">18</span>) {
+  <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(<span class="hljs-string">&quot;Hi! 👋&quot;</span>);
+} <span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span> (userAge &lt; <span class="hljs-number">100</span>) {
+  <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(<span class="hljs-string">&quot;Greetings 🖖&quot;</span>);
+} <span class="hljs-keyword">else</span> {
+  <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(<span class="hljs-string">&quot;Wow... 😲&quot;</span>);
+}
+</code></pre></div>
+</div></details>
+<h2>Les valeurs &quot;truthy&quot; et &quot;falsy&quot;</h2>
+<p>Lorsque tu écris un bloc <code>if...else</code>, <strong>l'expression que tu écris entre parenthèses est évaluée</strong> et <strong>transformée</strong> en <strong>booléen</strong>.</p>
+<p>Par exemple, l'expression <code>4 === 4</code> est <strong>évaluée comme</strong> (&quot;transformée&quot; en) <code>true</code>. Si on place cette dernière dans les parenthèses d'un <code>if</code>, le code sous condition sera exécuté.</p>
+<p>Mais que se passe-t-il si tu mets autre chose qu'un booléen à l’intérieur d'une condition ?</p>
+<p>Par exemple :</p>
+<div class="bloc-code"><div class="bloc-code__langue">javascript</div><pre><code class="hljs language-javascript"><span class="hljs-keyword">if</span> (<span class="hljs-number">1</span>) {
+  <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(<span class="hljs-string">&quot;What&#x27;s going to happen here ? 🤷‍♀️&quot;</span>);
+}
+</code></pre></div>
+<p>En fait, cela dépend de comment est évaluée la valeur dans un contexte booléen (dans une condition) :</p>
+<ul>
+<li>Certaines valeurs sont dites &quot;truthy&quot; : elle seront <strong>évaluées comme étant vraies (<code>true</code>)</strong>.</li>
+<li>D'autres sont &quot;falsy&quot; et seront <strong>évaluées comme étant fausses (<code>false</code>)</strong>.</li>
+</ul>
+<p><strong>Les valeurs dites &quot;falsy&quot; :</strong></p>
+<ul>
+<li><code>false</code></li>
+<li><code>&quot;&quot;</code></li>
+<li><code>0</code></li>
+<li><code>-0</code></li>
+<li><code>null</code></li>
+<li><code>undefined</code></li>
+<li><code>NaN</code></li>
+</ul>
+<p><strong>Toutes les autres valeurs sont &quot;truthy&quot; !</strong></p>
+<p>Exemple :</p>
+<div class="bloc-code"><div class="bloc-code__langue">javascript</div><pre><code class="hljs language-javascript"><span class="hljs-keyword">let</span> myName = <span class="hljs-string">&quot;&quot;</span>;
+<span class="hljs-keyword">if</span> (myName) {
+  <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(<span class="hljs-string">&quot;Hello you!&quot;</span>);
+  <span class="hljs-comment">// This will never be run because &quot;empty string&quot; is evaluated as false</span>
+} <span class="hljs-keyword">else</span> {
+  <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(<span class="hljs-string">&quot;you don&#x27;t have a name&quot;</span>);
+}
+</code></pre></div>
+<p>Ici, puisque la variable <code>myName</code> est une <strong>chaîne vide</strong> , la condition est <strong>évaluée comme</strong> <code>false</code>.</p>
+<h2>Inversion logique</h2>
+<p><img src="images/006-not-true.png" alt="Not  true" loading="lazy"></p>
+<p>L'opérateur <code>!</code> permet d'<strong>inverser</strong> un booléen. Ainsi, <code>!false</code> est égal à <code>true</code> et <code>!true</code> est égal à <code>false</code>. Cet opérateur permet d'obtenir l'<em><strong>opposé</strong></em> d'une valeur.
+Si on veut évaluer l'opposé logique d'une valeur, on peut utiliser le <code>!</code>.
+Par exemple, <code>!true</code> vaut <code>false</code> et <code>!false</code> vaut <code>true</code>.</p>
+<p><strong>❓ Petit test !</strong></p>
+<div class="bloc-code"><div class="bloc-code__langue">quiz</div><pre><code class="hljs language-quiz">false|||true|||false
+# Que vaut !false ?
+[x] true
+[] false
+# Que vaut !(!true) ?
+[] false
+[x] true
+# Que vaut !(!(!(true)))
+[] true
+[x] false
+</code></pre></div>
+<p>Autre exemple :</p>
+<div class="bloc-code"><div class="bloc-code__langue">replit</div><pre><code class="hljs language-replit">https://repl.it/@WildCodeSchool/SvelteEveryInformationtechnology
+</code></pre></div>
+<h2>ET / OU</h2>
+<p>Dans une condition, on peut aussi déterminer la véracité d'une <strong>combinaison logique</strong> de plusieurs <strong>expressions</strong> en utilisant les mots-clés <code>&amp;&amp;</code> (&quot;and&quot;) et <code>||</code> (&quot;or&quot;).</p>
+<p>Exemple:</p>
+<div class="bloc-code"><div class="bloc-code__langue">replit</div><pre><code class="hljs language-replit">https://repl.it/@WildCodeSchool/Condition-and-or
+</code></pre></div>
+<p>Dans ce code, on vérifie uniquement le nom de l'utilisateur dans le premier <code>if</code>. S'il est égal à Paul <strong>OU</strong> Bob, le code est exécuté.</p>
+<p>Dans le deuxième <code>if</code>, on vérifie que le nom vaut &quot;Paul&quot; <strong>ET</strong> que le mot de passe vaut &quot;secret&quot;. Si les deux conditions sont remplies, le code est exécuté.</p>
+<p>Lorsque <code>&amp;&amp;</code> est utilisé, si <strong>un des deux booléens vaut <code>false</code></strong>, tout sera évalué comme <code>false</code>.
+Lorsque <code>||</code> est utilisé, si <strong>un des deux booléens vaut <code>true</code></strong>, tout sera évalué comme <code>true</code>.</p>
+<div class="table-wrap"><table><thead>
+<tr>
+<th>Booléen 1</th>
+<th>and/or</th>
+<th>Booléen 2</th>
+<th>Result</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>true</td>
+<td>&amp;&amp;</td>
+<td>true</td>
+<td><strong>true</strong></td>
+</tr>
+<tr>
+<td>false</td>
+<td>&amp;&amp;</td>
+<td>false</td>
+<td><strong>false</strong></td>
+</tr>
+<tr>
+<td>true</td>
+<td>&amp;&amp;</td>
+<td>false</td>
+<td><strong>false</strong></td>
+</tr>
+<tr>
+<td>true</td>
+<td>| |</td>
+<td>true</td>
+<td><strong>true</strong></td>
+</tr>
+<tr>
+<td>false</td>
+<td>| |</td>
+<td>false</td>
+<td><strong>false</strong></td>
+</tr>
+<tr>
+<td>true</td>
+<td>| |</td>
+<td>false</td>
+<td><strong>true</strong></td>
+</tr>
+</tbody>
+</table></div><div class="bloc-code"><div class="bloc-code__langue">quiz</div><pre><code class="hljs language-quiz">false|||true|||false
+# Que vaux (!true &amp;&amp; !(!false))?
+[] true
+[x] false
+</code></pre></div>
+<h2>Portée (scope) / Contexte</h2>
+<p>En Javascript, dès que l'on écrit du code, <strong>le contexte est très important</strong> : <strong>on ne peut pas utiliser une variable déclarée à l'intérieur d'une condition en dehors de cette dernière</strong>.</p>
+<p>Les accolades  <code>{ }</code> définissent un contexte local.</p>
+<p>Exemple 1 :</p>
+<div class="bloc-code"><div class="bloc-code__langue">javascript</div><pre><code class="hljs language-javascript"><span class="hljs-keyword">const</span> name = <span class="hljs-string">&quot;Pierre&quot;</span>;
+
+<span class="hljs-keyword">if</span> (name === <span class="hljs-string">&quot;Pierre&quot;</span>) {
+  <span class="hljs-keyword">const</span> city = <span class="hljs-string">&quot;New York&quot;</span>;
+
+  <span class="hljs-keyword">if</span> (city === <span class="hljs-string">&quot;New York&quot;</span>) {
+    <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(<span class="hljs-string">&quot;Welcome &quot;</span> + name + <span class="hljs-string">&quot; in &quot;</span> + city);
+  } <span class="hljs-keyword">else</span> {
+    <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(<span class="hljs-string">&quot;Welcome &quot;</span> + name); 
+  }
+  <span class="hljs-comment">// fonctionne correctement à l&#x27;intérieur du contexte de la condition</span>
+} <span class="hljs-keyword">else</span> {
+  <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(name);
+  <span class="hljs-comment">// tu verras le nom de la personne</span>
+
+  <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(city);
+  <span class="hljs-comment">// tu verras une error &#x27;reference error: city is not defined&#x27;</span>
+}    
+</code></pre></div>
+<p>Par exemple, dans ce cas, la variable <code>city</code> sera disponible uniquement dans le contexte de la première condition <strong>if</strong> (à l'intérieur des accolades <code>{}</code>) et elle ne sera pas disponible dans le contexte du <strong>else</strong> (en dehors du contexte du <strong>if</strong>).</p>
+<p>La variable <code>name</code> est disponible dans toute la condition car elle a été créée en dehors du contexte du <strong>if</strong>.</p>
+<p>Si tu crées une variable à l'intérieur d'accolades <code>{}</code>, cette variable sera disponible <strong>uniquement à l'intérieur de ces accolades</strong>.</p>
+<p>Sachant cela maintenant, nous devrions être capables de créer des conditions qui fonctionnent pour nos projets en tenant compte du contexte.</p>
+<p><strong>❓ Quiz</strong></p>
+<div class="bloc-code"><div class="bloc-code__langue">quiz</div><pre><code class="hljs language-quiz">false|||true|||false
+# Qu'est ce qu'une valeur &quot;truthy&quot; ?
+[x] Une valeur qui est évaluée comme étant &quot;vraie&quot; dans une condition
+[] Une valeur qui est évaluée comme étant &quot;fausse&quot; dans une condition
+# Sélectionne toutes les valeurs &quot;truthy&quot; dans cette liste : 
+[] undefined
+[] null
+[] 0
+[x] {}
+[x] 1
+[x] 100
+[x] &quot;Bob&quot;
+[x] [&quot;Apple&quot;, &quot;Banana&quot;, &quot;Kiwi&quot;]
+[x] !false
+# Sélectionne toutes les valeurs &quot;falsy&quot; dans cette liste :
+[x] undefined
+[x] null
+[x] 0
+[] [] 
+[] {}
+[] 1
+[] 400
+[x] !true
+# Quel est le résultat de l'expression &quot;true &amp;&amp; true&quot; ?
+[x] true
+[] false
+# Quel est le résultat de l'expression &quot;false &amp;&amp; true&quot; ?
+[] true
+[x] false
+# Quel est le résultat de l'expression &quot;false &amp;&amp; 0&quot; ? 
+[] true
+[x] false
+# Quel est le résultat de l'expression &quot;false || true&quot; ? 
+[x] true
+[] false
+</code></pre></div>
+<h2>Les ternaires</h2>
+<p>Tu peux simplifier l'écriture d'une condition en utilisant <strong>l'opérateur ternaire</strong>.
+Cet opérateur utilise <code>?</code> et <code>:</code>, respectivement équivalents à <code>if</code> et <code>else</code> :</p>
+<div class="bloc-code"><div class="bloc-code__langue">javascript</div><pre><code class="hljs language-javascript">name === <span class="hljs-string">&quot;Bob&quot;</span> ? <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(<span class="hljs-string">&quot;Hello, Bob&quot;</span>) : <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(<span class="hljs-string">&quot;Go Away!&quot;</span>);
+</code></pre></div>
+<p>Comme tu peux le voir, c'est une écriture plus courte. Elle peut paraître un peu étrange au début. Mais pense à <code>?</code> comme le point d’interrogation à la fin d'une question que tu souhaites poser au programme : est-ce que le nom vaut Bob <code>?</code> Si oui, fais ci ! Sinon <code>:</code> fais ça.</p>
+<p>Ne t'en fais pas si cela n'est pas encore totalement clair pour le moment, nous y reviendrons ultérieurement. Essaie tout de même de te rappeler à quoi ressemble cet opérateur ternaire pour le reconnaitre si tu le rencontres.</p>
+<div class="encadre encadre--warning"><div class="encadre__titre">Attention</div><div class="encadre__corps"><p>Une utilisation abusive ou non appropriée de l'opérateur ternaire peut rendre ton code moins lisible et compréhensible.
+Assure-toi que son utilisation est justifiée et que cela n'impacte pas la lisibilité de ton code.</p>
+<p>Rappelle toi que nous codons avant tout pour des être humains, et qu'il est important de penser à la personne qui lira ton code.</p>
+</div></div>
+<p><strong>🔬 Expérience</strong></p>
+<p>Essaie de réécrire la condition suivante en utilisant l'opérateur ternaire :</p>
+<div class="bloc-code"><div class="bloc-code__langue">javascript</div><pre><code class="hljs language-javascript"><span class="hljs-keyword">const</span> animalName = <span class="hljs-string">&quot;Lucky&quot;</span>;
+
+<span class="hljs-keyword">if</span> (animalName === <span class="hljs-string">&quot;Lucky&quot;</span>) {
+  <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(<span class="hljs-string">&quot;Welcome Lucky!&quot;</span>);
+} <span class="hljs-keyword">else</span> {
+  <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(<span class="hljs-string">&quot;Wrong Cat detected!&quot;</span>);
+}
+</code></pre></div>
+<details class="solution"><summary>Voir la solution</summary><div class="solution__corps"><div class="bloc-code"><div class="bloc-code__langue">javascript</div><pre><code class="hljs language-javascript"><span class="hljs-keyword">const</span> animalName = <span class="hljs-string">&quot;Lucky&quot;</span>;
+
+animalName === <span class="hljs-string">&quot;Lucky&quot;</span> ? <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(<span class="hljs-string">&quot;Welcome Lucky!&quot;</span>) : <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(<span class="hljs-string">&quot;Go Away!&quot;</span>);
+
+<span class="hljs-comment">// We can also write it like that, which is better ;) </span>
+<span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(animalName === <span class="hljs-string">&quot;Lucky&quot;</span> ? <span class="hljs-string">&quot;Welcome Lucky!&quot;</span> : <span class="hljs-string">&quot;Go Away!&quot;</span>);
+</code></pre></div>
+</div></details>
+<h2>Résumé</h2>
+<ul>
+<li>Les conditions sont indispensables en Javascript pour ajouter de la logique à nos programmes.</li>
+<li>On peut utiliser la structure <code>if...else</code> pour écrire ces dernières.</li>
+</ul>
+<a class="ressource" href="https://developer.mozilla.org/en-US/docs/Learn/JavaScript/Building_blocks/conditionals" target="_blank" rel="noopener noreferrer">
+  <div class="ressource__icone">↗</div>
+  <div class="ressource__texte">
+    <div class="ressource__titre">Mdn Documentation - Making decisions in your code — conditionals</div>
+    <div class="ressource__desc"><p>Une très bonne ressource pour apprendre les conditions en JS</p>
+</div>
+    <div class="ressource__hote">developer.mozilla.org</div>
+  </div>
+</a>
+<h2>Challenge</h2>
+<p>Es-tu prêt à relever un défi ?</p>
+<p>Déclare et définis trois variables <code>a</code>, <code>b</code> et <code>c</code> à l'aide d'une valeur numérique.
+(ex : <code>const a = 1</code>)</p>
+<ul>
+<li>Si les trois variables sont égales, affiche &quot;Les trois variables sont identiques&quot; dans la console</li>
+<li>Si seulement deux des variables sont égales, affiche &quot;Deux des variables sont identiques&quot; dans la console</li>
+<li>Si les variables sont toutes différentes, affiche &quot;toutes les variables sont différentes&quot; dans la console</li>
+</ul>
+<p>Poste ton code en solution.</p>
+
+  </div>
+  <section class="ressources-quete">
+  <h2>Ressources partagées sur cette quête</h2>
+  <ul class="ressources-liste">
+    <li><a href="https://dorey.github.io/JavaScript-Equality-Table/" target="_blank" rel="noopener noreferrer">Pour savour ce qui est 'truthy' et 'falsy'</a><span class="ressources-liste__url">https://dorey.github.io/JavaScript-Equality-Table/</span></li>
+    <li><a href="https://www.youtube.com/watch?v=DQ_ztRXD8vs" target="_blank" rel="noopener noreferrer">Une façon simple de comprendre switch case en JS</a><span class="ressources-liste__url">https://www.youtube.com/watch?v=DQ_ztRXD8vs</span></li>
+    <li><a href="https://www.youtube.com/watch?v=DmHuw9dGYRw&amp;ab_channel=Grafikart.fr" target="_blank" rel="noopener noreferrer">Les conditions mis en pratique </a><span class="ressources-liste__url">https://www.youtube.com/watch?v=DmHuw9dGYRw&amp;ab_channel=Grafikart.fr</span></li>
+    <li><a href="https://www.youtube.com/watch?v=OXpTBQtL4nY" target="_blank" rel="noopener noreferrer">Courte vidéo pour comprendre parseInt et parseFloat :)</a><span class="ressources-liste__url">https://www.youtube.com/watch?v=OXpTBQtL4nY</span></li>
+    <li><a href="https://www.freecodecamp.org/learn/javascript-algorithms-and-data-structures-v8/" target="_blank" rel="noopener noreferrer">Bon site pour s'exercer et découvrir le Javascript</a><span class="ressources-liste__url">https://www.freecodecamp.org/learn/javascript-algorithms-and-data-structures-v8/</span></li>
+  </ul>
+</section>
+</article>
+
+<nav class="nav-quete">
+  <a class="nav-quete__lien nav-quete__lien--prec" href="../../javascript/004-js-basics-04-les-types-de-donnees/index.html">
+           <span class="nav-quete__sens">← Précédent</span>
+           <span class="nav-quete__titre">👩‍🏫 JS Basics 04 - Les types de données</span>
+         </a>
+  <a class="nav-quete__lien nav-quete__lien--suiv" href="../../javascript/006-js-basics-06-les-fonctions/index.html">
+           <span class="nav-quete__sens">Suivant →</span>
+           <span class="nav-quete__titre">👩‍🏫 JS Basics 06 - Les fonctions</span>
+         </a>
+</nav>
+</main>
+<footer class="pied">
+  <p>Archive personnelle des cours suivis à la Wild Code School. Copie hors ligne à usage strictement privé.</p>
+</footer>
+
+<script src="../../assets/copie-code.js"></script>
+<script src="../../assets/progression.js"></script>
+</body>
+</html>

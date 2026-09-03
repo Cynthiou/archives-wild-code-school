@@ -1,0 +1,33 @@
+{
+  "id": 685,
+  "titre": "PDO, un ami pour la vie.",
+  "titres": {
+    "fr": "PDO, un ami pour la vie."
+  },
+  "theme": {
+    "id": 7,
+    "slug": "php_adv",
+    "nom": "PHP Avancé"
+  },
+  "creeLe": "2019-08-22T09:39:03.603+02:00",
+  "difficulte": "",
+  "dureeEstimee": null,
+  "modeValidation": "student",
+  "chapitres": [
+    {
+      "id": 11466,
+      "type": "content",
+      "langue": "fr",
+      "majLe": "2024-04-30T11:27:21.856+02:00",
+      "caracteres": 23232
+    }
+  ],
+  "ressources": [
+    {
+      "link": "https://www.php.net/manual/fr/class.pdostatement.php",
+      "description": "une arborescence des méthodes "
+    }
+  ],
+  "urlOrigine": "https://odyssey.wildcodeschool.com/quests/685",
+  "archiveLe": "2026-09-02T23:21:23.640Z"
+}

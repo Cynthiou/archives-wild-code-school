@@ -1,0 +1,28 @@
+{
+  "id": 1561,
+  "titre": "08 - JS Monorepo : Validation",
+  "titres": {
+    "fr": "08 - JS Monorepo : Validation"
+  },
+  "theme": {
+    "id": 43,
+    "slug": "prepa",
+    "nom": "JS Monorepo"
+  },
+  "creeLe": "2021-02-22T08:11:02.428+01:00",
+  "difficulte": "0",
+  "dureeEstimee": null,
+  "modeValidation": "self",
+  "chapitres": [
+    {
+      "id": 14883,
+      "type": "content",
+      "langue": "fr",
+      "majLe": "2024-12-30T07:05:04.644+01:00",
+      "caracteres": 10574
+    }
+  ],
+  "ressources": [],
+  "urlOrigine": "https://odyssey.wildcodeschool.com/quests/1561",
+  "archiveLe": "2026-09-02T20:52:00.798Z"
+}

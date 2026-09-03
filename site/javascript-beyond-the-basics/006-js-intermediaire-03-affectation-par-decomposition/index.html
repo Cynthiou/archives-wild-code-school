@@ -1,0 +1,138 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>👩‍🏫 JS Intermédiaire 03 - Affectation par décomposition — Archives WCS</title>
+<link rel="stylesheet" href="../../assets/style.css">
+</head>
+<body style="--teinte:#854200">
+<header class="entete">
+  <a class="entete__marque" href="../../index.html">Archives Wild Code School</a>
+</header>
+<main class="contenu">
+<nav class="ariane"><a href="../../index.html">Accueil</a><span class="ariane__sep">›</span><a href="../../javascript-beyond-the-basics/index.html">JavaScript - Beyond the Basics</a><span class="ariane__sep">›</span><span aria-current="page">👩‍🏫 JS Intermédiaire 03 - Affectation par décomposition</span></nav>
+
+<article class="quete">
+  <header class="quete__entete">
+    <a class="pastille pastille--teintee" href="../../javascript-beyond-the-basics/index.html">JavaScript - Beyond the Basics</a>
+    <h1>👩‍🏫 JS Intermédiaire 03 - Affectation par décomposition</h1>
+    <p class="quete__meta">Quête 6 sur 8 · 1 image archivée</p>
+  </header>
+  <div class="cours">
+<div class="renvois"><div class="renvois__titre">Quêtes liées</div><ul><li><a href="../../javascript/008-js-basics-07-les-tableaux/index.html">Quête 1281</a></li><li><a href="../../javascript/011-js-basics-09-les-objets/index.html">Quête 1282</a></li></ul></div>
+<h1>Introduction</h1>
+<p>Dans cette quête, tu vas découvrir la déstructuration d'objets et de tableaux, une méthode bien pratique et très utilisée pour raccourcir le code.</p>
+<p><img src="images/001-image.jpg" alt="image" loading="lazy"></p>
+<p><a href="https://twitter.com/NikkitaFTW/status/977895647612370945/photo/1" target="_blank" rel="noopener noreferrer">image source</a></p>
+<h1>🤓 <strong>À la fin de cette quête, tu comprendras:</strong></h1>
+<p>✅ Qu'est-ce que la <strong>décomposition</strong> (destructuring) et comment l'utiliser
+✅ Comment utiliser la syntaxe &quot;rest&quot; (<code>...</code>) dans la décomposition</p>
+<h2>🪓 Décomposer pour mieux régner</h2>
+<h3>Objets</h3>
+<p>Des fois, il peut être pratique de déclarer des variables pointant une propriété d'un objet, comme ceci :</p>
+<div class="bloc-code"><div class="bloc-code__langue">js</div><pre><code class="hljs language-js"><span class="hljs-keyword">const</span> product = { <span class="hljs-attr">name</span>: <span class="hljs-string">&quot;socks&quot;</span>, <span class="hljs-attr">price</span>: <span class="hljs-number">5</span>, <span class="hljs-attr">color</span>: <span class="hljs-string">&quot;red&quot;</span> };
+<span class="hljs-keyword">const</span> name = product.<span class="hljs-property">name</span>;
+<span class="hljs-keyword">const</span> price = product.<span class="hljs-property">price</span>;
+<span class="hljs-keyword">const</span> color = product.<span class="hljs-property">color</span>;
+
+<span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(<span class="hljs-string">`Those <span class="hljs-subst">${color}</span> <span class="hljs-subst">${name}</span> cost <span class="hljs-subst">${price}</span> euros`</span>);
+</code></pre></div>
+<p>La décomposition permet de raccourcir ce code :</p>
+<div class="bloc-code"><div class="bloc-code__langue">js</div><pre><code class="hljs language-js"><span class="hljs-keyword">const</span> product = { <span class="hljs-attr">name</span>: <span class="hljs-string">&quot;socks&quot;</span>, <span class="hljs-attr">price</span>: <span class="hljs-number">5</span>, <span class="hljs-attr">color</span>: <span class="hljs-string">&quot;red&quot;</span> };
+<span class="hljs-keyword">const</span> { name, price, color } = product;
+
+<span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(<span class="hljs-string">`Those <span class="hljs-subst">${color}</span> <span class="hljs-subst">${name}</span> cost <span class="hljs-subst">${price}</span> euros`</span>);
+</code></pre></div>
+<p>Ici, on déclare <strong>des variables avec le même nom que les clés de l'objet</strong> sur lequel on vient extraire les informations.</p>
+<h3>Tableaux</h3>
+<p>Ce code est bien trop verbeux :</p>
+<div class="bloc-code"><div class="bloc-code__langue">javascript</div><pre><code class="hljs language-javascript"><span class="hljs-keyword">const</span> animals = [<span class="hljs-string">&quot;Hubert&quot;</span>, <span class="hljs-string">&quot;Rosemary&quot;</span>, <span class="hljs-string">&quot;Paul&quot;</span>];
+<span class="hljs-keyword">const</span> hamster = animals[<span class="hljs-number">0</span>]; 
+<span class="hljs-keyword">const</span> kiwi = animals[<span class="hljs-number">1</span>]; 
+<span class="hljs-keyword">const</span> guineaFowl = animals[<span class="hljs-number">2</span>]; 
+
+<span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(hamster); <span class="hljs-comment">// &quot;Hubert&quot;</span>
+<span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(kiwi); <span class="hljs-comment">// &quot;Rosemary&quot;</span>
+<span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(guineaFowl); <span class="hljs-comment">// &quot;Paul&quot;</span>
+</code></pre></div>
+<p>Heureusement, la décomposition fonctionne également avec les tableaux ! Seule la syntaxe change :</p>
+<div class="bloc-code"><div class="bloc-code__langue">javascript</div><pre><code class="hljs language-javascript"><span class="hljs-keyword">const</span> animals = [<span class="hljs-string">&quot;Hubert&quot;</span>, <span class="hljs-string">&quot;Rosemary&quot;</span>, <span class="hljs-string">&quot;Paul&quot;</span>];
+<span class="hljs-keyword">const</span> [hamster, kiwi, guineaFowl] = animals;
+
+<span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(hamster); <span class="hljs-comment">// &quot;Hubert&quot;</span>
+<span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(kiwi); <span class="hljs-comment">// &quot;Rosemary&quot;</span>
+<span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(guineaFowl); <span class="hljs-comment">// &quot;Paul&quot;</span>
+</code></pre></div>
+<p>La déstructuration de tableau crée automatiquement des variables qui correspondent à un ou plusieurs éléments d'un tableau.
+Dans cet exemple, tu peux voir que nous pouvons attribuer des variables (labels) spécifiques aux valeurs contenues dans les tableaux. le premier label entre les crochets désignera le premier élément du tableau, le deuxième désignera le second élément et ainsi de suite.</p>
+<p>Essaie par toi même !</p>
+<h3>🔬 Expérience</h3>
+<p>Utilise la méthode de déstructuration pour créer des variables à partir d'un tableau.</p>
+<div class="bloc-code"><div class="bloc-code__langue">codesandbox</div><pre><code class="hljs language-codesandbox">https://codesandbox.io/s/destructuring-1-gq9d8
+</code></pre></div>
+<div class="bloc-code"><div class="bloc-code__langue">hidden</div><pre><code class="hljs language-hidden">Montrer la solution|||javascript|||Problèmes pour trouver la solution ? |||0|||Cacher
+const [apple, ananas, kiwi, avocado, cherry, strawberry] = fruits;
+console.log(apple); // 🍏
+console.log(ananas); // 🍍
+</code></pre></div>
+<h2>☮️ syntaxe &quot;rest&quot;</h2>
+<h3>Objets</h3>
+<p>Un exemple vaut plus que 1000 mots:</p>
+<div class="bloc-code"><div class="bloc-code__langue">replit</div><pre><code class="hljs language-replit">https://replit.com/@PierreGenthon/destructuring-rest-operator
+</code></pre></div>
+<p>Comme tu peux le voir, l'opérateur <code>...</code> utilisé juste avant l'accolade fermante de la décomposition permet de désigner <strong>le reste des propriétés de l'objet</strong>.
+Autrement dit, le nom de variable suivant les <code>...</code> référencera <strong>un nouvel objet contenant les propriétés qui n'ont pas été citées dans les accolades de la décomposition</strong>.</p>
+<h3>Tableaux</h3>
+<p>L'opérateur &quot;rest&quot; (<code>...</code>) peut aussi symboliser ce qu'il reste d'un tableau. Par exemple, nous pourrions créer deux variables et ensuite une troisième qui contiendrait le reste du tableau :</p>
+<div class="bloc-code"><div class="bloc-code__langue">javascript</div><pre><code class="hljs language-javascript"><span class="hljs-keyword">const</span> animals = [<span class="hljs-string">&quot;Hubert&quot;</span>, <span class="hljs-string">&quot;Rosemary&quot;</span>, <span class="hljs-string">&quot;Paul&quot;</span>, <span class="hljs-string">&quot;Pierre&quot;</span>];
+<span class="hljs-keyword">const</span> [hamster, kiwi, ...others ] = animals;
+
+<span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(hamster); <span class="hljs-comment">// &quot;Hubert&quot;</span>
+<span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(kiwi); <span class="hljs-comment">// &quot;Rosemary&quot;</span>
+<span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(others); <span class="hljs-comment">// [&quot;Paul&quot;, &quot;Pierre&quot;];</span>
+</code></pre></div>
+<h3>🔬 Expérience</h3>
+<p>Crée deux variables pour les deux premiers fruits et utilise l'opérateur rest pour les dernier.</p>
+<div class="bloc-code"><div class="bloc-code__langue">codesandbox</div><pre><code class="hljs language-codesandbox">https://codesandbox.io/s/spread-operator-36832
+</code></pre></div>
+<div class="bloc-code"><div class="bloc-code__langue">hidden</div><pre><code class="hljs language-hidden">Montrer la solution|||javascript|||Problèmes pour trouver la solution ? |||0|||Cacher
+const [apple, ananas, ...otherFruits] = fruits ;
+console.log(pomme); // 🍏
+console.log(ananas); // 🍍
+console.log(otherFruits); // [&quot;🥝&quot;, &quot;🥑&quot;, &quot;🍒&quot;, &quot;🍓&quot;]
+</code></pre></div>
+<hr>
+<a class="ressource" href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Destructuring_assignment" target="_blank" rel="noopener noreferrer">
+  <div class="ressource__icone">↗</div>
+  <div class="ressource__texte">
+    <div class="ressource__titre">Destructuring assignments</div>
+    <div class="ressource__desc"><p>La doc officielle où tu pourras en apprendre plus sur la décomposition</p>
+</div>
+    <div class="ressource__hote">developer.mozilla.org</div>
+  </div>
+</a>
+
+  </div>
+  
+</article>
+
+<nav class="nav-quete">
+  <a class="nav-quete__lien nav-quete__lien--prec" href="../../javascript-beyond-the-basics/005-js-intermediaire-02bis-tableaux-d-autres-methodes/index.html">
+           <span class="nav-quete__sens">← Précédent</span>
+           <span class="nav-quete__titre">👩‍🏫 JS Intermédiaire 02bis -Tableaux : d'autres méthodes fonctionnelles</span>
+         </a>
+  <a class="nav-quete__lien nav-quete__lien--suiv" href="../../javascript-beyond-the-basics/007-js-intermediaire-05-programmation-orientee-objet/index.html">
+           <span class="nav-quete__sens">Suivant →</span>
+           <span class="nav-quete__titre">👩‍🏫 JS Intermédiaire 05 - Programmation Orientée Objet</span>
+         </a>
+</nav>
+</main>
+<footer class="pied">
+  <p>Archive personnelle des cours suivis à la Wild Code School. Copie hors ligne à usage strictement privé.</p>
+</footer>
+
+<script src="../../assets/copie-code.js"></script>
+<script src="../../assets/progression.js"></script>
+</body>
+</html>

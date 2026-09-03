@@ -1,0 +1,261 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>08 - JS Monorepo : Validation — Archives WCS</title>
+<link rel="stylesheet" href="../../assets/style.css">
+</head>
+<body style="--teinte:#000000">
+<header class="entete">
+  <a class="entete__marque" href="../../index.html">Archives Wild Code School</a>
+</header>
+<main class="contenu">
+<nav class="ariane"><a href="../../index.html">Accueil</a><span class="ariane__sep">›</span><a href="../../js-monorepo/index.html">JS Monorepo</a><span class="ariane__sep">›</span><span aria-current="page">08 - JS Monorepo : Validation</span></nav>
+
+<article class="quete">
+  <header class="quete__entete">
+    <a class="pastille pastille--teintee" href="../../js-monorepo/index.html">JS Monorepo</a>
+    <h1>08 - JS Monorepo : Validation</h1>
+    <p class="quete__meta">Quête 9 sur 9 · 1 image archivée</p>
+  </header>
+  <div class="cours">
+<h2>Objectifs</h2>
+<ul>
+<li>Comprendre comment valider la saisie de l'utilisateur.</li>
+<li>Retourner des réponses appropriées en cas d'erreur du client.</li>
+</ul>
+<h2>Prérequis</h2>
+<ol class="etapes"><li class="etape"><div class="etape__puce">1</div><div class="etape__contenu"><h4 class="etape__titre">Valider la quête suivante</h4><div class="renvois"><div class="renvois__titre">Quêtes liées</div><ul><li><a href="../../js-monorepo/008-07-js-monorepo-mettre-en-place-un-crud-bread/index.html">Quête 825</a></li></ul></div>
+</div></li><li class="etape"><div class="etape__puce">2</div><div class="etape__contenu"><h4 class="etape__titre">Comprendre le principe de middleware dans Express</h4><div class="encadre encadre--note encadre--story"><div class="encadre__corps"><p>Toutes les fonctions <code>(req, res, next) =&gt; {}</code> que tu as vu jusqu'à maintenant sont des <strong>middlewares</strong> : des programmes exécutés entre la réception de requête et l'envoi de la réponse HTTP.</p>
+<p><img src="images/001-prerequis.webp" alt="" loading="lazy"></p>
+</div></div>
+</div></li><li class="etape"><div class="etape__puce">3</div><div class="etape__contenu"><h4 class="etape__titre">Être à l'aise avec l'utilisation de plusieurs middleware sur une route</h4><div class="bloc-code"><div class="bloc-code__langue">typescript</div><pre><code class="hljs language-typescript"><span class="hljs-keyword">const</span> <span class="hljs-attr">step1</span>: <span class="hljs-title class_">RequestHandler</span> = <span class="hljs-function">(<span class="hljs-params">req, res, next</span>) =&gt;</span> {
+  req.<span class="hljs-property">message</span> = <span class="hljs-string">&quot;J&#x27;ai passé l&#x27;étape 1&quot;</span>;
+  <span class="hljs-title function_">next</span>();
+};
+
+<span class="hljs-keyword">const</span> <span class="hljs-attr">step2</span>: <span class="hljs-title class_">RequestHandler</span> = <span class="hljs-function">(<span class="hljs-params">req, res, next</span>) =&gt;</span> {
+  req.<span class="hljs-property">message</span> += <span class="hljs-string">&quot; et l&#x27;étape 2&quot;</span>;
+  <span class="hljs-title function_">next</span>();
+};
+
+<span class="hljs-keyword">const</span> <span class="hljs-attr">lastStep</span>: <span class="hljs-title class_">RequestHandler</span> = <span class="hljs-function">(<span class="hljs-params">req, res</span>) =&gt;</span> {
+  res.<span class="hljs-title function_">send</span>(req.<span class="hljs-property">message</span>);
+};
+
+<span class="hljs-comment">// one route, 3 middlewares</span>
+
+app.<span class="hljs-title function_">get</span>(<span class="hljs-string">&quot;/justToTest&quot;</span>, step1, step2, lastStep);
+</code></pre></div>
+<p>Chaque middleware modifie <code>req.message</code> et passe ensuite au suivant avec <code>next()</code>. La réponse finale sera <code>&quot;J'ai passé l'étape 1 et l'étape 2&quot;</code>.</p>
+</div></li></ol>
+<h2>Sommaire</h2>
+<h2>Introduction</h2>
+<p>Dans les quêtes précédentes, tu as mis en place une gestion complète de données qui permet à l'utilisateur de saisir des informations côté client pour qu'elles soient traitées côté serveur.</p>
+<p>La validation des données saisies par l'utilisateur est une étape cruciale dans le développement d'applications. Elle permet de s'assurer que les informations sont correctes et cohérentes <em>avant</em> de les traiter. Dans cette quête, tu vas explorer l'importance de la validation de la saisie utilisateur et différentes méthodes pour la mettre en oeuvre dans ton projet Wild Series en tant que <em>middleware</em>.</p>
+<div class="bloc-code"><div class="bloc-code__langue">js</div><pre><code class="hljs language-js">server/
+├── database/
+│   └──  <span class="hljs-comment">// ✅</span>
+├── src/
+│   ├── modules/
+│   │   ├── category/
+│   │   │   ├── categoryActions.<span class="hljs-property">ts</span>    <span class="hljs-comment">// ✌️</span>
+│   │   │   └── categoryRepository.<span class="hljs-property">ts</span> <span class="hljs-comment">// ✅</span>
+│   │   └── ...
+│   ├── app.<span class="hljs-property">ts</span>     <span class="hljs-comment">// ✅</span>
+│   ├── main.<span class="hljs-property">ts</span>    <span class="hljs-comment">// ✅</span>
+│   └── router.<span class="hljs-property">ts</span>  <span class="hljs-comment">// ✅</span>
+├── tests/
+│   └──  <span class="hljs-comment">// bientôt</span>
+├── .<span class="hljs-property">env</span>
+└── .<span class="hljs-property">env</span>.<span class="hljs-property">sample</span>
+</code></pre></div>
+<h2>Pourquoi valider la saisie utilisateur ?</h2>
+<p>Avant d'aller plus loin, examinons un exemple concret. Imaginons que nous travaillons sur une application de gestion de films (ce n'est pas très loin des séries). Nous aurions une table de base de données pour stocker les détails des films, telle que définie ci-dessous :</p>
+<div class="bloc-code"><div class="bloc-code__langue">sql</div><pre><code class="hljs language-sql"><span class="hljs-keyword">create table</span> movies(
+  id <span class="hljs-type">int</span> <span class="hljs-keyword">primary key</span> <span class="hljs-keyword">not null</span> auto_increment,
+  title <span class="hljs-type">varchar</span>(<span class="hljs-number">255</span>) <span class="hljs-keyword">not null</span>,
+  director <span class="hljs-type">varchar</span>(<span class="hljs-number">255</span>) <span class="hljs-keyword">not null</span>,
+  <span class="hljs-keyword">year</span> <span class="hljs-type">varchar</span>(<span class="hljs-number">255</span>) <span class="hljs-keyword">not null</span>,
+  color <span class="hljs-type">varchar</span>(<span class="hljs-number">255</span>) <span class="hljs-keyword">not null</span>,
+  duration <span class="hljs-type">int</span> <span class="hljs-keyword">not null</span>
+);
+</code></pre></div>
+<p>Dans cet exemple, tous les champs de la table sont obligatoires (<code>NOT NULL</code>). Ainsi, si un utilisateur oublie de saisir l'une de ces informations, cela peut entraîner des erreurs lors de l'insertion des données dans la base de données.</p>
+<h3>La bonne erreur</h3>
+<p>S'il existait une API pour insérer un nouveau film dans cette table sans validation, voici ce que tu pourrais faire :</p>
+<ol>
+<li>Envoyer une requête POST à <code>/api/movies</code> avec tous les champs requis (<code>title</code>, <code>director</code>...).</li>
+<li>Envoyer une requête avec un champ manquant et observer la réponse du serveur.</li>
+</ol>
+<p>La première requête devrait réussir, tandis que la seconde échouerait avec une erreur 500 (<code>ER_BAD_NULL_ERROR</code>). Cependant, retourner une erreur 500 pour des données manquantes n'est pas la meilleure pratique.</p>
+<div class="encadre encadre--note encadre--story"><div class="encadre__corps"><p>Pourquoi éviter l'erreur 500 ?</p>
+</div></div>
+<p>L'erreur 500 indique une erreur côté serveur (&quot;Internal Server Error&quot;), ce qui signifie que le serveur a rencontré un problème inattendu, et qu'aucune requête du même type ne sera traitée.</p>
+<p>Le problème était ici &quot;attendu&quot; : la requête était mal formulée, avec une donnée manquante. Pour détecter ce type d'erreur, tu dois valider les données de <code>req.body</code> avant de les insérer dans la base de données. En cas de données invalides, c'est une <strong>erreur 4xx</strong> (erreur côté client) que tu dois produire : cela permet au client web de savoir que la requête doit être modifiée pour être traitée par le serveur. Probablement une erreur <strong>400 Bad Request</strong>.</p>
+<h2>Comment valider les données (et où) ?</h2>
+<p>La validation des données peut être effectuée à deux niveaux : côté client et côté serveur. Si tu devais n'en choisir qu'un, tu devrais opter pour la <strong>validation côté serveur</strong>.</p>
+<ul>
+<li>
+<p>Côté client : La validation côté client consiste à vérifier les données saisies dans les formulaires avant leur envoi. Cela garantit une meilleure expérience utilisateur en empêchant les erreurs dès le départ.</p>
+</li>
+<li>
+<p>Côté serveur : La validation côté serveur est essentielle pour garantir la sécurité, car un utilisateur malveillant peut contourner les vérifications côté client. Elle consiste à s'assurer que toutes les données nécessaires sont présentes et valides avant de les traiter.</p>
+</li>
+</ul>
+<h3>Utiliser des middlewares Express pour la validation</h3>
+<p>Dans ton projet Wild Series, créé une action <code>validate</code> dans <code>server/src/modules/categoryActions.ts</code> :</p>
+<div class="bloc-code"><div class="bloc-code__langue">typescript</div><pre><code class="hljs language-typescript"><span class="hljs-comment">// ...</span>
+
+<span class="hljs-keyword">const</span> <span class="hljs-attr">validate</span>: <span class="hljs-title class_">RequestHandler</span> = <span class="hljs-function">(<span class="hljs-params">req, res, next</span>) =&gt;</span> {
+  <span class="hljs-keyword">type</span> <span class="hljs-title class_">ValidationError</span> = {
+    <span class="hljs-attr">field</span>: <span class="hljs-built_in">string</span>;
+    <span class="hljs-attr">message</span>: <span class="hljs-built_in">string</span>;
+  };
+
+  <span class="hljs-keyword">const</span> <span class="hljs-attr">errors</span>: <span class="hljs-title class_">ValidationError</span>[] = [];
+
+  <span class="hljs-keyword">const</span> { name } = req.<span class="hljs-property">body</span>;
+
+  <span class="hljs-comment">// put your validation rules here</span>
+
+  <span class="hljs-keyword">if</span> (errors.<span class="hljs-property">length</span> === <span class="hljs-number">0</span>) {
+    <span class="hljs-title function_">next</span>();
+  } <span class="hljs-keyword">else</span> {
+    res.<span class="hljs-title function_">status</span>(<span class="hljs-number">400</span>).<span class="hljs-title function_">json</span>({ <span class="hljs-attr">validationErrors</span>: errors });
+  }
+};
+
+<span class="hljs-comment">// Export them to import them somewhere else</span>
+
+<span class="hljs-keyword">export</span> <span class="hljs-keyword">default</span> { browse, read, edit, add, destroy, validate };
+</code></pre></div>
+<p>En l'état, cette action ne fait aucune validation : un tableau d'erreurs (<code>errors</code>) est initialisé vide, et s'il reste vide (<code>errors.length === 0</code>) le middleware passe le relais au &quot;suivant&quot; (<code>next()</code>).</p>
+<p>Si le tableau d'erreurs n'était pas vide, le <code>else</code> serait exécuté et la réponse serait envoyée immédiatement avec un statut 400. Les traitements suivants ne seraient alors pas exécutés.</p>
+<p>Tu verras dans les parties suivantes comment détecter des erreurs. Pour l'instant, ton action de validation existe et est exporté.</p>
+<p>Modifie <code>server/src/router.ts</code> comme suit :</p>
+<div class="bloc-code"><div class="bloc-code__langue">diff</div><pre><code class="hljs language-diff">router.get(&quot;/api/categories&quot;, categoryActions.browse);
+router.get(&quot;/api/categories/:id&quot;, categoryActions.read);
+<span class="hljs-deletion">-router.put(&quot;/api/categories/:id&quot;, categoryActions.edit);</span>
+<span class="hljs-addition">+router.put(</span>
+<span class="hljs-addition">+  &quot;/api/categories/:id&quot;,</span>
+<span class="hljs-addition">+  categoryActions.validate,</span>
+<span class="hljs-addition">+  categoryActions.edit,</span>
+<span class="hljs-addition">+);</span>
+<span class="hljs-deletion">-router.post(&quot;/api/categories&quot;, categoryActions.add);</span>
+<span class="hljs-addition">+router.post(&quot;/api/categories&quot;, categoryActions.validate, categoryActions.add);</span>
+router.delete(&quot;/api/categories/:id&quot;, categoryActions.destroy);
+</code></pre></div>
+<p>En ajoutant ainsi ton action <code>validate</code> en tant que middleware sur les routes PUT et POST, tu en fais une étape qui est exécutée avant les middlewares <code>edit</code> et <code>add</code> : les données seront traitées (éditeés ou ajoutées) seulement si la validation passe !</p>
+<h3>Validation manuelle</h3>
+<p>Une première option est d'écrire toi-même ton code de validation. L'avantage est que tu n'utilises pas de dépendance supplémentaire. L'inconvénient est que tu dois implémenter toi-même ton code validation.</p>
+<p>Une règle de validation peut être un code &quot;simple&quot;, par exemple pour valider qu'un champ est défini :</p>
+<div class="bloc-code"><div class="bloc-code__langue">typescript</div><pre><code class="hljs language-typescript"><span class="hljs-keyword">if</span> (name == <span class="hljs-literal">null</span>) {
+  errors.<span class="hljs-title function_">push</span>({ <span class="hljs-attr">field</span>: <span class="hljs-string">&quot;name&quot;</span>, <span class="hljs-attr">message</span>: <span class="hljs-string">&quot;The field is required&quot;</span> });
+}
+</code></pre></div>
+<p>Un autre exemple pour varifier la longueur d'un champ texte :</p>
+<div class="bloc-code"><div class="bloc-code__langue">typescript</div><pre><code class="hljs language-typescript"><span class="hljs-keyword">if</span> (name.<span class="hljs-property">length</span> &gt; <span class="hljs-number">255</span>) {
+  errors.<span class="hljs-title function_">push</span>({ <span class="hljs-attr">field</span>: <span class="hljs-string">&quot;name&quot;</span>, <span class="hljs-attr">message</span>: <span class="hljs-string">&quot;Should contain less than 255 characters&quot;</span> });
+}
+</code></pre></div>
+<p>Ou l'âge d'une personne :</p>
+<div class="bloc-code"><div class="bloc-code__langue">typescript</div><pre><code class="hljs language-typescript"><span class="hljs-keyword">if</span> (age &gt;= <span class="hljs-number">18</span>) {
+  errors.<span class="hljs-title function_">push</span>({ <span class="hljs-attr">field</span>: <span class="hljs-string">&quot;name&quot;</span>, <span class="hljs-attr">message</span>: <span class="hljs-string">&quot;Should be an adult&quot;</span> });
+}
+</code></pre></div>
+<p>Tu pourras rencontrer des règles plus complexes à base de <strong>regex</strong> :</p>
+<div class="bloc-code"><div class="bloc-code__langue">typescript</div><pre><code class="hljs language-typescript"><span class="hljs-keyword">const</span> emailRegex = <span class="hljs-regexp">/[a-z0-9._]+@[a-z0-9-]+\.[a-z]{2,3}/</span>;
+
+<span class="hljs-keyword">if</span> (!emailRegex.<span class="hljs-title function_">test</span>(email)) {
+  errors.<span class="hljs-title function_">push</span>({ <span class="hljs-attr">field</span>: <span class="hljs-string">&#x27;email&#x27;</span>, <span class="hljs-attr">message</span>: <span class="hljs-string">&#x27;Invalid email&#x27;</span> });
+}
+</code></pre></div>
+<div class="encadre encadre--note encadre--callout"><div class="encadre__corps"><p>Si ce code a piqué ta curiosité, tu peux t'initier aux regex ici : <a href="https://regexone.com/" target="_blank" rel="noopener noreferrer">https://regexone.com/</a></p>
+</div></div>
+<p>Tu peux combiner plusieurs règles ensemble et construire des logiques sur mesure :</p>
+<div class="bloc-code"><div class="bloc-code__langue">diff</div><pre><code class="hljs language-diff">// ...
+
+const validate: RequestHandler = async (req, res, next) =&gt; {
+  type ValidationError = {
+    field: string;
+    message: string;
+  };
+
+  const errors: ValidationError[] = [];
+  const { name } = req.body;
+
+  // put your validation rules here
+<span class="hljs-addition">+  if (name == null) {</span>
+<span class="hljs-addition">+    errors.push({ field: &quot;name&quot;, message: &quot;The field is required&quot; });</span>
+<span class="hljs-addition">+  } else if (name.length &gt; 255) {</span>
+<span class="hljs-addition">+    errors.push({ field: &quot;name&quot;, message: &quot;Should contain less than 255 characters&quot; });</span>
+<span class="hljs-addition">+  }</span>
+
+  if (errors.length <span class="hljs-comment">=== 0) {</span>
+    next();
+  } else {
+    res.status(400).json({ validationErrors: errors });
+  }
+};
+
+// Export them to import them somewhere else
+
+export default { browse, read, edit, add, destroy, validate };
+</code></pre></div>
+<p>Mais rapidement, sur des données plus complexes, ton code contiendra beaucoup de règles imbriquées. C'est le moment où tu auras envie d'utiliser des modules tiers.</p>
+<h3>Validation avancée avec des modules tiers</h3>
+<p>Pour simplifier et renforcer la validation, tu peux utiliser des bibliothèques comme <code>joi</code> ou <code>express-validator</code> (entre autres).</p>
+<p>Un exemple de code utilisant <a href="https://www.npmjs.com/package/joi" target="_blank" rel="noopener noreferrer">joi</a> pour la validation d'un film :</p>
+<div class="bloc-code"><div class="bloc-code__langue">typescript</div><pre><code class="hljs language-typescript"><span class="hljs-comment">// ...</span>
+
+<span class="hljs-keyword">import</span> joi <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;joi&quot;</span>;
+
+<span class="hljs-keyword">const</span> movieSchema = joi.<span class="hljs-title function_">object</span>({
+  <span class="hljs-attr">title</span>: joi.<span class="hljs-title function_">string</span>().<span class="hljs-title function_">max</span>(<span class="hljs-number">255</span>).<span class="hljs-title function_">required</span>(),
+  <span class="hljs-attr">director</span>: joi.<span class="hljs-title function_">string</span>().<span class="hljs-title function_">max</span>(<span class="hljs-number">255</span>).<span class="hljs-title function_">required</span>(),
+  <span class="hljs-attr">year</span>: joi.<span class="hljs-title function_">string</span>().<span class="hljs-title function_">max</span>(<span class="hljs-number">4</span>).<span class="hljs-title function_">required</span>(),
+  <span class="hljs-attr">color</span>: joi.<span class="hljs-title function_">string</span>().<span class="hljs-title function_">max</span>(<span class="hljs-number">255</span>).<span class="hljs-title function_">required</span>(),
+  <span class="hljs-attr">duration</span>: joi.<span class="hljs-title function_">number</span>().<span class="hljs-title function_">integer</span>().<span class="hljs-title function_">required</span>(),
+});
+
+<span class="hljs-keyword">const</span> <span class="hljs-title function_">validate</span> = (<span class="hljs-params">req, res, next</span>) =&gt; {
+  <span class="hljs-keyword">const</span> { error } = movieSchema.<span class="hljs-title function_">validate</span>(req.<span class="hljs-property">body</span>, { <span class="hljs-attr">abortEarly</span>: <span class="hljs-literal">false</span> });
+
+  <span class="hljs-keyword">if</span> (error == <span class="hljs-literal">null</span>) {
+    <span class="hljs-title function_">next</span>();
+  } <span class="hljs-keyword">else</span> {
+    res.<span class="hljs-title function_">status</span>(<span class="hljs-number">400</span>).<span class="hljs-title function_">json</span>({ <span class="hljs-attr">validationErrors</span>: error.<span class="hljs-property">details</span> });
+  }
+};
+
+<span class="hljs-keyword">export</span> <span class="hljs-keyword">default</span> { <span class="hljs-comment">/* ... */</span>, validate };
+</code></pre></div>
+<p>Tu peux trouver plus d'informations dans la <a href="https://joi.dev/api/?v=17.13.0#introduction" target="_blank" rel="noopener noreferrer">documentation officielle</a>.</p>
+<h2>Récapitulatif</h2>
+<p>Dans cette quête, tu as appris l'importance de la validation des données saisies par l'utilisateur et comment la mettre en œuvre dans ton application Express en utilisant des middlewares. Tu as également vu comment implémenter une validation manuelle et comment utiliser des bibliothèques tierces pour faciliter ce processus.</p>
+<p>La validation des données est essentielle pour garantir la <strong>sécurité</strong> et la <strong>cohérence</strong> des informations traitées par ton application.</p>
+<h2>Challenge</h2>
+<p>Applique les concepts de cette quête pour ajouter des validateurs sur les données de ton projet Wild Series. À toi de décider si tu veux faire des validations manuelles ou utiliser des outils tiers comme <code>joi</code>.</p>
+
+  </div>
+  
+</article>
+
+<nav class="nav-quete">
+  <a class="nav-quete__lien nav-quete__lien--prec" href="../../js-monorepo/008-07-js-monorepo-mettre-en-place-un-crud-bread/index.html">
+           <span class="nav-quete__sens">← Précédent</span>
+           <span class="nav-quete__titre">07 - JS Monorepo : Mettre en place un CRUD / BREAD 🍞</span>
+         </a>
+  <span class="nav-quete__lien nav-quete__lien--vide"></span>
+</nav>
+</main>
+<footer class="pied">
+  <p>Archive personnelle des cours suivis à la Wild Code School. Copie hors ligne à usage strictement privé.</p>
+</footer>
+
+<script src="../../assets/copie-code.js"></script>
+<script src="../../assets/progression.js"></script>
+</body>
+</html>

@@ -1,0 +1,29 @@
+{
+  "id": 1799,
+  "titre": "✏️ Exercise 2 - Operateurs",
+  "titres": {
+    "en": "✏️ Exercise 2 - Operators",
+    "fr": "✏️ Exercise 2 - Operateurs"
+  },
+  "theme": {
+    "id": 25,
+    "slug": "php",
+    "nom": "PHP"
+  },
+  "creeLe": "2021-09-07T14:50:37.014+02:00",
+  "difficulte": "1",
+  "dureeEstimee": null,
+  "modeValidation": "self",
+  "chapitres": [
+    {
+      "id": 9742,
+      "type": "content",
+      "langue": "fr",
+      "majLe": "2023-04-18T15:44:34.751+02:00",
+      "caracteres": 822
+    }
+  ],
+  "ressources": [],
+  "urlOrigine": "https://odyssey.wildcodeschool.com/quests/1799",
+  "archiveLe": "2026-09-02T23:21:39.791Z"
+}

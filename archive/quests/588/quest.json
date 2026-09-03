@@ -1,0 +1,37 @@
+{
+  "id": 588,
+  "titre": "01 - JS Monorepo : Wild Series, la genèse",
+  "titres": {
+    "fr": "01 - JS Monorepo : Wild Series, la genèse"
+  },
+  "theme": {
+    "id": 43,
+    "slug": "prepa",
+    "nom": "JS Monorepo"
+  },
+  "creeLe": "2019-05-19T23:14:07.210+02:00",
+  "difficulte": "",
+  "dureeEstimee": null,
+  "modeValidation": "student",
+  "chapitres": [
+    {
+      "id": 12612,
+      "type": "content",
+      "langue": "fr",
+      "majLe": "2024-11-20T10:51:35.777+01:00",
+      "caracteres": 7974
+    }
+  ],
+  "ressources": [
+    {
+      "link": "https://mockflow.com/",
+      "description": "logiciel sympa pour du wireframe efficace"
+    },
+    {
+      "link": "https://www.youtube.com/watch?v=CFGTHjV-XaQ",
+      "description": "création de wireframe avec figma"
+    }
+  ],
+  "urlOrigine": "https://odyssey.wildcodeschool.com/quests/588",
+  "archiveLe": "2026-09-02T20:51:55.179Z"
+}

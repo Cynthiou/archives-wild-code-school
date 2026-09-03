@@ -1,0 +1,329 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>👩‍🏫 HTML - Chapitre 1 | Introduction au HTML — Archives WCS</title>
+<link rel="stylesheet" href="../../assets/style.css">
+</head>
+<body style="--teinte:#a03737">
+<header class="entete">
+  <a class="entete__marque" href="../../index.html">Archives Wild Code School</a>
+</header>
+<main class="contenu">
+<nav class="ariane"><a href="../../index.html">Accueil</a><span class="ariane__sep">›</span><a href="../../html/index.html">HTML</a><span class="ariane__sep">›</span><span aria-current="page">👩‍🏫 HTML - Chapitre 1 | Introduction au HTML</span></nav>
+
+<article class="quete">
+  <header class="quete__entete">
+    <a class="pastille pastille--teintee" href="../../html/index.html">HTML</a>
+    <h1>👩‍🏫 HTML - Chapitre 1 | Introduction au HTML</h1>
+    <p class="quete__meta">Quête 1 sur 9 · 3 images archivées</p>
+  </header>
+  <div class="cours">
+<h2>Objectifs</h2>
+<ul>
+<li>Comprendre ce qu'est le HTML</li>
+<li>Connaitre les principales balises HTML</li>
+<li>Découvrir des bonnes pratiques pour créer une page HTML</li>
+</ul>
+<h2>Pré-requis</h2>
+<ol class="etapes"><li class="etape"><div class="etape__puce">1</div><div class="etape__contenu"><h4 class="etape__titre">Valider la quête suivante</h4><div class="renvois"><div class="renvois__titre">Quêtes liées</div><ul><li><a href="../../outils/001-installer-et-utiliser-visual-studio-code/index.html">Quête 2114</a></li></ul></div>
+</div></li></ol>
+<h2>Introduction</h2>
+<p>Le :def[HTML]{value=&quot;HyperText Markup Language&quot;} est un language de balisage utilisé pour créer des <strong>pages web</strong>.</p>
+<p>Dans cette quête nous verrons ce qu'est le HTML et comment l'utiliser efficacement pour créer tes premières pages web.</p>
+<h2>Sommaire</h2>
+<h2>Qu'est-ce que le HTML?</h2>
+<p>Le HTML n'est pas un langage de programmation à proprement parler mais un language de <strong>balisage</strong>. Il permet de définir à l'aide de balises <strong>la structure</strong> d'une page web.</p>
+<p>Une page HTML se compose d'un certain nombre de <strong>balises</strong> qui permettent d'encadrer les éléments composant la page.</p>
+<p><img src="images/001-qu-est-ce-que-le-html.png" alt="" loading="lazy"></p>
+<p><em>source :</em> <a href="https://developer.mozilla.org/fr/docs/Learn_web_development/Getting_started/Your_first_website/Creating_the_content" target="_blank" rel="noopener noreferrer">https://developer.mozilla.org/fr/docs/Learn_web_development/Getting_started/Your_first_website/Creating_the_content</a></p>
+<p>Lorsque le navigateur reçoit une page HTML, il va <strong>l’interpreter</strong> et <strong>afficher les éléments</strong> d'une certaine manière à l'écran.</p>
+<p>Prenons un exemple : imaginons que nous voulions créer un titre en HTML, le titre de notre site est &quot;Mon super site web !&quot;.</p>
+<p>Pour cela, nous devons expliquer à notre navigateur que le texte &quot;Notre super site web !&quot; est un titre afin qu'il puisse s'afficher comme tel sur notre page.</p>
+<p>HTML nous permet d'<strong>envelopper notre texte entre deux balises</strong> &quot;heading&quot; afin d'indiquer que ce contenu est un texte. La balise titre de niveau 1 (heading 1) en HTML s'écrit <code>&lt;h1&gt;</code>.</p>
+<p>Cette balise indique au navigateur que le texte est un titre de niveau 1.</p>
+<p>Pour délimiter le début et la fin de notre titre nous utilisons d'abord <strong>une balise &quot;ouvrante&quot;</strong> <code>&lt;h1&gt;</code> puis pour signifier la fin nous utilisons <strong>une balise &quot;fermante&quot;</strong> <code>&lt;/h1&gt;</code>.</p>
+<p>Voici donc le code final qui te permettra d'afficher un titre de niveau 1 :</p>
+<div class="bloc-code"><div class="bloc-code__langue">html</div><pre><code class="hljs language-html"><span class="hljs-tag">&lt;<span class="hljs-name">h1</span>&gt;</span>Mon super site web!<span class="hljs-tag">&lt;/<span class="hljs-name">h1</span>&gt;</span>
+</code></pre></div>
+<div class="encadre encadre--note encadre--arrow"><div class="encadre__corps"><p><strong>🎯 À toi de jouer !</strong></p>
+<p>Ouvre ton éditeur de code favori et crée un nouvel espace de travail. Crée ensuite un fichier <code>index.html</code> et ajoute un titre pour ton site web.</p>
+<p>Ouvre ensuite le fichier <code>index.html</code> dans ton navigateur pour voir le résultat.</p>
+</div></div>
+<h2>Imbriquer des éléments</h2>
+<p>Les balises HTML peuvent contenir <strong>du texte</strong>, comme nous l'avons vu dans l'exemple précédent, mais aussi, <strong>d'autres balises</strong> !</p>
+<p>Par exemple, prenons la balise <code>&lt;p&gt;</code> qui permet de créer un paragraphe.</p>
+<p>Tu peux à l'intérieur d'un paragraphe donner de l'importance à une partie du texte en utilisant la balise <code>&lt;strong&gt;</code>.</p>
+<p>Voyons un exemple :</p>
+<div class="bloc-code"><div class="bloc-code__langue">html</div><pre><code class="hljs language-html"><span class="hljs-tag">&lt;<span class="hljs-name">p</span>&gt;</span>Bienvenue sur mon incroyable <span class="hljs-tag">&lt;<span class="hljs-name">strong</span>&gt;</span>site web<span class="hljs-tag">&lt;/<span class="hljs-name">strong</span>&gt;</span> !<span class="hljs-tag">&lt;/<span class="hljs-name">p</span>&gt;</span>
+</code></pre></div>
+<p>Tu peux donc mettre d'autres balises à l'intérieur d'une balise.</p>
+<div class="encadre encadre--note encadre--arrow"><div class="encadre__corps"><p><strong>🎯 À toi de jouer !</strong></p>
+<p>Ajoute une balise <code>&lt;p&gt;</code> dans ton <code>index.html</code> avec la description de ton site.</p>
+<p>Ajoute du texte important à l'intérieur de ton paragraphe.</p>
+</div></div>
+<h3>Inline vs block</h3>
+<p>Il y a deux catégories d'éléments en HTML : les éléments dits <strong>&quot;inline&quot; (en ligne)</strong> et les éléments de type <strong>&quot;block&quot;</strong>.</p>
+<p>Les balises <code>&lt;h1&gt;</code> et <code>&lt;p&gt;</code> sont des balises de type <code>block</code>, tandis que la balise <code>&lt;strong&gt;</code> est une balise de type <code>inline</code>.</p>
+<p>La différence est que <strong>les éléments de type blocks forment... un bloc sur la page</strong>. Cela veut dire que n'importe quel élément affiché à la suite d'un élément de type <code>block</code> sera automatiquement affiché sur la ligne suivante, l'élément bloc prend donc la <strong>totalité</strong> de la largeur de la page.</p>
+<p>C'est le cas de nos balises <code>&lt;p&gt;</code> et <code>&lt;h1&gt;</code> : si tu ajoutes un autre titre ou paragraphe à la suite, ce dernier sera affiché sur la ligne suivante. Cela veut dire que notre bloc titre/paragraphe prend bien la totalité de la largeur de la page.</p>
+<p>En revanche, notre balise <code>&lt;strong&gt;</code> est de type inline : si ce n'était pas le cas, le texte que tu as mis entre tes balises <code>&lt;strong&gt;</code> serait affiché à la ligne suivante.</p>
+<p><img src="images/002-comparaison-des-elements-blocs-et-des-elements.jpg" alt="Comparaison des éléments blocs et des éléments inline, les éléments blocs sont représentés comme des blocs prenants toute la largeur de l'écran tandis que les éléments inline s'affichent les uns à côté des autres" loading="lazy"></p>
+<div class="encadre encadre--note encadre--arrow"><div class="encadre__corps"><p><strong>🎯 À toi de jouer !</strong></p>
+<p>En HTML, tu peux créer des titres secondaires en utilisant la balise <code>&lt;h2&gt;</code>, <em>(en fait il existe 6 niveau de titres différents allant de <code>&lt;h1&gt;</code> à <code>&lt;h6&gt;</code>)</em>.</p>
+<p>Ajoute un titre <code>&lt;h2&gt;</code> pour ta page web après ton titre <code>&lt;h1&gt;</code>.</p>
+<p>Ajoute un texte sur lequel mettre de l'emphase dans le paragraphe que tu as crée précédemment : utilise pour ce nouveau texte la balise <code>&lt;em&gt;</code> (&quot;emphase&quot;).</p>
+<p>Tu peux constater que le titre <code>h2</code> va bien à la ligne tandis que le texte en emphase reste bien sur la même ligne que le reste du paragraphe.</p>
+</div></div>
+<h2>Les balises &quot;auto-fermantes&quot;</h2>
+<p>Certaines balises ne nécessitent pas d'avoir une balise fermante : ce sont des balises <strong>auto fermantes</strong>.</p>
+<p>C'est le cas, par exemple de la balise <code>&lt;img /&gt;</code>. C'est la balise que tu dois utiliser pour créer une image dans ton contenu HTML. Mais contrairement à ce que nous avons vu précédemment, tu n'inséreras rien entre deux balises.</p>
+<p>Tu dois donner à la balise image un attribut afin de spécifier l'url à laquelle se trouve ton image. Voyons plutôt :</p>
+<div class="bloc-code"><div class="bloc-code__langue">html</div><pre><code class="hljs language-html"><span class="hljs-tag">&lt;<span class="hljs-name">img</span> <span class="hljs-attr">src</span>=<span class="hljs-string">&quot;images/003-les-balises-auto-fermantes.jpg&quot;</span> /&gt;</span>
+</code></pre></div>
+<p>Les valeurs de chaque attribut doivent être spécifiées comme <strong>chaine de caractères</strong> pour cela, tu dois toujours les placer entre guillemets <code>&quot;&quot;</code>.</p>
+<p>Comme tu peux le voir, la balise ne contient pas de balise fermante, puisque cette balise ne nécessite pas de placer du contenu entre les deux balises. À la place, nous signifions que la balise est auto fermante en plaçant le symbole <code>/</code> a la fin de la balise.</p>
+<div class="encadre encadre--note encadre--arrow"><div class="encadre__corps"><p><strong>🎯 À toi de jouer !</strong></p>
+<p>Ajoute une image sur ta page web à l'aide de la balise <code>&lt;img /&gt;</code></p>
+</div></div>
+<h2>Les attributs</h2>
+<p>Tu peux donner <strong>plusieurs attributs</strong> à un élément HTML. Par exemple, dans le cas des images, tu dois toujours t'assurer que l'image contient un attribut <code>alt</code> en plus de l'attribut <code>src</code>.</p>
+<p>L'attribut &quot;alt&quot; fournit un texte alternatif dans le cas où l'image ne pourrait pas être perçue (à cause d'une déficience visuelle, ou simplement à cause d'une mauvaise connexion internet). Tu peux ainsi fournir un élément lisible plutôt que du &quot;vide&quot;.</p>
+<p>Voyons un exemple :</p>
+<div class="bloc-code"><div class="bloc-code__langue">html</div><pre><code class="hljs language-html"><span class="hljs-tag">&lt;<span class="hljs-name">img</span> <span class="hljs-attr">src</span>=<span class="hljs-string">&quot;images/003-les-balises-auto-fermantes.jpg&quot;</span> <span class="hljs-attr">alt</span>=<span class="hljs-string">&quot;A cute dog&quot;</span> /&gt;</span>
+</code></pre></div>
+<div class="encadre encadre--note encadre--arrow"><div class="encadre__corps"><p><strong>🎯 À toi de jouer !</strong></p>
+<p>Ajoute un attribut <code>alt</code> à ton image avec une description.</p>
+<p>Tu peux aussi ajouter un attribut pour changer la largeur d'une image : l'attribut <code>width</code> dans lequel tu peux spécifier la largeur en pixel (px) (par exemple : &quot;300&quot;). Essaie de changer la largeur de l'image et regarde le résultat.</p>
+</div></div>
+<h3>Les attributs booléens</h3>
+<p>Certains attributs peuvent avoir une valeur de type booléens (true/false).</p>
+<p>Par exemple, tu peux désactiver un bouton tant que l'utilisateur n'a pas rempli un formulaire en utilisant l'attribut <code>disabled</code>.</p>
+<p>Par exemple :</p>
+<div class="bloc-code"><div class="bloc-code__langue">html</div><pre><code class="hljs language-html"><span class="hljs-tag">&lt;<span class="hljs-name">button</span> <span class="hljs-attr">disabled</span>=<span class="hljs-string">&quot;true&quot;</span>&gt;</span>Click here<span class="hljs-tag">&lt;/<span class="hljs-name">button</span>&gt;</span>
+</code></pre></div>
+<p>Tu peux raccourcir le tout en utilisant simplement l'attribut sans aucune valeur :</p>
+<div class="bloc-code"><div class="bloc-code__langue">html</div><pre><code class="hljs language-html"><span class="hljs-tag">&lt;<span class="hljs-name">button</span> <span class="hljs-attr">disabled</span>&gt;</span>Click here<span class="hljs-tag">&lt;/<span class="hljs-name">button</span>&gt;</span>
+</code></pre></div>
+<p>Si l'attribut <code>disabled</code> est présent cela veut dire que le bouton sera désactivé.</p>
+<div class="encadre encadre--note encadre--arrow"><div class="encadre__corps"><p><strong>🎯 À toi de jouer !</strong></p>
+<p>Ajoute un bouton avec l'attribut &quot;disabled&quot; et observe le résultat dans ton navigateur.</p>
+</div></div>
+<h2>La structure d'un document HTML</h2>
+<p>Jusqu'à maintenant, ton document HTML doit ressembler à quelque chose comme cela :</p>
+<div class="bloc-code"><div class="bloc-code__langue">html</div><pre><code class="hljs language-html"><span class="hljs-tag">&lt;<span class="hljs-name">h1</span>&gt;</span>Hello world!<span class="hljs-tag">&lt;/<span class="hljs-name">h1</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">h2</span>&gt;</span>Welcome here<span class="hljs-tag">&lt;/<span class="hljs-name">h2</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">p</span>&gt;</span>Bienvenue sur mon <span class="hljs-tag">&lt;<span class="hljs-name">strong</span>&gt;</span>incroyable<span class="hljs-tag">&lt;/<span class="hljs-name">strong</span>&gt;</span> site internet!<span class="hljs-tag">&lt;/<span class="hljs-name">p</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">p</span>&gt;</span>Je m&#x27;appelle Bob<span class="hljs-tag">&lt;/<span class="hljs-name">p</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">img</span> <span class="hljs-attr">src</span>=<span class="hljs-string">&quot;images/003-les-balises-auto-fermantes.jpg&quot;</span> <span class="hljs-attr">alt</span>=<span class="hljs-string">&quot;A Cute dog&quot;</span> <span class="hljs-attr">width</span>=<span class="hljs-string">&quot;300&quot;</span> /&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">button</span> <span class="hljs-attr">disabled</span>&gt;</span>Click here<span class="hljs-tag">&lt;/<span class="hljs-name">button</span>&gt;</span>
+</code></pre></div>
+<p>Pour des raisons de simplicité, nous n'avons pas respecté la structure d'un document HTML. Maintenant que tu comprends les concepts de bases du HTML, nous allons <strong>structurer</strong> notre page.</p>
+<p>Le &quot;squelette&quot; d'une page HTML ressemble à ceci :</p>
+<div class="bloc-code"><div class="bloc-code__langue">html</div><pre><code class="hljs language-html"><span class="hljs-meta">&lt;!DOCTYPE <span class="hljs-keyword">html</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">html</span> <span class="hljs-attr">lang</span>=<span class="hljs-string">&quot;fr&quot;</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">head</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">meta</span> <span class="hljs-attr">charset</span>=<span class="hljs-string">&quot;UTF-8&quot;</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">title</span>&gt;</span>My super website<span class="hljs-tag">&lt;/<span class="hljs-name">title</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">head</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">body</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">p</span>&gt;</span>Hello World<span class="hljs-tag">&lt;/<span class="hljs-name">p</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">body</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">html</span>&gt;</span>
+</code></pre></div>
+<p>Cette structure permet de <strong>donner des informations au navigateur</strong> sur le type de document, la langue, les caractères utilisés, le titre de la page puis le contenu de celle-ci.</p>
+<p>Jusqu'à maintenant, notre document s'affichait car notre navigateur a lui même ajouté ces éléments. Lorsque tu travailles sur un nouveau projet, c'est important de <strong>bien définir la structure avant de commencer</strong>.</p>
+<p>Voyons chacune des balises en détail :</p>
+<ul>
+<li>
+<p><code>&lt;!DOCTYPE html&gt;</code> sert à indiquer que notre document est un document HTML. Ce n'est pas une balise HTML mais une information qui sert au navigateur pour connaitre le type de document.</p>
+</li>
+<li>
+<p><code>&lt;html lang=&quot;fr&quot;&gt;&lt;/html&gt;</code> sert à délimiter notre document HTML. Il est important de définir la langue du document pour définir la langue dans lequel le site internet est rédigé.</p>
+</li>
+<li>
+<p><code>&lt;head&gt;&lt;/head&gt;</code> est l'en-tête de la page. Notre document HTML est séparé en deux parties. La partie &quot;Head&quot; et le &quot;Body&quot;. Tout ce qui se trouve dans la partie &quot;Head&quot; ne sera pas affiché sur notre page.
+Dans la partie head, nous mettons des métadonnées nécessaires pour le navigateur (comme l'encodage des caractères ou encore la description du site web) ou bien le titre de la page (qui sera affiché sur l'onglet ou en haut de la fenêtre du navigateur).</p>
+</li>
+<li>
+<p>La partie <code>&lt;body&gt;&lt;/body&gt;</code> quant à elle contient le corps de notre page web et les éléments que l'utilisateur verra s'afficher.</p>
+</li>
+<li>
+<p><code>&lt;meta charset=&quot;UTF=8&quot;&gt;</code> La balise meta contient des métadonnées à destination du navigateur.
+Elle est utilisée pour définir l'encodage des caractères (ici UTF-8).</p>
+</li>
+<li>
+<p>Enfin, à l'intérieur du <code>&lt;body&gt;</code>, nous avons un <code>&lt;p&gt;</code> (paragraphe) qui contient la chaine de caractère: &quot;Hello World&quot;</p>
+</li>
+</ul>
+<div class="encadre encadre--info"><div class="encadre__titre">Info</div><div class="encadre__corps"><p>Il existe un raccourci sur Visual Studio Code pour avoir la structure d'un fichier HTML, il suffit de taper <code>!</code> ou bien <code>html:5</code> suivit de la touche &quot;TAB&quot;.</p>
+</div></div>
+<div class="encadre encadre--note encadre--arrow"><div class="encadre__corps"><p><strong>🎯 À toi de jouer !</strong></p>
+<p>Ajoute une structure complète au document <code>index.html</code> que tu as créé.</p>
+<p>Puis, pour t'exercer, crée un nouveau document que tu vas appeler <code>about.html</code>.</p>
+<p>Ensuite, crée la structure du document HTML et ajoute un titre (&quot;À propos&quot;) pour cette page. Tu peux laisser libre cours à ton imagination quant au contenu de ta page &quot;À propos&quot;.</p>
+</div></div>
+<h3>Liste ordonnée et non ordonnée</h3>
+<p>Sur notre nouvelle page &quot;À propos&quot;, tu peux ajouter la liste de tes compétences.</p>
+<p>Il existe deux types de liste en HTML :</p>
+<ul>
+<li>les listes dites <strong>ordonnées</strong> <code>&lt;ol&gt;</code> pour <strong>o</strong>rdered <strong>l</strong>ist (numérotée).</li>
+<li>les listes dites <strong>non ordonnées</strong> <code>&lt;ul&gt;</code> pour <strong>u</strong>nordered <strong>l</strong>ist (liste à puces).</li>
+</ul>
+<p>Ensuite, chaque élément de la liste doit être mis à l'intérieur d'une balise <code>&lt;li&gt;</code> (<strong>l</strong>ist <strong>i</strong>tem).</p>
+<p>Voyons cela de plus prêt :</p>
+<div class="bloc-code"><div class="bloc-code__langue">html</div><pre><code class="hljs language-html"><span class="hljs-tag">&lt;<span class="hljs-name">ul</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">li</span>&gt;</span>Item 1<span class="hljs-tag">&lt;/<span class="hljs-name">li</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">li</span>&gt;</span>Item 2<span class="hljs-tag">&lt;/<span class="hljs-name">li</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">ul</span>&gt;</span>
+</code></pre></div>
+<div class="bloc-code"><pre><code class="hljs language-plaintext">* Item 1
+* Item 2
+</code></pre></div>
+<div class="bloc-code"><div class="bloc-code__langue">html</div><pre><code class="hljs language-html"><span class="hljs-tag">&lt;<span class="hljs-name">ol</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">li</span>&gt;</span>Item 1<span class="hljs-tag">&lt;/<span class="hljs-name">li</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">li</span>&gt;</span>Item 2<span class="hljs-tag">&lt;/<span class="hljs-name">li</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">ol</span>&gt;</span>
+</code></pre></div>
+<div class="bloc-code"><pre><code class="hljs language-plaintext">1. Item 1
+2. Item 2
+</code></pre></div>
+<div class="encadre encadre--note encadre--arrow"><div class="encadre__corps"><p><strong>🎯 À toi de jouer !</strong></p>
+<p>Ajoute une liste non ordonnée avec tes skills, puis une liste ordonnée avec tes 3 plats favoris.</p>
+</div></div>
+<h3>Faire des liens entre les documents</h3>
+<p>Maintenant que nous avons deux pages HTML (notre page d'accueil et la page à propos) il est temps de relier les deux pages entre elles.</p>
+<p>Pour cela tu peux utiliser la balise <code>&lt;a&gt;</code> (<strong>a</strong>nchor). Cette balise te permet de spécifier le lien grâce à l'attribut <code>href</code> avec une URL.</p>
+<p>Entre les balises <code>&lt;a href=&quot;...&quot;&gt;</code> et <code>&lt;/a&gt;</code>, tu peux ajouter du texte ou d'autres balises :</p>
+<div class="bloc-code"><div class="bloc-code__langue">html</div><pre><code class="hljs language-html"><span class="hljs-tag">&lt;<span class="hljs-name">a</span> <span class="hljs-attr">href</span>=<span class="hljs-string">&quot;http://google.com&quot;</span>&gt;</span>Visiter Google.com<span class="hljs-tag">&lt;/<span class="hljs-name">a</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">a</span> <span class="hljs-attr">href</span>=<span class="hljs-string">&quot;index.html&quot;</span>&gt;</span><span class="hljs-tag">&lt;<span class="hljs-name">p</span>&gt;</span>Retourner à l&#x27;acceuil<span class="hljs-tag">&lt;/<span class="hljs-name">p</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">a</span>&gt;</span>
+</code></pre></div>
+<div class="encadre encadre--note encadre--arrow"><div class="encadre__corps"><p><strong>🎯 À toi de jouer !</strong></p>
+<p>Ajoute un lien en bas de la page <code>about.html</code> redirigeant vers la page d'accueil et un lien sur <code>index.html</code> redirigeant vers la page <code>À propos</code>.</p>
+</div></div>
+<h2>Ajouter des commentaires</h2>
+<p>Tu peux commenter ton document HTML. Les commentaires permettent de mettre des notes sur ton code pour en expliquer les mécanismes ou faciliter la lecture.</p>
+<p>Les commentaires ne seront pas visibles sur la page web, mais ils seront consultables lors de la lecture du code.</p>
+<p>Voici comment écrire un commentaire en HTML :</p>
+<div class="bloc-code"><div class="bloc-code__langue">html</div><pre><code class="hljs language-html"><span class="hljs-comment">&lt;!-- Je suis un commentaire ! --&gt;</span>
+</code></pre></div>
+<div class="encadre encadre--note encadre--arrow"><div class="encadre__corps"><p><strong>🎯 À toi de jouer !</strong></p>
+<p>Ajoute des commentaires sur ta page <code>index.html</code> pour délimiter la balise head et la balise body:</p>
+<p>Par exemple :</p>
+<div class="bloc-code"><div class="bloc-code__langue">html</div><pre><code class="hljs language-html"><span class="hljs-comment">&lt;!-- Head of the document --&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">head</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">head</span>&gt;</span>
+</code></pre></div>
+</div></div>
+<h2>Récapitulatif</h2>
+<ul>
+<li>
+<p>Le HTML5 est un langage de balisage utilisé pour créer des pages web. Il est interprété par notre navigateur pour afficher le contenu des pages.</p>
+</li>
+<li>
+<p>Une balise HTML se compose d'une ou plusieurs lettres entourées par des chevrons ouvrant et fermant (<code>&lt;p&gt;</code>, <code>&lt;html&gt;</code>, <code>&lt;body&gt;</code>, ...).</p>
+</li>
+<li>
+<p>Les balises HTML peuvent avoir des <strong>attributs</strong>. Ces attributs servent à transmettre des données aux balises et peuvent être des chaines de caractères (<code>&lt;img src=&quot;...&quot; /&gt;</code>) ou bien de type booléens (<code>&lt;button disabled&gt;Click Me&lt;/button&gt;</code>).</p>
+</li>
+<li>
+<p>Un document HTML doit respecter un certain schéma de base.</p>
+</li>
+<li>
+<p>Un document HTML se compose toujours d'une partie <code>&lt;head&gt;</code> contenant des métadonnées <strong>non affichées</strong> sur la page web et d'une partie <code>&lt;body&gt;</code> contenant le corps du document.</p>
+</li>
+</ul>
+<h2>Challenge</h2>
+<p>Mets en forme le travail que tu as réalisé durant cette quête et compare le résultat avec la solution qui est proposée !</p>
+<h3>Critères de validation</h3>
+<ul>
+<li>[ ] Les deux pages HTML respectent bien la structure des documents HTML</li>
+<li>[ ] Les deux pages HTML contiennent un titre (<code>&lt;title&gt;</code>) explicite</li>
+<li>[ ] Les deux pages HTML contiennent un Header (<code>&lt;h1&gt;</code>)</li>
+<li>[ ] Les deux pages HTML contiennent un lien vers l'autre page</li>
+<li>[ ] Au moins une des page contient un paragraphe (<code>&lt;p&gt;</code>), une image (<code>&lt;img /&gt;</code>) et un bouton</li>
+<li>[ ] Au moins une des page contient un commentaire</li>
+</ul>
+<details class="solution"><summary>Voir la solution</summary><div class="solution__corps"><h1>Pour le fichier index.html:</h1>
+<div class="bloc-code"><div class="bloc-code__langue">html</div><pre><code class="hljs language-html"><span class="hljs-meta">&lt;!DOCTYPE <span class="hljs-keyword">html</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">html</span> <span class="hljs-attr">lang</span>=<span class="hljs-string">&quot;en&quot;</span>&gt;</span>
+<span class="hljs-comment">&lt;!-- Head of the document --&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">head</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">meta</span> <span class="hljs-attr">charset</span>=<span class="hljs-string">&quot;UTF-8&quot;</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">title</span>&gt;</span>Bienvenue sur mon site internet | Bob Smith Webdesigner<span class="hljs-tag">&lt;/<span class="hljs-name">title</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">head</span>&gt;</span>
+<span class="hljs-comment">&lt;!-- Body of the document --&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">body</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">h1</span>&gt;</span>Hello world!<span class="hljs-tag">&lt;/<span class="hljs-name">h1</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">h2</span>&gt;</span>Welcome here<span class="hljs-tag">&lt;/<span class="hljs-name">h2</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">p</span>&gt;</span>Bienvenue sur mon <span class="hljs-tag">&lt;<span class="hljs-name">strong</span>&gt;</span>incroyable<span class="hljs-tag">&lt;/<span class="hljs-name">strong</span>&gt;</span> site internet!<span class="hljs-tag">&lt;/<span class="hljs-name">p</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">p</span>&gt;</span>Je m&#x27;appelle Bob<span class="hljs-tag">&lt;/<span class="hljs-name">p</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">img</span> <span class="hljs-attr">src</span>=<span class="hljs-string">&quot;images/003-les-balises-auto-fermantes.jpg&quot;</span> <span class="hljs-attr">alt</span>=<span class="hljs-string">&quot;A Cute dog&quot;</span> <span class="hljs-attr">width</span>=<span class="hljs-string">&quot;300&quot;</span> /&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">button</span> <span class="hljs-attr">disabled</span>=<span class="hljs-string">&quot;true&quot;</span>&gt;</span>Click here<span class="hljs-tag">&lt;/<span class="hljs-name">button</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">a</span> <span class="hljs-attr">href</span>=<span class="hljs-string">&quot;about.html&quot;</span>&gt;</span>À propos de moi<span class="hljs-tag">&lt;/<span class="hljs-name">a</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">body</span>&gt;</span>
+
+<span class="hljs-tag">&lt;/<span class="hljs-name">html</span>&gt;</span>
+
+</code></pre></div>
+<h1>Pour le fichier about.html:</h1>
+<div class="bloc-code"><div class="bloc-code__langue">html</div><pre><code class="hljs language-html"><span class="hljs-meta">&lt;!DOCTYPE <span class="hljs-keyword">html</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">html</span> <span class="hljs-attr">lang</span>=<span class="hljs-string">&quot;en&quot;</span>&gt;</span>
+
+<span class="hljs-tag">&lt;<span class="hljs-name">head</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">meta</span> <span class="hljs-attr">charset</span>=<span class="hljs-string">&quot;UTF-8&quot;</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">title</span>&gt;</span>Découvrez-en plus sur moi | Bob Smith Webdesigner<span class="hljs-tag">&lt;/<span class="hljs-name">title</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">head</span>&gt;</span>
+
+<span class="hljs-tag">&lt;<span class="hljs-name">body</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">h1</span>&gt;</span>A propos de moi:<span class="hljs-tag">&lt;/<span class="hljs-name">h1</span>&gt;</span>
+
+    <span class="hljs-tag">&lt;<span class="hljs-name">h2</span>&gt;</span>Mes skills :<span class="hljs-tag">&lt;/<span class="hljs-name">h2</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">ul</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">li</span>&gt;</span>HTML<span class="hljs-tag">&lt;/<span class="hljs-name">li</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">li</span>&gt;</span>Webdesign<span class="hljs-tag">&lt;/<span class="hljs-name">li</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">li</span>&gt;</span>Illustration<span class="hljs-tag">&lt;/<span class="hljs-name">li</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">li</span>&gt;</span>Piano<span class="hljs-tag">&lt;/<span class="hljs-name">li</span>&gt;</span>
+    <span class="hljs-tag">&lt;/<span class="hljs-name">ul</span>&gt;</span>
+
+    <span class="hljs-tag">&lt;<span class="hljs-name">h2</span>&gt;</span>Mes plats préférés<span class="hljs-tag">&lt;/<span class="hljs-name">h2</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">ol</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">li</span>&gt;</span>Pizza<span class="hljs-tag">&lt;/<span class="hljs-name">li</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">li</span>&gt;</span>Sushi<span class="hljs-tag">&lt;/<span class="hljs-name">li</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">li</span>&gt;</span>Burgers<span class="hljs-tag">&lt;/<span class="hljs-name">li</span>&gt;</span>
+    <span class="hljs-tag">&lt;/<span class="hljs-name">ol</span>&gt;</span>
+
+    <span class="hljs-tag">&lt;<span class="hljs-name">a</span> <span class="hljs-attr">href</span>=<span class="hljs-string">&quot;index.html&quot;</span>&gt;</span>Retourner à l&#x27;accueil<span class="hljs-tag">&lt;/<span class="hljs-name">a</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">body</span>&gt;</span>
+
+<span class="hljs-tag">&lt;/<span class="hljs-name">html</span>&gt;</span>
+</code></pre></div>
+</div></details>
+
+  </div>
+  <section class="ressources-quete">
+  <h2>Ressources partagées sur cette quête</h2>
+  <ul class="ressources-liste">
+    <li><a href="https://www.virustotal.com/gui/home/upload" target="_blank" rel="noopener noreferrer">Sécurité pour vérifier que le contenu du fichier ne contienne pas de virus !</a><span class="ressources-liste__url">https://www.virustotal.com/gui/home/upload</span></li>
+    <li><a href="https://validator.w3.org" target="_blank" rel="noopener noreferrer">Je redonne le lien pour ceux qui ne l'auraient pas ou perdu !</a><span class="ressources-liste__url">https://validator.w3.org</span></li>
+  </ul>
+</section>
+</article>
+
+<nav class="nav-quete">
+  <span class="nav-quete__lien nav-quete__lien--vide"></span>
+  <a class="nav-quete__lien nav-quete__lien--suiv" href="../../html/002-html-chapitre-2-what-s-in-your-head/index.html">
+           <span class="nav-quete__sens">Suivant →</span>
+           <span class="nav-quete__titre">👩‍🏫 HTML - Chapitre 2 | What's in your &lt;head&gt; ?</span>
+         </a>
+</nav>
+</main>
+<footer class="pied">
+  <p>Archive personnelle des cours suivis à la Wild Code School. Copie hors ligne à usage strictement privé.</p>
+</footer>
+
+<script src="../../assets/copie-code.js"></script>
+<script src="../../assets/progression.js"></script>
+</body>
+</html>

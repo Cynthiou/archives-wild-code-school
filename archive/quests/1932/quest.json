@@ -1,0 +1,45 @@
+{
+  "id": 1932,
+  "titre": "👩‍🏫 JS Basics 07bis - Les tableaux - Autres méthodes utiles",
+  "titres": {
+    "fr": "👩‍🏫 JS Basics 07bis - Les tableaux - Autres méthodes utiles"
+  },
+  "theme": {
+    "id": 9,
+    "slug": "javascript",
+    "nom": "JavaScript"
+  },
+  "creeLe": "2022-02-15T16:00:39.832+01:00",
+  "difficulte": "0",
+  "dureeEstimee": null,
+  "modeValidation": "student",
+  "chapitres": [
+    {
+      "id": 18432,
+      "type": "content",
+      "langue": "fr",
+      "majLe": "2025-10-03T16:27:59.372+02:00",
+      "caracteres": 11734
+    }
+  ],
+  "ressources": [
+    {
+      "link": "https://www.freecodecamp.org/news/javascript-splice-how-to-use-the-splice-js-array-method/",
+      "description": "Explication très claire de Splice ;)"
+    },
+    {
+      "link": "https://www.youtube.com/watch?v=CSTtfCSAabE",
+      "description": "Explication illustrée de slice et splice ;) "
+    },
+    {
+      "link": "https://www.youtube.com/watch?v=q8aAbzNKeOA",
+      "description": "Courte vidéo en FR pour comprendre rapidement Splice"
+    },
+    {
+      "link": "https://www.linkedin.com/posts/soydemir-emre_javascript-activity-7204409265199935488-EEST?utm_source=share&utm_medium=member_desktop",
+      "description": "Je viens de préparer un test pour ceux qui commencent tout juste leurs cours de JavaScript et veulent réviser les concepts de base. J'invite tous ceux intéressés à passer le test. Bonne chance :)"
+    }
+  ],
+  "urlOrigine": "https://odyssey.wildcodeschool.com/quests/1932",
+  "archiveLe": "2026-09-02T20:54:46.131Z"
+}

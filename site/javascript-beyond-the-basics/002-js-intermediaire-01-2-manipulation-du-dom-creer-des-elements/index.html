@@ -1,0 +1,351 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>👩‍🏫 JS Intermédiaire 01.2 - Manipulation du DOM - Créer des éléments — Archives WCS</title>
+<link rel="stylesheet" href="../../assets/style.css">
+</head>
+<body style="--teinte:#854200">
+<header class="entete">
+  <a class="entete__marque" href="../../index.html">Archives Wild Code School</a>
+</header>
+<main class="contenu">
+<nav class="ariane"><a href="../../index.html">Accueil</a><span class="ariane__sep">›</span><a href="../../javascript-beyond-the-basics/index.html">JavaScript - Beyond the Basics</a><span class="ariane__sep">›</span><span aria-current="page">👩‍🏫 JS Intermédiaire 01.2 - Manipulation du DOM - Créer des éléments</span></nav>
+
+<article class="quete">
+  <header class="quete__entete">
+    <a class="pastille pastille--teintee" href="../../javascript-beyond-the-basics/index.html">JavaScript - Beyond the Basics</a>
+    <h1>👩‍🏫 JS Intermédiaire 01.2 - Manipulation du DOM - Créer des éléments</h1>
+    <p class="quete__meta">Quête 2 sur 8 · 10 images archivées</p>
+  </header>
+  <div class="cours">
+<h6>⚠️ Avant de commencer cette quête, tu dois avoir terminé la quête suivante :</h6>
+<div class="renvois"><div class="renvois__titre">Quêtes liées</div><ul><li><a href="../../javascript-beyond-the-basics/001-js-intermediaire-01-1-introduction-a-la-manipulation-du-dom/index.html">Quête 1259</a></li></ul></div>
+<h1>Introduction</h1>
+<p>Lors de la quête précédente, tu as découvert le DOM et comment sélectionner et changer les propriétés d'un <strong>noeud</strong>.</p>
+<p>Maintenant il est temps d'aller plus loin et de créer/enlever des éléments ainsi que de changer leur style.</p>
+<p><strong>Débutons !</strong></p>
+<h1>🤓 A la fin de cette quête, tu seras capable de</h1>
+<ul>
+<li>✅ <strong>Ajouter et supprimer un élément HTML au DOM</strong></li>
+<li>✅ <strong>Changer la classe d'un élément DOM</strong> en utilisant Javascript</li>
+</ul>
+<hr>
+<h1>Créer un nouvel élément HTML</h1>
+<p>Maintenant que tu sais comment obtenir un élément. Voyons comment nous pouvons <strong>créer un nouvel élément!</strong></p>
+<p><strong>Pour créer un élément</strong>, utilise la méthode <code>createElement</code> :</p>
+<div class="bloc-code"><div class="bloc-code__langue">javascript</div><pre><code class="hljs language-javascript"><span class="hljs-keyword">const</span> newCatImage = <span class="hljs-variable language_">document</span>.<span class="hljs-title function_">createElement</span>(<span class="hljs-string">&#x27;img&#x27;</span>);
+</code></pre></div>
+<p>Dans ce cas, parce que nous voulons créer une image, nous devons donner une <strong>source</strong> à cette nouvelle image (et un <strong>texte alternatif</strong> pour des questions d'accessibilité):</p>
+<div class="bloc-code"><div class="bloc-code__langue">javascript</div><pre><code class="hljs language-javascript">newCatImage.<span class="hljs-property">src</span> = <span class="hljs-string">&quot;images/007-fais-une-experience.jpg&quot;</span>;
+newCatImage.<span class="hljs-property">alt</span> = <span class="hljs-string">&quot;chat trop mignon&quot;</span>;
+</code></pre></div>
+<p>Enfin, pour l'ajouter au DOM, nous pouvons utiliser la méthode <code>appendChild</code>.
+La méthode <code>appendChild</code> va <strong>ajouter l'élément passé</strong> <strong>à la fin de l'élément sur lequel tu utilises la méthode.</strong></p>
+<p><strong>Dans cet exemple, ceci ajoutera <code>newCatImage</code> à la fin de <code>document.body</code>:</strong></p>
+<div class="bloc-code"><div class="bloc-code__langue">javascript</div><pre><code class="hljs language-javascript"><span class="hljs-variable language_">document</span>.<span class="hljs-property">body</span>.<span class="hljs-title function_">appendChild</span>(newCatImage);
+</code></pre></div>
+<p>Cette méthode est <strong>également disponible sur d'autres noeuds HTML</strong>, par exemple, <strong>tu peux l'utiliser pour ajouter un élément à une <code>&lt;div&gt;</code>.</strong></p>
+<div class="bloc-code"><div class="bloc-code__langue">javascript</div><pre><code class="hljs language-javascript"><span class="hljs-keyword">const</span> myDiv = <span class="hljs-variable language_">document</span>.<span class="hljs-title function_">querySelector</span>(<span class="hljs-string">&#x27;.myDiv&#x27;</span>);
+myDiv.<span class="hljs-title function_">appendChild</span>(myElement);
+</code></pre></div>
+<h3>🔬 Fais une expérience</h3>
+<p>Dans cet exemple, une des images est manquante sur la deuxième carte.
+En utilisant ce que nous venons de voir, crée un nouvel élément image, et utilise appendChild pour l'ajouter au bas de la deuxième carte.</p>
+<div class="bloc-code"><div class="bloc-code__langue">js</div><pre><code class="hljs language-js">!--- index.<span class="hljs-property">js</span>
+<span class="hljs-comment">// Your code here</span>
+
+!--- index.<span class="hljs-property">html</span>
+&lt;!<span class="hljs-variable constant_">DOCTYPE</span> html&gt;
+<span class="language-xml"><span class="hljs-tag">&lt;<span class="hljs-name">html</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">head</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">title</span>&gt;</span>Sandbox<span class="hljs-tag">&lt;/<span class="hljs-name">title</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">meta</span> <span class="hljs-attr">charset</span>=<span class="hljs-string">&quot;UTF-8&quot;</span> /&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">style</span>&gt;</span><span class="language-css">
+      <span class="hljs-selector-tag">body</span> {
+        <span class="hljs-attribute">font-family</span>: sans-serif;
+      }
+    </span><span class="hljs-tag">&lt;/<span class="hljs-name">style</span>&gt;</span>
+  <span class="hljs-tag">&lt;/<span class="hljs-name">head</span>&gt;</span>
+
+  <span class="hljs-tag">&lt;<span class="hljs-name">body</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">id</span>=<span class="hljs-string">&quot;app&quot;</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;first-card&quot;</span>&gt;</span>
+      <span class="hljs-tag">&lt;<span class="hljs-name">h1</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;card-title&quot;</span>&gt;</span>First cat:<span class="hljs-tag">&lt;/<span class="hljs-name">h1</span>&gt;</span>
+      <span class="hljs-tag">&lt;<span class="hljs-name">img</span> <span class="hljs-attr">src</span>=<span class="hljs-string">&quot;images/001-fais-une-experience.jpg&quot;</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;card-img&quot;</span> /&gt;</span>
+    <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;second-card&quot;</span>&gt;</span>
+      <span class="hljs-tag">&lt;<span class="hljs-name">h1</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;card-title&quot;</span>&gt;</span>second cat:<span class="hljs-tag">&lt;/<span class="hljs-name">h1</span>&gt;</span>
+    <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">script</span> <span class="hljs-attr">src</span>=<span class="hljs-string">&quot;src/index.js&quot;</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span>
+  <span class="hljs-tag">&lt;/<span class="hljs-name">body</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">html</span>&gt;</span></span>
+</code></pre></div>
+<div class="encadre encadre--info"><div class="encadre__titre">Info</div><div class="encadre__corps"><h1>Interagis avec le code !</h1>
+<p>Ouvre ce codesandbox dans une autre fenêtre pour une meilleure expérience</p>
+</div></div>
+<div class="bloc-code"><div class="bloc-code__langue">hidden</div><pre><code class="hljs language-hidden">Montrer la solution|||javascript|||Des problèmes pour trouver la solution ? |||0|||Masquer
+// We create a variable secondCard set to the second-card DOM node
+const secondCard = document.querySelector('.second-card');
+
+// We create a variable secondCat set too a new DOM element 'img'
+const secondCat = document.createElement('img');
+
+// We add the src attribute
+secondCat.src = &quot;images/007-fais-une-experience.jpg&quot;;
+secondCat.alt = &quot;chat trop mignon&quot;;
+
+// We add the secondCat to the secondCard
+secondCard.appendChild(secondCat);
+</code></pre></div>
+<hr>
+<h1>Changer la position d'un Élément du DOM</h1>
+<p><strong>Pour changer la position d'un élément, utilise <code>appendChild</code>.</strong>
+Passe l'élément que tu veux déplacer comme paramètre; cela ne créera pas de copie mais déplacera l'élément.</p>
+<div class="bloc-code"><div class="bloc-code__langue">javascript</div><pre><code class="hljs language-javascript">newDiv.<span class="hljs-title function_">appendChild</span>(newCatImage);
+</code></pre></div>
+<h3>🔬 Fais une expérience</h3>
+<p>Essaye de déplacer la position de l'élément du bas vers le haut.</p>
+<div class="bloc-code"><div class="bloc-code__langue">js</div><pre><code class="hljs language-js">!--- index.<span class="hljs-property">js</span>
+<span class="hljs-comment">// Your code here</span>
+
+!--- index.<span class="hljs-property">html</span>
+&lt;!<span class="hljs-variable constant_">DOCTYPE</span> html&gt;
+<span class="language-xml"><span class="hljs-tag">&lt;<span class="hljs-name">html</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">head</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">title</span>&gt;</span>Sandbox<span class="hljs-tag">&lt;/<span class="hljs-name">title</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">meta</span> <span class="hljs-attr">charset</span>=<span class="hljs-string">&quot;UTF-8&quot;</span> /&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">style</span>&gt;</span><span class="language-css">
+      <span class="hljs-selector-tag">body</span> {
+        <span class="hljs-attribute">font-family</span>: sans-serif;
+      }
+    </span><span class="hljs-tag">&lt;/<span class="hljs-name">style</span>&gt;</span>
+  <span class="hljs-tag">&lt;/<span class="hljs-name">head</span>&gt;</span>
+
+  <span class="hljs-tag">&lt;<span class="hljs-name">body</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">id</span>=<span class="hljs-string">&quot;app&quot;</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">id</span>=<span class="hljs-string">&quot;first-div&quot;</span>&gt;</span>
+      <span class="hljs-tag">&lt;<span class="hljs-name">h1</span>&gt;</span>Move the cat here:<span class="hljs-tag">&lt;/<span class="hljs-name">h1</span>&gt;</span>
+      <span class="hljs-tag">&lt;<span class="hljs-name">img</span> <span class="hljs-attr">src</span>=<span class="hljs-string">&quot;images/002-fais-une-experience.jpg&quot;</span> <span class="hljs-attr">id</span>=<span class="hljs-string">&quot;first-cat-img&quot;</span> /&gt;</span>
+    <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">id</span>=<span class="hljs-string">&quot;second-div&quot;</span>&gt;</span>
+      <span class="hljs-tag">&lt;<span class="hljs-name">h1</span>&gt;</span>Move this cat up:<span class="hljs-tag">&lt;/<span class="hljs-name">h1</span>&gt;</span>
+      <span class="hljs-tag">&lt;<span class="hljs-name">img</span> <span class="hljs-attr">src</span>=<span class="hljs-string">&quot;images/003-fais-une-experience.jpg&quot;</span> <span class="hljs-attr">id</span>=<span class="hljs-string">&quot;second-cat-img&quot;</span> /&gt;</span>
+    <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">script</span> <span class="hljs-attr">src</span>=<span class="hljs-string">&quot;src/index.js&quot;</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span>
+  <span class="hljs-tag">&lt;/<span class="hljs-name">body</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">html</span>&gt;</span></span>
+</code></pre></div>
+<p>Essaye de déplacer la position du second chat en le plaçant juste à côté du premier chat</p>
+<div class="encadre encadre--info"><div class="encadre__titre">Info</div><div class="encadre__corps"><h1>Interagis avec le code !</h1>
+<p>Ouvre ce codesandbox dans une autre fenêtre pour une meilleure expérience</p>
+</div></div>
+<div class="bloc-code"><div class="bloc-code__langue">hidden</div><pre><code class="hljs language-hidden">Montrer la solution|||javascript|||Des problèmes pour trouver la solution ? |||0|||Masquer
+const secondCat = document.querySelector('#second-cat-img');
+const firstDiv = document.querySelector('#first-div');
+
+firstDiv.appendChild(secondCat);
+</code></pre></div>
+<hr>
+<h1>Supprimer un Élément du DOM</h1>
+<p>Tu peux <strong>supprimer</strong> un élément du DOM en <strong>utilisant la propriété <code>remove</code>.</strong></p>
+<div class="bloc-code"><div class="bloc-code__langue">javascript</div><pre><code class="hljs language-javascript">myElement.<span class="hljs-title function_">remove</span>();
+</code></pre></div>
+<h3>🔬 Fais une expérience</h3>
+<p>Cet exemple contient des photos de chats et de chiens... Mais ils ne sont pas amis les uns avec les autres...
+Supprime toutes les photos qui contiennent des chiens (ou des chats, à toi de voir).</p>
+<p>Pour cela utilise <code>document.querySelectorAll</code> et utilise une boucle <code>for</code> et appele la méthode <code>remove</code> sur chaque élément.</p>
+<div class="bloc-code"><div class="bloc-code__langue">js</div><pre><code class="hljs language-js">!--- index.<span class="hljs-property">js</span>
+<span class="hljs-comment">// Your code here</span>
+
+!--- index.<span class="hljs-property">html</span>
+&lt;!<span class="hljs-variable constant_">DOCTYPE</span> html&gt;
+<span class="language-xml"><span class="hljs-tag">&lt;<span class="hljs-name">html</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">head</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">title</span>&gt;</span>Sandbox<span class="hljs-tag">&lt;/<span class="hljs-name">title</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">meta</span> <span class="hljs-attr">charset</span>=<span class="hljs-string">&quot;UTF-8&quot;</span> /&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">style</span>&gt;</span><span class="language-css">
+      <span class="hljs-selector-tag">body</span> {
+        <span class="hljs-attribute">font-family</span>: sans-serif;
+      }
+    </span><span class="hljs-tag">&lt;/<span class="hljs-name">style</span>&gt;</span>
+  <span class="hljs-tag">&lt;/<span class="hljs-name">head</span>&gt;</span>
+
+  <span class="hljs-tag">&lt;<span class="hljs-name">body</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">h1</span>&gt;</span>Delete all the Dogs or Cats!<span class="hljs-tag">&lt;/<span class="hljs-name">h1</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">img</span> <span class="hljs-attr">src</span>=<span class="hljs-string">&quot;images/004-fais-une-experience.jpg&quot;</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;img-dog&quot;</span> /&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">img</span> <span class="hljs-attr">src</span>=<span class="hljs-string">&quot;images/005-fais-une-experience.jpg&quot;</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;img-cat&quot;</span> /&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">img</span> <span class="hljs-attr">src</span>=<span class="hljs-string">&quot;images/006-fais-une-experience.jpg&quot;</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;img-dog&quot;</span> /&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">img</span> <span class="hljs-attr">src</span>=<span class="hljs-string">&quot;images/007-fais-une-experience.jpg&quot;</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;img-cat&quot;</span> /&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">img</span> <span class="hljs-attr">src</span>=<span class="hljs-string">&quot;images/008-fais-une-experience.jpg&quot;</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;img-dog&quot;</span> /&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">img</span> <span class="hljs-attr">src</span>=<span class="hljs-string">&quot;images/009-fais-une-experience.jpg&quot;</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;img-dog&quot;</span> /&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">img</span> <span class="hljs-attr">src</span>=<span class="hljs-string">&quot;images/010-fais-une-experience.jpg&quot;</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;img-cat&quot;</span> /&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">script</span> <span class="hljs-attr">src</span>=<span class="hljs-string">&quot;src/index.js&quot;</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span>
+  <span class="hljs-tag">&lt;/<span class="hljs-name">body</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">html</span>&gt;</span></span>
+</code></pre></div>
+<div class="bloc-code"><div class="bloc-code__langue">hidden</div><pre><code class="hljs language-hidden">Montrer la solution|||javascript|||Des problèmes pour trouver la solution ? |||0|||Masquer
+// We create a variable set to the array with all element that match the selector img-dog
+const dogs = document.querySelectorAll(&quot;.img-dog&quot;);
+
+// We loop as many times as we have img-dog elements
+for (let i = 0; i &lt; dogs.length; i++) {  
+  // For each loop turn we remove the current dog image  
+  dogs[i].remove();
+}
+</code></pre></div>
+<h1>Changer le style des éléments</h1>
+<p>Il est possible de <strong>changer le style d'un élément HTML</strong> en utilisant la propriété <code>style</code>.
+Le <strong>nom de la propriété</strong> doit être écrit en utilisant le <strong>camel case</strong> (nous ne pouvons pas utiliser de <code>-</code> lors du nommage en Javascript).</p>
+<p>Exemple:</p>
+<div class="bloc-code"><div class="bloc-code__langue">javascript</div><pre><code class="hljs language-javascript">someDiv.<span class="hljs-property">style</span>.<span class="hljs-property">backgroundColor</span> = <span class="hljs-string">&quot;lightblue&quot;</span>;
+someText.<span class="hljs-property">style</span>.<span class="hljs-property">fontSize</span> = <span class="hljs-string">&quot;20px&quot;</span>;
+</code></pre></div>
+<h3>🔬 Fais une expérience</h3>
+<p>Essaye de modifier le CSS sur cette page:</p>
+<ul>
+<li>La box devrait être <code>yellow</code>, avec une hauteur de 300px et une largeur de 400px</li>
+<li>Le texte devrait être de 60px, centré et de couleur 'lightblue'</li>
+</ul>
+<div class="bloc-code"><div class="bloc-code__langue">js</div><pre><code class="hljs language-js">!--- index.<span class="hljs-property">js</span>
+<span class="hljs-comment">// Your code here</span>
+
+!--- index.<span class="hljs-property">html</span>
+&lt;!<span class="hljs-variable constant_">DOCTYPE</span> html&gt;
+<span class="language-xml"><span class="hljs-tag">&lt;<span class="hljs-name">html</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">head</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">title</span>&gt;</span>Sandbox<span class="hljs-tag">&lt;/<span class="hljs-name">title</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">meta</span> <span class="hljs-attr">charset</span>=<span class="hljs-string">&quot;UTF-8&quot;</span> /&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">style</span>&gt;</span><span class="language-css">
+      <span class="hljs-selector-tag">body</span> {
+        <span class="hljs-attribute">font-family</span>: sans-serif;
+      }
+
+      <span class="hljs-selector-class">.box</span> {
+        <span class="hljs-attribute">text-align</span>: center;
+        <span class="hljs-attribute">display</span>: flex;
+        <span class="hljs-attribute">align-items</span>: center;
+        <span class="hljs-attribute">justify-content</span>: center;
+        <span class="hljs-attribute">width</span>: <span class="hljs-number">100px</span>;
+        <span class="hljs-attribute">height</span>: <span class="hljs-number">100px</span>;
+        <span class="hljs-attribute">background-color</span>: peru;
+        <span class="hljs-attribute">color</span>: white;
+      }
+    </span><span class="hljs-tag">&lt;/<span class="hljs-name">style</span>&gt;</span>
+  <span class="hljs-tag">&lt;/<span class="hljs-name">head</span>&gt;</span>
+
+  <span class="hljs-tag">&lt;<span class="hljs-name">body</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">h1</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;title&quot;</span>&gt;</span>Change the text!<span class="hljs-tag">&lt;/<span class="hljs-name">h1</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;box&quot;</span>&gt;</span>Change the box!<span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+
+    <span class="hljs-tag">&lt;<span class="hljs-name">script</span> <span class="hljs-attr">src</span>=<span class="hljs-string">&quot;src/index.js&quot;</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span>
+  <span class="hljs-tag">&lt;/<span class="hljs-name">body</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">html</span>&gt;</span></span>
+</code></pre></div>
+<div class="bloc-code"><div class="bloc-code__langue">hidden</div><pre><code class="hljs language-hidden">Montrer la solution|||javascript|||Des problèmes pour trouver la solution ? |||0|||Masquer
+// We create two variables for both title and box DOM elements
+const title = document.querySelector('.title');
+const box = document.querySelector('.box');
+
+// We change the style of the elements
+title.style.color = 'lightblue';
+title.style.fontSize = '60px';
+title.style.textAlign = &quot;center&quot;;
+box.style.backgroundColor = 'yellow';
+box.style.height = '300px';
+box.style.width = '400px';
+</code></pre></div>
+<hr>
+<h1>Ajouter/Supprimer une classe à un élément</h1>
+<p>Il est aussi possible <strong>d'ajouter/supprimer une classe sur un élément.</strong></p>
+<div class="bloc-code"><div class="bloc-code__langue">javascript</div><pre><code class="hljs language-javascript">element.<span class="hljs-property">classList</span>.<span class="hljs-title function_">add</span>(<span class="hljs-string">&#x27;myClass&#x27;</span>);
+element.<span class="hljs-property">classList</span>.<span class="hljs-title function_">remove</span>(<span class="hljs-string">&#x27;myClass&#x27;</span>);
+</code></pre></div>
+<p>Note que, dans ce cas, comme la nature de l'élément est spécifiée (<strong>classList</strong>), nous n'avons pas besoin d'utiliser le <code>.</code> avant le nom de la classe.</p>
+<h3>🔬 Fais une expérience</h3>
+<p>Dans cette page, il y a déjà quelques petites boîtes, et elles ont une classe CSS spécifique <code>box</code>. Crée une nouvelle boîte avec <code>createElement</code>, ajoute à cet élément la classe <code>box</code>, puis ajoute-la à la div <code>container-boxes</code>.</p>
+<div class="bloc-code"><div class="bloc-code__langue">js</div><pre><code class="hljs language-js">!--- index.<span class="hljs-property">js</span>
+<span class="hljs-comment">// Your code here</span>
+
+!--- index.<span class="hljs-property">html</span>
+&lt;!<span class="hljs-variable constant_">DOCTYPE</span> html&gt;
+<span class="language-xml"><span class="hljs-tag">&lt;<span class="hljs-name">html</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">head</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">title</span>&gt;</span>Sandbox<span class="hljs-tag">&lt;/<span class="hljs-name">title</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">meta</span> <span class="hljs-attr">charset</span>=<span class="hljs-string">&quot;UTF-8&quot;</span> /&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">style</span>&gt;</span><span class="language-css">
+      <span class="hljs-selector-tag">body</span> {
+        <span class="hljs-attribute">font-family</span>: sans-serif;
+      }
+      <span class="hljs-selector-class">.container-box</span> {
+        <span class="hljs-attribute">display</span>: flex;
+      }
+      <span class="hljs-selector-class">.box</span> {
+        <span class="hljs-attribute">display</span>: inline-block;
+        <span class="hljs-attribute">height</span>: <span class="hljs-number">100px</span>;
+        <span class="hljs-attribute">width</span>: <span class="hljs-number">100px</span>;
+        <span class="hljs-attribute">margin</span>: <span class="hljs-number">10px</span>;
+        <span class="hljs-attribute">background-color</span>: coral;
+      }
+    </span><span class="hljs-tag">&lt;/<span class="hljs-name">style</span>&gt;</span>
+  <span class="hljs-tag">&lt;/<span class="hljs-name">head</span>&gt;</span>
+
+  <span class="hljs-tag">&lt;<span class="hljs-name">body</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;container-boxes&quot;</span>&gt;</span>
+      <span class="hljs-tag">&lt;<span class="hljs-name">h1</span>&gt;</span>Create a third box<span class="hljs-tag">&lt;/<span class="hljs-name">h1</span>&gt;</span>
+      <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;box&quot;</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+      <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;box&quot;</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+    <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+
+    <span class="hljs-tag">&lt;<span class="hljs-name">script</span> <span class="hljs-attr">src</span>=<span class="hljs-string">&quot;src/index.js&quot;</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span>
+  <span class="hljs-tag">&lt;/<span class="hljs-name">body</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">html</span>&gt;</span></span>
+</code></pre></div>
+<div class="bloc-code"><div class="bloc-code__langue">hidden</div><pre><code class="hljs language-hidden">Montrer la solution|||javascript|||Des problèmes pour trouver la solution ? |||0|||Masquer
+// We create a variable thirdBox set to a new div element
+const thirdBox = document.createElement(&quot;div&quot;);
+
+// We add a &quot;box&quot; class to the element 
+thirdBox.classList.add(&quot;box&quot;);
+
+// We create a variable containerBox set to the DOM node with the class &quot;container-boxes&quot;
+const containerBox = document.querySelector(&quot;.container-boxes&quot;);
+
+// We add the thirdBox inside containerBox 
+containerBox.appendChild(thirdBox);
+</code></pre></div>
+<hr>
+<h1>Prêt à poursuivre ton voyage dans la manipulation de DOM ?</h1>
+<p>Si tu es prêt, tu peux passer à la <strong>prochaine quête</strong></p>
+<div class="renvois"><div class="renvois__titre">Quêtes liées</div><ul><li><a href="../../javascript-beyond-the-basics/003-js-intermediaire-01-3-manipulation-du-dom-gestion-des/index.html">Quête 1555</a></li></ul></div>
+
+  </div>
+  <section class="ressources-quete">
+  <h2>Ressources partagées sur cette quête</h2>
+  <ul class="ressources-liste">
+    <li><a href="https://www.youtube.com/watch?v=gHD7FOONV2o" target="_blank" rel="noopener noreferrer">Il y a plusieurs vidéos en différentes parties, voici la partie 1</a><span class="ressources-liste__url">https://www.youtube.com/watch?v=gHD7FOONV2o</span></li>
+    <li><a href="https://youtu.be/UBIfdObb9cY" target="_blank" rel="noopener noreferrer">apprendre le Dom avec Grafikart </a><span class="ressources-liste__url">https://youtu.be/UBIfdObb9cY</span></li>
+  </ul>
+</section>
+</article>
+
+<nav class="nav-quete">
+  <a class="nav-quete__lien nav-quete__lien--prec" href="../../javascript-beyond-the-basics/001-js-intermediaire-01-1-introduction-a-la-manipulation-du-dom/index.html">
+           <span class="nav-quete__sens">← Précédent</span>
+           <span class="nav-quete__titre">👩‍🏫 JS Intermédiaire 01.1 - Introduction à la manipulation du DOM</span>
+         </a>
+  <a class="nav-quete__lien nav-quete__lien--suiv" href="../../javascript-beyond-the-basics/003-js-intermediaire-01-3-manipulation-du-dom-gestion-des/index.html">
+           <span class="nav-quete__sens">Suivant →</span>
+           <span class="nav-quete__titre">👩‍🏫 JS Intermédiaire 01.3 - Manipulation du DOM - Gestion des événements</span>
+         </a>
+</nav>
+</main>
+<footer class="pied">
+  <p>Archive personnelle des cours suivis à la Wild Code School. Copie hors ligne à usage strictement privé.</p>
+</footer>
+
+<script src="../../assets/copie-code.js"></script>
+<script src="../../assets/progression.js"></script>
+</body>
+</html>

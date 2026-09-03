@@ -1,0 +1,460 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>👩‍🏫 React Basics 07 - Pokédex - Répéter un bloc d'affichage avec map — Archives WCS</title>
+<link rel="stylesheet" href="../../assets/style.css">
+</head>
+<body style="--teinte:#4DC4DE">
+<header class="entete">
+  <a class="entete__marque" href="../../index.html">Archives Wild Code School</a>
+</header>
+<main class="contenu">
+<nav class="ariane"><a href="../../index.html">Accueil</a><span class="ariane__sep">›</span><a href="../../react-bases/index.html">React - Bases</a><span class="ariane__sep">›</span><span aria-current="page">👩‍🏫 React Basics 07 - Pokédex - Répéter un bloc d'affichage avec map</span></nav>
+
+<article class="quete">
+  <header class="quete__entete">
+    <a class="pastille pastille--teintee" href="../../react-bases/index.html">React - Bases</a>
+    <h1>👩‍🏫 React Basics 07 - Pokédex - Répéter un bloc d'affichage avec map</h1>
+    <p class="quete__meta">Quête 7 sur 10 · 2 images archivées</p>
+  </header>
+  <div class="cours">
+<h2>Objectifs</h2>
+<ul>
+<li>Répéter une même structure HTML pour chaque élément contenu dans un tableau.</li>
+<li>Comprendre la mystérieuse prop <code>key</code>.</li>
+</ul>
+<h2>Pré-requis</h2>
+<ol class="etapes"><li class="etape"><div class="etape__puce">1</div><div class="etape__contenu"><h4 class="etape__titre">Valider les quêtes suivantes</h4><div class="renvois"><div class="renvois__titre">Quêtes liées</div><ul><li><a href="../../react-bases/001-react-basics-01-pokedex-introduction/index.html">Quête 2328</a></li><li><a href="../../react-bases/002-react-basics-02-pokedex-ton-premier-composant/index.html">Quête 2332</a></li><li><a href="../../react-bases/003-react-basics-03-pokedex-afficher-des-donnees-dans-un/index.html">Quête 2336</a></li><li><a href="../../react-bases/004-react-basics-04-pokedex-passer-des-props/index.html">Quête 2374</a></li><li><a href="../../react-bases/005-react-basics-05-pokedex-typer-les-props-avec-typescript/index.html">Quête 2375</a></li><li><a href="../../react-bases/006-react-basics-06-pokedex-utiliser-un-state/index.html">Quête 2376</a></li></ul></div>
+</div></li></ol>
+<h2>Introduction</h2>
+<p>Dans les quêtes précédentes, nous avons vu comment créer des composants, comment leur transmettre des données au travers des props ou encore comment utiliser les expressions JavaScript pour afficher conditionnellement du contenu.</p>
+<p>Nous allons maintenant découvrir comment répéter un bloc d'affichage pour chaque élément contenu dans un tableau.</p>
+<p><img src="images/001-introduction.jpg" alt="" loading="lazy"></p>
+<h2>Sommaire</h2>
+<h2>Petit retour sur les expressions</h2>
+<p>Tu as appris que pour répéter des instructions, tu dois utiliser des boucles (<code>for</code>/<code>while</code>).</p>
+<p>Malheureusement, dans le <code>return</code> d'une fonction composant, tu peux uniquement te servir d'expressions. Quelque soit la façon de l'écrire, une construction <code>return for</code> ne fonctionne pas en JS/TS :</p>
+<div class="bloc-code"><div class="bloc-code__langue">jsx</div><pre><code class="hljs language-jsx"><span class="hljs-keyword">function</span> <span class="hljs-title function_">App</span>(<span class="hljs-params"></span>) {
+  <span class="hljs-keyword">const</span> cart = [<span class="hljs-string">&quot;apple&quot;</span>, <span class="hljs-string">&quot;banana&quot;</span>, <span class="hljs-string">&quot;grape&quot;</span>, <span class="hljs-string">&quot;watermelon&quot;</span>];
+
+  <span class="hljs-keyword">return</span> (
+    <span class="language-xml"><span class="hljs-tag">&lt;<span class="hljs-name">div</span>&gt;</span>
+      <span class="hljs-tag">&lt;<span class="hljs-name">h1</span>&gt;</span>shopping list<span class="hljs-tag">&lt;/<span class="hljs-name">h1</span>&gt;</span>
+      <span class="hljs-tag">&lt;<span class="hljs-name">ul</span>&gt;</span>
+        {for (const article of cart) {
+          <span class="hljs-tag">&lt;<span class="hljs-name">li</span>&gt;</span>{article}<span class="hljs-tag">&lt;/<span class="hljs-name">li</span>&gt;</span>
+        }}
+      <span class="hljs-tag">&lt;/<span class="hljs-name">ul</span>&gt;</span>
+    <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span></span>
+  );
+}
+
+<span class="hljs-keyword">export</span> <span class="hljs-keyword">default</span> <span class="hljs-title class_">App</span>;
+</code></pre></div>
+<p>Heureusement, le JavaScript nous fournit de nombreuses méthodes pour interagir avec les tableaux (listes de données). Ces méthodes sont des expressions puisqu'elles retournent une valeur. Une méthode des tableaux qui va beaucoup nous intéresser dans React est la méthode <code>map</code>.</p>
+<h2>Comment ça marche ?</h2>
+<div class="bloc-code"><div class="bloc-code__langue">jsx</div><pre><code class="hljs language-jsx"><span class="hljs-keyword">function</span> <span class="hljs-title function_">App</span>(<span class="hljs-params"></span>) {
+  <span class="hljs-keyword">const</span> cart = [<span class="hljs-string">&quot;apple&quot;</span>, <span class="hljs-string">&quot;banana&quot;</span>, <span class="hljs-string">&quot;grape&quot;</span>, <span class="hljs-string">&quot;watermelon&quot;</span>];
+
+  <span class="hljs-keyword">return</span> (
+    <span class="language-xml"><span class="hljs-tag">&lt;<span class="hljs-name">section</span>&gt;</span>
+      <span class="hljs-tag">&lt;<span class="hljs-name">h1</span>&gt;</span>shopping list<span class="hljs-tag">&lt;/<span class="hljs-name">h1</span>&gt;</span>
+      <span class="hljs-tag">&lt;<span class="hljs-name">ul</span>&gt;</span>
+        {cart.map((article) =&gt; (
+          <span class="hljs-tag">&lt;<span class="hljs-name">li</span>&gt;</span>{article}<span class="hljs-tag">&lt;/<span class="hljs-name">li</span>&gt;</span>
+        ))}
+      <span class="hljs-tag">&lt;/<span class="hljs-name">ul</span>&gt;</span>
+    <span class="hljs-tag">&lt;/<span class="hljs-name">section</span>&gt;</span></span>
+  );
+}
+
+<span class="hljs-keyword">export</span> <span class="hljs-keyword">default</span> <span class="hljs-title class_">App</span>;
+</code></pre></div>
+<p>Dans cet exemple, nous avons utilisé la méthode <code>map()</code> sur notre tableau d'articles. Pour chaque article, l'expression construit un <code>&lt;li&gt;</code> avec la valeur contenue à cet index 🪄.</p>
+<p>Tu peux faire la même chose avec des structures de données plus complexes (tout en respectant la règle selon laquelle, entre des accolades <code>{}</code>, le JSX ne peut afficher que des types primitifs) :</p>
+<div class="bloc-code"><div class="bloc-code__langue">jsx</div><pre><code class="hljs language-jsx"><span class="hljs-keyword">function</span> <span class="hljs-title function_">App</span>(<span class="hljs-params"></span>) {
+  <span class="hljs-keyword">const</span> cart = [
+    { <span class="hljs-attr">name</span>: <span class="hljs-string">&quot;apple&quot;</span>, <span class="hljs-attr">emoji</span>: <span class="hljs-string">&quot;🍏&quot;</span> },
+    { <span class="hljs-attr">name</span>: <span class="hljs-string">&quot;banana&quot;</span>, <span class="hljs-attr">emoji</span>: <span class="hljs-string">&quot;🍌&quot;</span> },
+    { <span class="hljs-attr">name</span>: <span class="hljs-string">&quot;grape&quot;</span>, <span class="hljs-attr">emoji</span>: <span class="hljs-string">&quot;🍇&quot;</span> },
+    { <span class="hljs-attr">name</span>: <span class="hljs-string">&quot;watermelon&quot;</span>, <span class="hljs-attr">emoji</span>: <span class="hljs-string">&quot;🍉&quot;</span> },
+  ];
+
+  <span class="hljs-keyword">return</span> (
+    <span class="language-xml"><span class="hljs-tag">&lt;<span class="hljs-name">section</span>&gt;</span>
+      <span class="hljs-tag">&lt;<span class="hljs-name">h1</span>&gt;</span>shopping list<span class="hljs-tag">&lt;/<span class="hljs-name">h1</span>&gt;</span>
+      <span class="hljs-tag">&lt;<span class="hljs-name">ul</span>&gt;</span>
+        {cart.map((product) =&gt; (
+          <span class="hljs-tag">&lt;<span class="hljs-name">li</span>&gt;</span>
+            {product.emoji} {product.name}
+          <span class="hljs-tag">&lt;/<span class="hljs-name">li</span>&gt;</span>
+        ))}
+      <span class="hljs-tag">&lt;/<span class="hljs-name">ul</span>&gt;</span>
+    <span class="hljs-tag">&lt;/<span class="hljs-name">section</span>&gt;</span></span>
+  );
+}
+
+<span class="hljs-keyword">export</span> <span class="hljs-keyword">default</span> <span class="hljs-title class_">App</span>;
+</code></pre></div>
+<p>Tu peux aussi le faire avec des composants react en passant les valeurs en props :</p>
+<div class="bloc-code"><div class="bloc-code__langue">jsx</div><pre><code class="hljs language-jsx">interface <span class="hljs-title class_">ArticleProps</span> {
+  <span class="hljs-attr">name</span>: string;
+  <span class="hljs-attr">emoji</span>: string;
+}
+
+<span class="hljs-keyword">function</span> <span class="hljs-title function_">Article</span>(<span class="hljs-params">{ name, emoji }: ArticleProps</span>) {
+  <span class="hljs-keyword">return</span> (
+    <span class="language-xml"><span class="hljs-tag">&lt;<span class="hljs-name">li</span>&gt;</span>
+      {emoji} {name}
+    <span class="hljs-tag">&lt;/<span class="hljs-name">li</span>&gt;</span></span>
+  );
+}
+
+<span class="hljs-keyword">function</span> <span class="hljs-title function_">App</span>(<span class="hljs-params"></span>) {
+  <span class="hljs-keyword">const</span> <span class="hljs-attr">cart</span>: <span class="hljs-title class_">ArticleProps</span>[] = [
+    { <span class="hljs-attr">name</span>: <span class="hljs-string">&quot;apple&quot;</span>, <span class="hljs-attr">emoji</span>: <span class="hljs-string">&quot;🍏&quot;</span> },
+    { <span class="hljs-attr">name</span>: <span class="hljs-string">&quot;banana&quot;</span>, <span class="hljs-attr">emoji</span>: <span class="hljs-string">&quot;🍌&quot;</span> },
+    { <span class="hljs-attr">name</span>: <span class="hljs-string">&quot;grape&quot;</span>, <span class="hljs-attr">emoji</span>: <span class="hljs-string">&quot;🍇&quot;</span> },
+    { <span class="hljs-attr">name</span>: <span class="hljs-string">&quot;watermelon&quot;</span>, <span class="hljs-attr">emoji</span>: <span class="hljs-string">&quot;🍉&quot;</span> },
+  ];
+
+  <span class="hljs-keyword">return</span> (
+    <span class="language-xml"><span class="hljs-tag">&lt;<span class="hljs-name">section</span>&gt;</span>
+      <span class="hljs-tag">&lt;<span class="hljs-name">h1</span>&gt;</span>shopping list<span class="hljs-tag">&lt;/<span class="hljs-name">h1</span>&gt;</span>
+      <span class="hljs-tag">&lt;<span class="hljs-name">ul</span>&gt;</span>
+        {cart.map((article) =&gt; (
+          <span class="hljs-tag">&lt;<span class="hljs-name">Article</span> <span class="hljs-attr">name</span>=<span class="hljs-string">{article.name}</span> <span class="hljs-attr">emoji</span>=<span class="hljs-string">{article.emoji}</span> /&gt;</span>
+        ))}
+      <span class="hljs-tag">&lt;/<span class="hljs-name">ul</span>&gt;</span>
+    <span class="hljs-tag">&lt;/<span class="hljs-name">section</span>&gt;</span></span>
+  );
+}
+
+<span class="hljs-keyword">export</span> <span class="hljs-keyword">default</span> <span class="hljs-title class_">App</span>;
+</code></pre></div>
+<p>Dans la littérature, cela s'appelle le <strong>component mapping</strong> !</p>
+<p>Regarde le dernier exemple : dans la console, un message y apparaît 🤨 (il apparaît en réalité sur tous les exemples précédents).</p>
+<p>Le message t'indique que dans les éléments produits par notre <code>map</code>, tu dois renseigner une prop <code>key</code>. Aussi, le message te renvoie vers une <a href="https://react.dev/learn/rendering-lists#keeping-list-items-in-order-with-key" target="_blank" rel="noopener noreferrer">page de la documentation</a>.</p>
+<h2>Comprendre les clés</h2>
+<p>Afin que React puisse identifier quel élément d'une liste de données (un tableau) est contenu dans le JSX, il a besoin d'un <strong>identifiant unique</strong>. Cet identifiant prend la forme d'une props que tu dois passer à chaque noeud JSX produit par un <code>map</code>. Cette props se nomme <code>key</code> (c'est un mot-clé réservé).</p>
+<p>Concrètement ça donne :</p>
+<div class="bloc-code"><div class="bloc-code__langue">jsx</div><pre><code class="hljs language-jsx"><span class="hljs-keyword">function</span> <span class="hljs-title function_">App</span>(<span class="hljs-params"></span>) {
+  <span class="hljs-keyword">const</span> cart = [
+    { <span class="hljs-attr">name</span>: <span class="hljs-string">&quot;apple&quot;</span>, <span class="hljs-attr">emoji</span>: <span class="hljs-string">&quot;🍏&quot;</span> },
+    { <span class="hljs-attr">name</span>: <span class="hljs-string">&quot;banana&quot;</span>, <span class="hljs-attr">emoji</span>: <span class="hljs-string">&quot;🍌&quot;</span> },
+    { <span class="hljs-attr">name</span>: <span class="hljs-string">&quot;grape&quot;</span>, <span class="hljs-attr">emoji</span>: <span class="hljs-string">&quot;🍇&quot;</span> },
+    { <span class="hljs-attr">name</span>: <span class="hljs-string">&quot;watermelon&quot;</span>, <span class="hljs-attr">emoji</span>: <span class="hljs-string">&quot;🍉&quot;</span> },
+  ];
+
+  <span class="hljs-keyword">return</span> (
+    <span class="language-xml"><span class="hljs-tag">&lt;<span class="hljs-name">section</span>&gt;</span>
+      <span class="hljs-tag">&lt;<span class="hljs-name">h1</span>&gt;</span>shopping list<span class="hljs-tag">&lt;/<span class="hljs-name">h1</span>&gt;</span>
+      <span class="hljs-tag">&lt;<span class="hljs-name">ul</span>&gt;</span>
+        {cart.map((article, index) =&gt; (
+          <span class="hljs-tag">&lt;<span class="hljs-name">li</span> <span class="hljs-attr">key</span>=<span class="hljs-string">{index}</span>&gt;</span>
+            {article.emoji} {article.name}
+          <span class="hljs-tag">&lt;/<span class="hljs-name">li</span>&gt;</span>
+        ))}
+      <span class="hljs-tag">&lt;/<span class="hljs-name">ul</span>&gt;</span>
+    <span class="hljs-tag">&lt;/<span class="hljs-name">section</span>&gt;</span></span>
+  );
+}
+
+<span class="hljs-keyword">export</span> <span class="hljs-keyword">default</span> <span class="hljs-title class_">App</span>;
+</code></pre></div>
+<p>Ici nous avons pris l'index du tableau auquel se trouve l'élément que l'on injecte dans le JSX, et comme tu peux le constater, l'erreur n’apparaît plus !</p>
+<p>Cependant...</p>
+<div class="encadre encadre--error"><div class="encadre__titre">Important</div><div class="encadre__corps"><p>Utiliser <strong>l'index d'un tableau</strong> est acceptable uniquement si le tableau n'est pas amené à être muté.</p>
+<p>Pour faire simple, la plupart du temps c'est une <strong>mauvaise pratique</strong>.</p>
+</div></div>
+<p>Considère le code suivant :</p>
+<div class="bloc-code"><div class="bloc-code__langue">jsx</div><pre><code class="hljs language-jsx"><span class="hljs-keyword">import</span> { useState } <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;react&quot;</span>;
+
+<span class="hljs-keyword">const</span> initialCart = [
+  { <span class="hljs-attr">name</span>: <span class="hljs-string">&quot;apple&quot;</span>, <span class="hljs-attr">emoji</span>: <span class="hljs-string">&quot;🍏&quot;</span> },
+  { <span class="hljs-attr">name</span>: <span class="hljs-string">&quot;banana&quot;</span>, <span class="hljs-attr">emoji</span>: <span class="hljs-string">&quot;🍌&quot;</span> },
+  { <span class="hljs-attr">name</span>: <span class="hljs-string">&quot;grape&quot;</span>, <span class="hljs-attr">emoji</span>: <span class="hljs-string">&quot;🍇&quot;</span> },
+  { <span class="hljs-attr">name</span>: <span class="hljs-string">&quot;watermelon&quot;</span>, <span class="hljs-attr">emoji</span>: <span class="hljs-string">&quot;🍉&quot;</span> },
+];
+
+<span class="hljs-keyword">function</span> <span class="hljs-title function_">App</span>(<span class="hljs-params"></span>) {
+  <span class="hljs-keyword">const</span> [cart, setCart] = <span class="hljs-title function_">useState</span>(initialCart);
+
+  <span class="hljs-keyword">const</span> <span class="hljs-title function_">removeArticle</span> = (<span class="hljs-params">article</span>) =&gt; {
+    <span class="hljs-title function_">setCart</span>(cart.<span class="hljs-title function_">filter</span>(<span class="hljs-function">(<span class="hljs-params">item</span>) =&gt;</span> item !== article));
+  };
+
+  <span class="hljs-keyword">return</span> (
+    <span class="language-xml"><span class="hljs-tag">&lt;<span class="hljs-name">section</span>&gt;</span>
+      <span class="hljs-tag">&lt;<span class="hljs-name">h1</span>&gt;</span>shopping list<span class="hljs-tag">&lt;/<span class="hljs-name">h1</span>&gt;</span>
+      <span class="hljs-tag">&lt;<span class="hljs-name">ul</span>&gt;</span>
+        {cart.map((article, index) =&gt; (
+          <span class="hljs-tag">&lt;<span class="hljs-name">li</span> <span class="hljs-attr">key</span>=<span class="hljs-string">{index}</span>&gt;</span>
+            {article.emoji} {article.name}
+            <span class="hljs-tag">&lt;<span class="hljs-name">input</span> <span class="hljs-attr">type</span>=<span class="hljs-string">&quot;text&quot;</span> <span class="hljs-attr">defaultValue</span>=<span class="hljs-string">{article.name}</span> /&gt;</span>
+            <span class="hljs-tag">&lt;<span class="hljs-name">button</span> <span class="hljs-attr">onClick</span>=<span class="hljs-string">{()</span> =&gt;</span> removeArticle(article)}&gt;remove<span class="hljs-tag">&lt;/<span class="hljs-name">button</span>&gt;</span>
+          <span class="hljs-tag">&lt;/<span class="hljs-name">li</span>&gt;</span>
+        ))}
+      <span class="hljs-tag">&lt;/<span class="hljs-name">ul</span>&gt;</span>
+    <span class="hljs-tag">&lt;/<span class="hljs-name">section</span>&gt;</span></span>
+  );
+}
+
+<span class="hljs-keyword">export</span> <span class="hljs-keyword">default</span> <span class="hljs-title class_">App</span>;
+</code></pre></div>
+<p>Dans cet exemple, j'ai implémenté une fonction qui permet de supprimer l'élément avec un bouton à cliquer.</p>
+<div class="encadre encadre--note encadre--arrow"><div class="encadre__corps"><p>Supprime l'élément &quot;banana&quot; de la liste avec le bouton &quot;remove&quot; et tu va constater un bug : le texte présent dans l'input de &quot;grape&quot; ne correspond plus à l'item du tableau !</p>
+<p>Pourquoi ? Parce que React optimise le rendu en ne recalculant l'affichage que des éléments dont la <code>key</code> a changé. Comme tu décales tous les indexes du tableau au moment de la suppression, c'est l'élément présent à l'ancien index qui s'affiche.</p>
+</div></div>
+<p><strong>Ce que tu dois retenir :</strong></p>
+<blockquote>
+<p>Utilise un <strong>identifiant unique et invariant</strong> à chaque élément que tu veux mapper.</p>
+</blockquote>
+<p>Voici un exemple qui fonctionne :</p>
+<div class="bloc-code"><div class="bloc-code__langue">jsx</div><pre><code class="hljs language-jsx"><span class="hljs-keyword">import</span> { useState } <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;react&quot;</span>;
+
+<span class="hljs-keyword">const</span> initialCart = [
+  { <span class="hljs-attr">name</span>: <span class="hljs-string">&quot;apple&quot;</span>, <span class="hljs-attr">emoji</span>: <span class="hljs-string">&quot;🍏&quot;</span> },
+  { <span class="hljs-attr">name</span>: <span class="hljs-string">&quot;banana&quot;</span>, <span class="hljs-attr">emoji</span>: <span class="hljs-string">&quot;🍌&quot;</span> },
+  { <span class="hljs-attr">name</span>: <span class="hljs-string">&quot;grape&quot;</span>, <span class="hljs-attr">emoji</span>: <span class="hljs-string">&quot;🍇&quot;</span> },
+  { <span class="hljs-attr">name</span>: <span class="hljs-string">&quot;watermelon&quot;</span>, <span class="hljs-attr">emoji</span>: <span class="hljs-string">&quot;🍉&quot;</span> },
+];
+
+<span class="hljs-keyword">function</span> <span class="hljs-title function_">App</span>(<span class="hljs-params"></span>) {
+  <span class="hljs-keyword">const</span> [cart, setCart] = <span class="hljs-title function_">useState</span>(initialCart);
+
+  <span class="hljs-keyword">const</span> <span class="hljs-title function_">removeArticle</span> = (<span class="hljs-params">article</span>) =&gt; {
+    <span class="hljs-title function_">setCart</span>(cart.<span class="hljs-title function_">filter</span>(<span class="hljs-function">(<span class="hljs-params">item</span>) =&gt;</span> item !== article));
+  };
+
+  <span class="hljs-keyword">return</span> (
+    <span class="language-xml"><span class="hljs-tag">&lt;<span class="hljs-name">section</span>&gt;</span>
+      <span class="hljs-tag">&lt;<span class="hljs-name">h1</span>&gt;</span>shopping list<span class="hljs-tag">&lt;/<span class="hljs-name">h1</span>&gt;</span>
+      <span class="hljs-tag">&lt;<span class="hljs-name">ul</span>&gt;</span>
+        {cart.map((article) =&gt; (
+          <span class="hljs-tag">&lt;<span class="hljs-name">li</span> <span class="hljs-attr">key</span>=<span class="hljs-string">{article.name}</span>&gt;</span>
+            {article.emoji} {article.name}
+            <span class="hljs-tag">&lt;<span class="hljs-name">input</span> <span class="hljs-attr">type</span>=<span class="hljs-string">&quot;text&quot;</span> <span class="hljs-attr">defaultValue</span>=<span class="hljs-string">{article.name}</span> /&gt;</span>
+            <span class="hljs-tag">&lt;<span class="hljs-name">button</span> <span class="hljs-attr">onClick</span>=<span class="hljs-string">{()</span> =&gt;</span> removeArticle(article)}&gt;remove<span class="hljs-tag">&lt;/<span class="hljs-name">button</span>&gt;</span>
+          <span class="hljs-tag">&lt;/<span class="hljs-name">li</span>&gt;</span>
+        ))}
+      <span class="hljs-tag">&lt;/<span class="hljs-name">ul</span>&gt;</span>
+    <span class="hljs-tag">&lt;/<span class="hljs-name">section</span>&gt;</span></span>
+  );
+}
+
+<span class="hljs-keyword">export</span> <span class="hljs-keyword">default</span> <span class="hljs-title class_">App</span>;
+</code></pre></div>
+<p>Ici, nous avons utilisé le nom de l'article comme clé. Il est unique, donc le rendu est cohérent.</p>
+<div class="encadre encadre--warning"><div class="encadre__titre">Attention</div><div class="encadre__corps"><p>Dans ce cas, nous avons eu de la chance car tous les noms des articles sont uniques. Avec un jeu de données réelles, tu dois t'assurer que chaque donnée possède bien un identifiant unique.</p>
+</div></div>
+<h2>Et c'est tout ?</h2>
+<p>Bien-sûr que non ! Qui dit tableau, dit méthode de tableau. Voici un petit exemple :</p>
+<div class="bloc-code"><div class="bloc-code__langue">jsx</div><pre><code class="hljs language-jsx"><span class="hljs-keyword">function</span> <span class="hljs-title function_">Article</span>(<span class="hljs-params">{ name, emoji }</span>) {
+  <span class="hljs-keyword">return</span> (
+    <span class="language-xml"><span class="hljs-tag">&lt;<span class="hljs-name">li</span>&gt;</span>
+      {emoji} {name}
+    <span class="hljs-tag">&lt;/<span class="hljs-name">li</span>&gt;</span></span>
+  );
+}
+
+<span class="hljs-keyword">function</span> <span class="hljs-title function_">App</span>(<span class="hljs-params"></span>) {
+  <span class="hljs-keyword">const</span> cart = [
+    { <span class="hljs-attr">name</span>: <span class="hljs-string">&quot;apple&quot;</span>, <span class="hljs-attr">emoji</span>: <span class="hljs-string">&quot;🍏&quot;</span> },
+    { <span class="hljs-attr">name</span>: <span class="hljs-string">&quot;banana&quot;</span>, <span class="hljs-attr">emoji</span>: <span class="hljs-string">&quot;🍌&quot;</span> },
+    { <span class="hljs-attr">name</span>: <span class="hljs-string">&quot;grape&quot;</span>, <span class="hljs-attr">emoji</span>: <span class="hljs-string">&quot;🍇&quot;</span> },
+    { <span class="hljs-attr">name</span>: <span class="hljs-string">&quot;watermelon&quot;</span>, <span class="hljs-attr">emoji</span>: <span class="hljs-string">&quot;🍉&quot;</span> },
+  ];
+
+  <span class="hljs-keyword">return</span> (
+    <span class="language-xml"><span class="hljs-tag">&lt;<span class="hljs-name">section</span>&gt;</span>
+      <span class="hljs-tag">&lt;<span class="hljs-name">h1</span>&gt;</span>shopping list<span class="hljs-tag">&lt;/<span class="hljs-name">h1</span>&gt;</span>
+      <span class="hljs-tag">&lt;<span class="hljs-name">ul</span>&gt;</span>
+        {cart
+          .filter((article) =&gt; article.name.includes(&quot;e&quot;))
+          .map((article) =&gt; (
+            <span class="hljs-tag">&lt;<span class="hljs-name">Article</span>
+              <span class="hljs-attr">key</span>=<span class="hljs-string">{article.name}</span>
+              <span class="hljs-attr">name</span>=<span class="hljs-string">{article.name}</span>
+              <span class="hljs-attr">emoji</span>=<span class="hljs-string">{article.emoji}</span>
+            /&gt;</span>
+          ))}
+      <span class="hljs-tag">&lt;/<span class="hljs-name">ul</span>&gt;</span>
+    <span class="hljs-tag">&lt;/<span class="hljs-name">section</span>&gt;</span></span>
+  );
+}
+
+<span class="hljs-keyword">export</span> <span class="hljs-keyword">default</span> <span class="hljs-title class_">App</span>;
+</code></pre></div>
+<p>Dans cet exemple, nous avons filtré le tableau du state afin de ne récupérer que les fruits contenants la lettre &quot;e&quot;, avant de faire le <code>map</code> servant à l'affichage.</p>
+<p>De <a href="https://developer.mozilla.org/fr/docs/Web/JavaScript/Reference/Global_Objects/Array" target="_blank" rel="noopener noreferrer">nombreuses méthodes</a> de tableau existent : tu peux en essayer d'autres en fonction de tes besoins.</p>
+<h2>Challenge</h2>
+<p>Dans ce challenge, tu vas générer un bouton pour chaque Pokémon dans le composant <code>App</code> en utilisant la méthode <code>map</code> pour parcourir <code>pokemonList</code>.</p>
+<ol class="etapes"><li class="etape"><div class="etape__puce">1</div><div class="etape__contenu"><h4 class="etape__titre">Crée une nouvelle branche</h4><p>Ouvre ton projet existant et crée une nouvelle branche appelée <code>rendering-list.1</code>. Cette branche sera utilisée pour développer les fonctionnalités liées à la génération dynamique de boutons. Assure-toi de partir de la branche <code>state.1</code>.</p>
+</div></li><li class="etape"><div class="etape__puce">2</div><div class="etape__contenu"><h4 class="etape__titre">Supprime les boutons &quot;statiques&quot;</h4><p>Dans le composant <code>App</code>, commence par supprimer les boutons &quot;bulbasaur&quot; et &quot;mew&quot; :</p>
+<div class="bloc-code"><div class="bloc-code__langue">jsx</div><pre><code class="hljs language-jsx"><span class="hljs-keyword">import</span> { useState } <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;react&quot;</span>;
+<span class="hljs-keyword">import</span> <span class="hljs-string">&quot;./App.css&quot;</span>;
+
+<span class="hljs-keyword">import</span> <span class="hljs-title class_">PokemonCard</span> <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;./components/PokemonCard&quot;</span>;
+
+<span class="hljs-keyword">const</span> pokemonList = [
+  {
+    <span class="hljs-attr">name</span>: <span class="hljs-string">&quot;bulbasaur&quot;</span>,
+    <span class="hljs-attr">imgSrc</span>:
+      <span class="hljs-string">&quot;https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/1.png&quot;</span>,
+  },
+  {
+    <span class="hljs-attr">name</span>: <span class="hljs-string">&quot;mew&quot;</span>,
+  },
+];
+
+<span class="hljs-keyword">function</span> <span class="hljs-title function_">App</span>(<span class="hljs-params"></span>) {
+  <span class="hljs-keyword">const</span> [pokemonName, setPokemonName] = <span class="hljs-title function_">useState</span>(<span class="hljs-string">&quot;bulbasaur&quot;</span>);
+
+  <span class="hljs-keyword">const</span> pokemon = pokemonList.<span class="hljs-title function_">find</span>(<span class="hljs-function">(<span class="hljs-params">pokemon</span>) =&gt;</span> pokemon.<span class="hljs-property">name</span> === pokemonName);
+
+  <span class="hljs-keyword">if</span> (pokemon == <span class="hljs-literal">null</span>) {
+    <span class="hljs-keyword">throw</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">Error</span>(<span class="hljs-string">&quot;Invalid pokemon name&quot;</span>);
+  }
+
+  <span class="hljs-keyword">return</span> (
+    <span class="language-xml"><span class="hljs-tag">&lt;<span class="hljs-name">div</span>&gt;</span>
+      <span class="hljs-tag">&lt;<span class="hljs-name">nav</span>&gt;</span>
+        {/* plus de boutons en dur ! */}
+      <span class="hljs-tag">&lt;/<span class="hljs-name">nav</span>&gt;</span>
+      <span class="hljs-tag">&lt;<span class="hljs-name">PokemonCard</span> <span class="hljs-attr">pokemon</span>=<span class="hljs-string">{pokemon}</span> /&gt;</span>
+    <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span></span>
+  );
+}
+
+<span class="hljs-keyword">export</span> <span class="hljs-keyword">default</span> <span class="hljs-title class_">App</span>;
+</code></pre></div>
+</div></li><li class="etape"><div class="etape__puce">3</div><div class="etape__contenu"><h4 class="etape__titre">Génére un bouton pour chaque Pokémon</h4><p>Utilise la méthode <code>map</code> pour parcourir <code>pokemonList</code> directement dans la partie <code>&lt;nav&gt;</code> du composant <code>App</code>.</p>
+<p>Pour chaque Pokémon, génère un bouton avec son nom. Assure-toi d'ajouter une <code>key</code> unique à chaque bouton pour aider React à identifier les éléments de manière efficace : les pokémons n'ont pas d'id, mais leur <code>name</code> est unique 😉</p>
+</div></li><li class="etape"><div class="etape__puce">4</div><div class="etape__contenu"><h4 class="etape__titre">Manipule l'état</h4><p>Modifie le code pour que le clic sur un bouton Pokémon appelle <code>setPokemonName</code> afin de mettre à jour le Pokémon affiché dans App. Tu dois ajouter un gestionnaire d'événements (<code>onClick</code>) sur les boutons générés avec <code>map</code> pour gérer cette fonctionnalité.</p>
+</div></li></ol>
+<p>Ajoute quelques pokémons à la liste :</p>
+<div class="bloc-code"><div class="bloc-code__langue">jsx</div><pre><code class="hljs language-jsx"><span class="hljs-keyword">const</span> pokemonList = [
+  {
+    <span class="hljs-attr">name</span>: <span class="hljs-string">&quot;bulbasaur&quot;</span>,
+    <span class="hljs-attr">imgSrc</span>:
+      <span class="hljs-string">&quot;https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/1.png&quot;</span>,
+  },
+  {
+    <span class="hljs-attr">name</span>: <span class="hljs-string">&quot;charmander&quot;</span>,
+    <span class="hljs-attr">imgSrc</span>:
+      <span class="hljs-string">&quot;https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/4.png&quot;</span>,
+  },
+  {
+    <span class="hljs-attr">name</span>: <span class="hljs-string">&quot;squirtle&quot;</span>,
+    <span class="hljs-attr">imgSrc</span>:
+      <span class="hljs-string">&quot;https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/7.png&quot;</span>,
+  },
+  {
+    <span class="hljs-attr">name</span>: <span class="hljs-string">&quot;pikachu&quot;</span>,
+    <span class="hljs-attr">imgSrc</span>:
+      <span class="hljs-string">&quot;https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/25.png&quot;</span>,
+  },
+  {
+    <span class="hljs-attr">name</span>: <span class="hljs-string">&quot;mew&quot;</span>,
+  },
+];
+</code></pre></div>
+<p>Tu devrais obtenir ce rendu :</p>
+<p><img src="images/002-challenge.png" alt="" loading="lazy"></p>
+<p>Vérifie que les boutons pour chaque pokémon mettent à jour correctement le pokémon affiché dans <code>App</code>.</p>
+<p>Fournis le lien vers la branche <code>rendering-list.1</code> de ton dépôt GitHub pour valider cette étape.</p>
+<h3>Critères de validation</h3>
+<ul>
+<li>Le composant <code>App</code> affiche un bouton par pokémon.</li>
+<li>Chaque bouton a une <code>key</code> unique.</li>
+<li>Les boutons sont fonctionnels.</li>
+</ul>
+<p>Ce que tu devrais avoir dans :</p>
+<div class="onglets" data-onglets="1"><input type="radio" name="onglets-35" id="onglets-35-0" class="onglets__radio" checked><div class="onglets__barre"><label class="onglets__label" for="onglets-35-0">App.tsx</label></div><div class="onglets__panneaux"><div class="onglets__panneau"><div class="bloc-code"><div class="bloc-code__langue">jsx</div><pre><code class="hljs language-jsx"><span class="hljs-keyword">import</span> { useState } <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;react&quot;</span>;
+<span class="hljs-keyword">import</span> <span class="hljs-string">&quot;./App.css&quot;</span>;
+
+<span class="hljs-keyword">import</span> <span class="hljs-title class_">PokemonCard</span> <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;./components/PokemonCard&quot;</span>;
+
+<span class="hljs-keyword">const</span> pokemonList = [
+  {
+    <span class="hljs-attr">name</span>: <span class="hljs-string">&quot;bulbasaur&quot;</span>,
+    <span class="hljs-attr">imgSrc</span>:
+      <span class="hljs-string">&quot;https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/1.png&quot;</span>,
+  },
+  {
+    <span class="hljs-attr">name</span>: <span class="hljs-string">&quot;charmander&quot;</span>,
+    <span class="hljs-attr">imgSrc</span>:
+      <span class="hljs-string">&quot;https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/4.png&quot;</span>,
+  },
+  {
+    <span class="hljs-attr">name</span>: <span class="hljs-string">&quot;squirtle&quot;</span>,
+    <span class="hljs-attr">imgSrc</span>:
+      <span class="hljs-string">&quot;https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/7.png&quot;</span>,
+  },
+  {
+    <span class="hljs-attr">name</span>: <span class="hljs-string">&quot;pikachu&quot;</span>,
+    <span class="hljs-attr">imgSrc</span>:
+      <span class="hljs-string">&quot;https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/25.png&quot;</span>,
+  },
+  {
+    <span class="hljs-attr">name</span>: <span class="hljs-string">&quot;mew&quot;</span>,
+  },
+];
+
+<span class="hljs-keyword">function</span> <span class="hljs-title function_">App</span>(<span class="hljs-params"></span>) {
+  <span class="hljs-keyword">const</span> [pokemonName, setPokemonName] = <span class="hljs-title function_">useState</span>(<span class="hljs-string">&quot;bulbasaur&quot;</span>);
+
+  <span class="hljs-keyword">const</span> pokemon = pokemonList.<span class="hljs-title function_">find</span>(<span class="hljs-function">(<span class="hljs-params">pokemon</span>) =&gt;</span> pokemon.<span class="hljs-property">name</span> === pokemonName);
+
+  <span class="hljs-keyword">if</span> (pokemon == <span class="hljs-literal">null</span>) {
+    <span class="hljs-keyword">throw</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">Error</span>(<span class="hljs-string">&quot;Invalid pokemon name&quot;</span>);
+  }
+
+  <span class="hljs-keyword">return</span> (
+    <span class="language-xml"><span class="hljs-tag">&lt;<span class="hljs-name">div</span>&gt;</span>
+      <span class="hljs-tag">&lt;<span class="hljs-name">nav</span>&gt;</span>
+        {pokemonList.map((onePokemonFromTheList) =&gt; (
+          <span class="hljs-tag">&lt;<span class="hljs-name">button</span>
+            <span class="hljs-attr">key</span>=<span class="hljs-string">{onePokemonFromTheList.name}</span>
+            <span class="hljs-attr">type</span>=<span class="hljs-string">&quot;button&quot;</span>
+            <span class="hljs-attr">onClick</span>=<span class="hljs-string">{()</span> =&gt;</span> setPokemonName(onePokemonFromTheList.name)}
+          &gt;
+            {onePokemonFromTheList.name}
+          <span class="hljs-tag">&lt;/<span class="hljs-name">button</span>&gt;</span>
+        ))}
+      <span class="hljs-tag">&lt;/<span class="hljs-name">nav</span>&gt;</span>
+      <span class="hljs-tag">&lt;<span class="hljs-name">PokemonCard</span> <span class="hljs-attr">pokemon</span>=<span class="hljs-string">{pokemon}</span> /&gt;</span>
+    <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span></span>
+  );
+}
+
+<span class="hljs-keyword">export</span> <span class="hljs-keyword">default</span> <span class="hljs-title class_">App</span>;
+</code></pre></div>
+</div></div></div>
+
+  </div>
+  
+</article>
+
+<nav class="nav-quete">
+  <a class="nav-quete__lien nav-quete__lien--prec" href="../../react-bases/006-react-basics-06-pokedex-utiliser-un-state/index.html">
+           <span class="nav-quete__sens">← Précédent</span>
+           <span class="nav-quete__titre">👩‍🏫 React Basics 06 - Pokédex - Utiliser un state</span>
+         </a>
+  <a class="nav-quete__lien nav-quete__lien--suiv" href="../../react-bases/008-react-basics-08-pokedex-le-css-dans-react/index.html">
+           <span class="nav-quete__sens">Suivant →</span>
+           <span class="nav-quete__titre">👩‍🏫 React Basics 08 - Pokédex - Le CSS dans React</span>
+         </a>
+</nav>
+</main>
+<footer class="pied">
+  <p>Archive personnelle des cours suivis à la Wild Code School. Copie hors ligne à usage strictement privé.</p>
+</footer>
+
+<script src="../../assets/copie-code.js"></script>
+<script src="../../assets/progression.js"></script>
+</body>
+</html>

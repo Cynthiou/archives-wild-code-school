@@ -1,0 +1,183 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Git/GitHub 4 : Branche et flow — Archives WCS</title>
+<link rel="stylesheet" href="../../assets/style.css">
+</head>
+<body style="--teinte:#F44F3D">
+<header class="entete">
+  <a class="entete__marque" href="../../index.html">Archives Wild Code School</a>
+</header>
+<main class="contenu">
+<nav class="ariane"><a href="../../index.html">Accueil</a><span class="ariane__sep">›</span><a href="../../git/index.html">Git</a><span class="ariane__sep">›</span><span aria-current="page">Git/GitHub 4 : Branche et flow</span></nav>
+
+<article class="quete">
+  <header class="quete__entete">
+    <a class="pastille pastille--teintee" href="../../git/index.html">Git</a>
+    <h1>Git/GitHub 4 : Branche et flow</h1>
+    <p class="quete__meta">Quête 4 sur 6 · 1 image archivée</p>
+  </header>
+  <div class="cours">
+<h1>Introduction</h1>
+<p>Maintenant que tu connais les bases de GitHub et Git, assemble les pièces du puzzle en découvrant le flow pour les utiliser de manière optimale !</p>
+<p><img src="images/001-image.jpg" alt="image" loading="lazy"></p>
+<h2>🤓 <strong>À la fin de cette quête, tu pourras:</strong></h2>
+<ul>
+<li>✅ <strong>Créer une branche et la fusionner</strong> avec la branche <em>main</em> via l'interface graphique GitHub</li>
+<li>✅ Créer une branche via <strong>Git CLI</strong></li>
+<li>✅ Suivre le flow <strong>GitHub</strong> en utilisant Git</li>
+</ul>
+<hr>
+<h1><strong>Pourquoi suivre un flow ?</strong></h1>
+<p>Un <strong>flow</strong> (parfois aussi appelé <em>workflow</em>) est une <strong>série d'étapes</strong> que les membres de l'équipe doivent suivre pour <strong>compléter une tâche.</strong>
+Dans notre cas, la <strong>tâche consiste à apporter des modifications</strong> <strong>au code</strong> d'un projet web.</p>
+<p>S'entendre sur les étapes à suivre permet à plusieurs personnes de <strong>s'organiser</strong>. En effet, une telle approche :</p>
+<p>• <strong>Minimise</strong> le risque de <strong>conflits</strong> (une notion que tu as déjà vue), car elle empêche plusieurs développeurs de travailler sur le même code en même temps (cela se fait grâce à l'utilisation de <em>branches</em> que nous découvrirons plus tard) ;</p>
+<p>• Facilite le <strong>contrôle</strong> du code produit par chaque développeur, ce qui assure la <strong>qualité du projet</strong> (ceci est fait par l'utilisation de <em>pull requests</em> que nous verrons plus tard également).</p>
+<p>Dans cette quête, nous découvrirons progressivement le <strong>flow GitHub</strong> qui te servira dans tes futurs projets.</p>
+<p>Pour ce faire, tu découvriras d'abord le <strong>flow à suivre sur GitHub</strong>, uniquement via son <strong>interface graphique</strong>.</p>
+<p>Ensuite, tu verras comment effectuer certaines des mêmes opérations (création de branches) via Git, sur des <strong>lignes de commande sur ta machine</strong>.</p>
+<p>Enfin, tu suivras à nouveau le flow de GitHub, mais cette fois en utilisant <strong>ce que tu as appris sur Git</strong>.</p>
+<h1><strong>flow GitHub : introduction</strong></h1>
+<p>GitHub fonctionne grâce à un système de <strong>branches</strong>.
+Pour avoir une première idée de ce dont il s'agit, lis l'introduction et la partie &quot;Branching Out&quot; de la ressource suivante. Elle date de 2018, et parle de la branche <code>master</code>, mais le principe général reste le même.</p>
+<a class="ressource" href="https://thenewstack.io/dont-mess-with-the-master-working-with-branches-in-git-and-github/" target="_blank" rel="noopener noreferrer">
+  <div class="ressource__icone">↗</div>
+  <div class="ressource__texte">
+    <div class="ressource__titre">Travailler avec les branches de Git et GitHub</div>
+    
+    <div class="ressource__hote">thenewstack.io</div>
+  </div>
+</a>
+<p>​
+Découvre ensuite comment les branches sont utilisées dans le flow GitHub en suivant <a href="https://guides.github.com/activities/hello-world/" target="_blank" rel="noopener noreferrer">ce tutoriel</a>.
+​</p>
+<a class="ressource" href="https://guides.github.com/activities/hello-world/" target="_blank" rel="noopener noreferrer">
+  <div class="ressource__icone">↗</div>
+  <div class="ressource__texte">
+    <div class="ressource__titre">Des guides : Bonjour le monde</div>
+    
+    <div class="ressource__hote">guides.github.com</div>
+  </div>
+</a>
+<p>​
+Félicitations, tu viens de suivre le flow de GitHub pour la première fois !
+​
+Lorsque tu as terminé, dans le repo GitHub que tu as créé en suivant le tutoriel, clique sur le bouton <code>Insights</code> puis sur <code>Network</code> pour accéder à un <strong>historique visuel de ton projet.</strong>
+​
+Comme sur l'exemple ci-dessous, tu pourras voir la branche que tu as créée à partir de ta branche <code>main</code>, le commit que tu as fait sur cette branche et ensuite la fusion avec la branche <code>main</code>.
+​
+Le <code>network graph</code> est un moyen simple de <strong>visualiser les branches</strong> créée dans ton repo GitHub - il devrait t'être utile pendant ta vie de développeur !
+​</p>
+<h1><strong>Git : la création de branches locales</strong></h1>
+<p>​
+Tu viens d'apprendre à utiliser l'interface graphique de GitHub.
+​
+Cette nouvelle branche te permet de <strong>modifier un fichier</strong> directement dans ton navigateur, <strong>puis de le fusionner</strong> avec ton code de base pour le partager avec le reste de ton équipe.
+​
+Mais comme tu le sais déjà, <strong>modifier du code en utilisant uniquement l'interface GitHub</strong>, c'est-à-dire faire tout dans ton navigateur, <strong>n'est pas très pratique</strong> : il est plus pratique de <strong>travailler localement</strong> (= <strong>sur ton ordinateur</strong>), dans un éditeur de texte, pour enregistrer tes modifications en utilisant Git (rappelle-toi tes amis <code>git add</code> et <code>git commit</code>), et seulement ensuite de <strong>les pousser vers ton repo GitHub.</strong>
+​
+Cela tombe bien : il est justement possible de <strong>créer une branche locale</strong> pour effectuer des commits sur celle-ci, puis de pousser cette branche vers un repo GitHub (l'interface graphique de GitHub prend alors le relais selon le flow que tu connais déjà à l'étape de <em>pull request</em>).
+​
+Mais tout d'abord, apprends à <strong>créer une branche via Git</strong> en regardant <a href="https://www.youtube.com/watch?v=sgzkY5vFKQQ" target="_blank" rel="noopener noreferrer">cette vidéo</a> (de 0 à 5 minutes 30).
+​</p>
+<a class="video-lien" href="https://www.youtube.com/watch?v=sgzkY5vFKQQ" target="_blank" rel="noopener noreferrer">
+  <div class="video-lien__play">▶</div>
+  <div class="video-lien__texte">
+    <div class="video-lien__titre">Vidéo YouTube</div>
+    <div class="video-lien__url">https://www.youtube.com/watch?v=sgzkY5vFKQQ</div>
+  </div>
+</a>
+<p>Consolide tes connaissances en visualisant l'ouverture d'une nouvelle branche <a href="https://onlywei.github.io/explain-git-with-d3/#branch" target="_blank" rel="noopener noreferrer">ici</a>.
+Dans le simulateur de terminal (la petite fenêtre noire à gauche de l'écran), tape les commandes suivantes et observe ce qui se passe.</p>
+<div class="bloc-code"><div class="bloc-code__langue">shell</div><pre><code class="hljs language-shell">git branch new-branch
+git checkout new-branch
+git commit
+git commit
+git checkout main
+git commit
+git commit
+git checkout new-branch
+git commit
+</code></pre></div>
+<p>​
+N'hésite pas à <strong>jouer avec les lignes de commande</strong> pour voir le résultat produit sous forme d'image.
+​
+<em>Comme tu le sais déjà, pour pousser les modifications que tu as effectuées sur ton ordinateur vers la branche <code>main</code> de ton dépôt GitHub, tu dois utiliser la commande <code>git push origin main</code>. Quelle commande penses-tu sera utilisée pour effectuer la même action , mais sur une autre branche (nommée, par exemple, <code>new-branch</code>)?</em>
+​
+<em>La commande à utiliser sera <code>git push origin new-branch</code> ce qui signifie que nous remplaçons <code>main</code> par le nom de la branche que tu veux pousser sur le distant (= sur GitHub) . Tu as toujours voulu savoir à quoi référait <code>origin</code> ? Clique <a href="https://stackoverflow.com/a/9529518" target="_blank" rel="noopener noreferrer">ici</a> pour une lecture de 30 secondes.</em>
+​</p>
+<h1><strong>GitHub et Git: le flow final</strong></h1>
+<p>​
+Maintenant que tu sais comment créer une branche localement sur ta machine, il est temps de suivre le flow GitHub que tu as déjà vu, mais cette fois en mélangeant Git et GitHub.
+​
+Pour ce faire, consulte <a href="https://www.youtube.com/watch?v=MnUd31TvBoU" target="_blank" rel="noopener noreferrer">cette vidéo</a>.
+​</p>
+<a class="video-lien" href="https://www.youtube.com/watch?v=MnUd31TvBoU" target="_blank" rel="noopener noreferrer">
+  <div class="video-lien__play">▶</div>
+  <div class="video-lien__texte">
+    <div class="video-lien__titre">Vidéo YouTube</div>
+    <div class="video-lien__url">https://www.youtube.com/watch?v=MnUd31TvBoU</div>
+  </div>
+</a>
+<h1>☝️ Résumé</h1>
+<ul>
+<li>Suivre un flow minimise les risques de conflits.</li>
+<li>GitHub fonctionne via un système de <strong>branches</strong>.</li>
+<li>Les branches te permettent de travailler sur une version séparée que tu modifiras</li>
+<li>Nous pouvons créer des branches via l'interface graphique ou via la CLI.</li>
+</ul>
+<hr>
+<h1>💪 Challenge</h1>
+<p>Pratiquons ça!</p>
+<ol>
+<li>Crée un nouveau dépôt nommé <code>website-flow</code> sur GitHub en cochant «Initialize this repository with a README».</li>
+<li>Clone le dépôt sur ta machine.</li>
+<li>Localement (= via Git), crée une nouvelle branche appelée <code>cheese</code> et place-toi dessus.</li>
+<li>Dans ton éditeur de texte préféré, modifie le fichier readme (par exemple, en écrivant une liste de tes fromages à pizza préférés).</li>
+<li>En t'assurant que tu es bien sur la branche <code>cheese</code>, valide tes modifications et transféres-les dans ton dépôt GitHub.</li>
+<li>Sur GitHub, fusionne la branche <code>cheese</code> avec la branche <code>main</code> via une pull request, puis supprime la branche <code>cheese</code>.</li>
+<li>En solution de ce challenge, partage le lien de ton repo GitHub avec <code>/commits</code> à la fin</li>
+</ol>
+<blockquote>
+<p>Ce lien te mènera à l'historique de tous les crimes commis sur ton repo.</p>
+</blockquote>
+<h1>🧐 Critères de validation :</h1>
+<ul>
+<li>[ ] Le lien fourni est un lien vers un dépôt GitHub.</li>
+<li>[ ] Dans l'historique des commits, le commit le plus récent est similaire à la demande de fusion pull #1 de user/cheese où l'utilisation est le nom d'utilisateur de l'étudiant qui a posté sa solution (= la branche cheese a bien été fusionnée dans <code>main</code>).</li>
+<li>[ ] Dans l'onglet branche, seule la branche <code>main</code> est présente (= la branche cheese a été supprimée).</li>
+</ul>
+
+  </div>
+  <section class="ressources-quete">
+  <h2>Ressources partagées sur cette quête</h2>
+  <ul class="ressources-liste">
+    <li><a href="https://danielkummer.github.io/git-flow-cheatsheet/" target="_blank" rel="noopener noreferrer">Cette ressource explique parfaitement le fonctionnement de Git Flow</a><span class="ressources-liste__url">https://danielkummer.github.io/git-flow-cheatsheet/</span></li>
+    <li><a href="https://www.youtube.com/watch?v=4o9qzbssfII" target="_blank" rel="noopener noreferrer">vidéo de 20 minutes qui résume entièrement tout ce que tu as appris lors des 4 premières quetes sur git... à consommer sans modération</a><span class="ressources-liste__url">https://www.youtube.com/watch?v=4o9qzbssfII</span></li>
+    <li><a href="https://devconnected.com/how-to-switch-branch-on-git/" target="_blank" rel="noopener noreferrer">Un petit lexique pour switcher de branche</a><span class="ressources-liste__url">https://devconnected.com/how-to-switch-branch-on-git/</span></li>
+  </ul>
+</section>
+</article>
+
+<nav class="nav-quete">
+  <a class="nav-quete__lien nav-quete__lien--prec" href="../../git/003-git-github-3-remote/index.html">
+           <span class="nav-quete__sens">← Précédent</span>
+           <span class="nav-quete__titre">Git/GitHub 3 : Remote</span>
+         </a>
+  <a class="nav-quete__lien nav-quete__lien--suiv" href="../../git/005-git-github-5-merge-conflits/index.html">
+           <span class="nav-quete__sens">Suivant →</span>
+           <span class="nav-quete__titre">Git/GitHub 5 : Merge &amp; Conflits</span>
+         </a>
+</nav>
+</main>
+<footer class="pied">
+  <p>Archive personnelle des cours suivis à la Wild Code School. Copie hors ligne à usage strictement privé.</p>
+</footer>
+
+<script src="../../assets/copie-code.js"></script>
+<script src="../../assets/progression.js"></script>
+</body>
+</html>

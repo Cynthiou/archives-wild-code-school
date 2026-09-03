@@ -1,0 +1,33 @@
+{
+  "id": 2152,
+  "titre": "Les règles de fonctionnement",
+  "titres": {
+    "fr": "Les règles de fonctionnement"
+  },
+  "theme": {
+    "id": 155,
+    "slug": "on-boarding-students",
+    "nom": "Onboarding students"
+  },
+  "creeLe": "2022-07-08T10:30:20.696+02:00",
+  "difficulte": "0",
+  "dureeEstimee": null,
+  "modeValidation": "self",
+  "chapitres": [
+    {
+      "id": 10664,
+      "type": "content",
+      "langue": "fr",
+      "majLe": "2024-10-10T09:17:52.838+02:00",
+      "caracteres": 3910
+    }
+  ],
+  "ressources": [
+    {
+      "link": "https://exercism.org/dashboard",
+      "description": "nouveau , frais et ludique "
+    }
+  ],
+  "urlOrigine": "https://odyssey.wildcodeschool.com/quests/2152",
+  "archiveLe": "2026-09-02T20:53:34.658Z"
+}

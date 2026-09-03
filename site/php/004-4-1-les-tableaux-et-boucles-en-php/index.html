@@ -1,0 +1,461 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>4.1. Les tableaux et boucles en PHP — Archives WCS</title>
+<link rel="stylesheet" href="../../assets/style.css">
+</head>
+<body style="--teinte:#5F83B2">
+<header class="entete">
+  <a class="entete__marque" href="../../index.html">Archives Wild Code School</a>
+</header>
+<main class="contenu">
+<nav class="ariane"><a href="../../index.html">Accueil</a><span class="ariane__sep">›</span><a href="../../php/index.html">PHP</a><span class="ariane__sep">›</span><span aria-current="page">4.1. Les tableaux et boucles en PHP</span></nav>
+
+<article class="quete">
+  <header class="quete__entete">
+    <a class="pastille pastille--teintee" href="../../php/index.html">PHP</a>
+    <h1>4.1. Les tableaux et boucles en PHP</h1>
+    <p class="quete__meta">Quête 4 sur 14 · 1 image archivée</p>
+  </header>
+  <div class="cours">
+<p><strong>⚠️ Avant de commencer cette quête, tu dois avoir terminé les quêtes suivantes :</strong></p>
+<div class="renvois"><div class="renvois__titre">Quêtes liées</div><ul><li><a href="../../php/003-3-les-chaines-de-caracteres-en-php/index.html">Quête 139</a></li></ul></div>
+<div class="bloc-code"><div class="bloc-code__langue">title-book</div><pre><code class="hljs language-title-book">Introduction
+</code></pre></div>
+<p>Un tableau (ou <em>array</em>) est une variable spéciale qui peut contenir plusieurs valeurs à la fois. Tu peux retrouver ce type de variable dans tous les langages de programmation.</p>
+<p>Au fur et à mesure que tu avances dans la quête, n'hésite pas à tester le code qui t'est proposé, et à le manipuler, c'est le meilleur moyen d'apprendre.</p>
+<p><img src="http://images.innoveduc.fr/php_array_trust_me.gif" alt="image" loading="lazy"></p>
+<p>Dans un second temps, tu vas découvrir les différentes façons de faire des boucles en PHP.
+Les boucles sont des structures de contrôle très utilisées car elles vont te permettre de faire le même traitement plusieurs fois... En boucle !</p>
+<p><img src="http://images.innoveduc.fr/php_proc_loop.jpg" alt="image" loading="lazy"></p>
+<h2>🤓 <strong>À la fin de cette quête, tu seras capable de:</strong></h2>
+<ul>
+<li>✅ Découvrir les variables de type &quot;array&quot;</li>
+<li>✅ Apprendre à les déclarer et à les manipuler</li>
+<li>✅ Découvrir des fonctions de traitements</li>
+<li>✅ Comprendre l'utilité de faire des boucles</li>
+<li>✅ Maîtriser les structures de contrôle for, while, foreach, break, continue</li>
+</ul>
+<h1>Définition des tableaux</h1>
+<p>Commence par regarder cette vidéo jusqu'à la <strong>minute 6</strong> (tu regarderas la suite dans la quête suivante).</p>
+<a class="video-lien" href="https://www.youtube.com/watch?v=2Bc9wMsC-7M" target="_blank" rel="noopener noreferrer">
+  <div class="video-lien__play">▶</div>
+  <div class="video-lien__texte">
+    <div class="video-lien__titre">Vidéo YouTube</div>
+    <div class="video-lien__url">https://www.youtube.com/watch?v=2Bc9wMsC-7M</div>
+  </div>
+</a>
+<p>Imagine, par exemple, que tu souhaites stocker la liste des armes d'Indy, ton code risque de ressembler à :</p>
+<div class="bloc-code"><div class="bloc-code__langue">php</div><pre><code class="hljs language-php"><span class="hljs-variable">$weapon1</span> = <span class="hljs-string">&#x27;whip&#x27;</span>;
+<span class="hljs-variable">$weapon2</span> = <span class="hljs-string">&#x27;gun&#x27;</span>;
+<span class="hljs-variable">$weapon2</span> = <span class="hljs-string">&#x27;saber&#x27;</span>;
+</code></pre></div>
+<p><img src="http://images.innoveduc.fr/php_array_indy_weapons.jpg" alt="image" loading="lazy"></p>
+<p>Notre objectif est de tout stocker au sein d'une seule et même variable ; On peut alors déclarer :</p>
+<div class="bloc-code"><div class="bloc-code__langue">php</div><pre><code class="hljs language-php"><span class="hljs-variable">$weapons</span> = [<span class="hljs-string">&#x27;whip&#x27;</span>, <span class="hljs-string">&#x27;gun&#x27;</span>, <span class="hljs-string">&#x27;saber&#x27;</span>];
+</code></pre></div>
+<div class="encadre encadre--info"><div class="encadre__titre">Info</div><div class="encadre__corps"><p>Il est aussi possible de déclarer un tableau de la manière suivante :
+<code>$weapons = array('whip', 'gun', 'saber');</code>
+Cette méthode n'est cependant presque plus utilisée depuis PHP 5.4</p>
+</div></div>
+<p>Tu remarques ici que le nom de la variable est au pluriel et cela est volontaire, étant donné que cette dernière va contenir plusieurs valeurs.
+<strong>On garde toujours une cohérence entre le nom de la variable et son contenu.</strong></p>
+<p>Chaque valeur du tableau est séparée par une virgule.</p>
+<p>Attention, nous avons déclaré ici ce que l'on appelle un <strong>tableau à index numérique</strong>, nous verrons pourquoi juste après.
+Attention également aux simples quotes, ces dernières sont présentes car les valeurs sont de type &quot;string&quot;. Mais sache qu'un tableau peut contenir tout type d'élément, par exemple:</p>
+<div class="bloc-code"><div class="bloc-code__langue">php</div><pre><code class="hljs language-php"><span class="hljs-variable">$elements</span> = [<span class="hljs-number">1</span>, <span class="hljs-string">&#x27;deux&#x27;</span>, <span class="hljs-literal">true</span>, [], <span class="hljs-number">1.8</span>];
+</code></pre></div>
+<p>Ici, la variable <code>$elements</code> est un tableau qui contient, successivement, les éléments de type int, string, boolean, array (et oui un tableau peut contenir un autre tableau) et float.</p>
+<h3>Le tableau indexé numériquement</h3>
+<p>Tu as vu comment stocker plusieurs informations au sein d'une seule et même variable, c'est génial, mais comment faire pour récupérer une valeur précise ?
+Heureusement, les index sont là. Dans cette étape, tu vas voir les index numériques.
+Lors de la déclaration d'un tableau, si tu ne précises pas les index, ces derniers seront par défaut numériques.
+Un tableau indexé numériquement est tout simplement une liste d'éléments repérés chacun par un index numérique unique. Ainsi, le premier élément du tableau correspondra à l'index 0, le deuxième à l'index 1, le troisième à l'index 2, etc.
+Tu noteras bien que la numérotation commence à 0 et non à 1 !</p>
+<h4>Accéder aux éléments d'un tableau</h4>
+<p>Pour accéder à un élément du tableau, il suffit d'y faire référence grâce à son index.
+Reprenons notre exemple précédent, notre tableau d'armes :</p>
+<div class="bloc-code"><div class="bloc-code__langue">php</div><pre><code class="hljs language-php"><span class="hljs-variable">$weapons</span> = [<span class="hljs-string">&#x27;whip&#x27;</span>, <span class="hljs-string">&#x27;gun&#x27;</span>, <span class="hljs-string">&#x27;saber&#x27;</span>];
+</code></pre></div>
+<p>Dans ce tableau, <em>whip</em> est situé à l'index 0 de notre tableau <code>$weapons</code>, <em>gun</em> à l'index 1, et <em>saber</em> à l'index 2.</p>
+<p>Attention, pour rappel, le premier élément du tableau est référencé à l'index 0 !
+Tu peux maintenant afficher les différentes valeurs du tableau de la manière suivante :</p>
+<div class="bloc-code"><div class="bloc-code__langue">php</div><pre><code class="hljs language-php"><span class="hljs-keyword">echo</span> <span class="hljs-variable">$weapons</span>[<span class="hljs-number">0</span>]; <span class="hljs-comment">// affiche : whip</span>
+<span class="hljs-keyword">echo</span> <span class="hljs-variable">$weapons</span>[<span class="hljs-number">1</span>]; <span class="hljs-comment">// affiche : gun</span>
+<span class="hljs-keyword">echo</span> <span class="hljs-variable">$weapons</span>[<span class="hljs-number">2</span>]; <span class="hljs-comment">// affiche : saber</span>
+</code></pre></div>
+<p><em>Représentation du tableau ci-dessus :</em></p>
+<p><img src="images/004-image.png" alt="image" loading="lazy"></p>
+<p>Attention, dans l'exemple précédent, le code <code>echo $weapons[3];</code> renverrait une erreur. En effet, tu ne peux accéder à l'index d'un tableau qui n'existe pas.</p>
+<h4>Ajouter des éléments à un tableau</h4>
+<p>Bien entendu, un tableau peut avoir un nombre illimité de valeurs. Tu peux initialiser un tableau avec certaines valeurs, et en ajouter de nouvelles au fur et à mesure de l'exécution de ton script.</p>
+<div class="bloc-code"><div class="bloc-code__langue">phpsandbox</div><pre><code class="hljs language-phpsandbox">https://phpsandbox.io/n/q41-array-dump-1-lk0iu?&amp;layout=Editor
+</code></pre></div>
+<p><code>var_dump()</code> permet d'afficher des informations détaillées sur une variable et est très utilisé pour déboguer.
+Le tableau <code>$weapons</code> contient 3 éléments de type string avec, pour chaque string, une longueur respective de 4, 3 et 5 caractères.</p>
+<p>Ajoutons maintenant une nouvelle arme à notre tableau : <em>nuclear</em>.</p>
+<div class="bloc-code"><div class="bloc-code__langue">phpsandbox</div><pre><code class="hljs language-phpsandbox">https://phpsandbox.io/n/q41-array-dump-2-ckgay?&amp;layout=Editor
+</code></pre></div>
+<p>Le tableau contient maintenant 4 éléments, la valeur 'nuclear' a été ajoutée à la suite des éléments existants.</p>
+<div class="encadre encadre--info"><div class="encadre__titre">Info</div><div class="encadre__corps"><p>La syntaxe [ ] après le nom d'une variable de type array permet d'indiquer que l'on ajoute une entrée au tableau. L'index utilisé pour le nouvel élément ajouté correspondra à l'index maximum courant +1.</p>
+</div></div>
+<p><img src="http://images.innoveduc.fr/php_array_nuclear.png" alt="image" loading="lazy"></p>
+<a class="ressource" href="http://php.net/manual/fr/function.var-dump.php" target="_blank" rel="noopener noreferrer">
+  <div class="ressource__icone">↗</div>
+  <div class="ressource__texte">
+    <div class="ressource__titre">var_dump()</div>
+    <div class="ressource__desc"><p>Fonction utile pour le débugage, elle permet ici d'afficher en une fois tout le contenu du tableau.</p>
+</div>
+    <div class="ressource__hote">php.net</div>
+  </div>
+</a>
+<h3>Le tableau associatif</h3>
+<p>Juste avant, tu as vu que chaque valeur de ton tableau pouvait être identifiée numériquement. Il s'agit du comportement par défaut lorsque tu déclares un tableau avec uniquement tes valeurs à l'intérieur.</p>
+<p>Pour info, tu pourrais également déclarer ton tableau de valeurs ainsi :</p>
+<div class="bloc-code"><div class="bloc-code__langue">php</div><pre><code class="hljs language-php"><span class="hljs-variable">$weapons</span>[<span class="hljs-number">0</span>] = <span class="hljs-string">&#x27;whip&#x27;</span>;
+<span class="hljs-variable">$weapons</span>[<span class="hljs-number">1</span>] = <span class="hljs-string">&#x27;gun&#x27;</span>;
+<span class="hljs-variable">$weapons</span>[<span class="hljs-number">2</span>] = <span class="hljs-string">&#x27;saber&#x27;</span>;
+</code></pre></div>
+<p>La déclaration ci-dessus est identique à celle vue précédemment :</p>
+<div class="bloc-code"><div class="bloc-code__langue">php</div><pre><code class="hljs language-php"><span class="hljs-variable">$weapons</span> = [<span class="hljs-string">&#x27;whip&#x27;</span>, <span class="hljs-string">&#x27;gun&#x27;</span>, <span class="hljs-string">&#x27;saber&#x27;</span>];
+</code></pre></div>
+<p>Lors de la déclaration d'un tableau associatif, on doit indiquer nous-mêmes les indices (= <em>index</em>) du tableau (c'est ce que l'on a fait au-dessus).</p>
+<p>Dans la mesure où l'on est libre de les spécifier nous-mêmes, les indices peuvent être non seulement des entiers, mais également des chaînes de caractères. Dans ce cas, on parle de <strong>clé</strong> (ou <em>key</em>). Ce type de tableau est très pratique pour donner plus de sens aux valeurs contenues.
+Par exemple, on pourrait modifier la déclaration précédente en utilisant des clés plus explicites :</p>
+<div class="bloc-code"><div class="bloc-code__langue">php</div><pre><code class="hljs language-php"><span class="hljs-variable">$weapons</span>[<span class="hljs-string">&#x27;weapon_one&#x27;</span>] = <span class="hljs-string">&#x27;whip&#x27;</span>;
+<span class="hljs-variable">$weapons</span>[<span class="hljs-string">&#x27;weapon_two&#x27;</span>] = <span class="hljs-string">&#x27;gun&#x27;</span>;
+<span class="hljs-variable">$weapons</span>[<span class="hljs-string">&#x27;weapon_three&#x27;</span>] = <span class="hljs-string">&#x27;saber&#x27;</span>;
+</code></pre></div>
+<p>Ou encore :</p>
+<div class="bloc-code"><div class="bloc-code__langue">php</div><pre><code class="hljs language-php"><span class="hljs-variable">$weapons</span> = [
+  <span class="hljs-string">&#x27;weapon_one&#x27;</span> =&gt; <span class="hljs-string">&#x27;whip&#x27;</span>,
+  <span class="hljs-string">&#x27;weapon_two&#x27;</span>=&gt;<span class="hljs-string">&#x27;gun&#x27;</span>,
+  <span class="hljs-string">&#x27;weapon_three&#x27;</span>=&gt;<span class="hljs-string">&#x27;saber&#x27;</span>
+];
+</code></pre></div>
+<p>Notre variable <code>$weapons</code> est toujours de type <em>array</em>. Elle contient toujours plusieurs valeurs, mais ces dernières sont identifiées respectivement par les clés <em>weapon_one</em>, <em>weapon_two</em>, <em>weapon_three</em>.</p>
+<p>Pour les afficher, on fera donc:</p>
+<div class="bloc-code"><div class="bloc-code__langue">php</div><pre><code class="hljs language-php"><span class="hljs-keyword">echo</span> <span class="hljs-variable">$weapons</span>[<span class="hljs-string">&#x27;weapon_one&#x27;</span>]; <span class="hljs-comment">// affiche : whip</span>
+<span class="hljs-keyword">echo</span> <span class="hljs-variable">$weapons</span>[<span class="hljs-string">&#x27;weapon_two&#x27;</span>]; <span class="hljs-comment">// affiche : gun</span>
+<span class="hljs-keyword">echo</span> <span class="hljs-variable">$weapons</span>[<span class="hljs-string">&#x27;weapon_three&#x27;</span>]; <span class="hljs-comment">// affiche : saber</span>
+</code></pre></div>
+<p>Les tableaux associatifs te seront très utiles lors de l'utilisation de tableaux multidimensionnels. Tu verras ça dans la quête suivante.</p>
+<p>Petite spécificité, si dans la suite de mon script j'exécute ceci :</p>
+<div class="bloc-code"><div class="bloc-code__langue">php</div><pre><code class="hljs language-php"><span class="hljs-variable">$weapons</span>[<span class="hljs-string">&#x27;weapon_one&#x27;</span>] = <span class="hljs-string">&#x27;dagger&#x27;</span>;
+</code></pre></div>
+<p>Je modifie la valeur située à la clé <em>weapon_one</em>, et l'exécution <code>echo $weapons['weapon_one'];</code> affichera maintenant la chaîne de caractères 'dagger'. C'est le même comportement que pour une variable.
+Si tu rappelles le même élément en lui assignant une nouvelle valeur, la valeur précédente va être remplacée par la nouvelle. Il en est de même pour les tableaux indexés numériquement.</p>
+<a class="ressource" href="http://php.net/manual/fr/language.types.array.php" target="_blank" rel="noopener noreferrer">
+  <div class="ressource__icone">↗</div>
+  <div class="ressource__texte">
+    <div class="ressource__titre">PHP Manual</div>
+    <div class="ressource__desc"><p>Documentation officielle PHP sur les tableaux</p>
+</div>
+    <div class="ressource__hote">php.net</div>
+  </div>
+</a>
+<h3>Les fonctions utiles pour les tableaux</h3>
+<p>De nombreuses fonctions en PHP nous permettent de travailler sur les tableaux, des fonctions de mesure, de navigation, d'itération, de tri, et bien plus encore.
+Ce sont des fonctions PHP dites <em>natives</em> car elles font partie du langage PHP.</p>
+<p>En voici quelques exemples:</p>
+<ul>
+<li><a href="https://www.php.net/manual/fr/function.count.php" target="_blank" rel="noopener noreferrer">count()</a>
+Permet de compter le nombre d'éléments d'un tableau.</li>
+</ul>
+<div class="bloc-code"><div class="bloc-code__langue">php</div><pre><code class="hljs language-php"><span class="hljs-variable">$weapons</span> = [<span class="hljs-string">&#x27;whip&#x27;</span>, <span class="hljs-string">&#x27;gun&#x27;</span>, <span class="hljs-string">&#x27;saber&#x27;</span>];
+<span class="hljs-keyword">echo</span> <span class="hljs-title function_ invoke__">count</span>(<span class="hljs-variable">$weapons</span>); <span class="hljs-comment">// affiche 3</span>
+</code></pre></div>
+<ul>
+<li><a href="https://www.php.net/manual/fr/function.sort" target="_blank" rel="noopener noreferrer">sort()</a>
+Permet de trier un tableau par ordre croissant de valeur.</li>
+</ul>
+<div class="bloc-code"><div class="bloc-code__langue">phpsandbox</div><pre><code class="hljs language-phpsandbox">https://phpsandbox.io/n/q41-array-sort-1-q9bis?&amp;layout=Editor
+</code></pre></div>
+<p>Cela marche aussi si tu as un tableau ayant pour valeur des chaînes de caractères. Le tableau sera trié par ordre alphabétique.</p>
+<div class="bloc-code"><div class="bloc-code__langue">phpsandbox</div><pre><code class="hljs language-phpsandbox">https://phpsandbox.io/n/q41-array-sort-2-fawze?&amp;layout=Editor
+</code></pre></div>
+<div class="encadre encadre--warning"><div class="encadre__titre">Attention</div><div class="encadre__corps"><p>La fonction sort() ne sert qu'à trier des tableaux numériques. Si tu l'utilises sur un tableau associatif tu perds l'association clé =&gt; valeur.
+Note: Cette fonction assigne de nouvelles clés pour les éléments du paramètre array. Elle
+effacera toutes les clés existantes que vous aviez pu assigner, plutôt que de les trier.</p>
+</div></div>
+<p>Il existe d'autres fonctions pour un tableau associatif :</p>
+<ul>
+<li><a href="https://www.php.net/manual/fr/function.rsort.php" target="_blank" rel="noopener noreferrer">rsort()</a>
+Permet d'effectuer un tri en ordre décroissant</li>
+<li><a href="https://www.php.net/manual/fr/function.asort.php" target="_blank" rel="noopener noreferrer">asort()</a>
+Permet d'effectuer un tri sur les valeurs en gardant les clés intactes</li>
+<li><a href="https://www.php.net/manual/fr/function.arsort.php" target="_blank" rel="noopener noreferrer">arsort()</a> Permet d'effectuer un tri sur les valeurs en gardant les clés intactes, mais dans un ordre <em>décroissant</em></li>
+<li><a href="https://www.php.net/manual/fr/function.ksort" target="_blank" rel="noopener noreferrer">ksort()</a>
+Permet d'effectuer un tri sur les clés en gardant les valeurs intactes</li>
+<li><a href="https://www.php.net/manual/fr/function.krsort" target="_blank" rel="noopener noreferrer">krsort()</a>
+Permet d'effectuer un tri sur les clés en gardant les valeurs intactes mais dans un ordre <em>décroissant</em></li>
+</ul>
+<p>Dans chacune de ces fonctions, tu vas pouvoir définir si tu souhaites un tri ascendant ou descendant. N'hésite pas à consulter la documentation pour savoir comment procéder....</p>
+<div class="encadre encadre--warning"><div class="encadre__titre">Attention</div><div class="encadre__corps"><p>Contrairement à la plupart des fonctions php, tu ne peux pas faire :
+<code>$sortedWeapons = sort($weapons);</code>
+En effet, l'utilisation de <code>sort()</code> (comme toute autre fonction de tri) modifie directement le tableau passé en paramètre et retourne TRUE ou FALSE selon si le tri a fonctionné ou non.</p>
+</div></div>
+<div class="encadre encadre--info"><div class="encadre__titre">Info</div><div class="encadre__corps"><p>Toutes ces fonctions de tri travaillent sur le tableau lui-même, contrairement à la pratique normale qui serait de retourner le tableau trié.</p>
+</div></div>
+<ul>
+<li><a href="https://www.php.net/manual/fr/function.in-array" target="_blank" rel="noopener noreferrer">in_array()</a>
+Permet de vérifier la présence d'une valeur dans un tableau.</li>
+</ul>
+<div class="bloc-code"><div class="bloc-code__langue">php</div><pre><code class="hljs language-php"><span class="hljs-variable">$weapons</span> = [<span class="hljs-string">&#x27;whip&#x27;</span>, <span class="hljs-string">&#x27;gun&#x27;</span>, <span class="hljs-string">&#x27;saber&#x27;</span>];
+<span class="hljs-title function_ invoke__">var_dump</span>(<span class="hljs-title function_ invoke__">in_array</span>(<span class="hljs-string">&#x27;whip&#x27;</span>, <span class="hljs-variable">$weapons</span>)); <span class="hljs-comment">// affiche true</span>
+<span class="hljs-title function_ invoke__">var_dump</span>(<span class="hljs-title function_ invoke__">in_array</span>(<span class="hljs-string">&#x27;shield&#x27;</span>, <span class="hljs-variable">$weapons</span>)); <span class="hljs-comment">// affiche false</span>
+</code></pre></div>
+<p>Cette fonction est très utile lorsque tu l'utilises dans une structure conditionnelle :</p>
+<div class="bloc-code"><div class="bloc-code__langue">phpsandbox</div><pre><code class="hljs language-phpsandbox">https://phpsandbox.io/n/q41-array-in-array-2jcen?&amp;layout=Editor
+</code></pre></div>
+<ul>
+<li><a href="https://www.php.net/manual/fr/function.array-sum" target="_blank" rel="noopener noreferrer">array_sum()</a>
+Permet de calculer la somme des valeurs d'un tableau.</li>
+</ul>
+<div class="bloc-code"><div class="bloc-code__langue">php</div><pre><code class="hljs language-php"><span class="hljs-variable">$values</span> = [<span class="hljs-number">1</span>, <span class="hljs-number">2</span>, <span class="hljs-number">3</span>, <span class="hljs-number">4</span>, <span class="hljs-number">5</span>];
+<span class="hljs-keyword">echo</span> <span class="hljs-title function_ invoke__">array_sum</span>(<span class="hljs-variable">$values</span>); <span class="hljs-comment">// affiche 15</span>
+</code></pre></div>
+<a class="ressource" href="http://php.net/manual/fr/ref.array.php" target="_blank" rel="noopener noreferrer">
+  <div class="ressource__icone">↗</div>
+  <div class="ressource__texte">
+    <div class="ressource__titre">PHP Manual - Fonctions sur les tableaux</div>
+    
+    <div class="ressource__hote">php.net</div>
+  </div>
+</a>
+<a class="ressource" href="http://www.progmatique.fr/article-33-Php-fonctions-manipuler-tableaux.html" target="_blank" rel="noopener noreferrer">
+  <div class="ressource__icone">↗</div>
+  <div class="ressource__texte">
+    <div class="ressource__titre">Fonctions principales en PHP</div>
+    <div class="ressource__desc"><p>Il existe des dizaines d'autres fonctions sur les <em>array</em>. N'hésite donc pas à aller jeter un oeil par ici.</p>
+</div>
+    <div class="ressource__hote">progmatique.fr</div>
+  </div>
+</a>
+<h1>Les boucles</h1>
+<h3>La boucle <code>for</code></h3>
+<p>La boucle <code>for</code> est la plus simple à mettre en place. Tu vas indiquer à PHP de boucler un certain nombre de fois. C'est toi qui définis ce nombre. La boucle <code>for</code> intègre un compteur.</p>
+<p>Sa notation est la suivante :</p>
+<div class="bloc-code"><div class="bloc-code__langue">php</div><pre><code class="hljs language-php"><span class="hljs-keyword">for</span> (debut; fin; pas) {
+    <span class="hljs-comment">// Do something</span>
+}
+</code></pre></div>
+<p>Dans l'exemple ci-dessus, ce qui est très important ce sont les expressions et leurs emplacements :</p>
+<ul>
+<li>
+<p>debut : Dans cette première expression, tu vas initialiser une variable (souvent nommée <code>$i</code> mais ça n'est pas obligatoire) qui va te servir de compteur. Tu indiques donc ici à quelle valeur ta boucle va débuter.</p>
+</li>
+<li>
+<p>fin : Dans cette deuxième expression, tu vas définir la limite de ce compteur (sa valeur maxi ou mini en fonction du &quot;pas&quot;). La boucle s'arrête quand cette valeur est atteinte.</p>
+</li>
+<li>
+<p>pas : Dans cette troisième expression, tu vas définir l'action sur ton compteur à chaque tour de boucle, c'est à dire de combien (de quel &quot;pas&quot;) la valeur de $i doit augmenter ou diminuer à chaque tour. Attention ici, il ne suffit pas d'indiquer une valeur de pas, mais bien de modifier la valeur actuelle du compteur en effectuant une affectation.</p>
+</li>
+</ul>
+<div class="bloc-code"><div class="bloc-code__langue">php</div><pre><code class="hljs language-php"><span class="hljs-comment">// Exemple concret d&#x27;une boucle allant de 0 à 9 avec un pas de 1</span>
+<span class="hljs-keyword">for</span> (<span class="hljs-variable">$i</span> = <span class="hljs-number">0</span>; <span class="hljs-variable">$i</span> &lt; <span class="hljs-number">10</span>; <span class="hljs-variable">$i</span> = <span class="hljs-variable">$i</span>+<span class="hljs-number">1</span>) {
+    <span class="hljs-comment">// Do something</span>
+}
+
+<span class="hljs-comment">// Mais j&#x27;aurais pu l&#x27;écrire comme cela</span>
+<span class="hljs-keyword">for</span> (<span class="hljs-variable">$counter</span> = <span class="hljs-number">0</span>; <span class="hljs-variable">$counter</span> &lt; <span class="hljs-number">10</span>; <span class="hljs-variable">$counter</span>++) {
+    <span class="hljs-comment">// Do something</span>
+}
+
+<span class="hljs-comment">// Et si j&#x27;avais voulu aller de 9 à 0</span>
+<span class="hljs-keyword">for</span> (<span class="hljs-variable">$i</span> = <span class="hljs-number">9</span>; <span class="hljs-variable">$i</span> &gt;= <span class="hljs-number">0</span>; <span class="hljs-variable">$i</span>--) {
+    <span class="hljs-comment">// Do something</span>
+}
+
+</code></pre></div>
+<div class="bloc-code"><div class="bloc-code__langue">phpsandbox</div><pre><code class="hljs language-phpsandbox">https://phpsandbox.io/n/q41-array-loop-for-x1eri?&amp;layout=Editor
+</code></pre></div>
+<a class="ressource" href="http://php.net/manual/fr/control-structures.for.php" target="_blank" rel="noopener noreferrer">
+  <div class="ressource__icone">↗</div>
+  <div class="ressource__texte">
+    <div class="ressource__titre">PHP Manual - La boucle for</div>
+    
+    <div class="ressource__hote">php.net</div>
+  </div>
+</a>
+<h3>La boucle <code>while</code></h3>
+<div class="bloc-code"><div class="bloc-code__langue">php</div><pre><code class="hljs language-php"><span class="hljs-comment">// Exemple de boucle while</span>
+<span class="hljs-variable">$i</span> = <span class="hljs-number">0</span>;
+<span class="hljs-keyword">while</span> (<span class="hljs-variable">$i</span> &lt; <span class="hljs-number">10</span>) {
+    <span class="hljs-comment">// Do something</span>
+    <span class="hljs-variable">$i</span>++;
+}
+
+<span class="hljs-comment">// Exemple de boucle infinie (À NE PAS FAIRE !!!)</span>
+<span class="hljs-variable">$firstname</span> = <span class="hljs-string">&#x27;Henry&#x27;</span>;
+<span class="hljs-keyword">while</span> (<span class="hljs-variable">$firstname</span> != <span class="hljs-string">&#x27;Indy&#x27;</span>) {
+    <span class="hljs-variable">$firstname</span> = <span class="hljs-string">&#x27;Indiana&#x27;</span>;
+    <span class="hljs-comment">// Do something...</span>
+}
+</code></pre></div>
+<p>Le premier exemple est simple, on boucle tant que <code>$i</code> est strictement inférieur à 10.
+Le second est une boucle infinie. Étant donné que le <code>while</code> boucle tant que la condition est <code>true</code>, il faut bien veiller à ce que l'expression du while devienne <code>false</code>.</p>
+<a class="ressource" href="http://php.net/manual/fr/control-structures.while.php" target="_blank" rel="noopener noreferrer">
+  <div class="ressource__icone">↗</div>
+  <div class="ressource__texte">
+    <div class="ressource__titre">PHP Manual - La boucle while</div>
+    
+    <div class="ressource__hote">php.net</div>
+  </div>
+</a>
+<h3>La boucle <code>foreach</code></h3>
+<p>Le <code>foreach</code> permet de boucler sur les tableaux.</p>
+<p>Il existe 2 façons de mettre en place un foreach :</p>
+<div class="bloc-code"><div class="bloc-code__langue">php</div><pre><code class="hljs language-php"><span class="hljs-variable">$movies</span> = [
+  <span class="hljs-string">&quot;Les Aventuriers de l&#x27;arche perdue&quot;</span>,
+  <span class="hljs-string">&quot;Indiana Jones et le Temple maudit&quot;</span>,
+  <span class="hljs-string">&quot;Indiana Jones et la Dernière Croisade&quot;</span>,
+  <span class="hljs-string">&quot;Indiana Jones et le Royaume du crâne de cristal&quot;</span>,
+  <span class="hljs-string">&quot;Indiana Jones 5&quot;</span>
+];
+
+<span class="hljs-comment">// Si tu n&#x27;as pas besoin des clés du tableau</span>
+<span class="hljs-keyword">foreach</span> (<span class="hljs-variable">$movies</span> <span class="hljs-keyword">as</span> <span class="hljs-variable">$movie</span>){
+    <span class="hljs-comment">// Do something...</span>
+    <span class="hljs-keyword">echo</span> <span class="hljs-variable">$movie</span>;
+    <span class="hljs-comment">// Affiche &quot;Les Aventuriers de l&#x27;arche perdue&quot;</span>
+    <span class="hljs-comment">// (au 1er tour, puis les autres valeurs aux tours suivants)</span>
+}
+
+<span class="hljs-comment">// Si tu as besoin des clés du tableau</span>
+<span class="hljs-keyword">foreach</span> (<span class="hljs-variable">$movies</span> <span class="hljs-keyword">as</span> <span class="hljs-variable">$key</span> =&gt; <span class="hljs-variable">$movie</span>){
+    <span class="hljs-comment">// Do something...</span>
+    <span class="hljs-keyword">echo</span> <span class="hljs-variable">$key</span>;      <span class="hljs-comment">// Affiche 0 (au 1er tour)</span>
+    <span class="hljs-keyword">echo</span> <span class="hljs-variable">$movie</span>;    <span class="hljs-comment">// Affiche &quot;Les Aventuriers de l&#x27;arche perdue&quot; (au 1er tour)</span>
+}
+</code></pre></div>
+<p>C'est à toi de choisir le nom des variables dans ton foreach (ici <code>$key</code> et <code>$movie</code>).</p>
+<p>Comme pour tout nommage de variable, essaie d'avoir des noms ayant un sens. Par exemple ici, le tableau contenant des films s'appelle <code>$movies</code>. Quand tu boucles avec foreach, tu vas alors récupérer un film à chaque fois, d'où la variable s'appelant <code>$movie</code> (cette fois au singulier).</p>
+<p>Cette approche pluriel/singulier est souvent utilisée car elle permet de facilement comprendre ce que contient la variable (le tableau dans son ensemble, ou un élément du tableau).</p>
+<p>On dit que le <code>foreach</code> va <strong>itérer</strong> sur chaque élément du tableau (ou de la collection).
+Cela signifie que chaque élément va être lu séquentiellement à chaque tour de boucle.</p>
+<p>L'élément en cours de lecture, ainsi que sa clé selon la notation du <code>foreach</code> (avec ou sans le <code>=&gt;</code>), vont être affectés à des variables temporaires (<code>$key</code>, <code>$movie</code>). Récupérer la clé est surtout utile en présence d'un tableau associatif.</p>
+<a class="ressource" href="http://php.net/manual/fr/control-structures.foreach.php" target="_blank" rel="noopener noreferrer">
+  <div class="ressource__icone">↗</div>
+  <div class="ressource__texte">
+    <div class="ressource__titre">PHP Manual - La boucle foreach</div>
+    
+    <div class="ressource__hote">php.net</div>
+  </div>
+</a>
+<div class="encadre encadre--error"><div class="encadre__titre">Important</div><div class="encadre__corps"><h1>Boucles infinies</h1>
+<p>Attention: Si la condition d'arrêt d'une boucle est mal définie, cela peut être critique. En effet, la boucle sera infinie et plantera ton programme.
+En PHP, si tu n'as pas modifié la configuration de base, les scripts ont une durée de vie de 30 secondes, donc ton navigateur (voire tout ton poste) peut ne pas répondre pendant maximum 30 secondes (il s'agit du paramètre max_execution_time dans ton fichier php.ini). Mais sur des langages de plus bas niveau, cela peut avoir des conséquences plus graves.</p>
+</div></div>
+<h1>🧐 Récapitulons !</h1>
+<div class="bloc-code"><div class="bloc-code__langue">quiz</div><pre><code class="hljs language-quiz">false|||false|||true
+# Quel est l'indice du 1er élément d'un tableau indexé numériquement ?
+[] -1
+[x] 0
+[] 1
+[] 2
+# Quelle syntaxe utiliser pour créer un tableau ?
+[] table()
+[] { }
+[x] [ ]
+[] ( )
+# Je souhaite récupérer le 6ème élément du tableau $students
+[x] $students[5]
+[] $students(6)
+[] $students{4}
+[] getIndice($students, 6)
+# Comment ajouter un nouvel élément 'Bob' à mon tableau $students
+[] $students = 'Bob';
+[] $students['Bob'];
+[] $students = ['Bob'];
+[x] $students[ ] = 'Bob';
+# Quelle syntaxe ne crée pas un tableau contenant les valeurs 'John' et 'Bob' ?
+[] $students[0]='John'; 
+[] $students[1]='Bob';
+[x] $students['Bob'] = 'John';
+[] $students = array('Bob', 'John');
+[] $students = ['Bob', 'John'];
+# Quelle fonction est utilisée pour trier un tableau par ordre décroissant ?
+[] sort()
+[] asort()
+[x] rsort()
+[] dsort()
+# Que retourne : count( [ &quot;john&quot;, &quot;doe&quot;, [ &quot;X&quot;, &quot;Y&quot; ], ] ) ?
+[] 2
+[x] 3
+[] 4
+[] 5
+# Quelle fonction est utilisée pour trier les valeurs d'un tableau associatif par ordre ascendant en conservant les associations clé-valeur ?
+[] ksort()
+[x] asort()
+[] krsort()
+[] sort()
+# Je souhaite récupérer l'age de Bob depuis le tableau suivant : $bob = [ &quot;age&quot; =&gt; 24, &quot;height&quot; =&gt; 180 ]
+[] $bob[0]
+[] $bob-&gt;age
+[] \$bob[$age]
+[x] $bob[&quot;age&quot;]
+</code></pre></div>
+<h1>💪 Challenge</h1>
+<h3>Créer la filmographie d'Indiana</h3>
+<ol>
+<li>Dans un fichier PHP, crée un tableau contenant 3 titres de films dans lesquels joue notre ami Indiana. Pour chaque film, associe son année de sortie (le titre du film sera la clé).</li>
+<li>Une fois le tableau créé, réalise une boucle pour afficher la liste des films contenus dans le tableau ainsi que leur année de sortie associée. <strong>Les films devront apparaître dans l'ordre décroissant de sortie</strong> (du plus récent au plus ancien). Regarde du côté des fonctions de tri.</li>
+</ol>
+<p>Pour chaque film, tu devras donc afficher: <code>2000 - movie_title</code>
+<code>2000</code> étant l'année de parution du film.</p>
+<h3>Critères de validation</h3>
+<ul>
+<li>Le fichier contient un tableau associatif,</li>
+<li>Le tableau contient 3 films, avec, le titre comme clé et l'année de sortie comme valeur</li>
+<li>Une boucle est utilisée pour afficher dynamiquement les films et leur date.</li>
+<li>Les films sont triés dans l'ordre décroissant de leur sortie en utilisant une fonction de tri.</li>
+<li>Lorsque tu exécutes le script depuis ton terminal, tu affiches bien 3 lignes avec : <code>2000 - movie_title</code></li>
+</ul>
+<p>Pour soumettre ton travail, créé un nouveau notebook sur <a href="https://phpsandbox.io/" target="_blank" rel="noopener noreferrer">https://phpsandbox.io/</a>, puis poste le lien de ce dernier en solution ici.</p>
+<p>==$==</p>
+<div class="bloc-code"><div class="bloc-code__langue">php</div><pre><code class="hljs language-php"><span class="hljs-meta">&lt;?php</span>
+
+<span class="hljs-variable">$movies</span> = [
+    <span class="hljs-string">&#x27;Indiana Jones and the Raiders of the Lost Ark&#x27;</span> =&gt; <span class="hljs-number">1981</span>,
+    <span class="hljs-string">&#x27;Indiana Jones and the Temple of Doom&#x27;</span> =&gt; <span class="hljs-number">1984</span>,
+    <span class="hljs-string">&#x27;Indiana Jones and the Last Crusade&#x27;</span> =&gt; <span class="hljs-number">1989</span>,
+];
+
+<span class="hljs-title function_ invoke__">arsort</span>(<span class="hljs-variable">$movies</span>);
+
+<span class="hljs-keyword">foreach</span>(<span class="hljs-variable">$movies</span> <span class="hljs-keyword">as</span> <span class="hljs-variable">$title</span> =&gt; <span class="hljs-variable">$year</span>) {
+    <span class="hljs-keyword">echo</span> <span class="hljs-variable">$year</span> . <span class="hljs-string">&#x27; - &#x27;</span> . <span class="hljs-variable">$title</span> . PHP_EOL;
+}
+</code></pre></div>
+
+  </div>
+  <section class="ressources-quete">
+  <h2>Ressources partagées sur cette quête</h2>
+  <ul class="ressources-liste">
+    <li><a href="https://www.youtube.com/watch?v=X6pOIPZGC3o" target="_blank" rel="noopener noreferrer">Les boucles en PHP de CharlieProd</a><span class="ressources-liste__url">https://www.youtube.com/watch?v=X6pOIPZGC3o</span></li>
+  </ul>
+</section>
+</article>
+
+<nav class="nav-quete">
+  <a class="nav-quete__lien nav-quete__lien--prec" href="../../php/003-3-les-chaines-de-caracteres-en-php/index.html">
+           <span class="nav-quete__sens">← Précédent</span>
+           <span class="nav-quete__titre">3. Les chaînes de caractères en PHP</span>
+         </a>
+  <a class="nav-quete__lien nav-quete__lien--suiv" href="../../php/005-4-2-les-tableaux-multidimensionnels-en-php/index.html">
+           <span class="nav-quete__sens">Suivant →</span>
+           <span class="nav-quete__titre">4.2. Les tableaux multidimensionnels en PHP</span>
+         </a>
+</nav>
+</main>
+<footer class="pied">
+  <p>Archive personnelle des cours suivis à la Wild Code School. Copie hors ligne à usage strictement privé.</p>
+</footer>
+
+<script src="../../assets/copie-code.js"></script>
+<script src="../../assets/progression.js"></script>
+</body>
+</html>

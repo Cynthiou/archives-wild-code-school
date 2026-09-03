@@ -1,0 +1,28 @@
+{
+  "id": 2136,
+  "titre": "👩‍🏫 HTML - Chapitre 7 | Les formulaires",
+  "titres": {
+    "fr": "👩‍🏫 HTML - Chapitre 7 | Les formulaires"
+  },
+  "theme": {
+    "id": 104,
+    "slug": "html5",
+    "nom": "HTML"
+  },
+  "creeLe": "2022-06-28T11:19:04.098+02:00",
+  "difficulte": "1",
+  "dureeEstimee": null,
+  "modeValidation": "self",
+  "chapitres": [
+    {
+      "id": 16878,
+      "type": "content",
+      "langue": "fr",
+      "majLe": "2025-03-04T14:12:53.305+01:00",
+      "caracteres": 14708
+    }
+  ],
+  "ressources": [],
+  "urlOrigine": "https://odyssey.wildcodeschool.com/quests/2136",
+  "archiveLe": "2026-09-02T23:22:12.377Z"
+}

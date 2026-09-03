@@ -1,0 +1,28 @@
+{
+  "id": 2149,
+  "titre": "La Culture et les Valeurs",
+  "titres": {
+    "fr": "La Culture et les Valeurs"
+  },
+  "theme": {
+    "id": 155,
+    "slug": "on-boarding-students",
+    "nom": "Onboarding students"
+  },
+  "creeLe": "2022-07-06T17:25:33.052+02:00",
+  "difficulte": "0",
+  "dureeEstimee": null,
+  "modeValidation": "self",
+  "chapitres": [
+    {
+      "id": 16840,
+      "type": "content",
+      "langue": "fr",
+      "majLe": "2025-03-02T14:59:31.953+01:00",
+      "caracteres": 4822
+    }
+  ],
+  "ressources": [],
+  "urlOrigine": "https://odyssey.wildcodeschool.com/quests/2149",
+  "archiveLe": "2026-09-02T20:53:31.976Z"
+}

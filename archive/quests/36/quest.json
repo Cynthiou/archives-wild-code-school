@@ -1,0 +1,29 @@
+{
+  "id": 36,
+  "titre": "Révisions : PHP orienté objet",
+  "titres": {
+    "en": null,
+    "fr": "Révisions : PHP orienté objet"
+  },
+  "theme": {
+    "id": 70,
+    "slug": "php-object-oriented",
+    "nom": "PHP Orienté Objet"
+  },
+  "creeLe": "2016-02-29T15:24:16.130+01:00",
+  "difficulte": "",
+  "dureeEstimee": null,
+  "modeValidation": "student",
+  "chapitres": [
+    {
+      "id": 677,
+      "type": "content",
+      "langue": "fr",
+      "majLe": "2020-09-24T13:51:59.993+02:00",
+      "caracteres": 2904
+    }
+  ],
+  "ressources": [],
+  "urlOrigine": "https://odyssey.wildcodeschool.com/quests/36",
+  "archiveLe": "2026-09-02T20:53:57.459Z"
+}

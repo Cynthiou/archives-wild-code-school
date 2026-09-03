@@ -1,0 +1,28 @@
+{
+  "id": 2395,
+  "titre": "POO9 - Abstraction",
+  "titres": {
+    "fr": "POO9 - Abstraction"
+  },
+  "theme": {
+    "id": 70,
+    "slug": "php-object-oriented",
+    "nom": "PHP Orienté Objet"
+  },
+  "creeLe": "2023-01-17T16:10:43.028+01:00",
+  "difficulte": "",
+  "dureeEstimee": null,
+  "modeValidation": "student",
+  "chapitres": [
+    {
+      "id": 8819,
+      "type": "content",
+      "langue": "fr",
+      "majLe": "2023-02-13T15:45:24.470+01:00",
+      "caracteres": 8961
+    }
+  ],
+  "ressources": [],
+  "urlOrigine": "https://odyssey.wildcodeschool.com/quests/2395",
+  "archiveLe": "2026-09-02T20:53:56.394Z"
+}

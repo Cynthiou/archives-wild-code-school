@@ -1,0 +1,185 @@
+## Objectifs d'apprentissage
+
+À la fin de cette leçon, vous serez compétents dans les domaines suivants :
+
+- Les concepts fondamentaux de l'IA générative.
+- Les principaux types de modèles d'IA générative.
+- Le concept d'ingénierie des prompts.
+- Les techniques de conception des prompts.
+- La différence entre l'ingénierie des prompts et la conception des prompts.
+
+## Prérequis
+
+Pour bien comprendre cette leçon, vous devez avoir une certaine familiarité avec les concepts suivants :
+
+- Qu'est-ce que l'intelligence artificielle (IA) ?
+- Compréhension de base de l'apprentissage automatique.
+- Compréhension du concept de réseaux neuronaux.
+- Connaissance de base de l'utilisation des données en IA.
+
+## Introduction
+
+L'IA générative est une branche spécifique de l'intelligence artificielle (IA) renommée pour sa remarquable capacité de création. Cette technologie avancée a joué un rôle crucial dans le développement de deepfakes, de chatbots et même de morceaux de musique et d'art artificiels. Le domaine de l'IA générative est complexe et captivant, et dans cette introduction complète, nous visons à le démystifier.
+
+L'IA générative se distingue par sa capacité unique à générer du contenu nouveau en exploitant des modèles et des informations provenant de jeux de données d'entraînement. Contrairement aux approches d'IA traditionnelles qui reposent sur des règles prédéfinies, l'IA générative adopte une approche plus créative en synthétisant les informations issues des données sur lesquelles elle a été formée pour produire des résultats originaux et significatifs.
+
+Cette leçon complète vous fournira une compréhension approfondie des concepts fondamentaux de l'IA générative. Nous explorerons les principaux types de modèles d'IA générative, nous vous présenterons le concept d'ingénierie des prompts et nous examinerons l'importance et les techniques de conception efficace des prompts.
+
+En vous lançant dans ce voyage, vous acquérerez les connaissances et les compétences nécessaires pour naviguer dans les complexités de l'IA générative, libérant ainsi son potentiel pour créer des solutions remarquables et innovantes dans différents domaines.
+
+![](images/001-introduction.png)
+
+## Sommaire
+
+## Définition de l'IA générative
+
+L'IA générative est une classe d'IA qui, simplement dit, génère du nouveau contenu. Elle le fait en utilisant des échantillons de jeux de données d'entraînement pour se faire une idée des résultats qu'elle devrait générer. Cette technologie exceptionnelle a une variété d'applications dans les industries créatives, où l'IA peut générer efficacement du texte ressemblant à celui d'un humain, des vidéos modifiées de manière réaliste ou des conversations engageantes.
+
+### Ce qui rend l'IA générative unique
+
+L'IA générative ne produit pas de résultats aléatoires. Au lieu de cela, elle génère du contenu nouveau en comprenant les modèles des données sur lesquelles elle est formée. Elle synthétise les aspects clés des données fournies pour créer quelque chose d'original tout en reflétant les informations apprises.
+
+Contrairement à l'IA classique, qui se concentre sur les tâches de prise de décision suivant des règles programmées, l'IA générative adopte une approche plus créative. Elle exploite sa formation pour générer du contenu nouveau et unique. Les modèles discriminatifs, quant à eux, un autre sous-ensemble de l'IA, visent à catégoriser les données d'entrée en fonction des modèles appris, mais ne génèrent pas de nouvelles données.
+
+## Types d'IA générative
+
+Comprendre les différents types d'IA générative nous aide à comprendre comment cette technologie peut être utilisée de différentes manières pour produire des résultats distinctifs. Fondamentalement, il existe deux sous-ensembles principaux d'IA générative :
+
+- Les réseaux antagonistes génératifs (GAN).
+- Les autoencodeurs variationnels (VAE).
+
+### Réseaux antagonistes génératifs (GAN)
+
+Les GAN, introduits par Ian Goodfellow et ses collègues en 2014, impliquent deux réseaux neuronaux distincts : un générateur et un discriminateur. Ils fonctionnent en tandem, "apprenant" l'un de l'autre dans un cadre compétitif, en affinant leurs capacités grâce à une interaction continue.
+
+Le **générateur** crée de nouvelles instances de données, tandis que le **discriminateur** évalue l'authenticité des données générées. Le générateur améliore sa capacité à créer des instances de données réalistes en fonction des commentaires du discriminateur, et le discriminateur améliore sa capacité à distinguer les données réelles des données générées.
+
+Dans le monde réel, les GAN ont de nombreuses applications. Dans le domaine de la vision par ordinateur, ils sont souvent utilisés pour la synthèse d'images, la super-résolution, le transfert de style, et plus encore. Des modèles bien connus utilisant les GAN comprennent DeepArt et DeepFake.
+
+**Exemple : DeepFake** utilise des GAN pour générer des vidéos hyperréalistes en échangeant les visages entre les individus. Un autre exemple est **DeepArt**, qui applique des styles artistiques aux images ou aux vidéos.
+
+### Autoencodeurs variationnels (VAE)
+
+Comme les GAN, les VAE sont également un modèle génératif. Introduits par Kingma et Welling en 2013, les VAE se distinguent par leur caractère probabiliste, ce qui signifie qu'ils ajoutent une couche d'aléatoire dans leur processus. En essence, les VAE transforment des données d'entrée complexes en un espace latent moins complexe, puis reconstituent les données à partir de cette représentation latente.
+
+Dans le monde réel, les VAE trouvent des applications dans la détection d'anomalies et le débruitage des données. Ils sont également utilisés comme modèle génératif dans des tâches de vision par ordinateur telles que la manipulation des attributs faciaux et la génération d'images.
+
+**Exemple : SketchRNN**, un modèle développé par Magenta de Google, utilise une structure VAE pour générer des croquis d'objets ou de créatures communes. Il apprend à dessiner de nouveaux croquis en se basant sur des croquis humains avec lesquels il a été entraîné.
+
+Comprendre ces différents modèles génératifs dévoile une large gamme de possibilités et d'applications. Que ce soit par le biais des GAN qui génèrent des données franchement plausibles ou des VAE avec leur approche probabiliste unique, l'IA générative continue de débloquer un potentiel fascinant dans différents domaines.
+
+## L'ingénierie des prompts
+
+L'ingénierie des prompts est une partie intégrante du travail avec les modèles d'IA générative. Elle consiste à concevoir et à façonner des prompts, les entrées transmises aux modèles d'IA pour orienter le type de sortie qu'ils génèrent. Dans cette section, nous examinerons les différents types de prompts et comment les utiliser de manière efficace.
+
+L'efficacité d'un prompt est cruciale pour prédire le succès d'une IA générative. Ces prompts servent de dialogue avec le modèle d'IA, guidant subtilement la sortie générée sans la restreindre strictement. L'objectif est de communiquer habilement notre intention au modèle, ce qui permet d'obtenir la sortie la plus précise et la plus souhaitable.
+
+Selon les besoins et le contexte, différents types de prompts peuvent être utilisés. Voici quelques catégories importantes :
+
+1. Prompts Ouverts
+  Ces prompts sont utilisés lorsque la sortie attendue n'est pas strictement définie et que le modèle d'IA est autorisé à être plus créatif. Il peut s'agir de phrases ou de phrases simples qui laissent le modèle d'IA remplir le reste.
+  **Exemple :** "Écris un poème sur..."
+2. Prompts Fermés
+  Ces prompts sont utilisés lorsque l'utilisateur recherche une réponse ou une solution spécifique. Ils peuvent prendre la forme de fonctions ou de commandes spécifiques qui restreignent l'espace de sortie de l'IA.
+  **Exemple :** "Traduis la phrase anglaise suivante en français :..."
+3. Prompts de Recherche d'Informations
+  Ces prompts sont utilisés lorsque nous recherchons des informations ou une réponse basée sur les connaissances de l'IA. L'objectif est de solliciter la capacité du modèle à rappeler et à présenter des informations factuelles et précises.
+  **Exemple :** "Qui a remporté le prix Nobel de physique en 2020 ?"
+4. Prompts Créatifs
+  Ces prompts sont utilisés lorsque l'objectif est de générer des sorties uniques et créatives à partir du modèle. Ils peuvent être utilisés dans des domaines artistiques, littéraires ou dans tout autre domaine créatif.
+  **Exemple :** "Compose une courte histoire de science-fiction se déroulant en 2050."
+
+Bien que le type de prompt joue un rôle essentiel, une conception soigneuse implique également la clarté, le bon niveau de détail et la prise en compte des caractéristiques et des particularités de l'IA. L'essentiel est d'atteindre un équilibre : les prompts efficaces doivent guider le modèle d'IA sans le restreindre excessivement et ainsi limiter ses possibilités créatives.
+
+Ainsi, dans l'ingénierie des prompts, nous endossons les rôles d'un communicateur expert et d'un concepteur stratégique, avec pour mission de libérer les aspects les plus puissants, précis et créatifs de l'IA générative.
+
+### Exercice : Naviguer à travers les Différents Types de Prompts
+
+Dans cet exercice pratique, vous utiliserez différents types de prompts pour communiquer avec un modèle d'IA générative. L'objectif est de comprendre les subtilités des manœuvres nécessaires pour diriger efficacement ces différentes catégories de prompts.
+
+**Instructions :**
+
+1. Réfléchissez à la sortie souhaitée que chaque type de prompt devrait idéalement générer.
+2. Formulez des prompts clairs et concis pour indiquer cette sortie souhaitée à votre modèle d'IA.
+3. Saisissez vos prompts dans votre modèle d'IA générative pour tester leur efficacité.
+4. Enregistrez les réponses et réfléchissez à la manière dont chaque prompt a communiqué votre intention et a produit la sortie souhaitée.
+5. Réitérez les prompts au besoin et effectuez de nouveaux tests.
+
+Réfléchissez aux différences entre chaque type de prompt, à votre succès dans leur manipulation et aux défis rencontrés, le cas échéant. Cet exercice pratique devrait vous aider à comprendre comment les différents prompts fonctionnent avec l'IA générative et comment les concevoir efficacement dans vos futures interactions.
+
+## Comprendre la conception des prompts
+
+Le processus de conception de prompt efficace pour les modèles d'IA générative relève à la fois de l'art et de la science. Il joue un rôle crucial dans la détermination de l'efficacité du système d'IA pour générer des résultats souhaités et utiles. Sans des prompts bien conçus, l'IA peut produire des résultats sans lien, inexacts ou peu utiles dans le contexte donné. Ainsi, maîtriser les techniques de conception de prompt est une compétence essentielle pour travailler avec des modèles d'IA générative.
+
+### L'importance de la conception de prompt
+
+La conception d'un prompt implique plus que simplement choisir des mots. Cela nécessite une compréhension approfondie du problème que vous essayez de résoudre, des capacités et des limites de votre modèle d'IA, ainsi que de la manière dont l'IA interagit avec le prompt. Vous devez également considérer que le même prompt peut conduire à des résultats très différents selon les modèles d'IA utilisés, voire le même modèle à différents moments. Un prompt bien conçu peut permettre une résolution de problème efficace et efficiente, tandis qu'un prompt mal conçu peut produire des résultats sans rapport, incorrects ou inutiles.
+
+### Techniques de conception de prompt
+
+Pour devenir compétent dans la conception de prompt, il est nécessaire de connaître certaines techniques et bonnes pratiques. Explorons-en quelques-unes :
+
+1. Clarté et spécificité :
+  Plus le prompt est clair et spécifique, plus il est probable que le résultat corresponde aux attentes. Un prompt vague risque de générer des résultats vagues.
+  **Exemple 1 :** Au lieu d'utiliser "Écrivez sur un événement historique", utilisez "Écrivez sur l'impact de la Révolution française sur la société européenne".
+2. Informations contextuelles :
+  Fournir plus de contexte peut aider à guider l'IA vers des résultats pertinents et réalistes. Cela peut impliquer de fournir des informations de fond liées au prompt ou de spécifier le format ou le ton attendu du résultat.
+  **Exemple 2 :** Au lieu de dire "Traduisez cette phrase en espagnol :", dites "Traduisez cette phrase d'un courriel d'affaires formel en espagnol :". Le contexte ajouté (courriel d'affaires formel) devrait aider l'IA à choisir un langage plus approprié.
+3. Affinement itératif :
+  La conception de prompt est souvent un processus itératif. Vous formulez un prompt, le testez avec votre modèle d'IA, puis l'affinez en fonction du résultat. Parfois, le prompt devra être ajusté plusieurs fois avant d'obtenir un résultat satisfaisant.
+4. Expérimentation :
+  Enfin, n'ayez pas peur d'expérimenter ! Essayer différents prompts, voire même délibérément créer des prompts "mauvais", peut être un excellent moyen d'en apprendre davantage sur la façon dont votre modèle d'IA réagit.
+
+Avec ces techniques en main, et une bonne dose de pratique, vous pouvez devenir compétent dans la création de prompts de haute qualité et efficaces pour vos modèles d'IA générative.
+
+### Exercice : Affinez vos compétences en conception de prompts
+
+Cet exercice pratique vise à mettre à l'épreuve vos compétences en conception de prompts pour un modèle d'IA générative. Vous allez créer des prompts personnalisés et les affiner en fonction de la sortie générée.
+
+**Objectif :**
+
+Concevez cinq prompts uniques en utilisant les techniques décrites dans la leçon. Chaque prompt doit viser à générer un type spécifique de sortie.
+
+**Instructions :**
+
+1. Définissez le type de sortie que vous souhaitez que votre modèle d'IA génère.
+2. Créez un prompt préliminaire qui, selon vous, permettra d'obtenir cette sortie. N'oubliez pas de tenir compte de la clarté, de la spécificité, des informations contextuelles et de la nécessité de l'affiner de manière itérative.
+3. Utilisez votre prompt avec votre modèle d'IA générative et observez la sortie résultante.
+4. Sur la base de la réponse de l'IA, affinez votre prompt pour le faire correspondre davantage à la sortie souhaitée. Répétez ce processus jusqu'à ce que vous soyez satisfait des résultats.
+
+**Réflexion :** Une fois que vous avez finalisé vos prompts et que vous êtes satisfait des sorties qu'ils génèrent, prenez un moment pour réfléchir au processus. Quelles techniques ont été efficaces ? Quels ont été les défis rencontrés ? Comment vos prompts initiaux diffèrent-ils de vos prompts finaux ? Documentez vos réflexions afin d'améliorer continuellement vos compétences en conception de prompts.
+
+## Résumé
+
+Dans cette leçon complète, nous avons démystifié l'IA générative en explorant ses concepts fondamentaux, ses modèles principaux et l'importance de l'ingénierie et de la conception des prompts. L'IA générative a attiré l'attention pour sa capacité à créer des deepfakes, des chatbots et de la musique et de l'art artificiels. Elle génère du contenu nouveau et original en exploitant les modèles des jeux de données d'entraînement, dépassant ainsi les approches traditionnelles de l'IA.
+
+Nous avons discuté de deux sous-ensembles majeurs de l'IA générative : les réseaux antagonistes génératifs (GAN) et les autoencodeurs variationnels (VAE). Les GAN sont composés d'un générateur et d'un discriminateur qui apprennent l'un de l'autre pour générer des données réalistes. Les VAE transforment une entrée complexe en un espace latent plus simple, en ajoutant de l'aléatoire dans le processus.
+
+L'ingénierie des prompts est cruciale pour guider les modèles d'IA générative. Nous avons exploré différents types de prompts, notamment les prompts ouverts, fermés, axés sur la recherche d'informations et créatifs. La conception efficace des prompts nécessite une compréhension approfondie du problème, des capacités du modèle et de l'interaction. Des techniques telles que la clarté, la spécificité, les informations contextuelles, l'affinement itératif et l'expérimentation sont essentielles.
+
+En résumé, cette leçon a présenté une introduction complète à l'IA générative et à ses concepts. En comprenant les concepts fondamentaux, en explorant les modèles principaux et en maîtrisant l'ingénierie et la conception des prompts, nous avons acquis des connaissances sur les capacités créatives de l'IA. Cette connaissance est précieuse pour exploiter le potentiel de l'IA dans divers domaines.
+
+### Resources Recommandées
+
+**Livres :**
+
+- "[Generative Deep Learning: Teaching Machines to Paint, Write, Compose, and Play](https://www.amazon.com/Generative-Deep-Learning-Teaching-Machines/dp/1492041947)" by David Foster: A comprehensive book that combines fundamental concepts with practical examples.
+- "[Deep Learning](https://www.amazon.com/Deep-Learning-Adaptive-Computation-Machine/dp/0262035618)" by Ian Goodfellow, Yoshua Bengio, and Aaron Courville: This book is a detailed roadmap for AI practitioners and enthusiasts wanting to explore further the world of Deep Learning and AI.
+
+**Articles :**
+
+- "[Generative Models](https://arxiv.org/abs/1701.00160)" by Shakir Mohamed and Balaji Lakshminarayanan: Une ressource complète qui offre des aperçus théoriques sur l'IA générative.
+
+**Vidéos :**
+
+```resource
+https://www.youtube.com/watch?v=5WoItGTWV54
+
+"Generative Adversarial Networks - The Math of Intelligence": Cette vidéo explique les GAN et leur fonctionnement de manière simple et intuitive.
+```
+
+```resource
+https://www.youtube.com/watch?v=9zKuYvjFFS8
+
+"Variational Autoencoders". Une explication facile à comprendre de la façon dont les Variational Autoencoders (VAEs) fonctionnent et de leurs applications.
+```

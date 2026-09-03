@@ -1,0 +1,228 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>👩‍🏫 HTML - Chapitre 9 | Performance &amp; Structure — Archives WCS</title>
+<link rel="stylesheet" href="../../assets/style.css">
+</head>
+<body style="--teinte:#a03737">
+<header class="entete">
+  <a class="entete__marque" href="../../index.html">Archives Wild Code School</a>
+</header>
+<main class="contenu">
+<nav class="ariane"><a href="../../index.html">Accueil</a><span class="ariane__sep">›</span><a href="../../html/index.html">HTML</a><span class="ariane__sep">›</span><span aria-current="page">👩‍🏫 HTML - Chapitre 9 | Performance &amp; Structure</span></nav>
+
+<article class="quete">
+  <header class="quete__entete">
+    <a class="pastille pastille--teintee" href="../../html/index.html">HTML</a>
+    <h1>👩‍🏫 HTML - Chapitre 9 | Performance &amp; Structure</h1>
+    <p class="quete__meta">Quête 9 sur 9 · 2 images archivées</p>
+  </header>
+  <div class="cours">
+<h1>Introduction</h1>
+<p>Lorsque tu codes une page web HTML/CSS, il est important de connaître les <strong>bonnes pratiques pour améliorer la performance de votre site web et avoir un bon SEO.</strong></p>
+<p>Dans cette quête, nous allons <strong>résumer quelques bonnes pratiques</strong> à suivre.</p>
+<h2></h2>
+<h2>🤓 <strong>À la fin de cette quête, tu comprendras :</strong></h2>
+<ul>
+<li>✅ Qu'est ce que la <strong>minification d'un fichier</strong></li>
+<li>✅ Comment <strong>minifier tes fichiers</strong></li>
+<li>✅ Comment <strong>rapidement compresser et redimensionner tes images</strong></li>
+<li>✅ Plusieurs <strong>Bonnes pratiques pour améliorer ton SEO</strong></li>
+<li>✅ Comment <strong>Évaluer la performance de ton site web</strong></li>
+</ul>
+<hr>
+<h1>🔽 La minification de fichier</h1>
+<p>Une façon d'améliorer la performance de ton site web est <strong>la compression et la minification des fichiers .</strong></p>
+<h3>Definition</h3>
+<p>La minification consiste à <strong>supprimer les données répétitives et non nécessaires</strong> sans affecter la façon dont la ressource est interprétée par le navigateur.</p>
+<p>C'est possible par exemple en supprimant le code commenté, les retours à la ligne, les espaces et en renommant les variables par des noms plus petits.</p>
+<p>Tout ceci permettra de <strong>rendre le poids de nos fichiers plus légers</strong></p>
+<p>Par exemple :</p>
+<p><strong>Ci-dessous, la page HTML sans minification:</strong></p>
+<div class="bloc-code"><div class="bloc-code__langue">html</div><pre><code class="hljs language-html"><span class="hljs-meta">&lt;!DOCTYPE <span class="hljs-keyword">html</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">html</span> <span class="hljs-attr">lang</span>=<span class="hljs-string">&quot;en&quot;</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">head</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">meta</span> <span class="hljs-attr">charset</span>=<span class="hljs-string">&quot;UTF-8&quot;</span> /&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">meta</span> <span class="hljs-attr">name</span>=<span class="hljs-string">&quot;viewport&quot;</span> <span class="hljs-attr">content</span>=<span class="hljs-string">&quot;width=device-width, initial-scale=1.0&quot;</span> /&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">meta</span> <span class="hljs-attr">http-equiv</span>=<span class="hljs-string">&quot;X-UA-Compatible&quot;</span> <span class="hljs-attr">content</span>=<span class="hljs-string">&quot;ie=edge&quot;</span> /&gt;</span>​
+    <span class="hljs-tag">&lt;<span class="hljs-name">title</span>&gt;</span>Hello World<span class="hljs-tag">&lt;/<span class="hljs-name">title</span>&gt;</span>
+  <span class="hljs-tag">&lt;/<span class="hljs-name">head</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">body</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">h1</span>&gt;</span>Hello, World<span class="hljs-tag">&lt;/<span class="hljs-name">h1</span>&gt;</span>
+  <span class="hljs-tag">&lt;/<span class="hljs-name">body</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">html</span>&gt;</span>
+</code></pre></div>
+<p><strong>La même page minifiée:</strong></p>
+<div class="bloc-code"><div class="bloc-code__langue">html</div><pre><code class="hljs language-html"><span class="hljs-meta">&lt;!doctypehtml&gt;</span><span class="hljs-tag">&lt;<span class="hljs-name">html</span> <span class="hljs-attr">lang</span>=<span class="hljs-string">en</span>&gt;</span><span class="hljs-tag">&lt;<span class="hljs-name">meta</span> <span class="hljs-attr">charset</span>=<span class="hljs-string">UTF-8</span>&gt;</span><span class="hljs-tag">&lt;<span class="hljs-name">meta</span> <span class="hljs-attr">content</span>=<span class="hljs-string">&quot;width=device-width,initial-scale=1&quot;</span><span class="hljs-attr">name</span>=<span class="hljs-string">viewport</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">meta</span> <span class="hljs-attr">content</span>=<span class="hljs-string">&quot;ie=edge&quot;</span><span class="hljs-attr">http-equiv</span>=<span class="hljs-string">X-UA-Compatible</span>&gt;</span><span class="hljs-tag">&lt;<span class="hljs-name">title</span>&gt;</span>Hello World<span class="hljs-tag">&lt;/<span class="hljs-name">title</span>&gt;</span><span class="hljs-tag">&lt;<span class="hljs-name">h1</span>&gt;</span>Hello, World<span class="hljs-tag">&lt;/<span class="hljs-name">h1</span>&gt;</span>
+</code></pre></div>
+<p>Comme tu peux le voir <strong>Tout notre code est sur une seule ligne.</strong></p>
+<p><em>Dans cet exemple, nous minifions un fichier très petit, mais imagine le résultat si c'était un très gros fichier !</em></p>
+<h4>Comment minifier nos fichiers ?</h4>
+<p>Tu peux utiliser <strong>cet outil</strong> :  <a href="https://kangax.github.io/html-minifier/" target="_blank" rel="noopener noreferrer">https://kangax.github.io/html-minifier/</a></p>
+<p>Ou bien, tu peux <strong>installer ce plugin pour Visual Studio :</strong> <a href="https://marketplace.visualstudio.com/items?itemName=HookyQR.minify" target="_blank" rel="noopener noreferrer">https://marketplace.visualstudio.com/items?itemName=HookyQR.minify</a></p>
+<p>Sinon, tu peux utiliser <strong>Parcel</strong> ou <strong>Webpack Encore</strong>, que tu aborderas peut-être plus tard dans ta formation.</p>
+<h2>🗜️La compression d'images</h2>
+<p>L'une des choses les plus importantes quand tu souhaites optimiser la rapidité de ton site web est de <strong>compresser tes images.</strong></p>
+<p>Les images sont souvent la cause de <strong>mauvaises performances.</strong>
+Par exemple, <strong>si tu utilises une très grande photo et que tu la redimensionnes directement dans ton site web</strong>, le navigateur va <strong>charger l'image à sa taille complète avant de la redimensionner</strong>. C'est une mauvaise pratique !
+La chose la plus importante à faire est de <strong>redimensionner les images à la taille maximum souhaitée pour ton site web !</strong></p>
+<h4>Comment redimensionner une image ?</h4>
+<p><strong>Mac:</strong></p>
+<a class="ressource" href="https://support.apple.com/guide/preview/resize-rotate-or-flip-an-image-prvw2015/mac" target="_blank" rel="noopener noreferrer">
+  <div class="ressource__icone">↗</div>
+  <div class="ressource__texte">
+    <div class="ressource__titre">Redimensionne ou retourne une image directement dans la prévisualisation d'images sur Mac.</div>
+    
+    <div class="ressource__hote">support.apple.com</div>
+  </div>
+</a>
+<p><strong>Windows:</strong></p>
+<a class="ressource" href="https://learn.microsoft.com/fr-fr/windows/powertoys/image-resizer" target="_blank" rel="noopener noreferrer">
+  <div class="ressource__icone">↗</div>
+  <div class="ressource__texte">
+    <div class="ressource__titre">Redimensionne ou retourne une image avec PowerToys sur Windows.</div>
+    
+    <div class="ressource__hote">learn.microsoft.com</div>
+  </div>
+</a>
+<p><strong>Linux:</strong></p>
+<a class="ressource" href="https://itsfoss.com/resize-images-with-right-click" target="_blank" rel="noopener noreferrer">
+  <div class="ressource__icone">↗</div>
+  <div class="ressource__texte">
+    <div class="ressource__titre">Redimensionne une image avec un clic droit sur Ubuntu ou toute autre distribution Linux</div>
+    
+    <div class="ressource__hote">itsfoss.com</div>
+  </div>
+</a>
+<h4>🗜️ Comment compresser une image ?</h4>
+<p>​
+Redimensionner tes images n'est pas le seul moyen d'améliorer la performance de ton site web.
+​
+Tu peux également <strong>compresser tes images</strong> en utilisant un service tel que <strong><a href="https://tinypng.com/" target="_blank" rel="noopener noreferrer">tinypng</a>.</strong>
+​
+Il suffit simplement de faire glisser tes images et elles seront automatiquement compressées.
+​</p>
+<a class="ressource" href="https://tinypng.com/" target="_blank" rel="noopener noreferrer">
+  <div class="ressource__icone">↗</div>
+  <div class="ressource__texte">
+    <div class="ressource__titre">TinyPNG - Compresse les images PNG tout en conservant la transparence</div>
+    
+    <div class="ressource__hote">tinypng.com</div>
+  </div>
+</a>
+<h2>Évalue la performance de ton site web</h2>
+<p>​
+Pour évaluer la performance de ton site web, tu peux utiliser des outils tel que <a href="https://gtmetrix.com/" target="_blank" rel="noopener noreferrer">Gtmetrix</a> ou bien tu peux utiliser <a href="https://web.dev/measure/" target="_blank" rel="noopener noreferrer">web.dev</a> ou enfin, simplement utiliser les fonctionnalités d'audit intégrées dans les utilitaires de développement de Chrome.
+​
+​</p>
+<a class="ressource" href="https://developers.google.com/web/tools/lighthouse#devtools" target="_blank" rel="noopener noreferrer">
+  <div class="ressource__icone">↗</div>
+  <div class="ressource__texte">
+    <div class="ressource__titre">https://developers.google.com/web/tools/lighthouse#devtools</div>
+    <div class="ressource__desc"><p>​​# Outils pour développeurs webs</p>
+</div>
+    <div class="ressource__hote">developers.google.com</div>
+  </div>
+</a>
+<p>Il est important de <strong>prêter une attention particulière à la performance de ton site web</strong>, des utilisateurs pourraient par exemple consulter ton site dans un train avec une connexion faible, alors que <strong>nous ne souhaitons pas que ces utilisateurs quittent notre site web.</strong></p>
+<h1>🔭 SEO</h1>
+<p>Si tu souhaites que ton contenu soit facilement trouvable sur les moteurs de recherche, tu dois <strong>suivre quelques bonnes pratiques.</strong></p>
+<p>Le SEO est un <strong>sujet très vaste</strong>, il y a <strong>beaucoup à savoir</strong> quand tu souhaites améliorer la visibilité de ton site web. Cependant, Il existe des moyens simples, en appliquant des bonnes pratiques dans ton code HTML, d'améliorer le SEO.</p>
+<h4>Mon site est-il sur Google ?</h4>
+<p>Si tu souhaites savoir <strong>si ton site web est sur google</strong>, il suffit simplement de <strong>rechercher ton url dans google</strong>, si tu vois ton site dans les résultats : Parfait, <strong>ton site est bien référencé par google !</strong></p>
+<h4>La balise title</h4>
+<p>Tu dois <strong>toujours prendre soin de bien remplir la balise title</strong> de ta page html.</p>
+<p><strong>Ne laisse jamais de titre par défaut tel que &quot;Sans titre&quot;, &quot;Untitled&quot; ou &quot;Page 1&quot;.</strong></p>
+<p>Fais bien attention à écrire un <strong>titre clair</strong>
+Une bonne pratique consiste à <strong>placer des mots clés</strong> dans les titres de tes pages, de cette façon :</p>
+<p><strong>Mot clé principal</strong> - <strong>Mot clé secondaire</strong> | <strong>Nom du site</strong></p>
+<p><strong>Ex:</strong></p>
+<p>Développeur web fullstack - JavaScript React Bordeaux | Bob Doe</p>
+<p>Le titre <strong>ne doit pas dépasser 55 caractères.</strong></p>
+<h4>Meta Description</h4>
+<p><strong>La balise meta description est très importantes pour le SEO.</strong>
+Elles est <strong>utilisée par google pour afficher des informations</strong> dans leur page de résultats.</p>
+<p><img src="images/001-image.png" alt="image" loading="lazy">
+Source:<a href="https://www.searchmetrics.com/glossary/meta-description/" target="_blank" rel="noopener noreferrer">https://www.searchmetrics.com/glossary/meta-description/</a></p>
+<p>La bonne pratique pour la balise meta description est d'y ajouter un contenu <strong>entre 150 et 160 characters.</strong>
+Tu peux y placer <strong>des mots clés en rapport avec le sujet de ton site web.</strong></p>
+<div class="bloc-code"><div class="bloc-code__langue">html</div><pre><code class="hljs language-html"><span class="hljs-tag">&lt;<span class="hljs-name">meta</span> <span class="hljs-attr">name</span>=<span class="hljs-string">&quot;description&quot;</span> <span class="hljs-attr">content</span>=<span class="hljs-string">&quot;Full Stack Web Developer Portfolio. Front-end &amp; Back-end Web Developer based
+in Berlin, Germany. Tech stack include React, JavaScript, Node, SQL.&quot;</span>&gt;</span>
+</code></pre></div>
+<p><img src="images/002-image.png" alt="image" loading="lazy"></p>
+<h4>Insère des mots clés dans ton contenu</h4>
+<p>Le contenu de ton site web doit avoir un grand nombre de mots clés en rapport avec le sujet dont tu parles.</p>
+<p>Aussi, il est très important que le contenu soit <strong>unique et ne soit pas répété dans différentes pages de ton site web.</strong></p>
+<p>Google vérifie que ton contenu est bien unique. C'est pour cette raison qu'il faut éviter de copier/coller du contenu depuis <strong>des articles de presse ou d'autres médias.</strong></p>
+<h4>Utilise les bonnes balises</h4>
+<p>Prends soin de bien respecter la sémantique HTML, <strong>ton HTML doit aider le robot de google à comprendre la structure de ton site web.</strong></p>
+<p>Il est également important <strong>d'utiliser les titres</strong> (h1, h2, h3) <strong>de la bonne manière.</strong></p>
+<p><strong>H1 est un grand titre,</strong> <strong>H2 un sous-titre,</strong> <strong>H3 un sous-sous-titre,</strong> et ainsi de suite.</p>
+<p>Évite d'utiliser un h2 sans la présence d'un h1.
+Si tu souhaites diminuer la taille de la police, utilise une autre balise ou modifie la taille de ton h1 mais n'utilise pas de h2 sans h1.</p>
+<h4>Utilise du texte cohérent pour tes liens</h4>
+<p>Le <strong>texte de tes liens doit être clair</strong>, les robots vont visiter tes liens et vérifier le texte qui a été cliqué donc comme d'habitude, <strong>prends bien soin d'utiliser les bons mots clés</strong>.</p>
+<p>C'est plus judicieux d'utiliser du texte tel que &quot;Accéder à mon <a href="#">portfolio de développeur web</a>&quot; plutôt que &quot;<a href="#">Cliquer ici</a> pour accéder à mon portfolio de développeur web&quot;.</p>
+<p>Également il est possible d'<strong>ajouter l'attribut nofollow</strong> à vos liens pour indiquer que cette page <strong>ne doit pas être visitée</strong> par les robots de google.</p>
+<p>Si par exemple, tu penses qu'une page n'est <strong>pas pertinente</strong> ou que le lien ne pointe pas vers une page de ton site web, tu peux utiliser l'attribut nofollow pour t'assurer que le robot ne tienne pas compte de ce lien.</p>
+<div class="bloc-code"><div class="bloc-code__langue">html</div><pre><code class="hljs language-html"><span class="hljs-tag">&lt;<span class="hljs-name">a</span> <span class="hljs-attr">href</span>=<span class="hljs-string">&quot;https://cheese.example.com/Appenzeller_cheese&quot;</span> <span class="hljs-attr">rel</span>=<span class="hljs-string">&quot;nofollow&quot;</span>&gt;</span>Portfolio<span class="hljs-tag">&lt;/<span class="hljs-name">a</span>&gt;</span> cheese.
+</code></pre></div>
+<h4>N'oublie pas alt dans tes images</h4>
+<p>​
+<strong>N'oublie pas les attributs alt dans tes images</strong>, ils sont aussi utilisés par le <strong>robot de google</strong>.
+​
+Et comme toujours, <strong>n'oublie pas d'utiliser des mots clés dans le alt.</strong>
+​
+Également, n'oublie pas de <strong>donner un nom significatif pour tes images</strong>.
+​
+Toutes ces recommandations te permettront aussi d'avoir une structure plus adaptée pour l'accessibilité et en particulier pour les personnes déficientes visuelles qui utilisent des navigateurs spécialisés.
+​</p>
+<h1>📚 Ressources</h1>
+<p>​</p>
+<a class="ressource" href="https://backlinko.com/hub/seo/best-practices" target="_blank" rel="noopener noreferrer">
+  <div class="ressource__icone">↗</div>
+  <div class="ressource__texte">
+    <div class="ressource__titre">SEO Best Practices</div>
+    
+    <div class="ressource__hote">backlinko.com</div>
+  </div>
+</a>
+<h1>☝️ En résumé</h1>
+<p>​</p>
+<ul>
+<li>C'est important de prêter une attention particulière à la performance de ton site web car un grand nombre de personnes pourraient visiter ton site web <strong>depuis leur smartphone</strong>.</li>
+<li>Il est conseillé de toujours <strong>minifier tes fichiers HTML, CSS et Javascript</strong></li>
+<li>Il faut <strong>redimensionner et compresser tes images</strong></li>
+<li>Évalue régulièrement la performance de ton site web en utilisant <strong>Gtmetrix</strong> ou <strong>Lighthouse</strong> dans google chrome</li>
+</ul>
+
+  </div>
+  <section class="ressources-quete">
+  <h2>Ressources partagées sur cette quête</h2>
+  <ul class="ressources-liste">
+    <li><a href="https://chrome.google.com/webstore/detail/headingsmap/flbjommegcjonpdmenkdiocclhjacmbi" target="_blank" rel="noopener noreferrer">Plugin Chrome utile pour voir si l'arborescence des titres d'un site/app est respectée et comment elle est lue par les outils favorisant l'accessibilité</a><span class="ressources-liste__url">https://chrome.google.com/webstore/detail/headingsmap/flbjommegcjonpdmenkdiocclhjacmbi</span></li>
+    <li><a href="https://serpsim.com/" target="_blank" rel="noopener noreferrer">Ce site permet de visualiser l'affichage sur une page de résultat tout en ayant un compteur en pixel pour le titre et la métadescription. Je précise juste qu'il compte de manière assez large pour la métadescription, mieux vaut réduire un peu par rapport au maximum qu'il affiche la méta complète.</a><span class="ressources-liste__url">https://serpsim.com/</span></li>
+    <li><a href="https://wave.webaim.org/extension/" target="_blank" rel="noopener noreferrer">Cette extension disponible pour Chrome, Firefox et Edge permet d'évaluer ta page web en terme d'accessibilité, cela directement dans le navigateur.</a><span class="ressources-liste__url">https://wave.webaim.org/extension/</span></li>
+  </ul>
+</section>
+</article>
+
+<nav class="nav-quete">
+  <a class="nav-quete__lien nav-quete__lien--prec" href="../../html/008-html-chapitre-8-les-tableaux/index.html">
+           <span class="nav-quete__sens">← Précédent</span>
+           <span class="nav-quete__titre">👩‍🏫 HTML - Chapitre 8 | Les tableaux</span>
+         </a>
+  <span class="nav-quete__lien nav-quete__lien--vide"></span>
+</nav>
+</main>
+<footer class="pied">
+  <p>Archive personnelle des cours suivis à la Wild Code School. Copie hors ligne à usage strictement privé.</p>
+</footer>
+
+<script src="../../assets/copie-code.js"></script>
+<script src="../../assets/progression.js"></script>
+</body>
+</html>

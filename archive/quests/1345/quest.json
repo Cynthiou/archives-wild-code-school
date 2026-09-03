@@ -1,0 +1,42 @@
+{
+  "id": 1345,
+  "titre": "👩‍🏫 CSS 7 : Les variables",
+  "titres": {
+    "en": "👩‍🏫 CSS 7: Variables",
+    "fr": "👩‍🏫 CSS 7 : Les variables"
+  },
+  "theme": {
+    "id": 12,
+    "slug": "html",
+    "nom": "CSS"
+  },
+  "creeLe": "2020-08-31T18:00:10.062+02:00",
+  "difficulte": "0",
+  "dureeEstimee": null,
+  "modeValidation": "self",
+  "chapitres": [
+    {
+      "id": 12569,
+      "type": "content",
+      "langue": "fr",
+      "majLe": "2024-11-05T09:55:44.148+01:00",
+      "caracteres": 9744
+    }
+  ],
+  "ressources": [
+    {
+      "link": "https://www.youtube.com/watch?v=IUPgwXZhQhg",
+      "description": "Explique en français et de manière détaillée les variables CSS"
+    },
+    {
+      "link": "https://www.youtube.com/watch?v=pi-jnnNFTiQ",
+      "description": "en français également."
+    },
+    {
+      "link": "https://youtu.be/x7EWFoRzAkk",
+      "description": "Learning CSS Calc in 6 minutes. Very usefull!"
+    }
+  ],
+  "urlOrigine": "https://odyssey.wildcodeschool.com/quests/1345",
+  "archiveLe": "2026-09-02T20:52:48.948Z"
+}

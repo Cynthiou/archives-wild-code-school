@@ -1,0 +1,102 @@
+{
+  "id": 1680,
+  "titre": "👩‍🏫 CSS 3 : Box model",
+  "titres": {
+    "en": "👩‍🏫 CSS 3: Box model",
+    "fr": "👩‍🏫 CSS 3 : Box model"
+  },
+  "theme": {
+    "id": 12,
+    "slug": "html",
+    "nom": "CSS"
+  },
+  "creeLe": "2021-05-23T07:41:40.325+02:00",
+  "difficulte": "0",
+  "dureeEstimee": null,
+  "modeValidation": "self",
+  "chapitres": [
+    {
+      "id": 12565,
+      "type": "content",
+      "langue": "fr",
+      "majLe": "2024-11-05T09:37:00.704+01:00",
+      "caracteres": 9032
+    }
+  ],
+  "ressources": [
+    {
+      "link": "https://training.github.com/downloads/fr/github-git-cheat-sheet.pdf",
+      "description": "Résumé des commandes git en français"
+    },
+    {
+      "link": "https://cssreference.io/",
+      "description": "plutôt cool"
+    },
+    {
+      "link": "https://cssgridgarden.com/#fr",
+      "description": "petit jeu pour grid css"
+    },
+    {
+      "link": "https://flexboxfroggy.com/#fr",
+      "description": "petit jeu pour flexbox"
+    },
+    {
+      "link": "https://cssbattle.dev/battle/1",
+      "description": "Pour s'entrainer et devenir un pro du CSS ;)"
+    },
+    {
+      "link": "https://developer.mozilla.org/en-US/docs/Web/CSS/Reference",
+      "description": "liste alphabétique des propriétés standards CSS"
+    },
+    {
+      "link": "https://openclassrooms.com/fr/courses/1603881-apprenez-a-creer-votre-site-web-avec-html5-et-css3/1605060-mettez-en-place-le-css#:~:text=Il%20existe%20une%20autre%20m%C3%A9thode,en%2Dt%C3%AAte%20.&text=Testez%2C%20vous%20verrez%20que%20le%20r%C3%A9sultat%20est%20le%20m%C3%AAme.",
+      "description": "bon support"
+    },
+    {
+      "link": "https://getbootstrap.com/docs/5.2/getting-started/introduction/",
+      "description": "HUGE css library ;) "
+    },
+    {
+      "link": "https://css-tricks.com/",
+      "description": "This is the best page ever"
+    },
+    {
+      "link": "https://chrome.google.com/webstore/detail/pesticide-for-chrome/bakpbgckdnepkmkeaiomhmfcnejndkbi",
+      "description": "Pesticide, extension de browser qui encadre les elements  box CSS d'une page. "
+    },
+    {
+      "link": "https://www.joshwcomeau.com/css/rules-of-margin-collapse/",
+      "description": "A very good article which explains the rules of \"margin collapse\" in detail."
+    },
+    {
+      "link": "https://css-tricks.com/snippets/css/a-guide-to-flexbox/",
+      "description": "Guide Flexbox"
+    },
+    {
+      "link": "https://www.codecademy.com/learn",
+      "description": "ça m'a beaucoup aidé"
+    },
+    {
+      "link": "https://internetingishard.netlify.app/html-and-css/css-box-model/index.html",
+      "description": "Nouveau lien de ESSENTIEL - Interneting Is Hard - CSS box model :D"
+    },
+    {
+      "link": "http://www.css-faciles.com/proprietes-css-liste-alphabetique.php",
+      "description": "Vocabulaires CSS"
+    },
+    {
+      "link": "https://developer.mozilla.org/fr/docs/Web/HTML/Element",
+      "description": "Résume la plus part des balises HTML avec les explications "
+    },
+    {
+      "link": "https://www.codecademy.com/learn/learn-css/modules/learn-css-box-model/cheatsheet",
+      "description": "Fiche des fondamentaux du modèle de boîte."
+    },
+    {
+      "link": "https://developer.mozilla.org/fr/docs/Learn/CSS/Building_blocks/The_box_model",
+      "description": "Aide à la compréhenssion de la Box Model"
+    }
+  ],
+  "urlOrigine": "https://odyssey.wildcodeschool.com/quests/1680",
+  "archiveLe": "2026-09-02T20:52:43.107Z"
+}

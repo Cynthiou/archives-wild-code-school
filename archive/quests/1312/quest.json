@@ -1,0 +1,29 @@
+{
+  "id": 1312,
+  "titre": "Git/GitHub 5 : Merge & Conflits",
+  "titres": {
+    "en": "Git/GitHub 5: Merge & Conflicts",
+    "fr": "Git/GitHub 5 : Merge & Conflits"
+  },
+  "theme": {
+    "id": 6,
+    "slug": "git",
+    "nom": "Git"
+  },
+  "creeLe": "2020-08-06T18:51:31.132+02:00",
+  "difficulte": "0",
+  "dureeEstimee": null,
+  "modeValidation": "student",
+  "chapitres": [
+    {
+      "id": 7727,
+      "type": "content",
+      "langue": "fr",
+      "majLe": "2022-09-01T16:35:26.191+02:00",
+      "caracteres": 3804
+    }
+  ],
+  "ressources": [],
+  "urlOrigine": "https://odyssey.wildcodeschool.com/quests/1312",
+  "archiveLe": "2026-09-02T20:53:25.201Z"
+}

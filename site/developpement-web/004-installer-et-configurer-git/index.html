@@ -1,0 +1,115 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Installer et configurer Git — Archives WCS</title>
+<link rel="stylesheet" href="../../assets/style.css">
+</head>
+<body style="--teinte:#000000">
+<header class="entete">
+  <a class="entete__marque" href="../../index.html">Archives Wild Code School</a>
+</header>
+<main class="contenu">
+<nav class="ariane"><a href="../../index.html">Accueil</a><span class="ariane__sep">›</span><a href="../../developpement-web/index.html">Développement Web</a><span class="ariane__sep">›</span><span aria-current="page">Installer et configurer Git</span></nav>
+
+<article class="quete">
+  <header class="quete__entete">
+    <a class="pastille pastille--teintee" href="../../developpement-web/index.html">Développement Web</a>
+    <h1>Installer et configurer Git</h1>
+    <p class="quete__meta">Quête 4 sur 11 · 1 image archivée</p>
+  </header>
+  <div class="cours">
+<h2>Objectifs</h2>
+<ul>
+<li>Comprendre la gestion de versions</li>
+<li>Découvrir GitHub</li>
+<li>Installer et configurer Git</li>
+</ul>
+<h2>Pré-requis</h2>
+<ol class="etapes"><li class="etape"><div class="etape__puce">1</div><div class="etape__contenu"><h4 class="etape__titre">Être à l'aise avec l'utilisation du terminal</h4><div class="bloc-code"><div class="bloc-code__langue">bash</div><pre><code class="hljs language-bash"><span class="hljs-built_in">mkdir</span> my-project
+<span class="hljs-built_in">cd</span> my-project
+</code></pre></div>
+</div></li><li class="etape"><div class="etape__puce">2</div><div class="etape__contenu"><h4 class="etape__titre">Savoir installer un logiciel sur ton système</h4><div class="onglets" data-onglets="3"><input type="radio" name="onglets-3" id="onglets-3-0" class="onglets__radio" checked><input type="radio" name="onglets-3" id="onglets-3-1" class="onglets__radio"><input type="radio" name="onglets-3" id="onglets-3-2" class="onglets__radio"><div class="onglets__barre"><label class="onglets__label" for="onglets-3-0">Ubuntu</label><label class="onglets__label" for="onglets-3-1">Mac OS</label><label class="onglets__label" for="onglets-3-2">Windows</label></div><div class="onglets__panneaux"><div class="onglets__panneau"><div class="bloc-code"><div class="bloc-code__langue">bash</div><pre><code class="hljs language-bash"><span class="hljs-built_in">sudo</span> apt install &lt;something&gt;
+</code></pre></div>
+</div><div class="onglets__panneau"><div class="bloc-code"><div class="bloc-code__langue">bash</div><pre><code class="hljs language-bash">brew install &lt;something&gt;
+</code></pre></div>
+</div><div class="onglets__panneau"><p>Télécharger le programme d'installation et double-cliquer dessus.</p>
+</div></div></div>
+</div></li></ol>
+<h2>Introduction</h2>
+<p>Tu as peut-être déjà vécu cette situation :</p>
+<p><img src="images/001-4-versions-du-meme-document-dans-un-repertoire.png" alt="4 versions du même document dans un répertoire" loading="lazy"></p>
+<p>Faire une copie d'un document pour le modifier tout en gardant une copie de sauvegarde au cas où. Mais après avoir fait plusieurs copies avec des noms plus ou moins inspirés, laquelle est la &quot;bonne version&quot; ?</p>
+<p>Est-ce que le fichier &quot;version ok&quot; est vraiment mieux que &quot;version ok ok&quot; ? Est-ce que la version avec une date dans le nom de fichier est vraiment la plus récente ? Quelles sont les <strong>différences entre chaque version</strong> ?</p>
+<p>Une application web est composée de dizaines de fichiers, voire plus. Imagine si tu devais gérer chaque version de fichier à la main, tout en restant synchronisé avec plusieurs personnes travaillant sur le même projet...</p>
+<p>Heureusement, des outils existent pour résoudre ces problèmes de <strong>gestion de versions</strong>. Ces outils peuvent paraître complexes au début, mais ils sont adaptés à la sauvegarde et au partage de code source. En les utilisant tous les jours pour tes projets, tu seras capable en seulement quelques semaines de travailler de manière efficace et collaborative.</p>
+<p>Découvrons ces outils ensemble.</p>
+<h2>Sommaire</h2>
+<h2>La gestion de versions</h2>
+<p>Repense à notre exemple avec plusieurs versions d'un même fichier :</p>
+<p><img src="images/001-4-versions-du-meme-document-dans-un-repertoire.png" alt="4 versions du même document dans un répertoire" loading="lazy"></p>
+<p>Tu as 4 fichiers dans ton répertoire :</p>
+<ul>
+<li><code>rapport.odt</code> : peut-être la version originale, mais ce n'est pas sûr.</li>
+<li><code>rapport 2023-09-18.odt</code> : certainement une version du 18 septembre 2023, mais ça ne te dit pas si elle est plus récente ou plus ancienne que les autres.</li>
+<li><code>rapport (version ok).odt</code> et <code>rapport (version ok ok).odt</code> : des versions qui ont été &quot;ok&quot; un jour, mais quand ?</li>
+</ul>
+<p>Je te propose une autre représentation :</p>
+<figure class="diagramme"><svg id="diagramme-qckpmjxgf1e" width="349.828125" xmlns="http://www.w3.org/2000/svg" height="190.4488067626953" viewBox="-141.828125 -19 349.828125 190.4488067626953" role="graphics-document document" aria-roledescription="gitGraph"><style>#diagramme-qckpmjxgf1e{font-family:"trebuchet ms",verdana,arial,sans-serif;font-size:16px;fill:#333;}#diagramme-qckpmjxgf1e .error-icon{fill:hsl(220.5882352941, 100%, 98.3333333333%);}#diagramme-qckpmjxgf1e .error-text{fill:rgb(8.5000000002, 5.7500000001, 0);stroke:rgb(8.5000000002, 5.7500000001, 0);}#diagramme-qckpmjxgf1e .edge-thickness-normal{stroke-width:2px;}#diagramme-qckpmjxgf1e .edge-thickness-thick{stroke-width:3.5px;}#diagramme-qckpmjxgf1e .edge-pattern-solid{stroke-dasharray:0;}#diagramme-qckpmjxgf1e .edge-pattern-dashed{stroke-dasharray:3;}#diagramme-qckpmjxgf1e .edge-pattern-dotted{stroke-dasharray:2;}#diagramme-qckpmjxgf1e .marker{fill:#0b0b0b;stroke:#0b0b0b;}#diagramme-qckpmjxgf1e .marker.cross{stroke:#0b0b0b;}#diagramme-qckpmjxgf1e svg{font-family:"trebuchet ms",verdana,arial,sans-serif;font-size:16px;}#diagramme-qckpmjxgf1e .commit-id,#diagramme-qckpmjxgf1e .commit-msg,#diagramme-qckpmjxgf1e .branch-label{fill:lightgrey;color:lightgrey;font-family:'trebuchet ms',verdana,arial,sans-serif;font-family:var(--mermaid-font-family);}#diagramme-qckpmjxgf1e .branch-label0{fill:#333;}#diagramme-qckpmjxgf1e .commit0{stroke:hsl(40.5882352941, 100%, 68.3333333333%);fill:hsl(40.5882352941, 100%, 68.3333333333%);}#diagramme-qckpmjxgf1e .commit-highlight0{stroke:rgb(0, 52.2500000001, 161.5000000002);fill:rgb(0, 52.2500000001, 161.5000000002);}#diagramme-qckpmjxgf1e .label0{fill:hsl(40.5882352941, 100%, 68.3333333333%);}#diagramme-qckpmjxgf1e .arrow0{stroke:hsl(40.5882352941, 100%, 68.3333333333%);}#diagramme-qckpmjxgf1e .branch-label1{fill:#333;}#diagramme-qckpmjxgf1e .commit1{stroke:hsl(-79.4117647059, 100%, 68.3333333333%);fill:hsl(-79.4117647059, 100%, 68.3333333333%);}#diagramme-qckpmjxgf1e .commit-highlight1{stroke:rgb(52.2500000001, 161.5000000002, 0);fill:rgb(52.2500000001, 161.5000000002, 0);}#diagramme-qckpmjxgf1e .label1{fill:hsl(-79.4117647059, 100%, 68.3333333333%);}#diagramme-qckpmjxgf1e .arrow1{stroke:hsl(-79.4117647059, 100%, 68.3333333333%);}#diagramme-qckpmjxgf1e .branch-label2{fill:#333;}#diagramme-qckpmjxgf1e .commit2{stroke:hsl(220.5882352941, 100%, 73.3333333333%);fill:hsl(220.5882352941, 100%, 73.3333333333%);}#diagramme-qckpmjxgf1e .commit-highlight2{stroke:rgb(136.0000000002, 92.0000000001, 0);fill:rgb(136.0000000002, 92.0000000001, 0);}#diagramme-qckpmjxgf1e .label2{fill:hsl(220.5882352941, 100%, 73.3333333333%);}#diagramme-qckpmjxgf1e .arrow2{stroke:hsl(220.5882352941, 100%, 73.3333333333%);}#diagramme-qckpmjxgf1e .branch-label3{fill:#333;}#diagramme-qckpmjxgf1e .commit3{stroke:hsl(10.5882352941, 100%, 68.3333333333%);fill:hsl(10.5882352941, 100%, 68.3333333333%);}#diagramme-qckpmjxgf1e .commit-highlight3{stroke:rgb(0, 133.0000000002, 161.5000000002);fill:rgb(0, 133.0000000002, 161.5000000002);}#diagramme-qckpmjxgf1e .label3{fill:hsl(10.5882352941, 100%, 68.3333333333%);}#diagramme-qckpmjxgf1e .arrow3{stroke:hsl(10.5882352941, 100%, 68.3333333333%);}#diagramme-qckpmjxgf1e .branch-label4{fill:#333;}#diagramme-qckpmjxgf1e .commit4{stroke:hsl(-19.4117647059, 100%, 68.3333333333%);fill:hsl(-19.4117647059, 100%, 68.3333333333%);}#diagramme-qckpmjxgf1e .commit-highlight4{stroke:rgb(0, 161.5000000002, 109.2500000001);fill:rgb(0, 161.5000000002, 109.2500000001);}#diagramme-qckpmjxgf1e .label4{fill:hsl(-19.4117647059, 100%, 68.3333333333%);}#diagramme-qckpmjxgf1e .arrow4{stroke:hsl(-19.4117647059, 100%, 68.3333333333%);}#diagramme-qckpmjxgf1e .branch-label5{fill:#333;}#diagramme-qckpmjxgf1e .commit5{stroke:hsl(-49.4117647059, 100%, 68.3333333333%);fill:hsl(-49.4117647059, 100%, 68.3333333333%);}#diagramme-qckpmjxgf1e .commit-highlight5{stroke:rgb(0, 161.5000000002, 28.5);fill:rgb(0, 161.5000000002, 28.5);}#diagramme-qckpmjxgf1e .label5{fill:hsl(-49.4117647059, 100%, 68.3333333333%);}#diagramme-qckpmjxgf1e .arrow5{stroke:hsl(-49.4117647059, 100%, 68.3333333333%);}#diagramme-qckpmjxgf1e .branch-label6{fill:#333;}#diagramme-qckpmjxgf1e .commit6{stroke:hsl(100.5882352941, 100%, 68.3333333333%);fill:hsl(100.5882352941, 100%, 68.3333333333%);}#diagramme-qckpmjxgf1e .commit-highlight6{stroke:rgb(109.2500000001, 0, 161.5000000002);fill:rgb(109.2500000001, 0, 161.5000000002);}#diagramme-qckpmjxgf1e .label6{fill:hsl(100.5882352941, 100%, 68.3333333333%);}#diagramme-qckpmjxgf1e .arrow6{stroke:hsl(100.5882352941, 100%, 68.3333333333%);}#diagramme-qckpmjxgf1e .branch-label7{fill:#333;}#diagramme-qckpmjxgf1e .commit7{stroke:hsl(160.5882352941, 100%, 68.3333333333%);fill:hsl(160.5882352941, 100%, 68.3333333333%);}#diagramme-qckpmjxgf1e .commit-highlight7{stroke:rgb(161.5000000002, 0, 52.2500000001);fill:rgb(161.5000000002, 0, 52.2500000001);}#diagramme-qckpmjxgf1e .label7{fill:hsl(160.5882352941, 100%, 68.3333333333%);}#diagramme-qckpmjxgf1e .arrow7{stroke:hsl(160.5882352941, 100%, 68.3333333333%);}#diagramme-qckpmjxgf1e .branch{stroke-width:1;stroke:#0b0b0b;stroke-dasharray:2;}#diagramme-qckpmjxgf1e .commit-label{font-size:14px;fill:rgb(11.0000000001, 34.0000000002, 0);}#diagramme-qckpmjxgf1e .commit-label-bkg{font-size:14px;fill:hsl(-79.4117647059, 100%, 93.3333333333%);opacity:0.5;}#diagramme-qckpmjxgf1e .tag-label{font-size:10px;fill:#333;}#diagramme-qckpmjxgf1e .tag-label-bkg{fill:#fff4dd;stroke:hsl(40.5882352941, 60%, 83.3333333333%);}#diagramme-qckpmjxgf1e .tag-hole{fill:#333;}#diagramme-qckpmjxgf1e .commit-merge{stroke:#fff4dd;fill:#fff4dd;}#diagramme-qckpmjxgf1e .commit-reverse{stroke:#fff4dd;fill:#fff4dd;stroke-width:3;}#diagramme-qckpmjxgf1e .commit-highlight-inner{stroke:#fff4dd;fill:#fff4dd;}#diagramme-qckpmjxgf1e .arrow{stroke-width:8;stroke-linecap:round;fill:none;}#diagramme-qckpmjxgf1e .gitTitleText{text-anchor:middle;font-size:18px;fill:#333;}#diagramme-qckpmjxgf1e :root{--mermaid-font-family:"trebuchet ms",verdana,arial,sans-serif;}</style><g></g><g class="commit-bullets"></g><g class="commit-labels"></g><g><line x1="0" y1="0" x2="200" y2="0" class="branch branch0"></line><rect class="branchLabelBkg label0" rx="4" ry="4" x="-69.25" y="-1.5" width="53.25" height="23" transform="translate(-19, -9.5)"></rect><g class="branchLabel"><g class="label branch-label0" transform="translate(-79.25, -10.5)"><text><tspan xml:space="preserve" dy="1em" x="0" class="row">main</tspan></text></g></g><line x1="0" y1="90" x2="200" y2="90" class="branch branch1"></line><rect class="branchLabelBkg label1" rx="4" ry="4" x="-114.828125" y="-1.5" width="98.828125" height="23" transform="translate(-19, 80.5)"></rect><g class="branchLabel"><g class="label branch-label1" transform="translate(-124.828125, 79.5)"><text><tspan xml:space="preserve" dy="1em" x="0" class="row">corrections</tspan></text></g></g></g><g class="commit-arrows"><path d="M 10 0 L 10 70 A 20 20, 0, 0, 0, 30 90 L 60 90" class="arrow arrow1"></path><path d="M 10 0 L 110 0" class="arrow arrow0"></path><path d="M 110 0 L 160 0" class="arrow arrow0"></path><path d="M 60 90 L 140 90 A 20 20, 0, 0, 0, 160 70 L 160 0" class="arrow arrow1"></path></g><g class="commit-bullets"><circle cx="10" cy="0" r="10" class="commit version 1 commit0"></circle><circle cx="60" cy="90" r="10" class="commit version ok commit1"></circle><circle cx="110" cy="0" r="10" class="commit 2023-09-18 commit0"></circle><circle cx="160" cy="0" r="9" class="commit version ok ok commit0"></circle><circle cx="160" cy="0" r="6" class="commit commit-merge version ok ok commit0"></circle></g><g class="commit-labels"><g transform="translate(-33.0846875, 29.4915625) rotate(-45, 0, 0)"><rect class="commit-label-bkg" x="-20.6640625" y="13.5" width="61.328125" height="20"></rect><text x="-18.6640625" y="25" class="commit-label">version 1</text></g><g transform="translate(-36.18443359375, 32.265019531250005) rotate(-45, 50, 90)"><rect class="commit-label-bkg" x="25.25732421875" y="103.5" width="69.4853515625" height="20"></rect><text x="27.25732421875" y="115" class="commit-label">version ok</text></g><g transform="translate(-37.7760546875, 33.6891015625) rotate(-45, 100, 0)"><rect class="commit-label-bkg" x="73.1630859375" y="13.5" width="73.673828125" height="20"></rect><text x="75.1630859375" y="25" class="commit-label">2023-09-18</text></g><g transform="translate(-43.325390625, 38.654296875) rotate(-45, 150, 0)"><rect class="commit-label-bkg" x="115.861328125" y="13.5" width="88.27734375" height="20"></rect><text x="117.861328125" y="25" class="commit-label">version ok ok</text></g></g></svg></figure>
+<p>Et une petite histoire pour aller avec :</p>
+<ul>
+<li>Tu as fait une première version de ton rapport avant le 18 septembre 2023 (disons le 17 pour les besoins de l'histoire).</li>
+<li>Tu as envoyé cette première version à une personne pour relecture et tu as récupéré une version corrigée (<code>version ok</code>).</li>
+<li>En parallèle, tu as toi-même fait des modifications le 18 septembre.</li>
+<li>Tu as réuni tes modifications avec les corrections que tu as reçues : <code>version ok ok</code> est la dernière version en date, et a priori la &quot;bonne version&quot;.</li>
+</ul>
+<p>Comment je connais cette histoire ? Chaque version représentée par un point dans le schéma &quot;plan de métro&quot; est connectée à une version plus ancienne : chaque version a une version <strong>parente</strong> à laquelle elle ajoute des modifications. Tu peux suivre l'histoire des versions en suivant les &quot;lignes&quot; de la gauche vers la droite.</p>
+<p>Plusieurs &quot;branches&quot; peuvent exister en parallèle : c'est le cas ici avec les <code>corrections</code>. Tu peux voir une <strong>branche</strong> comme une copie envoyée à un ami et que tu récupéreras plus tard avec des modifications.</p>
+<p>Tu devras alors <strong>fusionner</strong> la version de la branche avec ta version principale : mélanger les textes en t'assurant que le résultat reste cohérent.</p>
+<p>Pour résumer, voici ce que tu peux faire avec la gestion de versions :</p>
+<ul>
+<li>Créer une version initiale.</li>
+<li>Ajouter des modifications à une version parente.</li>
+<li>Faire des branches pour gérer plusieurs versions en parallèle.</li>
+<li>Fusionner les versions.</li>
+</ul>
+<h2>Utiliser GitHub en ligne</h2>
+<p>Dans un premier temps, tu vas utiliser une plateforme en ligne pour gérer des fichiers : GitHub.</p>
+<div class="renvois"><div class="renvois__titre">Quêtes liées</div><ul><li><a href="../../git/001-git-github-1-decouvrir-github/index.html">Quête 2133</a></li></ul></div>
+<h2>Utiliser Git en local</h2>
+<p>Maintenant que tu as découvert GitHub, tu peux reproduire les mêmes opérations pour gérer des versions de fichiers sur ta machine, en ligne de commande avec Git.</p>
+<h3>Installer Git</h3>
+<p>Commence par installer Git et familiarise-toi avec les principales commandes.</p>
+<div class="renvois"><div class="renvois__titre">Quêtes liées</div><ul><li><a href="../../git/002-git-github-2-git-en-local/index.html">Quête 1309</a></li></ul></div>
+<h3>Lier Git et GitHub</h3>
+<p>Git sur ta machine et GitHub en ligne : en liant les deux, tu pourras sauvegarder ton travail sur un serveur et partager tes projets.</p>
+<div class="renvois"><div class="renvois__titre">Quêtes liées</div><ul><li><a href="../../git/003-git-github-3-remote/index.html">Quête 2138</a></li></ul></div>
+<h2>Mode collaboratif</h2>
+<p>Tu as maintenant un environnement de travail complet pour la gestion de versions : tu peux démarrer de nouveaux projets et travailler dessus avec plusieurs personnes.</p>
+<p>Pour rendre le travail collaboratif plus fluide, tu peux apprendre à utiliser des branches et à résoudre des conflits entre plusieurs versions.</p>
+<div class="renvois"><div class="renvois__titre">Quêtes liées</div><ul><li><a href="../../git/004-git-github-4-branche-et-flow/index.html">Quête 1313</a></li><li><a href="../../git/005-git-github-5-merge-conflits/index.html">Quête 1312</a></li></ul></div>
+
+  </div>
+  
+</article>
+
+<nav class="nav-quete">
+  <a class="nav-quete__lien nav-quete__lien--prec" href="../../developpement-web/003-html-css-1-bienvenue-a-bord/index.html">
+           <span class="nav-quete__sens">← Précédent</span>
+           <span class="nav-quete__titre">HTML &amp; CSS 1 : Bienvenue à bord</span>
+         </a>
+  <a class="nav-quete__lien nav-quete__lien--suiv" href="../../developpement-web/005-installer-et-configurer-mysql/index.html">
+           <span class="nav-quete__sens">Suivant →</span>
+           <span class="nav-quete__titre">Installer et configurer MySQL</span>
+         </a>
+</nav>
+</main>
+<footer class="pied">
+  <p>Archive personnelle des cours suivis à la Wild Code School. Copie hors ligne à usage strictement privé.</p>
+</footer>
+
+<script src="../../assets/copie-code.js"></script>
+<script src="../../assets/progression.js"></script>
+</body>
+</html>

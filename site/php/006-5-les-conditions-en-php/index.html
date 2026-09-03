@@ -1,0 +1,390 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>5. Les conditions en PHP — Archives WCS</title>
+<link rel="stylesheet" href="../../assets/style.css">
+</head>
+<body style="--teinte:#5F83B2">
+<header class="entete">
+  <a class="entete__marque" href="../../index.html">Archives Wild Code School</a>
+</header>
+<main class="contenu">
+<nav class="ariane"><a href="../../index.html">Accueil</a><span class="ariane__sep">›</span><a href="../../php/index.html">PHP</a><span class="ariane__sep">›</span><span aria-current="page">5. Les conditions en PHP</span></nav>
+
+<article class="quete">
+  <header class="quete__entete">
+    <a class="pastille pastille--teintee" href="../../php/index.html">PHP</a>
+    <h1>5. Les conditions en PHP</h1>
+    <p class="quete__meta">Quête 6 sur 14</p>
+  </header>
+  <div class="cours">
+<p><strong>⚠️ Avant de commencer cette quête, tu dois avoir terminé les quêtes suivantes :</strong></p>
+<div class="renvois"><div class="renvois__titre">Quêtes liées</div><ul><li><a href="../../php/005-4-2-les-tableaux-multidimensionnels-en-php/index.html">Quête 1348</a></li></ul></div>
+<div class="bloc-code"><div class="bloc-code__langue">title-book</div><pre><code class="hljs language-title-book">Introduction
+</code></pre></div>
+<p>Cette quête va t'apprendre l'une des structures de contrôle les plus utilisées dans les langages de programmation, à savoir : la condition.</p>
+<h2>🤓 <strong>À la fin de cette quête, tu seras capable de:</strong></h2>
+<ul>
+<li>✅ Comprendre l'utilité d'une condition dans un programme</li>
+</ul>
+<ul>
+<li>✅ Maîtriser les structures de contrôle <code>if</code>, <code>elseif</code>, <code>else</code>, <code>switch</code></li>
+</ul>
+<h1>Mais pourquoi faire des conditions ?</h1>
+<p>Un programme informatique (web ou non) est une suite d'instructions à éxécuter par l'ordinateur. S'il n'y avait pas de condition, le programme ferait donc strictement la même chose à chaque exécution.</p>
+<p>En PHP (et dans la plupart des langages), une condition s'écrit ainsi :</p>
+<div class="bloc-code"><div class="bloc-code__langue">php</div><pre><code class="hljs language-php"><span class="hljs-keyword">if</span> (expression) {
+    <span class="hljs-comment">// bloc d&#x27;instructions</span>
+}
+
+<span class="hljs-comment">// ou avec des elseif / else</span>
+<span class="hljs-keyword">if</span> (expression) {
+   <span class="hljs-comment">// bloc d&#x27;instructions</span>
+} <span class="hljs-keyword">elseif</span> (expression) {
+   <span class="hljs-comment">// bloc d&#x27;instructions</span>
+} <span class="hljs-keyword">else</span> {
+   <span class="hljs-comment">// bloc d&#x27;instructions</span>
+}
+
+</code></pre></div>
+<h1>Comment fonctionne une condition ?</h1>
+<p>À chaque fois que tu utilises une condition, PHP va interpréter l'expression que tu lui as fournie (ce qu'il y a entre les parenthèses) et l'évaluer à true ou false.</p>
+<ul>
+<li>
+<p>Si c'est <em>true</em>, il va &quot;entrer&quot; dans la condition et exécuter le bloc d'instructions.</p>
+</li>
+<li>
+<p>Si c'est <em>false</em>, il va entrer dans le <code>else</code> / <code>elseif</code> (si existant) et/ou continuer d'exécuter le reste du programme.</p>
+</li>
+</ul>
+<h3>Un exemple</h3>
+<div class="bloc-code"><div class="bloc-code__langue">php</div><pre><code class="hljs language-php"><span class="hljs-keyword">if</span> (<span class="hljs-variable">$idol</span> == <span class="hljs-variable">$bag</span>) {
+    <span class="hljs-keyword">echo</span> <span class="hljs-string">&#x27;Lance la boule !!!&#x27;</span>;
+}
+</code></pre></div>
+<p><img src="http://images.innoveduc.fr/php_proc_conditions_indy.gif" alt="" loading="lazy"></p>
+<p>Au niveau du formatage, il existe des &quot;bonnes pratiques&quot;, respectées par la plupart des développeurs PHP et par tous les plus gros frameworks : <strong>les PSR (PHP Standards Recommandations)</strong></p>
+<div class="encadre encadre--warning"><div class="encadre__titre">Attention</div><div class="encadre__corps"><p>Tu vas devoir apprendre à respecter les PSR. Dans un premier temps, essaies au moins d'assimiler les <strong>PSR-1</strong> et <strong>PSR-12</strong>. Celles-ci sont assez simples, il suffit juste de les apprendre par cœur pour que cela devienne un réflexe. Par la suite, certains outils te permettront de vérifier si tu les as bien respectées.</p>
+</div></div>
+<div class="bloc-code"><div class="bloc-code__langue">php</div><pre><code class="hljs language-php"><span class="hljs-comment">// Exemples de règles de PSR</span>
+<span class="hljs-comment">// PSR OK</span>
+<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">hello</span>(<span class="hljs-params"><span class="hljs-keyword">int</span> <span class="hljs-variable">$i</span></span>)
+</span>{
+    <span class="hljs-keyword">if</span> (<span class="hljs-variable">$i</span> &gt; <span class="hljs-number">10</span>) {
+        <span class="hljs-keyword">echo</span> <span class="hljs-variable">$i</span> . <span class="hljs-string">&#x27;est supérieur à 10&#x27;</span>;
+    }
+}
+
+<span class="hljs-comment">// PSR KO</span>
+<span class="hljs-comment">// L&#x27;accolade de la fonction n&#x27;est pas à la ligne : KO</span>
+<span class="hljs-comment">// L&#x27;accolade du if est à la ligne : KO</span>
+<span class="hljs-comment">// Pas d&#x27;espace entre le if et la parenthèse : KO</span>
+<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">hello</span>(<span class="hljs-params"></span>) </span>{
+    <span class="hljs-keyword">if</span>(<span class="hljs-variable">$i</span>&gt;<span class="hljs-number">10</span>)
+    {
+        <span class="hljs-keyword">echo</span> <span class="hljs-variable">$i</span> . <span class="hljs-string">&#x27;est supérieur à 10&#x27;</span>;
+    }
+}
+
+</code></pre></div>
+<a class="ressource" href="https://www.php-fig.org/psr/psr-1/" target="_blank" rel="noopener noreferrer">
+  <div class="ressource__icone">↗</div>
+  <div class="ressource__texte">
+    <div class="ressource__titre">PSR-1</div>
+    <div class="ressource__desc"><p>Basic Coding Standard</p>
+</div>
+    <div class="ressource__hote">php-fig.org</div>
+  </div>
+</a>
+<a class="ressource" href="https://www.php-fig.org/psr/psr-12/" target="_blank" rel="noopener noreferrer">
+  <div class="ressource__icone">↗</div>
+  <div class="ressource__texte">
+    <div class="ressource__titre">PSR-12</div>
+    <div class="ressource__desc"><p>Coding Style Guide</p>
+</div>
+    <div class="ressource__hote">php-fig.org</div>
+  </div>
+</a>
+<h1>Les opérateurs</h1>
+<p>Un opérateur est quelque chose qui prend une ou plusieurs valeurs (ou expressions) et qui retourne une autre valeur.</p>
+<p>Je suis sûr que tu connais déjà certains opérateurs, par exemple tous les opérateurs mathématiques (+, -, /, *) mais il en existe plein d'autres. Tu pourras trouver la liste complète dans les ressources.</p>
+<p>Voici quelques exemples d'opérateurs simples :</p>
+<div class="bloc-code"><div class="bloc-code__langue">php</div><pre><code class="hljs language-php"><span class="hljs-variable">$a</span> = <span class="hljs-number">1</span>      <span class="hljs-comment">// assignation / affectation   =&gt; $a vaut 1</span>
+<span class="hljs-variable">$a</span> == <span class="hljs-number">1</span>     <span class="hljs-comment">// égalité (valeur uniquement)  =&gt; $a est-il égal à 1 ?</span>
+<span class="hljs-variable">$a</span> === <span class="hljs-number">1</span>    <span class="hljs-comment">// égalité (valeur ET type)     =&gt; $a est-il égal à 1 et est-il un integer ?</span>
+
+<span class="hljs-variable">$a</span> + <span class="hljs-variable">$b</span> <span class="hljs-comment">// addition</span>
+<span class="hljs-variable">$a</span> % <span class="hljs-variable">$b</span> <span class="hljs-comment">// modulo (reste de la division)    =&gt; 2%1 = 0 car il reste 0. 3%2 reste 1.</span>
+<span class="hljs-variable">$a</span>++    <span class="hljs-comment">// incrémentation                   =&gt; ici $a est incrémenté de 1 par rapport à sa valeur précédente.</span>
+
+<span class="hljs-variable">$a</span> || <span class="hljs-variable">$b</span>    <span class="hljs-comment">// ou</span>
+<span class="hljs-variable">$a</span> &amp;&amp; <span class="hljs-variable">$b</span>    <span class="hljs-comment">// et</span>
+
+<span class="hljs-variable">$a</span> != <span class="hljs-variable">$b</span>    <span class="hljs-comment">// différent</span>
+<span class="hljs-variable">$a</span> . <span class="hljs-variable">$b</span>     <span class="hljs-comment">// concaténation</span>
+</code></pre></div>
+<p>et quelques-uns plus compliqués :</p>
+<div class="bloc-code"><div class="bloc-code__langue">php</div><pre><code class="hljs language-php">!<span class="hljs-variable">$a</span>         <span class="hljs-comment">// Not (inversion)</span>
+<span class="hljs-variable">$a</span> &amp; <span class="hljs-variable">$b</span>     <span class="hljs-comment">// et (comparaison de bits, à ne pas confondre avec &amp;&amp;)</span>
+</code></pre></div>
+<p><strong>Tous ces exemples retournent une valeur</strong>. Il faut donc bien penser :</p>
+<ul>
+<li>Soit à l'enregistrer dans une variable</li>
+<li>Soit à l'utiliser directement comme expression de condition</li>
+</ul>
+<p><strong>Attention !!!</strong> PHP étant un langage faiblement typé, les opérateurs peuvent avoir un fonctionnement différent en
+fonction du contexte, ex. :</p>
+<div class="bloc-code"><div class="bloc-code__langue">php</div><pre><code class="hljs language-php"><span class="hljs-variable">$tab1</span> = <span class="hljs-variable">$tab2</span> = [];
+<span class="hljs-variable">$tab1</span> + <span class="hljs-variable">$tab2</span>     <span class="hljs-comment">// union</span>
+</code></pre></div>
+<p>Ici $tab1 et $tab2 sont des tableaux, le + signifie que PHP va fusionner (selon ses règles) les 2 tableaux (et non additionner).</p>
+<a class="ressource" href="http://php.net/manual/fr/language.operators.php" target="_blank" rel="noopener noreferrer">
+  <div class="ressource__icone">↗</div>
+  <div class="ressource__texte">
+    <div class="ressource__titre">Les opérateurs en PHP</div>
+    <div class="ressource__desc"><p>La doc officielle de PHP sur les opérateurs.</p>
+</div>
+    <div class="ressource__hote">php.net</div>
+  </div>
+</a>
+<h3>Yoda Condition</h3>
+<p><img src="http://images.innoveduc.fr/php_proc_conditions_yodajones.jpg" alt="" loading="lazy"></p>
+<div class="bloc-code"><div class="bloc-code__langue">php</div><pre><code class="hljs language-php"><span class="hljs-keyword">if</span> (<span class="hljs-number">5</span> == <span class="hljs-variable">$count</span>)
+</code></pre></div>
+<p>La yoda condition est un style de programmation où les deux parties d'une expression d'égalité sont inversées dans une condition.</p>
+<p>Cela ne vient pas du fait que certains développeurs sont fans de Star Wars (quoique...) mais a un vrai intérêt technique.</p>
+<p>Lorsque tu effectues une assignation (vu dans la quête sur les variables), PHP retourne toujours <em>true</em>, pour signifier qu'il a bien affecté la valeur à la variable.</p>
+<p>À partir de cette info, à ton avis, que se passe-t-il si tu fais une petite erreur dans ton code et que tu écris ceci :</p>
+<div class="bloc-code"><div class="bloc-code__langue">php</div><pre><code class="hljs language-php"><span class="hljs-variable">$count</span> = <span class="hljs-number">1</span>;
+<span class="hljs-keyword">if</span> (<span class="hljs-variable">$count</span> = <span class="hljs-number">5</span>) {
+    <span class="hljs-keyword">echo</span> <span class="hljs-string">&#x27;Condition remplie&#x27;</span>;
+} <span class="hljs-keyword">else</span> {
+    <span class="hljs-keyword">echo</span> <span class="hljs-string">&#x27;Condition non remplie&#x27;</span>;
+}
+</code></pre></div>
+<p>Ton programme va afficher &quot;Condition remplie&quot; (et <code>$count</code> sera égal à 5), bien que <code>$count</code> soit égal à 1 et non à 5.</p>
+<p>L'erreur ici est que tu as écrit un seul = au lieu de 2 (ce qui peut arriver par inadvertance), mais cela n'est pas une erreur pour PHP car l'opérateur = existe, c'est l'assignation. Cette erreur est difficile à trouver car silencieuse.</p>
+<div class="bloc-code"><div class="bloc-code__langue">php</div><pre><code class="hljs language-php"><span class="hljs-variable">$count</span> = <span class="hljs-number">1</span>;
+<span class="hljs-keyword">if</span> (<span class="hljs-number">5</span> = <span class="hljs-variable">$count</span>) {
+    <span class="hljs-keyword">echo</span> <span class="hljs-string">&#x27;Condition remplie&#x27;</span>;
+} <span class="hljs-keyword">else</span> {
+    <span class="hljs-keyword">echo</span> <span class="hljs-string">&#x27;Condition non remplie&#x27;</span>;
+}
+</code></pre></div>
+<p>En Yoda condition, nous n'aurions ni l'une, ni l'autre des sorties, mais une erreur de parsing car PHP ne peut pas affecter
+une valeur à une constante.</p>
+<a class="ressource" href="https://fr.wikipedia.org/wiki/Condition_Yoda" target="_blank" rel="noopener noreferrer">
+  <div class="ressource__icone">↗</div>
+  <div class="ressource__texte">
+    <div class="ressource__titre">Yoda condition</div>
+    <div class="ressource__desc"><p>Définition de la Yoda condition.</p>
+</div>
+    <div class="ressource__hote">fr.wikipedia.org</div>
+  </div>
+</a>
+<h3>Le cas du switch ou match depuis PHP 8</h3>
+<p>Dans certains cas, il peut être pratique de tester plusieurs valeurs sur la même variable. Plutôt que de faire
+plusieurs <code>elseif</code>, tu peux utiliser le <code>switch</code>, qui s'écrit ainsi :</p>
+<div class="bloc-code"><div class="bloc-code__langue">php</div><pre><code class="hljs language-php"><span class="hljs-keyword">switch</span> (expression) {
+    <span class="hljs-keyword">case</span> <span class="hljs-number">0</span>:
+        instructions
+        <span class="hljs-keyword">break</span>; <span class="hljs-comment">// optionnel</span>
+    <span class="hljs-keyword">case</span> <span class="hljs-number">1</span>:
+        instructions
+        <span class="hljs-keyword">break</span>; <span class="hljs-comment">// optionnel</span>
+    <span class="hljs-keyword">case</span> x:
+        instructions
+        <span class="hljs-keyword">break</span>; <span class="hljs-comment">// optionnel</span>
+    <span class="hljs-keyword">default</span>:
+        instructions
+        <span class="hljs-keyword">break</span>; <span class="hljs-comment">// optionnel</span>
+}
+</code></pre></div>
+<p>Depuis PHP 8, la structure <code>match</code> a été introduite plus simple à écrire et plus lisible (attention elle se termine par un point virgule) :</p>
+<div class="bloc-code"><div class="bloc-code__langue">php</div><pre><code class="hljs language-php"><span class="hljs-keyword">match</span>(expression) {
+    <span class="hljs-number">0</span> =&gt; expression,
+    <span class="hljs-number">1</span> =&gt; expression,
+    x =&gt; expression,
+    <span class="hljs-keyword">default</span> =&gt; expression,
+};
+</code></pre></div>
+<p>Le <code>switch</code> va avoir un comportement différent selon que tu places des <code>break</code> ou non dans chaque <code>case</code>.</p>
+<ul>
+<li>
+<p>Si tu places des <code>break</code>, le comportement sera le même que si tu avais mis des <code>elseif</code>.</p>
+</li>
+<li>
+<p>Si par contre, tu n'en mets pas, PHP va tenter tous les cas séquentiellement et dès qu'un cas correspond (est évalué à <em>true</em>), toutes les instructions associées ainsi que celles des cas suivants seront exécutées jusqu'à la fin ou jusqu'à ce qu'il tombe sur un <code>break</code>.</p>
+</li>
+<li>
+<p>Enfin tu as pu remarquer le cas <code>default</code> qui sera exécuté si aucun autre cas ne correspond.</p>
+</li>
+</ul>
+<div class="bloc-code"><div class="bloc-code__langue">php</div><pre><code class="hljs language-php"><span class="hljs-variable">$i</span> = <span class="hljs-number">1</span>;
+<span class="hljs-keyword">switch</span> (<span class="hljs-variable">$i</span>) {
+    <span class="hljs-keyword">case</span> <span class="hljs-number">0</span>:
+        <span class="hljs-comment">// ne rentre pas ici</span>
+    <span class="hljs-keyword">case</span> <span class="hljs-number">1</span>:
+        <span class="hljs-comment">// rentre ici</span>
+        <span class="hljs-keyword">echo</span> <span class="hljs-variable">$i</span>; <span class="hljs-comment">// Affiche 1</span>
+        <span class="hljs-comment">// il n&#x27;y a pas de break donc les cas vont continuer à être testés</span>
+    <span class="hljs-keyword">case</span> <span class="hljs-number">5</span>:
+        <span class="hljs-comment">// je rentre aussi ici</span>
+        <span class="hljs-keyword">echo</span> <span class="hljs-variable">$i</span>; <span class="hljs-comment">// Affiche 1</span>
+    <span class="hljs-keyword">default</span>:
+        <span class="hljs-comment">// ne rentre pas là car d&#x27;autres cas ont &quot;matché&quot; </span>
+}
+<span class="hljs-keyword">echo</span> <span class="hljs-variable">$i</span>; <span class="hljs-comment">// 1</span>
+</code></pre></div>
+<p>Avec la version <code>match</code> depuis PHP 8 :</p>
+<p>Un grand avantage de l’utilisation de la nouvelle expression match est que, alors que switch compare les valeurs de façon &quot;lâche&quot; (==), ce qui peut conduire à des résultats inattendus, avec match, la comparaison est un contrôle d’identité (===). L’expression de match peut également contenir plusieurs expressions séparées par des virgules, ce qui permet une syntaxe plus concise</p>
+<div class="bloc-code"><div class="bloc-code__langue">php</div><pre><code class="hljs language-php"><span class="hljs-variable">$result</span> = <span class="hljs-keyword">match</span> (<span class="hljs-variable">$x</span>) {
+	<span class="hljs-comment">// This match arm:</span>
+	<span class="hljs-variable">$a</span>, <span class="hljs-variable">$b</span>, <span class="hljs-variable">$c</span> =&gt; <span class="hljs-number">5</span>,
+	<span class="hljs-comment">// Is equivalent to these three match arms:</span>
+	<span class="hljs-variable">$a</span> =&gt; <span class="hljs-number">5</span>,
+	<span class="hljs-variable">$b</span> =&gt; <span class="hljs-number">5</span>,
+	<span class="hljs-variable">$c</span> =&gt; <span class="hljs-number">5</span>,
+};
+</code></pre></div>
+<a class="ressource" href="https://stitcher.io/blog/php-8-match-or-switch" target="_blank" rel="noopener noreferrer">
+  <div class="ressource__icone">↗</div>
+  <div class="ressource__texte">
+    <div class="ressource__titre">PHP 8 : match ou switch ?</div>
+    
+    <div class="ressource__hote">stitcher.io</div>
+  </div>
+</a>
+<a class="ressource" href="https://www.php.net/manual/en/control-structures.match.php" target="_blank" rel="noopener noreferrer">
+  <div class="ressource__icone">↗</div>
+  <div class="ressource__texte">
+    <div class="ressource__titre">Fonction match</div>
+    
+    <div class="ressource__hote">php.net</div>
+  </div>
+</a>
+<h1>Aller plus loin</h1>
+<p>Pour aller plus loin, et surtout lorsque tu maîtriseras la POO (Programmation Orientée Objet), tu pourras essayer de réduire le nombre de conditions dans tes programmes, ou alors de les structurer différemment. En effet, trop d'imbrications rendent la relecture du code difficile. Voici un exemple simple pour illustrer ce propos.</p>
+<p>Imaginons que l'on nous demande d'écrire un programme qui nous indique si un &quot;Indiana Jones&quot; est sorti au cinéma une année donnée.</p>
+<div class="bloc-code"><div class="bloc-code__langue">php</div><pre><code class="hljs language-php">
+<span class="hljs-variable">$year</span> = {saisie utilisateur}
+
+<span class="hljs-keyword">if</span> (<span class="hljs-number">1981</span> == <span class="hljs-variable">$year</span>) {
+    <span class="hljs-keyword">echo</span> <span class="hljs-string">&#x27;Oui&#x27;</span>;
+} <span class="hljs-keyword">elseif</span> (<span class="hljs-number">1984</span> == <span class="hljs-variable">$year</span>) {
+    <span class="hljs-keyword">echo</span> <span class="hljs-string">&#x27;Oui&#x27;</span>;
+} <span class="hljs-keyword">elseif</span> (<span class="hljs-number">1989</span> == <span class="hljs-variable">$year</span>) {
+    <span class="hljs-keyword">echo</span> <span class="hljs-string">&#x27;Ouii&#x27;</span>;    <span class="hljs-comment">// &lt;-- Erreur de copier / coller possible</span>
+} <span class="hljs-keyword">elseif</span> (<span class="hljs-number">2008</span> == <span class="hljs-variable">$year</span>) {
+    <span class="hljs-keyword">echo</span> <span class="hljs-string">&#x27;Oui&#x27;</span>;
+} <span class="hljs-keyword">else</span> {
+    <span class="hljs-keyword">echo</span> <span class="hljs-string">&#x27;Non&#x27;</span>;
+}
+
+</code></pre></div>
+<p>Ce programme est parfaitement fonctionnel mais pas très lisible et, dans le cas où l'on ferait plus qu'un simple echo, sa relecture pourrait être complexe et multipliée par autant de dates de sortie. De plus, on constate qu'à chaque date existante, on répète la même instruction avec le risque d'une erreur de copier / coller (ex. 1989).</p>
+<p>Il pourrait être écrit ainsi :</p>
+<div class="bloc-code"><div class="bloc-code__langue">php</div><pre><code class="hljs language-php"><span class="hljs-variable">$year</span> = {saisie utilisateur}
+<span class="hljs-variable">$results</span> = [<span class="hljs-number">1981</span>, <span class="hljs-number">1984</span>, <span class="hljs-number">1989</span>, <span class="hljs-number">2008</span>];
+<span class="hljs-variable">$message</span> = <span class="hljs-string">&#x27;Non&#x27;</span>;
+
+<span class="hljs-keyword">if</span> (<span class="hljs-title function_ invoke__">in_array</span>(<span class="hljs-variable">$year</span>, <span class="hljs-variable">$results</span>)) { <span class="hljs-comment">// la fonction in_array vérifie l&#x27;existence d&#x27;une valeur dans un tableau.</span>
+    <span class="hljs-variable">$message</span> = <span class="hljs-string">&#x27;Oui&#x27;</span>;
+}
+
+<span class="hljs-keyword">echo</span> <span class="hljs-variable">$message</span>;
+</code></pre></div>
+<p>De cette manière, on diminue le nombre de conditions et, par la même occasion, on simplifie la relecture.
+Dans le cas où un nouveau Indiana Jones sort, il suffit d'ajouter une entrée au tableau <code>$results</code> et le reste ne change pas.
+Pas de nouvelle condition, pas de copier / coller des instructions de chaque condition.</p>
+<h1>💪 Challenge</h1>
+<h3>Poings, fouet, pistolet</h3>
+<p>Indiana Jones a beaucoup d'adversaires. Pour les combattre il utilise souvent ses poings, son fouet ou son pistolet.</p>
+<p>Afin de choisir la meilleure défense, tu dois écrire un petit script PHP qui va se baser sur celui-ci :</p>
+<div class="bloc-code"><div class="bloc-code__langue">php</div><pre><code class="hljs language-php"><span class="hljs-variable">$weapons</span> = [<span class="hljs-string">&#x27;fists&#x27;</span>, <span class="hljs-string">&#x27;whip&#x27;</span>, <span class="hljs-string">&#x27;gun&#x27;</span>];
+<span class="hljs-variable">$opponentWeapon</span> = <span class="hljs-variable">$weapons</span>[<span class="hljs-title function_ invoke__">rand</span>(<span class="hljs-number">0</span>,<span class="hljs-number">2</span>)]; <span class="hljs-comment">// Cela permet de choisir une arme de manière aléatoire.</span>
+
+<span class="hljs-comment">// TODO</span>
+
+<span class="hljs-variable">$indyWeapon</span> = <span class="hljs-string">&#x27;???&#x27;</span>;
+</code></pre></div>
+<p>Les règles du jeu sont les suivantes :</p>
+<ul>
+<li>le pistolet bat le poing mais perd contre le fouet</li>
+<li>le poing bat le fouet mais perd contre le pistolet</li>
+<li>le fouet bat le pistolet mais perd contre le poing</li>
+</ul>
+<p>Le programme doit donc assigner une arme à la variable <code>$indyWeapon</code>. Cette arme doit être meilleure que celle de l'adversaire.</p>
+<p><img src="http://images.innoveduc.fr/php_proc_conditions_indy_gun.gif" alt="" loading="lazy"></p>
+<h3>Critères de validation</h3>
+<ul>
+<li>Le code est disponible sur un PHPsandbox</li>
+<li>Ton code est bien indenté et respecte les PSR</li>
+<li>Ton programme utilise des if / elseif / else ou switch</li>
+<li>Les règles du jeux sont respectées</li>
+<li>La valeur de l'arme est bien assignée dans la variable $indyWeapon</li>
+</ul>
+<p>==$==</p>
+<div class="bloc-code"><div class="bloc-code__langue">php</div><pre><code class="hljs language-php"><span class="hljs-variable">$weapons</span> = [<span class="hljs-string">&#x27;fists&#x27;</span>, <span class="hljs-string">&#x27;whip&#x27;</span>, <span class="hljs-string">&#x27;gun&#x27;</span>];
+<span class="hljs-variable">$opponentWeapon</span> = <span class="hljs-variable">$weapons</span>[<span class="hljs-title function_ invoke__">rand</span>(<span class="hljs-number">0</span>, <span class="hljs-number">2</span>)];
+</code></pre></div>
+<div class="bloc-code"><div class="bloc-code__langue">php</div><pre><code class="hljs language-php"><span class="hljs-comment">// Version If/Elseif</span>
+<span class="hljs-keyword">if</span> (<span class="hljs-variable">$opponentWeapon</span> === <span class="hljs-string">&#x27;gun&#x27;</span>) {
+    <span class="hljs-variable">$indyWeapon</span> = <span class="hljs-string">&#x27;whip&#x27;</span>;
+} <span class="hljs-keyword">elseif</span> (<span class="hljs-variable">$opponentWeapon</span> === <span class="hljs-string">&#x27;fists&#x27;</span>) {
+    <span class="hljs-variable">$indyWeapon</span> = <span class="hljs-string">&#x27;gun&#x27;</span>;
+} <span class="hljs-keyword">elseif</span> (<span class="hljs-variable">$opponentWeapon</span> === <span class="hljs-string">&#x27;whip&#x27;</span>) {
+    <span class="hljs-variable">$indyWeapon</span> = <span class="hljs-string">&#x27;fists&#x27;</span>;
+}
+</code></pre></div>
+<div class="bloc-code"><div class="bloc-code__langue">php</div><pre><code class="hljs language-php"><span class="hljs-comment">// Version Switch</span>
+<span class="hljs-keyword">switch</span> (<span class="hljs-variable">$opponentWeapon</span>) {
+    <span class="hljs-keyword">case</span> <span class="hljs-string">&#x27;gun&#x27;</span>:
+        <span class="hljs-variable">$indyWeapon</span> = <span class="hljs-string">&#x27;whip&#x27;</span>;
+        <span class="hljs-keyword">break</span>;
+    <span class="hljs-keyword">case</span> <span class="hljs-string">&#x27;fists&#x27;</span>:
+        <span class="hljs-variable">$indyWeapon</span> = <span class="hljs-string">&#x27;gun&#x27;</span>;
+        <span class="hljs-keyword">break</span>;
+    <span class="hljs-keyword">case</span> <span class="hljs-string">&#x27;whip&#x27;</span>:
+        <span class="hljs-variable">$indyWeapon</span> = <span class="hljs-string">&#x27;fists&#x27;</span>;
+        <span class="hljs-keyword">break</span>;
+}
+</code></pre></div>
+<div class="bloc-code"><div class="bloc-code__langue">php</div><pre><code class="hljs language-php"><span class="hljs-comment">// Version Match</span>
+<span class="hljs-variable">$indyWeapon</span> = <span class="hljs-keyword">match</span> (<span class="hljs-variable">$opponentWeapon</span>) {
+    <span class="hljs-string">&#x27;gun&#x27;</span> =&gt; <span class="hljs-string">&#x27;whip&#x27;</span>,
+    <span class="hljs-string">&#x27;fists&#x27;</span> =&gt; <span class="hljs-string">&#x27;gun&#x27;</span>,
+    <span class="hljs-string">&#x27;whip&#x27;</span> =&gt; <span class="hljs-string">&#x27;fists&#x27;</span>
+};
+</code></pre></div>
+
+  </div>
+  <section class="ressources-quete">
+  <h2>Ressources partagées sur cette quête</h2>
+  <ul class="ressources-liste">
+    <li><a href="https://youtu.be/zFqdht5bFJY" target="_blank" rel="noopener noreferrer">Explication des conditions par Grafikart.fr ✅</a><span class="ressources-liste__url">https://youtu.be/zFqdht5bFJY</span></li>
+  </ul>
+</section>
+</article>
+
+<nav class="nav-quete">
+  <a class="nav-quete__lien nav-quete__lien--prec" href="../../php/005-4-2-les-tableaux-multidimensionnels-en-php/index.html">
+           <span class="nav-quete__sens">← Précédent</span>
+           <span class="nav-quete__titre">4.2. Les tableaux multidimensionnels en PHP</span>
+         </a>
+  <a class="nav-quete__lien nav-quete__lien--suiv" href="../../php/007-6-les-fonctions-avec-php/index.html">
+           <span class="nav-quete__sens">Suivant →</span>
+           <span class="nav-quete__titre">6. Les fonctions avec PHP</span>
+         </a>
+</nav>
+</main>
+<footer class="pied">
+  <p>Archive personnelle des cours suivis à la Wild Code School. Copie hors ligne à usage strictement privé.</p>
+</footer>
+
+<script src="../../assets/copie-code.js"></script>
+<script src="../../assets/progression.js"></script>
+</body>
+</html>

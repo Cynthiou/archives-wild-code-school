@@ -1,0 +1,172 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>React Intermédiaire 03.1 - Formulaires et composants contrôlés — Archives WCS</title>
+<link rel="stylesheet" href="../../assets/style.css">
+</head>
+<body style="--teinte:#5B76DF">
+<header class="entete">
+  <a class="entete__marque" href="../../index.html">Archives Wild Code School</a>
+</header>
+<main class="contenu">
+<nav class="ariane"><a href="../../index.html">Accueil</a><span class="ariane__sep">›</span><a href="../../react-intermediaire/index.html">React - Intermédiaire</a><span class="ariane__sep">›</span><span aria-current="page">React Intermédiaire 03.1 - Formulaires et composants contrôlés</span></nav>
+
+<article class="quete">
+  <header class="quete__entete">
+    <a class="pastille pastille--teintee" href="../../react-intermediaire/index.html">React - Intermédiaire</a>
+    <h1>React Intermédiaire 03.1 - Formulaires et composants contrôlés</h1>
+    <p class="quete__meta">Quête 3 sur 4</p>
+  </header>
+  <div class="cours">
+<h4>Introduction</h4>
+<p>Un site Web ou une application Web contient presque toujours des formulaires.</p>
+<p>Dans cette quête, Tu vas d'abord avoir un aperçu du fonctionnement des formulaires dans une page HTML classique. Puis tu découvriras deux façons de gérer les champs de formulaire, en tant que &quot;composants contrôlés&quot; ou &quot;composants non contrôlés&quot;.</p>
+<p>Allons-y ! 🚀</p>
+<h4>🤓 À la fin de cette quête, tu pourras :</h4>
+<p>✅ Observer le comportement d'un champ de saisie HTML et de son équivalent React.
+✅ Comprendre les concepts de <em>composants non contrôlés</em> et <em>composants contrôlés</em>.</p>
+<h3>📋 Rappels sur les formulaires HTML</h3>
+<p>Dans un formulaire HTML classique, il est fréquent de spécifier certains <em>attributs</em> dans les champs <code>&lt;input&gt;</code>,<code>&lt;select&gt;</code>, <code>&lt;textarea&gt;</code>. Tu te souviens sans doute de l'attribut <code>id</code> qui permettait de lier le champ à un <code>&lt;label&gt;</code>.</p>
+<p>En plus des attributs comme <code>type</code> et <code>placeholder</code>, <em>etc.</em>, il y a deux attributs qui ont une fonction spéciale : <code>name</code> et <code>value</code>.</p>
+<p>Ces deux attributs sont utilisés ensemble lors de la soumission d'un formulaire. Nous approfondirons un peu plus ce sujet dans une quête ultérieure, mais en attendant, rappelle-toi que les données transmises à un serveur, lors de la soumission d'un formulaire, sont constituées de <em>paires clé-valeur</em>.</p>
+<ul>
+<li>L'attribut <code>name</code> permet de spécifier la clé. Cette clé permettra au serveur traitant le formulaire de faire la distinction entre les différents champs.</li>
+<li>L'attribut <code>value</code> correspond à la valeur associée.</li>
+</ul>
+<p>Regarde l'exemple suivant : il affiche un formulaire très simple en HTML. Une valeur initiale est fournie via l'attribut <code>value</code> mais tu peux modifier cette valeur : c'est un comportement normal en HTML. Garde cela à l'esprit pour la section suivante !</p>
+<div class="bloc-code"><div class="bloc-code__langue">js</div><pre><code class="hljs language-js">!---index.<span class="hljs-property">html</span>
+&lt;form&gt;
+  <span class="language-xml"><span class="hljs-tag">&lt;<span class="hljs-name">label</span> <span class="hljs-attr">for</span>=<span class="hljs-string">&quot;character&quot;</span>&gt;</span>Character:<span class="hljs-tag">&lt;/<span class="hljs-name">label</span>&gt;</span></span>
+  <span class="language-xml"><span class="hljs-tag">&lt;<span class="hljs-name">input</span> <span class="hljs-attr">id</span>=<span class="hljs-string">&quot;character&quot;</span> <span class="hljs-attr">name</span>=<span class="hljs-string">&quot;character&quot;</span> <span class="hljs-attr">value</span>=<span class="hljs-string">&quot;Homer&quot;</span> /&gt;</span></span>
+&lt;/form&gt;
+!--- index.<span class="hljs-property">js</span>
+<span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(<span class="hljs-string">&quot;go to index.html&quot;</span>);
+</code></pre></div>
+<h3>✍️ Champs de formulaire dans React</h3>
+<p>Avant de plonger dans les détails des champs contrôlés et non contrôlés, regarde le code suivant, qui montre un exemple de chacun.</p>
+<div class="bloc-code"><div class="bloc-code__langue">jsx</div><pre><code class="hljs language-jsx"><span class="hljs-keyword">export</span> <span class="hljs-keyword">default</span> <span class="hljs-keyword">function</span> <span class="hljs-title function_">App</span>(<span class="hljs-params"></span>) {
+  <span class="hljs-keyword">return</span> (
+    <span class="language-xml"><span class="hljs-tag">&lt;<span class="hljs-name">form</span>&gt;</span>
+      <span class="hljs-tag">&lt;<span class="hljs-name">input</span> <span class="hljs-attr">name</span>=<span class="hljs-string">&quot;uncontrolled&quot;</span> <span class="hljs-attr">placeholder</span>=<span class="hljs-string">&quot;I can be changed&quot;</span> /&gt;</span>
+      <span class="hljs-tag">&lt;<span class="hljs-name">input</span> <span class="hljs-attr">name</span>=<span class="hljs-string">&quot;controlled&quot;</span> <span class="hljs-attr">value</span>=<span class="hljs-string">&quot;I CANT&#x27;T be changed&quot;</span> /&gt;</span>
+    <span class="hljs-tag">&lt;/<span class="hljs-name">form</span>&gt;</span></span>
+  );
+}
+</code></pre></div>
+<p>Regarde ce qui se passe lorsque tu essaies de les modifier :</p>
+<ul>
+<li>l'entrée dont le <code>name</code> est <code>non contrôlé</code> n'a pas d'attribut <code>value</code> et peut être modifiée librement</li>
+<li>l'entrée dont le <code>name</code> est <code>contrôlé</code> a un attribut <code>value</code> et ne peut pas être modifié</li>
+</ul>
+<p>Il existe donc une différence fondamentale entre la manière dont les champs sont traités en HTML ou avec React :</p>
+<ul>
+<li>En HTML, l'utilisateur peut modifier le champ, que l'attribut <code>value</code> soit défini ou non.</li>
+<li>Avec React, le champ ne peut être modifié que si aucun attribut <code>value</code> ne lui est donné.</li>
+</ul>
+<p>Tu comprendras pourquoi dans les étapes suivantes !</p>
+<h3>Champ non contrôlé</h3>
+<p>Le code ci-dessous montre l'équivalent React du formulaire HTML de la première étape. Nous avons ajouté un code de gestion d'événement.</p>
+<p>Note qu'aucun attribut <code>value</code> n'a été défini dans le champ <code>&lt;input&gt;</code>. Dans la terminologie de React, nous appelons cela un champ ou un composant <em>non contrôlé</em>.</p>
+<div class="bloc-code"><div class="bloc-code__langue">jsx</div><pre><code class="hljs language-jsx"><span class="hljs-keyword">function</span> <span class="hljs-title function_">App</span>(<span class="hljs-params"></span>) {
+  <span class="hljs-keyword">return</span> (
+    <span class="language-xml"><span class="hljs-tag">&lt;<span class="hljs-name">form</span> <span class="hljs-attr">className</span>=<span class="hljs-string">&quot;QuoteForm&quot;</span>&gt;</span>
+      <span class="hljs-tag">&lt;<span class="hljs-name">label</span> <span class="hljs-attr">htmlFor</span>=<span class="hljs-string">&quot;character&quot;</span>&gt;</span>Character:<span class="hljs-tag">&lt;/<span class="hljs-name">label</span>&gt;</span>
+      <span class="hljs-tag">&lt;<span class="hljs-name">input</span>
+        <span class="hljs-attr">id</span>=<span class="hljs-string">&quot;character&quot;</span>
+        <span class="hljs-attr">name</span>=<span class="hljs-string">&quot;character&quot;</span>
+        <span class="hljs-attr">type</span>=<span class="hljs-string">&quot;text&quot;</span>
+        <span class="hljs-attr">onChange</span>=<span class="hljs-string">{(event)</span> =&gt;</span> {
+          const input = event.target;
+          console.log(&quot;NAME:&quot;, input.name, &quot;VALUE:&quot;, input.value);
+        }}
+      /&gt;
+    <span class="hljs-tag">&lt;/<span class="hljs-name">form</span>&gt;</span></span>
+  );
+}
+
+<span class="hljs-keyword">export</span> <span class="hljs-keyword">default</span> <span class="hljs-title class_">App</span>;
+</code></pre></div>
+<p>Saisis des caractères dans le champ <code>&lt;input&gt;</code>, en gardant la console ouverte pour voir ce qui se passe.</p>
+<p><strong>💡Quelques points notables</strong></p>
+<ul>
+<li>Pour la même raison que nous utilisons <code>className</code> à la place de <code>class</code>, nous utilisons <code>htmlFor</code> au lieu de <code>for</code> sur le <code>&lt;label&gt;</code> <code>for</code> est un mot-clé réservé en JavaScript.</li>
+<li><strong>L'utilisation de</strong> <code>onChange</code> qui permet de détecter la saisie de l'utilisateur (événement <code>change</code> sur l'input). C'est l'écouteur d'événement associé à <code>onChange</code> qui est responsable de l'affichage que tu voies dans la console.</li>
+<li><code>event.target</code> dans l'écouteur d'événement de <code>onChange</code> est l'élément de la page sur laquelle l'événement s'est produit : le champ <code>&lt;input&gt;</code>.</li>
+<li>La console affiche les attributs du champ <input> : <code>name</code> (qui ne change pas) et <code>value</code> (qui varie au fur et à mesure de la saisie).</li>
+<li><strong>Parce qu'il n'y a pas d'attribut <code>value</code></strong> défini sur le champ <code>character</code>, la valeur affichée dans le champ est celle saisie par l'utilisateur.</li>
+</ul>
+<blockquote>
+<p>Dans les composants non contrôlés, les données sont gérées par le DOM lui-même</p>
+</blockquote>
+<p>En d'autres termes, les <em>champs non contrôlés</em> gèrent leur propre valeur, sans que React n'interfère. De ce point de vue, ils sont très similaires aux champs de formulaire HTML classiques.</p>
+<h4>Limitations des composants non contrôlés</h4>
+<p>L'un des points importants mentionnés dans la quête précédente est que <strong>React rafraîchit l'affichage d'un composant lorsque son <code>state</code> change</strong>.</p>
+<p>Le composant non contrôlé ci-dessus pose ce problème : la valeur n'est pas stockée au niveau du state. Il n'est donc pas possible pour React de mettre à jour l'interface, ce qui serait utile en termes d'UX.</p>
+<p>Il est utile que les problèmes soient signalés au fur et à mesure qu'ils surviennent, plutôt que d'attendre que le formulaire ait été soumis ! Afin d'obtenir la même chose avec React, nous utiliserions le &quot;rendu conditionnel&quot;, pour afficher des marqueurs visuels, selon que l'entrée est correcte ou non.</p>
+<p>Cela ne peut être fait &quot;proprement&quot; qu'en stockant les valeurs saisies dans l'<code>état</code> du composant. Alors qu'il serait possible d'accéder aux champs de saisie d'un formulaire directement via le DOM, via <code>document.getElementById</code> ou <code>getElementsByTagName</code>, puis leur attribut <code>value</code>, ce faisant, nous nous éloignerions de la façon &quot;normale&quot; et idiomatique de faire les choses dans React.</p>
+<p>Alors, pourquoi les utiliser ? Une réponse est donnée dans la ressource :</p>
+<blockquote>
+<p>Ce n'est pas la bonne façon de manipuler les formulaires. C'est surtout utile pour les formulaires simples ou lorsque tu viens d'apprendre React.</p>
+</blockquote>
+<p>En effet, de nombreux tutoriels (écrits ou vidéo) destinés aux débutants font la démonstration de composants non contrôlés. <strong>Même pour apprendre</strong> nous déconseillons leur utilisation : il nous semble plus important de pratiquer la manipulation de state <em>dès le tout début</em> de ton apprentissage de React.</p>
+<p>Si on te les montre quand même, c'est pour faciliter la compréhension des composants <em>contrôlés</em>, en comparant les deux approches !</p>
+<h3>Champ contrôlé</h3>
+<blockquote>
+<p>Un champ <code>input</code> est dit <em>contrôlé</em> lorsque la valeur de son attribut <code>value</code> est fournie par le composant qui l'affiche : généralement, cette valeur provient du <code>state</code> du composant.</p>
+</blockquote>
+<h3>Injecter une valeur dans le champ <code>input</code></h3>
+<p>Prenons l'exemple ci-dessus ; ajoute un attribut <code>value=&quot;Homer&quot;</code> dans le champ <code>input</code> puis observe ce qui se passe, à la fois sur l'écran et dans la console.</p>
+<p>Deux remarques :</p>
+<ul>
+<li>La valeur affichée ne change pas dans le champ <code>input</code>.</li>
+<li>Quel que soit le nombre de saisies effectuées, la console affiche toujours <em>au plus</em> un caractère de différence par rapport à la valeur d'origine.</li>
+</ul>
+<p>Ici, la valeur du champ de saisie est &quot;forcée&quot; par l'attribut <code>value</code>. C'est le comportement spécifique à React qui a été mentionné ci-dessus et qui le distingue du HTML : React <strong>contrôle</strong> la valeur du champ via l'attribut <code>value</code>.</p>
+<p>Dans la quête suivante, tu commenceras à voir comment définir l'attribut <code>value</code> sur une valeur dynamique.</p>
+<div class="bloc-code"><div class="bloc-code__langue">quiz</div><pre><code class="hljs language-quiz">true|||true|||false
+# Dans une application React, quel attribut contrôle ton entrée ?
+[x] value
+[] key
+[] type
+[] id
+# Dans un champ de saisie HTML, l'utilisateur a toujours la possibilité de modifier le champ, avec ou sans l'attribut value :
+[x] vrai
+[] faux
+# Dans un champ non contrôlé, la valeur ajoutée par l'utilisateur est stockée dans l'état du composant :
+[] vrai
+[x] faux
+# Lorsque l'entrée de l'utilisateur est stockée dans le state, ceci va :
+[x] déclencher un nouveau rendu du composant
+[] passer les props au composant parent
+[] effacer toutes les valeurs du state
+[] en faire un champ non contrôlé
+# Dans un champ contrôlé, l'attribut value doit être présent :
+[x] vrai
+[] faux
+</code></pre></div>
+
+  </div>
+  
+</article>
+
+<nav class="nav-quete">
+  <a class="nav-quete__lien nav-quete__lien--prec" href="../../react-intermediaire/002-react-intermediaire-02-context-api/index.html">
+           <span class="nav-quete__sens">← Précédent</span>
+           <span class="nav-quete__titre">React Intermédiaire 02 - Context API</span>
+         </a>
+  <a class="nav-quete__lien nav-quete__lien--suiv" href="../../react-intermediaire/004-react-intermediaire-03-2-controler-la-saisie-dans-un/index.html">
+           <span class="nav-quete__sens">Suivant →</span>
+           <span class="nav-quete__titre">React Intermédiaire 03.2 - Contrôler la saisie dans un formulaire via le state</span>
+         </a>
+</nav>
+</main>
+<footer class="pied">
+  <p>Archive personnelle des cours suivis à la Wild Code School. Copie hors ligne à usage strictement privé.</p>
+</footer>
+
+<script src="../../assets/copie-code.js"></script>
+<script src="../../assets/progression.js"></script>
+</body>
+</html>

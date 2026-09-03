@@ -1,0 +1,34 @@
+{
+  "id": 1342,
+  "titre": "👩‍🏫 JS Intermédiaire 02bis -Tableaux : d'autres méthodes fonctionnelles",
+  "titres": {
+    "en": "👩‍🏫 JS Intermediate 02bis - Arrays : more functional methods",
+    "fr": "👩‍🏫 JS Intermédiaire 02bis -Tableaux : d'autres méthodes fonctionnelles"
+  },
+  "theme": {
+    "id": 91,
+    "slug": "more-javascript",
+    "nom": "JavaScript - Beyond the Basics"
+  },
+  "creeLe": "2020-08-24T20:05:11.370+02:00",
+  "difficulte": "0",
+  "dureeEstimee": null,
+  "modeValidation": "student",
+  "chapitres": [
+    {
+      "id": 13778,
+      "type": "content",
+      "langue": "fr",
+      "majLe": "2024-11-20T17:50:15.273+01:00",
+      "caracteres": 6086
+    }
+  ],
+  "ressources": [
+    {
+      "link": "https://www.youtube.com/watch?v=Bp1fnysQkh0&ab_channel=BenBK",
+      "description": "En live ca aide Tuto [Fr]"
+    }
+  ],
+  "urlOrigine": "https://odyssey.wildcodeschool.com/quests/1342",
+  "archiveLe": "2026-09-02T20:54:58.716Z"
+}

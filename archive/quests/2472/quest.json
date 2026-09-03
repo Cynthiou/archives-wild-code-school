@@ -1,0 +1,57 @@
+{
+  "id": 2472,
+  "titre": "00 - Installer MySQL",
+  "titres": {
+    "fr": "00 - Installer MySQL"
+  },
+  "theme": {
+    "id": 8,
+    "slug": "database",
+    "nom": "Base de données"
+  },
+  "creeLe": "2023-03-02T19:04:57.267+01:00",
+  "difficulte": "0",
+  "dureeEstimee": null,
+  "modeValidation": "self",
+  "chapitres": [
+    {
+      "id": 18219,
+      "type": "content",
+      "langue": "fr",
+      "majLe": "2025-05-19T17:52:14.990+02:00",
+      "caracteres": 21784
+    }
+  ],
+  "ressources": [
+    {
+      "link": "https://openclassrooms.com/fr/courses/6971126-implementez-vos-bases-de-donnees-relationnelles-avec-sql/7152681-installez-le-sgbd-mysql",
+      "description": "Installation en francais"
+    },
+    {
+      "link": "https://stackoverflow.com/questions/32620670/git-bash-mysql-blank",
+      "description": "Résout le fait que rien ne se passe en \"mysql -u root -p\" sur gitbash., propose une commande alternative."
+    },
+    {
+      "link": "https://www.youtube.com/watch?v=1K4m6m5y9Oo",
+      "description": "Si vous êtes sous macOS et que vous voulez passer par Homebrew pour vous servir de MySQL."
+    },
+    {
+      "link": "https://www.youtube.com/watch?v=6CXp6I5js1w",
+      "description": "Si vous oubliez votre mot de passe route et que vous désinstallez réinstallez mysql, cette vidéo vous aidera"
+    },
+    {
+      "link": "https://www.youtube.com/watch?v=Sfvpgu9ID2Q&t=327s",
+      "description": "Vidéo récente sur l'installation de MySQL pour Windows 11 + modification des variables d'environnement"
+    },
+    {
+      "link": "https://dev.mysql.com/downloads/mysql/",
+      "description": "version à jour "
+    },
+    {
+      "link": "https://www.youtube.com/watch?v=1oxLmS8MiEo&t=286s",
+      "description": "perso sur windows j'ai fait un mix de cette vidéo et celle de la quête et ça a marché"
+    }
+  ],
+  "urlOrigine": "https://odyssey.wildcodeschool.com/quests/2472",
+  "archiveLe": "2026-09-02T20:47:18.920Z"
+}

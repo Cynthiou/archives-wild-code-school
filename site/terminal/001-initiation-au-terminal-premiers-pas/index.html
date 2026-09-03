@@ -1,0 +1,196 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Initiation au terminal : Premiers pas — Archives WCS</title>
+<link rel="stylesheet" href="../../assets/style.css">
+</head>
+<body style="--teinte:#3b3003">
+<header class="entete">
+  <a class="entete__marque" href="../../index.html">Archives Wild Code School</a>
+</header>
+<main class="contenu">
+<nav class="ariane"><a href="../../index.html">Accueil</a><span class="ariane__sep">›</span><a href="../../terminal/index.html">Terminal</a><span class="ariane__sep">›</span><span aria-current="page">Initiation au terminal : Premiers pas</span></nav>
+
+<article class="quete">
+  <header class="quete__entete">
+    <a class="pastille pastille--teintee" href="../../terminal/index.html">Terminal</a>
+    <h1>Initiation au terminal : Premiers pas</h1>
+    <p class="quete__meta">Quête 1 sur 1</p>
+  </header>
+  <div class="cours">
+<h2>Objectifs</h2>
+<ul>
+<li>Naviguer dans les dossiers de ton ordinateur.</li>
+<li>Créer et gérer des fichiers et dossiers.</li>
+<li>Effectuer des tâches simples de manière efficace et uniforme, quel que soit ton système d'exploitation.</li>
+</ul>
+<h2>Introduction</h2>
+<p>Pourquoi le terminal ?</p>
+<p>Le terminal te permet de donner des instructions précises à ton ordinateur à l'aide de commandes. Cela t’évite les pièges des interfaces graphiques, souvent différentes d'un système à l'autre, et te permet de travailler de manière standardisée.</p>
+<p><strong>C'est fait pour toi !</strong> Si tu n’as jamais utilisé un terminal auparavant, cette quête te guidera pas à pas. Suis simplement les étapes, et n'hésite pas à demander de l'aide à un camarade ou à un formateur si besoin.</p>
+<h2>Sommaire</h2>
+<h2>Étape 1 : Ouvrir le terminal</h2>
+<p>Apprenons à ouvrir le terminal sur ta machine.</p>
+<div class="onglets" data-onglets="3"><input type="radio" name="onglets-38" id="onglets-38-0" class="onglets__radio" checked><input type="radio" name="onglets-38" id="onglets-38-1" class="onglets__radio"><input type="radio" name="onglets-38" id="onglets-38-2" class="onglets__radio"><div class="onglets__barre"><label class="onglets__label" for="onglets-38-0">Linux</label><label class="onglets__label" for="onglets-38-1">macOS</label><label class="onglets__label" for="onglets-38-2">Windows</label></div><div class="onglets__panneaux"><div class="onglets__panneau"><ol>
+<li>Utilise le raccourci <strong>Ctrl + Alt + T</strong> (fonctionne sur la plupart des distributions).</li>
+<li>Si cela ne fonctionne pas, cherche &quot;Terminal&quot; dans ton menu Applications.</li>
+</ol>
+</div><div class="onglets__panneau"><ol>
+<li>Clique sur l’icône de <strong>Spotlight</strong> (la loupe en haut à droite de ton écran ou tape <strong>Cmd + Espace</strong>).</li>
+<li>Tape <code>Terminal</code> et appuie sur <strong>Entrée</strong>.</li>
+</ol>
+</div><div class="onglets__panneau"><p>Pour Windows, le plus simple est d'utiliser un nouveau terminal : Git Bash. Cette version du terminal te servira aussi quand tu utiliseras l'outil Git plus tard en formation : tu vas gagner du temps :)</p>
+<p>Clique sur ce lien (<a href="https://gitforwindows.org/" target="_blank" rel="noopener noreferrer">https://gitforwindows.org/</a>) puis sur Download, exécute l'installeur et suis les instructions suivantes :</p>
+<ol class="etapes"><li class="etape"><div class="etape__puce">1</div><div class="etape__contenu"><h4 class="etape__titre">Etape 1</h4><p>Accepte la licence d'utilisation.</p>
+</div></li><li class="etape"><div class="etape__puce">2</div><div class="etape__contenu"><h4 class="etape__titre">Etape 2</h4><p>Coche les options suivantes :</p>
+<ul>
+<li>Windows Explorer Integration
+<ul>
+<li>Git Bash Here</li>
+</ul>
+</li>
+<li>Git LFS (Large File Support)</li>
+<li>Associate .git* configuration files with the default text editor</li>
+<li>Associate .sh files to be run with Bash</li>
+<li>Add a Git Bash Profile to Windows Terminal</li>
+<li>Scalar (Git add-on to manage large-scale repositories)</li>
+</ul>
+</div></li><li class="etape"><div class="etape__puce">3</div><div class="etape__contenu"><h4 class="etape__titre">Etape 3</h4><p>Choisis : &quot;<em>Use Visual Studio Code as Git's default editor</em>&quot;.</p>
+</div></li><li class="etape"><div class="etape__puce">4</div><div class="etape__contenu"><h4 class="etape__titre">Etape 4</h4><p>Coche &quot;<em>Override the default branch name for new repositories</em>&quot; et dans le champ de texte garde l'option proposée <code>main</code>.</p>
+</div></li><li class="etape"><div class="etape__puce">5</div><div class="etape__contenu"><h4 class="etape__titre">Etape 5</h4><p>Coche l'option recommandée &quot;<em>Git from the command line and also from 3rd-party software</em>&quot;.</p>
+</div></li><li class="etape"><div class="etape__puce">6</div><div class="etape__contenu"><h4 class="etape__titre">Etape 6</h4><p>Coche l'option &quot;<em>Use bundled OpenSSH</em>&quot;.</p>
+</div></li><li class="etape"><div class="etape__puce">7</div><div class="etape__contenu"><h4 class="etape__titre">Etape 7</h4><p>Coche l'option &quot;<em>Use the OpenSSL library</em>&quot;.</p>
+</div></li><li class="etape"><div class="etape__puce">8</div><div class="etape__contenu"><h4 class="etape__titre">Etape 8</h4><p>Coche l'option &quot;<em>Checkout as-is, commit Unix-style line endings</em>&quot;.</p>
+<div class="encadre encadre--info"><div class="encadre__titre">Info</div><div class="encadre__corps"><p>Cette option change le caractère invisible utilisé en fin de ligne qui est le CRLF pour Windows (&quot;\r\n&quot;) et le LF pour Linux et Mac (&quot;\n&quot;).
+Sur un projet de groupe, avec des contributeurs pouvant avoir des OS différents, il est souvent préférable de configurer git localement pour faire des commits de type LF. Pour ce qui est du checkout, le &quot;as-is&quot; permettra d'éviter d'avoir des erreurs sur toutes les lignes sous Windows si un linter est configuré pour demander des fins de ligne en LF.</p>
+</div></div>
+</div></li><li class="etape"><div class="etape__puce">9</div><div class="etape__contenu"><h4 class="etape__titre">Etape 9</h4><p>Coche l'option &quot;<em>Use MinTTY (the default terminal of MSYS2)</em>&quot;.</p>
+</div></li><li class="etape"><div class="etape__puce">10</div><div class="etape__contenu"><h4 class="etape__titre">Etape 10</h4><p>Garde l'option par défaut (&quot;<em>Default (fast-forward or merge)</em>&quot;).</p>
+</div></li><li class="etape"><div class="etape__puce">11</div><div class="etape__contenu"><h4 class="etape__titre">Etape 11</h4><p>Sélectionne &quot;<em>None</em>&quot;, il n'est pas utile d'installer le Git Credential Manager car tu verras comment mettre en place l'authentification par clé SSH par la suite.</p>
+</div></li><li class="etape"><div class="etape__puce">12</div><div class="etape__contenu"><h4 class="etape__titre">Etape 12</h4><p>Coche les deux options :</p>
+<ul>
+<li>Enable file system caching</li>
+<li>Enable symbolic links</li>
+</ul>
+</div></li><li class="etape"><div class="etape__puce">13</div><div class="etape__contenu"><h4 class="etape__titre">Etape 13</h4><p>Coche &quot;<em>Enable experimental support for pseudo consoles</em>&quot;. Tu peux aussi si tu le souhaites cocher la seconde option &quot;<em>Enable experimental built-in fyle system monitor</em>&quot;.</p>
+<div class="encadre encadre--error"><div class="encadre__titre">Important</div><div class="encadre__corps"><p>Il est très important à ce stade de bien cocher la première option, sinon tu risques d'avoir des problèmes pour utiliser certaines fonctionnalités et devoir préfixer la majorité de tes commandes par winpty. En activant le support expérimental, tu pourras utiliser normalement le terminal comme sur un système Unix.</p>
+</div></div>
+</div></li><li class="etape"><div class="etape__puce">14</div><div class="etape__contenu"><h4 class="etape__titre">Etape 14</h4><p>Procède à l'installation.</p>
+</div></li></ol>
+<p>Si tu utilises <code>cmd</code> ou <code>PowerShell</code> plutôt que <code>Git Bash</code>, certaines commandes comme <code>ls</code> ou <code>touch</code> nécessiteront des adaptations (voir les notes dans les sections suivantes).</p>
+</div></div></div>
+<p><strong>Mini-challenge :</strong> Ouvre le terminal sur ta machine et tape la commande suivante pour afficher ton système d'exploitation :</p>
+<div class="bloc-code"><div class="bloc-code__langue">bash</div><pre><code class="hljs language-bash"><span class="hljs-built_in">uname</span> -a
+</code></pre></div>
+<h2>Étape 2 : Premiers pas avec les commandes de base</h2>
+<p>Voici quelques commandes simples pour explorer ton ordinateur.</p>
+<h3>Afficher le dossier actuel</h3>
+<p>Tape :</p>
+<div class="bloc-code"><div class="bloc-code__langue">bash</div><pre><code class="hljs language-bash"><span class="hljs-built_in">pwd</span>
+</code></pre></div>
+<p>Cela montre où tu te trouves dans l’arborescence des fichiers.</p>
+<h3>Voir le contenu d’un dossier</h3>
+<p>Tape :</p>
+<div class="bloc-code"><div class="bloc-code__langue">bash</div><pre><code class="hljs language-bash"><span class="hljs-built_in">ls</span>
+</code></pre></div>
+<p>(Sur Windows sans WSL, utilise <code>dir</code>.)</p>
+<h3>Se déplacer dans un dossier</h3>
+<p>Tape :</p>
+<div class="bloc-code"><div class="bloc-code__langue">bash</div><pre><code class="hljs language-bash"><span class="hljs-built_in">cd</span> nom_du_dossier
+</code></pre></div>
+<p>Exemple :</p>
+<div class="bloc-code"><div class="bloc-code__langue">bash</div><pre><code class="hljs language-bash"><span class="hljs-built_in">cd</span> Documents
+</code></pre></div>
+<p>Pour revenir en arrière :</p>
+<div class="bloc-code"><div class="bloc-code__langue">bash</div><pre><code class="hljs language-bash"><span class="hljs-built_in">cd</span> ..
+</code></pre></div>
+<p><strong>Mini-challenge :</strong> Navigue jusqu’à ton dossier &quot;Documents&quot; ou équivalent, puis reviens au dossier précédent.</p>
+<h2>Étape 3 : Créer et gérer des fichiers</h2>
+<h3>Créer un dossier</h3>
+<p>Tape :</p>
+<div class="bloc-code"><div class="bloc-code__langue">bash</div><pre><code class="hljs language-bash"><span class="hljs-built_in">mkdir</span> MonSite
+</code></pre></div>
+<p>Cela crée un nouveau dossier nommé <code>MonSite</code>.</p>
+<div class="encadre encadre--warning"><div class="encadre__titre">Attention</div><div class="encadre__corps"><p>La casse (minuscule ou majuscule, avec ou sans espace entre les mots...) est importante. Dans cet exemple, le dossier créé s'appelle <code>MonSite</code> avec un <code>M</code> et un <code>S</code> majuscules, et les 2 mots sont collés (pas d'espace entre les 2).</p>
+<p>Tu dois faire attention à suivre chaque détail pour éviter des erreurs.</p>
+</div></div>
+<h3>Entrer dans un dossier</h3>
+<p>Tape :</p>
+<div class="bloc-code"><div class="bloc-code__langue">bash</div><pre><code class="hljs language-bash"><span class="hljs-built_in">cd</span> MonSite
+</code></pre></div>
+<h3>Créer un fichier</h3>
+<p>Tape :</p>
+<div class="bloc-code"><div class="bloc-code__langue">bash</div><pre><code class="hljs language-bash"><span class="hljs-built_in">touch</span> index.html
+</code></pre></div>
+<p>(Sur Windows sans WSL, utilise <code>echo &gt; index.html</code>.)</p>
+<h3>Modifier un fichier</h3>
+<p>Tape :</p>
+<div class="bloc-code"><div class="bloc-code__langue">bash</div><pre><code class="hljs language-bash">nano index.html
+</code></pre></div>
+<p>(Si <code>nano</code> n’est pas disponible, utilise un éditeur comme <code>vim</code>.)</p>
+<p>Ajoute ce contenu :</p>
+<div class="bloc-code"><div class="bloc-code__langue">twig</div><pre><code class="hljs language-twig"><span class="language-xml"><span class="hljs-meta">&lt;!doctype <span class="hljs-keyword">html</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">title</span>&gt;</span>Hello World<span class="hljs-tag">&lt;/<span class="hljs-name">title</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">h1</span>&gt;</span>Hello World<span class="hljs-tag">&lt;/<span class="hljs-name">h1</span>&gt;</span>
+</span></code></pre></div>
+<p>Ensuite, sauvegarde et quitte. Avec <code>nano</code>, fais <strong>Ctrl + O</strong>, puis <strong>Entrée</strong>, puis <strong>Ctrl + X</strong> (avec <code>vim</code>, <strong>Echap</strong>, puis <strong>:wq</strong> et <strong>Entrée</strong>).</p>
+<p><strong>Mini-challenge :</strong> Vérifie que le fichier <code>index.html</code> a bien été créé en listant le contenu du dossier avec <code>ls</code>.</p>
+<h2>Étape 4 : Ouvrir un fichier dans le navigateur</h2>
+<h3>Trouver le chemin absolu</h3>
+<p>Tape :</p>
+<div class="bloc-code"><div class="bloc-code__langue">bash</div><pre><code class="hljs language-bash"><span class="hljs-built_in">pwd</span>
+</code></pre></div>
+<p>Copie le chemin affiché.</p>
+<h3>Ouvrir le fichier</h3>
+<p>Ajoute le nom du fichier au chemin, puis ouvre-le dans ton navigateur. Par exemple :</p>
+<ul>
+<li>Sur Linux :
+<ul>
+<li>Tape dans ton navigateur : <code>/home/ton_nom/MonSite/index.html</code>.</li>
+</ul>
+</li>
+<li>Sur macOS :
+<ul>
+<li>Tape dans ton navigateur : <code>/Users/ton_nom/MonSite/index.html</code>.</li>
+</ul>
+</li>
+<li>Sur Windows :
+<ul>
+<li>Tape dans ton navigateur : <code>C:\Users\ton_nom\MonSite\index.html</code>.</li>
+</ul>
+</li>
+</ul>
+<p><strong>Mini-challenge :</strong> Ouvre <code>index.html</code> dans ton navigateur et vérifie que &quot;Hello World&quot; s’affiche.</p>
+<hr>
+<h2>Résoudre les erreurs</h2>
+<p>Voici des solutions aux problèmes courants :</p>
+<ul>
+<li><strong>Commande non reconnue</strong> : Vérifie l’orthographe et si le terminal est ouvert au bon endroit.</li>
+<li><strong>Fichier introuvable</strong> : Assure-toi d’être dans le bon dossier en utilisant <code>pwd</code> et <code>ls</code>.</li>
+</ul>
+<h2>Étape finale : Défi collaboratif</h2>
+<ul>
+<li><strong>Ta mission :</strong> Vérifie que ton fichier <code>index.html</code> fonctionne. Ensuite, trouve un camarade et teste son fichier.</li>
+<li>Si l’un de vous rencontre un problème, travaillez ensemble pour trouver une solution.</li>
+</ul>
+<p><strong>Bravo !</strong> Tu as réalisé tes premiers pas avec le terminal. Tu peux démarrer ton apprentissage dans de bonnes conditions !</p>
+
+  </div>
+  
+</article>
+
+<nav class="nav-quete">
+  <span class="nav-quete__lien nav-quete__lien--vide"></span>
+  <span class="nav-quete__lien nav-quete__lien--vide"></span>
+</nav>
+</main>
+<footer class="pied">
+  <p>Archive personnelle des cours suivis à la Wild Code School. Copie hors ligne à usage strictement privé.</p>
+</footer>
+
+<script src="../../assets/copie-code.js"></script>
+<script src="../../assets/progression.js"></script>
+</body>
+</html>

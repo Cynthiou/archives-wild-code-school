@@ -1,0 +1,35 @@
+{
+  "id": 29,
+  "titre": "04.1 - Les bases de la modélisation : MCD",
+  "titres": {
+    "fr": "04.1 - Les bases de la modélisation : MCD"
+  },
+  "theme": {
+    "id": 8,
+    "slug": "database",
+    "nom": "Base de données"
+  },
+  "creeLe": "2016-02-29T14:51:45.775+01:00",
+  "difficulte": "",
+  "dureeEstimee": null,
+  "modeValidation": "student",
+  "chapitres": [
+    {
+      "id": 18197,
+      "type": "content",
+      "langue": "fr",
+      "majLe": "2025-05-13T11:29:29.093+02:00",
+      "caracteres": 9077
+    },
+    {
+      "id": 17893,
+      "type": "solution",
+      "langue": "fr",
+      "majLe": "2025-04-23T14:24:05.489+02:00",
+      "caracteres": 116
+    }
+  ],
+  "ressources": [],
+  "urlOrigine": "https://odyssey.wildcodeschool.com/quests/29",
+  "archiveLe": "2026-09-02T20:47:23.117Z"
+}

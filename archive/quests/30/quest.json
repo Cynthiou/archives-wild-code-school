@@ -1,0 +1,35 @@
+{
+  "id": 30,
+  "titre": "04.2 - Les bases de la modélisation : MLD",
+  "titres": {
+    "fr": "04.2 - Les bases de la modélisation : MLD"
+  },
+  "theme": {
+    "id": 8,
+    "slug": "database",
+    "nom": "Base de données"
+  },
+  "creeLe": "2016-02-29T14:56:19.354+01:00",
+  "difficulte": "",
+  "dureeEstimee": null,
+  "modeValidation": "student",
+  "chapitres": [
+    {
+      "id": 18199,
+      "type": "content",
+      "langue": "fr",
+      "majLe": "2025-05-13T12:13:55.494+02:00",
+      "caracteres": 9396
+    },
+    {
+      "id": 17894,
+      "type": "solution",
+      "langue": "fr",
+      "majLe": "2025-04-23T14:25:05.909+02:00",
+      "caracteres": 118
+    }
+  ],
+  "ressources": [],
+  "urlOrigine": "https://odyssey.wildcodeschool.com/quests/30",
+  "archiveLe": "2026-09-02T20:51:50.796Z"
+}

@@ -1,0 +1,291 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>👩‍🏫 React Basics 01 - Pokédex - Introduction — Archives WCS</title>
+<link rel="stylesheet" href="../../assets/style.css">
+</head>
+<body style="--teinte:#4DC4DE">
+<header class="entete">
+  <a class="entete__marque" href="../../index.html">Archives Wild Code School</a>
+</header>
+<main class="contenu">
+<nav class="ariane"><a href="../../index.html">Accueil</a><span class="ariane__sep">›</span><a href="../../react-bases/index.html">React - Bases</a><span class="ariane__sep">›</span><span aria-current="page">👩‍🏫 React Basics 01 - Pokédex - Introduction</span></nav>
+
+<article class="quete">
+  <header class="quete__entete">
+    <a class="pastille pastille--teintee" href="../../react-bases/index.html">React - Bases</a>
+    <h1>👩‍🏫 React Basics 01 - Pokédex - Introduction</h1>
+    <p class="quete__meta">Quête 1 sur 10 · 2 images archivées</p>
+  </header>
+  <div class="cours">
+<h2>Objectifs</h2>
+<ul>
+<li>Initialiser une application React</li>
+<li>Découvrir les fichiers générés par l'initialisation</li>
+</ul>
+<h2>Pré-requis</h2>
+<ol class="etapes"><li class="etape"><div class="etape__puce">1</div><div class="etape__contenu"><h4 class="etape__titre">Répondre à la question &quot;c'est quoi React ?&quot;</h4><div class="encadre encadre--note encadre--story"><div class="encadre__corps"><p><strong>React</strong> (aussi appelé <strong>React.js</strong> ou <strong>ReactJS</strong>) est une <strong>bibliothèque open source JavaScript</strong> pour créer des interfaces utilisateurs. Elle est maintenue par <strong>Meta</strong> (anciennement <strong>Facebook</strong>) ainsi que par une communauté de développeurs individuels et d'entreprises <strong>depuis 2013</strong>.</p>
+<p>Le but principal de cette bibliothèque est de faciliter la création d'application web monopage, via la création de composants dépendant d'un état et générant une page (ou portion) HTML à chaque changement d'état.</p>
+<p>React est une bibliothèque qui ne gère que l'interface de l'application [...]</p>
+</div></div>
+<p>Source : <a href="https://fr.m.wikipedia.org/wiki/React" target="_blank" rel="noopener noreferrer">https://fr.m.wikipedia.org/wiki/React</a></p>
+</div></li></ol>
+<h2>Introduction</h2>
+<p>Afin de découvrir la bibliothèque React et ses principales fonctionnalités, nous allons créer pas à pas un projet qui prendra ici la forme d'un pokedex en Typescript.</p>
+<div class="encadre encadre--note encadre--intro"><div class="encadre__corps"><p>Rassure-toi si tu ne connais pas Typescript : tout code JavaScript est du code TypeScript valide. Tu as appris Typescript depuis le début de ta formation 🎉</p>
+<p>Intégrer Typescript dans ce projet te donnera des indications précieuses sur des erreurs courantes : c'est comme avoir une IA qui relie ton code en direct et te prévient dès qu'il y a une incohérence.</p>
+</div></div>
+<p>Ce pokedex va nous permettre de découvrir :</p>
+<ul>
+<li>L'affichage d'un composant</li>
+<li>Les props</li>
+<li>Le state</li>
+<li>L'affichage d'une liste</li>
+<li>L'affichage conditionnel</li>
+<li>La gestion des évènements</li>
+</ul>
+<p>À la fin, nous devrions avoir un pokedex qui nous permet d'afficher une liste de Pokemon, de filtrer cette liste en fonction du type de Pokemon et de sélectionner un Pokemon dans cette liste pour afficher sa photo.</p>
+<p><img src="images/001-image.webp" alt="image" loading="lazy"></p>
+<h2>Sommaire</h2>
+<h2>Un peu d'histoire</h2>
+<p>Suite à l'adoption massive de sa bibliothèque, en 2016 l'équipe en charge du développement de React a sorti un installateur nommé <a href="https://github.com/facebook/create-react-app" target="_blank" rel="noopener noreferrer">Create React App</a>.</p>
+<p>Ce dernier permet d'initialiser des applications monopage (<strong>Single Page Application ou SPA</strong>), d'avoir un serveur de développement (permettant notamment de reconstruire l'application lors de la modification des fichiers), de &quot;construire&quot; (build) l'application afin de la mettre en production, et tout un tas d'autres choses que tu trouveras sur la <a href="https://create-react-app.dev/" target="_blank" rel="noopener noreferrer">documentation officielle</a>.</p>
+<p>Le tout <strong>sans aucune configuration</strong> !</p>
+<div class="encadre encadre--note encadre--story"><div class="encadre__corps"><p>Create React App est un bon choix pour :</p>
+<ul>
+<li><strong>Apprendre React</strong> dans un environnement de développement confortable et riche en fonctionnalités.</li>
+<li>Démarrer une nouvelle SPA.</li>
+<li>Créer des exemples avec React pour vos bibliothèques et composants.</li>
+</ul>
+</div></div>
+<p>Source : <a href="https://github.com/facebook/create-react-app?tab=readme-ov-file#popular-alternatives" target="_blank" rel="noopener noreferrer">https://github.com/facebook/create-react-app?tab=readme-ov-file#popular-alternatives</a></p>
+<div class="encadre encadre--note encadre--arrow"><div class="encadre__corps"><p>Si tu lis la suite du paragraphe, tu verras des alternatives intéressantes pour des configurations plus complexes :</p>
+<ul>
+<li>S'intégrer dans un framework existant avec Symfony et Webpack Encore ;</li>
+<li>Exploiter des fonctionnalités avancées comme le Server-Side Rendering dans Next.js ;</li>
+<li>...</li>
+</ul>
+<p>Tu es dans un cadre d'apprentissage et ces alternatives intéressantes ne te correspondent pas pour l'instant. Mais ce que tu apprendras te permettra de t'intégrer dans tous les outils qui permettent l'utilisation de React.</p>
+</div></div>
+<p>Les choses évoluent <em>vite</em> dans le développement web, et c'est en 2020 qu'un nouvel outil commence à faire parler de lui, conçu par le créateur d'un framework concurrent (VueJS). Cet outil se nomme <a href="https://vitejs.dev/" target="_blank" rel="noopener noreferrer">ViteJS</a>.</p>
+<p>Cet outil se différencie de CRA (creat react app) par de nombreux aspects :</p>
+<ul>
+<li>Il ne permet pas seulement d'initialiser et de faciliter le développement d'applications React, mais de plusieurs frameworks.</li>
+<li>Comme son nom l'indique, il est beaucoup plus rapide.</li>
+<li>Tu peux démarrer sans configuration et ensuite personnaliser la configuration très facilement en ajoutant notamment des plugins.</li>
+</ul>
+<a class="ressource" href="https://semaphoreci.com/blog/vite" target="_blank" rel="noopener noreferrer">
+  <div class="ressource__icone">↗</div>
+  <div class="ressource__texte">
+    <div class="ressource__titre">4 raisons de préférer Vite à Create-React-App</div>
+    
+    <div class="ressource__hote">semaphoreci.com</div>
+  </div>
+</a>
+<a class="ressource" href="https://blog.logrocket.com/vite-3-vs-create-react-app-comparison-migration-guide" target="_blank" rel="noopener noreferrer">
+  <div class="ressource__icone">↗</div>
+  <div class="ressource__texte">
+    <div class="ressource__titre">Vite 3.0 vs. Create React App : Comparaison</div>
+    
+    <div class="ressource__hote">blog.logrocket.com</div>
+  </div>
+</a>
+<h2>Comment ça marche ?</h2>
+<p>Ouvre un terminal et saisis la commande suivante, en remplaçant <code>my-react-app</code> par le nom de ton projet :</p>
+<div class="bloc-code"><div class="bloc-code__langue">bash</div><pre><code class="hljs language-bash">npm create vite@latest my-react-app
+</code></pre></div>
+<p>Appuie sur Entrée** pour lancer l'installation.</p>
+<div class="encadre encadre--warning"><div class="encadre__titre">Attention</div><div class="encadre__corps"><p>La commande peut varier selon la version de npm installée.<br>
+Consulte la <a href="https://vitejs.dev/guide/" target="_blank" rel="noopener noreferrer">documentation officielle</a> en cas de doute.</p>
+</div></div>
+<p>À la question <code>Select a framework</code>, choisis <code>React</code> :</p>
+<div class="bloc-code"><pre><code class="hljs language-plaintext">? Select a framework: › - Use arrow-keys. Return to submit.
+    Vanilla
+    Vue
+❯   React
+    Preact
+    Lit
+    Svelte
+    Solid
+    Qwik
+    Others
+</code></pre></div>
+<p>Puis, à la question <code>Select a variant</code>, choisis <code>Typescript</code> :</p>
+<div class="bloc-code"><pre><code class="hljs language-plaintext">✔ Select a framework: › React
+? Select a variant: › - Use arrow-keys. Return to submit.
+❯   TypeScript
+    TypeScript + SWC
+    JavaScript
+    JavaScript + SWC
+    Remix ↗
+</code></pre></div>
+<p>Rends-toi dans le répertoire créé avec la commande <code>cd</code>. Tu peux lister les fichiers créés par l'installateur avec la commande <code>ls</code>. Voici ce que tu devrais avoir comme résultat :</p>
+<div class="bloc-code"><pre><code class="hljs language-plaintext">eslint.config.js  public     tsconfig.app.json   vite.config.ts
+index.html        README.md  tsconfig.json
+package.json      src        tsconfig.node.json
+</code></pre></div>
+<p>L'installation de base intègre <code>eslint</code>. Pendant les projets de la formation, tu utiliseras obligatoirement <code>biome</code> qui est un concurrents à <code>eslint</code>. Tu peux faire les modifications suivantes si tu veux changer pour <code>biome</code> dans ton pokédex perso et avoir la même configuration que pour les projets en équipe. Si tu souhaites rester sur <code>eslint</code> sur ton projet perso pokédex, lance la commande <code>npm install</code> et saute les étapes suivantes :</p>
+<ol class="etapes"><li class="etape"><div class="etape__puce">1</div><div class="etape__contenu"><h4 class="etape__titre">Échange tes dépendances</h4><p>Désinstalle ce qui est lié à <code>eslint</code> :</p>
+<div class="bloc-code"><div class="bloc-code__langue">bash</div><pre><code class="hljs language-bash">npm uninstall @eslint/js eslint eslint-plugin-react-hooks eslint-plugin-react-refresh globals typescript-eslint
+</code></pre></div>
+<p>Oui, ça fait beaucoup de choses en moins 😅</p>
+<p>Comme dans tout projet node, installe le reste des dépendances avec <code>npm install</code>.</p>
+<p>Enfin, ajoute <code>@biomejs/biome</code> :</p>
+<div class="bloc-code"><div class="bloc-code__langue">bash</div><pre><code class="hljs language-bash">npm install --save-dev --save-exact @biomejs/biome
+</code></pre></div>
+</div></li><li class="etape"><div class="etape__puce">2</div><div class="etape__contenu"><h4 class="etape__titre">Modifie package.json</h4><p>Enlève le script <code>lint</code> qui exécute la commande <code>eslint .</code> et ajoute les scripts <code>check</code> et <code>check:fix</code> pour exécuter la commande <code>biome check src</code> (avec l'option <code>--write</code> pour <code>check:fix</code>) :</p>
+<div class="bloc-code"><div class="bloc-code__langue">diff</div><pre><code class="hljs language-diff">  ...
+  &quot;scripts&quot;: {
+    &quot;dev&quot;: &quot;vite&quot;,
+    &quot;build&quot;: &quot;tsc -b &amp;&amp; vite build&quot;,
+    &quot;check&quot;: &quot;biome check src&quot;,
+    &quot;check:fix&quot;: &quot;biome check --write src&quot;,
+    &quot;preview&quot;: &quot;vite preview&quot;
+  },
+  ...
+</code></pre></div>
+</div></li><li class="etape"><div class="etape__puce">3</div><div class="etape__contenu"><h4 class="etape__titre">Initialise Biome</h4><p>Avec la commande :</p>
+<div class="bloc-code"><pre><code class="hljs language-plaintext">npx @biomejs/biome init
+</code></pre></div>
+<p>Maintenant, tu devrais avoir un fichier <code>biome.json</code> à la racine de ton projet. Vérifie que le contenu correspond à cette configuration (tu auras peut-être à changer la propriété <code>&quot;indentStyle&quot;</code>) :</p>
+<div class="bloc-code"><div class="bloc-code__langue">json</div><pre><code class="hljs language-json"><span class="hljs-punctuation">{</span>
+	<span class="hljs-attr">&quot;$schema&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;https://biomejs.dev/schemas/1.9.4/schema.json&quot;</span><span class="hljs-punctuation">,</span>
+	<span class="hljs-attr">&quot;vcs&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-punctuation">{</span>
+		<span class="hljs-attr">&quot;enabled&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-literal"><span class="hljs-keyword">false</span></span><span class="hljs-punctuation">,</span>
+		<span class="hljs-attr">&quot;clientKind&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;git&quot;</span><span class="hljs-punctuation">,</span>
+		<span class="hljs-attr">&quot;useIgnoreFile&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-literal"><span class="hljs-keyword">false</span></span>
+	<span class="hljs-punctuation">}</span><span class="hljs-punctuation">,</span>
+	<span class="hljs-attr">&quot;files&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-punctuation">{</span>
+		<span class="hljs-attr">&quot;ignoreUnknown&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-literal"><span class="hljs-keyword">false</span></span><span class="hljs-punctuation">,</span>
+		<span class="hljs-attr">&quot;ignore&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-punctuation">[</span><span class="hljs-punctuation">]</span>
+	<span class="hljs-punctuation">}</span><span class="hljs-punctuation">,</span>
+	<span class="hljs-attr">&quot;formatter&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-punctuation">{</span>
+		<span class="hljs-attr">&quot;enabled&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-literal"><span class="hljs-keyword">true</span></span><span class="hljs-punctuation">,</span>
+		<span class="hljs-attr">&quot;indentStyle&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;space&quot;</span>
+	<span class="hljs-punctuation">}</span><span class="hljs-punctuation">,</span>
+	<span class="hljs-attr">&quot;organizeImports&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-punctuation">{</span>
+		<span class="hljs-attr">&quot;enabled&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-literal"><span class="hljs-keyword">true</span></span>
+	<span class="hljs-punctuation">}</span><span class="hljs-punctuation">,</span>
+	<span class="hljs-attr">&quot;linter&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-punctuation">{</span>
+		<span class="hljs-attr">&quot;enabled&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-literal"><span class="hljs-keyword">true</span></span><span class="hljs-punctuation">,</span>
+		<span class="hljs-attr">&quot;rules&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-punctuation">{</span>
+			<span class="hljs-attr">&quot;recommended&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-literal"><span class="hljs-keyword">true</span></span>
+		<span class="hljs-punctuation">}</span>
+	<span class="hljs-punctuation">}</span><span class="hljs-punctuation">,</span>
+	<span class="hljs-attr">&quot;javascript&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-punctuation">{</span>
+		<span class="hljs-attr">&quot;formatter&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-punctuation">{</span>
+			<span class="hljs-attr">&quot;quoteStyle&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;double&quot;</span>
+		<span class="hljs-punctuation">}</span>
+	<span class="hljs-punctuation">}</span>
+<span class="hljs-punctuation">}</span>
+</code></pre></div>
+<p>Au passage, supprime le fichier <code>eslint.config.js</code> : tu n'en as plus besoin.</p>
+</div></li><li class="etape"><div class="etape__puce">4</div><div class="etape__contenu"><h4 class="etape__titre">Vérifie le code</h4><p>Lance le script <code>check</code> :</p>
+<div class="bloc-code"><pre><code class="hljs language-plaintext">npm run check
+</code></pre></div>
+<p>Plusieurs messages d'erreurs devraient apparaitre dans ton terminal. Tu peux demander à Biome de corriger automatiquement tout ce qui peut l'être de manière fiable avec :</p>
+<div class="bloc-code"><pre><code class="hljs language-plaintext">npm run check:fix
+</code></pre></div>
+<p>Dans <code>main.tsx</code>, l'erreur sur <code>document.getElementById(&quot;root&quot;)!</code> nous a demandé quelques heures pour comprendre le message et choisir une bonne correction : regarde directement la solution.</p>
+<details class="solution"><summary>Voir la solution</summary><div class="solution__corps"><div class="onglets" data-onglets="1"><input type="radio" name="onglets-28" id="onglets-28-0" class="onglets__radio" checked><div class="onglets__barre"><label class="onglets__label" for="onglets-28-0">main.tsx</label></div><div class="onglets__panneaux"><div class="onglets__panneau"><div class="bloc-code"><div class="bloc-code__langue">jsx</div><pre><code class="hljs language-jsx"><span class="hljs-keyword">import</span> { <span class="hljs-title class_">StrictMode</span> } <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;react&quot;</span>;
+<span class="hljs-keyword">import</span> { createRoot } <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;react-dom/client&quot;</span>;
+<span class="hljs-keyword">import</span> <span class="hljs-string">&quot;./index.css&quot;</span>;
+<span class="hljs-keyword">import</span> <span class="hljs-title class_">App</span> <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;./App.tsx&quot;</span>;
+
+<span class="hljs-keyword">const</span> rootElement = <span class="hljs-variable language_">document</span>.<span class="hljs-title function_">getElementById</span>(<span class="hljs-string">&quot;root&quot;</span>);
+
+<span class="hljs-keyword">if</span> (rootElement == <span class="hljs-literal">null</span>) {
+  <span class="hljs-keyword">throw</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">Error</span>(<span class="hljs-string">`Your HTML Document must contain a &lt;div id=&quot;root&quot;&gt;&lt;/div&gt;`</span>);
+}
+
+<span class="hljs-title function_">createRoot</span>(rootElement).<span class="hljs-title function_">render</span>(
+  <span class="language-xml"><span class="hljs-tag">&lt;<span class="hljs-name">StrictMode</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">App</span> /&gt;</span>
+  <span class="hljs-tag">&lt;/<span class="hljs-name">StrictMode</span>&gt;</span></span>,
+);
+</code></pre></div>
+</div></div></div>
+</div></details>
+<p>Pour le reste, suis les feedbacks que tu voies dans le terminal. Tu ne devrais avoir à modifier que le fichier <code>App.tsx</code>.</p>
+<details class="solution"><summary>Voir la solution</summary><div class="solution__corps"><div class="onglets" data-onglets="1"><input type="radio" name="onglets-29" id="onglets-29-0" class="onglets__radio" checked><div class="onglets__barre"><label class="onglets__label" for="onglets-29-0">App.tsx</label></div><div class="onglets__panneaux"><div class="onglets__panneau"><div class="bloc-code"><div class="bloc-code__langue">jsx</div><pre><code class="hljs language-jsx"><span class="hljs-keyword">import</span> { useState } <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;react&quot;</span>;
+<span class="hljs-keyword">import</span> viteLogo <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;/vite.svg&quot;</span>;
+<span class="hljs-keyword">import</span> reactLogo <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;./assets/react.svg&quot;</span>;
+<span class="hljs-keyword">import</span> <span class="hljs-string">&quot;./App.css&quot;</span>;
+
+<span class="hljs-keyword">function</span> <span class="hljs-title function_">App</span>(<span class="hljs-params"></span>) {
+  <span class="hljs-keyword">const</span> [count, setCount] = <span class="hljs-title function_">useState</span>(<span class="hljs-number">0</span>);
+
+  <span class="hljs-keyword">return</span> (
+    <span class="language-xml"><span class="hljs-tag">&lt;&gt;</span>
+      <span class="hljs-tag">&lt;<span class="hljs-name">div</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">a</span> <span class="hljs-attr">href</span>=<span class="hljs-string">&quot;https://vite.dev&quot;</span> <span class="hljs-attr">target</span>=<span class="hljs-string">&quot;_blank&quot;</span> <span class="hljs-attr">rel</span>=<span class="hljs-string">&quot;noreferrer&quot;</span>&gt;</span>
+          <span class="hljs-tag">&lt;<span class="hljs-name">img</span> <span class="hljs-attr">src</span>=<span class="hljs-string">{viteLogo}</span> <span class="hljs-attr">className</span>=<span class="hljs-string">&quot;logo&quot;</span> <span class="hljs-attr">alt</span>=<span class="hljs-string">&quot;Vite logo&quot;</span> /&gt;</span>
+        <span class="hljs-tag">&lt;/<span class="hljs-name">a</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">a</span> <span class="hljs-attr">href</span>=<span class="hljs-string">&quot;https://react.dev&quot;</span> <span class="hljs-attr">target</span>=<span class="hljs-string">&quot;_blank&quot;</span> <span class="hljs-attr">rel</span>=<span class="hljs-string">&quot;noreferrer&quot;</span>&gt;</span>
+          <span class="hljs-tag">&lt;<span class="hljs-name">img</span> <span class="hljs-attr">src</span>=<span class="hljs-string">{reactLogo}</span> <span class="hljs-attr">className</span>=<span class="hljs-string">&quot;logo react&quot;</span> <span class="hljs-attr">alt</span>=<span class="hljs-string">&quot;React logo&quot;</span> /&gt;</span>
+        <span class="hljs-tag">&lt;/<span class="hljs-name">a</span>&gt;</span>
+      <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+      <span class="hljs-tag">&lt;<span class="hljs-name">h1</span>&gt;</span>Vite + React<span class="hljs-tag">&lt;/<span class="hljs-name">h1</span>&gt;</span>
+      <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">className</span>=<span class="hljs-string">&quot;card&quot;</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">button</span> <span class="hljs-attr">type</span>=<span class="hljs-string">&quot;button&quot;</span> <span class="hljs-attr">onClick</span>=<span class="hljs-string">{()</span> =&gt;</span> setCount((count) =&gt; count + 1)}&gt;
+          count is {count}
+        <span class="hljs-tag">&lt;/<span class="hljs-name">button</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">p</span>&gt;</span>
+          Edit <span class="hljs-tag">&lt;<span class="hljs-name">code</span>&gt;</span>src/App.tsx<span class="hljs-tag">&lt;/<span class="hljs-name">code</span>&gt;</span> and save to test HMR
+        <span class="hljs-tag">&lt;/<span class="hljs-name">p</span>&gt;</span>
+      <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+      <span class="hljs-tag">&lt;<span class="hljs-name">p</span> <span class="hljs-attr">className</span>=<span class="hljs-string">&quot;read-the-docs&quot;</span>&gt;</span>
+        Click on the Vite and React logos to learn more
+      <span class="hljs-tag">&lt;/<span class="hljs-name">p</span>&gt;</span>
+    <span class="hljs-tag">&lt;/&gt;</span></span>
+  );
+}
+
+<span class="hljs-keyword">export</span> <span class="hljs-keyword">default</span> <span class="hljs-title class_">App</span>;
+</code></pre></div>
+</div></div></div>
+</div></details>
+</div></li></ol>
+<p>Pour vérifier si ton installation fonctionne, tape la commande suivante pour lancer l'application React en mode &quot;développement&quot; :</p>
+<div class="bloc-code"><pre><code class="hljs language-plaintext">npm run dev
+</code></pre></div>
+<h2>Qu'avons-nous là ?</h2>
+<p>Si tu ouvres le répertoire de l'application dans ton IDE favori, tu devrais avoir quelque chose comme ça :</p>
+<p><img src="images/002-arbre-des-fichiers-avec-un-focus-sur-le-fichier.png" alt="arbre des fichiers avec un focus sur le fichier App.tsx" loading="lazy"></p>
+<p>Ce qui va nous intéresser ici, c'est le répertoire <code>src</code> : c'est notre répertoire de travail. C'est ici que nous rangerons nos composants (que nous découvrirons plus loin dans le parcours), ainsi que tous les fichiers CSS et les fichiers JavaScript / Typescript.</p>
+<p>Dans ce répertoire, le fichier à regarder en premier est le fichier <code>App.tsx</code>. C'est le composant principal de notre application (tu peux noter également le fichier CSS du même nom qui comme tu l'as sûrement deviné peut servir à styliser le composant App).</p>
+<h2>Récapitulatif</h2>
+<ul>
+<li>Utilise ViteJS pour initialiser une application React.</li>
+<li>L'architecture des fichiers sera toujours plus ou moins la même, peu importe l'outil que tu utilises pour développer ton application.</li>
+</ul>
+<h2>Challenge</h2>
+<p>Tu dois initialiser une application avec ViteJS, React, Typescript et la mettre sur un repository GitHub : elle servira de base pour la réalisation de ton pokedex !</p>
+<h3>Critère d'acceptation</h3>
+<ul>
+<li>[ ] Le repository est disponible sur GitHub et contient une application React initialisée avec ViteJS.</li>
+<li>[ ] L'application utilise Typescript.</li>
+</ul>
+
+  </div>
+  
+</article>
+
+<nav class="nav-quete">
+  <span class="nav-quete__lien nav-quete__lien--vide"></span>
+  <a class="nav-quete__lien nav-quete__lien--suiv" href="../../react-bases/002-react-basics-02-pokedex-ton-premier-composant/index.html">
+           <span class="nav-quete__sens">Suivant →</span>
+           <span class="nav-quete__titre">👩‍🏫 React Basics 02 - Pokédex - Ton premier composant</span>
+         </a>
+</nav>
+</main>
+<footer class="pied">
+  <p>Archive personnelle des cours suivis à la Wild Code School. Copie hors ligne à usage strictement privé.</p>
+</footer>
+
+<script src="../../assets/copie-code.js"></script>
+<script src="../../assets/progression.js"></script>
+</body>
+</html>

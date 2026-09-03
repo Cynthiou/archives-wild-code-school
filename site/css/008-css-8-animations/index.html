@@ -1,0 +1,584 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>👩‍🏫 CSS 8 : Animations — Archives WCS</title>
+<link rel="stylesheet" href="../../assets/style.css">
+</head>
+<body style="--teinte:#1b62b1">
+<header class="entete">
+  <a class="entete__marque" href="../../index.html">Archives Wild Code School</a>
+</header>
+<main class="contenu">
+<nav class="ariane"><a href="../../index.html">Accueil</a><span class="ariane__sep">›</span><a href="../../css/index.html">CSS</a><span class="ariane__sep">›</span><span aria-current="page">👩‍🏫 CSS 8 : Animations</span></nav>
+
+<article class="quete">
+  <header class="quete__entete">
+    <a class="pastille pastille--teintee" href="../../css/index.html">CSS</a>
+    <h1>👩‍🏫 CSS 8 : Animations</h1>
+    <p class="quete__meta">Quête 8 sur 10 · 6 images archivées</p>
+  </header>
+  <div class="cours">
+<ul>
+<li>Comment utiliser la <strong>transition CSS</strong></li>
+<li>Transformer les boîtes avec la propriété <strong>transform</strong></li>
+<li>Comment utiliser les <strong>animations CSS</strong></li>
+<li>Respecter les recommandations :def[A11Y]{value=&quot;Accessibility&quot;}</li>
+</ul>
+<h2>Introduction</h2>
+<div class="encadre encadre--note encadre--intro"><div class="encadre__corps"><p>Dans le passé, faire des animations sur un site web nécessitait l'utilisation de JavaScript en utilisant la manipulation du DOM.</p>
+<p>Aujourd'hui, il est possible de <strong>faire des animations en CSS</strong>, qui sont <strong>plus légères</strong> et <strong>plus faciles</strong> à réaliser.</p>
+<p>Dans cette quête, tu apprendras <strong>ce que sont les animations en CSS</strong> et <strong>comment les utiliser.</strong></p>
+</div></div>
+<p>Sais-tu que tu peux faire de l'animation en utilisant du CSS pur ?
+Sans avoir à utiliser JavaScript, tu peux rendre ton site web <strong>plus interactif et plus agréable !</strong></p>
+<p>Voyons les différentes méthodes que nous pouvons utiliser !</p>
+<p>La première est la plus facile et s'appelle <strong>CSS transition.</strong>
+Imaginons que tu aies une image et que tu veuilles l'animer au survol.</p>
+<p>Prenons ce code, par exemple :</p>
+<div class="bloc-code"><div class="bloc-code__langue">css</div><pre><code class="hljs language-css"><span class="hljs-selector-class">.dog-img</span>{
+	<span class="hljs-attribute">width</span>:<span class="hljs-number">200px</span>;
+}
+<span class="hljs-selector-class">.dog-img</span><span class="hljs-selector-pseudo">:hover</span>{
+	<span class="hljs-attribute">width</span>:<span class="hljs-number">500px</span>;
+}
+</code></pre></div>
+<div class="bloc-code"><div class="bloc-code__langue">js</div><pre><code class="hljs language-js">!--- index.<span class="hljs-property">html</span>
+&lt;!<span class="hljs-variable constant_">DOCTYPE</span> html&gt;
+<span class="language-xml"><span class="hljs-tag">&lt;<span class="hljs-name">html</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">head</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">title</span>&gt;</span>Parcel Sandbox<span class="hljs-tag">&lt;/<span class="hljs-name">title</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">meta</span> <span class="hljs-attr">charset</span>=<span class="hljs-string">&quot;UTF-8&quot;</span> /&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">link</span> <span class="hljs-attr">rel</span>=<span class="hljs-string">&quot;stylesheet&quot;</span> <span class="hljs-attr">href</span>=<span class="hljs-string">&quot;style.css&quot;</span> /&gt;</span>
+  <span class="hljs-tag">&lt;/<span class="hljs-name">head</span>&gt;</span>
+
+  <span class="hljs-tag">&lt;<span class="hljs-name">body</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">h1</span>&gt;</span>Animate the image on hover<span class="hljs-tag">&lt;/<span class="hljs-name">h1</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">img</span> <span class="hljs-attr">src</span>=<span class="hljs-string">&quot;images/004-introduction.jpg&quot;</span> <span class="hljs-attr">alt</span>=<span class="hljs-string">&quot;&quot;</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;dog-img&quot;</span> /&gt;</span>
+  <span class="hljs-tag">&lt;/<span class="hljs-name">body</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">html</span>&gt;</span></span>
+
+!--- style.<span class="hljs-property">css</span>
+.<span class="hljs-property">dog</span>-img {
+  <span class="hljs-attr">width</span>: 500px;
+}
+.<span class="hljs-property">dog</span>-<span class="hljs-attr">img</span>:hover {
+  <span class="hljs-attr">width</span>: 550px;
+}
+
+!--- index.<span class="hljs-property">js</span>
+<span class="hljs-keyword">import</span> <span class="hljs-string">&quot;./style.css&quot;</span>;
+</code></pre></div>
+<p>Comme tu peux le voir quand tu survoles l'image, la transition n'est pas vraiment douce, n'est-ce pas ?</p>
+<p>Pour donner de la fluidité d'une taille à l'autre, on peut utiliser la transition <strong>CSS</strong>. La transition CSS ressemble à ça :</p>
+<div class="bloc-code"><div class="bloc-code__langue">css</div><pre><code class="hljs language-css">element{
+	<span class="hljs-attribute">transition</span>: &lt;property&gt; &lt;duration&gt; &lt;curve&gt;;
+}
+</code></pre></div>
+<ul>
+<li>Le premier paramètre est la <strong>propriété</strong> que tu veux animer. Dans notre exemple, il s'agit la <code>width</code>, mais tu peux aussi utiliser <code>all</code> pour animer toutes les propriétés.</li>
+<li>Le second est la <strong>durée</strong> de l'animation</li>
+<li>Et le dernier est la <strong>courbe de détente</strong> (ton élément pourrait accélérer ou décélérer ou se déplacer à vitesse constante)</li>
+</ul>
+<p><img src="images/001-easing-curves.gif" alt="Easing curves" loading="lazy">
+Source: <a href="https://support.animaapp.com/en/articles/2601206-animation-easing-curve-explained#:~:text=Ease%2DIn%3A%20Causes%20the%20animation,fast%20middle%2C%20and%20slow%20end" target="_blank" rel="noopener noreferrer">https://support.animaapp.com/en/articles/2601206-animation-easing-curve-explained</a></p>
+<p><strong>🔬 Expérimente</strong></p>
+<p>Essaie d'ajouter une transition sur le code suivant</p>
+<div class="bloc-code"><div class="bloc-code__langue">js</div><pre><code class="hljs language-js">!--- index.<span class="hljs-property">html</span>
+&lt;!<span class="hljs-variable constant_">DOCTYPE</span> html&gt;
+<span class="language-xml"><span class="hljs-tag">&lt;<span class="hljs-name">html</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">head</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">title</span>&gt;</span>Parcel Sandbox<span class="hljs-tag">&lt;/<span class="hljs-name">title</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">meta</span> <span class="hljs-attr">charset</span>=<span class="hljs-string">&quot;UTF-8&quot;</span> /&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">link</span> <span class="hljs-attr">rel</span>=<span class="hljs-string">&quot;stylesheet&quot;</span> <span class="hljs-attr">href</span>=<span class="hljs-string">&quot;style.css&quot;</span> /&gt;</span>
+  <span class="hljs-tag">&lt;/<span class="hljs-name">head</span>&gt;</span>
+
+  <span class="hljs-tag">&lt;<span class="hljs-name">body</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">h1</span>&gt;</span>Animate the image on hover<span class="hljs-tag">&lt;/<span class="hljs-name">h1</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">img</span> <span class="hljs-attr">src</span>=<span class="hljs-string">&quot;images/004-introduction.jpg&quot;</span> <span class="hljs-attr">alt</span>=<span class="hljs-string">&quot;&quot;</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;dog-img&quot;</span> /&gt;</span>
+  <span class="hljs-tag">&lt;/<span class="hljs-name">body</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">html</span>&gt;</span></span>
+
+
+!--- style.<span class="hljs-property">css</span>
+.<span class="hljs-property">dog</span>-img {
+  <span class="hljs-attr">width</span>: 500px;
+}
+.<span class="hljs-property">dog</span>-<span class="hljs-attr">img</span>:hover {
+  <span class="hljs-attr">width</span>: 550px;
+}
+
+
+!--- index.<span class="hljs-property">js</span>
+<span class="hljs-keyword">import</span> <span class="hljs-string">&quot;./style.css&quot;</span>;
+</code></pre></div>
+<div class="bloc-code"><div class="bloc-code__langue">hidden</div><pre><code class="hljs language-hidden">Montrer la solution|||css|||Des problèmes pour trouver la solution ? |||0|||Masquer
+.dog-img {
+  width: 500px;
+  transition: width 1s ease-in;
+}
+</code></pre></div>
+<a class="ressource" href="https://www.htmldog.com/guides/css/advanced/transitions/" target="_blank" rel="noopener noreferrer">
+  <div class="ressource__icone">↗</div>
+  <div class="ressource__texte">
+    <div class="ressource__titre">CSS Transition - HTMLDog</div>
+    
+    <div class="ressource__hote">htmldog.com</div>
+  </div>
+</a>
+<p>La propriété <code>transform</code> permet de manipuler un élément en l'inclinant, en le faisant tourner, en le déplaçant ou en le mettant à l'échelle.</p>
+<p><img src="images/002-transform-possibilities.png" alt="Transform possibilities" loading="lazy">
+Source: <a href="https://www.htmldog.com/guides/css/advanced/transformations/" target="_blank" rel="noopener noreferrer">https://www.htmldog.com/guides/css/advanced/transformations/</a></p>
+<h3>Rotation</h3>
+<p>Pour appliquer une rotation sur un élément tu peux utiliser la fonction <code>rotate</code> :</p>
+<div class="bloc-code"><div class="bloc-code__langue">css</div><pre><code class="hljs language-css"><span class="hljs-attribute">transform</span>: <span class="hljs-built_in">rotate</span>(<span class="hljs-number">10deg</span>);
+</code></pre></div>
+<h3>Mise à l'échelle</h3>
+<p>Tu peux changer l'échelle en utilisant la fonction <code>scale</code> dans une transformation CSS :</p>
+<div class="bloc-code"><div class="bloc-code__langue">css</div><pre><code class="hljs language-css"><span class="hljs-attribute">transform</span>: <span class="hljs-built_in">scale</span>(<span class="hljs-number">1.5</span>);
+</code></pre></div>
+<h3>Déplacer</h3>
+<p>Tu peux déplacer un élément horizontalement et verticalement en utilisant <code>translate</code>. C'est utile quand tu veux faire bouger tes éléments :</p>
+<div class="bloc-code"><div class="bloc-code__langue">css</div><pre><code class="hljs language-css"><span class="hljs-attribute">transform</span> : <span class="hljs-built_in">translate</span>(<span class="hljs-number">200px</span>,<span class="hljs-number">200px</span>) ;
+</code></pre></div>
+<h3>Incliner</h3>
+<p>La fonction <code>skew</code> permet d'incliner l'élément :</p>
+<div class="bloc-code"><div class="bloc-code__langue">css</div><pre><code class="hljs language-css"><span class="hljs-attribute">transform</span>: <span class="hljs-built_in">skew</span>(<span class="hljs-number">20deg</span>,<span class="hljs-number">10deg</span>);
+</code></pre></div>
+<h3>Combiner plusieurs transformations</h3>
+<p>Tu peux combiner plusieurs propriétés en une seule fois dans ta transformation :</p>
+<div class="bloc-code"><div class="bloc-code__langue">css</div><pre><code class="hljs language-css"><span class="hljs-attribute">transform</span>: <span class="hljs-built_in">rotate</span>(<span class="hljs-number">10deg</span>) <span class="hljs-built_in">scale</span>(<span class="hljs-number">1.5</span>);
+</code></pre></div>
+<p>Pour une utilisation plus avancée, les transformations 3D existent aussi et peuvent permettre des animations plus complexes et esthétiques. Si tu as le temps, tu peux consulter ces deux ressources optionnelles :</p>
+<a class="ressource" href="https://3dtransforms.desandro.com/perspective" target="_blank" rel="noopener noreferrer">
+  <div class="ressource__icone">↗</div>
+  <div class="ressource__texte">
+    <div class="ressource__titre">CSS 3D Transforms - Perspective</div>
+    
+    <div class="ressource__hote">3dtransforms.desandro.com</div>
+  </div>
+</a>
+<a class="ressource" href="https://3dtransforms.desandro.com/3d-transform-functions" target="_blank" rel="noopener noreferrer">
+  <div class="ressource__icone">↗</div>
+  <div class="ressource__texte">
+    <div class="ressource__titre">CSS 3D Transforms functions</div>
+    
+    <div class="ressource__hote">3dtransforms.desandro.com</div>
+  </div>
+</a>
+<h2>🔬 Expérimente</h2>
+<p>C'est ton tour maintenant ! Essaie de combiner les transitions CSS et les transformations CSS pour créer des animations au survol sur les éléments suivants :</p>
+<div class="bloc-code"><div class="bloc-code__langue">js</div><pre><code class="hljs language-js">!--- index.<span class="hljs-property">html</span>
+&lt;!<span class="hljs-variable constant_">DOCTYPE</span> html&gt;
+<span class="language-xml"><span class="hljs-tag">&lt;<span class="hljs-name">html</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">head</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">title</span>&gt;</span>Parcel Sandbox<span class="hljs-tag">&lt;/<span class="hljs-name">title</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">meta</span> <span class="hljs-attr">charset</span>=<span class="hljs-string">&quot;UTF-8&quot;</span> /&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">link</span> <span class="hljs-attr">rel</span>=<span class="hljs-string">&quot;stylesheet&quot;</span> <span class="hljs-attr">href</span>=<span class="hljs-string">&quot;style.css&quot;</span> /&gt;</span>
+  <span class="hljs-tag">&lt;/<span class="hljs-name">head</span>&gt;</span>
+
+  <span class="hljs-tag">&lt;<span class="hljs-name">body</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">h1</span>&gt;</span>Animate the images on hover<span class="hljs-tag">&lt;/<span class="hljs-name">h1</span>&gt;</span>
+
+    <span class="hljs-tag">&lt;<span class="hljs-name">h2</span>&gt;</span>Rotation 20 deg<span class="hljs-tag">&lt;/<span class="hljs-name">h2</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">img</span>
+      <span class="hljs-attr">src</span>=<span class="hljs-string">&quot;images/005-image.jpg&quot;</span>
+      <span class="hljs-attr">alt</span>=<span class="hljs-string">&quot;&quot;</span>
+      <span class="hljs-attr">id</span>=<span class="hljs-string">&quot;dog-img-1&quot;</span>
+      <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;dog-img&quot;</span>
+    /&gt;</span>
+
+    <span class="hljs-tag">&lt;<span class="hljs-name">h2</span>&gt;</span>Scale 2<span class="hljs-tag">&lt;/<span class="hljs-name">h2</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">img</span>
+      <span class="hljs-attr">src</span>=<span class="hljs-string">&quot;images/005-image.jpg&quot;</span>
+      <span class="hljs-attr">alt</span>=<span class="hljs-string">&quot;&quot;</span>
+      <span class="hljs-attr">id</span>=<span class="hljs-string">&quot;dog-img-2&quot;</span>
+      <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;dog-img&quot;</span>
+    /&gt;</span>
+
+    <span class="hljs-tag">&lt;<span class="hljs-name">h2</span>&gt;</span>Translate 200px 200px<span class="hljs-tag">&lt;/<span class="hljs-name">h2</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">img</span>
+      <span class="hljs-attr">src</span>=<span class="hljs-string">&quot;images/005-image.jpg&quot;</span>
+      <span class="hljs-attr">alt</span>=<span class="hljs-string">&quot;&quot;</span>
+      <span class="hljs-attr">id</span>=<span class="hljs-string">&quot;dog-img-3&quot;</span>
+      <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;dog-img&quot;</span>
+    /&gt;</span>
+
+    <span class="hljs-tag">&lt;<span class="hljs-name">h2</span>&gt;</span>skew 20deg 10deg<span class="hljs-tag">&lt;/<span class="hljs-name">h2</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">img</span>
+      <span class="hljs-attr">src</span>=<span class="hljs-string">&quot;images/005-image.jpg&quot;</span>
+      <span class="hljs-attr">alt</span>=<span class="hljs-string">&quot;&quot;</span>
+      <span class="hljs-attr">id</span>=<span class="hljs-string">&quot;dog-img-4&quot;</span>
+      <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;dog-img&quot;</span>
+    /&gt;</span>
+
+    <span class="hljs-tag">&lt;<span class="hljs-name">h2</span>&gt;</span>Rotate 20 deg translate 100px 50px<span class="hljs-tag">&lt;/<span class="hljs-name">h2</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">img</span>
+      <span class="hljs-attr">src</span>=<span class="hljs-string">&quot;images/005-image.jpg&quot;</span>
+      <span class="hljs-attr">alt</span>=<span class="hljs-string">&quot;&quot;</span>
+      <span class="hljs-attr">id</span>=<span class="hljs-string">&quot;dog-img-5&quot;</span>
+      <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;dog-img&quot;</span>
+    /&gt;</span>
+  <span class="hljs-tag">&lt;/<span class="hljs-name">body</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">html</span>&gt;</span></span>
+
+
+!--- style.<span class="hljs-property">css</span>
+<span class="hljs-comment">/* TODO */</span>
+
+!--- index.<span class="hljs-property">js</span>
+<span class="hljs-keyword">import</span> <span class="hljs-string">&quot;./style.css&quot;</span>;
+</code></pre></div>
+<div class="bloc-code"><div class="bloc-code__langue">hidden</div><pre><code class="hljs language-hidden">Montrer la solution|||css|||Des problèmes pour trouver la solution ? |||0|||Masquer
+.dog-img {
+  transition: all 1s ease-in-out;
+}
+
+#dog-img-1:hover {
+  transform: rotate(20deg);
+}
+
+#dog-img-2:hover {
+  transform: scale(2);
+}
+
+#dog-img-3:hover {
+  transform: translate(200px, 200px);
+}
+
+#dog-img-4:hover {
+  transform: skew(20deg, 10deg);
+}
+
+#dog-img-5:hover {
+  transform: rotate(20deg) translate(100px, 50px);
+}
+</code></pre></div>
+<p>Les transitions CSS sont souvent utilisées avec <code>:hover</code> mais elles peuvent être utilisées avec d'autres pseudo-classes, comme <code>:focus</code>, <code>:target</code>, <code>:checked</code>, etc.</p>
+<p>Les animations que nous avons créées en utilisant des transitions CSS sont assez simples, n'est-ce pas ?</p>
+<p>Et si nous voulons créer des animations plus complexes ? Ou une animation qui peut être lancée sans interaction avec l'utilisateur.
+Et bien bonne nouvelle, c'est possible avec les <a href="https://developer.mozilla.org/fr/docs/Web/CSS/animation" target="_blank" rel="noopener noreferrer">animations CSS</a> !</p>
+<p>Pour créer une animation avec CSS, tu dois utiliser des <code>@keyframes</code>.</p>
+<h3>Animations simples</h3>
+<p>Un exemple vaut des milliers d'explications :</p>
+<div class="bloc-code"><div class="bloc-code__langue">css</div><pre><code class="hljs language-css"><span class="hljs-keyword">@keyframes</span> slideIn {
+  <span class="hljs-selector-tag">from</span> {
+    <span class="hljs-attribute">transform</span>: <span class="hljs-built_in">translate</span>(<span class="hljs-number">0px</span>, <span class="hljs-number">0px</span>);
+  }
+  <span class="hljs-selector-tag">to</span> {
+    <span class="hljs-attribute">transform</span>: <span class="hljs-built_in">translate</span>(<span class="hljs-number">200px</span>, <span class="hljs-number">0px</span>);
+  }
+}
+</code></pre></div>
+<p><strong>From</strong> est l'état de départ de l'élément et <strong>to</strong> est l'état de l'élément souhaité à la fin de l'animation.</p>
+<p>Ensuite, pour appliquer l'animation à un élément, tu dois utiliser les propriétés <code>animation-name</code> et <code>animation-duration</code> :</p>
+<div class="bloc-code"><div class="bloc-code__langue">css</div><pre><code class="hljs language-css"><span class="hljs-selector-class">.my-div</span>{
+  <span class="hljs-attribute">animation-name</span>: slideIn;
+  <span class="hljs-attribute">animation-duration</span>: <span class="hljs-number">1s</span>;
+}
+</code></pre></div>
+<p>Tu peux aussi ajouter une propriété <code>animation-iteration-count</code> pour définir <strong>le nombre d'itérations souhaitées</strong>.</p>
+<div class="bloc-code"><div class="bloc-code__langue">css</div><pre><code class="hljs language-css"><span class="hljs-attribute">animation-iteration-count</span>: infinite; <span class="hljs-comment">/* boucle infinie */</span>
+<span class="hljs-attribute">animation-iteration-count</span>: <span class="hljs-number">3</span>; <span class="hljs-comment">/* animation jouée 3 fois */</span>
+</code></pre></div>
+<p>Et bien d'autres réglages encore…</p>
+<h3>Animations complexes</h3>
+<div class="bloc-code"><div class="bloc-code__langue">js</div><pre><code class="hljs language-js">!--- index.<span class="hljs-property">html</span>
+&lt;!<span class="hljs-variable constant_">DOCTYPE</span> html&gt;
+<span class="language-xml"><span class="hljs-tag">&lt;<span class="hljs-name">html</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">head</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">title</span>&gt;</span>Parcel Sandbox<span class="hljs-tag">&lt;/<span class="hljs-name">title</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">meta</span> <span class="hljs-attr">charset</span>=<span class="hljs-string">&quot;UTF-8&quot;</span> /&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">link</span> <span class="hljs-attr">rel</span>=<span class="hljs-string">&quot;stylesheet&quot;</span> <span class="hljs-attr">href</span>=<span class="hljs-string">&quot;style.css&quot;</span> /&gt;</span>
+  <span class="hljs-tag">&lt;/<span class="hljs-name">head</span>&gt;</span>
+
+  <span class="hljs-tag">&lt;<span class="hljs-name">body</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">h1</span>&gt;</span>CSS animation demo<span class="hljs-tag">&lt;/<span class="hljs-name">h1</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">img</span>
+      <span class="hljs-attr">src</span>=<span class="hljs-string">&quot;images/005-image.jpg&quot;</span>
+      <span class="hljs-attr">alt</span>=<span class="hljs-string">&quot;&quot;</span>
+      <span class="hljs-attr">id</span>=<span class="hljs-string">&quot;dog-img-1&quot;</span>
+      <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;dog-img&quot;</span>
+    /&gt;</span>
+  <span class="hljs-tag">&lt;/<span class="hljs-name">body</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">html</span>&gt;</span></span>
+
+!--- style.<span class="hljs-property">css</span>
+#dog-img-<span class="hljs-number">1</span> {
+  animation-<span class="hljs-attr">name</span>: slideIn;
+  animation-<span class="hljs-attr">duration</span>: 4s;
+  animation-iteration-<span class="hljs-attr">count</span>: infinite;
+}
+
+@keyframes slideIn {
+  <span class="hljs-keyword">from</span> {
+    <span class="hljs-attr">transform</span>: <span class="hljs-title function_">translate</span>(0px, 0px);
+  }
+  to {
+    <span class="hljs-attr">transform</span>: <span class="hljs-title function_">translate</span>(200px, 0px);
+  }
+}
+
+!--- index.<span class="hljs-property">js</span>
+<span class="hljs-keyword">import</span> <span class="hljs-string">&quot;./style.css&quot;</span>;
+</code></pre></div>
+<p>Dans cet exemple, tu peux voir que lorsque l'animation est terminée, le chien revient à sa place d'origine <strong>sans être animé.</strong></p>
+<p>C'est normal car l'animation <strong>démarre à nouveau</strong>.</p>
+<p>Si nous voulons que le chien revienne à sa position d'origine de manière fluide, nous devons faire une animation plus complexe :</p>
+<div class="bloc-code"><div class="bloc-code__langue">css</div><pre><code class="hljs language-css"><span class="hljs-keyword">@keyframes</span> slideIn {
+  <span class="hljs-number">0%</span> {
+    <span class="hljs-attribute">transform</span>: <span class="hljs-built_in">translate</span>(<span class="hljs-number">0px</span>, <span class="hljs-number">0px</span>);
+  }
+  <span class="hljs-number">50%</span> {
+    <span class="hljs-attribute">transform</span>: <span class="hljs-built_in">translate</span>(<span class="hljs-number">200px</span>, <span class="hljs-number">0px</span>);
+  }
+  <span class="hljs-number">100%</span> {
+    <span class="hljs-attribute">transform</span>: <span class="hljs-built_in">translate</span>(<span class="hljs-number">0px</span>, <span class="hljs-number">0px</span>);
+  }
+}
+</code></pre></div>
+<p>Ici, <strong>nous utilisons des pourcentages</strong> qui représentent le % d'avancement de l'animation.</p>
+<p>Dans cet exemple, l'image commencera à la <strong>position 0</strong>, se déplacera ensuite à la <strong>position 200px</strong> et reviendra à la <strong>position 0</strong> à la fin de l'animation.</p>
+<p>Voici le résultat final :</p>
+<div class="bloc-code"><div class="bloc-code__langue">js</div><pre><code class="hljs language-js">!--- index.<span class="hljs-property">html</span>
+&lt;!<span class="hljs-variable constant_">DOCTYPE</span> html&gt;
+<span class="language-xml"><span class="hljs-tag">&lt;<span class="hljs-name">html</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">head</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">title</span>&gt;</span>Parcel Sandbox<span class="hljs-tag">&lt;/<span class="hljs-name">title</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">meta</span> <span class="hljs-attr">charset</span>=<span class="hljs-string">&quot;UTF-8&quot;</span> /&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">link</span> <span class="hljs-attr">rel</span>=<span class="hljs-string">&quot;stylesheet&quot;</span> <span class="hljs-attr">href</span>=<span class="hljs-string">&quot;style.css&quot;</span> /&gt;</span>
+  <span class="hljs-tag">&lt;/<span class="hljs-name">head</span>&gt;</span>
+
+  <span class="hljs-tag">&lt;<span class="hljs-name">body</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">h1</span>&gt;</span>CSS animation demo<span class="hljs-tag">&lt;/<span class="hljs-name">h1</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">img</span>
+      <span class="hljs-attr">src</span>=<span class="hljs-string">&quot;images/005-image.jpg&quot;</span>
+      <span class="hljs-attr">alt</span>=<span class="hljs-string">&quot;&quot;</span>
+      <span class="hljs-attr">id</span>=<span class="hljs-string">&quot;dog-img-1&quot;</span>
+      <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;dog-img&quot;</span>
+    /&gt;</span>
+  <span class="hljs-tag">&lt;/<span class="hljs-name">body</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">html</span>&gt;</span></span>
+
+
+!--- style.<span class="hljs-property">css</span>
+#dog-img-<span class="hljs-number">1</span> {
+  animation-<span class="hljs-attr">name</span>: slideIn;
+  animation-<span class="hljs-attr">duration</span>: 4s;
+  animation-iteration-<span class="hljs-attr">count</span>: infinite;
+}
+@keyframes slideIn {
+  <span class="hljs-number">0</span>% {
+    <span class="hljs-attr">transform</span>: <span class="hljs-title function_">translate</span>(0px, 0px);
+  }
+  <span class="hljs-number">50</span>% {
+    <span class="hljs-attr">transform</span>: <span class="hljs-title function_">translate</span>(200px, 0px);
+  }
+  <span class="hljs-number">100</span>% {
+    <span class="hljs-attr">transform</span>: <span class="hljs-title function_">translate</span>(0px, 0px);
+  }
+}
+
+
+!--- index.<span class="hljs-property">js</span>
+<span class="hljs-keyword">import</span> <span class="hljs-string">&quot;./style.css&quot;</span>;
+</code></pre></div>
+<p>Tu peux utiliser les pourcentages que tu veux pour personnaliser ton animation :</p>
+<div class="bloc-code"><div class="bloc-code__langue">css</div><pre><code class="hljs language-css"><span class="hljs-keyword">@keyframes</span> slideIn {
+  <span class="hljs-number">0%</span> {
+    <span class="hljs-attribute">transform</span>: <span class="hljs-built_in">translate</span>(<span class="hljs-number">0px</span>, <span class="hljs-number">0px</span>);
+  }
+  <span class="hljs-number">15%</span> {
+    <span class="hljs-attribute">transform</span>: <span class="hljs-built_in">translate</span>(<span class="hljs-number">0px</span>, <span class="hljs-number">200px</span>);
+  }
+  <span class="hljs-number">50%</span> {
+    <span class="hljs-attribute">transform</span>: <span class="hljs-built_in">translate</span>(<span class="hljs-number">200px</span>, <span class="hljs-number">0px</span>);
+  }
+  <span class="hljs-number">75%</span> {
+    <span class="hljs-attribute">transform</span>: <span class="hljs-built_in">translate</span>(<span class="hljs-number">200px</span>, <span class="hljs-number">200px</span>);
+  }
+  <span class="hljs-number">100%</span> {
+    <span class="hljs-attribute">transform</span>: <span class="hljs-built_in">translate</span>(<span class="hljs-number">0px</span>, <span class="hljs-number">0px</span>);
+  }
+}
+</code></pre></div>
+<div class="bloc-code"><div class="bloc-code__langue">js</div><pre><code class="hljs language-js">!--- index.<span class="hljs-property">html</span>
+&lt;!<span class="hljs-variable constant_">DOCTYPE</span> html&gt;
+<span class="language-xml"><span class="hljs-tag">&lt;<span class="hljs-name">html</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">head</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">title</span>&gt;</span>Parcel Sandbox<span class="hljs-tag">&lt;/<span class="hljs-name">title</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">meta</span> <span class="hljs-attr">charset</span>=<span class="hljs-string">&quot;UTF-8&quot;</span> /&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">link</span> <span class="hljs-attr">rel</span>=<span class="hljs-string">&quot;stylesheet&quot;</span> <span class="hljs-attr">href</span>=<span class="hljs-string">&quot;style.css&quot;</span> /&gt;</span>
+  <span class="hljs-tag">&lt;/<span class="hljs-name">head</span>&gt;</span>
+
+  <span class="hljs-tag">&lt;<span class="hljs-name">body</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">h1</span>&gt;</span>CSS animation demo<span class="hljs-tag">&lt;/<span class="hljs-name">h1</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">img</span>
+      <span class="hljs-attr">src</span>=<span class="hljs-string">&quot;images/005-image.jpg&quot;</span>
+      <span class="hljs-attr">alt</span>=<span class="hljs-string">&quot;&quot;</span>
+      <span class="hljs-attr">id</span>=<span class="hljs-string">&quot;dog-img-1&quot;</span>
+      <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;dog-img&quot;</span>
+    /&gt;</span>
+  <span class="hljs-tag">&lt;/<span class="hljs-name">body</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">html</span>&gt;</span></span>
+
+
+!--- style.<span class="hljs-property">css</span>
+#dog-img-<span class="hljs-number">1</span> {
+  animation-<span class="hljs-attr">name</span>: slideIn;
+  animation-<span class="hljs-attr">duration</span>: 4s;
+  animation-iteration-<span class="hljs-attr">count</span>: infinite;
+}
+@keyframes slideIn {
+  <span class="hljs-number">0</span>% {
+    <span class="hljs-attr">transform</span>: <span class="hljs-title function_">translate</span>(0px, 0px);
+  }
+  <span class="hljs-number">15</span>% {
+    <span class="hljs-attr">transform</span>: <span class="hljs-title function_">translate</span>(0px, 200px);
+  }
+  <span class="hljs-number">50</span>% {
+    <span class="hljs-attr">transform</span>: <span class="hljs-title function_">translate</span>(200px, 0px);
+  }
+  <span class="hljs-number">75</span>% {
+    <span class="hljs-attr">transform</span>: <span class="hljs-title function_">translate</span>(200px, 200px);
+  }
+  <span class="hljs-number">100</span>% {
+    <span class="hljs-attr">transform</span>: <span class="hljs-title function_">translate</span>(0px, 0px);
+  }
+}
+
+
+!--- index.<span class="hljs-property">js</span>
+<span class="hljs-keyword">import</span> <span class="hljs-string">&quot;./style.css&quot;</span>;
+</code></pre></div>
+<h2>🔬 Expérimente</h2>
+<p>Essaie de créer une animation en respectant ces consignes :</p>
+<ol>
+<li>Entre 0 et 50% de l'animation, faire rouler le disque vinyl vers la droite de sorte qu'il tourne d'un demi-tour.</li>
+<li>Puis revenir à l'état initial de 50 à 100%</li>
+<li>L'animation doit avoir un effet de balancier, c'est-à-dire une accélération au démarrage et un ralentissement en fin de séquence</li>
+<li>L'animation doit tourner en boucles de 5 secondes</li>
+</ol>
+<p>Aide-toi de la <a href="https://developer.mozilla.org/fr/docs/Web/CSS/animation" target="_blank" rel="noopener noreferrer">documentation</a> si tu es perdu.</p>
+<div class="bloc-code"><div class="bloc-code__langue">js</div><pre><code class="hljs language-js">!--- index.<span class="hljs-property">html</span>
+&lt;!<span class="hljs-variable constant_">DOCTYPE</span> html&gt;
+<span class="language-xml"><span class="hljs-tag">&lt;<span class="hljs-name">html</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">head</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">title</span>&gt;</span>Parcel Sandbox<span class="hljs-tag">&lt;/<span class="hljs-name">title</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">meta</span> <span class="hljs-attr">charset</span>=<span class="hljs-string">&quot;UTF-8&quot;</span> /&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">link</span> <span class="hljs-attr">rel</span>=<span class="hljs-string">&quot;stylesheet&quot;</span> <span class="hljs-attr">href</span>=<span class="hljs-string">&quot;style.css&quot;</span> /&gt;</span>
+  <span class="hljs-tag">&lt;/<span class="hljs-name">head</span>&gt;</span>
+
+  <span class="hljs-tag">&lt;<span class="hljs-name">body</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">img</span> <span class="hljs-attr">src</span>=<span class="hljs-string">&quot;images/006-experimente.jpg&quot;</span> <span class="hljs-attr">alt</span>=<span class="hljs-string">&quot;&quot;</span> <span class="hljs-attr">id</span>=<span class="hljs-string">&quot;vinyl-img&quot;</span>&gt;</span>
+  <span class="hljs-tag">&lt;/<span class="hljs-name">body</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">html</span>&gt;</span>
+
+
+!--- style.css
+#vinyl-img {
+  border-radius: 50%;
+  /* your code */
+}
+
+
+!--- index.js
+import &quot;./style.css&quot;;
+</span></code></pre></div>
+<div class="bloc-code"><div class="bloc-code__langue">hidden</div><pre><code class="hljs language-hidden">Montrer la solution|||css|||Des problèmes pour trouver la solution ? |||0|||Masquer
+#vinyl-img {
+  border-radius: 50%;
+  animation-name: vinylAnimation;
+  animation-duration: 5s;
+  animation-timing-function: ease-in-out;
+  animation-iteration-count: infinite;
+}
+
+@keyframes vinylAnimation {
+  0% {
+    transform: translate(0px, 0px);
+  }
+
+  50% {
+    transform: translate(100%, 0px) rotate(180deg);
+  }
+
+  100% {
+    transform: translate(0px, 0px) rotate(0deg);
+  }
+}
+</code></pre></div>
+<p>Comme cela est précisé dans le <a href="https://accessibilite.numerique.gouv.fr/" target="_blank" rel="noopener noreferrer">:def[RGAA]{value=&quot;Référentiel général d’amélioration de l’accessibilité&quot;}</a>, les transitions et animations doivent être manipulées avec beaucoup de précaution. Le risque étant de rendre une partie du contenu inaccessible aux utilisateurs souffrant de troubles de la vue ou de l'attention.</p>
+<p>Voici ce qui est indiqué au <a href="https://accessibilite.numerique.gouv.fr/methode/criteres-et-tests/#13.8" target="_blank" rel="noopener noreferrer">critère 13.8 du RGAA</a> :</p>
+<blockquote>
+<p><strong>Dans chaque page web, chaque contenu en mouvement déclenché automatiquement, vérifie-t-il une de ces conditions ?</strong></p>
+<ul>
+<li>La durée du mouvement est inférieure ou égale à 5 secondes ;</li>
+<li>L’utilisateur peut arrêter et relancer le mouvement ;</li>
+<li>L’utilisateur peut afficher et masquer le contenu en mouvement ;</li>
+<li>L’utilisateur peut afficher la totalité de l’information sans le mouvement.</li>
+</ul>
+</blockquote>
+<p>Comme dans de nombreux cas concernant l'accessibilité numérique, une méthode pour répondre à ces critères de test repose sur une fonctionnalité native des navigateurs et des systèmes d'exploitation.
+Le media query <code>prefers-reduced-motion</code> va permettre d'activer ou non l'animation en fonction des réglages de l'utilisateur (via l'OS généralement).</p>
+<p>Dans l'exemple précédent, le balancement du vinyl pourra être désactivé selon les préférences de l'utilisateur, le cas échéant, grâce à ces quelques lignes de code :</p>
+<div class="bloc-code"><div class="bloc-code__langue">css</div><pre><code class="hljs language-css"><span class="hljs-keyword">@media</span> (<span class="hljs-attribute">prefers-reduced-motion</span>: reduce) {
+  <span class="hljs-selector-id">#vinyl-img</span> {
+    <span class="hljs-attribute">animation</span>: none;
+  }
+}
+</code></pre></div>
+<p>Tu trouveras plus d'explications sur la <em>media query</em> <code>prefers-reduced-motion</code> en lisant la documentation MDN : <a href="https://developer.mozilla.org/fr/docs/Web/CSS/@media/prefers-reduced-motion" target="_blank" rel="noopener noreferrer">https://developer.mozilla.org/fr/docs/Web/CSS/@media/prefers-reduced-motion</a></p>
+<div class="encadre encadre--info"><div class="encadre__titre">Info</div><div class="encadre__corps"><p>Pour tester un tel réglage :</p>
+<ul>
+<li><strong>Chromium</strong> (Chrome, Edge, Brave…) : <strong>Dev tools &gt; More tools &gt; Rendering</strong>
+<img src="images/003-simuler-la-fonctionnalite-css-prefers-reduce.png" alt="Simuler la fonctionnalité CSS prefers-reduce-motion" loading="lazy"></li>
+<li><strong>Firefox</strong> :
+<ol>
+<li>Taper <code>about:config</code> dans la barre d'adresse.</li>
+<li>Chercher <code>ui.prefersReducedMotion</code>.</li>
+<li>Régler la valeur sur <code>1</code> pour activer reduce.</li>
+</ol>
+</li>
+<li><strong>Safari</strong> : Utiliser la configuration de macOS et iOS.</li>
+</ul>
+</div></div>
+<h2>Résumé</h2>
+<ul>
+<li>Tu peux utiliser les <strong>animations CSS</strong> pour animer les éléments de ton site</li>
+<li>Tu peux utiliser <strong>CSS transform</strong> pour changer la manière dont est rendu un élément (modification de l'échelle, de l'inclinaison, etc)</li>
+<li>Il y a deux façons d'animer les éléments : <strong>Transition ou Animation</strong></li>
+<li>Reste vigilant en évitant les animations ou effets de flash qui rendraient l'interface inaccessible et pense à prendre en compte les réglages de l'utilisateur avec le <em>media query</em> <code>prefers-reduced-motion</code></li>
+</ul>
+
+  </div>
+  <section class="ressources-quete">
+  <h2>Ressources partagées sur cette quête</h2>
+  <ul class="ressources-liste">
+    <li><a href="https://animate.style/" target="_blank" rel="noopener noreferrer">Librairie animate.css, pas mal de contenu </a><span class="ressources-liste__url">https://animate.style/</span></li>
+    <li><a href="https://developer.mozilla.org/fr/docs/Web/CSS/transform-function/skew" target="_blank" rel="noopener noreferrer">Doc de la fonction skew qui déforme l'élément plutôt qu'il ne l'incline (distorsion)</a><span class="ressources-liste__url">https://developer.mozilla.org/fr/docs/Web/CSS/transform-function/skew</span></li>
+    <li><a href="https://www.youtube.com/watch?v=Ae2wJrFxJUY" target="_blank" rel="noopener noreferrer">Lorsque vous appliquez plusieurs transformations CSS à un même élément, l’ordre de déclaration des transformations dans `transform` a de l’importance : en effet, selon l’ordre de déclaration des fonctions de transformation, le résultat peut différer.</a><span class="ressources-liste__url">https://www.youtube.com/watch?v=Ae2wJrFxJUY</span></li>
+  </ul>
+</section>
+</article>
+
+<nav class="nav-quete">
+  <a class="nav-quete__lien nav-quete__lien--prec" href="../../css/007-css-7-les-variables/index.html">
+           <span class="nav-quete__sens">← Précédent</span>
+           <span class="nav-quete__titre">👩‍🏫 CSS 7 : Les variables</span>
+         </a>
+  <a class="nav-quete__lien nav-quete__lien--suiv" href="../../css/009-css-imbrique/index.html">
+           <span class="nav-quete__sens">Suivant →</span>
+           <span class="nav-quete__titre">CSS imbriqué</span>
+         </a>
+</nav>
+</main>
+<footer class="pied">
+  <p>Archive personnelle des cours suivis à la Wild Code School. Copie hors ligne à usage strictement privé.</p>
+</footer>
+
+<script src="../../assets/copie-code.js"></script>
+<script src="../../assets/progression.js"></script>
+</body>
+</html>

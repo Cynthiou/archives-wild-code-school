@@ -1,0 +1,869 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>06 - JS Monorepo : Créer ton premier Repository — Archives WCS</title>
+<link rel="stylesheet" href="../../assets/style.css">
+</head>
+<body style="--teinte:#000000">
+<header class="entete">
+  <a class="entete__marque" href="../../index.html">Archives Wild Code School</a>
+</header>
+<main class="contenu">
+<nav class="ariane"><a href="../../index.html">Accueil</a><span class="ariane__sep">›</span><a href="../../js-monorepo/index.html">JS Monorepo</a><span class="ariane__sep">›</span><span aria-current="page">06 - JS Monorepo : Créer ton premier Repository</span></nav>
+
+<article class="quete">
+  <header class="quete__entete">
+    <a class="pastille pastille--teintee" href="../../js-monorepo/index.html">JS Monorepo</a>
+    <h1>06 - JS Monorepo : Créer ton premier Repository</h1>
+    <p class="quete__meta">Quête 7 sur 9 · 1 image archivée</p>
+  </header>
+  <div class="cours">
+<h2>Objectifs</h2>
+<ul>
+<li>Comprendre comment exécuter une requête SQL SELECT en JavaScript.</li>
+<li>Structurer ton code sous la forme d'un <strong>Repository</strong> pour communiquer avec la base de données.</li>
+</ul>
+<h2>Pré-requis</h2>
+<ol class="etapes"><li class="etape"><div class="etape__puce">1</div><div class="etape__contenu"><h4 class="etape__titre">Valider les quêtes suivantes</h4><div class="renvois"><div class="renvois__titre">Quêtes liées</div><ul><li><a href="../../js-monorepo/006-05-js-monorepo-mettre-en-place-une-base-de-donnees/index.html">Quête 592</a></li><li><a href="../../javascript-beyond-the-basics/007-js-intermediaire-05-programmation-orientee-objet/index.html">Quête 1320</a></li></ul></div>
+</div></li><li class="etape"><div class="etape__puce">2</div><div class="etape__contenu"><h4 class="etape__titre">Être à l'aise avec la syntaxe SQL</h4><div class="bloc-code"><div class="bloc-code__langue">sql</div><pre><code class="hljs language-sql"><span class="hljs-keyword">CREATE</span> DATABASE hogwarts;
+USE hogwarts;
+
+<span class="hljs-keyword">CREATE TABLE</span> wizard(
+  id <span class="hljs-type">INT</span> <span class="hljs-keyword">PRIMARY KEY</span> <span class="hljs-keyword">NOT NULL</span> AUTO_INCREMENT,
+  firstname <span class="hljs-type">VARCHAR</span>(<span class="hljs-number">100</span>) <span class="hljs-keyword">NOT NULL</span>,
+  lastname <span class="hljs-type">VARCHAR</span>(<span class="hljs-number">100</span>) <span class="hljs-keyword">NOT NULL</span>
+);
+
+<span class="hljs-keyword">SELECT</span> <span class="hljs-operator">*</span> <span class="hljs-keyword">FROM</span> wizard;
+</code></pre></div>
+</div></li><li class="etape"><div class="etape__puce">3</div><div class="etape__contenu"><h4 class="etape__titre">Avoir compris le concept de classe en JavaScript</h4><div class="bloc-code"><div class="bloc-code__langue">javascript</div><pre><code class="hljs language-javascript"><span class="hljs-keyword">class</span> <span class="hljs-title class_">Character</span> {
+  <span class="hljs-title function_">constructor</span>(<span class="hljs-params">name, level</span>) {
+    <span class="hljs-variable language_">this</span>.<span class="hljs-property">name</span> = name;
+    <span class="hljs-variable language_">this</span>.<span class="hljs-property">level</span> = level;
+  }
+}
+
+<span class="hljs-keyword">class</span> <span class="hljs-title class_">Enemy</span> <span class="hljs-keyword">extends</span> <span class="hljs-title class_ inherited__">Character</span> {
+  <span class="hljs-title function_">constructor</span>(<span class="hljs-params">name, level, emoji, attackName</span>) {
+    <span class="hljs-variable language_">super</span>(name, level);
+
+    <span class="hljs-variable language_">this</span>.<span class="hljs-property">emoji</span> = emoji;
+    <span class="hljs-variable language_">this</span>.<span class="hljs-property">attackName</span> =  attackName;  
+    <span class="hljs-variable language_">this</span>.<span class="hljs-property">enemy</span> = <span class="hljs-literal">true</span>;
+  }
+
+  <span class="hljs-title function_">attack</span>(<span class="hljs-params"></span>) {
+    <span class="hljs-keyword">return</span> <span class="hljs-string">`<span class="hljs-subst">${<span class="hljs-variable language_">this</span>.name}</span> <span class="hljs-subst">${<span class="hljs-variable language_">this</span>.attackName}</span> you!`</span>;
+  }
+}
+
+<span class="hljs-keyword">const</span> spider = <span class="hljs-keyword">new</span> <span class="hljs-title class_">Enemy</span>(<span class="hljs-string">&quot;Spider&quot;</span>, <span class="hljs-number">1</span>, <span class="hljs-string">&quot;🕷&quot;</span>, <span class="hljs-string">&quot;bites&quot;</span>);
+<span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(spider.<span class="hljs-title function_">attack</span>());
+</code></pre></div>
+</div></li></ol>
+<h2>Sommaire</h2>
+<h2>Introduction</h2>
+<p>Dans les épisodes précédents, tu as créé des premières routes dans ton application serveur, et mis en place ta base de données. Dans cette quête, nous construirons un objet Repository pour interagir avec la base de données.</p>
+<p>Nous commencerons par voir comment exécuter une requête SQL SELECT en JavaScript dans un bac à sable.</p>
+<p>Tu verras ensuite comment organiser ton code sous la forme d'un <strong>modèle</strong> orienté objet : le <strong>Repository</strong>.</p>
+<h2>Exécuter une requête SQL SELECT en JavaScript</h2>
+<p>Pour exécuter une requête SQL SELECT en JavaScript, tu vas utiliser le package <code>mysql2</code> pour communiquer avec ta base de données MySQL. Tu peux réutiliser le &quot;bac à sable&quot; que tu as créé dans la quête précédente, ou en créer un nouveau.</p>
+<p>Ton objectif dans ce bac à sable est d'envoyer la requête <code>SELECT * FROM category</code> à ton serveur MySQL, pour ta base de données <code>wildseries</code>.</p>
+<div class="encadre encadre--note encadre--callout"><div class="encadre__corps"><p>Pour rappel, tu peux trouver toutes les informations sur le package <code>mysql2</code> et notamment des exemples de requêtes SELECT dans la <a href="https://sidorares.github.io/node-mysql2/docs/examples/queries/simple-queries/select" target="_blank" rel="noopener noreferrer">documentation officielle</a>. Si tu préfères continuer avec la quête, tu peux ignorer cette suggestion et passer à la suite.</p>
+</div></div>
+<h3>Créer un nouveau bac à sable</h3>
+<p>Si tu veux créer un nouveau bac à sable, ouvre un terminal et crée un nouveau dossier. Ensuite, initialise un nouveau projet Node en utilisant la commande <code>npm init</code> :</p>
+<div class="bloc-code"><div class="bloc-code__langue">bash</div><pre><code class="hljs language-bash"><span class="hljs-built_in">mkdir</span> mysql-sandbox
+<span class="hljs-built_in">cd</span> mysql-sandbox
+npm init -y
+</code></pre></div>
+<div class="encadre encadre--warning"><div class="encadre__titre">Attention</div><div class="encadre__corps"><p>Pense à préciser <code>&quot;type&quot;: &quot;module&quot;</code> dans ton fichier <code>package.json</code>.</p>
+</div></div>
+<p>Installe la dépendance <code>mysql2</code> pour communiquer avec ton serveur de base de données MySQL :</p>
+<div class="bloc-code"><div class="bloc-code__langue">bash</div><pre><code class="hljs language-bash">npm install mysql2
+</code></pre></div>
+<p>Crée maintenant un fichier <code>index.js</code> pour contenir ton code : nous allons le compléter ensemble dans la partie suivante.</p>
+<h3>Accéder aux données</h3>
+<p>Voici le code que j'ai utilisé dans mon fichier <code>index.js</code> (avec les bonnes variables d'environnement que je vais te détailler ensuite) :</p>
+<div class="bloc-code"><div class="bloc-code__langue">javascript</div><pre><code class="hljs language-javascript"><span class="hljs-keyword">import</span> <span class="hljs-string">&quot;dotenv/config&quot;</span>;
+
+<span class="hljs-keyword">import</span> mysql <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;mysql2/promise&quot;</span>;
+
+<span class="hljs-comment">// Get variables from .env file for database connection</span>
+<span class="hljs-keyword">const</span> { <span class="hljs-variable constant_">DB_HOST</span>, <span class="hljs-variable constant_">DB_PORT</span>, <span class="hljs-variable constant_">DB_USER</span>, <span class="hljs-variable constant_">DB_PASSWORD</span>, <span class="hljs-variable constant_">DB_NAME</span> } = process.<span class="hljs-property">env</span>;
+
+<span class="hljs-keyword">const</span> <span class="hljs-title function_">accessData</span> = <span class="hljs-keyword">async</span> (<span class="hljs-params"></span>) =&gt; {
+  <span class="hljs-keyword">try</span> {
+    <span class="hljs-comment">// Create a connection pool to the database</span>
+    <span class="hljs-keyword">const</span> databaseClient = mysql.<span class="hljs-title function_">createPool</span>({
+      <span class="hljs-attr">host</span>: <span class="hljs-variable constant_">DB_HOST</span>,
+      <span class="hljs-attr">port</span>: <span class="hljs-variable constant_">DB_PORT</span>,
+      <span class="hljs-attr">user</span>: <span class="hljs-variable constant_">DB_USER</span>,
+      <span class="hljs-attr">password</span>: <span class="hljs-variable constant_">DB_PASSWORD</span>,
+      <span class="hljs-attr">database</span>: <span class="hljs-variable constant_">DB_NAME</span>,
+    });
+
+    <span class="hljs-comment">// Access data</span>
+    <span class="hljs-keyword">const</span> results = <span class="hljs-keyword">await</span> databaseClient.<span class="hljs-title function_">query</span>(<span class="hljs-string">&quot;SELECT * FROM category&quot;</span>);
+
+    <span class="hljs-comment">// Close the connection pool</span>
+    databaseClient.<span class="hljs-title function_">end</span>();
+
+    <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">info</span>(results);
+  } <span class="hljs-keyword">catch</span> (err) {
+    <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">error</span>(<span class="hljs-string">&quot;Error accessing the database:&quot;</span>, err.<span class="hljs-property">message</span>, err.<span class="hljs-property">stack</span>);
+  }
+};
+
+<span class="hljs-comment">// Run the accessData function</span>
+<span class="hljs-title function_">accessData</span>();
+</code></pre></div>
+<p>Prends le temps de comprendre chaque étape de ce code.</p>
+<p>Avant de pouvoir exécuter des requêtes SQL, tu dois établir une connexion avec la base de données à l'aide de <code>mysql2</code> :</p>
+<div class="bloc-code"><div class="bloc-code__langue">javascript</div><pre><code class="hljs language-javascript"><span class="hljs-keyword">import</span> <span class="hljs-string">&quot;dotenv/config&quot;</span>;
+
+<span class="hljs-keyword">import</span> mysql <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;mysql2/promise&quot;</span>;
+
+<span class="hljs-comment">// Get variables from .env file for database connection</span>
+<span class="hljs-keyword">const</span> { <span class="hljs-variable constant_">DB_HOST</span>, <span class="hljs-variable constant_">DB_PORT</span>, <span class="hljs-variable constant_">DB_USER</span>, <span class="hljs-variable constant_">DB_PASSWORD</span>, <span class="hljs-variable constant_">DB_NAME</span> } = process.<span class="hljs-property">env</span>;
+
+<span class="hljs-keyword">const</span> <span class="hljs-title function_">accessData</span> = <span class="hljs-keyword">async</span> (<span class="hljs-params"></span>) =&gt; {
+  <span class="hljs-keyword">try</span> {
+    <span class="hljs-comment">// Create a connection pool to the database</span>
+    <span class="hljs-keyword">const</span> databaseClient = mysql.<span class="hljs-title function_">createPool</span>({
+      <span class="hljs-attr">host</span>: <span class="hljs-variable constant_">DB_HOST</span>,
+      <span class="hljs-attr">port</span>: <span class="hljs-variable constant_">DB_PORT</span>,
+      <span class="hljs-attr">user</span>: <span class="hljs-variable constant_">DB_USER</span>,
+      <span class="hljs-attr">password</span>: <span class="hljs-variable constant_">DB_PASSWORD</span>,
+      <span class="hljs-attr">database</span>: <span class="hljs-variable constant_">DB_NAME</span>,
+    });
+
+    <span class="hljs-comment">// Access data</span>
+    <span class="hljs-keyword">const</span> results = <span class="hljs-keyword">await</span> databaseClient.<span class="hljs-title function_">query</span>(<span class="hljs-string">&quot;SELECT * FROM category&quot;</span>);
+
+    <span class="hljs-comment">// Close the connection pool</span>
+    databaseClient.<span class="hljs-title function_">end</span>();
+
+    <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">info</span>(results);
+  } <span class="hljs-keyword">catch</span> (err) {
+    <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">error</span>(<span class="hljs-string">&quot;Error accessing the database:&quot;</span>, err.<span class="hljs-property">message</span>, err.<span class="hljs-property">stack</span>);
+  }
+};
+
+<span class="hljs-comment">// Run the accessData function</span>
+<span class="hljs-title function_">accessData</span>();
+</code></pre></div>
+<div class="encadre encadre--note encadre--callout"><div class="encadre__corps"><p>Pourquoi <code>mysql.createPool</code> au lieu de <code>mysql.createConnection</code> ?</p>
+<p>Une connexion créée avec <code>mysql.createConnection</code> ne reste pas ouverte indéfiniment : elle se ferme automatiquement au bout d'un certain temps. Sur un projet réel déployé, tu ne peux pas perdre l'accès à ta base de données quelques heures après avoir démarré ton serveur !</p>
+<p>La méthode <code>mysql.createPool</code> crée un <em>pool</em> de connexions : ce pool gère la création de nouvelles connexions si les précédentes sont périmées. Ce système permet également de recycler les connexions encore ouvertes pour des questions de performance. En dehors de la ligne de création, cela ne change absolument rien au code que tu as déjà vu pour faire des requêtes SQL.</p>
+<p>Tu peux regarder <a href="https://www.prisma.io/dataguide/database-tools/connection-pooling" target="_blank" rel="noopener noreferrer">cet article (en anglais)</a> si tu veux en savoir plus sur le &quot;connection pooling&quot;.</p>
+</div></div>
+<p>Dans cet exemple, tu peux voir que l'hôte, le port et le nom de la base de données sont également gérés avec des variables d'environnement pour plus de flexibilité. Cela implique que tu crées un fichier <code>.env</code> à côté de ton fichier <code>index.js</code> sur ce modèle :</p>
+<div class="bloc-code"><div class="bloc-code__langue">ini</div><pre><code class="hljs language-ini"><span class="hljs-attr">DB_HOST</span>=localhost
+<span class="hljs-attr">DB_PORT</span>=<span class="hljs-number">3306</span>
+<span class="hljs-attr">DB_USER</span>=YOUR_DATABASE_USERNAME <span class="hljs-comment"># Ton nom d&#x27;utilisateur MySQL</span>
+<span class="hljs-attr">DB_PASSWORD</span>=YOUR_DATABASE_PASSWORD <span class="hljs-comment"># Ton mot de passe MySQL </span>
+<span class="hljs-attr">DB_NAME</span>=wildseries <span class="hljs-comment"># Le nom de la base de données que tu va utiliser</span>
+</code></pre></div>
+<div class="encadre encadre--warning"><div class="encadre__titre">Attention</div><div class="encadre__corps"><p>Si ce n'est pas déjà fait, installe <code>dotenv</code> dans les dépendances de ton sandbox avec la commande :</p>
+<div class="bloc-code"><div class="bloc-code__langue">bash</div><pre><code class="hljs language-bash">npm install dotenv
+</code></pre></div>
+</div></div>
+<p>La suite correspond à ce que tu as déjà vu : utiliser la méthode <code>query</code> pour envoyer une requête SQL au serveur de base de données. Ici, nous récupérons le contenu de la table <code>category</code> avec la requête <code>SELECT * FROM category</code> :</p>
+<div class="bloc-code"><div class="bloc-code__langue">javascript</div><pre><code class="hljs language-javascript"><span class="hljs-keyword">import</span> <span class="hljs-string">&quot;dotenv/config&quot;</span>;
+
+<span class="hljs-keyword">import</span> mysql <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;mysql2/promise&quot;</span>;
+
+<span class="hljs-comment">// Get variables from .env file for database connection</span>
+<span class="hljs-keyword">const</span> { <span class="hljs-variable constant_">DB_HOST</span>, <span class="hljs-variable constant_">DB_PORT</span>, <span class="hljs-variable constant_">DB_USER</span>, <span class="hljs-variable constant_">DB_PASSWORD</span>, <span class="hljs-variable constant_">DB_NAME</span> } = process.<span class="hljs-property">env</span>;
+
+<span class="hljs-keyword">const</span> <span class="hljs-title function_">accessData</span> = <span class="hljs-keyword">async</span> (<span class="hljs-params"></span>) =&gt; {
+  <span class="hljs-keyword">try</span> {
+    <span class="hljs-comment">// Create a connection pool to the database</span>
+    <span class="hljs-keyword">const</span> databaseClient = mysql.<span class="hljs-title function_">createPool</span>({
+      <span class="hljs-attr">host</span>: <span class="hljs-variable constant_">DB_HOST</span>,
+      <span class="hljs-attr">port</span>: <span class="hljs-variable constant_">DB_PORT</span>,
+      <span class="hljs-attr">user</span>: <span class="hljs-variable constant_">DB_USER</span>,
+      <span class="hljs-attr">password</span>: <span class="hljs-variable constant_">DB_PASSWORD</span>,
+      <span class="hljs-attr">database</span>: <span class="hljs-variable constant_">DB_NAME</span>,
+    });
+
+    <span class="hljs-comment">// Access data</span>
+    <span class="hljs-keyword">const</span> results = <span class="hljs-keyword">await</span> databaseClient.<span class="hljs-title function_">query</span>(<span class="hljs-string">&quot;SELECT * FROM category&quot;</span>);
+
+    <span class="hljs-comment">// Close the connection pool</span>
+    databaseClient.<span class="hljs-title function_">end</span>();
+
+    <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">info</span>(results);
+  } <span class="hljs-keyword">catch</span> (err) {
+    <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">error</span>(<span class="hljs-string">&quot;Error accessing the database:&quot;</span>, err.<span class="hljs-property">message</span>, err.<span class="hljs-property">stack</span>);
+  }
+};
+
+<span class="hljs-comment">// Run the accessData function</span>
+<span class="hljs-title function_">accessData</span>();
+</code></pre></div>
+<p>Si tu exécutes ce script avec la commande :</p>
+<div class="bloc-code"><div class="bloc-code__langue">bash</div><pre><code class="hljs language-bash">node index.js
+</code></pre></div>
+<p>Tu devrais voir dans ton terminal quelque chose qui ressemble à ça :</p>
+<div class="bloc-code"><div class="bloc-code__langue">bash</div><pre><code class="hljs language-bash">[
+  [ { <span class="hljs-built_in">id</span>: 1, name: <span class="hljs-string">&#x27;Comédie&#x27;</span> }, { <span class="hljs-built_in">id</span>: 2, name: <span class="hljs-string">&#x27;Science-Fiction&#x27;</span> } ],
+  [
+    `<span class="hljs-built_in">id</span>` INT UNSIGNED NOT NULL PRIMARY KEY AUTO_INCREMENT,
+    `name` VARCHAR(255) NOT NULL UNIQUE_KEY
+  ]
+]
+</code></pre></div>
+<p>Regardons ça ensemble :</p>
+<div class="bloc-code"><div class="bloc-code__langue">bash</div><pre><code class="hljs language-bash">[
+  [ { <span class="hljs-built_in">id</span>: 1, name: <span class="hljs-string">&#x27;Comédie&#x27;</span> }, { <span class="hljs-built_in">id</span>: 2, name: <span class="hljs-string">&#x27;Science-Fiction&#x27;</span> } ],
+  [
+    `<span class="hljs-built_in">id</span>` INT UNSIGNED NOT NULL PRIMARY KEY AUTO_INCREMENT,
+    `name` VARCHAR(255) NOT NULL UNIQUE_KEY
+  ]
+]
+</code></pre></div>
+<p>Les crochets t'indiquent que ton <code>console.info(results)</code> affiche un tableau. Ce tableau contient 2 éléments séparés par une virgule. Le premier est un tableau avec des données :</p>
+<div class="bloc-code"><div class="bloc-code__langue">bash</div><pre><code class="hljs language-bash">[
+  [ { <span class="hljs-built_in">id</span>: 1, name: <span class="hljs-string">&#x27;Comédie&#x27;</span> }, { <span class="hljs-built_in">id</span>: 2, name: <span class="hljs-string">&#x27;Science-Fiction&#x27;</span> } ],
+  [
+    `<span class="hljs-built_in">id</span>` INT UNSIGNED NOT NULL PRIMARY KEY AUTO_INCREMENT,
+    `name` VARCHAR(255) NOT NULL UNIQUE_KEY
+  ]
+]
+</code></pre></div>
+<p>En fait, seul ce tableau en deuxième ligne t'intéresse : il représente les lignes de la table <code>category</code> récupérées avec ta requête <code>SELECT</code>. Le reste du résultat sont des métadonnées liées à l'exécution de la requête SQL. Modifie <code>index.js</code> pour extraire ce tableau de lignes :</p>
+<div class="bloc-code"><div class="bloc-code__langue">javascript</div><pre><code class="hljs language-javascript"><span class="hljs-keyword">import</span> <span class="hljs-string">&quot;dotenv/config&quot;</span>;
+
+<span class="hljs-keyword">import</span> mysql <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;mysql2/promise&quot;</span>;
+
+<span class="hljs-comment">// Get variables from .env file for database connection</span>
+<span class="hljs-keyword">const</span> { <span class="hljs-variable constant_">DB_HOST</span>, <span class="hljs-variable constant_">DB_PORT</span>, <span class="hljs-variable constant_">DB_USER</span>, <span class="hljs-variable constant_">DB_PASSWORD</span>, <span class="hljs-variable constant_">DB_NAME</span> } = process.<span class="hljs-property">env</span>;
+
+<span class="hljs-keyword">const</span> <span class="hljs-title function_">accessData</span> = <span class="hljs-keyword">async</span> (<span class="hljs-params"></span>) =&gt; {
+  <span class="hljs-keyword">try</span> {
+    <span class="hljs-comment">// Create a connection pool to the database</span>
+    <span class="hljs-keyword">const</span> databaseClient = mysql.<span class="hljs-title function_">createPool</span>({
+      <span class="hljs-attr">host</span>: <span class="hljs-variable constant_">DB_HOST</span>,
+      <span class="hljs-attr">port</span>: <span class="hljs-variable constant_">DB_PORT</span>,
+      <span class="hljs-attr">user</span>: <span class="hljs-variable constant_">DB_USER</span>,
+      <span class="hljs-attr">password</span>: <span class="hljs-variable constant_">DB_PASSWORD</span>,
+      <span class="hljs-attr">database</span>: <span class="hljs-variable constant_">DB_NAME</span>,
+    });
+
+    <span class="hljs-comment">// Access data</span>
+    <span class="hljs-keyword">const</span> [rows] = <span class="hljs-keyword">await</span> databaseClient.<span class="hljs-title function_">query</span>(<span class="hljs-string">&quot;SELECT * FROM category&quot;</span>);
+
+    <span class="hljs-comment">// Close the connection pool</span>
+    databaseClient.<span class="hljs-title function_">end</span>();
+
+    <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">info</span>(rows);
+  } <span class="hljs-keyword">catch</span> (err) {
+    <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">error</span>(<span class="hljs-string">&quot;Error accessing the database:&quot;</span>, err.<span class="hljs-property">message</span>, err.<span class="hljs-property">stack</span>);
+  }
+};
+
+<span class="hljs-comment">// Run the accessData function</span>
+<span class="hljs-title function_">accessData</span>();
+</code></pre></div>
+<div class="encadre encadre--note encadre--callout"><div class="encadre__corps"><p>Tu vois maintenant les outils dont tu as besoin pour accéder à tes données en JavaScript : <strong>un client</strong> connecté à ta base de données et <strong>ta requête SQL</strong>.</p>
+<p>Teste toujours tes outils avec des affichages dans la console pour <strong>voir et comprendre</strong> les données que tu récupères.</p>
+</div></div>
+<h2>Ton premier Repository</h2>
+<p>Maintenant que nous avons vu comment exécuter une requête SQL SELECT en JavaScript, nous allons aborder la structuration du code sous la forme d'un Repository.</p>
+<div class="encadre encadre--note encadre--callout"><div class="encadre__corps"><p>Le <em>Repository</em> est une forme spéciale d'un <strong>patron de conception (design patterns</strong>) : la <em>façade</em>.</p>
+<p>Une façade est une structure qui fournit une interface simplifiée d'un outil, en &quot;masquant&quot; la complexité de son utilisation.</p>
+<p>Si tu veux approfondir tes connaissances sur les &quot;design patterns&quot;, le site <a href="https://refactoring.guru/design-patterns" target="_blank" rel="noopener noreferrer">refactoring.guru</a> est une excellente ressource. Plus particulièrement, un <a href="https://refactoring.guru/design-patterns/catalog" target="_blank" rel="noopener noreferrer">catalogue complet</a> détaille chaque patron en utilisant une analogie du monde réel.</p>
+</div></div>
+<div class="encadre encadre--note encadre--story"><div class="encadre__corps"><p>Lorsque tu appelles un magasin pour passer une commande téléphonique, l'opérateur est ta façade vers tous les services et départements du magasin. L'opérateur te fournit une interface vocale simple avec le système de commande, les passerelles de paiement et divers services de livraison.</p>
+<p><a href="https://refactoring.guru/design-patterns/facade#analogy" target="_blank" rel="noopener noreferrer">Facade, Real-World Analogy</a></p>
+</div></div>
+<h3>Construction pas à pas</h3>
+<p>Dans une architecture MVC (Modèle-Vue-Contrôleur), les repositories sont responsables de l'accès aux données, que ce soit avec une base de données, une API... Ils encapsulent la logique d'accès aux données et fournissent une interface propre pour interagir avec elles.</p>
+<p>Pour construire cette &quot;capsule&quot;, commence par identifier les actions clés de ton code. Pour accéder à ta base de données, tu as réalisé 3 actions principales : te connecter, envoyer une requête et fermer ta connexion. Tu peux voir ces actions dans les 3 blocs mis en surbrillance ici :</p>
+<div class="bloc-code"><div class="bloc-code__langue">javascript</div><pre><code class="hljs language-javascript"><span class="hljs-keyword">import</span> <span class="hljs-string">&quot;dotenv/config&quot;</span>;
+
+<span class="hljs-keyword">import</span> mysql <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;mysql2/promise&quot;</span>;
+
+<span class="hljs-comment">// Get variables from .env file for database connection</span>
+<span class="hljs-keyword">const</span> { <span class="hljs-variable constant_">DB_HOST</span>, <span class="hljs-variable constant_">DB_PORT</span>, <span class="hljs-variable constant_">DB_USER</span>, <span class="hljs-variable constant_">DB_PASSWORD</span>, <span class="hljs-variable constant_">DB_NAME</span> } = process.<span class="hljs-property">env</span>;
+
+<span class="hljs-keyword">class</span> <span class="hljs-title class_">CategoryRepository</span> {
+  <span class="hljs-title function_">constructor</span>(<span class="hljs-params"></span>) {
+    <span class="hljs-comment">// Create a connection pool to the database</span>
+    <span class="hljs-variable language_">this</span>.<span class="hljs-property">databaseClient</span> = mysql.<span class="hljs-title function_">createPool</span>({
+      <span class="hljs-attr">host</span>: <span class="hljs-variable constant_">DB_HOST</span>,
+      <span class="hljs-attr">port</span>: <span class="hljs-variable constant_">DB_PORT</span>,
+      <span class="hljs-attr">user</span>: <span class="hljs-variable constant_">DB_USER</span>,
+      <span class="hljs-attr">password</span>: <span class="hljs-variable constant_">DB_PASSWORD</span>,
+      <span class="hljs-attr">database</span>: <span class="hljs-variable constant_">DB_NAME</span>,
+    });
+  }
+
+  <span class="hljs-keyword">async</span> <span class="hljs-title function_">readAll</span>(<span class="hljs-params"></span>) {
+    <span class="hljs-comment">// Access data</span>
+    <span class="hljs-keyword">const</span> [rows] = <span class="hljs-keyword">await</span> <span class="hljs-variable language_">this</span>.<span class="hljs-property">databaseClient</span>.<span class="hljs-title function_">query</span>(<span class="hljs-string">&quot;SELECT * FROM category&quot;</span>);
+
+    <span class="hljs-keyword">return</span> rows;
+  }
+
+  <span class="hljs-title function_">close</span>(<span class="hljs-params"></span>) {
+    <span class="hljs-comment">// Close the connection pool</span>
+    <span class="hljs-variable language_">this</span>.<span class="hljs-property">databaseClient</span>.<span class="hljs-title function_">end</span>();
+  }
+}
+</code></pre></div>
+<div class="encadre encadre--note encadre--story"><div class="encadre__corps"><p>Pourquoi 3 et pas une seule action &quot;accéder aux données&quot; ? Comment décider du découpage de ton code ?</p>
+<p>Il n'y a malheureusement pas de réponse universelle à cette question. Mais le &quot;bon&quot; découpage vient avec la &quot;mauvaise&quot; pratique : c'est en faisant que tu feras mal, et en faisant mal que tu construiras ton expertise de ce qui est bien (et qu'il n'y a jamais qu'une seule bonne solution).</p>
+<p>Pour cette fois, tu peux me faire confiance : c'est un bon découpage 🙂</p>
+</div></div>
+<p>Pour encapsuler ces actions, tu dois stocker ce code : stocker du code est le rôle des fonctions.  Commençons donc par encapsuler ces 3 blocs de code dans des fonctions :</p>
+<div class="bloc-code"><div class="bloc-code__langue">javascript</div><pre><code class="hljs language-javascript"><span class="hljs-keyword">import</span> <span class="hljs-string">&quot;dotenv/config&quot;</span>;
+
+<span class="hljs-keyword">import</span> mysql <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;mysql2/promise&quot;</span>;
+
+<span class="hljs-comment">// Get variables from .env file for database connection</span>
+<span class="hljs-keyword">const</span> { <span class="hljs-variable constant_">DB_HOST</span>, <span class="hljs-variable constant_">DB_PORT</span>, <span class="hljs-variable constant_">DB_USER</span>, <span class="hljs-variable constant_">DB_PASSWORD</span>, <span class="hljs-variable constant_">DB_NAME</span> } = process.<span class="hljs-property">env</span>;
+
+<span class="hljs-keyword">class</span> <span class="hljs-title class_">CategoryRepository</span> {
+  <span class="hljs-title function_">constructor</span>(<span class="hljs-params"></span>) {
+    <span class="hljs-comment">// Create a connection pool to the database</span>
+    <span class="hljs-variable language_">this</span>.<span class="hljs-property">databaseClient</span> = mysql.<span class="hljs-title function_">createPool</span>({
+      <span class="hljs-attr">host</span>: <span class="hljs-variable constant_">DB_HOST</span>,
+      <span class="hljs-attr">port</span>: <span class="hljs-variable constant_">DB_PORT</span>,
+      <span class="hljs-attr">user</span>: <span class="hljs-variable constant_">DB_USER</span>,
+      <span class="hljs-attr">password</span>: <span class="hljs-variable constant_">DB_PASSWORD</span>,
+      <span class="hljs-attr">database</span>: <span class="hljs-variable constant_">DB_NAME</span>,
+    });
+  }
+
+  <span class="hljs-keyword">async</span> <span class="hljs-title function_">readAll</span>(<span class="hljs-params"></span>) {
+    <span class="hljs-comment">// Access data</span>
+    <span class="hljs-keyword">const</span> [rows] = <span class="hljs-keyword">await</span> <span class="hljs-variable language_">this</span>.<span class="hljs-property">databaseClient</span>.<span class="hljs-title function_">query</span>(<span class="hljs-string">&quot;SELECT * FROM category&quot;</span>);
+
+    <span class="hljs-keyword">return</span> rows;
+  }
+
+  <span class="hljs-title function_">close</span>(<span class="hljs-params"></span>) {
+    <span class="hljs-comment">// Close the connection pool</span>
+    <span class="hljs-variable language_">this</span>.<span class="hljs-property">databaseClient</span>.<span class="hljs-title function_">end</span>();
+  }
+}
+</code></pre></div>
+<p>J'ai choisi les noms <code>readAll</code> et <code>close</code> arbitrairement en suivant mon inspiration. Avec tout de même une intention forte : que le nom de chaque fonction représente ce qu'elle fait dans le contexte de l'accès aux données des catégories.</p>
+<p>Tu dois maintenant représenter ce contexte en encapsulant ces fonctions dans une classe :</p>
+<div class="bloc-code"><div class="bloc-code__langue">javascript</div><pre><code class="hljs language-javascript"><span class="hljs-keyword">import</span> <span class="hljs-string">&quot;dotenv/config&quot;</span>;
+
+<span class="hljs-keyword">import</span> mysql <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;mysql2/promise&quot;</span>;
+
+<span class="hljs-comment">// Get variables from .env file for database connection</span>
+<span class="hljs-keyword">const</span> { <span class="hljs-variable constant_">DB_HOST</span>, <span class="hljs-variable constant_">DB_PORT</span>, <span class="hljs-variable constant_">DB_USER</span>, <span class="hljs-variable constant_">DB_PASSWORD</span>, <span class="hljs-variable constant_">DB_NAME</span> } = process.<span class="hljs-property">env</span>;
+
+<span class="hljs-keyword">class</span> <span class="hljs-title class_">CategoryRepository</span> {
+  <span class="hljs-title function_">constructor</span>(<span class="hljs-params"></span>) {
+    <span class="hljs-comment">// Create a connection pool to the database</span>
+    <span class="hljs-variable language_">this</span>.<span class="hljs-property">databaseClient</span> = mysql.<span class="hljs-title function_">createPool</span>({
+      <span class="hljs-attr">host</span>: <span class="hljs-variable constant_">DB_HOST</span>,
+      <span class="hljs-attr">port</span>: <span class="hljs-variable constant_">DB_PORT</span>,
+      <span class="hljs-attr">user</span>: <span class="hljs-variable constant_">DB_USER</span>,
+      <span class="hljs-attr">password</span>: <span class="hljs-variable constant_">DB_PASSWORD</span>,
+      <span class="hljs-attr">database</span>: <span class="hljs-variable constant_">DB_NAME</span>,
+    });
+  }
+
+  <span class="hljs-keyword">async</span> <span class="hljs-title function_">readAll</span>(<span class="hljs-params"></span>) {
+    <span class="hljs-comment">// Access data</span>
+    <span class="hljs-keyword">const</span> [rows] = <span class="hljs-keyword">await</span> <span class="hljs-variable language_">this</span>.<span class="hljs-property">databaseClient</span>.<span class="hljs-title function_">query</span>(<span class="hljs-string">&quot;SELECT * FROM category&quot;</span>);
+
+    <span class="hljs-keyword">return</span> rows;
+  }
+
+  <span class="hljs-title function_">close</span>(<span class="hljs-params"></span>) {
+    <span class="hljs-comment">// Close the connection pool</span>
+    <span class="hljs-variable language_">this</span>.<span class="hljs-property">databaseClient</span>.<span class="hljs-title function_">end</span>();
+  }
+}
+</code></pre></div>
+<p>Voici le code complet dans toute sa lumière, que tu peux intègrer dans ton fichier <code>index.js</code> :</p>
+<div class="bloc-code"><div class="bloc-code__langue">javascript</div><pre><code class="hljs language-javascript"><span class="hljs-keyword">import</span> <span class="hljs-string">&quot;dotenv/config&quot;</span>;
+
+<span class="hljs-keyword">import</span> mysql <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;mysql2/promise&quot;</span>;
+
+<span class="hljs-comment">// Get variables from .env file for database connection</span>
+<span class="hljs-keyword">const</span> { <span class="hljs-variable constant_">DB_HOST</span>, <span class="hljs-variable constant_">DB_PORT</span>, <span class="hljs-variable constant_">DB_USER</span>, <span class="hljs-variable constant_">DB_PASSWORD</span>, <span class="hljs-variable constant_">DB_NAME</span> } = process.<span class="hljs-property">env</span>;
+
+<span class="hljs-keyword">class</span> <span class="hljs-title class_">CategoryRepository</span> {
+  <span class="hljs-title function_">constructor</span>(<span class="hljs-params"></span>) {
+    <span class="hljs-comment">// Create a connection pool to the database</span>
+    <span class="hljs-variable language_">this</span>.<span class="hljs-property">databaseClient</span> = mysql.<span class="hljs-title function_">createPool</span>({
+      <span class="hljs-attr">host</span>: <span class="hljs-variable constant_">DB_HOST</span>,
+      <span class="hljs-attr">port</span>: <span class="hljs-variable constant_">DB_PORT</span>,
+      <span class="hljs-attr">user</span>: <span class="hljs-variable constant_">DB_USER</span>,
+      <span class="hljs-attr">password</span>: <span class="hljs-variable constant_">DB_PASSWORD</span>,
+      <span class="hljs-attr">database</span>: <span class="hljs-variable constant_">DB_NAME</span>,
+    });
+  }
+
+  <span class="hljs-keyword">async</span> <span class="hljs-title function_">readAll</span>(<span class="hljs-params"></span>) {
+    <span class="hljs-comment">// Access data</span>
+    <span class="hljs-keyword">const</span> [rows] = <span class="hljs-keyword">await</span> <span class="hljs-variable language_">this</span>.<span class="hljs-property">databaseClient</span>.<span class="hljs-title function_">query</span>(<span class="hljs-string">&quot;SELECT * FROM category&quot;</span>);
+
+    <span class="hljs-keyword">return</span> rows;
+  }
+
+  <span class="hljs-title function_">close</span>(<span class="hljs-params"></span>) {
+    <span class="hljs-comment">// Close the connection pool</span>
+    <span class="hljs-variable language_">this</span>.<span class="hljs-property">databaseClient</span>.<span class="hljs-title function_">end</span>();
+  }
+}
+</code></pre></div>
+<div class="encadre encadre--note encadre--callout"><div class="encadre__corps"><p>Pour parler d'une fonction dans une classe, tu peux parler d'une <em>méthode</em>. Le mot-clé <code>this</code> représente l'instance d'un objet créé avec la classe <code>CategoryRepository</code> : dit autrement, <code>this</code> permet à des méthodes de &quot;partager&quot; des variables. C'est le cas de <code>this.databaseClient</code> par exemple, qui est partagé entre les méthodes <code>constructor</code>, <code>readAll</code> et <code>close</code>.</p>
+</div></div>
+<p>Ton premier <em>repository</em> est prêt à être utilisé. Mets à jour la fonction <code>accessData</code> dans ton fichier <code>index.js</code> :</p>
+<ul>
+<li>Instancie un objet <code>CategoryRepository</code> avec le mot-clé <code>new</code>.</li>
+<li>Appelle la méthode <code>readAll</code> sur ton objet et affiche le résultat.</li>
+<li>Ferme ton repository.</li>
+</ul>
+<p>Tu obtiendras ce genre de code :</p>
+<div class="bloc-code"><div class="bloc-code__langue">javascript</div><pre><code class="hljs language-javascript"><span class="hljs-keyword">import</span> <span class="hljs-string">&quot;dotenv/config&quot;</span>;
+
+<span class="hljs-keyword">import</span> mysql <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;mysql2/promise&quot;</span>;
+
+<span class="hljs-comment">// Get variables from .env file for database connection</span>
+<span class="hljs-keyword">const</span> { <span class="hljs-variable constant_">DB_HOST</span>, <span class="hljs-variable constant_">DB_PORT</span>, <span class="hljs-variable constant_">DB_USER</span>, <span class="hljs-variable constant_">DB_PASSWORD</span>, <span class="hljs-variable constant_">DB_NAME</span> } = process.<span class="hljs-property">env</span>;
+
+<span class="hljs-keyword">class</span> <span class="hljs-title class_">CategoryRepository</span> {
+  <span class="hljs-comment">/* ... */</span>
+}
+
+<span class="hljs-keyword">const</span> <span class="hljs-title function_">accessData</span> = <span class="hljs-keyword">async</span> (<span class="hljs-params"></span>) =&gt; {
+  <span class="hljs-keyword">try</span> {
+    <span class="hljs-keyword">const</span> categoryRepository = <span class="hljs-keyword">new</span> <span class="hljs-title class_">CategoryRepository</span>();
+
+    <span class="hljs-keyword">const</span> categories = <span class="hljs-keyword">await</span> categoryRepository.<span class="hljs-title function_">readAll</span>();
+
+    categoryRepository.<span class="hljs-title function_">close</span>();
+
+    <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">info</span>(categories);
+  } <span class="hljs-keyword">catch</span> (err) {
+    <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">error</span>(<span class="hljs-string">&quot;Error accessing the database:&quot;</span>, err.<span class="hljs-property">message</span>, err.<span class="hljs-property">stack</span>);
+  }
+};
+
+<span class="hljs-comment">// Run the accessData function</span>
+<span class="hljs-title function_">accessData</span>();
+</code></pre></div>
+<div class="encadre encadre--note encadre--callout"><div class="encadre__corps"><p>Tu peux voir que dans le code de la fonction <code>accessData</code>, plus rien n'indique que les catégories sont récupérées depuis une base de données : elles pourraient venir d'une API externe, être importées depuis un fichier... Seul ton repository sait <em>comment</em> il accède aux données. Depuis l'extérieur de la &quot;capsule&quot;, nous ne voyons plus les détails internes : ces détails sont contenus dans la classe et notre code exprime ce qu'il fait, le <em>quoi</em> plutôt que le comment.</p>
+</div></div>
+<h3>Et dans le Monorepo ?</h3>
+<p>Tu peux construire des repositories efficacement dans les modules. Regarde l'exemple dans le fichier <code>itemRepository.ts</code> du dossier <code>server/src/modules/item</code>. Avec un éclairage bien choisi, tu retrouveras une classe et surtout une méthode <code>readAll</code> proche de ton premier Repository :</p>
+<div class="bloc-code"><div class="bloc-code__langue">typescript</div><pre><code class="hljs language-typescript"><span class="hljs-keyword">import</span> databaseClient <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;../../../database/client&quot;</span>;
+
+<span class="hljs-keyword">import</span> <span class="hljs-keyword">type</span> { <span class="hljs-title class_">Result</span>, <span class="hljs-title class_">Rows</span> } <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;../../../database/client&quot;</span>;
+
+<span class="hljs-keyword">type</span> <span class="hljs-title class_">Item</span> = {
+  <span class="hljs-attr">id</span>: <span class="hljs-built_in">number</span>;
+  <span class="hljs-attr">title</span>: <span class="hljs-built_in">string</span>;
+  <span class="hljs-attr">user_id</span>: <span class="hljs-built_in">number</span>;
+};
+
+<span class="hljs-keyword">class</span> <span class="hljs-title class_">ItemRepository</span> {
+  <span class="hljs-comment">// The C of CRUD - Create operation</span>
+
+  <span class="hljs-keyword">async</span> <span class="hljs-title function_">create</span>(<span class="hljs-params"><span class="hljs-attr">item</span>: <span class="hljs-title class_">Omit</span>&lt;<span class="hljs-title class_">Item</span>, <span class="hljs-string">&quot;id&quot;</span>&gt;</span>) {
+    <span class="hljs-comment">// Execute the SQL INSERT query to add a new item to the &quot;item&quot; table</span>
+    <span class="hljs-keyword">const</span> [result] = <span class="hljs-keyword">await</span> databaseClient.<span class="hljs-property">query</span>&lt;<span class="hljs-title class_">Result</span>&gt;(
+      <span class="hljs-string">&quot;insert into item (title, user_id) values (?, ?)&quot;</span>,
+      [item.<span class="hljs-property">title</span>, item.<span class="hljs-property">user_id</span>],
+    );
+
+    <span class="hljs-comment">// Return the ID of the newly inserted item</span>
+    <span class="hljs-keyword">return</span> result.<span class="hljs-property">insertId</span>;
+  }
+
+  <span class="hljs-comment">// The Rs of CRUD - Read operations</span>
+
+  <span class="hljs-keyword">async</span> <span class="hljs-title function_">read</span>(<span class="hljs-params"><span class="hljs-attr">id</span>: <span class="hljs-built_in">number</span></span>) {
+    <span class="hljs-comment">// Execute the SQL SELECT query to retrieve a specific item by its ID</span>
+    <span class="hljs-keyword">const</span> [rows] = <span class="hljs-keyword">await</span> databaseClient.<span class="hljs-property">query</span>&lt;<span class="hljs-title class_">Rows</span>&gt;(
+      <span class="hljs-string">&quot;select * from item where id = ?&quot;</span>,
+      [id],
+    );
+
+    <span class="hljs-comment">// Return the first row of the result, which represents the item</span>
+    <span class="hljs-keyword">return</span> rows[<span class="hljs-number">0</span>] <span class="hljs-keyword">as</span> <span class="hljs-title class_">Item</span>;
+  }
+
+  <span class="hljs-keyword">async</span> <span class="hljs-title function_">readAll</span>(<span class="hljs-params"></span>) {
+    <span class="hljs-comment">// Execute the SQL SELECT query to retrieve all items from the &quot;item&quot; table</span>
+    <span class="hljs-keyword">const</span> [rows] = <span class="hljs-keyword">await</span> databaseClient.<span class="hljs-property">query</span>&lt;<span class="hljs-title class_">Rows</span>&gt;(<span class="hljs-string">&quot;select * from item&quot;</span>);
+
+    <span class="hljs-comment">// Return the array of items</span>
+    <span class="hljs-keyword">return</span> rows <span class="hljs-keyword">as</span> <span class="hljs-title class_">Item</span>[];
+  }
+
+  <span class="hljs-comment">// The U of CRUD - Update operation</span>
+  <span class="hljs-comment">// <span class="hljs-doctag">TODO:</span> Implement the update operation to modify an existing item</span>
+
+  <span class="hljs-comment">// async update(item: Item) {</span>
+  <span class="hljs-comment">//   ...</span>
+  <span class="hljs-comment">// }</span>
+
+  <span class="hljs-comment">// The D of CRUD - Delete operation</span>
+  <span class="hljs-comment">// <span class="hljs-doctag">TODO:</span> Implement the delete operation to remove an item by its ID</span>
+
+  <span class="hljs-comment">// async delete(id: number) {</span>
+  <span class="hljs-comment">//   ...</span>
+  <span class="hljs-comment">// }</span>
+}
+
+<span class="hljs-keyword">export</span> <span class="hljs-keyword">default</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">ItemRepository</span>();
+</code></pre></div>
+<p>Les seules vraies différences sont le <code>&lt;Rows&gt;</code> derrière le mot <code>query</code> et le <code>as Item[]</code> derrière le <code>return rows</code> : ce sont des indications de typage pour TypeScript. Les types sont visibles au début du fichier :</p>
+<div class="bloc-code"><div class="bloc-code__langue">typescript</div><pre><code class="hljs language-typescript"><span class="hljs-keyword">import</span> databaseClient <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;../../../database/client&quot;</span>;
+
+<span class="hljs-keyword">import</span> <span class="hljs-keyword">type</span> { <span class="hljs-title class_">Result</span>, <span class="hljs-title class_">Rows</span> } <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;../../../database/client&quot;</span>;
+
+<span class="hljs-keyword">type</span> <span class="hljs-title class_">Item</span> = {
+  <span class="hljs-attr">id</span>: <span class="hljs-built_in">number</span>;
+  <span class="hljs-attr">title</span>: <span class="hljs-built_in">string</span>;
+  <span class="hljs-attr">user_id</span>: <span class="hljs-built_in">number</span>;
+};
+
+<span class="hljs-keyword">class</span> <span class="hljs-title class_">ItemRepository</span> {
+  <span class="hljs-comment">// ...</span>
+
+  <span class="hljs-keyword">async</span> <span class="hljs-title function_">readAll</span>(<span class="hljs-params"></span>) {
+    <span class="hljs-comment">// Execute the SQL SELECT query to retrieve all items from the &quot;item&quot; table</span>
+    <span class="hljs-keyword">const</span> [rows] = <span class="hljs-keyword">await</span> databaseClient.<span class="hljs-property">query</span>&lt;<span class="hljs-title class_">Rows</span>&gt;(<span class="hljs-string">&quot;select * from item&quot;</span>);
+
+    <span class="hljs-comment">// Return the array of items</span>
+    <span class="hljs-keyword">return</span> rows <span class="hljs-keyword">as</span> <span class="hljs-title class_">Item</span>[];
+  }
+
+  <span class="hljs-comment">// ...</span>
+}
+
+<span class="hljs-keyword">export</span> <span class="hljs-keyword">default</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">ItemRepository</span>();
+</code></pre></div>
+<div class="encadre encadre--note encadre--arrow"><div class="encadre__corps"><p>La méthode <code>query</code> de <code>mysql2</code> (et oui, c'est bien elle sous le capot) te permet d'envoyer à ton serveur de base de données des requêtes de type <code>select</code> : ces requêtes te permettent de sélectionner des <em>lignes</em> d'une table (des <code>Rows</code> en anglais).</p>
+<p>Tu utiliseras la même méthode <code>query</code> avec les autres types de requêtes SQL : <code>insert</code>, <code>update</code> et <code>delete</code>. Ces requêtes ne sélectionneront pas des lignes dans tes tables, mais appliqueront des actions pour les modifier : pour ces requêtes, <code>query</code> te retournera un genre de &quot;compte-rendu&quot; de ces actions. C'est le type <code>Result</code> que tu vois importé ici à côté de <code>Rows</code>.</p>
+<p>TypeScript ne peut pas deviner le type de ta requête à partir de la chaine de caractères en paramètre : <code>select</code> ou pas, ce sera toujours une chaine de caractères. La syntaxe <code>query&lt;Rows&gt;</code> te permet de préciser à TypeScript que tu veux envoyer une requête pour obtenir des lignes (bref, faire un <code>select</code>).</p>
+</div></div>
+<p>Dans le même genre, le package <code>mysql2</code> ne connait pas la structure de tes tables. Il sait qu'il te retourne un tableau d'objet, mais sans plus de détails. Pour aider TypeScript, l'assertion de type <code>as Item[]</code> nous permet de lui donner les détails manquants.</p>
+<p>Une fois défini le <code>type Item</code>, tu peux l'utiliser pour expliciter le type des données récupérées avec <code>query</code> avant de les envoyer vers l'extérieur avec l'instruction <code>return</code>. Pour la méthode <code>readAll</code>, tu retournes un tableau d'items : <code>Item[]</code>.</p>
+<div class="encadre encadre--note encadre--story"><div class="encadre__corps"><p>Ok 😀</p>
+<p>Mais... la classe <code>ItemRepository</code> n'a pas de constructeur ni de &quot;close&quot; de la connexion à la base de données ?</p>
+<p>Le constructeur de ton premier Repository créait le pool de connexions : dans le Monorepo, cette partie est centralisée dans son propre &quot;module&quot;. Tu peux suivre le fil du fichier <code>server/database/client.ts</code> : il créé effectivement le pool de connexions utilisé dans tout ton projet. Ce fichier exporte aussi les types <code>Result</code> et <code>Rows</code> du package <code>mysql2</code>.</p>
+</div></div>
+<p>Tu as la classe ItemRepository, mais tu dois encore créer un objet avec le mot-clé <code>new</code> avant de pouvoir profiter de son <code>readAll</code>. Dans nos choix de conception, cette étape est intégrée à l'export du fichier :</p>
+<div class="bloc-code"><div class="bloc-code__langue">typescript</div><pre><code class="hljs language-typescript"><span class="hljs-keyword">import</span> databaseClient <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;../../../database/client&quot;</span>;
+
+<span class="hljs-keyword">import</span> <span class="hljs-keyword">type</span> { <span class="hljs-title class_">Result</span>, <span class="hljs-title class_">Rows</span> } <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;../../../database/client&quot;</span>;
+
+<span class="hljs-keyword">type</span> <span class="hljs-title class_">Item</span> = {
+  <span class="hljs-attr">id</span>: <span class="hljs-built_in">number</span>;
+  <span class="hljs-attr">title</span>: <span class="hljs-built_in">string</span>;
+  <span class="hljs-attr">user_id</span>: <span class="hljs-built_in">number</span>;
+};
+
+<span class="hljs-keyword">class</span> <span class="hljs-title class_">ItemRepository</span> {
+  <span class="hljs-comment">// ...</span>
+
+  <span class="hljs-keyword">async</span> <span class="hljs-title function_">readAll</span>(<span class="hljs-params"></span>) {
+    <span class="hljs-comment">// Execute the SQL SELECT query to retrieve all items from the &quot;item&quot; table</span>
+    <span class="hljs-keyword">const</span> [rows] = <span class="hljs-keyword">await</span> databaseClient.<span class="hljs-property">query</span>&lt;<span class="hljs-title class_">Rows</span>&gt;(<span class="hljs-string">&quot;select * from item&quot;</span>);
+
+    <span class="hljs-comment">// Return the array of items</span>
+    <span class="hljs-keyword">return</span> rows <span class="hljs-keyword">as</span> <span class="hljs-title class_">Item</span>[];
+  }
+
+  <span class="hljs-comment">// ...</span>
+}
+
+<span class="hljs-keyword">export</span> <span class="hljs-keyword">default</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">ItemRepository</span>();
+</code></pre></div>
+<p>De cette façon, tu peux importer une instance utilisable immédiatement pour tes actions. Par exemple, dans <code>server/src/modules/item/itemActions.ts</code> :</p>
+<div class="bloc-code"><div class="bloc-code__langue">typescript</div><pre><code class="hljs language-typescript"><span class="hljs-comment">// Import access to data</span>
+<span class="hljs-keyword">import</span> itemRepository <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;./itemRepository&quot;</span>;
+</code></pre></div>
+<hr>
+<div class="encadre encadre--warning"><div class="encadre__titre">Attention</div><div class="encadre__corps"><p>Tu vas faire une série de modifications à travers plusieurs fichiers dans ton projet Wild Series. Prends une pause si tu en as besoin pour récupérer toute ta concentration.</p>
+<p>Les étapes qui vont suivre vont te permettre de <strong>lier ton code Express à ta base de données</strong>.</p>
+</div></div>
+<p>Crée un fichier <code>categoryRepository.ts</code> dans ton dossier <code>server/src/modules/category</code> avec un code similaire à <code>itemRepository.ts</code>, mais pour la table <code>category</code> :</p>
+<div class="bloc-code"><div class="bloc-code__langue">typescript</div><pre><code class="hljs language-typescript"><span class="hljs-keyword">import</span> databaseClient <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;../../../database/client&quot;</span>;
+
+<span class="hljs-keyword">import</span> <span class="hljs-keyword">type</span> { <span class="hljs-title class_">Result</span>, <span class="hljs-title class_">Rows</span> } <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;../../../database/client&quot;</span>;
+
+<span class="hljs-keyword">type</span> <span class="hljs-title class_">Category</span> = {
+  <span class="hljs-attr">id</span>: <span class="hljs-built_in">number</span>;
+  <span class="hljs-attr">name</span>: <span class="hljs-built_in">string</span>;
+};
+
+<span class="hljs-keyword">class</span> <span class="hljs-title class_">CategoryRepository</span> {
+  <span class="hljs-keyword">async</span> <span class="hljs-title function_">readAll</span>(<span class="hljs-params"></span>) {
+    <span class="hljs-comment">// Execute the SQL SELECT query to retrieve all categories from the &quot;category&quot; table</span>
+    <span class="hljs-keyword">const</span> [rows] = <span class="hljs-keyword">await</span> databaseClient.<span class="hljs-property">query</span>&lt;<span class="hljs-title class_">Rows</span>&gt;(<span class="hljs-string">&quot;select * from category&quot;</span>);
+
+    <span class="hljs-comment">// Return the array of categories</span>
+    <span class="hljs-keyword">return</span> rows <span class="hljs-keyword">as</span> <span class="hljs-title class_">Category</span>[];
+  }
+}
+
+<span class="hljs-keyword">export</span> <span class="hljs-keyword">default</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">CategoryRepository</span>();
+</code></pre></div>
+<p>Tu peux maintenant utiliser ton Repository dans tes actions. Modifie ton fichier <code>categoryActions.ts</code> dans <code>server/src/modules/category</code> comme suit :</p>
+<div class="bloc-code"><div class="bloc-code__langue">diff</div><pre><code class="hljs language-diff"><span class="hljs-addition">+// Import access to data</span>
+<span class="hljs-addition">+import categoryRepository from &quot;./categoryRepository&quot;;</span>
+
+// Some data to make the trick
+
+const categories = [
+  {
+    id: 1,
+    name: &quot;Comédie&quot;,
+  },
+  {
+    id: 2,
+    name: &quot;Science-Fiction&quot;,
+  },
+];
+
+// Declare the actions
+
+import type { RequestHandler } from &quot;express&quot;;
+
+<span class="hljs-deletion">-const browse: RequestHandler = (req, res) =&gt; {</span>
+<span class="hljs-deletion">-  res.json(categories);</span>
+<span class="hljs-deletion">-};</span>
+<span class="hljs-addition">+const browse: RequestHandler = async (req, res) =&gt; {</span>
+<span class="hljs-addition">+  const categoriesFromDB = await categoryRepository.readAll();</span>
+<span class="hljs-addition">+</span>
+<span class="hljs-addition">+  res.json(categoriesFromDB);</span>
+<span class="hljs-addition">+};</span>
+
+const read: RequestHandler = (req, res) =&gt; {
+  const parsedId = Number.parseInt(req.params.id);
+
+  const category = categories.find((p) =&gt; p.id <span class="hljs-comment">=== parsedId);</span>
+
+  if (category != null) {
+    res.json(category);
+  } else {
+    res.sendStatus(404);
+  }
+};
+
+// Export them to import them somewhere else
+
+export default { browse, read };
+</code></pre></div>
+<div class="encadre encadre--info"><div class="encadre__titre">Info</div><div class="encadre__corps"><p>Si ton serveur n'est pas déjà lancé, ouvre ton terminal, et lance la commande <code>npm run dev</code>.</p>
+</div></div>
+<p>Ouvre la page <a href="http://localhost:3310/api/categories" target="_blank" rel="noopener noreferrer">http://localhost:3310/api/categories</a> : les catégories que tu voies sont celles contenues dans ta base de données.</p>
+<h2>Récapitulatif</h2>
+<p>Pour fournir un accès à tes données dans ton projet, tu dois créer un repository :</p>
+<ul>
+<li>Déclare tes classes <code>Repository</code> dans tes modules.</li>
+<li>Exporte directement une instance de ta classe.</li>
+</ul>
+<h3>La cathédrale complète</h3>
+<p>Avec cette étape, tu as parcouru l'ensemble de l'achitecture du dossier <code>server</code>, depuis le point d'entrée <code>main</code> jusqu'aux requêtes SQL envoyées par le <code>database/client</code> :</p>
+<p><img src="images/001-la-cathedrale-complete.png" alt="" loading="lazy"></p>
+<h2>Challenge</h2>
+<p>Crée un repository pour accéder aux données de tes séries.</p>
+<p>Voici les étapes que tu dois suivre pour créer ton repository :</p>
+<ul>
+<li>
+<p>Sur le modèle de <code>CategoryRepository</code>, crée la classe <code>ProgramRepository</code> dans <code>server/src/modules/program</code> avec une méthode <code>readAll</code>.</p>
+</li>
+<li>
+<p>Utilise ton repository pour accéder aux séries de ta base de données dans l'action <code>browse</code> du fichier <code>server/src/modules/program/programActions.ts</code> :</p>
+<div class="bloc-code"><div class="bloc-code__langue">typescript</div><pre><code class="hljs language-typescript"><span class="hljs-keyword">const</span> <span class="hljs-attr">browse</span>: <span class="hljs-title class_">RequestHandler</span> = <span class="hljs-title function_">async</span> (req, res) =&gt; {
+  <span class="hljs-keyword">const</span> programsFromDB = <span class="hljs-keyword">await</span> programRepository.<span class="hljs-title function_">readAll</span>();
+
+  res.<span class="hljs-title function_">json</span>(programsFromDB);
+};
+</code></pre></div>
+</li>
+</ul>
+<p>Pousse ton projet sur GitHub, et partage le lien de ton dépôt pour valider ta quête.</p>
+<h3>Critères de validation</h3>
+<ul>
+<li>[ ] Le projet est disponible sur GitHub.</li>
+<li>[ ] L'action <code>browse</code> dans <code>server/src/modules/program/programActions.ts</code> accède aux données via un Repository.</li>
+<li>[ ] Quand tu clones et installe le projet, crées un fichier <code>server/.env</code> avec tes identifiants et lances la commande <code>npm run dev:server</code> : la page <a href="http://localhost:3310/api/programs" target="_blank" rel="noopener noreferrer">http://localhost:3310/api/programs</a> affiche les séries de ta base de données.</li>
+</ul>
+<div class="onglets" data-onglets="4"><input type="radio" name="onglets-22" id="onglets-22-0" class="onglets__radio" checked><input type="radio" name="onglets-22" id="onglets-22-1" class="onglets__radio"><input type="radio" name="onglets-22" id="onglets-22-2" class="onglets__radio"><input type="radio" name="onglets-22" id="onglets-22-3" class="onglets__radio"><div class="onglets__barre"><label class="onglets__label" for="onglets-22-0">server/src/modules/program/programRepository.ts</label><label class="onglets__label" for="onglets-22-1">server/src/modules/program/programActions.ts</label><label class="onglets__label" for="onglets-22-2">server/src/modules/category/categoryRepository.ts</label><label class="onglets__label" for="onglets-22-3">server/src/modules/category/categoryActions.ts</label></div><div class="onglets__panneaux"><div class="onglets__panneau"><div class="bloc-code"><div class="bloc-code__langue">typescript</div><pre><code class="hljs language-typescript"><span class="hljs-keyword">import</span> databaseClient <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;../../../database/client&quot;</span>;
+
+<span class="hljs-keyword">import</span> <span class="hljs-keyword">type</span> { <span class="hljs-title class_">Result</span>, <span class="hljs-title class_">Rows</span> } <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;../../../database/client&quot;</span>;
+
+<span class="hljs-keyword">type</span> <span class="hljs-title class_">Program</span> = {
+  <span class="hljs-attr">id</span>: <span class="hljs-built_in">number</span>;
+  <span class="hljs-attr">title</span>: <span class="hljs-built_in">string</span>;
+  <span class="hljs-attr">synopsis</span>: <span class="hljs-built_in">string</span>;
+  <span class="hljs-attr">poster</span>: <span class="hljs-built_in">string</span>;
+  <span class="hljs-attr">country</span>: <span class="hljs-built_in">string</span>;
+  <span class="hljs-attr">year</span>: <span class="hljs-built_in">number</span>;
+  <span class="hljs-attr">category_id</span>: <span class="hljs-built_in">number</span>;
+};
+
+<span class="hljs-keyword">class</span> <span class="hljs-title class_">ProgramRepository</span> {
+  <span class="hljs-keyword">async</span> <span class="hljs-title function_">readAll</span>(<span class="hljs-params"></span>) {
+    <span class="hljs-comment">// Execute the SQL SELECT query to retrieve all programs from the &quot;program&quot; table</span>
+    <span class="hljs-keyword">const</span> [rows] = <span class="hljs-keyword">await</span> databaseClient.<span class="hljs-property">query</span>&lt;<span class="hljs-title class_">Rows</span>&gt;(<span class="hljs-string">&quot;select * from program&quot;</span>);
+
+    <span class="hljs-comment">// Return the array of programs</span>
+    <span class="hljs-keyword">return</span> rows <span class="hljs-keyword">as</span> <span class="hljs-title class_">Program</span>[];
+  }
+}
+
+<span class="hljs-keyword">export</span> <span class="hljs-keyword">default</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">ProgramRepository</span>();
+</code></pre></div>
+</div><div class="onglets__panneau"><div class="bloc-code"><div class="bloc-code__langue">typescript</div><pre><code class="hljs language-typescript"><span class="hljs-comment">// Import access to data</span>
+<span class="hljs-keyword">import</span> programRepository <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;./programRepository&quot;</span>;
+
+<span class="hljs-comment">// Some data to make the trick</span>
+
+<span class="hljs-keyword">const</span> programs = [
+  {
+    <span class="hljs-attr">id</span>: <span class="hljs-number">1</span>,
+    <span class="hljs-attr">title</span>: <span class="hljs-string">&quot;The Good Place&quot;</span>,
+    <span class="hljs-attr">synopsis</span>:
+      <span class="hljs-string">&quot;À sa mort, Eleanor Shellstrop est envoyée au Bon Endroit, un paradis fantaisiste réservé aux individus exceptionnellement bienveillants. Or Eleanor n&#x27;est pas exactement une « bonne personne » et comprend vite qu&#x27;il y a eu erreur sur la personne. Avec l&#x27;aide de Chidi, sa prétendue âme sœur dans l&#x27;au-delà, la jeune femme est bien décidée à se redécouvrir.&quot;</span>,
+    <span class="hljs-attr">poster</span>:
+      <span class="hljs-string">&quot;https://img.betaseries.com/JwRqyGD3f9KvO_OlfIXHZUA3Ypw=/600x900/smart/https%3A%2F%2Fpictures.betaseries.com%2Ffonds%2Fposter%2F94857341d71c795c69b9e5b23c4bf3e7.jpg&quot;</span>,
+    <span class="hljs-attr">country</span>: <span class="hljs-string">&quot;USA&quot;</span>,
+    <span class="hljs-attr">year</span>: <span class="hljs-number">2016</span>,
+  },
+  {
+    <span class="hljs-attr">id</span>: <span class="hljs-number">2</span>,
+    <span class="hljs-attr">title</span>: <span class="hljs-string">&quot;Dark&quot;</span>,
+    <span class="hljs-attr">synopsis</span>:
+      <span class="hljs-string">&quot;Quatre familles affolées par la disparition d&#x27;un enfant cherchent des réponses et tombent sur un mystère impliquant trois générations qui finit de les déstabiliser.&quot;</span>,
+    <span class="hljs-attr">poster</span>:
+      <span class="hljs-string">&quot;https://img.betaseries.com/zDxfeFudy3HWjxa6J8QIED9iaVw=/600x900/smart/https%3A%2F%2Fpictures.betaseries.com%2Ffonds%2Fposter%2Fc47135385da176a87d0dd9177c5f6a41.jpg&quot;</span>,
+    <span class="hljs-attr">country</span>: <span class="hljs-string">&quot;Allemagne&quot;</span>,
+    <span class="hljs-attr">year</span>: <span class="hljs-number">2017</span>,
+  },
+];
+
+<span class="hljs-comment">// Declare the actions</span>
+
+<span class="hljs-keyword">import</span> <span class="hljs-keyword">type</span> { <span class="hljs-title class_">RequestHandler</span> } <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;express&quot;</span>;
+
+<span class="hljs-keyword">const</span> <span class="hljs-attr">browse</span>: <span class="hljs-title class_">RequestHandler</span> = <span class="hljs-title function_">async</span> (req, res) =&gt; {
+  <span class="hljs-keyword">const</span> programsFromDB = <span class="hljs-keyword">await</span> programRepository.<span class="hljs-title function_">readAll</span>();
+
+  res.<span class="hljs-title function_">json</span>(programsFromDB);
+};
+
+<span class="hljs-keyword">const</span> <span class="hljs-attr">read</span>: <span class="hljs-title class_">RequestHandler</span> = <span class="hljs-function">(<span class="hljs-params">req, res</span>) =&gt;</span> {
+  <span class="hljs-keyword">const</span> parsedId = <span class="hljs-title class_">Number</span>.<span class="hljs-built_in">parseInt</span>(req.<span class="hljs-property">params</span>.<span class="hljs-property">id</span>);
+
+  <span class="hljs-keyword">const</span> program = programs.<span class="hljs-title function_">find</span>(<span class="hljs-function">(<span class="hljs-params">p</span>) =&gt;</span> p.<span class="hljs-property">id</span> === parsedId);
+
+  <span class="hljs-keyword">if</span> (program != <span class="hljs-literal">null</span>) {
+    res.<span class="hljs-title function_">json</span>(program);
+  } <span class="hljs-keyword">else</span> {
+    res.<span class="hljs-title function_">sendStatus</span>(<span class="hljs-number">404</span>);
+  }
+};
+
+<span class="hljs-comment">// Export them to import them somewhere else</span>
+
+<span class="hljs-keyword">export</span> <span class="hljs-keyword">default</span> { browse, read };
+</code></pre></div>
+</div><div class="onglets__panneau"><div class="bloc-code"><div class="bloc-code__langue">typescript</div><pre><code class="hljs language-typescript"><span class="hljs-keyword">import</span> databaseClient <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;../../../database/client&quot;</span>;
+
+<span class="hljs-keyword">import</span> <span class="hljs-keyword">type</span> { <span class="hljs-title class_">Result</span>, <span class="hljs-title class_">Rows</span> } <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;../../../database/client&quot;</span>;
+
+<span class="hljs-keyword">type</span> <span class="hljs-title class_">Category</span> = {
+  <span class="hljs-attr">id</span>: <span class="hljs-built_in">number</span>;
+  <span class="hljs-attr">name</span>: <span class="hljs-built_in">string</span>;
+};
+
+<span class="hljs-keyword">class</span> <span class="hljs-title class_">CategoryRepository</span> {
+  <span class="hljs-keyword">async</span> <span class="hljs-title function_">readAll</span>(<span class="hljs-params"></span>) {
+    <span class="hljs-comment">// Execute the SQL SELECT query to retrieve all categories from the &quot;category&quot; table</span>
+    <span class="hljs-keyword">const</span> [rows] = <span class="hljs-keyword">await</span> databaseClient.<span class="hljs-property">query</span>&lt;<span class="hljs-title class_">Rows</span>&gt;(<span class="hljs-string">&quot;select * from category&quot;</span>);
+
+    <span class="hljs-comment">// Return the array of categories</span>
+    <span class="hljs-keyword">return</span> rows <span class="hljs-keyword">as</span> <span class="hljs-title class_">Category</span>[];
+  }
+}
+
+<span class="hljs-keyword">export</span> <span class="hljs-keyword">default</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">CategoryRepository</span>();
+</code></pre></div>
+</div><div class="onglets__panneau"><div class="bloc-code"><div class="bloc-code__langue">typescript</div><pre><code class="hljs language-typescript"><span class="hljs-comment">// Import access to data</span>
+<span class="hljs-keyword">import</span> categoryRepository <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;./categoryRepository&quot;</span>;
+
+<span class="hljs-comment">// Some data to make the trick</span>
+
+<span class="hljs-keyword">const</span> categories = [
+  {
+    <span class="hljs-attr">id</span>: <span class="hljs-number">1</span>,
+    <span class="hljs-attr">name</span>: <span class="hljs-string">&quot;Comédie&quot;</span>,
+  },
+  {
+    <span class="hljs-attr">id</span>: <span class="hljs-number">2</span>,
+    <span class="hljs-attr">name</span>: <span class="hljs-string">&quot;Science-Fiction&quot;</span>,
+  },
+];
+
+<span class="hljs-comment">// Declare the actions</span>
+
+<span class="hljs-keyword">import</span> <span class="hljs-keyword">type</span> { <span class="hljs-title class_">RequestHandler</span> } <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;express&quot;</span>;
+
+<span class="hljs-keyword">const</span> <span class="hljs-attr">browse</span>: <span class="hljs-title class_">RequestHandler</span> = <span class="hljs-title function_">async</span> (req, res) =&gt; {
+  <span class="hljs-keyword">const</span> categoriesFromDB = <span class="hljs-keyword">await</span> categoryRepository.<span class="hljs-title function_">readAll</span>();
+
+  res.<span class="hljs-title function_">json</span>(categoriesFromDB);
+};
+
+<span class="hljs-keyword">const</span> <span class="hljs-attr">read</span>: <span class="hljs-title class_">RequestHandler</span> = <span class="hljs-function">(<span class="hljs-params">req, res</span>) =&gt;</span> {
+  <span class="hljs-keyword">const</span> parsedId = <span class="hljs-title class_">Number</span>.<span class="hljs-built_in">parseInt</span>(req.<span class="hljs-property">params</span>.<span class="hljs-property">id</span>);
+
+  <span class="hljs-keyword">const</span> category = categories.<span class="hljs-title function_">find</span>(<span class="hljs-function">(<span class="hljs-params">p</span>) =&gt;</span> p.<span class="hljs-property">id</span> === parsedId);
+
+  <span class="hljs-keyword">if</span> (category != <span class="hljs-literal">null</span>) {
+    res.<span class="hljs-title function_">json</span>(category);
+  } <span class="hljs-keyword">else</span> {
+    res.<span class="hljs-title function_">sendStatus</span>(<span class="hljs-number">404</span>);
+  }
+};
+
+<span class="hljs-comment">// Export them to import them somewhere else</span>
+
+<span class="hljs-keyword">export</span> <span class="hljs-keyword">default</span> { browse, read };
+</code></pre></div>
+</div></div></div>
+
+  </div>
+  
+</article>
+
+<nav class="nav-quete">
+  <a class="nav-quete__lien nav-quete__lien--prec" href="../../js-monorepo/006-05-js-monorepo-mettre-en-place-une-base-de-donnees/index.html">
+           <span class="nav-quete__sens">← Précédent</span>
+           <span class="nav-quete__titre">05 - JS Monorepo : Mettre en place une base de données</span>
+         </a>
+  <a class="nav-quete__lien nav-quete__lien--suiv" href="../../js-monorepo/008-07-js-monorepo-mettre-en-place-un-crud-bread/index.html">
+           <span class="nav-quete__sens">Suivant →</span>
+           <span class="nav-quete__titre">07 - JS Monorepo : Mettre en place un CRUD / BREAD 🍞</span>
+         </a>
+</nav>
+</main>
+<footer class="pied">
+  <p>Archive personnelle des cours suivis à la Wild Code School. Copie hors ligne à usage strictement privé.</p>
+</footer>
+
+<script src="../../assets/copie-code.js"></script>
+<script src="../../assets/progression.js"></script>
+</body>
+</html>

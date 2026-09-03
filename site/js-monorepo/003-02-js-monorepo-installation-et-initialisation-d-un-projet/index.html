@@ -1,0 +1,333 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>02 - JS Monorepo : Installation et initialisation d'un projet full-stack — Archives WCS</title>
+<link rel="stylesheet" href="../../assets/style.css">
+</head>
+<body style="--teinte:#000000">
+<header class="entete">
+  <a class="entete__marque" href="../../index.html">Archives Wild Code School</a>
+</header>
+<main class="contenu">
+<nav class="ariane"><a href="../../index.html">Accueil</a><span class="ariane__sep">›</span><a href="../../js-monorepo/index.html">JS Monorepo</a><span class="ariane__sep">›</span><span aria-current="page">02 - JS Monorepo : Installation et initialisation d'un projet full-stack</span></nav>
+
+<article class="quete">
+  <header class="quete__entete">
+    <a class="pastille pastille--teintee" href="../../js-monorepo/index.html">JS Monorepo</a>
+    <h1>02 - JS Monorepo : Installation et initialisation d'un projet full-stack</h1>
+    <p class="quete__meta">Quête 3 sur 9 · 2 images archivées</p>
+  </header>
+  <div class="cours">
+<h2>Objectifs</h2>
+<ul>
+<li>Créer un projet &quot;Monorepo JS&quot;</li>
+<li>Lancer les applications clientes et serveur en parallèle</li>
+<li>Créer une première route dans l'application Express</li>
+</ul>
+<h2>Pré-requis</h2>
+<ol class="etapes"><li class="etape"><div class="etape__puce">1</div><div class="etape__contenu"><h4 class="etape__titre">Valider les quêtes suivantes</h4><div class="renvois"><div class="renvois__titre">Quêtes liées</div><ul><li><a href="../../js-monorepo/001-00-js-monorepo-introduction/index.html">Quête 1549</a></li><li><a href="../../js-monorepo/002-01-js-monorepo-wild-series-la-genese/index.html">Quête 588</a></li></ul></div>
+</div></li><li class="etape"><div class="etape__puce">2</div><div class="etape__contenu"><h4 class="etape__titre">Avoir compris l'architecture globale du &quot;JS Monorepo&quot;</h4><div class="encadre encadre--note encadre--story"><div class="encadre__corps"><p>[...] voici l'essentiel :</p>
+<ul>
+<li><strong><code>client</code></strong> : Ce dossier contiendra le code de ton application cliente React.</li>
+<li><strong><code>server</code></strong> : Ce dossier contiendra le code de ton application serveur avec Express.</li>
+</ul>
+</div></div>
+<div class="encadre encadre--warning"><div class="encadre__titre">Attention</div><div class="encadre__corps"><p>Rappel : Ce Monorepo JS est un framework pédagogique. <strong>Ce n'est pas un outil que tu retrouveras ensuite en entreprise.</strong> Mais son architecture et les styles de code utilisés, inspirés des outils standards de l'industrie, te prépareront à travailler sur des &quot;vrais&quot; projets.</p>
+</div></div>
+</div></li><li class="etape"><div class="etape__puce">3</div><div class="etape__contenu"><h4 class="etape__titre">Être à l'aise avec la syntaxe pour déclarer une route sur une application Express</h4><div class="bloc-code"><div class="bloc-code__langue">js</div><pre><code class="hljs language-js"><span class="hljs-comment">// Déclaration des routes</span>
+
+<span class="hljs-keyword">const</span> <span class="hljs-title function_">sayHello</span> = (<span class="hljs-params">req, res</span>) =&gt; {
+  res.<span class="hljs-title function_">send</span>(<span class="hljs-string">&quot;Hello World!&quot;</span>);
+};
+
+app.<span class="hljs-title function_">get</span>(<span class="hljs-string">&quot;/&quot;</span>, sayHello);
+</code></pre></div>
+</div></li></ol>
+<h2>Sommaire</h2>
+<h2>Introduction</h2>
+<p>Ça y est, après la phase de conception, tu vas enfin pouvoir commencer à entrer dans le code !</p>
+<p>Pour commencer simplement, tu vas créer un projet vierge, le configurer et le versionner. C’est ce même projet que tu dois réutiliser à chaque nouvelle quête du parcours Wild Series pour qu’il soit finalisé à la fin de ta formation !</p>
+<div class="colonnes"><div class="colonne"><p><strong>User stories</strong> 📋</p>
+<div class="encadre encadre--note encadre--callout"><div class="encadre__corps"><p>en tant que visiteur, je souhaite récupérer la liste des séries</p>
+</div></div>
+<div class="encadre encadre--note encadre--callout"><div class="encadre__corps"><p>en tant que visiteur, je souhaite récupérer les données d'une série</p>
+</div></div>
+<div class="encadre encadre--note encadre--callout"><div class="encadre__corps"><p>en tant que contributeur, je souhaite ajouter une série</p>
+</div></div>
+<div class="encadre encadre--note encadre--callout"><div class="encadre__corps"><p>en tant que contributeur, je souhaite modifier une série</p>
+</div></div>
+<div class="encadre encadre--note encadre--callout"><div class="encadre__corps"><p>en tant que contributeur, je souhaite supprimer une série</p>
+</div></div>
+</div><div class="colonne"><p><strong>In progress</strong> 🤸</p>
+<div class="encadre encadre--note encadre--callout"><div class="encadre__corps"><p><strong>initialisation du projet</strong></p>
+</div></div>
+</div><div class="colonne"><p><strong>In review</strong> 🧐</p>
+</div><div class="colonne"><p><strong>Done</strong> ✅</p>
+</div></div>
+<h2>Créer un projet &quot;Monorepo JS&quot;</h2>
+<p>L'outil te met à disposition une commande pour créer un projet :</p>
+<div class="bloc-code"><div class="bloc-code__langue">bash</div><pre><code class="hljs language-bash">npm create @this-is-to-learn/js-monorepo@latest my-project
+</code></pre></div>
+<p>Tu dois la lancer dans ton terminal, dans le dossier où tu souhaites créer ton projet et en remplaçant <code>my-project</code> par le nom de ton projet. Par exemple :</p>
+<div class="bloc-code"><div class="bloc-code__langue">bash</div><pre><code class="hljs language-bash">npm create @this-is-to-learn/js-monorepo@latest wild-series
+</code></pre></div>
+<p>Cette commande va créer un nouveau dossier <code>wild-series</code> dans lequel tu trouveras un projet prêt à l'emploi.</p>
+<p><img src="images/001-creer-un-projet-monorepo-js.png" alt="" loading="lazy"></p>
+<p>Rends-toi ensuite dans le dossier de ton projet :</p>
+<div class="bloc-code"><div class="bloc-code__langue">bash</div><pre><code class="hljs language-bash"><span class="hljs-built_in">cd</span> wild-series
+</code></pre></div>
+<p>Et lance l'installation des dépendances :</p>
+<div class="bloc-code"><div class="bloc-code__langue">bash</div><pre><code class="hljs language-bash">npm install
+</code></pre></div>
+<h2>Lancer les applications cliente et serveur</h2>
+<p>Pour lancer les applications cliente et serveur en parallèle, tu peux utiliser la commande suivante :</p>
+<div class="bloc-code"><div class="bloc-code__langue">bash</div><pre><code class="hljs language-bash">npm run dev
+</code></pre></div>
+<p>Cette commande va lancer l'application React et l'application Express en parallèle, et te permettre de travailler sur le développement côté client et côté serveur dans un seul et même projet.</p>
+<p>Tu devrais voir apparaître des logs similaires dans ton terminal :</p>
+<p><img src="images/002-lancer-les-applications-cliente-et-serveur.png" alt="" loading="lazy"></p>
+<p>Tu peux également lancer les applications cliente et serveur séparément en utilisant les commandes suivantes :</p>
+<div class="bloc-code"><div class="bloc-code__langue">bash</div><pre><code class="hljs language-bash">npm run dev:client
+npm run dev:server
+</code></pre></div>
+<h3>Mais comment ça marche ?</h3>
+<p>La commande <code>npm run dev</code> correspond à un script, défini dans le fichier <code>package.json</code> à la racine du projet :</p>
+<div class="bloc-code"><div class="bloc-code__langue">json</div><pre><code class="hljs language-json">  <span class="hljs-attr">&quot;scripts&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-punctuation">{</span>
+    <span class="hljs-attr">&quot;build&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;npm run build --workspaces --if-present&quot;</span><span class="hljs-punctuation">,</span>
+    <span class="hljs-attr">&quot;check&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;biome check --error-on-warnings --no-errors-on-unmatched --staged . &amp;&amp; npm run check-types --workspaces --if-present&quot;</span><span class="hljs-punctuation">,</span>
+    <span class="hljs-attr">&quot;clean&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;node ./bin/clean&quot;</span><span class="hljs-punctuation">,</span>
+    <span class="hljs-attr">&quot;db:migrate&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;npm run db:migrate --workspace=server&quot;</span><span class="hljs-punctuation">,</span>
+    <span class="hljs-attr">&quot;db:seed&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;npm run db:seed --workspace=server&quot;</span><span class="hljs-punctuation">,</span>
+    <span class="hljs-attr">&quot;dev&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;concurrently -c green,yellow -t \&quot;HH:mm:ss\&quot; -p \&quot;{name} {time}\&quot; \&quot;npm:dev:*\&quot;&quot;</span><span class="hljs-punctuation">,</span>
+    <span class="hljs-attr">&quot;dev:client&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;npm run dev --workspace=client&quot;</span><span class="hljs-punctuation">,</span>
+    <span class="hljs-attr">&quot;dev:server&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;npm run dev --workspace=server&quot;</span><span class="hljs-punctuation">,</span>
+    <span class="hljs-attr">&quot;prepare&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;husky || true&quot;</span><span class="hljs-punctuation">,</span>
+    <span class="hljs-attr">&quot;start&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;npm run start --workspace=server&quot;</span><span class="hljs-punctuation">,</span>
+    <span class="hljs-attr">&quot;test&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;npm run test --workspaces --if-present&quot;</span>
+  <span class="hljs-punctuation">}</span><span class="hljs-punctuation">,</span>
+</code></pre></div>
+<ul>
+<li>
+<p><strong><code>concurrently</code></strong> : cet outil permet d'exécuter plusieurs commandes en parallèle dans le même terminal. C'est utile pour démarrer plusieurs processus en même temps, comme deux serveurs de développement.</p>
+</li>
+<li>
+<p><strong><code>-c green,yellow</code></strong> : cette option configure les couleurs des sorties dans le terminal pour chaque commande exécutée par <code>concurrently</code>. La première commande aura sa sortie en vert, et la deuxième en jaune, ce qui facilite la distinction entre les sorties des différentes commandes.</p>
+</li>
+<li>
+<p><strong><code>-t \&quot;HH:mm:ss\&quot;</code></strong> : cela définit le format de l'horodatage pour les sorties dans le terminal, ici en heures, minutes et secondes.</p>
+</li>
+<li>
+<p><strong><code>-p \&quot;{name} {time}\&quot;</code></strong> : cela configure le préfixe de chaque ligne de sortie dans le terminal pour inclure le nom de la commande exécutée et l'horodatage, selon le format défini précédemment.</p>
+</li>
+<li>
+<p><strong><code>\&quot;npm:dev:*\&quot;</code></strong> : cette partie spécifie les commandes à exécuter simultanément par concurrently. Le wildcard <code>*</code> indique de chercher toutes les commandes dans le <code>package.json</code> dont les noms commencent par <code>dev:</code>, comme <code>dev:client</code>, <code>dev:server</code>, etc., et de les exécuter en parallèle.</p>
+</li>
+</ul>
+<p>Tu as créé ton premier projet &quot;Monorepo JS&quot; et tu as lancé le client et le serveur en parallèle 🎉</p>
+<p>Tu peux déjà voir l'application React dans ton navigateur en ouvrant l'adresse <code>http://localhost:3000</code>.</p>
+<h2>Monorepo, côté Express</h2>
+<div class="encadre encadre--note encadre--callout"><div class="encadre__corps"><p>Tu as déjà eu un aperçu dans une précédente quête, dans la partie &quot;Visite guidée&quot; :</p>
+<div class="renvois"><div class="renvois__titre">Quêtes liées</div><ul><li><a href="../../js-monorepo/001-00-js-monorepo-introduction/index.html">Quête 1549</a></li></ul></div>
+<p>N'hésite pas à le relire si tu en resens le besoin.</p>
+</div></div>
+<p>Le dossier <code>server</code> contient (entre autre) le code d'une application Express.</p>
+<p>Voici un aperçu des éléments du dossier <code>server</code> que nous allons aborder pendant le parcours <em>Wild Series</em> :</p>
+<div class="bloc-code"><div class="bloc-code__langue">js</div><pre><code class="hljs language-js">server/
+├── database/
+│   └──  ...
+├── src/
+│   ├── modules/
+│   │   ├── item/
+│   │   │   ├── itemActions.<span class="hljs-property">ts</span>
+│   │   │   └── itemRepository.<span class="hljs-property">ts</span>
+│   │   └── ...
+│   ├── app.<span class="hljs-property">ts</span>
+│   ├── main.<span class="hljs-property">ts</span>
+│   └── router.<span class="hljs-property">ts</span>
+├── tests/
+│   └──  ...
+├── .<span class="hljs-property">env</span>
+└── .<span class="hljs-property">env</span>.<span class="hljs-property">sample</span>
+</code></pre></div>
+<p>Comme tu peux le voir, le dossier <code>server</code> contient plusieurs dossiers et fichiers. Pour l'instant, Ouvrons à nouveau le fichier <code>src/main.ts</code> qui est le point d'entrée de l'application Express.</p>
+<h3>Le fichier main.ts du serveur (bis)</h3>
+<p>Voici le code exact que tu devrais trouver dans <code>server/src/main.ts</code> :</p>
+<div class="bloc-code"><div class="bloc-code__langue">typescript</div><pre><code class="hljs language-typescript"><span class="hljs-comment">// Load environment variables from .env file</span>
+<span class="hljs-keyword">import</span> <span class="hljs-string">&quot;dotenv/config&quot;</span>;
+
+<span class="hljs-comment">// Check database connection</span>
+<span class="hljs-comment">// Note: This is optional and can be removed if the database connection</span>
+<span class="hljs-comment">// is not required when starting the application</span>
+<span class="hljs-keyword">import</span> <span class="hljs-string">&quot;../database/checkConnection&quot;</span>;
+
+<span class="hljs-comment">// Import the Express application from ./app</span>
+<span class="hljs-keyword">import</span> app <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;./app&quot;</span>;
+
+<span class="hljs-comment">// Get the port from the environment variables</span>
+<span class="hljs-keyword">const</span> port = process.<span class="hljs-property">env</span>.<span class="hljs-property">APP_PORT</span>;
+
+<span class="hljs-comment">// Start the server and listen on the specified port</span>
+app
+  .<span class="hljs-title function_">listen</span>(port, <span class="hljs-function">() =&gt;</span> {
+    <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">info</span>(<span class="hljs-string">`Server is listening on port <span class="hljs-subst">${port}</span>`</span>);
+  })
+  .<span class="hljs-title function_">on</span>(<span class="hljs-string">&quot;error&quot;</span>, <span class="hljs-function">(<span class="hljs-params"><span class="hljs-attr">err</span>: <span class="hljs-title class_">Error</span></span>) =&gt;</span> {
+    <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">error</span>(<span class="hljs-string">&quot;Error:&quot;</span>, err.<span class="hljs-property">message</span>);
+  });
+</code></pre></div>
+<div class="encadre encadre--note encadre--arrow"><div class="encadre__corps"><p>Avant d'aller plus loin, regardons de plus près ces deux instructions :</p>
+<div class="bloc-code"><div class="bloc-code__langue">typescript</div><pre><code class="hljs language-typescript"><span class="hljs-comment">// Load environment variables from .env file</span>
+<span class="hljs-keyword">import</span> <span class="hljs-string">&quot;dotenv/config&quot;</span>;
+
+<span class="hljs-comment">// Check database connection</span>
+<span class="hljs-comment">// Note: This is optional and can be removed if the database connection</span>
+<span class="hljs-comment">// is not required when starting the application</span>
+<span class="hljs-keyword">import</span> <span class="hljs-string">&quot;../database/checkConnection&quot;</span>;
+
+<span class="hljs-comment">// Import the Express application from ./app</span>
+<span class="hljs-keyword">import</span> app <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;./app&quot;</span>;
+
+<span class="hljs-comment">// Get the port from the environment variables</span>
+<span class="hljs-keyword">const</span> port = process.<span class="hljs-property">env</span>.<span class="hljs-property">APP_PORT</span>;
+
+<span class="hljs-comment">// Start the server and listen on the specified port</span>
+app
+  .<span class="hljs-title function_">listen</span>(port, <span class="hljs-function">() =&gt;</span> {
+    <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">info</span>(<span class="hljs-string">`Server is listening on port <span class="hljs-subst">${port}</span>`</span>);
+  })
+  .<span class="hljs-title function_">on</span>(<span class="hljs-string">&quot;error&quot;</span>, <span class="hljs-function">(<span class="hljs-params"><span class="hljs-attr">err</span>: <span class="hljs-title class_">Error</span></span>) =&gt;</span> {
+    <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">error</span>(<span class="hljs-string">&quot;Error:&quot;</span>, err.<span class="hljs-property">message</span>);
+  });
+</code></pre></div>
+<p>La première ligne charge les variables d'environnement depuis le fichier <code>.env</code> situé à la racine du dossier <code>server</code>. La deuxième ligne récupère depuis les variables d'environnement le port sur lequel le serveur doit écouter.</p>
+</div></div>
+<h3>Les variables d'environnement</h3>
+<p>Les variables d'environnement sont des variables qui modifient l'environnement d'exécution d'une application.</p>
+<div class="encadre encadre--note encadre--quote"><div class="encadre__corps"><p>Mais à quoi servent ces variables d'environnement ?</p>
+</div></div>
+<p>Elles sont utilisées pour stocker des informations sensibles ou des configurations spécifiques à l'environnement comme des mots de passe, des clés secrètes, des adresses de serveurs, etc.</p>
+<p>Dans le cas de notre serveur Express, nous utilisons les variables d'environnement pour stocker le port sur lequel le serveur doit écouter, la clé secrète de l'application, les informations de connexion à la base de données, l'URL du client (pour la configuration CORS), etc.</p>
+<p>Attention, les variables d'environnement ne doivent pas être partagées ou exposées publiquement. C'est pourquoi il est important de vérifier que le fichier qui les contient (le fichier <code>.env</code>) est bien ignoré par Git dans le fichier <code>.gitignore</code>.</p>
+<p>Si tu en as pas déjà un, crée un fichier <code>.env</code> à la racine du dossier <code>server</code> et ajoute le contenu suivant :</p>
+<div class="bloc-code"><div class="bloc-code__langue">bash</div><pre><code class="hljs language-bash"><span class="hljs-comment"># .env - Environment Variables</span>
+
+<span class="hljs-comment"># Application Configuration</span>
+APP_PORT=3310
+APP_SECRET=YOUR_APP_SECRET_KEY
+
+<span class="hljs-comment"># Database Configuration</span>
+DB_HOST=localhost
+DB_PORT=3306
+DB_USER=YOUR_DATABASE_USERNAME
+DB_PASSWORD=YOUR_DATABASE_PASSWORD
+DB_NAME=YOUR_DATABASE_NAME
+
+<span class="hljs-comment"># Client URL (for CORS configuration)</span>
+CLIENT_URL=http://localhost:3000
+
+<span class="hljs-comment"># About specific needs, please ask your trainer about the deployment project name and follow the pattern</span>
+<span class="hljs-comment"># You can add as much variable as needed. Don&#x27;t forget to tell your trainer about it. Otherwise, it could break on deployment</span>
+PROJECT_NAME_SPECIFIC_NAME=YOUR_SPECIFIC_VALUE
+</code></pre></div>
+<p>Ce contenu est un copié/collé du fichier d'exemple (<em>sample</em> en anglais) <code>.env.sample</code> à la racine du dossier <code>server</code>.</p>
+<p>La variable <code>APP_PORT</code> définit le port sur lequel nous voulons que le serveur écoute. Dans cet exemple, le serveur écoute sur le port <code>3310</code>.</p>
+<p>Nous reviendrons sur les autres variables d'environnement en temps voulu. Au passage et si tu en as pas déjà un, crée aussi un fichier <code>.env</code> à la racine du dossier <code>client</code> en te basant sur le fichier <code>client/.env.sample</code>.</p>
+<div class="encadre encadre--warning"><div class="encadre__titre">Attention</div><div class="encadre__corps"><p>Modifier le fichier <code>.env</code> ne relance pas automatiquement le serveur. Si tu modifies <code>server.env</code> après avoir exécuté la commande <code>npm run dev</code>, tu devras relancer manuellement le serveur pour prendre en compte les nouvelles variables d'environnement.</p>
+<p>Utilise <code>Ctrl+C</code> dans ton terminal pour arrêter le serveur, puis relance-le avec la commande suivante :</p>
+<div class="bloc-code"><div class="bloc-code__langue">bash</div><pre><code class="hljs language-bash">npm run dev
+</code></pre></div>
+</div></div>
+<h2>Résumé</h2>
+<p>Pour créer et utiliser un nouveau projet &quot;Monorepo JS&quot;, tu dois respecter les étapes suivantes :</p>
+<ul>
+<li>Créer le projet avec la commande <code>npm create @this-is-to-learn/js-monorepo@latest my-project</code> où <code>my-project</code> est le nom de ton projet.</li>
+<li>Te rendre dans le dossier de ton projet avec la commande <code>cd my-project</code>.</li>
+<li>Lancer l'installation des dépendances avec la commande <code>npm install</code>.</li>
+<li>Créer un fichier <code>.env</code> à la racine du dossier <code>server</code> et y ajouter les variables d'environnement nécessaires.</li>
+<li>Créer un fichier <code>.env</code> à la racine du dossier <code>client</code> et y ajouter les variables d'environnement nécessaires.</li>
+<li>Lancer les applications React et Express en parallèle avec la commande <code>npm run dev</code>.</li>
+</ul>
+<h2>Challenge</h2>
+<p>Crée ton projet <code>wild-series</code>. Crée les fichiers <code>.env</code> et définis les variables d'environnement nécessaires.</p>
+<p>Pour l'instant, si tu ouvres l'adresse <code>http://localhost:3310/</code> dans ton navigateur, tu auras une erreur 404 avec un message du genre <code>Cannot GET /</code>. Dans le fichier <code>server/src/main.ts</code>, ajoute une nouvelle route <code>GET /</code> pour afficher un texte de bienvenue <code>&quot;Welcome to Wild Series !&quot;</code>.</p>
+<div class="encadre encadre--note encadre--arrow"><div class="encadre__corps"><p>Un peu d'aide avec TypeScript ?</p>
+<details class="solution"><summary>Voir la solution</summary><div class="solution__corps"><p>Utilise le type <code>RequestHandler</code> d'Express :</p>
+<div class="bloc-code"><div class="bloc-code__langue">typescript</div><pre><code class="hljs language-typescript"><span class="hljs-keyword">import</span> <span class="hljs-keyword">type</span> { <span class="hljs-title class_">RequestHandler</span> } <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;express&quot;</span>;
+
+<span class="hljs-keyword">const</span> <span class="hljs-attr">sayWelcome</span>: <span class="hljs-title class_">RequestHandler</span> = <span class="hljs-function">(<span class="hljs-params">req, res</span>) =&gt;</span> {
+  <span class="hljs-comment">// ...</span>
+};
+</code></pre></div>
+</div></details>
+</div></div>
+<p>Pousse ton projet sur GitHub, et partage le lien de ton dépôt pour valider ta quête.</p>
+<h3>Critères de validation</h3>
+<ul>
+<li>[ ] Le projet est disponible sur GitHub.</li>
+<li>[ ] Les fichiers <code>.env</code> ne sont pas pushés.</li>
+<li>[ ] Quand tu clones le projet et lance les applications avec <code>npm run dev</code>, la page <code>http://localhost:3310/</code> affiche le message <code>&quot;Welcome to Wild Series !&quot;</code> dans ton navigateur.</li>
+</ul>
+<div class="onglets" data-onglets="1"><input type="radio" name="onglets-9" id="onglets-9-0" class="onglets__radio" checked><div class="onglets__barre"><label class="onglets__label" for="onglets-9-0">server/src/main.ts</label></div><div class="onglets__panneaux"><div class="onglets__panneau"><div class="bloc-code"><div class="bloc-code__langue">typescript</div><pre><code class="hljs language-typescript"><span class="hljs-comment">// Load environment variables from .env file</span>
+<span class="hljs-keyword">import</span> <span class="hljs-string">&quot;dotenv/config&quot;</span>;
+
+<span class="hljs-comment">// Check database connection</span>
+<span class="hljs-comment">// Note: This is optional and can be removed if the database connection</span>
+<span class="hljs-comment">// is not required when starting the application</span>
+<span class="hljs-keyword">import</span> <span class="hljs-string">&quot;../database/checkConnection&quot;</span>;
+
+<span class="hljs-comment">// Import the Express application from ./app</span>
+<span class="hljs-keyword">import</span> app <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;./app&quot;</span>;
+
+<span class="hljs-comment">/* ************************************************************************* */</span>
+
+<span class="hljs-comment">// Declaration of a &quot;Welcome&quot; route</span>
+
+<span class="hljs-keyword">import</span> <span class="hljs-keyword">type</span> { <span class="hljs-title class_">RequestHandler</span> } <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;express&quot;</span>;
+
+<span class="hljs-keyword">const</span> <span class="hljs-attr">sayWelcome</span>: <span class="hljs-title class_">RequestHandler</span> = <span class="hljs-function">(<span class="hljs-params">req, res</span>) =&gt;</span> {
+  res.<span class="hljs-title function_">send</span>(<span class="hljs-string">&quot;Welcome to Wild Series !&quot;</span>);
+};
+
+app.<span class="hljs-title function_">get</span>(<span class="hljs-string">&quot;/&quot;</span>, sayWelcome);
+
+<span class="hljs-comment">/* ************************************************************************* */</span>
+
+<span class="hljs-comment">// Get the port from the environment variables</span>
+<span class="hljs-keyword">const</span> port = process.<span class="hljs-property">env</span>.<span class="hljs-property">APP_PORT</span>;
+
+<span class="hljs-comment">// Start the server and listen on the specified port</span>
+app
+  .<span class="hljs-title function_">listen</span>(port, <span class="hljs-function">() =&gt;</span> {
+    <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">info</span>(<span class="hljs-string">`Server is listening on port <span class="hljs-subst">${port}</span>`</span>);
+  })
+  .<span class="hljs-title function_">on</span>(<span class="hljs-string">&quot;error&quot;</span>, <span class="hljs-function">(<span class="hljs-params"><span class="hljs-attr">err</span>: <span class="hljs-title class_">Error</span></span>) =&gt;</span> {
+    <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">error</span>(<span class="hljs-string">&quot;Error:&quot;</span>, err.<span class="hljs-property">message</span>);
+  });
+</code></pre></div>
+</div></div></div>
+
+  </div>
+  
+</article>
+
+<nav class="nav-quete">
+  <a class="nav-quete__lien nav-quete__lien--prec" href="../../js-monorepo/002-01-js-monorepo-wild-series-la-genese/index.html">
+           <span class="nav-quete__sens">← Précédent</span>
+           <span class="nav-quete__titre">01 - JS Monorepo : Wild Series, la genèse</span>
+         </a>
+  <a class="nav-quete__lien nav-quete__lien--suiv" href="../../js-monorepo/004-03-js-monorepo-routing/index.html">
+           <span class="nav-quete__sens">Suivant →</span>
+           <span class="nav-quete__titre">03 - JS Monorepo : Routing</span>
+         </a>
+</nav>
+</main>
+<footer class="pied">
+  <p>Archive personnelle des cours suivis à la Wild Code School. Copie hors ligne à usage strictement privé.</p>
+</footer>
+
+<script src="../../assets/copie-code.js"></script>
+<script src="../../assets/progression.js"></script>
+</body>
+</html>

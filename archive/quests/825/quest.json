@@ -1,0 +1,28 @@
+{
+  "id": 825,
+  "titre": "07 - JS Monorepo : Mettre en place un CRUD / BREAD 🍞",
+  "titres": {
+    "fr": "07 - JS Monorepo : Mettre en place un CRUD / BREAD 🍞"
+  },
+  "theme": {
+    "id": 43,
+    "slug": "prepa",
+    "nom": "JS Monorepo"
+  },
+  "creeLe": "2019-10-21T09:12:59.605+02:00",
+  "difficulte": "",
+  "dureeEstimee": null,
+  "modeValidation": "self",
+  "chapitres": [
+    {
+      "id": 13650,
+      "type": "content",
+      "langue": "fr",
+      "majLe": "2024-11-18T20:49:41.741+01:00",
+      "caracteres": 26859
+    }
+  ],
+  "ressources": [],
+  "urlOrigine": "https://odyssey.wildcodeschool.com/quests/825",
+  "archiveLe": "2026-09-02T20:52:00.123Z"
+}

@@ -1,0 +1,329 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>👩‍🏫 JS Intermédiaire 05 - Programmation Orientée Objet — Archives WCS</title>
+<link rel="stylesheet" href="../../assets/style.css">
+</head>
+<body style="--teinte:#854200">
+<header class="entete">
+  <a class="entete__marque" href="../../index.html">Archives Wild Code School</a>
+</header>
+<main class="contenu">
+<nav class="ariane"><a href="../../index.html">Accueil</a><span class="ariane__sep">›</span><a href="../../javascript-beyond-the-basics/index.html">JavaScript - Beyond the Basics</a><span class="ariane__sep">›</span><span aria-current="page">👩‍🏫 JS Intermédiaire 05 - Programmation Orientée Objet</span></nav>
+
+<article class="quete">
+  <header class="quete__entete">
+    <a class="pastille pastille--teintee" href="../../javascript-beyond-the-basics/index.html">JavaScript - Beyond the Basics</a>
+    <h1>👩‍🏫 JS Intermédiaire 05 - Programmation Orientée Objet</h1>
+    <p class="quete__meta">Quête 7 sur 8 · 1 image archivée</p>
+  </header>
+  <div class="cours">
+<h6>⚠️ Avant de démarrer cette quête, tu dois avoir complété celle-ci :</h6>
+<div class="renvois"><div class="renvois__titre">Quêtes liées</div><ul><li><a href="../../javascript/011-js-basics-09-les-objets/index.html">Quête 1282</a></li></ul></div>
+<h1>Introduction</h1>
+<p>Dans les quêtes précédentes, nous avons abordé les <strong>objets en Javascript</strong>.</p>
+<p>Dans cette quête, nous irons plus loin avec ce que l'on appelle le <strong>paradigme de Programmation Orientée Objet (POO).</strong></p>
+<p>Un <strong>paradigme de programmation</strong> est une façon d'écrire du code. En POO, cette façon d'écrire est basée sur la notion d'objet. Les objets sont une abstraction à laquelle peuvent s'apparenter <strong>les choses du monde réel.</strong></p>
+<p>Regardons ça de plus près.</p>
+<p><img src="images/001-image.jpg" alt="image" loading="lazy"></p>
+<h1>🤓 A la fin de cette quête, tu seras capable :</h1>
+<ul>
+<li>✅ De comprendre les grands principes de Programmation Orientée Objet (POO)</li>
+<li>✅ De comprendre le concept d'héritage</li>
+</ul>
+<hr>
+<h1>🌏 Un monde d'objets</h1>
+<p>Prenons un exemple simple, imagine que tu veuilles <strong>créer un jeu.</strong></p>
+<p>Dans ce jeu, il y a des héros qui combattent des ennemis.</p>
+<p>Imagine qu'il y a beaucoup d'ennemis différents.</p>
+<p>Les ennemis peuvent avoir différents <strong>noms</strong>, différents <strong>niveaux</strong> et différentes <strong>attaques</strong>.</p>
+<p>Créons cela en JavaScript en utilisant des objets :</p>
+<div class="bloc-code"><div class="bloc-code__langue">javascript</div><pre><code class="hljs language-javascript"><span class="hljs-keyword">const</span> enemies = [
+  {
+    <span class="hljs-attr">name</span>: <span class="hljs-string">&quot;Spider&quot;</span>, 
+    <span class="hljs-attr">level</span>: <span class="hljs-number">1</span>, 
+    <span class="hljs-attr">emoji</span>: <span class="hljs-string">&quot;🕷&quot;</span>,
+    <span class="hljs-attr">attackName</span>: <span class="hljs-string">&quot;bites&quot;</span>, 
+    <span class="hljs-attr">attack</span>: <span class="hljs-keyword">function</span> (<span class="hljs-params"></span>) {
+      <span class="hljs-keyword">return</span> <span class="hljs-string">`<span class="hljs-subst">${<span class="hljs-variable language_">this</span>.name}</span> <span class="hljs-subst">${<span class="hljs-variable language_">this</span>.attackName}</span> you!`</span>;
+    }
+  },
+  {
+    <span class="hljs-attr">name</span>: <span class="hljs-string">&quot;Snake&quot;</span>, 
+    <span class="hljs-attr">level</span>: <span class="hljs-number">6</span>, 
+    <span class="hljs-attr">emoji</span>: <span class="hljs-string">&quot;🐍&quot;</span>, 
+    <span class="hljs-attr">attackName</span>: <span class="hljs-string">&quot;bites&quot;</span>, 
+    <span class="hljs-attr">attack</span>: <span class="hljs-keyword">function</span> (<span class="hljs-params"></span>) {
+      <span class="hljs-keyword">return</span> <span class="hljs-string">`<span class="hljs-subst">${<span class="hljs-variable language_">this</span>.name}</span> <span class="hljs-subst">${<span class="hljs-variable language_">this</span>.attackName}</span> you!`</span>;
+    }
+  },
+  {
+    <span class="hljs-attr">name</span>: <span class="hljs-string">&quot;Bear&quot;</span>, 
+    <span class="hljs-attr">level</span>: <span class="hljs-number">25</span>, 
+    <span class="hljs-attr">emoji</span>: <span class="hljs-string">&quot;🐻&quot;</span>, 
+    <span class="hljs-attr">attackName</span>: <span class="hljs-string">&quot;scratches&quot;</span>, 
+    <span class="hljs-attr">attack</span>: <span class="hljs-keyword">function</span> (<span class="hljs-params"></span>) {
+      <span class="hljs-keyword">return</span> <span class="hljs-string">`<span class="hljs-subst">${<span class="hljs-variable language_">this</span>.name}</span> <span class="hljs-subst">${<span class="hljs-variable language_">this</span>.attackName}</span> you!`</span>;
+    }
+  }
+];
+</code></pre></div>
+<p>Comme tu peux le voir, à chaque fois que nous créons un nouvel ennemi, nous <strong>recréons toutes les propriétés de l'objet.</strong>
+Nous créons une fonction à chaque fois, même si c'est toujours la même.</p>
+<p>Nous nous répétons... Ce qui n'est pas bon pour la programmation.</p>
+<h1>🏭 Une fonction &quot;factory&quot;</h1>
+<p>Et si tu pouvais écrire une fonction qui s'occupe de créer un objet initialisé avec les bonnes paires clé/valeurs pour éviter de te répéter ?</p>
+<p>Tu pourrais appeler cette fonction &quot;createEnemy&quot;. Cette dernière accepterait quelques paramètres et renverrait un objet avec la bonne structure, les bonnes propriétés.</p>
+<div class="bloc-code"><div class="bloc-code__langue">javascript</div><pre><code class="hljs language-javascript"><span class="hljs-keyword">function</span> <span class="hljs-title function_">createEnemy</span>(<span class="hljs-params">name, level, emoji, attackName</span>) {
+  <span class="hljs-keyword">const</span> enemy = {};
+
+  enemy.<span class="hljs-property">name</span> = name;
+  enemy.<span class="hljs-property">level</span> = level;
+  enemy.<span class="hljs-property">emoji</span> = emoji; 
+  enemy.<span class="hljs-property">attackName</span> = attackName;
+
+  enemy.<span class="hljs-property">attack</span> = <span class="hljs-keyword">function</span> (<span class="hljs-params"></span>) {
+    <span class="hljs-keyword">return</span> <span class="hljs-string">`<span class="hljs-subst">${<span class="hljs-variable language_">this</span>.name}</span> <span class="hljs-subst">${<span class="hljs-variable language_">this</span>.attackName}</span> you!`</span>;
+  };
+
+  <span class="hljs-keyword">return</span> enemy;
+}
+
+<span class="hljs-keyword">const</span> enemies = [
+  <span class="hljs-title function_">createEnemy</span>(<span class="hljs-string">&quot;Spider&quot;</span>, <span class="hljs-number">1</span>, <span class="hljs-string">&quot;🕷&quot;</span>, <span class="hljs-string">&quot;bites&quot;</span>),
+  <span class="hljs-title function_">createEnemy</span>(<span class="hljs-string">&quot;Snake&quot;</span>, <span class="hljs-number">6</span>, <span class="hljs-string">&quot;🐍&quot;</span>, <span class="hljs-string">&quot;bites&quot;</span>),
+  <span class="hljs-title function_">createEnemy</span>(<span class="hljs-string">&quot;Bear&quot;</span>, <span class="hljs-number">25</span>, <span class="hljs-string">&quot;🐻&quot;</span>, <span class="hljs-string">&quot;scratches&quot;</span>),
+];
+
+<span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(enemies);
+</code></pre></div>
+<p>Comme tu peux le constater, c'est beaucoup plus facile comme ça ! Ce que nous venons de créer s'appelle une fonction &quot;factory&quot; (<strong>factory</strong> signifie <strong>usine</strong> en anglais), tout simplement car elle produit de nouveaux objets !</p>
+<h3>🔬 Teste par toi-même</h3>
+<p>Essaie maintenant de créer une nouvelle fonction produisant des héros !</p>
+<p>Les héros doivent avoir un nom, un niveau, une arme et une fonction pour dire bonjour qui renvoie une phrase avec leur nom.</p>
+<p>Crée ensuite deux héros en appelant cette fonction.</p>
+<div class="bloc-code"><div class="bloc-code__langue">codesandbox</div><pre><code class="hljs language-codesandbox">https://codesandbox.io/s/constructor-function-kznz9?fontsize=14&amp;hidenavigation=1&amp;module=%2Fsrc%2Findex.js&amp;theme=dark
+</code></pre></div>
+<div class="bloc-code"><div class="bloc-code__langue">hidden</div><pre><code class="hljs language-hidden">Afficher la solution|||javascript|||Des problèmes pour trouver la solution ? |||0|||Masquer
+function createHero(name, level, weapon) {
+  const hero = {};
+
+  hero.name = name;
+  hero.level = level;
+  hero.weapon = weapon;
+
+  hero.sayHello = function () {
+    console.log(`hello, I'm ${this.name}`);
+  };
+
+  return hero;
+}
+
+const bob = createHero(&quot;Bob&quot;, 18, &quot;Sword&quot;);
+const john = createHero(&quot;John&quot;, 21, &quot;Bazooka&quot;);
+
+console.log(bob);
+console.log(john);
+</code></pre></div>
+<h1>🏗️ Une fonction &quot;<strong>constructor</strong>&quot;</h1>
+<p>Il existe une méthode <strong>plus efficace</strong> que la création d'une <em>factory</em> en Javascript.</p>
+<p>Dans l'exemple précédent, nous utilisions un objet vide que nous devions retourner. Voyons une autre façon de faire la même chose avec une fonction constructrice (<strong>constructor function</strong>) :</p>
+<div class="bloc-code"><div class="bloc-code__langue">javascript</div><pre><code class="hljs language-javascript"><span class="hljs-keyword">function</span> <span class="hljs-title function_">Enemy</span>(<span class="hljs-params">name, level, emoji, attackName</span>) {
+  <span class="hljs-variable language_">this</span>.<span class="hljs-property">name</span> = name;
+  <span class="hljs-variable language_">this</span>.<span class="hljs-property">level</span> = level;
+  <span class="hljs-variable language_">this</span>.<span class="hljs-property">emoji</span> = emoji;
+  <span class="hljs-variable language_">this</span>.<span class="hljs-property">attackName</span> = attackName;
+
+  <span class="hljs-variable language_">this</span>.<span class="hljs-property">attack</span> = <span class="hljs-keyword">function</span> (<span class="hljs-params"></span>) {
+    <span class="hljs-keyword">return</span> <span class="hljs-string">`<span class="hljs-subst">${<span class="hljs-variable language_">this</span>.name}</span> <span class="hljs-subst">${<span class="hljs-variable language_">this</span>.attackName}</span> you!`</span>;
+  };
+}
+</code></pre></div>
+<p>Que vois-tu ici ?</p>
+<p>Eh bien, c'est un peu la même chose, mais cette fois nous n'avons pas à créer ni <strong>retourner</strong> l'objet.</p>
+<p><strong>Essayons d'appeler la fonction...</strong></p>
+<div class="bloc-code"><div class="bloc-code__langue">javascript</div><pre><code class="hljs language-javascript"><span class="hljs-keyword">const</span> spider = <span class="hljs-title class_">Enemy</span>(<span class="hljs-string">&quot;Spider&quot;</span>, <span class="hljs-number">1</span>, <span class="hljs-string">&quot;🕷&quot;</span>, <span class="hljs-string">&quot;bites&quot;</span>);
+<span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(spider);
+<span class="hljs-comment">// undefined</span>
+</code></pre></div>
+<p>Comme tu peux le constater, notre <strong>constructor</strong> ne renvoie rien, <strong>il ne fonctionne donc pas comme une factory</strong>.</p>
+<p>As-tu remarqué que nous avons mis le nom de la fonction <strong>avec une majuscule</strong> ?</p>
+<p>Il s'agit d'une convention en JS : toutes les fonctions constructrices doivent avoir un nom écrit en PascalCase (pour les différencier des autres fonctions &quot;classiques&quot;).</p>
+<p>La majuscule nous indique que cette fonction doit être utilisée avec le mot clé <code>new</code>.</p>
+<p>Le <strong>mot-clé</strong> <code>new</code> va automatiquement <strong>créer puis retourner l'objet</strong>, sur lequel notre fonction va agir pour initialiser ce dernier.</p>
+<div class="bloc-code"><div class="bloc-code__langue">javascript</div><pre><code class="hljs language-javascript"><span class="hljs-keyword">const</span> spider = <span class="hljs-keyword">new</span> <span class="hljs-title class_">Enemy</span>(<span class="hljs-string">&quot;Spider&quot;</span>, <span class="hljs-number">1</span>, <span class="hljs-string">&quot;🕷&quot;</span>, <span class="hljs-string">&quot;bites&quot;</span>);
+<span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(spider);
+<span class="hljs-comment">// Enemy {name: &quot;spider&quot;, level: 1, emoji: &quot;🕷&quot;, attackName: &quot;bites&quot;…}</span>
+</code></pre></div>
+<p>Plutôt cool, n'est-ce pas ?</p>
+<h3>🔬 Teste par toi-même</h3>
+<p>Maintenant, crée le même type de fonction pour construire les héros.</p>
+<div class="bloc-code"><div class="bloc-code__langue">codesandbox</div><pre><code class="hljs language-codesandbox">https://codesandbox.io/s/class-oop-0dse2?file=/src/index.js
+</code></pre></div>
+<div class="bloc-code"><div class="bloc-code__langue">hidden</div><pre><code class="hljs language-hidden">Afficher la solution|||javascript|||Des problèmes pour trouver la solution ? |||0|||Masquer
+function Hero(name, level, weapon) {
+  this.name = name;
+  this.level = level;
+  this.weapon = weapon;
+
+  this.sayHello = function () {
+    return `Hello I'm ${this.name}`;
+  };
+}
+
+const bob = new Hero(&quot;Bob&quot;, 12, &quot;Sword&quot;);
+
+console.log(bob);
+</code></pre></div>
+<h1>A partir d'ES6, JS a vraiment la &quot;class&quot; !</h1>
+<p>A partir de la norme ES6, les classes viennent simplifier la définition et la création d'instances.</p>
+<p>Voyons comment nous pouvons créer une classe en Javascript :</p>
+<div class="bloc-code"><div class="bloc-code__langue">javascript</div><pre><code class="hljs language-javascript"><span class="hljs-keyword">class</span> <span class="hljs-title class_">Enemy</span>{
+  <span class="hljs-title function_">constructor</span>(<span class="hljs-params">name, level, emoji, attackName</span>) {
+    <span class="hljs-variable language_">this</span>.<span class="hljs-property">name</span> = name;
+    <span class="hljs-variable language_">this</span>.<span class="hljs-property">level</span> = level;
+    <span class="hljs-variable language_">this</span>.<span class="hljs-property">emoji</span> = emoji;
+    <span class="hljs-variable language_">this</span>.<span class="hljs-property">attackName</span> = attackName;
+  }
+
+  <span class="hljs-title function_">attack</span>(<span class="hljs-params"></span>){
+    <span class="hljs-keyword">return</span> <span class="hljs-string">`<span class="hljs-subst">${<span class="hljs-variable language_">this</span>.name}</span> <span class="hljs-subst">${<span class="hljs-variable language_">this</span>.attackName}</span> you!`</span>;
+  }
+}
+
+<span class="hljs-keyword">const</span> enemies = [
+  <span class="hljs-keyword">new</span> <span class="hljs-title class_">Enemy</span>(<span class="hljs-string">&quot;Spider&quot;</span>, <span class="hljs-number">1</span>, <span class="hljs-string">&quot;🕷&quot;</span>, <span class="hljs-string">&quot;bites&quot;</span>),
+  <span class="hljs-keyword">new</span> <span class="hljs-title class_">Enemy</span>(<span class="hljs-string">&quot;Snake&quot;</span>, <span class="hljs-number">6</span>, <span class="hljs-string">&quot;🐍&quot;</span>, <span class="hljs-string">&quot;bites&quot;</span>),
+  <span class="hljs-keyword">new</span> <span class="hljs-title class_">Enemy</span>(<span class="hljs-string">&quot;Bear&quot;</span>, <span class="hljs-number">25</span>, <span class="hljs-string">&quot;🐻&quot;</span>, <span class="hljs-string">&quot;scratches&quot;</span>),
+];
+
+<span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(enemies[<span class="hljs-number">0</span>]);
+<span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(enemies[<span class="hljs-number">0</span>].<span class="hljs-title function_">attack</span>());
+</code></pre></div>
+<p>Tu utilises simplement le mot-clé &quot;class&quot; suivi du <strong>nom de la classe</strong> que tu veux créer et ensuite tu écris ton <strong>constructor</strong> (qui est exactement la même fonction que la précédente que nous avons créée quand nous n'utilisions pas les classes).</p>
+<p>Ensuite, il suffit d'écrire tes méthodes dessus et <strong>voila !</strong></p>
+<div class="encadre encadre--info"><div class="encadre__titre">Info</div><div class="encadre__corps"><p>Si tu échanges avec des développeurs JS, il te diront probablement que JavaScript est en réalité un &quot;langage basé sur les prototypes&quot;. Aujourd'hui les classes viennent ajouter du <strong>&quot;sucre syntaxique&quot;</strong> au langage pour cacher une certaine complexité liée à l'utilisation des prototypes, mais en réalité JS fonctionne différemment &quot;sous le capot&quot;.</p>
+</div></div>
+<h3>🔬 Teste par toi-même :</h3>
+<p>Crée une classe pour nos héros.</p>
+<div class="bloc-code"><div class="bloc-code__langue">codesandbox</div><pre><code class="hljs language-codesandbox">https://codesandbox.io/s/class-oop-0dse2?file=/src/index.js
+</code></pre></div>
+<div class="bloc-code"><div class="bloc-code__langue">hidden</div><pre><code class="hljs language-hidden">Afficher la solution|||javascript|||Des problèmes pour trouver la solution ? |||0|||Masquer
+class Hero {
+  constructor(name, level, weapon) {
+    this.name = name;
+    this.level = level;
+    this.weapon = weapon;
+  }
+
+  sayHello() {
+    return `Hello my name is ${this.name}`;
+  }
+}
+
+const bob = new Hero(&quot;Bob&quot;, 10, &quot;Sword&quot;);
+console.log(bob.sayHello());
+</code></pre></div>
+<h1>Une dernière petite étape</h1>
+<p>Nous venons de parcourir un long chemin... Nous avons presque fini, il nous reste une dernière chose à voir.</p>
+<p>As-tu remarqué que nos héros et nos ennemis ont des choses en commun ?</p>
+<p>Par exemple, ils ont tous les deux un <strong>nom et un niveau</strong>.</p>
+<p>Il serait donc souhaitable de ne pas avoir à répéter ces propriétés au sein des classes <em>Enemy</em> et <em>Hero</em> !</p>
+<p>On pourrait donc créer une classe &quot;Personnage&quot; (Character) qui définit ces deux propriétés et dire que &quot;Ennemi&quot; et &quot;Hero&quot; sont des personnages et doivent donc posséder ces propriétés.</p>
+<p><em>Enemy</em> <strong>est</strong> donc un type particulier de <em>Character</em>, de même que <em>Hero</em> <strong>est</strong> un type particulier de <em>Character</em>.</p>
+<p>En Programmation Orientée Objet, <strong>quand on peut dire que &quot;A&quot; est un &quot;B&quot;, on dit que la classe A hérite de B.</strong></p>
+<p>Il est possible de faire cela en Javascript avec le mot-clé &quot;extends&quot;.</p>
+<div class="bloc-code"><div class="bloc-code__langue">javascript</div><pre><code class="hljs language-javascript"><span class="hljs-keyword">class</span> <span class="hljs-title class_">Character</span>{
+  <span class="hljs-title function_">constructor</span>(<span class="hljs-params">name, level</span>) {
+    <span class="hljs-variable language_">this</span>.<span class="hljs-property">name</span> = name;
+    <span class="hljs-variable language_">this</span>.<span class="hljs-property">level</span> = level;
+  }
+}
+
+<span class="hljs-keyword">class</span> <span class="hljs-title class_">Enemy</span> <span class="hljs-keyword">extends</span> <span class="hljs-title class_ inherited__">Character</span>{
+  <span class="hljs-title function_">constructor</span>(<span class="hljs-params">name, level, emoji, attackName</span>) {
+    <span class="hljs-variable language_">super</span>(name, level);
+    <span class="hljs-variable language_">this</span>.<span class="hljs-property">emoji</span> = emoji;
+    <span class="hljs-variable language_">this</span>.<span class="hljs-property">attackName</span> =  attackName;  
+    <span class="hljs-variable language_">this</span>.<span class="hljs-property">enemy</span> = <span class="hljs-literal">true</span>;
+  }
+
+  <span class="hljs-title function_">attack</span>(<span class="hljs-params"></span>) {
+    <span class="hljs-keyword">return</span> <span class="hljs-string">`<span class="hljs-subst">${<span class="hljs-variable language_">this</span>.name}</span> <span class="hljs-subst">${<span class="hljs-variable language_">this</span>.attackName}</span> you!`</span>;
+  }
+}
+
+<span class="hljs-keyword">const</span> spider = <span class="hljs-keyword">new</span> <span class="hljs-title class_">Enemy</span>(<span class="hljs-string">&quot;Spider&quot;</span>, <span class="hljs-number">1</span>, <span class="hljs-string">&quot;🕷&quot;</span>, <span class="hljs-string">&quot;bites&quot;</span>);
+<span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(spider.<span class="hljs-property">name</span>);
+</code></pre></div>
+<p>Tu peux voir que dans le constructeur de <em>Enemy</em>, nous utilisons le mot clé <code>super</code>.</p>
+<p>Ce mot clé <code>super</code> suivi de parenthèses va simplement <strong>appeler le constructeur de la classe parente</strong> de <em>Enemy</em> (c'est-à-dire <em>Character</em>) pour initialiser les propriétés &quot;name&quot; et &quot;level&quot; sur l'ennemi en cours de construction.</p>
+<h3>🔬 Teste par toi-même :</h3>
+<p>En utilisant le même code, crée la classe des héros qui étend personnage.</p>
+<div class="bloc-code"><div class="bloc-code__langue">codesandbox</div><pre><code class="hljs language-codesandbox">https://codesandbox.io/s/suspicious-shadow-szb1s?file=/src/index.js
+</code></pre></div>
+<div class="bloc-code"><div class="bloc-code__langue">hidden</div><pre><code class="hljs language-hidden">Afficher la solution|||javascript|||Des problèmes pour trouver la solution ? |||0|||Masquer
+class Hero extends Character {
+  constructor(name, level, weapon) {
+    super(name, level);
+    this.weapon = weapon;
+  }
+
+  sayHello() {
+    return `Hello, I'm ${this.name}`;
+  }
+}
+
+const bob = new Hero(&quot;Bob&quot;, 20, &quot;Sword&quot;);
+console.log(bob.sayHello());
+</code></pre></div>
+<p>Voici une vidéo explicative de la notion d'héritage :</p>
+<a class="video-lien" href="https://www.youtube.com/watch?v=MfxBfRD0FVU" target="_blank" rel="noopener noreferrer">
+  <div class="video-lien__play">▶</div>
+  <div class="video-lien__texte">
+    <div class="video-lien__titre">Vidéo YouTube</div>
+    <div class="video-lien__url">https://www.youtube.com/watch?v=MfxBfRD0FVU</div>
+  </div>
+</a>
+<hr>
+<h1>☝️ En résumé</h1>
+<ul>
+<li>La programmation orientée objet est un paradigme de programmation, c'est une <strong>manière d'écrire du code</strong></li>
+<li>Une fonction constructrice (aussi appelé &quot;constructeur&quot;) permet de créer plusieurs <strong>instances</strong> (objets) en initialisant ses propriétés. On peut voir le constructeur comme &quot;le moule&quot; et une instance comme &quot;un gateau&quot;.</li>
+<li>Nous pouvons créer une classe qui hérite des propriétés d'une autre classe en utilisant <code>extends</code>. Si nous voulons nous référer à la classe parente dans la classe fille, on devra utiliser le mot clé <code>super</code></li>
+</ul>
+<hr>
+
+  </div>
+  <section class="ressources-quete">
+  <h2>Ressources partagées sur cette quête</h2>
+  <ul class="ressources-liste">
+    <li><a href="https://www.youtube.com/watch?v=KjXBPJZPmYU" target="_blank" rel="noopener noreferrer">une vidéo en francais</a><span class="ressources-liste__url">https://www.youtube.com/watch?v=KjXBPJZPmYU</span></li>
+    <li><a href="https://www.pierre-giraud.com/javascript-apprendre-coder-cours/introduction-programmation-orientee-objet/#:~:text=La%20programmation%20orient%C3%A9e%20objet%20est,vont%20pouvoir%20interagir%20entre%20eux." target="_blank" rel="noopener noreferrer">Une autre vision plus détaillée de la POO en Javascript.</a><span class="ressources-liste__url">https://www.pierre-giraud.com/javascript-apprendre-coder-cours/introduction-programmation-orientee-objet/#:~:text=La%20programmation%20orient%C3%A9e%20objet%20est,vont%20pouvoir%20interagir%20entre%20eux.</span></li>
+    <li><a href="https://www.youtube.com/watch?v=YosuJkVqdoU&amp;ab_channel=MikeCodeur" target="_blank" rel="noopener noreferrer">OBJECT CONSTRUCTOR FUNCTION EN JAVASCRIPT (POO)</a><span class="ressources-liste__url">https://www.youtube.com/watch?v=YosuJkVqdoU&amp;ab_channel=MikeCodeur</span></li>
+    <li><a href="https://developer.mozilla.org/fr/docs/Learn/JavaScript/Objects/Basics" target="_blank" rel="noopener noreferrer">Doc mdn de la poo JS</a><span class="ressources-liste__url">https://developer.mozilla.org/fr/docs/Learn/JavaScript/Objects/Basics</span></li>
+  </ul>
+</section>
+</article>
+
+<nav class="nav-quete">
+  <a class="nav-quete__lien nav-quete__lien--prec" href="../../javascript-beyond-the-basics/006-js-intermediaire-03-affectation-par-decomposition/index.html">
+           <span class="nav-quete__sens">← Précédent</span>
+           <span class="nav-quete__titre">👩‍🏫 JS Intermédiaire 03 - Affectation par décomposition</span>
+         </a>
+  <a class="nav-quete__lien nav-quete__lien--suiv" href="../../javascript-beyond-the-basics/008-js-intermediaire-05bis-programmation-orientee-objet/index.html">
+           <span class="nav-quete__sens">Suivant →</span>
+           <span class="nav-quete__titre">👩‍🏫 JS Intermédiaire 05bis - Programmation Orientée Objet - Prototype</span>
+         </a>
+</nav>
+</main>
+<footer class="pied">
+  <p>Archive personnelle des cours suivis à la Wild Code School. Copie hors ligne à usage strictement privé.</p>
+</footer>
+
+<script src="../../assets/copie-code.js"></script>
+<script src="../../assets/progression.js"></script>
+</body>
+</html>

@@ -1,0 +1,37 @@
+{
+  "id": 142,
+  "titre": "6. Les fonctions avec PHP",
+  "titres": {
+    "fr": "6. Les fonctions avec PHP"
+  },
+  "theme": {
+    "id": 25,
+    "slug": "php",
+    "nom": "PHP"
+  },
+  "creeLe": "2018-02-12T09:18:10.487+01:00",
+  "difficulte": "",
+  "dureeEstimee": null,
+  "modeValidation": "student",
+  "chapitres": [
+    {
+      "id": 8000,
+      "type": "content",
+      "langue": "fr",
+      "majLe": "2022-09-22T13:58:27.894+02:00",
+      "caracteres": 20004
+    }
+  ],
+  "ressources": [
+    {
+      "link": "https://www.pierre-giraud.com/php-mysql-apprendre-coder-cours/introduction-fonction/",
+      "description": "Parce que la doc officielle PHP est contreproductive !"
+    },
+    {
+      "link": "https://www.youtube.com/watch?v=GUcyWuLQ7A4",
+      "description": " #5 - Les fonctions en PHP pour les nuls de CharlieProd (Vidéo de 12 min en français)"
+    }
+  ],
+  "urlOrigine": "https://odyssey.wildcodeschool.com/quests/142",
+  "archiveLe": "2026-09-02T23:21:35.371Z"
+}

@@ -1,0 +1,28 @@
+{
+  "id": 2265,
+  "titre": "POO5 - Les constantes de classe",
+  "titres": {
+    "fr": "POO5 - Les constantes de classe"
+  },
+  "theme": {
+    "id": 70,
+    "slug": "php-object-oriented",
+    "nom": "PHP Orienté Objet"
+  },
+  "creeLe": "2022-09-23T16:29:50.392+02:00",
+  "difficulte": "",
+  "dureeEstimee": null,
+  "modeValidation": "student",
+  "chapitres": [
+    {
+      "id": 8227,
+      "type": "content",
+      "langue": "fr",
+      "majLe": "2022-10-17T09:19:04.934+02:00",
+      "caracteres": 8922
+    }
+  ],
+  "ressources": [],
+  "urlOrigine": "https://odyssey.wildcodeschool.com/quests/2265",
+  "archiveLe": "2026-09-02T20:53:52.303Z"
+}

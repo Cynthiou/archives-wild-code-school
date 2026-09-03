@@ -1,0 +1,33 @@
+{
+  "id": 1614,
+  "titre": "Twig - 02. Héritage et inclusion",
+  "titres": {
+    "fr": "Twig - 02. Héritage et inclusion"
+  },
+  "theme": {
+    "id": 7,
+    "slug": "php_adv",
+    "nom": "PHP Avancé"
+  },
+  "creeLe": "2021-03-25T14:44:09.999+01:00",
+  "difficulte": "2",
+  "dureeEstimee": 60,
+  "modeValidation": "student",
+  "chapitres": [
+    {
+      "id": 9536,
+      "type": "content",
+      "langue": "fr",
+      "majLe": "2023-04-06T14:30:11.360+02:00",
+      "caracteres": 10965
+    }
+  ],
+  "ressources": [
+    {
+      "link": "https://www.smashingmagazine.com/2011/10/getting-started-with-php-templating/",
+      "description": "La balise hypertexte de la ressource donnée dans le cours est un peu bancale, je mets le lien ici en attendant que ce soit corrigé."
+    }
+  ],
+  "urlOrigine": "https://odyssey.wildcodeschool.com/quests/1614",
+  "archiveLe": "2026-09-02T20:52:11.599Z"
+}

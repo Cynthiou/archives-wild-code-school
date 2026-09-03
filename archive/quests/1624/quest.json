@@ -1,0 +1,38 @@
+{
+  "id": 1624,
+  "titre": "Composer - 1. Installation",
+  "titres": {
+    "en": "Composer 1 - Installation",
+    "fr": "Composer - 1. Installation"
+  },
+  "theme": {
+    "id": 7,
+    "slug": "php_adv",
+    "nom": "PHP Avancé"
+  },
+  "creeLe": "2021-04-01T15:54:57.751+02:00",
+  "difficulte": "1",
+  "dureeEstimee": null,
+  "modeValidation": "self",
+  "chapitres": [
+    {
+      "id": 8023,
+      "type": "content",
+      "langue": "fr",
+      "majLe": "2022-09-26T12:46:44.698+02:00",
+      "caracteres": 3491
+    }
+  ],
+  "ressources": [
+    {
+      "link": "https://connect.adfab.fr/outils/quest-ce-composer",
+      "description": "Information très simple pour une première approche de Composer"
+    },
+    {
+      "link": "https://getcomposer.org/download/",
+      "description": "Installation de composer via getcomposer.org"
+    }
+  ],
+  "urlOrigine": "https://odyssey.wildcodeschool.com/quests/1624",
+  "archiveLe": "2026-09-02T20:52:05.427Z"
+}

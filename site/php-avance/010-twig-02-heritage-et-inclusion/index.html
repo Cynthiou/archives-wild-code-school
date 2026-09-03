@@ -1,0 +1,309 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Twig - 02. Héritage et inclusion — Archives WCS</title>
+<link rel="stylesheet" href="../../assets/style.css">
+</head>
+<body style="--teinte:#745089">
+<header class="entete">
+  <a class="entete__marque" href="../../index.html">Archives Wild Code School</a>
+</header>
+<main class="contenu">
+<nav class="ariane"><a href="../../index.html">Accueil</a><span class="ariane__sep">›</span><a href="../../php-avance/index.html">PHP Avancé</a><span class="ariane__sep">›</span><span aria-current="page">Twig - 02. Héritage et inclusion</span></nav>
+
+<article class="quete">
+  <header class="quete__entete">
+    <a class="pastille pastille--teintee" href="../../php-avance/index.html">PHP Avancé</a>
+    <h1>Twig - 02. Héritage et inclusion</h1>
+    <p class="quete__meta">Quête 10 sur 11 · 2 images archivées</p>
+  </header>
+  <div class="cours">
+<div class="bloc-code"><div class="bloc-code__langue">title-book</div><pre><code class="hljs language-title-book">
+Introduction
+
+</code></pre></div>
+<p>⚠️ Avant de commencer cette quête, tu dois avoir terminé la quête suivante</p>
+<div class="renvois"><div class="renvois__titre">Quêtes liées</div><ul><li><a href="../../php-avance/009-twig-01-demarrage-et-utilisation/index.html">Quête 1623</a></li></ul></div>
+<h1>TWIG</h1>
+<p><img src="images/001-image.png" alt="image" loading="lazy"></p>
+<p>Parmi ses fonctionnalités, le moteur de template Twig permet de gérer la structure des pages. Bien utiliser son moteur te permettra de développer des applications maintenables et évolutives.</p>
+<h2>🤓 À la fin de cette quête, tu seras capable de :</h2>
+<ul>
+<li>✅ Utiliser l'héritage dans Twig</li>
+<li>✅ Inclure des composants de template</li>
+</ul>
+<h1>Le principe d'héritage</h1>
+<p>Comme en Programmation Orientée Objet, Twig inclut un système d'héritage de template dans son moteur.
+Cette fonctionnalité sera incontournable pour tout projet multipages afin de te permettre de créer un squelette de base à ton application. L'idée est la suivante: des templates &quot;enfants&quot; vont pouvoir hériter de ce qui a déjà été défini dans les templates &quot;parents&quot;, à savoir le code HTML déjà écrit !</p>
+<h3>Création du squelette</h3>
+<p>Que pourrait contenir ce squelette ?
+Tout ce que tu as besoin de répéter sur chaque page HTML !
+Soit par exemple :</p>
+<div class="bloc-code"><div class="bloc-code__langue">twig</div><pre><code class="hljs language-twig"><span class="hljs-comment">{# layout.html.twig #}</span><span class="language-xml">
+<span class="hljs-meta">&lt;!doctype <span class="hljs-keyword">html</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">html</span> <span class="hljs-attr">lang</span>=<span class="hljs-string">&quot;fr&quot;</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">head</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">meta</span> <span class="hljs-attr">charset</span>=<span class="hljs-string">&quot;utf-8&quot;</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">meta</span> <span class="hljs-attr">http-equiv</span>=<span class="hljs-string">&quot;x-ua-compatible&quot;</span> <span class="hljs-attr">content</span>=<span class="hljs-string">&quot;ie=edge&quot;</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">meta</span> <span class="hljs-attr">name</span>=<span class="hljs-string">&quot;viewport&quot;</span> <span class="hljs-attr">content</span>=<span class="hljs-string">&quot;width=device-width, initial-scale=1&quot;</span>&gt;</span>
+
+    <span class="hljs-tag">&lt;<span class="hljs-name">title</span>&gt;</span>Wilders.co<span class="hljs-tag">&lt;/<span class="hljs-name">title</span>&gt;</span>
+
+    <span class="hljs-tag">&lt;<span class="hljs-name">link</span> <span class="hljs-attr">rel</span>=<span class="hljs-string">&quot;stylesheet&quot;</span> <span class="hljs-attr">href</span>=<span class="hljs-string">&quot;/assets/css/style.css&quot;</span>&gt;</span> 
+    <span class="hljs-tag">&lt;<span class="hljs-name">link</span> <span class="hljs-attr">rel</span>=<span class="hljs-string">&quot;icon&quot;</span> <span class="hljs-attr">href</span>=<span class="hljs-string">&quot;/assets/images/favicon.png&quot;</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">head</span>&gt;</span>
+
+<span class="hljs-tag">&lt;<span class="hljs-name">body</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">body</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">html</span>&gt;</span>
+</span></code></pre></div>
+<p>Rien de nouveau pour toi ici, tu as dans cet exemple toutes les balises nécessaires pour chacune des pages qui feront partie de ton application.</p>
+<p>Généralement, ce squelette est appelé <em>base.html.twig</em> ou <em>layout.html.twig</em>.</p>
+<p>Comme chacune de tes pages de ton site contiendra les éléments de ce squelette, il faut maintenant l'imaginer comme un calque que tu pourras poser sur tous tes fichiers, simplement en l'appelant !
+Dans l'état, il manque quelque chose d'important dans cet exemple. Permettre d'indiquer les endroits où tu laisses la possibilité d'ajouter du code lorsque l'on utilisera ce calque.</p>
+<p>Par exemple entre les deux balises body, pour injecter le contenu principal de la page considérée.
+Voici comment l'indiquer dans notre exemple</p>
+<div class="bloc-code"><div class="bloc-code__langue">twig</div><pre><code class="hljs language-twig"><span class="hljs-comment">{# layout.html.twig #}</span><span class="language-xml">
+<span class="hljs-meta">&lt;!doctype <span class="hljs-keyword">html</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">html</span> <span class="hljs-attr">lang</span>=<span class="hljs-string">&quot;fr&quot;</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">head</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">meta</span> <span class="hljs-attr">charset</span>=<span class="hljs-string">&quot;utf-8&quot;</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">meta</span> <span class="hljs-attr">http-equiv</span>=<span class="hljs-string">&quot;x-ua-compatible&quot;</span> <span class="hljs-attr">content</span>=<span class="hljs-string">&quot;ie=edge&quot;</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">meta</span> <span class="hljs-attr">name</span>=<span class="hljs-string">&quot;viewport&quot;</span> <span class="hljs-attr">content</span>=<span class="hljs-string">&quot;width=device-width, initial-scale=1&quot;</span>&gt;</span>
+
+    <span class="hljs-tag">&lt;<span class="hljs-name">title</span>&gt;</span>Wilders.co<span class="hljs-tag">&lt;/<span class="hljs-name">title</span>&gt;</span>
+
+    <span class="hljs-tag">&lt;<span class="hljs-name">link</span> <span class="hljs-attr">rel</span>=<span class="hljs-string">&quot;stylesheet&quot;</span> <span class="hljs-attr">href</span>=<span class="hljs-string">&quot;/assets/css/style.css&quot;</span>&gt;</span> 
+    <span class="hljs-tag">&lt;<span class="hljs-name">link</span> <span class="hljs-attr">rel</span>=<span class="hljs-string">&quot;icon&quot;</span> <span class="hljs-attr">href</span>=<span class="hljs-string">&quot;/assets/images/favicon.png&quot;</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">head</span>&gt;</span>
+
+<span class="hljs-tag">&lt;<span class="hljs-name">body</span>&gt;</span>
+    </span><span class="hljs-template-tag">{%</span> <span class="hljs-name">block</span> content <span class="hljs-template-tag">%}</span><span class="hljs-template-tag">{%</span> <span class="hljs-name">endblock</span> <span class="hljs-template-tag">%}</span><span class="language-xml">
+<span class="hljs-tag">&lt;/<span class="hljs-name">body</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">html</span>&gt;</span>
+</span></code></pre></div>
+<p>Tu as remarqué que nous avons ajouté <code>{% block content %}{% endblock %}</code> entre les deux balises <code>body</code>. C'est donc dans ces <em>blocks</em> qu'il sera possible d'écrire du code si tu hérites de ce squelette.
+Le mot <em>content</em> a été choisi arbitrairement, tu aurais pu l'appeler <em>body</em> ou autre mot approprié.</p>
+<h3>Héritage du squelette</h3>
+<p>Maintenant que tu as un squelette utilisable, tu vas pouvoir en hériter dans un autre fichier.</p>
+<div class="bloc-code"><div class="bloc-code__langue">twig</div><pre><code class="hljs language-twig"><span class="hljs-comment">{# hello.html.twig #}</span><span class="language-xml">
+</span><span class="hljs-template-tag">{%</span> <span class="hljs-name">extends</span> <span class="hljs-string">&#x27;layout.html.twig&#x27;</span> <span class="hljs-template-tag">%}</span><span class="language-xml">
+
+</span><span class="hljs-template-tag">{%</span> <span class="hljs-name">block</span> content <span class="hljs-template-tag">%}</span><span class="language-xml">
+    Hello World !
+</span><span class="hljs-template-tag">{%</span> <span class="hljs-name">endblock</span> <span class="hljs-template-tag">%}</span><span class="language-xml">
+</span></code></pre></div>
+<p>Et c'est tout !
+Tout d'abord tu indiques que tu souhaites hériter de <em>layout.html.twig</em> (ton squelette) grâce au mot clé <code>extends</code>.
+Ensuite, tu as la possibilité d'utiliser les blocs mis à ta disposition par le squelette. Dans notre exemple, le <code>block content</code>.
+Par cette manipulation, tu as en réalité généré un fichier HTML complet qui sera servi sur le navigateur de l'utilisateur final.</p>
+<div class="encadre encadre--warning"><div class="encadre__titre">Attention</div><div class="encadre__corps"><p>En héritant d'un layout, il est obligatoire d'insérer le contenu uniquement à l'intérieur d'un élément block. Dans le cas contraire, le moteur de template ne saura pas où afficher le contenu et lancera une erreur.</p>
+</div></div>
+<h3>Allons plus loin dans l'héritage</h3>
+<p>Avec l'exemple que tu viens de voir, nous rencontrons des limites :</p>
+<p>&quot;Comment puis-je alors avoir un title différent pour chacune de mes pages ?&quot;</p>
+<p>Deux solutions.</p>
+<p>La première consisterait à modifier le <em>layout.html.twig</em> en ajoutant un bloc <em>title</em>, comme ceci :</p>
+<div class="bloc-code"><div class="bloc-code__langue">twig</div><pre><code class="hljs language-twig"><span class="hljs-comment">{# layout.html.twig #}</span><span class="language-xml">
+<span class="hljs-meta">&lt;!doctype <span class="hljs-keyword">html</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">html</span> <span class="hljs-attr">lang</span>=<span class="hljs-string">&quot;fr&quot;</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">head</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">meta</span> <span class="hljs-attr">charset</span>=<span class="hljs-string">&quot;utf-8&quot;</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">meta</span> <span class="hljs-attr">http-equiv</span>=<span class="hljs-string">&quot;x-ua-compatible&quot;</span> <span class="hljs-attr">content</span>=<span class="hljs-string">&quot;ie=edge&quot;</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">meta</span> <span class="hljs-attr">name</span>=<span class="hljs-string">&quot;viewport&quot;</span> <span class="hljs-attr">content</span>=<span class="hljs-string">&quot;width=device-width, initial-scale=1&quot;</span>&gt;</span>
+
+    <span class="hljs-tag">&lt;<span class="hljs-name">title</span>&gt;</span></span><span class="hljs-template-tag">{%</span> <span class="hljs-name">block</span> title <span class="hljs-template-tag">%}</span><span class="hljs-template-tag">{%</span> <span class="hljs-name">endblock</span> <span class="hljs-template-tag">%}</span><span class="language-xml"><span class="hljs-tag">&lt;/<span class="hljs-name">title</span>&gt;</span>
+
+    <span class="hljs-tag">&lt;<span class="hljs-name">link</span> <span class="hljs-attr">rel</span>=<span class="hljs-string">&quot;stylesheet&quot;</span> <span class="hljs-attr">href</span>=<span class="hljs-string">&quot;/assets/css/style.css&quot;</span>&gt;</span> 
+    <span class="hljs-tag">&lt;<span class="hljs-name">link</span> <span class="hljs-attr">rel</span>=<span class="hljs-string">&quot;icon&quot;</span> <span class="hljs-attr">href</span>=<span class="hljs-string">&quot;/assets/images/favicon.png&quot;</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">head</span>&gt;</span>
+
+<span class="hljs-tag">&lt;<span class="hljs-name">body</span>&gt;</span>
+    </span><span class="hljs-template-tag">{%</span> <span class="hljs-name">block</span> content <span class="hljs-template-tag">%}</span><span class="hljs-template-tag">{%</span> <span class="hljs-name">endblock</span> <span class="hljs-template-tag">%}</span><span class="language-xml">
+<span class="hljs-tag">&lt;/<span class="hljs-name">body</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">html</span>&gt;</span>
+</span></code></pre></div>
+<p>et dans ce cas, si tu n'indiques pas le contenu du bloc <em>title</em> quand tu hérites de ce <em>layout</em>, la page générée n'aura pas de contenu pour la balise <code>&lt;title&gt;</code>, et donc pas de titre. Le bloc n'a pas de contenu par défaut.</p>
+<p>La seconde solution, qui serait plus appropriée dans notre exemple, serait plutôt d'indiquer du contenu par défaut dans notre bloc title, comme ceci</p>
+<div class="bloc-code"><div class="bloc-code__langue">twig</div><pre><code class="hljs language-twig"><span class="hljs-comment">{# layout.html.twig #}</span><span class="language-xml">
+<span class="hljs-meta">&lt;!doctype <span class="hljs-keyword">html</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">html</span> <span class="hljs-attr">lang</span>=<span class="hljs-string">&quot;fr&quot;</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">head</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">meta</span> <span class="hljs-attr">charset</span>=<span class="hljs-string">&quot;utf-8&quot;</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">meta</span> <span class="hljs-attr">http-equiv</span>=<span class="hljs-string">&quot;x-ua-compatible&quot;</span> <span class="hljs-attr">content</span>=<span class="hljs-string">&quot;ie=edge&quot;</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">meta</span> <span class="hljs-attr">name</span>=<span class="hljs-string">&quot;viewport&quot;</span> <span class="hljs-attr">content</span>=<span class="hljs-string">&quot;width=device-width, initial-scale=1&quot;</span>&gt;</span>
+
+    <span class="hljs-tag">&lt;<span class="hljs-name">title</span>&gt;</span></span><span class="hljs-template-tag">{%</span> <span class="hljs-name">block</span> title <span class="hljs-template-tag">%}</span><span class="language-xml">Wilders.co</span><span class="hljs-template-tag">{%</span> <span class="hljs-name">endblock</span> <span class="hljs-template-tag">%}</span><span class="language-xml"><span class="hljs-tag">&lt;/<span class="hljs-name">title</span>&gt;</span>
+
+    <span class="hljs-tag">&lt;<span class="hljs-name">link</span> <span class="hljs-attr">rel</span>=<span class="hljs-string">&quot;stylesheet&quot;</span> <span class="hljs-attr">href</span>=<span class="hljs-string">&quot;/assets/css/style.css&quot;</span>&gt;</span> 
+    <span class="hljs-tag">&lt;<span class="hljs-name">link</span> <span class="hljs-attr">rel</span>=<span class="hljs-string">&quot;icon&quot;</span> <span class="hljs-attr">href</span>=<span class="hljs-string">&quot;/assets/images/favicon.png&quot;</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">head</span>&gt;</span>
+
+<span class="hljs-tag">&lt;<span class="hljs-name">body</span>&gt;</span>
+    </span><span class="hljs-template-tag">{%</span> <span class="hljs-name">block</span> content <span class="hljs-template-tag">%}</span><span class="hljs-template-tag">{%</span> <span class="hljs-name">endblock</span> <span class="hljs-template-tag">%}</span><span class="language-xml">
+<span class="hljs-tag">&lt;/<span class="hljs-name">body</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">html</span>&gt;</span>
+</span></code></pre></div>
+<p>Ainsi, lorsque tu hériteras de ce <em>layout</em>, tu pourras soit :</p>
+<ul>
+<li>Ne pas utiliser le bloc title et dans ce cas, ce sera celui par défaut (Wilders.co dans cet exemple)</li>
+<li>Écraser entièrement le bloc title et mettant celui que tu souhaites</li>
+</ul>
+<div class="bloc-code"><div class="bloc-code__langue">twig</div><pre><code class="hljs language-twig"><span class="hljs-comment">{# admin.html.twig #}</span><span class="language-xml">
+</span><span class="hljs-template-tag">{%</span> <span class="hljs-name">extends</span> <span class="hljs-string">&#x27;layout.html.twig&#x27;</span> <span class="hljs-template-tag">%}</span><span class="language-xml">
+</span><span class="hljs-template-tag">{%</span> <span class="hljs-name">block</span> title <span class="hljs-template-tag">%}</span><span class="language-xml">
+    Interface d&#x27;administration
+</span><span class="hljs-template-tag">{%</span> <span class="hljs-name">endblock</span> <span class="hljs-template-tag">%}</span><span class="language-xml">
+</span><span class="hljs-template-tag">{%</span> <span class="hljs-name">block</span> content <span class="hljs-template-tag">%}</span><span class="language-xml">
+    Hello admin !
+</span><span class="hljs-template-tag">{%</span> <span class="hljs-name">endblock</span> <span class="hljs-template-tag">%}</span><span class="language-xml">
+</span></code></pre></div>
+<ul>
+<li>Ou enfin, conserver le title par défaut et y ajouter du contenu personnalisé selon la page où l'on se trouve, grâce à la fonction Twig `{{ parent() }} qui reprend le contenu du bloc parent !</li>
+</ul>
+<div class="bloc-code"><div class="bloc-code__langue">twig</div><pre><code class="hljs language-twig"><span class="hljs-comment">{# contact.html.twig #}</span><span class="language-xml">
+</span><span class="hljs-template-tag">{%</span> <span class="hljs-name">extends</span> <span class="hljs-string">&#x27;layout.html.twig&#x27;</span> <span class="hljs-template-tag">%}</span><span class="language-xml">
+</span><span class="hljs-template-tag">{%</span> <span class="hljs-name">block</span> title <span class="hljs-template-tag">%}</span><span class="language-xml">
+    </span><span class="hljs-template-variable">{{ <span class="hljs-name">parent</span>() }}</span><span class="language-xml"> - Contactez-nous !
+</span><span class="hljs-template-tag">{%</span> <span class="hljs-name">endblock</span> <span class="hljs-template-tag">%}</span><span class="language-xml">
+</span><span class="hljs-template-tag">{%</span> <span class="hljs-name">block</span> content <span class="hljs-template-tag">%}</span><span class="language-xml">
+    Utilisez ce formulaire pour nous contacter :
+    </span><span class="hljs-comment">{# formulaire de contact (...) #}</span><span class="language-xml">
+</span><span class="hljs-template-tag">{%</span> <span class="hljs-name">endblock</span> <span class="hljs-template-tag">%}</span><span class="language-xml">
+</span></code></pre></div>
+<p>Ceci affichera comme title : &quot;Wilders.co - Contactez-nous !&quot;</p>
+<div class="encadre encadre--info"><div class="encadre__titre">Info</div><div class="encadre__corps"><p>Si tu souhaites un exemple concret où ce système est appliqué, observe dans les onglets de ton navigateur les &quot;title&quot; de chaque page de la documentation de <a href="https://twig.symfony.com" target="_blank" rel="noopener noreferrer">twig</a> !</p>
+</div></div>
+<p>Cet exemple s'applique aussi bien pour les title que pour les blocs de styles, scripts ou autres contextes.
+Il est d'ailleurs d'usage de créer des blocs pour <code>title</code>, <code>stylesheet</code>, <code>content</code> et <code>javascript</code> dans les layouts principaux.</p>
+<a class="ressource" href="https://www.smashingmagazine.com/2011/10/getting-started-with-php-templating" target="_blank" rel="noopener noreferrer">
+  <div class="ressource__icone">↗</div>
+  <div class="ressource__texte">
+    <div class="ressource__titre">Ressource très complète sur les templates</div>
+    <div class="ressource__desc"><p>Regarde toute la <strong>première partie</strong> de l'article sur l'intérêt général des <em>templates</em>. Attends cependant d'avoir terminé de lire le reste de la quête avant de revenir sur la seconde qui présente Twig.</p>
+</div>
+    <div class="ressource__hote">smashingmagazine.com</div>
+  </div>
+</a>
+<p>Vidéo sur le principe d'héritage avec Twig</p>
+<a class="video-lien" href="https://www.youtube.com/watch?v=sAxuqMB7eUY" target="_blank" rel="noopener noreferrer">
+  <div class="video-lien__play">▶</div>
+  <div class="video-lien__texte">
+    <div class="video-lien__titre">Vidéo YouTube</div>
+    <div class="video-lien__url">https://www.youtube.com/watch?v=sAxuqMB7eUY</div>
+  </div>
+</a>
+<h1>Le principe d'inclusion</h1>
+<p>L'inclusion avec Twig permet d'améliorer la modularité de tes applications.</p>
+<p>Normalement, tu ne devrais pas être très dépaysé avec l'inclusion de <em>templates</em> avec Twig : ça ressemble cette fois beaucoup à ce que tu fais déjà quand tu utilises <code>include</code> (ou <code>require</code>) pour inclure un fichier PHP dans un autre.</p>
+<p>Quand tu développeras des applications avec Twig, l'idée sera de réflechir en terme de composants.</p>
+<p>Les vertus de découper en composants sont multiples :</p>
+<ul>
+<li>Réutilisation du code (DRY)</li>
+<li>Organisation du code (maintenabilité, évolutivité)</li>
+<li>Fichiers plus lisibles, moins chargés (maintenabilité, évolutivité)</li>
+</ul>
+<p>Un exemple courant serait une <a href="https://getbootstrap.com/docs/4.0/components/card/" target="_blank" rel="noopener noreferrer">card</a>, que l'on utiliserait sur plusieurs pages.</p>
+<div class="bloc-code"><div class="bloc-code__langue">twig</div><pre><code class="hljs language-twig"><span class="hljs-comment">{# component/_card.html.twig #}</span><span class="language-xml">
+<span class="hljs-tag">&lt;<span class="hljs-name">article</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">header</span>&gt;</span><span class="hljs-tag">&lt;<span class="hljs-name">img</span> <span class="hljs-attr">src</span>=<span class="hljs-string">&quot;images/002-card-image-cap.jpg&quot;</span> <span class="hljs-attr">alt</span>=<span class="hljs-string">&quot;Card image cap&quot;</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">header</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">div</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">h1</span>&gt;</span></span><span class="hljs-template-variable">{{ activity.title }}</span><span class="language-xml"><span class="hljs-tag">&lt;/<span class="hljs-name">h1</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">p</span>&gt;</span></span><span class="hljs-template-variable">{{ activity.content }}</span><span class="language-xml"><span class="hljs-tag">&lt;/<span class="hljs-name">p</span>&gt;</span>
+  <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">article</span>&gt;</span>
+</span></code></pre></div>
+<p>C'est tout ce que contiendrait ce fichier !
+Il ne sera jamais utilisé en tant que vue complète mais tout le temps en tant que composant. Il ne doit surtout pas hériter du <em>layout</em> par exemple.
+Une bonne pratique consiste à nommer ces composants en préfixant avec un underscore. Ici <em>_card.html.twig</em></p>
+<div class="encadre encadre--info"><div class="encadre__titre">Info</div><div class="encadre__corps"><p>Cette pratique de nommage est recommandée dans la liste des <a href="https://symfony.com/doc/current/best_practices.html#templates" target="_blank" rel="noopener noreferrer">bonnes pratiques de Symfony</a>, commence dès maintenant à prendre de belles habitudes !</p>
+</div></div>
+<p>Voici maintenant comment ce composant pourrait être utilisé</p>
+<div class="bloc-code"><div class="bloc-code__langue">twig</div><pre><code class="hljs language-twig"><span class="hljs-comment">{# activities.html.twig #}</span><span class="language-xml">
+</span><span class="hljs-template-tag">{%</span> <span class="hljs-name">extends</span> <span class="hljs-string">&#x27;layout.html.twig&#x27;</span> <span class="hljs-template-tag">%}</span><span class="language-xml">
+</span><span class="hljs-template-tag">{%</span> <span class="hljs-name">block</span> title <span class="hljs-template-tag">%}</span><span class="language-xml">
+    </span><span class="hljs-template-variable">{{ <span class="hljs-name">parent</span>() }}</span><span class="language-xml"> - Liste de nos activités
+</span><span class="hljs-template-tag">{%</span> <span class="hljs-name">endblock</span> <span class="hljs-template-tag">%}</span><span class="language-xml">
+</span><span class="hljs-template-tag">{%</span> <span class="hljs-name">block</span> content <span class="hljs-template-tag">%}</span><span class="language-xml">
+    </span><span class="hljs-template-tag">{%</span> <span class="hljs-name">for</span> activity <span class="hljs-keyword">in</span> activities <span class="hljs-template-tag">%}</span><span class="language-xml">
+        </span><span class="hljs-template-tag">{%</span> <span class="hljs-name">include</span> <span class="hljs-string">&#x27;component/_card.html.twig&#x27;</span> <span class="hljs-template-tag">%}</span><span class="language-xml">
+    </span><span class="hljs-template-tag">{%</span> <span class="hljs-name">endfor</span> <span class="hljs-template-tag">%}</span><span class="language-xml">
+</span><span class="hljs-template-tag">{%</span> <span class="hljs-name">endblock</span> <span class="hljs-template-tag">%}</span><span class="language-xml">
+</span></code></pre></div>
+<p>Dans cet exemple, nous supposons que notre contrôleur nous aura envoyé un tableau <code>activities</code>. Ainsi une card sera affichée pour chaque activité.</p>
+<h1>💪 Challenge</h1>
+<h3>Héritage et inclusion</h3>
+<div class="encadre encadre--info"><div class="encadre__titre">Info</div><div class="encadre__corps"><p>Pour ce challenge tu repartiras du dépôt Github que tu as déjà utilisé lors de la quête précédente : <a href="https://github.com/WildCodeSchool/quest-twig" target="_blank" rel="noopener noreferrer">https://github.com/WildCodeSchool/quest-twig</a></p>
+</div></div>
+<ul>
+<li>Commence par créer le fichier <code>src/View/layout.html.twig</code> avec le code suivant :</li>
+</ul>
+<div class="bloc-code"><div class="bloc-code__langue">twig</div><pre><code class="hljs language-twig"><span class="hljs-comment">{# layout.html.twig #}</span><span class="language-xml">
+<span class="hljs-meta">&lt;!doctype <span class="hljs-keyword">html</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">html</span> <span class="hljs-attr">lang</span>=<span class="hljs-string">&quot;fr&quot;</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">head</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">meta</span> <span class="hljs-attr">charset</span>=<span class="hljs-string">&quot;utf-8&quot;</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">meta</span> <span class="hljs-attr">http-equiv</span>=<span class="hljs-string">&quot;x-ua-compatible&quot;</span> <span class="hljs-attr">content</span>=<span class="hljs-string">&quot;ie=edge&quot;</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">meta</span> <span class="hljs-attr">name</span>=<span class="hljs-string">&quot;viewport&quot;</span> <span class="hljs-attr">content</span>=<span class="hljs-string">&quot;width=device-width, initial-scale=1&quot;</span>&gt;</span>
+
+    <span class="hljs-tag">&lt;<span class="hljs-name">title</span>&gt;</span></span><span class="hljs-template-tag">{%</span> <span class="hljs-name">block</span> title <span class="hljs-template-tag">%}</span><span class="hljs-template-tag">{%</span> <span class="hljs-name">endblock</span> <span class="hljs-template-tag">%}</span><span class="language-xml"><span class="hljs-tag">&lt;/<span class="hljs-name">title</span>&gt;</span>
+
+    <span class="hljs-tag">&lt;<span class="hljs-name">link</span> <span class="hljs-attr">rel</span>=<span class="hljs-string">&quot;stylesheet&quot;</span> <span class="hljs-attr">href</span>=<span class="hljs-string">&quot;/assets/css/style.css&quot;</span>&gt;</span> 
+    <span class="hljs-tag">&lt;<span class="hljs-name">link</span> <span class="hljs-attr">rel</span>=<span class="hljs-string">&quot;icon&quot;</span> <span class="hljs-attr">href</span>=<span class="hljs-string">&quot;/assets/images/favicon.png&quot;</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">head</span>&gt;</span>
+
+<span class="hljs-tag">&lt;<span class="hljs-name">body</span>&gt;</span>
+    </span><span class="hljs-template-tag">{%</span> <span class="hljs-name">block</span> content <span class="hljs-template-tag">%}</span><span class="hljs-template-tag">{%</span> <span class="hljs-name">endblock</span> <span class="hljs-template-tag">%}</span><span class="language-xml">
+<span class="hljs-tag">&lt;/<span class="hljs-name">body</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">html</span>&gt;</span>
+</span></code></pre></div>
+<ul>
+<li>Un fois le fichier créé, modifie ce <em>layout</em> pour avoir un <em>title</em> par défaut</li>
+<li>Crées une page <code>src/View/home.html.twig</code> qui hérite du <em>layout.html.twig</em></li>
+<li>Cette page utilisera le titre parent et ajoutera &quot;- Accueil&quot;</li>
+<li>Créé un composant pour une navbar (ne t’embête pas avec la mise en forme pour cette quête) et inclus le dans ton fichier <em>layout.html.twig</em></li>
+<li>Envoie le résultat sur ton dépôt GitHub et poste le lien en solution</li>
+</ul>
+<h3>Critères de validation</h3>
+<ul>
+<li>
+<p>Pour corriger, clone le projet et pense à lancer un <code>composer install</code>. Le dossier <code>vendor</code> ne doit pas être inclus dans le versionnage sous git.</p>
+</li>
+<li>
+<p><code>parent()</code> est utilisé dans le fichier <em>home.html.twig</em></p>
+</li>
+<li>
+<p><a href="https://symfony.com/doc/current/best_practices.html#templates" target="_blank" rel="noopener noreferrer">Les bonnes pratiques de nommage</a> sont appliquées</p>
+</li>
+</ul>
+
+  </div>
+  <section class="ressources-quete">
+  <h2>Ressources partagées sur cette quête</h2>
+  <ul class="ressources-liste">
+    <li><a href="https://www.smashingmagazine.com/2011/10/getting-started-with-php-templating/" target="_blank" rel="noopener noreferrer">La balise hypertexte de la ressource donnée dans le cours est un peu bancale, je mets le lien ici en attendant que ce soit corrigé.</a><span class="ressources-liste__url">https://www.smashingmagazine.com/2011/10/getting-started-with-php-templating/</span></li>
+  </ul>
+</section>
+</article>
+
+<nav class="nav-quete">
+  <a class="nav-quete__lien nav-quete__lien--prec" href="../../php-avance/009-twig-01-demarrage-et-utilisation/index.html">
+           <span class="nav-quete__sens">← Précédent</span>
+           <span class="nav-quete__titre">Twig - 01. Démarrage et utilisation</span>
+         </a>
+  <a class="nav-quete__lien nav-quete__lien--suiv" href="../../php-avance/011-twig-03-les-globales/index.html">
+           <span class="nav-quete__sens">Suivant →</span>
+           <span class="nav-quete__titre">Twig - 03. Les globales</span>
+         </a>
+</nav>
+</main>
+<footer class="pied">
+  <p>Archive personnelle des cours suivis à la Wild Code School. Copie hors ligne à usage strictement privé.</p>
+</footer>
+
+<script src="../../assets/copie-code.js"></script>
+<script src="../../assets/progression.js"></script>
+</body>
+</html>

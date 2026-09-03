@@ -1,0 +1,62 @@
+{
+  "id": 8,
+  "titre": "1. Installation des outils PHP",
+  "titres": {
+    "en": "1. Installing PHP tools",
+    "fr": "1. Installation des outils PHP"
+  },
+  "theme": {
+    "id": 25,
+    "slug": "php",
+    "nom": "PHP"
+  },
+  "creeLe": "2015-08-28T03:17:33.285+02:00",
+  "difficulte": "",
+  "dureeEstimee": null,
+  "modeValidation": "student",
+  "chapitres": [
+    {
+      "id": 18360,
+      "type": "content",
+      "langue": "fr",
+      "majLe": "2025-07-09T15:07:52.083+02:00",
+      "caracteres": 16441
+    }
+  ],
+  "ressources": [
+    {
+      "link": "https://www.superprof.fr/blog/programmation-php-histoire-definition/",
+      "description": "Un article assez simple mais qui explique qu'est-ce que PHP, sa création et les bonnes raisons de l'utiliser :)"
+    },
+    {
+      "link": "https://medium.com/techiediaries-com/install-php-8-on-ubuntu-20-04-b53f76ef1d62",
+      "description": "La version de PHP qui est dans les dépôts d'Ubuntu 20.04 est la php7.4. Si vous voulez la version la plus récente (php8.0), suivez ce lien et installez le ppa indiqué. Désormais, vous aurez installé côte à côte les versions 7.4 et 8.0 de PHP ! Vous pourrez toujours désinstaller php7.4 si besoin..."
+    },
+    {
+      "link": "https://www.tutos.eu/6390",
+      "description": "Suite à la vidéo de Grafikart : Petit tutoriel en français pour créer un alias pour une commande sous Linux. Par exemple pour cette quête, vous pouvez facilement créer un raccourci pour lancer votre localhost ! Très utile si vous rajoutez des variables de configuration."
+    },
+    {
+      "link": "https://laragon.org/",
+      "description": "Alternative de serveur pour Windows ayant tout, à jour et fait par les créateurs de Laravel."
+    },
+    {
+      "link": "https://labetowiez.fr/Cyl/scriptMacOS/src/branch/master/php_install.sh",
+      "description": "I made a little script for people who work on MacOS and can't install php with brew. Probably because the version of the system is outdated. So this script work for MacOS 1.10 and later version. "
+    },
+    {
+      "link": "https://www.youtube.com/watch?v=OVTnj3hcHuc&list=PLjwdMgw5TTLVDv-ceONHM_C19dPW1MAMD&index=3",
+      "description": "Toutes les informations et le détails pour installer en français grâce aux tutos de Grafikart. "
+    },
+    {
+      "link": "https://openclassrooms.com/en/courses/918836-concevez-votre-site-web-avec-php-et-mysql",
+      "description": "Le cours d'OpenClassrooms complète les consignes qui manquent pour pouvoir avancer dans la quête"
+    },
+    {
+      "link": "https://support.apple.com/fr-fr/guide/terminal/apdb02f1133-25af-4c65-8976-159609f99817/mac",
+      "description": "Pour ceux qui ne savent pas ce qu'il faut faire au stade de Gedit, et sont sur Mac"
+    }
+  ],
+  "urlOrigine": "https://odyssey.wildcodeschool.com/quests/8",
+  "archiveLe": "2026-09-02T23:21:26.220Z"
+}

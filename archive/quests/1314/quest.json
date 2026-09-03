@@ -1,0 +1,28 @@
+{
+  "id": 1314,
+  "titre": "Installer et configurer Git",
+  "titres": {
+    "fr": "Installer et configurer Git"
+  },
+  "theme": {
+    "id": 149,
+    "slug": "web-development",
+    "nom": "Développement Web"
+  },
+  "creeLe": "2020-08-07T11:56:27.007+02:00",
+  "difficulte": "0",
+  "dureeEstimee": null,
+  "modeValidation": "self",
+  "chapitres": [
+    {
+      "id": 11869,
+      "type": "content",
+      "langue": "fr",
+      "majLe": "2024-07-24T09:32:23.425+02:00",
+      "caracteres": 5114
+    }
+  ],
+  "ressources": [],
+  "urlOrigine": "https://odyssey.wildcodeschool.com/quests/1314",
+  "archiveLe": "2026-09-02T20:52:57.394Z"
+}

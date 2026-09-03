@@ -1,0 +1,587 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>03 - JS Monorepo : Routing — Archives WCS</title>
+<link rel="stylesheet" href="../../assets/style.css">
+</head>
+<body style="--teinte:#000000">
+<header class="entete">
+  <a class="entete__marque" href="../../index.html">Archives Wild Code School</a>
+</header>
+<main class="contenu">
+<nav class="ariane"><a href="../../index.html">Accueil</a><span class="ariane__sep">›</span><a href="../../js-monorepo/index.html">JS Monorepo</a><span class="ariane__sep">›</span><span aria-current="page">03 - JS Monorepo : Routing</span></nav>
+
+<article class="quete">
+  <header class="quete__entete">
+    <a class="pastille pastille--teintee" href="../../js-monorepo/index.html">JS Monorepo</a>
+    <h1>03 - JS Monorepo : Routing</h1>
+    <p class="quete__meta">Quête 4 sur 9 · 3 images archivées</p>
+  </header>
+  <div class="cours">
+<h2>Objectifs</h2>
+<ul>
+<li>Comprendre la structure d'une application serveur</li>
+<li>Créer un premier &quot;module&quot;</li>
+<li>Découvrir les &quot;actions&quot;</li>
+</ul>
+<h2>Pré-requis</h2>
+<ol class="etapes"><li class="etape"><div class="etape__puce">1</div><div class="etape__contenu"><h4 class="etape__titre">Valider la quête suivante</h4><div class="renvois"><div class="renvois__titre">Quêtes liées</div><ul><li><a href="../../js-monorepo/003-02-js-monorepo-installation-et-initialisation-d-un-projet/index.html">Quête 589</a></li></ul></div>
+</div></li><li class="etape"><div class="etape__puce">2</div><div class="etape__contenu"><h4 class="etape__titre">Être complètement à l'aise avec la syntaxe pour déclarer une route sur une application Express</h4><div class="bloc-code"><div class="bloc-code__langue">js</div><pre><code class="hljs language-js"><span class="hljs-comment">// Déclaration d&#x27;une action</span>
+
+<span class="hljs-keyword">const</span> <span class="hljs-title function_">sayHello</span> = (<span class="hljs-params">req, res</span>) =&gt; {
+  res.<span class="hljs-title function_">send</span>(<span class="hljs-string">&quot;Hello World!&quot;</span>);
+};
+
+<span class="hljs-comment">// Association de l&#x27;action à une route</span>
+app.<span class="hljs-title function_">get</span>(<span class="hljs-string">&quot;/&quot;</span>, sayHello);
+</code></pre></div>
+</div></li><li class="etape"><div class="etape__puce">3</div><div class="etape__contenu"><h4 class="etape__titre">Prendre une grande respiration</h4><p>Tu vas naviguer entre plusieurs fichiers dans cette quête : rappelle toi d'y aller étape par étape. Pose des questions si tu as un doute plutôt que de te perdre.
+<img src="images/001-pre-requis.gif" alt="" loading="lazy"></p>
+</div></li></ol>
+<h2>Sommaire</h2>
+<h2>Introduction</h2>
+<p>Dans les épisodes précédents, tu as initialisé ton Monorepo et créé une route dans le fichier <code>server/src/main.ts</code>.</p>
+<p>Pour rappel, l'architecture du dossier <code>server</code> dans laquelle tu vas avancer un peu plus :</p>
+<div class="bloc-code"><div class="bloc-code__langue">js</div><pre><code class="hljs language-js">server/
+├── database/
+│   └──  <span class="hljs-comment">// plus tard</span>
+├── src/
+│   ├── modules/
+│   │   ├── item/
+│   │   │   ├── itemActions.<span class="hljs-property">ts</span>
+│   │   │   └── itemRepository.<span class="hljs-property">ts</span>
+│   │   └── ...
+│   ├── app.<span class="hljs-property">ts</span>
+│   ├── main.<span class="hljs-property">ts</span>    <span class="hljs-comment">// ✅</span>
+│   └── router.<span class="hljs-property">ts</span>  <span class="hljs-comment">// MAINTENANT</span>
+├── tests/
+│   └──  <span class="hljs-comment">// bien plus tard</span>
+├── .<span class="hljs-property">env</span>
+└── .<span class="hljs-property">env</span>.<span class="hljs-property">sample</span>
+</code></pre></div>
+<p>Tu as beaucoup de routes à créer pour ton projet Wild Series, et nous allons profiter de la suivante pour apprendre à créer des routes de façon organisée.</p>
+<h2>Le fichier app.ts</h2>
+<p>Revenons là où nous avons arrêté. Ouvre le fichier <code>server/src/main.ts</code> de ton projet :</p>
+<div class="bloc-code"><div class="bloc-code__langue">typescript</div><pre><code class="hljs language-typescript"><span class="hljs-comment">// Load environment variables from .env file</span>
+<span class="hljs-keyword">import</span> <span class="hljs-string">&quot;dotenv/config&quot;</span>;
+
+<span class="hljs-comment">// Check database connection</span>
+<span class="hljs-comment">// Note: This is optional and can be removed if the database connection</span>
+<span class="hljs-comment">// is not required when starting the application</span>
+<span class="hljs-keyword">import</span> <span class="hljs-string">&quot;../database/checkConnection&quot;</span>;
+
+<span class="hljs-comment">// Import the Express application from ./app</span>
+<span class="hljs-keyword">import</span> app <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;./app&quot;</span>;
+
+<span class="hljs-comment">/* ************************************************************************* */</span>
+
+<span class="hljs-comment">// Declaration of a &quot;Welcome&quot; route</span>
+
+<span class="hljs-keyword">import</span> <span class="hljs-keyword">type</span> { <span class="hljs-title class_">RequestHandler</span> } <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;express&quot;</span>;
+
+<span class="hljs-keyword">const</span> <span class="hljs-attr">sayWelcome</span>: <span class="hljs-title class_">RequestHandler</span> = <span class="hljs-function">(<span class="hljs-params">req, res</span>) =&gt;</span> {
+  res.<span class="hljs-title function_">send</span>(<span class="hljs-string">&quot;Welcome to Wild Series !&quot;</span>);
+};
+
+app.<span class="hljs-title function_">get</span>(<span class="hljs-string">&quot;/&quot;</span>, sayWelcome);
+
+<span class="hljs-comment">/* ************************************************************************* */</span>
+
+<span class="hljs-comment">// Get the port from the environment variables</span>
+<span class="hljs-keyword">const</span> port = process.<span class="hljs-property">env</span>.<span class="hljs-property">APP_PORT</span>;
+
+<span class="hljs-comment">// Start the server and listen on the specified port</span>
+app
+  .<span class="hljs-title function_">listen</span>(port, <span class="hljs-function">() =&gt;</span> {
+    <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">info</span>(<span class="hljs-string">`Server is listening on port <span class="hljs-subst">${port}</span>`</span>);
+  })
+  .<span class="hljs-title function_">on</span>(<span class="hljs-string">&quot;error&quot;</span>, <span class="hljs-function">(<span class="hljs-params"><span class="hljs-attr">err</span>: <span class="hljs-title class_">Error</span></span>) =&gt;</span> {
+    <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">error</span>(<span class="hljs-string">&quot;Error:&quot;</span>, err.<span class="hljs-property">message</span>);
+  });
+</code></pre></div>
+<div class="encadre encadre--note encadre--arrow"><div class="encadre__corps"><p>Et concentre toi sur cette ligne :</p>
+<div class="bloc-code"><div class="bloc-code__langue">typescript</div><pre><code class="hljs language-typescript"><span class="hljs-comment">// Import the Express application from ./app</span>
+<span class="hljs-keyword">import</span> app <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;./app&quot;</span>;
+</code></pre></div>
+</div></div>
+<p>Elle importe le fichier <code>./app.ts</code>. C'est là que tu vas poursuivre ton exploration !</p>
+<p>Suivons la piste ensemble : ouvre le fichier <code>server/src/app.ts</code>.</p>
+<p>Je ne vais pas reproduire le code ici : il y en a beaucoup trop... Faisons un peu le ménage :</p>
+<div class="bloc-code"><div class="bloc-code__langue">js</div><pre><code class="hljs language-js"><span class="hljs-comment">// Load the express module to create a web application</span>
+
+<span class="hljs-keyword">import</span> express <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;express&quot;</span>;
+
+<span class="hljs-keyword">const</span> app = <span class="hljs-title function_">express</span>();
+
+<span class="hljs-comment">// ...BEAUCOUP de lignes à lire, jusqu&#x27;à :</span>
+
+<span class="hljs-comment">// Import the API router</span>
+<span class="hljs-keyword">import</span> router <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;./router&quot;</span>;
+
+<span class="hljs-comment">// Mount the API router under the &quot;/api&quot; endpoint</span>
+app.<span class="hljs-title function_">use</span>(router);
+
+<span class="hljs-comment">// ...BEAUCOUP de lignes à lire, jusqu&#x27;à :</span>
+
+<span class="hljs-keyword">export</span> <span class="hljs-keyword">default</span> app;
+</code></pre></div>
+<div class="encadre encadre--info"><div class="encadre__titre">Info</div><div class="encadre__corps"><p>Nous reviendrons sur le reste du fichier pendant ton parcours quand tu auras besoin de personnaliser la configuration de ton application. <strong>Ignore-le pour l'instant</strong>.</p>
+</div></div>
+<p>Concentre toi sur ce 2e import :</p>
+<div class="bloc-code"><div class="bloc-code__langue">typescript</div><pre><code class="hljs language-typescript"><span class="hljs-comment">// Import the API router</span>
+<span class="hljs-keyword">import</span> router <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;./router&quot;</span>;
+</code></pre></div>
+<p>Avant de suivre cette nouvelle piste, prenons des notes :</p>
+<p><img src="images/002-main-ts-point-d-entree-de-notre-serveur-app-ts.png" alt="main.ts : Point d'entrée de
+notre serveur ; app.ts : Configuration de
+notre application ; router.ts : Déclaration des
+routes Express" loading="lazy"></p>
+<h3>Mais pourquoi autant de fichiers ?</h3>
+<p>Durant tout ton parcours à travers ce monorepo, tu remarqueras que chaque fichier se limite essentiellement à une mission. Dans le dossier <code>server</code> :</p>
+<ul>
+<li>Le fichier <code>main.ts</code> lance le serveur.</li>
+<li>Le fichier <code>app.ts</code> configure l'application.</li>
+<li>Le fichier <code>router.ts</code> déclare un ensemble de routes.</li>
+</ul>
+<p>Cette limite respecte un des fondements de la Programmation Orientée Objet (POO), plus spécifiquement le &quot;principe de responsabilité unique&quot; (Single Responsibility Principle - SRP) : c'est le S des principes SOLID. Il stipule qu'une classe, un module ou, dans notre cas, un fichier doit avoir une seule responsabilité, une seule raison d'exister et donc une seule raison de changer. Cette approche a plusieurs avantages importants :</p>
+<ul>
+<li><strong>Maintenance</strong> : Quand chaque fichier se concentre sur une seule responsabilité, il devient beaucoup plus facile à comprendre et à maintenir. Les modifications nécessaires sont isolées, ce qui réduit le risque d'introduire des bugs dans des parties du code qui n'ont pas de rapport entre elles.</li>
+<li><strong>Réutilisation</strong> : En séparant les préoccupations, les fichiers deviennent réutilisables. Par exemple, si un module nécessite un outil déjà mis en place et isolé pour un autre module, tu pourras réutiliser ton outil.</li>
+<li><strong>Test</strong> : Tester un fichier avec une seule responsabilité est beaucoup plus simple. Tu peux écrire des tests unitaires ciblés qui vérifient son comportement spécifique sans te préoccuper de son contexte.</li>
+</ul>
+<p>En appliquant le Principe de Responsabilité Unique à la structure de tes fichiers, tu crées une base solide pour un projet qui est plus facile à comprendre, à maintenir et à étendre. Cela rend le travail d'équipe plus fluide et la gestion du code plus efficace, car chaque partie du système est bien délimitée.</p>
+<a class="ressource" href="https://fr.wikipedia.org/wiki/SOLID_(informatique)" target="_blank" rel="noopener noreferrer">
+  <div class="ressource__icone">↗</div>
+  <div class="ressource__texte">
+    <div class="ressource__titre">https://fr.wikipedia.org/wiki/SOLID_(informatique)</div>
+    <div class="ressource__desc"><p>Si tu souhaites en savoir plus sur les principes SOLID</p>
+</div>
+    <div class="ressource__hote">fr.wikipedia.org</div>
+  </div>
+</a>
+<h2>Le fichier router.ts</h2>
+<p>Reprenons le fil de notre exploration. Ouvre le fichier <code>router.ts</code> dans ton dossier <code>server/src</code>. Tu peux y voir ce code :</p>
+<div class="bloc-code"><div class="bloc-code__langue">typescript</div><pre><code class="hljs language-typescript"><span class="hljs-keyword">import</span> express <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;express&quot;</span>;
+
+<span class="hljs-keyword">const</span> router = express.<span class="hljs-title class_">Router</span>();
+
+<span class="hljs-comment">/* ************************************************************************* */</span>
+<span class="hljs-comment">// Define Your API Routes Here</span>
+<span class="hljs-comment">/* ************************************************************************* */</span>
+
+<span class="hljs-comment">// Define item-related routes</span>
+<span class="hljs-keyword">import</span> itemActions <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;./modules/item/itemActions&quot;</span>;
+
+router.<span class="hljs-title function_">get</span>(<span class="hljs-string">&quot;/api/items&quot;</span>, itemActions.<span class="hljs-property">browse</span>);
+router.<span class="hljs-title function_">get</span>(<span class="hljs-string">&quot;/api/items/:id&quot;</span>, itemActions.<span class="hljs-property">read</span>);
+router.<span class="hljs-title function_">post</span>(<span class="hljs-string">&quot;/api/items&quot;</span>, itemActions.<span class="hljs-property">add</span>);
+
+<span class="hljs-comment">/* ************************************************************************* */</span>
+
+<span class="hljs-keyword">export</span> <span class="hljs-keyword">default</span> router;
+</code></pre></div>
+<p>Dès la deuxième instruction, tu peux noter un détail important :</p>
+<div class="bloc-code"><div class="bloc-code__langue">typescript</div><pre><code class="hljs language-typescript"><span class="hljs-keyword">const</span> router = express.<span class="hljs-title class_">Router</span>();
+</code></pre></div>
+<p><code>Router</code> est une fonction du module <code>express</code> qui crée un objet spécial : un routeur. Un routeur est un objet qui permet de définir un ensemble de routes pour les utiliser sur une application Express.</p>
+<div class="encadre encadre--warning"><div class="encadre__titre">Attention</div><div class="encadre__corps"><p>Même si le vocabulaire se ressemble, les routes côté client que tu as faites avec React Router n'ont rien à voir avec les routes côté serveur que tu vas faire avec Express.</p>
+<p>Une route côté React représente l'affichage d'une page, d'un composant. Une route côté Express représente un point d'entrée vers lequel envoyer une requête HTTP.</p>
+</div></div>
+<p>Déclare une route directement dans ce fichier <code>router.ts</code> en déplaçant celle que tu avais déclaré dans le fichier <code>main.ts</code> et en remplaçant <code>app.get()</code> en <code>router.get()</code>. Voici ce que tu dois obtenir :</p>
+<div class="onglets" data-onglets="2"><input type="radio" name="onglets-10" id="onglets-10-0" class="onglets__radio" checked><input type="radio" name="onglets-10" id="onglets-10-1" class="onglets__radio"><div class="onglets__barre"><label class="onglets__label" for="onglets-10-0">server/router.ts</label><label class="onglets__label" for="onglets-10-1">server/main.ts</label></div><div class="onglets__panneaux"><div class="onglets__panneau"><div class="bloc-code"><div class="bloc-code__langue">js</div><pre><code class="hljs language-js"><span class="hljs-keyword">import</span> express <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;express&quot;</span>;
+
+<span class="hljs-keyword">const</span> router = express.<span class="hljs-title class_">Router</span>();
+
+<span class="hljs-comment">/* ************************************************************************* */</span>
+<span class="hljs-comment">// Define Your API Routes Here</span>
+<span class="hljs-comment">/* ************************************************************************* */</span>
+
+<span class="hljs-comment">// Define item-related routes</span>
+<span class="hljs-keyword">import</span> itemActions <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;./modules/item/itemActions&quot;</span>;
+
+router.<span class="hljs-title function_">get</span>(<span class="hljs-string">&quot;/api/items&quot;</span>, itemActions.<span class="hljs-property">browse</span>);
+router.<span class="hljs-title function_">get</span>(<span class="hljs-string">&quot;/api/items/:id&quot;</span>, itemActions.<span class="hljs-property">read</span>);
+router.<span class="hljs-title function_">post</span>(<span class="hljs-string">&quot;/api/items&quot;</span>, itemActions.<span class="hljs-property">add</span>);
+
+<span class="hljs-comment">/* ************************************************************************* */</span>
+
+<span class="hljs-comment">// Declaration of a &quot;Welcome&quot; route</span>
+
+<span class="hljs-keyword">import</span> type { <span class="hljs-title class_">RequestHandler</span> } <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;express&quot;</span>;
+
+<span class="hljs-keyword">const</span> <span class="hljs-attr">sayWelcome</span>: <span class="hljs-title class_">RequestHandler</span> = <span class="hljs-function">(<span class="hljs-params">req, res</span>) =&gt;</span> {
+  res.<span class="hljs-title function_">send</span>(<span class="hljs-string">&quot;Welcome to Wild Series !&quot;</span>);
+};
+
+router.<span class="hljs-title function_">get</span>(<span class="hljs-string">&quot;/&quot;</span>, sayWelcome);
+
+<span class="hljs-comment">/* ************************************************************************* */</span>
+
+<span class="hljs-keyword">export</span> <span class="hljs-keyword">default</span> router;
+</code></pre></div>
+</div><div class="onglets__panneau"><div class="bloc-code"><div class="bloc-code__langue">js</div><pre><code class="hljs language-js"><span class="hljs-comment">// Load environment variables from .env file</span>
+<span class="hljs-keyword">import</span> <span class="hljs-string">&quot;dotenv/config&quot;</span>;
+
+<span class="hljs-comment">// Check database connection</span>
+<span class="hljs-comment">// Note: This is optional and can be removed if the database connection</span>
+<span class="hljs-comment">// is not required when starting the application</span>
+<span class="hljs-keyword">import</span> <span class="hljs-string">&quot;../database/checkConnection&quot;</span>;
+
+<span class="hljs-comment">// Import the Express application from ./app</span>
+<span class="hljs-keyword">import</span> app <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;./app&quot;</span>;
+
+<span class="hljs-comment">// Get the port from the environment variables</span>
+<span class="hljs-keyword">const</span> port = process.<span class="hljs-property">env</span>.<span class="hljs-property">APP_PORT</span>;
+
+<span class="hljs-comment">// Start the server and listen on the specified port</span>
+app
+  .<span class="hljs-title function_">listen</span>(port, <span class="hljs-function">() =&gt;</span> {
+    <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">info</span>(<span class="hljs-string">`Server is listening on port <span class="hljs-subst">${port}</span>`</span>);
+  })
+  .<span class="hljs-title function_">on</span>(<span class="hljs-string">&quot;error&quot;</span>, <span class="hljs-function">(<span class="hljs-params">err: <span class="hljs-built_in">Error</span></span>) =&gt;</span> {
+    <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">error</span>(<span class="hljs-string">&quot;Error:&quot;</span>, err.<span class="hljs-property">message</span>);
+  });
+</code></pre></div>
+</div></div></div>
+<p>Vérifie que ton serveur est bien lancé (pour rappel, dans ta console : <code>npm run dev</code>).</p>
+<p>Tu peux te rendre dans ton navigateur à l'adresse <a href="http://localhost:3310/" target="_blank" rel="noopener noreferrer">http://localhost:3310/</a> pour voir le résultat :</p>
+<div class="encadre encadre--note encadre--story"><div class="encadre__corps"><p>Welcome to Wild Series !</p>
+</div></div>
+<h3>Les modules, des pièces de Lego</h3>
+<p>Revenons sur le fichier <code>router.ts</code> :</p>
+<div class="bloc-code"><div class="bloc-code__langue">js</div><pre><code class="hljs language-js"><span class="hljs-comment">// ...</span>
+
+<span class="hljs-keyword">const</span> router = express.<span class="hljs-title class_">Router</span>();
+
+<span class="hljs-comment">// ...</span>
+
+<span class="hljs-keyword">import</span> itemActions <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;./modules/item/itemActions&quot;</span>;
+
+router.<span class="hljs-title function_">get</span>(<span class="hljs-string">&quot;/api/items&quot;</span>, itemActions.<span class="hljs-property">browse</span>);
+router.<span class="hljs-title function_">get</span>(<span class="hljs-string">&quot;/api/items/:id&quot;</span>, itemActions.<span class="hljs-property">read</span>);
+router.<span class="hljs-title function_">post</span>(<span class="hljs-string">&quot;/api/items&quot;</span>, itemActions.<span class="hljs-property">add</span>);
+
+<span class="hljs-comment">// ...</span>
+</code></pre></div>
+<p>Tu peux aller voir le fichier <code>./modules/item/itemActions.ts</code> : il exporte un objet avec 3 &quot;actions&quot; (browse, read et add) que nous affectons ici à la variable <code>itemActions</code>. Nous l'utilisons ensuite sur le routeur avec ces lignes :</p>
+<div class="bloc-code"><div class="bloc-code__langue">js</div><pre><code class="hljs language-js">router.<span class="hljs-title function_">get</span>(<span class="hljs-string">&quot;/api/items&quot;</span>, itemActions.<span class="hljs-property">browse</span>);
+router.<span class="hljs-title function_">get</span>(<span class="hljs-string">&quot;/api/items/:id&quot;</span>, itemActions.<span class="hljs-property">read</span>);
+router.<span class="hljs-title function_">post</span>(<span class="hljs-string">&quot;/api/items&quot;</span>, itemActions.<span class="hljs-property">add</span>);
+</code></pre></div>
+<p>En suivant ce modèle, tu peux ranger les <strong>actions</strong> dans des fichiers séparés, pour former une structure modulaire très flexible. Cette approche te permet de composer ton application comme si tu assemblais des pièces de LEGO. Chaque module est un bloc indépendant, responsable de gérer un ensemble spécifique d'actions.</p>
+<p>Par exemple, nous avons un module <code>item</code> pour gérer les actions liées aux items. Nous pourrions aussi avoir un module <code>user</code> pour gérer les actions liées aux utilisateurs de l'application, et ainsi de suite.</p>
+<p>Cela augmente la clarté et la maintenabilité de notre code. Au lieu d'avoir un fichier géant contenant toutes les actions, tu as plusieurs petits fichiers. Chacun se concentre sur une partie spécifique de ton application et tu peux les préfixer indépendamment.</p>
+<p>Pour schématiser :</p>
+<p><img src="images/003-modules.png" alt="modules" loading="lazy"></p>
+<p>Tu peux créer autant de modules que nécessaires !</p>
+<h2>Actions : la logique des routes</h2>
+<p>Nous en avons parlé, un fichier ne doit avoir qu'une seule et unique utilité. Le routeur ne doit donc servir qu'à la déclaration des routes.</p>
+<p>Tu dois séparer la déclaration des routes de leurs &quot;actions&quot;.</p>
+<p>Dans ce code :</p>
+<div class="bloc-code"><div class="bloc-code__langue">js</div><pre><code class="hljs language-js"><span class="hljs-keyword">const</span> <span class="hljs-attr">sayWelcome</span>: <span class="hljs-title class_">RequestHandler</span> = <span class="hljs-function">(<span class="hljs-params">req, res</span>) =&gt;</span> {
+  res.<span class="hljs-title function_">send</span>(<span class="hljs-string">&quot;Welcome to Wild Series !&quot;</span>);
+};
+
+router.<span class="hljs-title function_">get</span>(<span class="hljs-string">&quot;/&quot;</span>, sayWelcome);
+</code></pre></div>
+<p>La déclaration de la route (<code>router.get(...)</code> est déjà à part de l'action qu'elle déclenche (le callback <code>sayWelcome</code>).</p>
+<p>Mais l'action est toujours présente dans le même fichier que la déclaration de la route, ce qui va à l'encontre du SRP (Single Responsibility Principle).</p>
+<p>C'est le moment de créer ton premier module !</p>
+<p>Crée le fichier <code>server/src/modules/say/sayActions.ts</code> et déplace la fonction <code>sayWelcome</code> dans ce fichier :</p>
+<div class="bloc-code"><div class="bloc-code__langue">js</div><pre><code class="hljs language-js"><span class="hljs-comment">// Declare the action</span>
+
+<span class="hljs-keyword">import</span> type { <span class="hljs-title class_">RequestHandler</span> } <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;express&quot;</span>;
+
+<span class="hljs-keyword">const</span> <span class="hljs-attr">sayWelcome</span>: <span class="hljs-title class_">RequestHandler</span> = <span class="hljs-function">(<span class="hljs-params">req, res</span>) =&gt;</span> {
+  res.<span class="hljs-title function_">send</span>(<span class="hljs-string">&quot;Welcome to Wild Series !&quot;</span>);
+};
+
+<span class="hljs-comment">// Export it to import it somewhere else</span>
+
+<span class="hljs-keyword">export</span> <span class="hljs-keyword">default</span> { sayWelcome };
+</code></pre></div>
+<div class="encadre encadre--note encadre--arrow"><div class="encadre__corps"><p>Puis dans <code>server/src/router.ts</code> :</p>
+<div class="bloc-code"><div class="bloc-code__langue">js</div><pre><code class="hljs language-js"><span class="hljs-keyword">import</span> express <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;express&quot;</span>;
+
+<span class="hljs-keyword">const</span> router = express.<span class="hljs-title class_">Router</span>();
+
+<span class="hljs-comment">/* ************************************************************************* */</span>
+<span class="hljs-comment">// Define Your API Routes Here</span>
+<span class="hljs-comment">/* ************************************************************************* */</span>
+
+<span class="hljs-comment">// Define item-related routes</span>
+<span class="hljs-keyword">import</span> itemActions <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;./modules/item/itemActions&quot;</span>;
+
+router.<span class="hljs-title function_">get</span>(<span class="hljs-string">&quot;/api/items&quot;</span>, itemActions.<span class="hljs-property">browse</span>);
+router.<span class="hljs-title function_">get</span>(<span class="hljs-string">&quot;/api/items/:id&quot;</span>, itemActions.<span class="hljs-property">read</span>);
+router.<span class="hljs-title function_">post</span>(<span class="hljs-string">&quot;/api/items&quot;</span>, itemActions.<span class="hljs-property">add</span>);
+
+<span class="hljs-comment">/* ************************************************************************* */</span>
+
+<span class="hljs-comment">// Declaration of a &quot;Welcome&quot; route</span>
+
+<span class="hljs-keyword">import</span> sayActions <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;./modules/say/sayActions&quot;</span>;
+
+router.<span class="hljs-title function_">get</span>(<span class="hljs-string">&quot;/&quot;</span>, sayActions.<span class="hljs-property">sayWelcome</span>);
+
+<span class="hljs-comment">/* ************************************************************************* */</span>
+
+<span class="hljs-keyword">export</span> <span class="hljs-keyword">default</span> router;
+</code></pre></div>
+</div></div>
+<p>Ouvre la page <a href="http://localhost:3310/" target="_blank" rel="noopener noreferrer">http://localhost:3310/</a> pour t'assurer que ta route fonctionne toujours.</p>
+<p>Tu as désormais une vue globale du système de Routing 🎉.</p>
+<h2>Récapitulatif</h2>
+<p>Pour ajouter des routes au <code>server</code> de ton projet, tu dois respecter le SRP (Single Responsability Principle) :</p>
+<ul>
+<li>Déclarer tes routes dans le fichier <code>router.ts</code> du dossier <code>server/src</code>.</li>
+<li>Déclarer l'action associée à ta route dans un fichier séparé dans le dossier <code>server/src/modules</code>.</li>
+</ul>
+<h2>Challenge</h2>
+<p>Tu vas mettre en place la route <code>GET /api/programs</code> dans ton projet Wild Series, afin de servir la liste des séries.</p>
+<div class="colonnes"><div class="colonne"><p><strong>User stories</strong> 📋</p>
+<div class="encadre encadre--note encadre--callout"><div class="encadre__corps"><p>en tant que visiteur, je souhaite récupérer les données d'une série</p>
+</div></div>
+<div class="encadre encadre--note encadre--callout"><div class="encadre__corps"><p>en tant que contributeur, je souhaite ajouter une série</p>
+</div></div>
+<div class="encadre encadre--note encadre--callout"><div class="encadre__corps"><p>en tant que contributeur, je souhaite modifier une série</p>
+</div></div>
+<div class="encadre encadre--note encadre--callout"><div class="encadre__corps"><p>en tant que contributeur, je souhaite supprimer une série</p>
+</div></div>
+</div><div class="colonne"><p><strong>In progress</strong> 🤸</p>
+<div class="encadre encadre--note encadre--callout"><div class="encadre__corps"><p>en tant que visiteur, je souhaite <strong>récupérer la liste des séries</strong></p>
+</div></div>
+</div><div class="colonne"><p><strong>In review</strong> 🧐</p>
+</div><div class="colonne"><p><strong>Done</strong> ✅</p>
+<div class="encadre encadre--note encadre--callout"><div class="encadre__corps"><p>initialisation du projet</p>
+</div></div>
+</div></div>
+<p>Pour t'aider, voici le code de l'action à ajouter dans ton projet, dans ton dossier <code>server/src/modules</code> :</p>
+<div class="onglets" data-onglets="1"><input type="radio" name="onglets-11" id="onglets-11-0" class="onglets__radio" checked><div class="onglets__barre"><label class="onglets__label" for="onglets-11-0">server/src/modules/program/programActions.ts</label></div><div class="onglets__panneaux"><div class="onglets__panneau"><div class="bloc-code"><div class="bloc-code__langue">js</div><pre><code class="hljs language-js"><span class="hljs-comment">// Some data to make the trick</span>
+
+<span class="hljs-keyword">const</span> programs = [
+  {
+    <span class="hljs-attr">id</span>: <span class="hljs-number">1</span>,
+    <span class="hljs-attr">title</span>: <span class="hljs-string">&quot;The Good Place&quot;</span>,
+    <span class="hljs-attr">synopsis</span>:
+      <span class="hljs-string">&quot;À sa mort, Eleanor Shellstrop est envoyée au Bon Endroit, un paradis fantaisiste réservé aux individus exceptionnellement bienveillants. Or Eleanor n&#x27;est pas exactement une « bonne personne » et comprend vite qu&#x27;il y a eu erreur sur la personne. Avec l&#x27;aide de Chidi, sa prétendue âme sœur dans l&#x27;au-delà, la jeune femme est bien décidée à se redécouvrir.&quot;</span>,
+    <span class="hljs-attr">poster</span>:
+      <span class="hljs-string">&quot;https://img.betaseries.com/JwRqyGD3f9KvO_OlfIXHZUA3Ypw=/600x900/smart/https%3A%2F%2Fpictures.betaseries.com%2Ffonds%2Fposter%2F94857341d71c795c69b9e5b23c4bf3e7.jpg&quot;</span>,
+    <span class="hljs-attr">country</span>: <span class="hljs-string">&quot;USA&quot;</span>,
+    <span class="hljs-attr">year</span>: <span class="hljs-number">2016</span>,
+  },
+  {
+    <span class="hljs-attr">id</span>: <span class="hljs-number">2</span>,
+    <span class="hljs-attr">title</span>: <span class="hljs-string">&quot;Dark&quot;</span>,
+    <span class="hljs-attr">synopsis</span>:
+      <span class="hljs-string">&quot;Quatre familles affolées par la disparition d&#x27;un enfant cherchent des réponses et tombent sur un mystère impliquant trois générations qui finit de les déstabiliser.&quot;</span>,
+    <span class="hljs-attr">poster</span>:
+      <span class="hljs-string">&quot;https://img.betaseries.com/zDxfeFudy3HWjxa6J8QIED9iaVw=/600x900/smart/https%3A%2F%2Fpictures.betaseries.com%2Ffonds%2Fposter%2Fc47135385da176a87d0dd9177c5f6a41.jpg&quot;</span>,
+    <span class="hljs-attr">country</span>: <span class="hljs-string">&quot;Allemagne&quot;</span>,
+    <span class="hljs-attr">year</span>: <span class="hljs-number">2017</span>,
+  },
+];
+
+<span class="hljs-comment">// Declare the action</span>
+
+<span class="hljs-keyword">import</span> type { <span class="hljs-title class_">RequestHandler</span> } <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;express&quot;</span>;
+
+<span class="hljs-keyword">const</span> <span class="hljs-attr">browse</span>: <span class="hljs-title class_">RequestHandler</span> = <span class="hljs-function">(<span class="hljs-params">req, res</span>) =&gt;</span> {
+  res.<span class="hljs-title function_">json</span>(programs);
+};
+
+<span class="hljs-comment">// Export it to import it somewhere else</span>
+
+<span class="hljs-keyword">export</span> <span class="hljs-keyword">default</span> { browse };
+</code></pre></div>
+</div></div></div>
+<p>Pour l'instant, c'est un tableau de données &quot;en dur&quot; que tu vas envoyer au format JSON dans la réponse HTTP avec l'instruction <code>res.json(programs)</code>.</p>
+<p>Maintenant :</p>
+<ul>
+<li>Crée la route <code>GET /api/programs</code> dans le fichier <code>server/src/router.ts</code>.</li>
+<li>Crée une page <code>/programs</code> dans ton application côté <code>client</code>. La page doit fetcher la route <code>GET /api/programs</code> de ton <code>server</code> et afficher les séries.</li>
+</ul>
+<p>Pousse ton projet sur GitHub, et partage le lien de ton dépôt pour valider ta quête.</p>
+<h3>Critères de validation</h3>
+<ul>
+<li>[ ] Le projet est disponible sur GitHub.</li>
+<li>[ ] Le fichier <code>server/.env</code> n'a pas été push.</li>
+<li>[ ] Quand tu clones le projet et lance les applications avec <code>npm run dev</code> :
+<ul>
+<li>[ ] la page <code>http://localhost:3310/api/programs</code> affiche la liste des séries dans ton navigateur au format JSON.</li>
+<li>[ ] la page <code>http://localhost:3000/programs</code> affiche la liste des séries dans ton navigateur.</li>
+</ul>
+</li>
+</ul>
+<div class="onglets" data-onglets="5"><input type="radio" name="onglets-12" id="onglets-12-0" class="onglets__radio" checked><input type="radio" name="onglets-12" id="onglets-12-1" class="onglets__radio"><input type="radio" name="onglets-12" id="onglets-12-2" class="onglets__radio"><input type="radio" name="onglets-12" id="onglets-12-3" class="onglets__radio"><input type="radio" name="onglets-12" id="onglets-12-4" class="onglets__radio"><div class="onglets__barre"><label class="onglets__label" for="onglets-12-0">server/src/main.ts</label><label class="onglets__label" for="onglets-12-1">server/src/router.ts</label><label class="onglets__label" for="onglets-12-2">server/src/modules/program/programActions.ts</label><label class="onglets__label" for="onglets-12-3">client/src/main.tsx</label><label class="onglets__label" for="onglets-12-4">client/src/pages/ProgramIndex.tsx</label></div><div class="onglets__panneaux"><div class="onglets__panneau"><div class="bloc-code"><div class="bloc-code__langue">typescript</div><pre><code class="hljs language-typescript"><span class="hljs-comment">// Load environment variables from .env file</span>
+<span class="hljs-keyword">import</span> <span class="hljs-string">&quot;dotenv/config&quot;</span>;
+
+<span class="hljs-comment">// Check database connection</span>
+<span class="hljs-comment">// Note: This is optional and can be removed if the database connection</span>
+<span class="hljs-comment">// is not required when starting the application</span>
+<span class="hljs-keyword">import</span> <span class="hljs-string">&quot;../database/checkConnection&quot;</span>;
+
+<span class="hljs-comment">// Import the Express application from ./app</span>
+<span class="hljs-keyword">import</span> app <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;./app&quot;</span>;
+
+<span class="hljs-comment">// Get the port from the environment variables</span>
+<span class="hljs-keyword">const</span> port = process.<span class="hljs-property">env</span>.<span class="hljs-property">APP_PORT</span>;
+
+<span class="hljs-comment">// Start the server and listen on the specified port</span>
+app
+  .<span class="hljs-title function_">listen</span>(port, <span class="hljs-function">() =&gt;</span> {
+    <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">info</span>(<span class="hljs-string">`Server is listening on port <span class="hljs-subst">${port}</span>`</span>);
+  })
+  .<span class="hljs-title function_">on</span>(<span class="hljs-string">&quot;error&quot;</span>, <span class="hljs-function">(<span class="hljs-params"><span class="hljs-attr">err</span>: <span class="hljs-title class_">Error</span></span>) =&gt;</span> {
+    <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">error</span>(<span class="hljs-string">&quot;Error:&quot;</span>, err.<span class="hljs-property">message</span>);
+  });
+</code></pre></div>
+</div><div class="onglets__panneau"><div class="bloc-code"><div class="bloc-code__langue">typescript</div><pre><code class="hljs language-typescript"><span class="hljs-keyword">import</span> express <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;express&quot;</span>;
+
+<span class="hljs-keyword">const</span> router = express.<span class="hljs-title class_">Router</span>();
+
+<span class="hljs-comment">/* ************************************************************************* */</span>
+<span class="hljs-comment">// Define Your API Routes Here</span>
+<span class="hljs-comment">/* ************************************************************************* */</span>
+
+<span class="hljs-comment">// Define item-related routes</span>
+<span class="hljs-keyword">import</span> itemActions <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;./modules/item/itemActions&quot;</span>;
+
+router.<span class="hljs-title function_">get</span>(<span class="hljs-string">&quot;/api/items&quot;</span>, itemActions.<span class="hljs-property">browse</span>);
+router.<span class="hljs-title function_">get</span>(<span class="hljs-string">&quot;/api/items/:id&quot;</span>, itemActions.<span class="hljs-property">read</span>);
+router.<span class="hljs-title function_">post</span>(<span class="hljs-string">&quot;/api/items&quot;</span>, itemActions.<span class="hljs-property">add</span>);
+
+<span class="hljs-comment">// Define program-related routes</span>
+<span class="hljs-keyword">import</span> programActions <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;./modules/program/programActions&quot;</span>;
+
+router.<span class="hljs-title function_">get</span>(<span class="hljs-string">&quot;/api/programs&quot;</span>, programActions.<span class="hljs-property">browse</span>);
+
+<span class="hljs-comment">/* ************************************************************************* */</span>
+
+<span class="hljs-comment">// Declaration of a &quot;Welcome&quot; route</span>
+
+<span class="hljs-keyword">import</span> sayActions <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;./modules/say/sayActions&quot;</span>;
+
+router.<span class="hljs-title function_">get</span>(<span class="hljs-string">&quot;/&quot;</span>, sayActions.<span class="hljs-property">sayWelcome</span>);
+
+<span class="hljs-comment">/* ************************************************************************* */</span>
+
+<span class="hljs-keyword">export</span> <span class="hljs-keyword">default</span> router;
+</code></pre></div>
+</div><div class="onglets__panneau"><div class="bloc-code"><div class="bloc-code__langue">typescript</div><pre><code class="hljs language-typescript"><span class="hljs-comment">// Some data to make the trick</span>
+
+<span class="hljs-keyword">const</span> programs = [
+  {
+    <span class="hljs-attr">id</span>: <span class="hljs-number">1</span>,
+    <span class="hljs-attr">title</span>: <span class="hljs-string">&quot;The Good Place&quot;</span>,
+    <span class="hljs-attr">synopsis</span>:
+      <span class="hljs-string">&quot;À sa mort, Eleanor Shellstrop est envoyée au Bon Endroit, un paradis fantaisiste réservé aux individus exceptionnellement bienveillants. Or Eleanor n&#x27;est pas exactement une « bonne personne » et comprend vite qu&#x27;il y a eu erreur sur la personne. Avec l&#x27;aide de Chidi, sa prétendue âme sœur dans l&#x27;au-delà, la jeune femme est bien décidée à se redécouvrir.&quot;</span>,
+    <span class="hljs-attr">poster</span>:
+      <span class="hljs-string">&quot;https://img.betaseries.com/JwRqyGD3f9KvO_OlfIXHZUA3Ypw=/600x900/smart/https%3A%2F%2Fpictures.betaseries.com%2Ffonds%2Fposter%2F94857341d71c795c69b9e5b23c4bf3e7.jpg&quot;</span>,
+    <span class="hljs-attr">country</span>: <span class="hljs-string">&quot;USA&quot;</span>,
+    <span class="hljs-attr">year</span>: <span class="hljs-number">2016</span>,
+  },
+  {
+    <span class="hljs-attr">id</span>: <span class="hljs-number">2</span>,
+    <span class="hljs-attr">title</span>: <span class="hljs-string">&quot;Dark&quot;</span>,
+    <span class="hljs-attr">synopsis</span>:
+      <span class="hljs-string">&quot;Quatre familles affolées par la disparition d&#x27;un enfant cherchent des réponses et tombent sur un mystère impliquant trois générations qui finit de les déstabiliser.&quot;</span>,
+    <span class="hljs-attr">poster</span>:
+      <span class="hljs-string">&quot;https://img.betaseries.com/zDxfeFudy3HWjxa6J8QIED9iaVw=/600x900/smart/https%3A%2F%2Fpictures.betaseries.com%2Ffonds%2Fposter%2Fc47135385da176a87d0dd9177c5f6a41.jpg&quot;</span>,
+    <span class="hljs-attr">country</span>: <span class="hljs-string">&quot;Allemagne&quot;</span>,
+    <span class="hljs-attr">year</span>: <span class="hljs-number">2017</span>,
+  },
+];
+
+<span class="hljs-comment">// Declare the action</span>
+
+<span class="hljs-keyword">import</span> <span class="hljs-keyword">type</span> { <span class="hljs-title class_">RequestHandler</span> } <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;express&quot;</span>;
+
+<span class="hljs-keyword">const</span> <span class="hljs-attr">browse</span>: <span class="hljs-title class_">RequestHandler</span> = <span class="hljs-function">(<span class="hljs-params">req, res</span>) =&gt;</span> {
+  res.<span class="hljs-title function_">json</span>(programs);
+};
+
+<span class="hljs-comment">// Export it to import it somewhere else</span>
+
+<span class="hljs-keyword">export</span> <span class="hljs-keyword">default</span> { browse };
+</code></pre></div>
+</div><div class="onglets__panneau"><div class="bloc-code"><div class="bloc-code__langue">jsx</div><pre><code class="hljs language-jsx"><span class="hljs-comment">// ...</span>
+
+<span class="hljs-comment">/* ************************************************************************* */</span>
+
+<span class="hljs-comment">// Import the main app component</span>
+<span class="hljs-keyword">import</span> <span class="hljs-title class_">App</span> <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;./App&quot;</span>;
+
+<span class="hljs-comment">// Import additional components for new routes</span>
+<span class="hljs-comment">// Try creating these components in the &quot;pages&quot; folder</span>
+
+<span class="hljs-comment">// import About from &quot;./pages/About&quot;;</span>
+<span class="hljs-comment">// import Contact from &quot;./pages/Contact&quot;;</span>
+<span class="hljs-keyword">import</span> <span class="hljs-title class_">ProgramIndex</span> <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;./pages/ProgramIndex&quot;</span>;
+
+<span class="hljs-comment">/* ************************************************************************* */</span>
+
+<span class="hljs-comment">// Create router configuration with routes</span>
+<span class="hljs-comment">// You can add more routes as you build out your app!</span>
+<span class="hljs-keyword">const</span> router = <span class="hljs-title function_">createBrowserRouter</span>([
+  <span class="hljs-comment">// ...</span>
+  {
+    <span class="hljs-attr">path</span>: <span class="hljs-string">&quot;/programs&quot;</span>,
+    <span class="hljs-attr">element</span>: <span class="language-xml"><span class="hljs-tag">&lt;<span class="hljs-name">ProgramIndex</span> /&gt;</span></span>,
+    <span class="hljs-attr">loader</span>: <span class="hljs-function">() =&gt;</span> <span class="hljs-title function_">fetch</span>(<span class="hljs-string">`<span class="hljs-subst">${<span class="hljs-keyword">import</span>.meta.env.VITE_API_URL}</span>/api/programs`</span>),
+  },
+  <span class="hljs-comment">// ...</span>
+]);
+
+<span class="hljs-comment">/* ************************************************************************* */</span>
+
+<span class="hljs-comment">// ...</span>
+</code></pre></div>
+</div><div class="onglets__panneau"><div class="bloc-code"><div class="bloc-code__langue">jsx</div><pre><code class="hljs language-jsx"><span class="hljs-keyword">import</span> { useLoaderData } <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;react-router-dom&quot;</span>;
+
+type <span class="hljs-title class_">Program</span> = {
+  <span class="hljs-attr">id</span>: number;
+  <span class="hljs-attr">title</span>: string;
+};
+
+<span class="hljs-keyword">function</span> <span class="hljs-title function_">ProgramIndex</span>(<span class="hljs-params"></span>) {
+  <span class="hljs-keyword">const</span> programs = <span class="hljs-title function_">useLoaderData</span>() <span class="hljs-keyword">as</span> <span class="hljs-title class_">Program</span>[];
+
+  <span class="hljs-keyword">return</span> (
+    <span class="language-xml"><span class="hljs-tag">&lt;<span class="hljs-name">ul</span>&gt;</span>
+      {programs.map((program) =&gt; (
+        <span class="hljs-tag">&lt;<span class="hljs-name">li</span> <span class="hljs-attr">key</span>=<span class="hljs-string">{program.id}</span>&gt;</span>{program.title}<span class="hljs-tag">&lt;/<span class="hljs-name">li</span>&gt;</span>
+      ))}
+    <span class="hljs-tag">&lt;/<span class="hljs-name">ul</span>&gt;</span></span>
+  );
+}
+
+<span class="hljs-keyword">export</span> <span class="hljs-keyword">default</span> <span class="hljs-title class_">ProgramIndex</span>;
+</code></pre></div>
+</div></div></div>
+
+  </div>
+  
+</article>
+
+<nav class="nav-quete">
+  <a class="nav-quete__lien nav-quete__lien--prec" href="../../js-monorepo/003-02-js-monorepo-installation-et-initialisation-d-un-projet/index.html">
+           <span class="nav-quete__sens">← Précédent</span>
+           <span class="nav-quete__titre">02 - JS Monorepo : Installation et initialisation d'un projet full-stack</span>
+         </a>
+  <a class="nav-quete__lien nav-quete__lien--suiv" href="../../js-monorepo/005-04-js-monorepo-routing-avance/index.html">
+           <span class="nav-quete__sens">Suivant →</span>
+           <span class="nav-quete__titre">04 - JS Monorepo : Routing avancé</span>
+         </a>
+</nav>
+</main>
+<footer class="pied">
+  <p>Archive personnelle des cours suivis à la Wild Code School. Copie hors ligne à usage strictement privé.</p>
+</footer>
+
+<script src="../../assets/copie-code.js"></script>
+<script src="../../assets/progression.js"></script>
+</body>
+</html>

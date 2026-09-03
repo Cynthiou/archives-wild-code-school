@@ -1,0 +1,210 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Composer -  2. PSR-4 &amp; Autoload — Archives WCS</title>
+<link rel="stylesheet" href="../../assets/style.css">
+</head>
+<body style="--teinte:#745089">
+<header class="entete">
+  <a class="entete__marque" href="../../index.html">Archives Wild Code School</a>
+</header>
+<main class="contenu">
+<nav class="ariane"><a href="../../index.html">Accueil</a><span class="ariane__sep">›</span><a href="../../php-avance/index.html">PHP Avancé</a><span class="ariane__sep">›</span><span aria-current="page">Composer -  2. PSR-4 &amp; Autoload</span></nav>
+
+<article class="quete">
+  <header class="quete__entete">
+    <a class="pastille pastille--teintee" href="../../php-avance/index.html">PHP Avancé</a>
+    <h1>Composer -  2. PSR-4 &amp; Autoload</h1>
+    <p class="quete__meta">Quête 4 sur 11 · 1 image archivée</p>
+  </header>
+  <div class="cours">
+<div class="bloc-code"><div class="bloc-code__langue">title-book</div><pre><code class="hljs language-title-book">Introduction
+</code></pre></div>
+<p><img src="http://images.innoveduc.fr/php_parcours/logo-composer.png" alt="" loading="lazy"></p>
+<p>Pour rappel, composer est un gestionnaire de dépendances Libre, écrit en PHP.
+Il permet à ses utilisateurs de déclarer et d'installer les bibliothèques (<em>packages</em>) dont le projet principal a besoin.
+Une bibliothèque est un ensemble de scripts écrits en PHP mettant à disposition des fonctions, constantes et classes afin de faciliter et d'accélérer les développements.</p>
+<p>Composer embarque également un système d’<em>autoloading</em> pour tes classes.</p>
+<p><img src="http://images.innoveduc.fr/php_parcours/bricks.gif" alt="" loading="lazy"></p>
+<p>Cette quête va t’apprendre à charger automatiquement tes classes en utilisant l’<em>autoload</em> de Composer.
+Tu verras l'installation des packages dans la quête suivante.</p>
+<h2>🤓 À la fin de cette quête, tu seras capable de :</h2>
+<ul>
+<li>✅ Comprendre comment les classes sont chargées en PHP</li>
+<li>✅ Utiliser l’autoloader de composer</li>
+</ul>
+<h1>Initialisation d'un projet Composer</h1>
+<p>Avant toute utilisation de Composer, il faut vérifier si tu utilises bien une version à jour.
+Pour cela, Composer te fournit une méthode pour se mettre à jour automatiquement.</p>
+<p><strong>TODO:</strong> Lance la commande suivante :</p>
+<div class="bloc-code"><div class="bloc-code__langue">sh</div><pre><code class="hljs language-sh">composer self-update
+</code></pre></div>
+<p>Afin d'initialiser un projet qui va utiliser Composer, place toi <strong>à la racine</strong> de ton projet et lance la commande :</p>
+<div class="bloc-code"><div class="bloc-code__langue">sh</div><pre><code class="hljs language-sh">composer init
+</code></pre></div>
+<p>Cette commande est interactive. Elle va donc te demander de renseigner des informations spécifiques à ton projet.</p>
+<div class="encadre encadre--warning"><div class="encadre__titre">Attention</div><div class="encadre__corps"><p>Attention, si un fichier <code>composer.json</code> est déjà présent dans ton projet, cette commande va l'écraser et le remplacer avec le fichier <code>composer.json</code> nouvellement initialisé.</p>
+</div></div>
+<p><img src="images/003-image.png" alt="image" loading="lazy"></p>
+<p>Une fois que tu as répondu à toutes les questions, Composer te crée un fichier très important : <i><strong>composer.json</strong></i></p>
+<p>Ce fichier contient toutes les informations relatives à ton projet que tu as renseignées dans ton terminal.
+Il contiendra également la liste des dépendances à gérer.</p>
+<p>Voici le contenu de ce fichier :</p>
+<div class="bloc-code"><div class="bloc-code__langue">json</div><pre><code class="hljs language-json"><span class="hljs-punctuation">{</span>
+    <span class="hljs-attr">&quot;name&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;wild/app&quot;</span><span class="hljs-punctuation">,</span>
+    <span class="hljs-attr">&quot;description&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;Wild composer quest&quot;</span><span class="hljs-punctuation">,</span>
+    <span class="hljs-attr">&quot;autoload&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-punctuation">{</span>
+        <span class="hljs-attr">&quot;psr-4&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-punctuation">{</span>
+            <span class="hljs-attr">&quot;App\\&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;src/&quot;</span>
+    <span class="hljs-punctuation">}</span><span class="hljs-punctuation">,</span>
+    <span class="hljs-attr">&quot;authors&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-punctuation">[</span>
+        <span class="hljs-punctuation">{</span>
+            <span class="hljs-attr">&quot;name&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;wilderName&quot;</span><span class="hljs-punctuation">,</span>
+            <span class="hljs-attr">&quot;email&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;wilder@email.com&quot;</span>
+        <span class="hljs-punctuation">}</span>
+    <span class="hljs-punctuation">]</span><span class="hljs-punctuation">,</span>
+    <span class="hljs-attr">&quot;require&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-punctuation">{</span><span class="hljs-punctuation">}</span>
+<span class="hljs-punctuation">}</span>
+</code></pre></div>
+<h1>Chargement des classes (Autoloading)</h1>
+<p>Maintenant que tu as vu la POO (Programmation Orienté Objet), tu veux utiliser des objets !</p>
+<div class="encadre encadre--info"><div class="encadre__titre">Info</div><div class="encadre__corps"><p>Dans certains cas, il arrive que différentes classes, fonctions ou constantes portent le même nom (d'une bibliothèque à une autre par exemple). Afin d'éviter tout conflit PHP met à disposition des espaces de noms: les <strong>namespaces</strong>.
+Il s'agit de &quot;dossiers virtuels&quot; qui permettent de faire la distinction entre une <code>Class Cat</code> importée d'une bibliothèque externe et une <code>Class Cat</code> définie dans ton projet par exemple.Ainsi, si ta classe Cat se trouve dans le <em>Namespace Animal</em>, le vrai nom complet de la classe sera <code>Animal\Cat</code> et non pas <code>Cat</code> (ce qui permet bien de différencier deux classes portant le même nom mais dans des namespace différents). Ce nom, composé du <em>namespace</em> associé au nom de la classe est appelé <strong>nom pleinement qualifié</strong> de la classe ou <em>Fully Qualified Class Name</em> (FQCN) en anglais.</p>
+</div></div>
+<p>Pour utiliser les classes dans ton projet tu vas devoir importer un à un les fichiers <em>.php</em> qui les contiennent (avec <code>include</code> ou <code>require</code>).</p>
+<p>À mesure que le nombre de fichiers grandit, cela devient vite ingérable ! C'est pour cela que PHP propose un système d'<em>autoloading</em>.</p>
+<div class="encadre encadre--info"><div class="encadre__titre">Info</div><div class="encadre__corps"><p>Même si, en théorie, tu peux créer plusieurs classes dans un même fichier, c'est une très mauvaise pratique. Si tu souhaites utiliser l'<em>autoload</em>, tu vas devoir faire attention de toujours créer <strong>une seule classe par fichier</strong>, et t'assurer que le fichier PHP ait bien le <strong>même nom</strong> que la classe. Soit pour &quot;<code>Animal/Cat</code>&quot;, un fichier <code>Cat.php</code>, pour &quot;<code>Animal/Dog</code>&quot;, un fichier &quot;<code>Dog.php</code>&quot;, <em>etc.</em></p>
+</div></div>
+<p>Tu ne vas pas l'utiliser directement, car le paramétrage peut devenir fastidieux.
+Tu vas donc utiliser le système d'<em>autoloading</em> de Composer.</p>
+<p>Résultat: Composer va se charger d'importer automatiquement tous les fichiers PHP de ton projet et de les rassembler sous un seul <em>namespace</em> racine que tu auras défini dans ton fichier <em>composer.json</em>.</p>
+<p>Lors de la dernière phase d'initialisation de ta commande <code>composer init</code>  L'invite de commande te propose automatiquement de bénéficier de l'autoloading en intégrant une entrée <code>autoload:</code> à l'interieur de ton fichier composer.json.
+Pour en savoir plus, jette un oeil à la documentation <a href="https://getcomposer.org/doc/01-basic-usage.md#autoloading" target="_blank" rel="noopener noreferrer">Composer autoloading</a>.</p>
+<div class="encadre encadre--info"><div class="encadre__titre">Info</div><div class="encadre__corps"><p>Important: Si jamais tu viens à changer les informations de ton fichier composer.json, sache qu'après toute modification du fichier il est nécessaire de lancer la commande <code>composer install</code> pour que les changements soient pris en compte.</p>
+</div></div>
+<p>Si tu as décidé de générer l'autoload de manière automatique, tu pourras accèder au dossier <code>vendor/</code>. Dans ce dossier, un fichier <code>autoload.php</code> est généré. C'est lui qui va se charger d'importer tes classes, <em>etc.</em> <strong>Il est nécessaire de <b><code>require</code></b> le fichier <i><strong><strong>autoload.php</strong></strong></i> dans ton <i><strong><strong>index.php</strong></strong></i>, pour pouvoir utiliser les namespaces.</strong></p>
+<div class="encadre encadre--info"><div class="encadre__titre">Info</div><div class="encadre__corps"><p>Si tu modifies l’autoload dans ton composer.json après l’installation, il faudra jouer la <a href="https://getcomposer.org/doc/03-cli.md#dump-autoload-dumpautoload-" target="_blank" rel="noopener noreferrer">commande</a> <code>composer dump-autoload</code> pour que les changements soient pris en compte.</p>
+</div></div>
+<a class="ressource" href="https://www.php.net/manual/en/language.namespaces.php" target="_blank" rel="noopener noreferrer">
+  <div class="ressource__icone">↗</div>
+  <div class="ressource__texte">
+    <div class="ressource__titre">Les namespaces en PHP</div>
+    <div class="ressource__desc"><p>Les namespaces en PHP.</p>
+</div>
+    <div class="ressource__hote">php.net</div>
+  </div>
+</a>
+<a class="ressource" href="https://getcomposer.org/doc/01-basic-usage.md#autoloading" target="_blank" rel="noopener noreferrer">
+  <div class="ressource__icone">↗</div>
+  <div class="ressource__texte">
+    <div class="ressource__titre">Composer autoloading</div>
+    <div class="ressource__desc"><p>Composer <em>autoloading</em>.</p>
+</div>
+    <div class="ressource__hote">getcomposer.org</div>
+  </div>
+</a>
+<a class="ressource" href="https://grafikart.fr/tutoriels/autoload-561#autoplay" target="_blank" rel="noopener noreferrer">
+  <div class="ressource__icone">↗</div>
+  <div class="ressource__texte">
+    <div class="ressource__titre">Vidéo sur l'autoloading</div>
+    <div class="ressource__desc"><p>Vidéo sur l'<em>autoloading</em>.</p>
+</div>
+    <div class="ressource__hote">grafikart.fr</div>
+  </div>
+</a>
+<a class="ressource" href="http://php.net/manual/fr/language.oop5.autoload.php" target="_blank" rel="noopener noreferrer">
+  <div class="ressource__icone">↗</div>
+  <div class="ressource__texte">
+    <div class="ressource__titre">Autoloading en PHP</div>
+    <div class="ressource__desc"><p>La doc officielle de PHP sur l'<em>autoloading</em>.</p>
+</div>
+    <div class="ressource__hote">php.net</div>
+  </div>
+</a>
+<a class="ressource" href="https://www.php-fig.org/psr/psr-4/" target="_blank" rel="noopener noreferrer">
+  <div class="ressource__icone">↗</div>
+  <div class="ressource__texte">
+    <div class="ressource__titre">PSR-4 : Autoloader</div>
+    <div class="ressource__desc"><p>PSR-4 : Autoloader.</p>
+</div>
+    <div class="ressource__hote">php-fig.org</div>
+  </div>
+</a>
+<div class="bloc-code"><div class="bloc-code__langue">quiz</div><pre><code class="hljs language-quiz">true|||true|||true
+# Quelle commande permet de générer un fichier composer.json ?
+[x] composer init
+[] composer install
+[] composer update
+# Si vous venez de récupérer un projet et que vous constatez qu’il comporte un fichier composer.json mais pas de vendor, que devez vous faire ?
+[] télécharger le vendor sur packagist
+[x] taper la commande composer install
+[] créer un dossier vendor dans le projet
+# Qu’est ce que le FQCN ?
+[] Le chemin exacte dans le répertoire vers la classe, par exemple : src/controller/HomeController
+[x] Le nom composé du namespace et du nom de la classe, par exemple App\Controller\HomeController
+[] Le nom composé du namespace et du nom de la classe, par exemple App/Controller/HomeController
+# Il est possible d'avoir deux classes ayant exactement le même nom dans un même projet
+[x] vrai
+[] faux
+# Dans quel ordre faudrait-il exécuter ces commandes pour créer un nouveau projet utilisant Composer ?
+[] composer init / composer install / composer self-update
+[] composer install / composer init / composer self-update
+[x] composer self-update / composer init / composer install
+</code></pre></div>
+<h1>💪 Challenge</h1>
+<h2>Créer une architecture de projet</h2>
+<p>Tu dois créer une architecture minimaliste de projet.</p>
+<p>L'arborescence des dossiers doit être la suivante :</p>
+<div class="bloc-code"><div class="bloc-code__langue">shell</div><pre><code class="hljs language-shell">public/
+    index.php
+src/
+    Hello.php
+</code></pre></div>
+<ul>
+<li>le fichier <em>index.php</em> est l'entrée de l'application.</li>
+<li>le fichier <em>Hello.php</em> contient une classe nommée <code>Hello</code> qui devra posséder une méthode <code>talk</code>. Cette dernière devra retourner &quot;Hello World !&quot;.</li>
+<li>le vendor n'est pas versionné (ne le <code>add</code> pas avec git ou ajoute le dans le <code>.gitignore</code>)</li>
+</ul>
+<div class="encadre encadre--warning"><div class="encadre__titre">Attention</div><div class="encadre__corps"><p>Attention, cette classe doit se trouver dans le namespace <code>App</code> !</p>
+<h2>Critères de validation</h2>
+<ul>
+<li>Ton code est sur un repository personnel sur GitHub.</li>
+<li>Ton arborescence correspond à ce qui a été demandé dans le challenge</li>
+<li>Ton <em>composer.json</em> contient une section <code>autoload</code> avec la déclaration de ton namespace racine <code>App\</code></li>
+<li>Ton fichier <em>index.php</em> instancie et utilise un objet <code>App\Hello</code></li>
+</ul>
+</div></div>
+
+  </div>
+  <section class="ressources-quete">
+  <h2>Ressources partagées sur cette quête</h2>
+  <ul class="ressources-liste">
+    <li><a href="https://coopernet.fr/formation/php/autoload" target="_blank" rel="noopener noreferrer">Explication plus claire sur comment rajouter le code relatif à l'autoload dans le fichier composer.json</a><span class="ressources-liste__url">https://coopernet.fr/formation/php/autoload</span></li>
+    <li><a href="https://grafikart.fr/tutoriels/autoloader-composer-php-1144" target="_blank" rel="noopener noreferrer">le lien vers la vidéo de Grafikart ne fonctionne pas, mais j'ai trouvé cette vidéo du même auteur sur le même sujet qui serait potentiellement la bonne. De surcroît très instructive.</a><span class="ressources-liste__url">https://grafikart.fr/tutoriels/autoloader-composer-php-1144</span></li>
+    <li><a href="https://www.youtube.com/watch?v=exaTOIhzYdk" target="_blank" rel="noopener noreferrer">explicite !</a><span class="ressources-liste__url">https://www.youtube.com/watch?v=exaTOIhzYdk</span></li>
+    <li><a href="https://youtu.be/NLXtGZ6Ilsw?t=600" target="_blank" rel="noopener noreferrer">En complément à la vidéo de Grafikart, je l'ai trouvé plus pertinente,  notamment pour définir le chemin de APP\\</a><span class="ressources-liste__url">https://youtu.be/NLXtGZ6Ilsw?t=600</span></li>
+  </ul>
+</section>
+</article>
+
+<nav class="nav-quete">
+  <a class="nav-quete__lien nav-quete__lien--prec" href="../../php-avance/003-3-les-formulaires-en-php-verification-et-securisation-des/index.html">
+           <span class="nav-quete__sens">← Précédent</span>
+           <span class="nav-quete__titre">3 - Les formulaires en PHP : Vérification et sécurisation des données</span>
+         </a>
+  <a class="nav-quete__lien nav-quete__lien--suiv" href="../../php-avance/005-composer-1-installation/index.html">
+           <span class="nav-quete__sens">Suivant →</span>
+           <span class="nav-quete__titre">Composer - 1. Installation</span>
+         </a>
+</nav>
+</main>
+<footer class="pied">
+  <p>Archive personnelle des cours suivis à la Wild Code School. Copie hors ligne à usage strictement privé.</p>
+</footer>
+
+<script src="../../assets/copie-code.js"></script>
+<script src="../../assets/progression.js"></script>
+</body>
+</html>

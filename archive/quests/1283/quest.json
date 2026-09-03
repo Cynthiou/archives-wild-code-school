@@ -1,0 +1,28 @@
+{
+  "id": 1283,
+  "titre": "👩‍🏫 JS Basics 08 - Les boucles",
+  "titres": {
+    "fr": "👩‍🏫 JS Basics 08 - Les boucles"
+  },
+  "theme": {
+    "id": 9,
+    "slug": "javascript",
+    "nom": "JavaScript"
+  },
+  "creeLe": "2020-07-08T20:17:09.467+02:00",
+  "difficulte": "0",
+  "dureeEstimee": null,
+  "modeValidation": "student",
+  "chapitres": [
+    {
+      "id": 12603,
+      "type": "content",
+      "langue": "fr",
+      "majLe": "2024-11-09T11:19:02.476+01:00",
+      "caracteres": 9188
+    }
+  ],
+  "ressources": [],
+  "urlOrigine": "https://odyssey.wildcodeschool.com/quests/1283",
+  "archiveLe": "2026-09-02T20:54:46.653Z"
+}

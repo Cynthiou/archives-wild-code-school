@@ -1,0 +1,29 @@
+{
+  "id": 2153,
+  "titre": "Les outils",
+  "titres": {
+    "en": "Our tools",
+    "fr": "Les outils"
+  },
+  "theme": {
+    "id": 155,
+    "slug": "on-boarding-students",
+    "nom": "Onboarding students"
+  },
+  "creeLe": "2022-07-08T10:51:38.584+02:00",
+  "difficulte": "2",
+  "dureeEstimee": 20,
+  "modeValidation": "self",
+  "chapitres": [
+    {
+      "id": 12214,
+      "type": "content",
+      "langue": "fr",
+      "majLe": "2024-09-24T15:24:01.427+02:00",
+      "caracteres": 2333
+    }
+  ],
+  "ressources": [],
+  "urlOrigine": "https://odyssey.wildcodeschool.com/quests/2153",
+  "archiveLe": "2026-09-02T20:53:32.511Z"
+}

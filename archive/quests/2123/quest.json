@@ -1,0 +1,33 @@
+{
+  "id": 2123,
+  "titre": "👩‍🏫 HTML - Chapitre 4 | Les liens hypertexte",
+  "titres": {
+    "fr": "👩‍🏫 HTML - Chapitre 4 | Les liens hypertexte"
+  },
+  "theme": {
+    "id": 104,
+    "slug": "html5",
+    "nom": "HTML"
+  },
+  "creeLe": "2022-06-23T16:00:13.745+02:00",
+  "difficulte": "1",
+  "dureeEstimee": null,
+  "modeValidation": "self",
+  "chapitres": [
+    {
+      "id": 18257,
+      "type": "content",
+      "langue": "fr",
+      "majLe": "2025-06-03T14:28:01.731+02:00",
+      "caracteres": 18224
+    }
+  ],
+  "ressources": [
+    {
+      "link": "https://ronan-hello.fr/series/html/liens-hypertextes",
+      "description": "Un complément sur l'utilisation des liens hypertexte et la sécurité avec l'utilisation de l'attibut \"rel\" pour les liens sortant."
+    }
+  ],
+  "urlOrigine": "https://odyssey.wildcodeschool.com/quests/2123",
+  "archiveLe": "2026-09-02T23:22:07.403Z"
+}

@@ -1,0 +1,38 @@
+{
+  "id": 1589,
+  "titre": "👩‍🏫 JS Intermédiaire 02 - Tableaux : méthodes fonctionnelles",
+  "titres": {
+    "en": "👩‍🏫 JS Intermediate 02 - Arrays : functional methods",
+    "fr": "👩‍🏫 JS Intermédiaire 02 - Tableaux : méthodes fonctionnelles"
+  },
+  "theme": {
+    "id": 91,
+    "slug": "more-javascript",
+    "nom": "JavaScript - Beyond the Basics"
+  },
+  "creeLe": "2021-03-01T19:24:53.085+01:00",
+  "difficulte": "2",
+  "dureeEstimee": 60,
+  "modeValidation": "self",
+  "chapitres": [
+    {
+      "id": 10463,
+      "type": "content",
+      "langue": "fr",
+      "majLe": "2023-09-24T15:10:55.467+02:00",
+      "caracteres": 7534
+    }
+  ],
+  "ressources": [
+    {
+      "link": "https://www.freecodecamp.org/news/4-main-differences-between-foreach-and-map/",
+      "description": "Petite lecture rapide expliquant les différences entre map() et forEach() ! :)"
+    },
+    {
+      "link": "https://www.youtube.com/watch?v=2trphUGce-8",
+      "description": "Visualisation claire, sous forme de vidéo, de la différence entre map et forEach"
+    }
+  ],
+  "urlOrigine": "https://odyssey.wildcodeschool.com/quests/1589",
+  "archiveLe": "2026-09-02T20:54:57.878Z"
+}

@@ -1,0 +1,33 @@
+{
+  "id": 140,
+  "titre": "5. Les conditions en PHP",
+  "titres": {
+    "fr": "5. Les conditions en PHP"
+  },
+  "theme": {
+    "id": 25,
+    "slug": "php",
+    "nom": "PHP"
+  },
+  "creeLe": "2018-02-09T10:05:23.806+01:00",
+  "difficulte": "",
+  "dureeEstimee": null,
+  "modeValidation": "student",
+  "chapitres": [
+    {
+      "id": 7999,
+      "type": "content",
+      "langue": "fr",
+      "majLe": "2022-09-22T13:57:09.634+02:00",
+      "caracteres": 11881
+    }
+  ],
+  "ressources": [
+    {
+      "link": "https://youtu.be/zFqdht5bFJY",
+      "description": "Explication des conditions par Grafikart.fr ✅"
+    }
+  ],
+  "urlOrigine": "https://odyssey.wildcodeschool.com/quests/140",
+  "archiveLe": "2026-09-02T23:21:33.844Z"
+}

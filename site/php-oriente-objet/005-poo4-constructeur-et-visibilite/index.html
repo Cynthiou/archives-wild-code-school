@@ -1,0 +1,349 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>POO4 - Constructeur et visibilité — Archives WCS</title>
+<link rel="stylesheet" href="../../assets/style.css">
+</head>
+<body style="--teinte:#464985">
+<header class="entete">
+  <a class="entete__marque" href="../../index.html">Archives Wild Code School</a>
+</header>
+<main class="contenu">
+<nav class="ariane"><a href="../../index.html">Accueil</a><span class="ariane__sep">›</span><a href="../../php-oriente-objet/index.html">PHP Orienté Objet</a><span class="ariane__sep">›</span><span aria-current="page">POO4 - Constructeur et visibilité</span></nav>
+
+<article class="quete">
+  <header class="quete__entete">
+    <a class="pastille pastille--teintee" href="../../php-oriente-objet/index.html">PHP Orienté Objet</a>
+    <h1>POO4 - Constructeur et visibilité</h1>
+    <p class="quete__meta">Quête 5 sur 11 · 2 images archivées</p>
+  </header>
+  <div class="cours">
+<h1>Prérequis</h1>
+<div class="renvois"><div class="renvois__titre">Quêtes liées</div><ul><li><a href="../../php-oriente-objet/004-poo3-les-methodes/index.html">Quête 2249</a></li></ul></div>
+<div class="bloc-code"><div class="bloc-code__langue">title-book</div><pre><code class="hljs language-title-book">Introduction
+</code></pre></div>
+<div class="encadre encadre--story"><div class="encadre__titre">Le récit</div><div class="encadre__corps"><p>Démarre de la branche <strong>poo4</strong> du <a href="https://github.com/WildCodeSchool/php-wildzoo" target="_blank" rel="noopener noreferrer">Wildzoo</a>. Tu dois voir un lion, un perroquet et un éléphant, leur niveau de menace et leur dangerosité. C'est bon ? La visite peu continuer !
+Dans cette quête tu vas apprendre quelques nouvelles notions qui vont te faciliter l'utilisation des objets.</p>
+</div></div>
+<h2>🤓 À la fin de cette quête, tu seras capable de :</h2>
+<ul>
+<li>✅ Utiliser un constructeur</li>
+<li>✅ Comprendre la notion de visibilité</li>
+<li>✅ Créer et utiliser des getters et setters</li>
+<li>✅ Comprendre les bases de l'UML</li>
+</ul>
+<h1>Constructeur</h1>
+<p>Pour commencer, nous allons casser du code :D
+🖥️ Rends toi sur la page <em>index.php</em> et modifie le code comme ceci (une ligne à commenter et 2 lignes à ajouter)</p>
+<div class="bloc-code"><div class="bloc-code__langue">php</div><pre><code class="hljs language-php"><span class="hljs-comment">// $lion-&gt;name = &#x27;lion&#x27;;</span>
+<span class="hljs-title function_ invoke__">var_dump</span>(<span class="hljs-variable">$lion</span>);
+<span class="hljs-keyword">echo</span> <span class="hljs-variable">$lion</span>-&gt;name;
+</code></pre></div>
+<p>On cherche ici à afficher la propriété <code>$name</code> du lion, or cette propriété n'est plus définie puisque la ligne du dessus a été commentée. Le message qui apparaît indique <code>Fatal error: Uncaught Error: Typed property Animal::$name must not be accessed before initialization in ...</code>
+Si tu regardes le résultat du <code>var_dump</code>, tu vois que la propriété <code>$name</code> est <code>*uninitialized*</code>. Or, il est impossible d'afficher une propriété non initialisée.
+Dans ce cas, comment s'assurer que le développeur utilisant la classe soit <em>forcé</em> de définir un nom, afin de ne pas tomber sur ce type d'erreur ? Ce que nous aimerions, c'est qu'au moment d'instancier l'objet <strong>Animal</strong>, il soit obligatoire de choisir ce nom.</p>
+<p>Heureusement, il y a une solution, c'est le constructeur !</p>
+<p><img src="images/001-castor-constructeur.gif" alt="castor constructeur" loading="lazy"></p>
+<p>Un constructeur est une méthode particulière qui, si elle est définie, impose d'utiliser un certain nombre de paramètres au moment de l'instanciation de l'objet, c'est-à-dire au moment d'utiliser le mot clé <code>new</code>.</p>
+<p>En PHP, le constructeur s'écrit <code>__construct()</code> avec <strong>DEUX</strong> <em>underscores</em>. C'est une &quot;méthode magique&quot;, il y en a d'autres en PHP mais celle-ci est la plus utilisée. Voici le code correspondant :</p>
+<div class="bloc-code"><div class="bloc-code__langue">php</div><pre><code class="hljs language-php"><span class="hljs-keyword">public</span> <span class="hljs-keyword">string</span> <span class="hljs-variable">$name</span>;
+
+<span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">__construct</span>(<span class="hljs-params"><span class="hljs-keyword">string</span> <span class="hljs-variable">$name</span></span>)
+</span>{
+    <span class="hljs-variable language_">$this</span>-&gt;name = <span class="hljs-variable">$name</span>;
+}
+</code></pre></div>
+<div class="encadre encadre--warning"><div class="encadre__titre">Attention</div><div class="encadre__corps"><p>Un constructeur ne renvoie rien, tu ne dois donc pas y mettre de return.</p>
+</div></div>
+<p>🖥️ Ajoute ce code à ta classe et réactualise la page. Mais attention, une erreur peut en cacher une autre, et tu vois cette fois apparaître le message <code>Fatal error: Uncaught ArgumentCountError: Too few arguments to function Animal::__construct(), 0 passed</code></p>
+<p>En effet, puisque tu as mis un paramètre obligatoire dans ta méthode <code>__construct()</code>, tu es maintenant bien forcé de fournir ce paramètre au moment de l'instanciation de l'objet ! Corrige le fichier <em>index.php</em> afin de passer un paramètre &quot;nom&quot; pour chaque nouvelle instance. Enlève également les lignes de type <code>$lion-&gt;name('lion')</code>, elles sont redondantes ici puisque la valeur est déjà passée à la propriété <code>$name</code> via le constructeur. Ci-dessous le code que tu dois obtenir pour le lion (mais il faut le modifier pour chaque animal).</p>
+<div class="bloc-code"><div class="bloc-code__langue">php</div><pre><code class="hljs language-php"><span class="hljs-variable">$lion</span> = <span class="hljs-keyword">new</span> <span class="hljs-title class_">Animal</span>(<span class="hljs-string">&#x27;lion&#x27;</span>);
+<span class="hljs-variable">$lion</span>-&gt;pawNumber = <span class="hljs-number">4</span>;
+<span class="hljs-variable">$lion</span>-&gt;carnivorous = <span class="hljs-literal">true</span>;
+<span class="hljs-variable">$lion</span>-&gt;size = <span class="hljs-number">70</span>;
+<span class="hljs-variable">$lion</span>-&gt;threatenedLevel = <span class="hljs-string">&#x27;VU&#x27;</span>;
+</code></pre></div>
+<h1>Visibilité</h1>
+<h2>Public ou privé ?</h2>
+<p>Depuis le début de cette série de quêtes, tu as dû remarquer le mot clé <code>public</code> devant toutes les propriétés et méthodes. C'est ce qu'on appelle la visibilité, et il en existe trois niveaux :</p>
+<ul>
+<li>public</li>
+<li>protected</li>
+<li>private</li>
+</ul>
+<p>Ils permettent de définir si une propriété ou une méthode est accessible <strong>depuis l'extérieur de la classe</strong> ou non.</p>
+<p>Tu as déjà utilisé les propriétés depuis la classe <strong>Animal</strong>, dans les méthodes <code>speak()</code> et <code>isDangerous()</code> (associées à <code>$this</code>).
+Mais tu as utilisé également propriétés et méthodes depuis le fichier <em>index.php</em>. Dans ce cas, tu te trouves <strong>en dehors</strong> de la classe <strong>Animal</strong>.</p>
+<p>La visibilité permet d'autoriser ou non l'appel / l'utilisation de propriétés et méthodes en dehors de la classe elle-même. Si le mot-clé <code>public</code> est utilisé, la propriété/méthode sera utilisable partout. Au contraire si elle est définie <code>private</code>, tu ne pourras utiliser cette propriété/méthode que depuis la classe elle-même.
+Pour <code>protected</code> c'est un peu entre les deux mais nous verrons cela dans une future quête lorsque nous aborderons la notion d'héritage.</p>
+<p>🖥️ Modifie ta classe Animal pour passer la propriété <code>$size</code> en privé.</p>
+<div class="bloc-code"><div class="bloc-code__langue">php</div><pre><code class="hljs language-php"><span class="hljs-keyword">private</span> <span class="hljs-keyword">float</span> <span class="hljs-variable">$size</span>;
+</code></pre></div>
+<p>Recharge ensuite ta page, ouch !</p>
+<div class="encadre encadre--error"><div class="encadre__titre">Important</div><div class="encadre__corps"><p><code>php Fatal error: Uncaught Error: Cannot access private property Animal::$size in ...`. </code></p>
+</div></div>
+<p><img src="images/002-visibility.gif" alt="visibility" loading="lazy"></p>
+<p>Tu ne peux plus modifier ou accéder à la propriété depuis <strong>l'extérieur</strong> de ta classe !</p>
+<p>Comment faire, alors ? 😱</p>
+<h2>Getters &amp; Setters</h2>
+<p>Dans <em>Animal.php</em>, tu vas devoir définir une méthode publique <code>getSize()</code> qui va avoir pour rôle de retourner la propriété qui, elle, est privée.</p>
+<div class="bloc-code"><div class="bloc-code__langue">php</div><pre><code class="hljs language-php"><span class="hljs-keyword">private</span> <span class="hljs-keyword">float</span> <span class="hljs-variable">$size</span>;
+<span class="hljs-comment">//...</span>
+
+<span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">getSize</span>(<span class="hljs-params"></span>): <span class="hljs-title">float</span>
+</span>{
+    <span class="hljs-keyword">return</span> <span class="hljs-variable language_">$this</span>-&gt;size;
+}
+</code></pre></div>
+<p>Cette méthode, puisqu'elle se trouve dans la même classe, a le droit d'accéder aux propriétés <code>private</code>.</p>
+<p>Ensuite, dans un fichier externe comme <em>index.php</em>, pour afficher la taille du lion tu feras
+<code>echo $lion-&gt;getSize()</code> et non plus directement <code>$lion-&gt;size</code> , <em>size</em> n'étant plus accessible depuis l'extérieur.</p>
+<p>Actuellement dans <em>index.php</em>, tu trouves plutôt du code permettant de modifier la valeur de <code>$size</code>, par ex <code>$lion-&gt;size = 70;</code>
+C'est notamment cette ligne qui déclenche l'erreur vue précédemment, puisque tu n'as plus le droit d'utiliser directement la propriété <code>$size</code>. Tu vas créer une nouvelle méthode <code>setSize()</code> qui va prendre un entier en paramètre et va permettre de modifier la valeur de <code>$size</code>.</p>
+<div class="bloc-code"><div class="bloc-code__langue">php</div><pre><code class="hljs language-php"><span class="hljs-keyword">private</span> <span class="hljs-keyword">float</span> <span class="hljs-variable">$size</span>;
+<span class="hljs-comment">//...</span>
+
+<span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">getSize</span>(<span class="hljs-params"></span>): <span class="hljs-title">float</span>
+</span>{
+    <span class="hljs-keyword">return</span> <span class="hljs-variable language_">$this</span>-&gt;size;
+} 
+
+<span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">setSize</span>(<span class="hljs-params"><span class="hljs-keyword">int</span> <span class="hljs-variable">$size</span></span>): <span class="hljs-title">void</span>
+</span>{
+    <span class="hljs-variable language_">$this</span>-&gt;size = <span class="hljs-variable">$size</span>;
+}
+</code></pre></div>
+<p>Cette nouvelle méthode prend le <strong>paramètre</strong> <code>$size</code> et affecte cette valeur à la <strong>propriété</strong> <code>$size</code>, qui est ici récupérée via la syntaxe <code>$this-&gt;size</code>. Par convention, le paramètre de la méthode a le même nom que la propriété, mais le premier, accessible uniquement dans la méthode, sert uniquement à donner une valeur à la propriété qui elle est accessible dans toute la classe !
+Cela peut porter à confusion au départ, donc garde bien en tête que le paramètre et la propriété sont deux <em>variables</em> différentes !</p>
+<p>🖥️ Maintenant que <code>setSize()</code> existe, tu peux t’en servir dans ton <em>index.php</em> (puisque la méthode est publique) et ainsi corriger la précédente &quot;Fatal error&quot; que tu as pu rencontrer.</p>
+<div class="bloc-code"><div class="bloc-code__langue">php</div><pre><code class="hljs language-php"><span class="hljs-variable">$lion</span>-&gt;<span class="hljs-title function_ invoke__">setSize</span>(<span class="hljs-number">70</span>);
+<span class="hljs-comment">// TODO for other animals.</span>
+</code></pre></div>
+<p>Ces deux types de méthodes, qui ont pour unique but de récupérer ou de modifier une propriété sont appelés des <em>getters</em> et <em>setters</em> (ou, pour les puristes de la francisation, des accesseurs et mutateurs).</p>
+<p>Ils ne sont pas obligatoires (si par exemple tu n'as jamais à modifier une propriété, tu n'as pas besoin de <em>setter</em>). Elles restent des méthodes comme les autres, que tu dois penser à typer. Mais retiens que leur utilisation (qui évite de manipuler directement les propriétés) est une bonne pratique, reconnue par la communauté des développeurs.</p>
+<ul>
+<li>Les <em>getters</em> (du verbe anglais <em>&quot;get&quot;</em>, <em>&quot;obtenir&quot;</em>) commencent généralement par le préfixe <em>get</em> (<em>is</em> est aussi utilisé si le type de la propriété est un booléen), suivi du nom de la propriété.</li>
+<li>Les <em>setters</em> (du verbe anglais <em>&quot;set&quot;</em>, <em>&quot;mettre en place&quot;</em>, <em>&quot;définir&quot;</em>), sont préfixés généralement par <em>set</em>, suivi du nom de la propriété.</li>
+</ul>
+<p>Nous avons vu la définition des <em>getters</em> et <em>setters</em>, mais posons nous maintenant la question de <em>l'intérêt</em> d'y recourir ? À première vue, c’est plus long que d’interagir directement avec des propriétés qui seraient en <code>public</code>... En effet, mais il est important de <strong>contrôler</strong> son code et parfois de devoir y mettre des verrous.</p>
+<p>Dans la vraie vie, il n'est par exemple pas possible d'avoir un animal avec un nombre de pattes &quot;négatif&quot;, alors que rien n'empêcherait de le faire dans ce code. Or, en suivant le paradigme objet, on souhaite que le code reflète au mieux la réalité, il ne devrait donc pas être permis de passer une valeur inférieure à 0 à la propriété <code>$pawNumber</code>. C’est là que la visibilité <code>private</code> et le <em>setter</em> vont prendre tout leur sens !</p>
+<p>🖥️ Maintenant que tu as compris le fonctionnement, passe <code>$pawNumber</code> en private et créé le <em>getter</em> et le <em>setter</em> associés. Tu vas pouvoir ajouter un peu d'algorithmique dans le <em>setter</em>, par exemple une condition.</p>
+<div class="bloc-code"><div class="bloc-code__langue">php</div><pre><code class="hljs language-php">
+<span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">setPawNumber</span>(<span class="hljs-params"><span class="hljs-keyword">int</span> <span class="hljs-variable">$pawNumber</span></span>): <span class="hljs-title">void</span>
+</span>{
+    <span class="hljs-keyword">if</span>(<span class="hljs-variable">$pawNumber</span> &lt; <span class="hljs-number">0</span>) {
+        <span class="hljs-variable">$pawNumber</span> = <span class="hljs-number">0</span>;
+    }
+    <span class="hljs-variable language_">$this</span>-&gt;pawNumber = <span class="hljs-variable">$pawNumber</span>;
+}
+</code></pre></div>
+<p>Avec ce nouveau code, il ne sera pas possible de créer de dangereux mutants aux pattes négatives 😛</p>
+<p>Poussons maintenant la réflexion un peu plus loin. Certaines méthodes n'ont qu'un usage interne à la classe et n'ont pas vocation à être utilisées depuis l'extérieur, dans ce cas, il est recommandé de mettre ces méthodes en <code>private</code>. Dans le cas de <code>setPawNumber()</code>, y a t-il vraiment un intérêt de laisser l'utilisateur modifier cette valeur ? Lorsqu'un animal est créé, le nombre de ses pattes est connu et fixe (non, on ne va pas gérer le cas où un animal perdrait une patte...). Il est donc tout à fait logique de &quot;réclamer&quot; à l'utilisateur de la classe, d'indiquer ce paramètre lors de instanciation (donc dans le <code>__construct()</code>).
+Cependant, on ne veut toujours pas que le nombre de patte soit négatif. Plutôt que de déplacer la logique de <code>setPawNumber()</code> directement dans le constructeur (au risque de l'alourdir inutilement), ce dernier va faire appel à <code>setPawNumber()</code>. La méthode n'ayant plus vocation à être appelée en direct, on peut la passer en <code>private</code>.
+Ça fait beaucoup d'informations ! Pas de panique, voici le code correspondant :</p>
+<div class="bloc-code"><div class="bloc-code__langue">php</div><pre><code class="hljs language-php"><span class="hljs-keyword">private</span> <span class="hljs-keyword">string</span> <span class="hljs-variable">$name</span>;
+<span class="hljs-keyword">private</span> <span class="hljs-keyword">int</span> <span class="hljs-variable">$pawNumber</span>;
+<span class="hljs-comment">// ...</span>
+
+<span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">__construct</span>(<span class="hljs-params"><span class="hljs-keyword">string</span> <span class="hljs-variable">$name</span>, <span class="hljs-keyword">int</span> <span class="hljs-variable">$pawNumber</span></span>) 
+</span>{
+    <span class="hljs-variable language_">$this</span>-&gt;name = <span class="hljs-variable">$name</span>;
+    <span class="hljs-variable language_">$this</span>-&gt;<span class="hljs-title function_ invoke__">setPawNumber</span>(<span class="hljs-variable">$pawNumber</span>);
+}
+
+<span class="hljs-comment">// method is private because only use inside the constructor </span>
+<span class="hljs-keyword">private</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">setPawNumber</span>(<span class="hljs-params"><span class="hljs-keyword">int</span> <span class="hljs-variable">$pawNumber</span></span>): <span class="hljs-title">void</span>
+</span>{
+    <span class="hljs-keyword">if</span>(<span class="hljs-variable">$pawNumber</span> &lt; <span class="hljs-number">0</span>) {
+        <span class="hljs-variable">$pawNumber</span> = <span class="hljs-number">0</span>;
+    }
+    <span class="hljs-variable language_">$this</span>-&gt;pawNumber = <span class="hljs-variable">$pawNumber</span>;
+}
+</code></pre></div>
+<p>🖥️ Il te faudra également modifier <em>index.php</em> en conséquence, pour ajouter le nombre de pattes au moment de l'instanciation.</p>
+<div class="encadre encadre--info"><div class="encadre__titre">Info</div><div class="encadre__corps"><p>Tu vas généralement être amené à créer des <em>getters</em> pour toutes tes propriétés, mais ce n'est pas systématique pour les <em>setters</em>, tout dépend s'il y a besoin d'ajouter une logique supplémentaire comme pour le nombre de pattes, et/ou si l'on souhaite laisser la possibilité à l'utilisateur de la classe de modifier cette valeur par la suite. Dans notre cas, un <code>setName()</code> semble plutôt inutile car on ne changera pas le nom de l'animal une fois créé. Par contre on peut imaginer que l'animal va grandir et donc un <code>setSize()</code> va être intéressant. C'est à déterminer au cas par cas.</p>
+</div></div>
+<a class="ressource" href="https://youtu.be/zZ_tVAPfGAA" target="_blank" rel="noopener noreferrer">
+  <div class="ressource__icone">↗</div>
+  <div class="ressource__texte">
+    <div class="ressource__titre">La POO en PHP - 4/31 : La visibilité public / private</div>
+    <div class="ressource__desc"><p>Cette vidéo résume ce que tu viens de voir sur la visibilité.</p>
+</div>
+    <div class="ressource__hote">youtu.be</div>
+  </div>
+</a>
+<h2>[BONUS] Promotion des propriétés dans le constructeur</h2>
+<p>Depuis PHP 8, une nouvelle syntaxe est apparue pour simplifier l'écriture d'un constructeur. Cette syntaxe - encore peu utilisée - est facultative et cumulable avec la syntaxe classique.</p>
+<div class="bloc-code"><div class="bloc-code__langue">php</div><pre><code class="hljs language-php"><span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">__construct</span>(<span class="hljs-params"><span class="hljs-keyword">private</span> <span class="hljs-keyword">string</span> <span class="hljs-variable">$name</span></span>) </span>{};
+</code></pre></div>
+<p>Ici, la visibilité est indiquée avec le paramètre du constructeur. Dans ce cas, PHP va créer la propriété et lui assigner la valeur passée en argument, il n'y a donc plus besoin de définir la propriété au dessus du constructeur. Le code est ainsi plus concis. Il est possible de mêler propriétés classiques et <em>promues</em>.</p>
+<a class="ressource" href="https://www.php.net/manual/fr/language.oop5.decon.php#language.oop5.decon.constructor.promotion" target="_blank" rel="noopener noreferrer">
+  <div class="ressource__icone">↗</div>
+  <div class="ressource__texte">
+    <div class="ressource__titre">Promotion de propriétés de constructeurs - Documentation officielle.</div>
+    
+    <div class="ressource__hote">php.net</div>
+  </div>
+</a>
+<h1>Diagramme de classe</h1>
+<p>Afin de représenter un ensemble de classes au sein d'une application, tu peux être amené à <em>dessiner</em> un <strong>diagramme de classe</strong>. Le standard c'est l'<strong>UML</strong>. Un peu comme MERISE, c'est un standard de représentation d'éléments lors de la conception. Cela peut être utilisé pour un peu tout et n'importe quoi. Tu peux d'ailleurs schématiser tes bases de données avec UML.
+Sans trop entrer dans les détails, voici à quoi ressemble une représentation UML de notre classe <code>Animal</code> :</p>
+<figure class="diagramme"><svg id="diagramme-1ckd46wd3yx" width="100%" xmlns="http://www.w3.org/2000/svg" style="max-width: 340.0625px;" viewBox="0 0 340.0625 465" role="graphics-document document" aria-roledescription="classDiagram"><style>#diagramme-1ckd46wd3yx{font-family:"trebuchet ms",verdana,arial,sans-serif;font-size:16px;fill:#333;}#diagramme-1ckd46wd3yx .error-icon{fill:hsl(220.5882352941, 100%, 98.3333333333%);}#diagramme-1ckd46wd3yx .error-text{fill:rgb(8.5000000002, 5.7500000001, 0);stroke:rgb(8.5000000002, 5.7500000001, 0);}#diagramme-1ckd46wd3yx .edge-thickness-normal{stroke-width:2px;}#diagramme-1ckd46wd3yx .edge-thickness-thick{stroke-width:3.5px;}#diagramme-1ckd46wd3yx .edge-pattern-solid{stroke-dasharray:0;}#diagramme-1ckd46wd3yx .edge-pattern-dashed{stroke-dasharray:3;}#diagramme-1ckd46wd3yx .edge-pattern-dotted{stroke-dasharray:2;}#diagramme-1ckd46wd3yx .marker{fill:#0b0b0b;stroke:#0b0b0b;}#diagramme-1ckd46wd3yx .marker.cross{stroke:#0b0b0b;}#diagramme-1ckd46wd3yx svg{font-family:"trebuchet ms",verdana,arial,sans-serif;font-size:16px;}#diagramme-1ckd46wd3yx g.classGroup text{fill:hsl(40.5882352941, 60%, 83.3333333333%);stroke:none;font-family:"trebuchet ms",verdana,arial,sans-serif;font-size:10px;}#diagramme-1ckd46wd3yx g.classGroup text .title{font-weight:bolder;}#diagramme-1ckd46wd3yx .nodeLabel,#diagramme-1ckd46wd3yx .edgeLabel{color:#333;}#diagramme-1ckd46wd3yx .edgeLabel .label rect{fill:#fff4dd;}#diagramme-1ckd46wd3yx .label text{fill:#333;}#diagramme-1ckd46wd3yx .edgeLabel .label span{background:#fff4dd;}#diagramme-1ckd46wd3yx .classTitle{font-weight:bolder;}#diagramme-1ckd46wd3yx .node rect,#diagramme-1ckd46wd3yx .node circle,#diagramme-1ckd46wd3yx .node ellipse,#diagramme-1ckd46wd3yx .node polygon,#diagramme-1ckd46wd3yx .node path{fill:#fff4dd;stroke:hsl(40.5882352941, 60%, 83.3333333333%);stroke-width:1px;}#diagramme-1ckd46wd3yx .divider{stroke:hsl(40.5882352941, 60%, 83.3333333333%);stroke-width:1;}#diagramme-1ckd46wd3yx g.clickable{cursor:pointer;}#diagramme-1ckd46wd3yx g.classGroup rect{fill:#fff4dd;stroke:hsl(40.5882352941, 60%, 83.3333333333%);}#diagramme-1ckd46wd3yx g.classGroup line{stroke:hsl(40.5882352941, 60%, 83.3333333333%);stroke-width:1;}#diagramme-1ckd46wd3yx .classLabel .box{stroke:none;stroke-width:0;fill:#fff4dd;opacity:0.5;}#diagramme-1ckd46wd3yx .classLabel .label{fill:hsl(40.5882352941, 60%, 83.3333333333%);font-size:10px;}#diagramme-1ckd46wd3yx .relation{stroke:#0b0b0b;stroke-width:1;fill:none;}#diagramme-1ckd46wd3yx .dashed-line{stroke-dasharray:3;}#diagramme-1ckd46wd3yx .dotted-line{stroke-dasharray:1 2;}#diagramme-1ckd46wd3yx #compositionStart,#diagramme-1ckd46wd3yx .composition{fill:#0b0b0b!important;stroke:#0b0b0b!important;stroke-width:1;}#diagramme-1ckd46wd3yx #compositionEnd,#diagramme-1ckd46wd3yx .composition{fill:#0b0b0b!important;stroke:#0b0b0b!important;stroke-width:1;}#diagramme-1ckd46wd3yx #dependencyStart,#diagramme-1ckd46wd3yx .dependency{fill:#0b0b0b!important;stroke:#0b0b0b!important;stroke-width:1;}#diagramme-1ckd46wd3yx #dependencyStart,#diagramme-1ckd46wd3yx .dependency{fill:#0b0b0b!important;stroke:#0b0b0b!important;stroke-width:1;}#diagramme-1ckd46wd3yx #extensionStart,#diagramme-1ckd46wd3yx .extension{fill:transparent!important;stroke:#0b0b0b!important;stroke-width:1;}#diagramme-1ckd46wd3yx #extensionEnd,#diagramme-1ckd46wd3yx .extension{fill:transparent!important;stroke:#0b0b0b!important;stroke-width:1;}#diagramme-1ckd46wd3yx #aggregationStart,#diagramme-1ckd46wd3yx .aggregation{fill:transparent!important;stroke:#0b0b0b!important;stroke-width:1;}#diagramme-1ckd46wd3yx #aggregationEnd,#diagramme-1ckd46wd3yx .aggregation{fill:transparent!important;stroke:#0b0b0b!important;stroke-width:1;}#diagramme-1ckd46wd3yx #lollipopStart,#diagramme-1ckd46wd3yx .lollipop{fill:#fff4dd!important;stroke:#0b0b0b!important;stroke-width:1;}#diagramme-1ckd46wd3yx #lollipopEnd,#diagramme-1ckd46wd3yx .lollipop{fill:#fff4dd!important;stroke:#0b0b0b!important;stroke-width:1;}#diagramme-1ckd46wd3yx .edgeTerminals{font-size:11px;line-height:initial;}#diagramme-1ckd46wd3yx .classTitleText{text-anchor:middle;font-size:18px;fill:#333;}#diagramme-1ckd46wd3yx :root{--mermaid-font-family:"trebuchet ms",verdana,arial,sans-serif;}</style><g><defs><marker id="diagramme-1ckd46wd3yx_classDiagram-aggregationStart" class="marker aggregation classDiagram" refX="18" refY="7" markerWidth="190" markerHeight="240" orient="auto"><path d="M 18,7 L9,13 L1,7 L9,1 Z"></path></marker></defs><defs><marker id="diagramme-1ckd46wd3yx_classDiagram-aggregationEnd" class="marker aggregation classDiagram" refX="1" refY="7" markerWidth="20" markerHeight="28" orient="auto"><path d="M 18,7 L9,13 L1,7 L9,1 Z"></path></marker></defs><defs><marker id="diagramme-1ckd46wd3yx_classDiagram-extensionStart" class="marker extension classDiagram" refX="18" refY="7" markerWidth="190" markerHeight="240" orient="auto"><path d="M 1,7 L18,13 V 1 Z"></path></marker></defs><defs><marker id="diagramme-1ckd46wd3yx_classDiagram-extensionEnd" class="marker extension classDiagram" refX="1" refY="7" markerWidth="20" markerHeight="28" orient="auto"><path d="M 1,1 V 13 L18,7 Z"></path></marker></defs><defs><marker id="diagramme-1ckd46wd3yx_classDiagram-compositionStart" class="marker composition classDiagram" refX="18" refY="7" markerWidth="190" markerHeight="240" orient="auto"><path d="M 18,7 L9,13 L1,7 L9,1 Z"></path></marker></defs><defs><marker id="diagramme-1ckd46wd3yx_classDiagram-compositionEnd" class="marker composition classDiagram" refX="1" refY="7" markerWidth="20" markerHeight="28" orient="auto"><path d="M 18,7 L9,13 L1,7 L9,1 Z"></path></marker></defs><defs><marker id="diagramme-1ckd46wd3yx_classDiagram-dependencyStart" class="marker dependency classDiagram" refX="6" refY="7" markerWidth="190" markerHeight="240" orient="auto"><path d="M 5,7 L9,13 L1,7 L9,1 Z"></path></marker></defs><defs><marker id="diagramme-1ckd46wd3yx_classDiagram-dependencyEnd" class="marker dependency classDiagram" refX="13" refY="7" markerWidth="20" markerHeight="28" orient="auto"><path d="M 18,7 L9,13 L14,7 L9,1 Z"></path></marker></defs><defs><marker id="diagramme-1ckd46wd3yx_classDiagram-lollipopStart" class="marker lollipop classDiagram" refX="13" refY="7" markerWidth="190" markerHeight="240" orient="auto"><circle stroke="black" fill="transparent" cx="7" cy="7" r="6"></circle></marker></defs><defs><marker id="diagramme-1ckd46wd3yx_classDiagram-lollipopEnd" class="marker lollipop classDiagram" refX="1" refY="7" markerWidth="190" markerHeight="240" orient="auto"><circle stroke="black" fill="transparent" cx="7" cy="7" r="6"></circle></marker></defs><g class="root"><g class="clusters"></g><g class="edgePaths"></g><g class="edgeLabels"></g><g class="nodes"><g class="node default" id="classId-Animal-0" data-node="true" data-id="Animal" transform="translate(170.03125, 232.5)"><rect style="" class="outer title-state" x="-162.03125" y="-224.5" width="324.0625" height="449"></rect><line class="divider" x1="-162.03125" x2="162.03125" y1="-193.5" y2="-193.5"></line><line class="divider" x1="-162.03125" x2="162.03125" y1="-62.5" y2="-62.5"></line><g class="label"><foreignObject width="0" height="0"><div xmlns="http://www.w3.org/1999/xhtml" style="display: inline-block; white-space: nowrap;"><span class="nodeLabel"></span></div></foreignObject><foreignObject class="classTitle" width="51.34375" height="19" transform="translate( -25.671875, -217)"><div xmlns="http://www.w3.org/1999/xhtml" style="display: inline-block; white-space: nowrap;"><span class="nodeLabel">Animal</span></div></foreignObject><foreignObject width="90.234375" height="19" transform="translate( -154.53125, -182)"><div xmlns="http://www.w3.org/1999/xhtml" style="display: inline-block; white-space: nowrap;"><span class="nodeLabel">-string name</span></div></foreignObject><foreignObject width="72.03125" height="19" transform="translate( -154.53125, -159)"><div xmlns="http://www.w3.org/1999/xhtml" style="display: inline-block; white-space: nowrap;"><span class="nodeLabel">-float size</span></div></foreignObject><foreignObject width="123.796875" height="19" transform="translate( -154.53125, -136)"><div xmlns="http://www.w3.org/1999/xhtml" style="display: inline-block; white-space: nowrap;"><span class="nodeLabel">-bool carnivorous</span></div></foreignObject><foreignObject width="115.671875" height="19" transform="translate( -154.53125, -113)"><div xmlns="http://www.w3.org/1999/xhtml" style="display: inline-block; white-space: nowrap;"><span class="nodeLabel">-int pawNumber</span></div></foreignObject><foreignObject width="169.078125" height="19" transform="translate( -154.53125, -90)"><div xmlns="http://www.w3.org/1999/xhtml" style="display: inline-block; white-space: nowrap;"><span class="nodeLabel">-string threatenedLevel</span></div></foreignObject><foreignObject width="309.0625" height="19" transform="translate( -154.53125, -55)"><div xmlns="http://www.w3.org/1999/xhtml" style="display: inline-block; white-space: nowrap;"><span class="nodeLabel">+__construct(string name, int pawNumber)</span></div></foreignObject><foreignObject width="139.765625" height="19" transform="translate( -154.53125, -32)"><div xmlns="http://www.w3.org/1999/xhtml" style="display: inline-block; white-space: nowrap;"><span class="nodeLabel">+getName() : string</span></div></foreignObject><foreignObject width="121.3125" height="19" transform="translate( -154.53125, -9)"><div xmlns="http://www.w3.org/1999/xhtml" style="display: inline-block; white-space: nowrap;"><span class="nodeLabel">+getSize() : float</span></div></foreignObject><foreignObject width="181.828125" height="19" transform="translate( -154.53125, 14)"><div xmlns="http://www.w3.org/1999/xhtml" style="display: inline-block; white-space: nowrap;"><span class="nodeLabel">+setSize(float size) : void</span></div></foreignObject><foreignObject width="161.453125" height="19" transform="translate( -154.53125, 37)"><div xmlns="http://www.w3.org/1999/xhtml" style="display: inline-block; white-space: nowrap;"><span class="nodeLabel">+isCarnivorous() : bool</span></div></foreignObject><foreignObject width="288.96875" height="19" transform="translate( -154.53125, 60)"><div xmlns="http://www.w3.org/1999/xhtml" style="display: inline-block; white-space: nowrap;"><span class="nodeLabel">+setCarnivorous(bool carnivorous) : void</span></div></foreignObject><foreignObject width="162.984375" height="19" transform="translate( -154.53125, 83)"><div xmlns="http://www.w3.org/1999/xhtml" style="display: inline-block; white-space: nowrap;"><span class="nodeLabel">+getPawNumber() : int</span></div></foreignObject><foreignObject width="278.953125" height="19" transform="translate( -154.53125, 106)"><div xmlns="http://www.w3.org/1999/xhtml" style="display: inline-block; white-space: nowrap;"><span class="nodeLabel">-setPawNumber(int pawNumber) : void</span></div></foreignObject><foreignObject width="220.078125" height="19" transform="translate( -154.53125, 129)"><div xmlns="http://www.w3.org/1999/xhtml" style="display: inline-block; white-space: nowrap;"><span class="nodeLabel">+getThreatenedLevel() : string</span></div></foreignObject><foreignObject width="287.96875" height="19" transform="translate( -154.53125, 152)"><div xmlns="http://www.w3.org/1999/xhtml" style="display: inline-block; white-space: nowrap;"><span class="nodeLabel">+setThreatenedLevel(string level) : void</span></div></foreignObject><foreignObject width="191.71875" height="19" transform="translate( -154.53125, 175)"><div xmlns="http://www.w3.org/1999/xhtml" style="display: inline-block; white-space: nowrap;"><span class="nodeLabel">+speak(string lang) : string</span></div></foreignObject><foreignObject width="151.25" height="19" transform="translate( -154.53125, 198)"><div xmlns="http://www.w3.org/1999/xhtml" style="display: inline-block; white-space: nowrap;"><span class="nodeLabel">+isDangerous() : bool</span></div></foreignObject></g></g></g></g></g></svg></figure>
+<p>Dans les différents blocs, tu retrouves :</p>
+<ol>
+<li>le nom de ta classe,</li>
+<li>les propriétés, avec leur type,</li>
+<li>les méthodes</li>
+</ol>
+<p>Pour les différents éléments, tu retrouves les signes suivants :</p>
+<ul>
+<li>un <code>+</code> pour <em>public</em>,</li>
+<li>un <code>-</code> pour <em>privé</em>,</li>
+<li>un <code>#</code> pour <em>protected</em>.</li>
+</ul>
+<p>Ensuite, il y a d'autres normes, mais tu n'as pas besoin de plus pour le moment. Si la curiosité est insoutenable, tu peux jeter un oeil aux ressources ci-dessous.</p>
+<a class="ressource" href="https://youtu.be/UI6lqHOVHic" target="_blank" rel="noopener noreferrer">
+  <div class="ressource__icone">↗</div>
+  <div class="ressource__texte">
+    <div class="ressource__titre">UML Class Diagram Tutorial</div>
+    <div class="ressource__desc"><p>Si, comme ton formateur, tu aimes modéliser les choses et que l'UML t'intéresse, tu peux regarder cette vidéo.</p>
+</div>
+    <div class="ressource__hote">youtu.be</div>
+  </div>
+</a>
+<a class="ressource" href="https://yuml.me/diagram/scruffy/class/draw" target="_blank" rel="noopener noreferrer">
+  <div class="ressource__icone">↗</div>
+  <div class="ressource__texte">
+    <div class="ressource__titre">yuml.me</div>
+    <div class="ressource__desc"><p>Un petit outil sympa pour dessiner des diagrammes UML en ligne, gratuitement et rapidement (oui, tes formateurs ont une définition particulière de <em>&quot;sympa&quot;</em>). Évidemment, tu ne feras pas la conception de tout un logiciel avec ça. Quoique...</p>
+</div>
+    <div class="ressource__hote">yuml.me</div>
+  </div>
+</a>
+<h1>💪 Challenge</h1>
+<h3>Mise à jour</h3>
+<ul>
+<li>En suivant le diagramme de classe fourni, mets à jour la classe <strong>Animal</strong> pour changer les visibilités et ajouter les getters/setters correspondants.</li>
+<li>Mets également à jour <em>index.php</em> afin que tes animaux s'affichent toujours convenablement.</li>
+<li>Assure toi également que la taille de l'animal soit toujours positive.</li>
+<li>Poste en solution le code de ton fichier <em>Animal.php</em></li>
+</ul>
+<h3>Critères de validation</h3>
+<ul>
+<li>Le code du fichier <em>Animal.php</em> est posté</li>
+<li>Les visibilités des propriétés et méthodes sont correctes</li>
+<li>La méthode <code>setSize()</code> s'assure que l'animal ait toujours une valeur positive pour sa taille.</li>
+<li>Toutes les propriétés et méthodes sont définies comme sur le diagramme de classe.</li>
+</ul>
+<p>==$==</p>
+<div class="bloc-code"><div class="bloc-code__langue">php</div><pre><code class="hljs language-php"><span class="hljs-meta">&lt;?php</span>
+
+<span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Animal</span>
+</span>{
+    <span class="hljs-keyword">private</span> <span class="hljs-keyword">string</span> <span class="hljs-variable">$name</span>;
+    <span class="hljs-keyword">private</span> <span class="hljs-keyword">float</span> <span class="hljs-variable">$size</span> = <span class="hljs-number">100</span>;
+    <span class="hljs-keyword">private</span> <span class="hljs-keyword">bool</span> <span class="hljs-variable">$carnivorous</span> = <span class="hljs-literal">false</span>;
+    <span class="hljs-keyword">private</span> <span class="hljs-keyword">int</span> <span class="hljs-variable">$pawNumber</span>;
+    <span class="hljs-keyword">private</span> <span class="hljs-keyword">string</span> <span class="hljs-variable">$threatenedLevel</span> = <span class="hljs-string">&#x27;NE&#x27;</span>;
+
+    <span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">__construct</span>(<span class="hljs-params"><span class="hljs-keyword">string</span> <span class="hljs-variable">$name</span>, <span class="hljs-keyword">int</span> <span class="hljs-variable">$pawNumber</span></span>)
+    </span>{
+        <span class="hljs-variable language_">$this</span>-&gt;name = <span class="hljs-variable">$name</span>;
+        <span class="hljs-variable language_">$this</span>-&gt;<span class="hljs-title function_ invoke__">setPawNumber</span>(<span class="hljs-variable">$pawNumber</span>);
+    }
+
+    <span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">getName</span>(<span class="hljs-params"></span>): <span class="hljs-title">string</span>
+    </span>{
+        <span class="hljs-keyword">return</span> <span class="hljs-variable language_">$this</span>-&gt;name;
+    }
+
+    <span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">getSize</span>(<span class="hljs-params"></span>): <span class="hljs-title">float</span>
+    </span>{
+        <span class="hljs-keyword">return</span> <span class="hljs-variable language_">$this</span>-&gt;size;
+    }
+
+    <span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">setSize</span>(<span class="hljs-params"><span class="hljs-keyword">float</span> <span class="hljs-variable">$size</span></span>): <span class="hljs-title">void</span>
+    </span>{
+        <span class="hljs-keyword">if</span> (<span class="hljs-variable">$size</span> &lt; <span class="hljs-number">0</span>) {
+            <span class="hljs-variable">$size</span> = <span class="hljs-number">0</span>;
+        }
+
+        <span class="hljs-variable language_">$this</span>-&gt;size = <span class="hljs-variable">$size</span>;
+    }
+
+    <span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">getPawNumber</span>(<span class="hljs-params"></span>): <span class="hljs-title">int</span>
+    </span>{
+        <span class="hljs-keyword">return</span> <span class="hljs-variable language_">$this</span>-&gt;pawNumber;
+    }
+
+    <span class="hljs-keyword">private</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">setPawNumber</span>(<span class="hljs-params"><span class="hljs-keyword">int</span> <span class="hljs-variable">$pawNumber</span></span>): <span class="hljs-title">void</span>
+    </span>{
+        <span class="hljs-keyword">if</span> (<span class="hljs-variable">$pawNumber</span> &lt; <span class="hljs-number">0</span>) {
+            <span class="hljs-variable">$pawNumber</span> = <span class="hljs-number">0</span>;
+        }
+        <span class="hljs-variable language_">$this</span>-&gt;pawNumber = <span class="hljs-variable">$pawNumber</span>;
+    }
+
+    <span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">getThreatenedLevel</span>(<span class="hljs-params"></span>): <span class="hljs-title">string</span>
+    </span>{
+        <span class="hljs-keyword">return</span> <span class="hljs-variable language_">$this</span>-&gt;threatenedLevel;
+    }
+
+    <span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">setThreatenedLevel</span>(<span class="hljs-params"><span class="hljs-keyword">string</span> <span class="hljs-variable">$threatenedLevel</span></span>): <span class="hljs-title">void</span>
+    </span>{
+        <span class="hljs-variable language_">$this</span>-&gt;threatenedLevel = <span class="hljs-variable">$threatenedLevel</span>;
+    }
+
+    <span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">isCarnivorous</span>(<span class="hljs-params"></span>): <span class="hljs-title">bool</span>
+    </span>{
+        <span class="hljs-keyword">return</span> <span class="hljs-variable language_">$this</span>-&gt;carnivorous;
+    }
+
+    <span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">setCarnivorous</span>(<span class="hljs-params"><span class="hljs-keyword">bool</span> <span class="hljs-variable">$carnivorous</span></span>): <span class="hljs-title">void</span>
+    </span>{
+        <span class="hljs-variable language_">$this</span>-&gt;carnivorous = <span class="hljs-variable">$carnivorous</span>;
+    }
+
+    <span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">speak</span>(<span class="hljs-params"><span class="hljs-variable">$lang</span> = <span class="hljs-string">&#x27;fr&#x27;</span></span>): <span class="hljs-title">string</span>
+    </span>{
+        <span class="hljs-keyword">if</span> (<span class="hljs-variable">$lang</span> === <span class="hljs-string">&#x27;fr&#x27;</span>) {
+            <span class="hljs-variable">$message</span> = <span class="hljs-string">&#x27;Bienvenue au zoo, je suis un &#x27;</span>;
+        } <span class="hljs-keyword">else</span> {
+            <span class="hljs-variable">$message</span> = <span class="hljs-string">&#x27;Welcome to the zoo, I\&#x27;am a &#x27;</span>;
+        }
+
+        <span class="hljs-keyword">return</span> <span class="hljs-variable">$message</span> . <span class="hljs-variable language_">$this</span>-&gt;name;
+    }
+
+    <span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">isDangerous</span>(<span class="hljs-params"></span>): <span class="hljs-title">bool</span>
+    </span>{
+        <span class="hljs-keyword">return</span> <span class="hljs-variable language_">$this</span>-&gt;size &gt; <span class="hljs-number">50</span> &amp;&amp; <span class="hljs-variable language_">$this</span>-&gt;carnivorous === <span class="hljs-literal">true</span>;
+    }
+}
+</code></pre></div>
+
+  </div>
+  
+</article>
+
+<nav class="nav-quete">
+  <a class="nav-quete__lien nav-quete__lien--prec" href="../../php-oriente-objet/004-poo3-les-methodes/index.html">
+           <span class="nav-quete__sens">← Précédent</span>
+           <span class="nav-quete__titre">POO3 - Les méthodes</span>
+         </a>
+  <a class="nav-quete__lien nav-quete__lien--suiv" href="../../php-oriente-objet/006-poo5-les-constantes-de-classe/index.html">
+           <span class="nav-quete__sens">Suivant →</span>
+           <span class="nav-quete__titre">POO5 - Les constantes de classe</span>
+         </a>
+</nav>
+</main>
+<footer class="pied">
+  <p>Archive personnelle des cours suivis à la Wild Code School. Copie hors ligne à usage strictement privé.</p>
+</footer>
+
+<script src="../../assets/copie-code.js"></script>
+<script src="../../assets/progression.js"></script>
+</body>
+</html>

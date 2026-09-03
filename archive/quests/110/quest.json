@@ -1,0 +1,33 @@
+{
+  "id": 110,
+  "titre": "Découverte du TypeScript",
+  "titres": {
+    "fr": "Découverte du TypeScript"
+  },
+  "theme": {
+    "id": 21,
+    "slug": "typescript",
+    "nom": "Typescript"
+  },
+  "creeLe": "2017-09-25T06:18:31.812+02:00",
+  "difficulte": "",
+  "dureeEstimee": null,
+  "modeValidation": "student",
+  "chapitres": [
+    {
+      "id": 11173,
+      "type": "content",
+      "langue": "fr",
+      "majLe": "2024-02-25T13:42:07.307+01:00",
+      "caracteres": 6766
+    }
+  ],
+  "ressources": [
+    {
+      "link": "https://stackoverflow.com/questions/44192541/typescript-guide-gives-duplicate-function-implementation-warning",
+      "description": "Bug dans VSCode qui affiche des messages d'erreur comme \"Implémentation de fonction en double \""
+    }
+  ],
+  "urlOrigine": "https://odyssey.wildcodeschool.com/quests/110",
+  "archiveLe": "2026-09-02T23:21:58.136Z"
+}

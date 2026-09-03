@@ -1,0 +1,250 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>👩‍🏫 CSS 3 : Box model — Archives WCS</title>
+<link rel="stylesheet" href="../../assets/style.css">
+</head>
+<body style="--teinte:#1b62b1">
+<header class="entete">
+  <a class="entete__marque" href="../../index.html">Archives Wild Code School</a>
+</header>
+<main class="contenu">
+<nav class="ariane"><a href="../../index.html">Accueil</a><span class="ariane__sep">›</span><a href="../../css/index.html">CSS</a><span class="ariane__sep">›</span><span aria-current="page">👩‍🏫 CSS 3 : Box model</span></nav>
+
+<article class="quete">
+  <header class="quete__entete">
+    <a class="pastille pastille--teintee" href="../../css/index.html">CSS</a>
+    <h1>👩‍🏫 CSS 3 : Box model</h1>
+    <p class="quete__meta">Quête 3 sur 10 · 3 images archivées</p>
+  </header>
+  <div class="cours">
+<h2>Objectifs</h2>
+<ul>
+<li>Connaître les principes du <em>box model</em> en CSS</li>
+<li>Manipuler les propriétés liées au <em>box model</em></li>
+</ul>
+<p><img src="images/001-box-model.jpg" alt="Box model" loading="lazy"></p>
+<h2>Sommaire</h2>
+<h2>Box model</h2>
+<p>Tous les éléments CSS peuvent être assimilés à des boîtes dont les propriétés (taille, forme, <em>etc.</em>) sont décidées par le développeur. La vidéo ci-dessous te donne un aperçu de ce <em><strong>box model</strong></em>.</p>
+<a class="ressource" href="https://www.youtube.com/watch?v=rIO5326FgPE" target="_blank" rel="noopener noreferrer">
+  <div class="ressource__icone">↗</div>
+  <div class="ressource__texte">
+    <div class="ressource__titre">🎥 Apprendre le box-model</div>
+    <div class="ressource__desc"><p>Présentation simple et efficace du box model en 8 minutes</p>
+</div>
+    <div class="ressource__hote">youtube.com</div>
+  </div>
+</a>
+<h2>Display block vs inline</h2>
+<p>Sur la vidéo précédente, les explications sont faites à partir d'éléments interprétés nativement avec la propriété <code>display: block;</code>. Cette propriété concerne les balises <code>&lt;p&gt;</code>, <code>&lt;div&gt;</code>, les intertitres <code>&lt;h1&gt;</code>, <code>&lt;h2&gt;</code>, … et plein d'autres encore. Les balises <code>&lt;a&gt;</code>, <code>&lt;span&gt;</code>, <code>&lt;em&gt;</code> ou encore <code>&lt;strong&gt;</code> seront quant à elles, interprétées avec la propriété <code>display: inline;</code>.</p>
+<p>Consulte la vidéo suivante pour bien comprendre la différence entre ces deux types d'affichage et les subtilités de leur <em><strong>box model</strong></em>.</p>
+<a class="ressource" href="https://www.youtube.com/watch?v=x_i2gga-sYg&amp;ab_channel=KevinPowell" target="_blank" rel="noopener noreferrer">
+  <div class="ressource__icone">↗</div>
+  <div class="ressource__texte">
+    <div class="ressource__titre">🎥 Block, Inline, and Inline-Block explained</div>
+    
+    <div class="ressource__hote">youtube.com</div>
+  </div>
+</a>
+<p>🗝️ Complète en lisant ce <a href="https://developer.mozilla.org/fr/docs/Learn/CSS/Building_blocks/The_box_model" target="_blank" rel="noopener noreferrer">chapitre</a> qui te donne les clés principales de toutes les boîtes et notamment la <a href="https://developer.mozilla.org/fr/docs/Learn/CSS/Building_blocks/The_box_model#le_positionnement_display_inline-block" target="_blank" rel="noopener noreferrer">section display</a> pour encore plus de détails.</p>
+<p>En parallèle de ta lecture, garde sous le coude <a href="https://cssreference.io/box-model/" target="_blank" rel="noopener noreferrer">ce guide</a>, qui offre des exemples visuels des propriétés du <em>box model</em>, et n'hésite pas à le consulter si nécessaire.</p>
+<h2>Quiz</h2>
+<div class="bloc-code"><div class="bloc-code__langue">quiz</div><pre><code class="hljs language-quiz">false|||false|||true
+# En CSS, la boîte de modèle fait référence :
+[] à l'apparence d'un élément HTML (couleur, bords arrondis, famille de police, etc.)
+[x] aux propriétés définissant l'espace occupé par un élément HTML
+#     Par défaut dans les navigateurs, les valeurs des propriétés padding et border viennent s'ajouter à la largeur (width) et à la hauteur (height) des éléments HTML :
+[x] vrai, la boîte de contenu (content-box) est le modèle standard
+[] faux, cela dépend des unités utilisées
+#    Pour ne pas ajouter les valeurs des propriétés padding et border aux tailles des boîtes, on peut utiliser :
+[] width: auto; height: auto;
+[x] box-sizing: border-box (c'est le modèle alternatif)
+#  Parmi les éléments ci-dessous, quels sont ceux qui utilisent le positionnement display: block par défaut :
+[x] div
+[x] h1, h2, etc.
+[x] p
+[] a
+[] span
+[] em
+[x] ul
+</code></pre></div>
+<blockquote>
+<p>La dernière question de ce quiz était peut-être alambiquée 🙃.
+💡 Pour connaître les valeurs par défaut des éléments HTML, tu peux te servir de l'inspecteur de ton navigateur.
+Pour cela, repère <strong><em>user agent stylesheet</em></strong> dans l'onglet <strong>Styles</strong>. Par exemple, si tu fais un clic-droit sur la liste à puce ci-dessous pour l'inspecter, tu liras parmi les propriétés, la propriété <code>display: block</code> défini par défaut pour l'élément <em>ul</em>.</p>
+<ul>
+<li>item 1</li>
+<li>item 2</li>
+<li>…</li>
+</ul>
+</blockquote>
+<p><img src="images/002-user-agent-stylesheet-in-devtool.png" alt="User agent Stylesheet in Devtool" loading="lazy"></p>
+<p>(<em>Active l'option « afficher les styles du navigateur » via les paramètres si tu utilises Firefox</em>).</p>
+<a class="ressource" href="https://internetingishard.netlify.app/html-and-css/css-box-model/index.html" target="_blank" rel="noopener noreferrer">
+  <div class="ressource__icone">↗</div>
+  <div class="ressource__texte">
+    <div class="ressource__titre">ESSENTIEL - Interneting Is Hard - CSS box model</div>
+    <div class="ressource__desc"><p>Un superbe tutoriel pour tout apprendre sur le box model.</p>
+</div>
+    <div class="ressource__hote">internetingishard.netlify.app</div>
+  </div>
+</a>
+<h2>Les unités</h2>
+<p>Lorsque tu dois intégrer une maquette à partir d'une image (jpeg, png, etc.) ou d'un fichier (ai, pdf, ...), tu n'as pas systématiquement accès aux dimensions et unités utilisées concernant le box-model.</p>
+<p>Le piège à éviter est d'indiquer des unités fixes, comme le pixel (px) par exemple. Si tu commences à définir des largeurs ou autres propriétés de boîtes telles que <code>width: 253px</code> ou <code>margin-left: 27px</code> c'est que tu n'es probablement pas sur le bon chemin et que tu es en train de faire du bricolage. Ta page ne s'adaptera pas correctement aux différentes largeurs d'écran (responsive) ou aux niveaux de zoom des utilisteurs (accessibilité).
+Par défaut, les navigateurs affichent des tailles de polices de caractère à <code>16px</code>. Certains utilisateurs ont besoin de modifier ce réglage. Utiliser l'unité <code>rem</code> t'assure que les proportions seront conservées.
+De manière générale, il est conseillé d'utiliser l'unité <code>%</code> pour les largeurs de boîtes (et encore, bien souvent laisser la largeur se calculer &quot;toute seule&quot; sera une meilleure solution), et <code>rem</code> pour les unités de <code>padding</code>, <code>margin</code> et <code>font-size</code>. Ces deux unités sont du type relatif (proportionnel).</p>
+<p>Suis <a href="https://developer.mozilla.org/fr/docs/Learn/CSS/Building_blocks/Values_and_units" target="_blank" rel="noopener noreferrer">cette ressource</a> pour comprendre les unités disponibles en css.</p>
+<div class="encadre encadre--info"><div class="encadre__titre">Info</div><div class="encadre__corps"><h1>À retenir 👷‍♂️</h1>
+<ul>
+<li>1rem = 16px (réglage par défaut des navigateurs). Donc 8px peut s'écrire <code>.5rem</code>, 24px : <code>1.5rem</code>, etc.</li>
+<li>préfère l'unité <code>%</code> lorsque tu dois définir les largeurs <code>width</code> de tes boîtes.</li>
+</ul>
+</div></div>
+<h2>Le Centre du Monde</h2>
+<p>Maintenant que tu as manipulé le <em>box model</em>, peut-être t'es-tu rendu compte (et si ce n'est pas déjà le cas, cela ne saurait tarder) que <strong>centrer un élément en CSS</strong> peut s'avérer être une entreprise étonnamment <strong>compliquée</strong>. Il existe de nombreuses façons de procéder notamment en utilisant l'affichage <em><strong>flex</strong></em> ou <em><strong>grid</strong></em>, mais nous parlerons de ces derniers dans une prochaine quête.</p>
+<p>Pour le moment, la ressource suivante nous montre comment y parvenir uniquement à partir d'élément de type <em><strong>block</strong></em> ou <em><strong>inline</strong></em> et cela s'avère très souvent bien suffisant.</p>
+<a class="ressource" href="https://css-tricks.com/centering-css-complete-guide/" target="_blank" rel="noopener noreferrer">
+  <div class="ressource__icone">↗</div>
+  <div class="ressource__texte">
+    <div class="ressource__titre">ESSENTIEL - CSS-Tricks - Centering in CSS: A Complete Guide</div>
+    <div class="ressource__desc"><p>Beau et hyper-utile.</p>
+</div>
+    <div class="ressource__hote">css-tricks.com</div>
+  </div>
+</a>
+<h2>Exercice</h2>
+<p>C'est l'heure d'empiler les petites boîtes !
+Commence par copier le code suivant dans un fichier HTML.</p>
+<div class="bloc-code"><div class="bloc-code__langue">html</div><pre><code class="hljs language-html"><span class="hljs-meta">&lt;!DOCTYPE <span class="hljs-keyword">html</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">html</span> <span class="hljs-attr">lang</span>=<span class="hljs-string">&quot;en&quot;</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">head</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">meta</span> <span class="hljs-attr">charset</span>=<span class="hljs-string">&quot;UTF-8&quot;</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">meta</span> <span class="hljs-attr">http-equiv</span>=<span class="hljs-string">&quot;X-UA-Compatible&quot;</span> <span class="hljs-attr">content</span>=<span class="hljs-string">&quot;IE=edge&quot;</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">meta</span> <span class="hljs-attr">name</span>=<span class="hljs-string">&quot;viewport&quot;</span> <span class="hljs-attr">content</span>=<span class="hljs-string">&quot;width=device-width, initial-scale=1.0&quot;</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">title</span>&gt;</span>The box model<span class="hljs-tag">&lt;/<span class="hljs-name">title</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">link</span> <span class="hljs-attr">rel</span>=<span class="hljs-string">&quot;stylesheet&quot;</span> <span class="hljs-attr">href</span>=<span class="hljs-string">&quot;style.css&quot;</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">head</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">body</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">main</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">h1</span>&gt;</span>The box model<span class="hljs-tag">&lt;/<span class="hljs-name">h1</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">p</span>&gt;</span>
+            Lorem ipsum dolor sit amet <span class="hljs-tag">&lt;<span class="hljs-name">a</span> <span class="hljs-attr">href</span>=<span class="hljs-string">&quot;#&quot;</span>&gt;</span>this link is in a paragraph<span class="hljs-tag">&lt;/<span class="hljs-name">a</span>&gt;</span> consectetur adipisicing elit. Autem id suscipit quam dolorem? Dolorum dolor dicta impedit tempora distinctio natus! Distinctio commodi asperiores ipsum voluptates assumenda dolores ipsam perspiciatis adipisci!
+        <span class="hljs-tag">&lt;/<span class="hljs-name">p</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">p</span>&gt;</span>
+            Exercitationem itaque harum repellendus ducimus corporis quaerat ab magni dignissimos vero beatae veniam nulla, aliquam totam corrupti recusandae officiis. Magni unde tempore sed repellat laborum distinctio neque id, nam ex?
+        <span class="hljs-tag">&lt;/<span class="hljs-name">p</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">a</span> <span class="hljs-attr">href</span>=<span class="hljs-string">&quot;&quot;</span>&gt;</span>Read more<span class="hljs-tag">&lt;/<span class="hljs-name">a</span>&gt;</span>
+    <span class="hljs-tag">&lt;/<span class="hljs-name">main</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">body</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">html</span>&gt;</span>
+</code></pre></div>
+<p>Dans le même dossier, crée un fichier <code>style.css</code> et insère le code suivant :</p>
+<div class="bloc-code"><div class="bloc-code__langue">css</div><pre><code class="hljs language-css">* {
+   <span class="hljs-attribute">box-sizing</span>: border-box;
+}
+
+<span class="hljs-selector-tag">body</span> {
+    <span class="hljs-attribute">margin</span>: <span class="hljs-number">0</span>;
+    <span class="hljs-attribute">line-height</span>: <span class="hljs-number">1.5</span>;
+    <span class="hljs-attribute">background-color</span>: grey;
+    <span class="hljs-attribute">font-family</span>: Verdana, Geneva, Tahoma, sans-serif;
+}
+</code></pre></div>
+<p>Utilise les propriétés du <em>box model</em> fraîchement vues dans cette quête (<em>display</em>, <em>margin</em>, <em>padding</em>, etc.) pour modifier le fichier <code>style.css</code> de manière à ce que la page web reproduise cette capture écran.</p>
+<p><img src="images/003-box-model-challenge-center.png" alt="Box model challenge center" loading="lazy">.</p>
+<h3>Quelques précisions</h3>
+<ul>
+<li>Entre le titre et les paragraphes, seul le titre est centré.</li>
+<li>Le contenu principal (sur fond blanc) doit être au <strong>centre de la page</strong>, peu importe la largeur de ton écran, et <strong>sa largeur ne doit pas dépasser 800px</strong>.</li>
+<li><strong>Les paragraphes</strong> et le bouton <em><strong>Read more</strong></em> ont suffisamment d'espace entre eux ainsi qu'avec les bords de leur parent.</li>
+</ul>
+<blockquote>
+<p><strong>Tips :</strong></p>
+<ul>
+<li>Le code du violet : #a306b6</li>
+<li>Tu ne devrais pas avoir à modifier le code HTML fourni.</li>
+<li>🕵️‍♂️ N'hésite pas à <strong>utiliser l'inspecteur de ton navigateur</strong> pour expérimenter l'ajout, la suppression ou la modification des propriétés CSS de tes boîtes lorsque tu écris la feuille de style.</li>
+</ul>
+</blockquote>
+<h3>Solution</h3>
+<details class="solution"><summary>Voir la solution</summary><div class="solution__corps"><div class="bloc-code"><div class="bloc-code__langue">css</div><pre><code class="hljs language-css">* {
+   <span class="hljs-attribute">box-sizing</span>: border-box;
+}
+
+<span class="hljs-selector-tag">body</span> {
+    <span class="hljs-attribute">margin</span>: <span class="hljs-number">0</span>;
+    <span class="hljs-attribute">line-height</span>: <span class="hljs-number">1.5</span>;
+    <span class="hljs-attribute">background-color</span>: grey;
+    <span class="hljs-attribute">font-family</span>: Verdana, Geneva, Tahoma, sans-serif;
+}
+
+<span class="hljs-selector-tag">main</span> {
+    <span class="hljs-attribute">background-color</span>: white;
+    <span class="hljs-attribute">max-width</span>: <span class="hljs-number">800px</span>;
+    <span class="hljs-attribute">margin</span>: <span class="hljs-number">0</span> auto;
+    <span class="hljs-attribute">padding</span>: <span class="hljs-number">1rem</span>;
+}
+<span class="hljs-selector-tag">h1</span> {
+    <span class="hljs-attribute">text-align</span>: center;
+}
+<span class="hljs-selector-tag">main</span> &gt; <span class="hljs-selector-tag">a</span> {
+    <span class="hljs-attribute">display</span>: inline-block;
+    <span class="hljs-attribute">padding</span>: <span class="hljs-number">1rem</span>;
+    <span class="hljs-attribute">background-color</span>: <span class="hljs-number">#A306B6</span>;
+    <span class="hljs-attribute">color</span>: white;
+    <span class="hljs-attribute">text-decoration</span>: none;
+}
+</code></pre></div>
+<h3>À noter</h3>
+<p>L'utilisation de <code>display: inline-block;</code> ligne 22 permet au lien situé à l'extérieur des paragraphes de se tenir à bonne distance du bloc voisin et parent. Modifie cette propriété avec ton inspecteur pour mieux te rendre compte.</p>
+</div></details>
+
+  </div>
+  <section class="ressources-quete">
+  <h2>Ressources partagées sur cette quête</h2>
+  <ul class="ressources-liste">
+    <li><a href="https://training.github.com/downloads/fr/github-git-cheat-sheet.pdf" target="_blank" rel="noopener noreferrer">Résumé des commandes git en français</a><span class="ressources-liste__url">https://training.github.com/downloads/fr/github-git-cheat-sheet.pdf</span></li>
+    <li><a href="https://cssreference.io/" target="_blank" rel="noopener noreferrer">plutôt cool</a><span class="ressources-liste__url">https://cssreference.io/</span></li>
+    <li><a href="https://cssgridgarden.com/#fr" target="_blank" rel="noopener noreferrer">petit jeu pour grid css</a><span class="ressources-liste__url">https://cssgridgarden.com/#fr</span></li>
+    <li><a href="https://flexboxfroggy.com/#fr" target="_blank" rel="noopener noreferrer">petit jeu pour flexbox</a><span class="ressources-liste__url">https://flexboxfroggy.com/#fr</span></li>
+    <li><a href="https://cssbattle.dev/battle/1" target="_blank" rel="noopener noreferrer">Pour s'entrainer et devenir un pro du CSS ;)</a><span class="ressources-liste__url">https://cssbattle.dev/battle/1</span></li>
+    <li><a href="https://developer.mozilla.org/en-US/docs/Web/CSS/Reference" target="_blank" rel="noopener noreferrer">liste alphabétique des propriétés standards CSS</a><span class="ressources-liste__url">https://developer.mozilla.org/en-US/docs/Web/CSS/Reference</span></li>
+    <li><a href="https://openclassrooms.com/fr/courses/1603881-apprenez-a-creer-votre-site-web-avec-html5-et-css3/1605060-mettez-en-place-le-css#:~:text=Il%20existe%20une%20autre%20m%C3%A9thode,en%2Dt%C3%AAte%20.&amp;text=Testez%2C%20vous%20verrez%20que%20le%20r%C3%A9sultat%20est%20le%20m%C3%AAme." target="_blank" rel="noopener noreferrer">bon support</a><span class="ressources-liste__url">https://openclassrooms.com/fr/courses/1603881-apprenez-a-creer-votre-site-web-avec-html5-et-css3/1605060-mettez-en-place-le-css#:~:text=Il%20existe%20une%20autre%20m%C3%A9thode,en%2Dt%C3%AAte%20.&amp;text=Testez%2C%20vous%20verrez%20que%20le%20r%C3%A9sultat%20est%20le%20m%C3%AAme.</span></li>
+    <li><a href="https://getbootstrap.com/docs/5.2/getting-started/introduction/" target="_blank" rel="noopener noreferrer">HUGE css library ;) </a><span class="ressources-liste__url">https://getbootstrap.com/docs/5.2/getting-started/introduction/</span></li>
+    <li><a href="https://css-tricks.com/" target="_blank" rel="noopener noreferrer">This is the best page ever</a><span class="ressources-liste__url">https://css-tricks.com/</span></li>
+    <li><a href="https://chrome.google.com/webstore/detail/pesticide-for-chrome/bakpbgckdnepkmkeaiomhmfcnejndkbi" target="_blank" rel="noopener noreferrer">Pesticide, extension de browser qui encadre les elements  box CSS d'une page. </a><span class="ressources-liste__url">https://chrome.google.com/webstore/detail/pesticide-for-chrome/bakpbgckdnepkmkeaiomhmfcnejndkbi</span></li>
+    <li><a href="https://www.joshwcomeau.com/css/rules-of-margin-collapse/" target="_blank" rel="noopener noreferrer">A very good article which explains the rules of &quot;margin collapse&quot; in detail.</a><span class="ressources-liste__url">https://www.joshwcomeau.com/css/rules-of-margin-collapse/</span></li>
+    <li><a href="https://css-tricks.com/snippets/css/a-guide-to-flexbox/" target="_blank" rel="noopener noreferrer">Guide Flexbox</a><span class="ressources-liste__url">https://css-tricks.com/snippets/css/a-guide-to-flexbox/</span></li>
+    <li><a href="https://www.codecademy.com/learn" target="_blank" rel="noopener noreferrer">ça m'a beaucoup aidé</a><span class="ressources-liste__url">https://www.codecademy.com/learn</span></li>
+    <li><a href="https://internetingishard.netlify.app/html-and-css/css-box-model/index.html" target="_blank" rel="noopener noreferrer">Nouveau lien de ESSENTIEL - Interneting Is Hard - CSS box model :D</a><span class="ressources-liste__url">https://internetingishard.netlify.app/html-and-css/css-box-model/index.html</span></li>
+    <li><a href="http://www.css-faciles.com/proprietes-css-liste-alphabetique.php" target="_blank" rel="noopener noreferrer">Vocabulaires CSS</a><span class="ressources-liste__url">http://www.css-faciles.com/proprietes-css-liste-alphabetique.php</span></li>
+    <li><a href="https://developer.mozilla.org/fr/docs/Web/HTML/Element" target="_blank" rel="noopener noreferrer">Résume la plus part des balises HTML avec les explications </a><span class="ressources-liste__url">https://developer.mozilla.org/fr/docs/Web/HTML/Element</span></li>
+    <li><a href="https://www.codecademy.com/learn/learn-css/modules/learn-css-box-model/cheatsheet" target="_blank" rel="noopener noreferrer">Fiche des fondamentaux du modèle de boîte.</a><span class="ressources-liste__url">https://www.codecademy.com/learn/learn-css/modules/learn-css-box-model/cheatsheet</span></li>
+    <li><a href="https://developer.mozilla.org/fr/docs/Learn/CSS/Building_blocks/The_box_model" target="_blank" rel="noopener noreferrer">Aide à la compréhenssion de la Box Model</a><span class="ressources-liste__url">https://developer.mozilla.org/fr/docs/Learn/CSS/Building_blocks/The_box_model</span></li>
+  </ul>
+</section>
+</article>
+
+<nav class="nav-quete">
+  <a class="nav-quete__lien nav-quete__lien--prec" href="../../css/002-css-2-inspecteur/index.html">
+           <span class="nav-quete__sens">← Précédent</span>
+           <span class="nav-quete__titre">👩‍🏫 CSS 2 : Inspecteur</span>
+         </a>
+  <a class="nav-quete__lien nav-quete__lien--suiv" href="../../css/004-css-4-flexbox/index.html">
+           <span class="nav-quete__sens">Suivant →</span>
+           <span class="nav-quete__titre">👩‍🏫 CSS 4 : Flexbox</span>
+         </a>
+</nav>
+</main>
+<footer class="pied">
+  <p>Archive personnelle des cours suivis à la Wild Code School. Copie hors ligne à usage strictement privé.</p>
+</footer>
+
+<script src="../../assets/copie-code.js"></script>
+<script src="../../assets/progression.js"></script>
+</body>
+</html>

@@ -1,0 +1,29 @@
+{
+  "id": 1644,
+  "titre": "Checkpoint 2 - JS - React",
+  "titres": {
+    "en": "Checkpoint 2 - JS - React",
+    "fr": "Checkpoint 2 - JS - React"
+  },
+  "theme": {
+    "id": 149,
+    "slug": "web-development",
+    "nom": "Développement Web"
+  },
+  "creeLe": "2021-04-29T12:24:45.727+02:00",
+  "difficulte": "",
+  "dureeEstimee": 240,
+  "modeValidation": "self",
+  "chapitres": [
+    {
+      "id": 11874,
+      "type": "content",
+      "langue": "fr",
+      "majLe": "2024-07-24T16:24:10.871+02:00",
+      "caracteres": 1554
+    }
+  ],
+  "ressources": [],
+  "urlOrigine": "https://odyssey.wildcodeschool.com/quests/1644",
+  "archiveLe": "2026-09-02T20:52:54.532Z"
+}

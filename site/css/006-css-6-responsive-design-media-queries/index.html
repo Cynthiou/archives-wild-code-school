@@ -1,0 +1,596 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>👩‍🏫 CSS 6 : Responsive Design &amp; Media queries — Archives WCS</title>
+<link rel="stylesheet" href="../../assets/style.css">
+</head>
+<body style="--teinte:#1b62b1">
+<header class="entete">
+  <a class="entete__marque" href="../../index.html">Archives Wild Code School</a>
+</header>
+<main class="contenu">
+<nav class="ariane"><a href="../../index.html">Accueil</a><span class="ariane__sep">›</span><a href="../../css/index.html">CSS</a><span class="ariane__sep">›</span><span aria-current="page">👩‍🏫 CSS 6 : Responsive Design &amp; Media queries</span></nav>
+
+<article class="quete">
+  <header class="quete__entete">
+    <a class="pastille pastille--teintee" href="../../css/index.html">CSS</a>
+    <h1>👩‍🏫 CSS 6 : Responsive Design &amp; Media queries</h1>
+    <p class="quete__meta">Quête 6 sur 10 · 9 images archivées</p>
+  </header>
+  <div class="cours">
+<h2>Objectifs</h2>
+<ul>
+<li>Comprendre ce que sont les <em>media queries</em></li>
+<li>Découvrir comment tu peux les utiliser pour modifier ta mise en page</li>
+<li>Comprendre le concept du <strong>mobile first</strong></li>
+</ul>
+<h2>Introduction</h2>
+<p>Aux débuts d'Internet, les pages web étaient conçues pour des tailles d'écran très spécifiques.
+Aujourd'hui, <strong>nous avons tous des tailles d'écran différentes</strong>, même nos <strong>smartphones sont tous de tailles différentes</strong>.</p>
+<p>C'est pour résoudre ce problème spécifique que le <em>responsive web design</em> (design web réactif) a été inventé.
+Le <em>responsive web design</em> <strong>est un ensemble de pratiques</strong> qui <strong>permet aux pages web de changer leur mise en page pour s'adapter à des tailles d'écran différentes</strong>.</p>
+<p>Dans cette quête, nous parlerons de ce qu'est le <em>responsive web design</em> et <strong>de la façon dont tu peux appliquer ces pratiques à tes sites web</strong>.</p>
+<p><img src="images/001-desk-responsive.png" alt="Desk Responsive" loading="lazy"></p>
+<h2>Sommaire</h2>
+<h2>L'histoire des différentes mise en page des sites web</h2>
+<p>Avant que le concept de sites web réactifs n'existe, il n'y avait que deux façons de concevoir un site web.</p>
+<ul>
+<li>Créer une mise en page fixe (les sites web ont une taille fixe)</li>
+</ul>
+<p><img src="images/002-fixed-layout-css.gif" alt="Fixed Layout css" loading="lazy"></p>
+<ul>
+<li>Créer une mise en page <strong>liquide</strong> (les sites web ont une taille en % qui s'adapte à la largeur de l'écran)</li>
+</ul>
+<p><img src="images/003-fluid-layout-css.gif" alt="Fluid layout CSS" loading="lazy">
+Source:<a href="https://medium.com/@space.alpaca/so-what-exactly-is-the-difference-between-fixed-fluid-adaptive-and-responsive-layouts-and-why-3773272d8481" target="_blank" rel="noopener noreferrer">https://medium.com/@space.alpaca/so-what-exactly-is-the-difference-between-fixed-fluid-adaptive-and-responsive-layouts-and-why-3773272d8481</a></p>
+<p>Le <em>responsive design</em> a été créé pour résoudre les problèmes des dispositions fixes et liquides.</p>
+<h2>Responsive Design</h2>
+<p>Le terme &quot;<em>responsive design</em>&quot; (conception réactive ou adaptative) <strong>ne se réfère pas à une technologie spécifique</strong>. Il fait plutôt référence à un <strong>ensemble d'outils et de pratiques pour créer des mises en page</strong> qui &quot;s'adaptent&quot; à la <strong>taille des écrans</strong>.
+Le terme &quot;<em>responsive design</em>&quot; a été apposé par Ethan Matcotte en 2010.</p>
+<p><img src="images/004-responsive.jpg" alt="Responsive" loading="lazy"></p>
+<h2>Mobile-first</h2>
+<p>Un concept qui est également apparu avec le <em>responsive design</em> (et surtout à la &quot;révolution mobile&quot;) est le concept de <strong>mobile-first.</strong></p>
+<p>La philosophie du <em>mobile-first</em> est de toujours commencer à travailler sur la version <strong>mobile avant de construire la version de bureau.</strong></p>
+<p>Non seulement les utilisateurs <strong>auront une meilleure expérience sur mobile</strong>, mais <strong>il est également plus facile de commencer à travailler sur une version mobile.</strong></p>
+<blockquote>
+<p><strong>Illustrons ce concept</strong>.
+Imagine que tu vives dans une petite pièce (quelques mètres carrés). Si tu dois déménager dans un appartement plus grand, il te sera bien plus facile de déplacer toutes tes affaires depuis un espace plus petit vers un espace plus grand que l'inverse.</p>
+</blockquote>
+<p>C'est la même chose pour le <strong>design réactif.</strong></p>
+<p>La plupart des utilisations d'Internet se font à partir d'un appareil mobile, il est donc crucial d'avoir une excellente version mobile de ton site web !</p>
+<p><img src="images/005-utilisation-de-l-internet.jpg" alt="utilisation de l'internet" loading="lazy">
+<em>source:</em> <a href="https://www.broadbandsearch.net/blog/mobile-desktop-internet-usage-statistics" target="_blank" rel="noopener noreferrer">https://www.broadbandsearch.net/blog/mobile-desktop-internet-usage-statistics</a></p>
+<p>Aujourd'hui, avoir une <strong>bonne version mobile</strong> peut <strong>améliorer considérablement la visibilité sur les moteurs de recherche.</strong>
+Par exemple, <strong>Google donnera un rang à ton site web</strong> en vérifiant si celui-ci est <strong>mobile-friendly</strong> et lui attribuant si c'est le cas <strong>une meilleure visibilité sur le moteur de recherche.</strong></p>
+<a class="ressource" href="https://developer.mozilla.org/en-US/docs/Web/Guide/Mobile/Mobile-friendliness" target="_blank" rel="noopener noreferrer">
+  <div class="ressource__icone">↗</div>
+  <div class="ressource__texte">
+    <div class="ressource__titre">Adaptabilité au téléphone portable</div>
+    <div class="ressource__desc"><p>Un bel article de MDN sur l'adaptabilité des sites aux téléphones portables</p>
+</div>
+    <div class="ressource__hote">developer.mozilla.org</div>
+  </div>
+</a>
+<h2>Comment coder une page web responsive</h2>
+<h3>La balise meta viewport</h3>
+<p>Pour indiquer au navigateur que ta page s'adapte à tous les appareils, tu dois ajouter une balise <em>meta</em> dans le <code>&lt;head&gt;</code> de ton document :</p>
+<div class="bloc-code"><div class="bloc-code__langue">html</div><pre><code class="hljs language-html"><span class="hljs-tag">&lt;<span class="hljs-name">head</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">meta</span> <span class="hljs-attr">name</span>=<span class="hljs-string">&quot;viewport&quot;</span> <span class="hljs-attr">content</span>=<span class="hljs-string">&quot;width=device-width, initial-scale=1.0&quot;</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">head</span>&gt;</span>
+</code></pre></div>
+<p>Ici, nous indiquons au navigateur d'utiliser 100% de la largeur disponible de l'écran et d'appliquer un niveau de grossissement à 1 (c'est-à-dire pas de zoom avant ni arrière).</p>
+<a class="ressource" href="https://developer.mozilla.org/fr/docs/Web/HTML/Viewport_meta_tag" target="_blank" rel="noopener noreferrer">
+  <div class="ressource__icone">↗</div>
+  <div class="ressource__texte">
+    <div class="ressource__titre">Utilisation de la balise meta viewport</div>
+    
+    <div class="ressource__hote">developer.mozilla.org</div>
+  </div>
+</a>
+<p><img src="images/006-google-viewport-meta.png" alt="Google viewport meta" loading="lazy">
+<em>Source:</em> <a href="https://developers.google.com/search/mobile-sites/mobile-seo/responsive-design" target="_blank" rel="noopener noreferrer">https://developers.google.com/search/mobile-sites/mobile-seo/responsive-design</a></p>
+<h3>Media queries</h3>
+<p>Les <em>media queries</em> permettent de modifier la mise en page en fonction de la taille du <strong>viewport</strong>.
+Ce que nous appelons viewport est <strong>la taille de la fenêtre</strong>.</p>
+<p>En utilisant les <em>media queries</em>, tu peux décider de réorganiser certains éléments de ta page web en fonction de la taille de la fenêtre.</p>
+<p><img src="images/007-requetes-medias.png" alt="Requêtes médias" loading="lazy">
+<em>Source:</em> <a href="https://hackernoon.com/introduction-to-css-media-queries-xu3t3vxc" target="_blank" rel="noopener noreferrer">https://hackernoon.com/introduction-to-css-media-queries-xu3t3vxc</a></p>
+<p>La syntaxe d'une <em>media query</em> ressemble à ceci :</p>
+<div class="bloc-code"><div class="bloc-code__langue">css</div><pre><code class="hljs language-css"><span class="hljs-keyword">@media</span> &lt;media_type&gt; <span class="hljs-keyword">and</span> (&lt;media_features&gt;) {
+
+<span class="hljs-comment">/* put your CSS here */</span>
+
+}
+</code></pre></div>
+<h3>Types de <em>media</em></h3>
+<p>Le <code>&lt;media_type&gt;</code> décrit la catégorie d'appareil. Voici une liste des différents <strong>types de media</strong> que tu peux utiliser :</p>
+<ul>
+<li>
+<p><code>all</code> : appliquer la règle à tous les types d'appareils.</p>
+</li>
+<li>
+<p><code>print</code> : utilisé pour un document destiné à être imprimé (papier)</p>
+</li>
+<li>
+<p><code>screen</code> : utilisé pour tous les types d'écran.</p>
+</li>
+<li>
+<p><code>speech</code> : pour les synthétiseurs de parole</p>
+</li>
+</ul>
+<p>Le <strong>plus utilisé</strong> est généralement <code>screen</code>.</p>
+<h3>Caractéristiques media</h3>
+<p>Ensuite, à la place de <code>&lt;media_features&gt;</code>, tu peux écrire des règles pour lesquelles la media query sera appliquée.
+Les <em>features</em> les plus courantes sont la largeur minimale <code>min-width</code> et la largeur maximale <code>max-width</code>.</p>
+<p>Tu peux trouver une liste complète sur le site w3schools :</p>
+<a class="ressource" href="https://www.w3schools.com/cssref/css3_pr_mediaquery.asp" target="_blank" rel="noopener noreferrer">
+  <div class="ressource__icone">↗</div>
+  <div class="ressource__texte">
+    <div class="ressource__titre">CSS @media Rule</div>
+    <div class="ressource__desc"><p>Tu trouveras ici la définition et les règles d'utilisation des <em>media queries</em></p>
+</div>
+    <div class="ressource__hote">w3schools.com</div>
+  </div>
+</a>
+<p>Voici un exemple de <em>media queries</em> avec toutes les propriétés :</p>
+<div class="bloc-code"><div class="bloc-code__langue">css</div><pre><code class="hljs language-css"><span class="hljs-keyword">@media</span> screen <span class="hljs-keyword">and</span> (<span class="hljs-attribute">max-width</span>: <span class="hljs-number">600px</span>) { 
+  <span class="hljs-selector-class">.menu</span> { 
+    <span class="hljs-attribute">display</span>: none; 
+  } 
+}
+
+//écriture alternative 
+<span class="hljs-keyword">@media</span> screen <span class="hljs-keyword">and</span> (<span class="hljs-attribute">width</span> &lt;= <span class="hljs-number">600px</span>) { 
+  <span class="hljs-selector-class">.menu</span> { 
+    <span class="hljs-attribute">display</span>: none; 
+  } 
+}
+</code></pre></div>
+<p>Cette <em>media query</em> vérifie si la page web est affichée sur un écran, et si la largeur de la fenêtre de visualisation est inférieure à <strong>600px.</strong>
+Si la condition est vraie, alors la règle CSS est appliquée et l'élément <code>.menu</code> change en <code>display : none.</code></p>
+<p>Ouvre la démo sur Codesandbox et déplace la taille de l'écran ; le menu devrait disparaître lorsque la taille de l'écran est inférieure à <strong>600px</strong>.</p>
+<div class="bloc-code"><div class="bloc-code__langue">codesandbox</div><pre><code class="hljs language-codesandbox">https://codesandbox.io/s/restless-waterfall-do0wo?file=/style.css:192-195
+</code></pre></div>
+<p>Il existe plein d'autres options possibles pour spécifier certaines situations telles que l'<strong>orientation portrait ou paysage</strong> du média (orientation), <strong>la résolution</strong>, si le type d'<strong>affichage est monochrome</strong>, etc. Consulte la page suivante pour des explications détaillées.</p>
+<a class="ressource" href="https://developer.mozilla.org/fr/docs/Web/CSS/CSS_media_queries/Using_media_queries#caract%C3%A9ristiques_m%C3%A9dia_media_features" target="_blank" rel="noopener noreferrer">
+  <div class="ressource__icone">↗</div>
+  <div class="ressource__texte">
+    <div class="ressource__titre">Les media features</div>
+    
+    <div class="ressource__hote">developer.mozilla.org</div>
+  </div>
+</a>
+<p><strong>🔬 Expérience</strong></p>
+<p>Maintenant, essaye de réarranger ces trois blocs en utilisant les <em>media queries</em>. Lorsque la taille de l'écran est inférieure à 600px, les blocs doivent être en <code>display:block</code> et prendre toute la largeur (100%).</p>
+<div class="bloc-code"><div class="bloc-code__langue">codesandbox</div><pre><code class="hljs language-codesandbox">https://codesandbox.io/s/zen-keldysh-ol0g9?file=/style.css
+</code></pre></div>
+<div class="bloc-code"><div class="bloc-code__langue">hidden</div><pre><code class="hljs language-hidden">Voir la solution|||css|||Des difficultés pour trouver la solution? Persévère, tu vas y arriver|||0|||Cacher
+@media screen and (max-width: 600px) {
+  .boxes {
+    display: block;
+    width: 100%;
+  }
+}
+</code></pre></div>
+<h2>Points de rupture</h2>
+<p>Dans la <em>responsive design</em>, un point de rupture (ou <em>breakpoint</em>) est un point auquel la <em>media query</em> se déclenche (et la mise en page s'adapte). Dans l'exemple précédent, tu as utilisé 600px comme point de rupture.</p>
+<p>Nous ne voulons pas que les éléments changent tout le temps pour un grand nombre d'écrans différents.
+Ton site web ne devrait changer que sur les <strong>points d'arrêt</strong> principaux (ex : lorsque le site passe d'un écran de bureau à la tablette, <em>etc.</em>)</p>
+<p>Voici les tailles d'écran les plus utilisées :</p>
+<ul>
+<li><strong>Mobile en portrait</strong> (320px à 414px) - Pour les appareils avec des écrans de 4&quot; à 6,9&quot;.</li>
+<li><strong>Mobile en paysage</strong> (568px à 812px) - Idem, mais en paysage.</li>
+<li><strong>Tablette en portrait</strong> (768px à 834px) - Pour les appareils de 7&quot; à 10&quot;.</li>
+<li><strong>Tablette en paysage</strong> (1024px à 1112px) - Idem, mais aussi tablettes 12&quot; en portrait.</li>
+<li><strong>Ecrans d'ordinateurs portables et de bureau</strong> (&gt;1200px) - Varie beaucoup, mais généralement de 1200px et plus.</li>
+</ul>
+<p><img src="images/008-breakpoints.jpg" alt="breakpoints" loading="lazy">
+<em>Source : Pinterest</em> <a href="https://in.pinterest.com/pin/370421138093022328/" target="_blank" rel="noopener noreferrer">https://in.pinterest.com/pin/370421138093022328/</a></p>
+<h2>Images</h2>
+<p>Un autre concept important en <em>responsive design</em> est celui des <strong>images</strong>.
+Nous voulons aussi que les images s'adaptent à la taille de l'écran.</p>
+<p>Nous pouvons utiliser ce code pour nous assurer que l'élément image ne prend pas plus de 100% de la taille du parent :</p>
+<div class="bloc-code"><div class="bloc-code__langue">css</div><pre><code class="hljs language-css"><span class="hljs-selector-tag">img</span> {
+  <span class="hljs-attribute">max-width</span>: <span class="hljs-number">100%</span>;
+  <span class="hljs-attribute">height</span>: auto;
+}
+</code></pre></div>
+<p><strong>🔬 Expérience</strong></p>
+<p>Cette image de chat est trop grande : utilise la technique que nous venons d'apprendre pour l'adapter à la taille de la fenêtre de visualisation.</p>
+<div class="bloc-code"><div class="bloc-code__langue">codesandbox</div><pre><code class="hljs language-codesandbox">https://codesandbox.io/s/agitated-vaughan-75xsr
+</code></pre></div>
+<div class="bloc-code"><div class="bloc-code__langue">hidden</div><pre><code class="hljs language-hidden">Voir le code|||javascript|||Des problèmes pour trouver la solution ?|||0|||Cacher
+.img-cat {
+  max-width: 100%;
+  height: auto;
+}
+
+</code></pre></div>
+<div class="bloc-code"><div class="bloc-code__langue">quiz</div><pre><code class="hljs language-quiz">false|||true|||true
+# Qu'est-ce que le responsive design ?
+[] Un site web qui se charge rapidement
+[] Une technologie pour créer de beaux designs pour tes sites web
+[x] Un ensemble d'outils pour créer des mises en page qui répondent à tous les types d'appareils
+# Qu'est ce que le concept de mobile-first ?
+[x] Créer la version mobile avant la version de bureau
+[] Créer la version de bureau avant la version mobile
+[] Créer un site web qui ne fonctionne qu'en mobile
+# À quoi servent les media queries ?
+[x] Modifier certaines règles CSS en fonction de l'appareil
+[] Créer une grille
+[] Modifier la taille du *viewport*
+# Quelle est la bonne syntaxe pour les *media queries* ?
+[x] @media screen and (max-width : 500px) { ... }
+[] @media query screen and (max-width:500px){ ... }
+[] @query screen and (max-width : 500px) { ... }
+[] @mediaQuery screen and (max-width : 500px) { ... }
+</code></pre></div>
+<h2>Résumé</h2>
+<ul>
+<li>Le <em>responsive design</em> est un <strong>ensemble de pratiques</strong> utilisées pour <strong>créer une mise en page qui &quot;répond&quot; (s'adapte) aux contraintes de l'appareil</strong></li>
+<li>Le principe du <em><strong>mobile-first</strong></em> est un principe important lié au <em>responsive design</em>. Ce principe signifie que tu dois toujours <strong>démarrer la construction de la version mobile</strong> de ton site web <strong>avant la version pour bureau</strong></li>
+<li>Tu peux écrire des <em>media queries</em> pour appliquer des <strong>règles CSS spécifiques</strong> à certaines <strong>tailles d'écran</strong></li>
+</ul>
+<h2>Ressources</h2>
+<a class="ressource" href="https://www.toptal.com/designers/responsive/responsive-design-best-practices" target="_blank" rel="noopener noreferrer">
+  <div class="ressource__icone">↗</div>
+  <div class="ressource__texte">
+    <div class="ressource__titre">Responsive design - Meilleures pratiques et considérations</div>
+    <div class="ressource__desc"><p>Un bel article sur les meilleures pratiques en matière de <em>responsive design</em>.</p>
+</div>
+    <div class="ressource__hote">toptal.com</div>
+  </div>
+</a>
+<h2>Challenge</h2>
+<p>En utilisant les <em>media queries</em>, essaie de reproduire l'intégration de la barre de navigation représentée ci-dessous.</p>
+<p><img src="images/009-challenge-responsive.png" alt="Challenge responsive" loading="lazy"></p>
+<h3>Consignes</h3>
+<ul>
+<li>L'intégration doit être faite pour trois tailles d'écran, soit deux points de ruptures (1024 et 1200px), comme suit :
+<ul>
+<li><strong>Mobile portrait ou paysage</strong> pour une largeur inférieure à 1024px. Servira aussi pour les tablettes en orientation portrait.</li>
+<li><strong>Tablette en orientation paysage</strong> et une largeur d'écran supérieure à 1024px</li>
+<li><strong>Ordinateur</strong> et une largeur supérieure à 1200px</li>
+</ul>
+</li>
+<li>Pour les trois versions, la barre de navigation est fixe.</li>
+<li>Version <strong>mobile</strong> : seules les icônes sont visibles. La barre est fixée en pied de fenêtre</li>
+<li>Version <strong>tablette</strong> : les icônes ainsi que les textes des liens sont visibles. La barre est fixée à droite de l'écran</li>
+<li>Version <strong>ordinateur</strong> : les icônes sont cachées mais les textes des liens sont visibles ainsi que le logo. La barre de navigation est fixée en haut de la fenêtre.</li>
+</ul>
+<h3>Tips</h3>
+<ul>
+<li>Essaie de réaliser ton CSS dans une approche <em><strong>mobile first</strong></em></li>
+<li>Code pour le violet : #A306B6.</li>
+<li>Icônes : tu peux utiliser la <a href="https://icons.getbootstrap.com/" target="_blank" rel="noopener noreferrer">bibliothèque d'icônes Bootstrap Icons</a> qui s'intègre en ajoutant ce code dans la partie <code>&lt;head&gt;</code> de la page :</li>
+</ul>
+<div class="bloc-code"><div class="bloc-code__langue">html</div><pre><code class="hljs language-html">    <span class="hljs-tag">&lt;<span class="hljs-name">link</span> <span class="hljs-attr">rel</span>=<span class="hljs-string">&quot;stylesheet&quot;</span> <span class="hljs-attr">href</span>=<span class="hljs-string">&quot;https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css&quot;</span>&gt;</span>
+</code></pre></div>
+<h3>Solution pas à pas</h3>
+<ol class="etapes"><li class="etape"><div class="etape__puce">1</div><div class="etape__contenu"><h4 class="etape__titre">Démarrage</h4><p>Je crée les fichiers <code>index.html</code> et <code>style.css</code> dans un dossier approprié.</p>
+</div></li><li class="etape"><div class="etape__puce">2</div><div class="etape__contenu"><h4 class="etape__titre">HTML</h4><p>Je pose l'ensemble des éléments HTML dont je vais avoir besoin pour les trois versions.</p>
+<div class="bloc-code"><div class="bloc-code__langue">html</div><pre><code class="hljs language-html"><span class="hljs-meta">&lt;!DOCTYPE <span class="hljs-keyword">html</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">html</span> <span class="hljs-attr">lang</span>=<span class="hljs-string">&quot;en&quot;</span>&gt;</span>
+
+<span class="hljs-tag">&lt;<span class="hljs-name">head</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">meta</span> <span class="hljs-attr">charset</span>=<span class="hljs-string">&quot;UTF-8&quot;</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">meta</span> <span class="hljs-attr">name</span>=<span class="hljs-string">&quot;viewport&quot;</span> <span class="hljs-attr">content</span>=<span class="hljs-string">&quot;width=device-width, initial-scale=1.0&quot;</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">title</span>&gt;</span>Exercise | Responsive<span class="hljs-tag">&lt;/<span class="hljs-name">title</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">link</span> <span class="hljs-attr">rel</span>=<span class="hljs-string">&quot;stylesheet&quot;</span> <span class="hljs-attr">href</span>=<span class="hljs-string">&quot;style.css&quot;</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">link</span> <span class="hljs-attr">rel</span>=<span class="hljs-string">&quot;stylesheet&quot;</span> <span class="hljs-attr">href</span>=<span class="hljs-string">&quot;https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css&quot;</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">head</span>&gt;</span>
+
+<span class="hljs-tag">&lt;<span class="hljs-name">body</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">nav</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">a</span> <span class="hljs-attr">href</span>=<span class="hljs-string">&quot;#&quot;</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;logo&quot;</span>&gt;</span>Logo<span class="hljs-tag">&lt;/<span class="hljs-name">a</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">ul</span>&gt;</span>
+            <span class="hljs-tag">&lt;<span class="hljs-name">li</span>&gt;</span>
+                <span class="hljs-tag">&lt;<span class="hljs-name">a</span> <span class="hljs-attr">href</span>=<span class="hljs-string">&quot;#&quot;</span>&gt;</span>
+                    <span class="hljs-tag">&lt;<span class="hljs-name">i</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;bi bi-house-fill&quot;</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">i</span>&gt;</span>
+                    <span class="hljs-tag">&lt;<span class="hljs-name">span</span>&gt;</span>Home<span class="hljs-tag">&lt;/<span class="hljs-name">span</span>&gt;</span>
+                <span class="hljs-tag">&lt;/<span class="hljs-name">a</span>&gt;</span>
+            <span class="hljs-tag">&lt;/<span class="hljs-name">li</span>&gt;</span>
+            <span class="hljs-tag">&lt;<span class="hljs-name">li</span>&gt;</span>
+                <span class="hljs-tag">&lt;<span class="hljs-name">a</span> <span class="hljs-attr">href</span>=<span class="hljs-string">&quot;#&quot;</span>&gt;</span>
+                    <span class="hljs-tag">&lt;<span class="hljs-name">i</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;bi bi-images&quot;</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">i</span>&gt;</span>
+                    <span class="hljs-tag">&lt;<span class="hljs-name">span</span>&gt;</span>Gallery<span class="hljs-tag">&lt;/<span class="hljs-name">span</span>&gt;</span>
+                <span class="hljs-tag">&lt;/<span class="hljs-name">a</span>&gt;</span>
+            <span class="hljs-tag">&lt;/<span class="hljs-name">li</span>&gt;</span>
+            <span class="hljs-tag">&lt;<span class="hljs-name">li</span>&gt;</span>
+                <span class="hljs-tag">&lt;<span class="hljs-name">a</span> <span class="hljs-attr">href</span>=<span class="hljs-string">&quot;#&quot;</span>&gt;</span>
+                    <span class="hljs-tag">&lt;<span class="hljs-name">i</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;bi bi-envelope-fill&quot;</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">i</span>&gt;</span>
+                    <span class="hljs-tag">&lt;<span class="hljs-name">span</span>&gt;</span>Contact<span class="hljs-tag">&lt;/<span class="hljs-name">span</span>&gt;</span>
+                <span class="hljs-tag">&lt;/<span class="hljs-name">a</span>&gt;</span>
+            <span class="hljs-tag">&lt;/<span class="hljs-name">li</span>&gt;</span>
+        <span class="hljs-tag">&lt;/<span class="hljs-name">ul</span>&gt;</span>
+    <span class="hljs-tag">&lt;/<span class="hljs-name">nav</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">body</span>&gt;</span>
+
+<span class="hljs-tag">&lt;/<span class="hljs-name">html</span>&gt;</span>
+
+</code></pre></div>
+<p><strong>À noter</strong> : l'utilisation des icônes bootstrap grâce aux tags <code>&lt;i&gt;</code>. Les textes des liens sont placés à l'intérieur de <code>&lt;span&gt;</code> pour pouvoir être manipulés via le CSS.</p>
+</div></li><li class="etape"><div class="etape__puce">3</div><div class="etape__contenu"><h4 class="etape__titre">Mobile first</h4><p>Je réalise l'intégration de la vue mobile.</p>
+<div class="bloc-code"><div class="bloc-code__langue">css</div><pre><code class="hljs language-css">* {
+    <span class="hljs-attribute">box-sizing</span>: border-box;
+}
+
+<span class="hljs-selector-tag">body</span> {
+    <span class="hljs-attribute">margin</span>: <span class="hljs-number">0</span>;
+    <span class="hljs-attribute">line-height</span>: <span class="hljs-number">1.5</span>;
+    <span class="hljs-attribute">background-color</span>: grey;
+    <span class="hljs-attribute">font-family</span>: Verdana, Geneva, Tahoma, sans-serif;
+}
+
+<span class="hljs-selector-tag">nav</span> {
+    <span class="hljs-attribute">position</span>: fixed;
+    <span class="hljs-attribute">inset</span>: auto <span class="hljs-number">0</span> <span class="hljs-number">0</span> <span class="hljs-number">0</span>;
+    <span class="hljs-attribute">display</span>: flex;
+    <span class="hljs-attribute">justify-content</span>: center;
+    <span class="hljs-attribute">align-items</span>: center;
+    <span class="hljs-attribute">padding</span>: <span class="hljs-number">1rem</span>;
+    <span class="hljs-attribute">background-color</span>: <span class="hljs-number">#A306B6</span>;
+    <span class="hljs-attribute">color</span>: <span class="hljs-number">#fff</span>;
+}
+
+<span class="hljs-selector-tag">nav</span>&gt;<span class="hljs-selector-tag">a</span><span class="hljs-selector-class">.logo</span> {
+    <span class="hljs-attribute">display</span>: none;
+    <span class="hljs-attribute">color</span>: inherit;
+    <span class="hljs-attribute">text-decoration</span>: none;
+}
+
+<span class="hljs-selector-tag">nav</span>&gt;<span class="hljs-selector-tag">ul</span> {
+    <span class="hljs-attribute">display</span>: flex;
+    <span class="hljs-attribute">list-style</span>: none;
+    <span class="hljs-attribute">padding</span>: <span class="hljs-number">0</span>;
+}
+
+<span class="hljs-selector-tag">nav</span>&gt;<span class="hljs-selector-tag">ul</span>&gt;<span class="hljs-selector-tag">li</span>&gt;<span class="hljs-selector-tag">a</span> {
+    <span class="hljs-attribute">color</span>: inherit;
+    <span class="hljs-attribute">text-decoration</span>: none;
+    <span class="hljs-attribute">padding</span>: <span class="hljs-number">1rem</span>;
+}
+
+<span class="hljs-selector-tag">nav</span>&gt;<span class="hljs-selector-tag">ul</span>&gt;<span class="hljs-selector-tag">li</span>&gt;<span class="hljs-selector-tag">a</span>&gt;<span class="hljs-selector-tag">i</span> {
+    <span class="hljs-attribute">font-size</span>: <span class="hljs-number">1.5em</span>;
+}
+
+<span class="hljs-selector-tag">nav</span>&gt;<span class="hljs-selector-tag">ul</span>&gt;<span class="hljs-selector-tag">li</span>&gt;<span class="hljs-selector-tag">a</span>&gt;<span class="hljs-selector-tag">span</span> {
+    <span class="hljs-attribute">display</span>: none;
+}
+
+</code></pre></div>
+<p><strong>À noter</strong> :</p>
+<ul>
+<li>La propriété <code>inset</code> (ligne 14) sert à définir en une seule ligne les valeurs des propriétés <code>top</code>, <code>right</code>, <code>bottom</code> et <code>left</code>.</li>
+<li>On utilise la propriété <code>display: none;</code> pour cacher le logo (ligne 24) et les textes des liens (ligne 46).</li>
+</ul>
+</div></li><li class="etape"><div class="etape__puce">4</div><div class="etape__contenu"><h4 class="etape__titre">Tablet</h4><p>J'ajoute les <em>media queries</em> pour la vue tablette en mode paysage.</p>
+<div class="bloc-code"><div class="bloc-code__langue">css</div><pre><code class="hljs language-css">* {
+    <span class="hljs-attribute">box-sizing</span>: border-box;
+}
+
+<span class="hljs-selector-tag">body</span> {
+    <span class="hljs-attribute">margin</span>: <span class="hljs-number">0</span>;
+    <span class="hljs-attribute">line-height</span>: <span class="hljs-number">1.5</span>;
+    <span class="hljs-attribute">background-color</span>: grey;
+    <span class="hljs-attribute">font-family</span>: Verdana, Geneva, Tahoma, sans-serif;
+}
+
+<span class="hljs-selector-tag">nav</span> {
+    <span class="hljs-attribute">position</span>: fixed;
+    <span class="hljs-attribute">inset</span>: auto <span class="hljs-number">0</span> <span class="hljs-number">0</span> <span class="hljs-number">0</span>;
+    <span class="hljs-attribute">display</span>: flex;
+    <span class="hljs-attribute">justify-content</span>: center;
+    <span class="hljs-attribute">align-items</span>: center;
+    <span class="hljs-attribute">padding</span>: <span class="hljs-number">1rem</span>;
+    <span class="hljs-attribute">background-color</span>: <span class="hljs-number">#A306B6</span>;
+    <span class="hljs-attribute">color</span>: <span class="hljs-number">#fff</span>;
+}
+
+<span class="hljs-keyword">@media</span> screen <span class="hljs-keyword">and</span> (<span class="hljs-attribute">width</span> &gt;= <span class="hljs-number">1024px</span>) <span class="hljs-keyword">and</span> (<span class="hljs-attribute">orientation</span>: landscape) {
+    <span class="hljs-selector-tag">nav</span> {
+        <span class="hljs-attribute">inset</span>: <span class="hljs-number">0</span> <span class="hljs-number">0</span> <span class="hljs-number">0</span> auto;
+    } 
+}
+
+<span class="hljs-selector-tag">nav</span>&gt;<span class="hljs-selector-tag">a</span><span class="hljs-selector-class">.logo</span> {
+    <span class="hljs-attribute">display</span>: none;
+    <span class="hljs-attribute">color</span>: inherit;
+    <span class="hljs-attribute">text-decoration</span>: none;
+}
+
+<span class="hljs-selector-tag">nav</span>&gt;<span class="hljs-selector-tag">ul</span> {
+    <span class="hljs-attribute">display</span>: flex;
+    <span class="hljs-attribute">list-style</span>: none;
+    <span class="hljs-attribute">padding</span>: <span class="hljs-number">0</span>;
+}
+
+<span class="hljs-keyword">@media</span> screen <span class="hljs-keyword">and</span> (<span class="hljs-attribute">width</span> &gt;= <span class="hljs-number">1024px</span>) <span class="hljs-keyword">and</span> (<span class="hljs-attribute">orientation</span>: landscape) {
+    <span class="hljs-selector-tag">nav</span>&gt;<span class="hljs-selector-tag">ul</span>  {
+        <span class="hljs-attribute">flex-direction</span>: column;
+    } 
+}
+
+<span class="hljs-selector-tag">nav</span>&gt;<span class="hljs-selector-tag">ul</span>&gt;<span class="hljs-selector-tag">li</span>&gt;<span class="hljs-selector-tag">a</span> {
+    <span class="hljs-attribute">color</span>: inherit;
+    <span class="hljs-attribute">text-decoration</span>: none;
+    <span class="hljs-attribute">padding</span>: <span class="hljs-number">1rem</span>;
+}
+
+<span class="hljs-selector-tag">nav</span>&gt;<span class="hljs-selector-tag">ul</span>&gt;<span class="hljs-selector-tag">li</span>&gt;<span class="hljs-selector-tag">a</span>&gt;<span class="hljs-selector-tag">i</span> {
+    <span class="hljs-attribute">font-size</span>: <span class="hljs-number">1.5em</span>;
+}
+
+<span class="hljs-selector-tag">nav</span>&gt;<span class="hljs-selector-tag">ul</span>&gt;<span class="hljs-selector-tag">li</span>&gt;<span class="hljs-selector-tag">a</span>&gt;<span class="hljs-selector-tag">span</span> {
+    <span class="hljs-attribute">display</span>: none;
+}
+
+<span class="hljs-keyword">@media</span> screen <span class="hljs-keyword">and</span> (<span class="hljs-attribute">width</span> &gt;= <span class="hljs-number">1024px</span>) <span class="hljs-keyword">and</span> (<span class="hljs-attribute">orientation</span>: landscape) {
+    <span class="hljs-selector-tag">nav</span>&gt;<span class="hljs-selector-tag">ul</span>&gt;<span class="hljs-selector-tag">li</span>&gt;<span class="hljs-selector-tag">a</span>&gt;<span class="hljs-selector-tag">span</span>  {
+        <span class="hljs-attribute">display</span>: initial;
+    } 
+}
+
+</code></pre></div>
+<p><strong>À noter</strong> :</p>
+<ul>
+<li>L'ajout de <em>media query</em> n'ayant pas d'impact sur les spécificités, je prends soin de redéfinir les éléments <strong>en-dessous de leur définition initiale</strong> pour que les nouvelles valeurs soient correctement prises en compte par le navigateur.</li>
+<li>J'ai choisi ici de répéter plusieurs fois, aux endroits les plus pertinents, la déclaration <code>@media screen and (min-width: 1024px) and (orientation: landscape)</code> pour faciliter la lecture du code et les mises à jour futures lorsque mon CSS aura beaucoup évolué.</li>
+</ul>
+<blockquote>
+<p>J'aurais pu déclarer une seule fois le <code>@media screen …</code> pour l'ensemble des éléments, en fin de fichier par exemple. Mais ce type de placement est difficilement maintenable lorsque mes fichiers CSS contiennent beaucoup de lignes. Le risque étant de passer à côté de certaines spécificités.
+Voici ce que j'aurais alors obtenu :</p>
+</blockquote>
+<div class="bloc-code"><div class="bloc-code__langue">css</div><pre><code class="hljs language-css">
+<span class="hljs-comment">/* ... */</span>
+<span class="hljs-selector-tag">nav</span>&gt;<span class="hljs-selector-tag">ul</span>&gt;<span class="hljs-selector-tag">li</span>&gt;<span class="hljs-selector-tag">a</span>&gt;<span class="hljs-selector-tag">i</span> {
+    <span class="hljs-attribute">font-size</span>: <span class="hljs-number">1.5em</span>;
+}
+
+<span class="hljs-selector-tag">nav</span>&gt;<span class="hljs-selector-tag">ul</span>&gt;<span class="hljs-selector-tag">li</span>&gt;<span class="hljs-selector-tag">a</span>&gt;<span class="hljs-selector-tag">span</span> {
+    <span class="hljs-attribute">display</span>: none;
+}
+
+<span class="hljs-keyword">@media</span> screen <span class="hljs-keyword">and</span> (<span class="hljs-attribute">width</span> &gt;= <span class="hljs-number">1024px</span>) <span class="hljs-keyword">and</span> (<span class="hljs-attribute">orientation</span>: landscape) {
+    <span class="hljs-selector-tag">nav</span> {
+        <span class="hljs-attribute">inset</span>: <span class="hljs-number">0</span> <span class="hljs-number">0</span> <span class="hljs-number">0</span> auto;
+    }
+    <span class="hljs-selector-tag">nav</span>&gt;<span class="hljs-selector-tag">ul</span>  {
+        <span class="hljs-attribute">flex-direction</span>: column;
+    }
+    <span class="hljs-selector-tag">nav</span>&gt;<span class="hljs-selector-tag">ul</span>&gt;<span class="hljs-selector-tag">li</span>&gt;<span class="hljs-selector-tag">a</span>&gt;<span class="hljs-selector-tag">span</span>  {
+        <span class="hljs-attribute">display</span>: initial;
+    }
+}
+</code></pre></div>
+</div></li><li class="etape"><div class="etape__puce">5</div><div class="etape__contenu"><h4 class="etape__titre">Desktop</h4><p>Enfin, j'ajoute les <em>media queries</em> nécessaires à la vue ordinateur en continuant d'écrire en-dessous des points de rupture précédents.</p>
+<div class="bloc-code"><div class="bloc-code__langue">css</div><pre><code class="hljs language-css">* {
+    <span class="hljs-attribute">box-sizing</span>: border-box;
+}
+
+<span class="hljs-selector-tag">body</span> {
+    <span class="hljs-attribute">margin</span>: <span class="hljs-number">0</span>;
+    <span class="hljs-attribute">line-height</span>: <span class="hljs-number">1.5</span>;
+    <span class="hljs-attribute">background-color</span>: grey;
+    <span class="hljs-attribute">font-family</span>: Verdana, Geneva, Tahoma, sans-serif;
+}
+
+<span class="hljs-selector-tag">nav</span> {
+    <span class="hljs-attribute">position</span>: fixed;
+    <span class="hljs-attribute">inset</span>: auto <span class="hljs-number">0</span> <span class="hljs-number">0</span> <span class="hljs-number">0</span>;
+    <span class="hljs-attribute">display</span>: flex;
+    <span class="hljs-attribute">justify-content</span>: center;
+    <span class="hljs-attribute">align-items</span>: center;
+    <span class="hljs-attribute">padding</span>: <span class="hljs-number">1rem</span>;
+    <span class="hljs-attribute">background-color</span>: <span class="hljs-number">#A306B6</span>;
+    <span class="hljs-attribute">color</span>: <span class="hljs-number">#fff</span>;
+}
+
+<span class="hljs-keyword">@media</span> screen <span class="hljs-keyword">and</span> (<span class="hljs-attribute">width</span> &gt;= <span class="hljs-number">1024px</span>) <span class="hljs-keyword">and</span> (<span class="hljs-attribute">orientation</span>: landscape) {
+    <span class="hljs-selector-tag">nav</span> {
+        <span class="hljs-attribute">inset</span>: <span class="hljs-number">0</span> <span class="hljs-number">0</span> <span class="hljs-number">0</span> auto;
+    } 
+}
+
+<span class="hljs-keyword">@media</span> screen <span class="hljs-keyword">and</span> (<span class="hljs-attribute">width</span> &gt;= <span class="hljs-number">1200px</span>) {
+    <span class="hljs-selector-tag">nav</span> {
+        <span class="hljs-attribute">inset</span>: <span class="hljs-number">0</span> <span class="hljs-number">0</span> auto <span class="hljs-number">0</span>;
+        <span class="hljs-attribute">justify-content</span>: space-between;
+    } 
+}
+
+<span class="hljs-selector-tag">nav</span>&gt;<span class="hljs-selector-tag">a</span><span class="hljs-selector-class">.logo</span> {
+    <span class="hljs-attribute">display</span>: none;
+    <span class="hljs-attribute">color</span>: inherit;
+    <span class="hljs-attribute">text-decoration</span>: none;
+}
+
+<span class="hljs-keyword">@media</span> screen <span class="hljs-keyword">and</span> (<span class="hljs-attribute">width</span> &gt;= <span class="hljs-number">1200px</span>) {
+    <span class="hljs-selector-tag">nav</span>&gt;<span class="hljs-selector-tag">a</span><span class="hljs-selector-class">.logo</span> {
+        <span class="hljs-attribute">display</span>: initial;
+    }
+}
+
+<span class="hljs-selector-tag">nav</span>&gt;<span class="hljs-selector-tag">ul</span> {
+    <span class="hljs-attribute">display</span>: flex;
+    <span class="hljs-attribute">list-style</span>: none;
+    <span class="hljs-attribute">padding</span>: <span class="hljs-number">0</span>;
+}
+
+<span class="hljs-keyword">@media</span> screen <span class="hljs-keyword">and</span> (<span class="hljs-attribute">width</span> &gt;= <span class="hljs-number">1024px</span>) <span class="hljs-keyword">and</span> (<span class="hljs-attribute">orientation</span>: landscape) {
+    <span class="hljs-selector-tag">nav</span>&gt;<span class="hljs-selector-tag">ul</span>  {
+        <span class="hljs-attribute">flex-direction</span>: column;
+    } 
+}
+
+<span class="hljs-keyword">@media</span> screen <span class="hljs-keyword">and</span> (<span class="hljs-attribute">width</span> &gt;= <span class="hljs-number">1200px</span>) {
+    <span class="hljs-selector-tag">nav</span>&gt;<span class="hljs-selector-tag">ul</span> {
+        <span class="hljs-attribute">flex-direction</span>: row;
+    } 
+}
+
+<span class="hljs-selector-tag">nav</span>&gt;<span class="hljs-selector-tag">ul</span>&gt;<span class="hljs-selector-tag">li</span>&gt;<span class="hljs-selector-tag">a</span> {
+    <span class="hljs-attribute">color</span>: inherit;
+    <span class="hljs-attribute">text-decoration</span>: none;
+    <span class="hljs-attribute">padding</span>: <span class="hljs-number">1rem</span>;
+}
+
+<span class="hljs-selector-tag">nav</span>&gt;<span class="hljs-selector-tag">ul</span>&gt;<span class="hljs-selector-tag">li</span>&gt;<span class="hljs-selector-tag">a</span>&gt;<span class="hljs-selector-tag">i</span> {
+    <span class="hljs-attribute">font-size</span>: <span class="hljs-number">1.5em</span>;
+}
+
+<span class="hljs-keyword">@media</span> screen <span class="hljs-keyword">and</span> (<span class="hljs-attribute">width</span> &gt;= <span class="hljs-number">1200px</span>) {
+    <span class="hljs-selector-tag">nav</span>&gt;<span class="hljs-selector-tag">ul</span>&gt;<span class="hljs-selector-tag">li</span>&gt;<span class="hljs-selector-tag">a</span>&gt;<span class="hljs-selector-tag">i</span>  {
+        <span class="hljs-attribute">display</span>: none;
+    } 
+}
+
+<span class="hljs-selector-tag">nav</span>&gt;<span class="hljs-selector-tag">ul</span>&gt;<span class="hljs-selector-tag">li</span>&gt;<span class="hljs-selector-tag">a</span>&gt;<span class="hljs-selector-tag">span</span> {
+    <span class="hljs-attribute">display</span>: none;
+}
+
+<span class="hljs-keyword">@media</span> screen <span class="hljs-keyword">and</span> (<span class="hljs-attribute">width</span> &gt;= <span class="hljs-number">1024px</span>) <span class="hljs-keyword">and</span> (<span class="hljs-attribute">orientation</span>: landscape) {
+    <span class="hljs-selector-tag">nav</span>&gt;<span class="hljs-selector-tag">ul</span>&gt;<span class="hljs-selector-tag">li</span>&gt;<span class="hljs-selector-tag">a</span>&gt;<span class="hljs-selector-tag">span</span>  {
+        <span class="hljs-attribute">display</span>: initial;
+    } 
+}
+
+</code></pre></div>
+<p><strong>Conclusion</strong></p>
+<p>L'approche <em><strong>mobile first</strong></em> permet de concevoir et d'organiser son CSS de manière itérative et structurée. Elle permet aussi de limiter le nombre de lignes nécessaires à l'intégration tout en garantissant le résultat final attendu.</p>
+</div></li></ol>
+
+  </div>
+  <section class="ressources-quete">
+  <h2>Ressources partagées sur cette quête</h2>
+  <ul class="ressources-liste">
+    <li><a href="https://www.youtube.com/watch?v=wu1Sk8iOPnE&amp;list=PLjwdMgw5TTLVjTZQocrMwKicV5wsZlRpj&amp;index=20" target="_blank" rel="noopener noreferrer">vidéo très claire et complète expliquant en détail le responsive et les média queries :D</a><span class="ressources-liste__url">https://www.youtube.com/watch?v=wu1Sk8iOPnE&amp;list=PLjwdMgw5TTLVjTZQocrMwKicV5wsZlRpj&amp;index=20</span></li>
+    <li><a href="https://1linelayouts.glitch.me" target="_blank" rel="noopener noreferrer">soooooooo good one-liners css for alignment :D</a><span class="ressources-liste__url">https://1linelayouts.glitch.me</span></li>
+    <li><a href="https://linuxfr.org/news/gameshell-apprendre-les-rudiments-du-shell-en-s-amusant" target="_blank" rel="noopener noreferrer">Apprendre les commandes shell en s'amusant (aurait sa place dans une quete ici)</a><span class="ressources-liste__url">https://linuxfr.org/news/gameshell-apprendre-les-rudiments-du-shell-en-s-amusant</span></li>
+    <li><a href="https://www.youtube.com/watch?v=x4u1yp3Msao" target="_blank" rel="noopener noreferrer">Vidéo de 20 minutes en anglais qui explique pas à pas comment rendre une page responsive :)</a><span class="ressources-liste__url">https://www.youtube.com/watch?v=x4u1yp3Msao</span></li>
+  </ul>
+</section>
+</article>
+
+<nav class="nav-quete">
+  <a class="nav-quete__lien nav-quete__lien--prec" href="../../css/005-css-5-grid/index.html">
+           <span class="nav-quete__sens">← Précédent</span>
+           <span class="nav-quete__titre">👩‍🏫 CSS 5 : Grid</span>
+         </a>
+  <a class="nav-quete__lien nav-quete__lien--suiv" href="../../css/007-css-7-les-variables/index.html">
+           <span class="nav-quete__sens">Suivant →</span>
+           <span class="nav-quete__titre">👩‍🏫 CSS 7 : Les variables</span>
+         </a>
+</nav>
+</main>
+<footer class="pied">
+  <p>Archive personnelle des cours suivis à la Wild Code School. Copie hors ligne à usage strictement privé.</p>
+</footer>
+
+<script src="../../assets/copie-code.js"></script>
+<script src="../../assets/progression.js"></script>
+</body>
+</html>

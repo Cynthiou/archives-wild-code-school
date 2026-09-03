@@ -1,0 +1,69 @@
+{
+  "id": 1307,
+  "titre": "👩‍🏫 CSS 8 : Animations",
+  "titres": {
+    "fr": "👩‍🏫 CSS 8 : Animations"
+  },
+  "theme": {
+    "id": 12,
+    "slug": "html",
+    "nom": "CSS"
+  },
+  "creeLe": "2020-08-05T17:03:00.900+02:00",
+  "difficulte": "0",
+  "dureeEstimee": null,
+  "modeValidation": "self",
+  "chapitres": [
+    {
+      "id": 17537,
+      "type": "content",
+      "langue": "fr",
+      "majLe": "2025-03-25T16:40:06.717+01:00",
+      "caracteres": 595
+    },
+    {
+      "id": 17618,
+      "type": "content",
+      "langue": "fr",
+      "majLe": "2025-03-26T16:10:50.486+01:00",
+      "caracteres": 2694
+    },
+    {
+      "id": 17619,
+      "type": "content",
+      "langue": "fr",
+      "majLe": "2025-03-26T16:10:50.492+01:00",
+      "caracteres": 3443
+    },
+    {
+      "id": 17620,
+      "type": "content",
+      "langue": "fr",
+      "majLe": "2025-03-26T16:10:50.497+01:00",
+      "caracteres": 5994
+    },
+    {
+      "id": 17599,
+      "type": "content",
+      "langue": "fr",
+      "majLe": "2025-03-25T16:27:25.486+01:00",
+      "caracteres": 2676
+    }
+  ],
+  "ressources": [
+    {
+      "link": "https://animate.style/",
+      "description": "Librairie animate.css, pas mal de contenu "
+    },
+    {
+      "link": "https://developer.mozilla.org/fr/docs/Web/CSS/transform-function/skew",
+      "description": "Doc de la fonction skew qui déforme l'élément plutôt qu'il ne l'incline (distorsion)"
+    },
+    {
+      "link": "https://www.youtube.com/watch?v=Ae2wJrFxJUY",
+      "description": "Lorsque vous appliquez plusieurs transformations CSS à un même élément, l’ordre de déclaration des transformations dans `transform` a de l’importance : en effet, selon l’ordre de déclaration des fonctions de transformation, le résultat peut différer."
+    }
+  ],
+  "urlOrigine": "https://odyssey.wildcodeschool.com/quests/1307",
+  "archiveLe": "2026-09-02T20:52:49.493Z"
+}

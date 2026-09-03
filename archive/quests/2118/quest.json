@@ -1,0 +1,33 @@
+{
+  "id": 2118,
+  "titre": "👩‍🏫 HTML - Chapitre 2 | What's in your <head> ?",
+  "titres": {
+    "fr": "👩‍🏫 HTML - Chapitre 2 | What's in your <head> ?"
+  },
+  "theme": {
+    "id": 104,
+    "slug": "html5",
+    "nom": "HTML"
+  },
+  "creeLe": "2022-06-22T12:11:55.891+02:00",
+  "difficulte": "1",
+  "dureeEstimee": null,
+  "modeValidation": "self",
+  "chapitres": [
+    {
+      "id": 11736,
+      "type": "content",
+      "langue": "fr",
+      "majLe": "2024-07-02T09:43:47.667+02:00",
+      "caracteres": 8946
+    }
+  ],
+  "ressources": [
+    {
+      "link": "https://laconsole.dev/formations/html/balises-entete/",
+      "description": "Une présentation sous un autre angle du contenu de la Balise \"head\""
+    }
+  ],
+  "urlOrigine": "https://odyssey.wildcodeschool.com/quests/2118",
+  "archiveLe": "2026-09-02T23:22:05.832Z"
+}

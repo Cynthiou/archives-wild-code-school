@@ -1,0 +1,36 @@
+{
+  "id": 574,
+  "titre": "04.3 - Les bases de la modélisation : MPD",
+  "titres": {
+    "en": "02 - Retrieving information with SELECT",
+    "fr": "04.3 - Les bases de la modélisation : MPD"
+  },
+  "theme": {
+    "id": 8,
+    "slug": "database",
+    "nom": "Base de données"
+  },
+  "creeLe": "2019-05-11T18:54:08.138+02:00",
+  "difficulte": "",
+  "dureeEstimee": null,
+  "modeValidation": "student",
+  "chapitres": [
+    {
+      "id": 18198,
+      "type": "content",
+      "langue": "fr",
+      "majLe": "2025-05-13T12:11:54.402+02:00",
+      "caracteres": 6193
+    },
+    {
+      "id": 18190,
+      "type": "solution",
+      "langue": "fr",
+      "majLe": "2025-05-12T20:47:16.656+02:00",
+      "caracteres": 632
+    }
+  ],
+  "ressources": [],
+  "urlOrigine": "https://odyssey.wildcodeschool.com/quests/574",
+  "archiveLe": "2026-09-02T20:51:51.957Z"
+}

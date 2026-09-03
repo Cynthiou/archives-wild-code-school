@@ -1,0 +1,434 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>6. Les fonctions avec PHP — Archives WCS</title>
+<link rel="stylesheet" href="../../assets/style.css">
+</head>
+<body style="--teinte:#5F83B2">
+<header class="entete">
+  <a class="entete__marque" href="../../index.html">Archives Wild Code School</a>
+</header>
+<main class="contenu">
+<nav class="ariane"><a href="../../index.html">Accueil</a><span class="ariane__sep">›</span><a href="../../php/index.html">PHP</a><span class="ariane__sep">›</span><span aria-current="page">6. Les fonctions avec PHP</span></nav>
+
+<article class="quete">
+  <header class="quete__entete">
+    <a class="pastille pastille--teintee" href="../../php/index.html">PHP</a>
+    <h1>6. Les fonctions avec PHP</h1>
+    <p class="quete__meta">Quête 7 sur 14</p>
+  </header>
+  <div class="cours">
+<p>⚠️ Avant de commencer cette quête, tu dois avoir terminé les quêtes suivantes :</p>
+<div class="renvois"><div class="renvois__titre">Quêtes liées</div><ul><li><a href="../../php/006-5-les-conditions-en-php/index.html">Quête 140</a></li></ul></div>
+<div class="bloc-code"><div class="bloc-code__langue">title-book</div><pre><code class="hljs language-title-book">Introduction
+</code></pre></div>
+<p>Dans cette quête, tu vas découvrir ce que sont les fonctions dans PHP, comment les utiliser et comment en créer toi-même.</p>
+<p>Un peu plus tard, tu entendras également parler de méthodes, c'est la même chose qu'une fonction, mais dans un contexte particulier (POO).</p>
+<blockquote>
+<p>Garde en tête que ce que tu vas apprendre ici n'est pas propre à PHP, et se retrouve aussi dans beaucoup d'autres langages.</p>
+</blockquote>
+<h2>🤓 À la fin de cette quête, tu seras capable de :</h2>
+<ul>
+<li>✅ Utiliser une fonction,</li>
+</ul>
+<ul>
+<li>✅ Créer tes propres fonctions,</li>
+<li>✅ Gérer le passage de paramètres,</li>
+<li>✅ Maîtriser ce que renvoie une fonction,</li>
+<li>✅ Typer les variables.</li>
+</ul>
+<h1>Utiliser une fonction.</h1>
+<p>En programmation, tu peux avoir besoin à plusieurs reprises d'une même fonctionnalité. Comme connaître la taille d'un tableau par exemple. <em>Tu verras que cela te sera plus souvent nécessaire que tu ne l'imagines.</em></p>
+<p>Considérons ce tableau PHP comme exemple :</p>
+<div class="bloc-code"><div class="bloc-code__langue">php</div><pre><code class="hljs language-php"><span class="hljs-variable">$moviesList</span> = [
+  <span class="hljs-string">&#x27;Les Aventuriers de l\&#x27;arche perdue&#x27;</span>,
+  <span class="hljs-string">&#x27;Indiana Jones et le Temple maudit&#x27;</span>,
+  <span class="hljs-string">&#x27;Indiana Jones et la Dernière Croisade&#x27;</span>,
+  <span class="hljs-string">&#x27;Indiana Jones et le Royaume du crâne de cristal&#x27;</span>
+];
+</code></pre></div>
+<p>On dispose ainsi du tableau contenant la liste des aventures de notre archéologue, et tu souhaites récupérer le nombre de films.
+De par ta récente maîtrise des boucles, tu pourrais être tenté de coder toi-même la fonctionnalité suivante :</p>
+<div class="bloc-code"><div class="bloc-code__langue">php</div><pre><code class="hljs language-php"><span class="hljs-variable">$nbMovies</span> = <span class="hljs-number">0</span>;
+
+<span class="hljs-keyword">foreach</span>(<span class="hljs-variable">$moviesList</span> <span class="hljs-keyword">as</span> <span class="hljs-variable">$movie</span>) {
+  <span class="hljs-variable">$nbMovies</span>++; <span class="hljs-comment">// équivalent à $nbMovies = $nbMovies + 1;</span>
+}
+</code></pre></div>
+<p>À l'aide d'un <code>foreach</code>, le tableau <code>$moviesList</code> est parcouru, et pour chaque film rencontré, on incrémente la variable <code>$nbMovies</code> (on lui ajoute +1), qui représente le compteur du film. Ce qui au final, une fois sorti du <code>foreach</code>, permet  d'attribuer la valeur 4 à <code>$nbMovies</code>, correspondant au bon nombre de films.
+Si tout de suite après le code précédent, tu écris le code ci-dessous :</p>
+<div class="bloc-code"><div class="bloc-code__langue">php</div><pre><code class="hljs language-php"><span class="hljs-keyword">echo</span> <span class="hljs-string">&#x27;There are &#x27;</span> . <span class="hljs-variable">$nbMovies</span> . <span class="hljs-string">&#x27; movies about Indiana Jones&#x27;</span>;
+</code></pre></div>
+<p>Tu obtiens à l’écran la phrase suivante : <code>There are 4 movies about Indiana Jones</code>.</p>
+<p>Et à chaque fois que tu veux récupérer le nombre de films, ou de manière plus générique, mesurer la longueur d'un tableau, tu dois effectuer cette petite boucle, en dupliquant le code.</p>
+<p>Pour cet exemple, très simpliste, tu te dis que copier-coller une simple boucle, ce n'est pas méchant. Sauf qu'il existe déjà nativement quelque chose dans PHP, qui te permet d'obtenir le même résultat, beaucoup plus simplement, rapidement, et avec de meilleures performances :</p>
+<div class="bloc-code"><div class="bloc-code__langue">php</div><pre><code class="hljs language-php"><span class="hljs-variable">$nbMovies</span> = <span class="hljs-title function_ invoke__">count</span>(<span class="hljs-variable">$moviesList</span>);
+
+<span class="hljs-keyword">echo</span> <span class="hljs-string">&#x27;There are &#x27;</span> . <span class="hljs-variable">$nbMovies</span> . <span class="hljs-string">&#x27; movies about Indiana Jones&#x27;</span>;
+</code></pre></div>
+<p>Il suffit juste d'appeler la fonction interne <code>count</code>, suivie de 2 parenthèses <code>()</code>, à l’intérieur desquelles, tu dois préciser le tableau <code>$moviesList</code> comme <em>sujet à traiter</em>, ce qui est appelé <strong>paramètre</strong>.</p>
+<p>Tu pourrais raccourcir davantage ton script en écrivant directement ceci :</p>
+<div class="bloc-code"><div class="bloc-code__langue">php</div><pre><code class="hljs language-php"> <span class="hljs-keyword">echo</span> <span class="hljs-string">&quot;There are &quot;</span> . <span class="hljs-title function_ invoke__">count</span>(<span class="hljs-variable">$moviesList</span>) . <span class="hljs-string">&quot; movies about Indiana Jones&quot;</span>
+</code></pre></div>
+<p>C'est  plus efficace ainsi.</p>
+<p><img src="http://images.innoveduc.fr/trust-indy.gif" alt="" loading="lazy"></p>
+<p>Avoue qu'utiliser une fonction peut grandement alléger ton code en diminuant fortement le nombre de lignes. Imagine tout ce que tu peux économiser grâce à des fonctions faisant des choses plus complexes.</p>
+<div class="encadre encadre--warning"><div class="encadre__titre">Attention</div><div class="encadre__corps"><p>Il se peut que tu croises parfois <code>sizeof()</code>. Les deux font exactement la même chose. <code>sizeof()</code> est ce que l'on appelle un <em>&quot;alias&quot;</em> de <code>count()</code>. Lorsque tu appelles <code>sizeof()</code>, l’interpréteur PHP va simplement rappeler la fonction <code>count()</code> en lui passant le même paramètre. Tu comprends qu'il est alors plus logique d'appeler directement la fonction finale. Si ces alias existent, c'est principalement pour des questions de rétrocompatibilité.</p>
+</div></div>
+<p>PHP dispose d'un grand nombre de fonctions, dont tu peux user et abuser. On les appelle des <strong>&quot;fonctions internes&quot;</strong>. Tu entendras aussi parler de <strong>&quot;fonctions natives&quot;</strong>. Certaines sont tellement courantes et utiles que tu les maîtriseras parfaitement. Évidemment, il y en a trop pour toutes se les rentrer dans le crâne.</p>
+<p><img src="http://images.innoveduc.fr/agraphes_chapeau.gif" alt="" loading="lazy"></p>
+<p>Tu te dois d'en connaître certaines, et d'avoir une idée de ce qu'il est possible ou non de faire avec les fonctions internes de PHP. Pour cela, tu as la documentation officielle de PHP (cf. ressources ci-dessous).</p>
+<p><strong>Attention, le nom des fonctions est sensible à la casse !</strong> Si tu fais appel à <code>Count()</code>, PHP ne comprendra pas que tu lui demandes <code>count()</code>;</p>
+<div class="encadre encadre--info"><div class="encadre__titre">Info</div><div class="encadre__corps"><p>Tu dois savoir aussi que certaines fonctions sont dépendantes de librairies qui ne sont pas activées, voire pas du tout installées par défaut. Ce qui a pu être le cas pour <code>mbstring</code>.  Si lors d'un appel à une fonction interne, il y a une erreur du type <code>function xxx is not defined</code> , c'est que ton serveur n'est pas configuré correctement. À moins que ce ne soit une erreur de syntaxe dans le nom de la fonction.</p>
+</div></div>
+<a class="ressource" href="http://php.net" target="_blank" rel="noopener noreferrer">
+  <div class="ressource__icone">↗</div>
+  <div class="ressource__texte">
+    <div class="ressource__titre">Documentation officielle</div>
+    <div class="ressource__desc"><p>Voici ton nouveau meilleur ami, la documentation officielle de PHP ! C'est grâce à elle que tu peux savoir exactement comment utiliser telle ou telle fonction.</p>
+</div>
+    <div class="ressource__hote">php.net</div>
+  </div>
+</a>
+<a class="ressource" href="http://php.net/manual/fr/about.prototypes.php" target="_blank" rel="noopener noreferrer">
+  <div class="ressource__icone">↗</div>
+  <div class="ressource__texte">
+    <div class="ressource__titre">Comment lire la documentation PHP d'une fonction</div>
+    <div class="ressource__desc"><p>Il peut parfois être délicat de décrypter la doc. Cette page t'explique comment comprendre la définition d'une fonction.</p>
+</div>
+    <div class="ressource__hote">php.net</div>
+  </div>
+</a>
+<a class="ressource" href="http://php.net/manual/fr/aliases.php" target="_blank" rel="noopener noreferrer">
+  <div class="ressource__icone">↗</div>
+  <div class="ressource__texte">
+    <div class="ressource__titre">Liste des alias</div>
+    <div class="ressource__desc"><p>La liste des alias dans PHP.</p>
+</div>
+    <div class="ressource__hote">php.net</div>
+  </div>
+</a>
+<h3>Créer ses propres fonctions</h3>
+<p>Tu l'auras compris, PHP contient déjà des centaines de fonctions intégrées que tu peux utiliser au quotidien dans ton application. Mais en tant que développeur, tu seras également très souvent amené à créer tes propres fonctions. Comme vu précédemment, une fonction effectue un ensemble prédéterminé de codes et peut être appelée quand tu le désires. Cela te permettra d’exécuter à plusieurs reprises le même algorithme sans jamais faire de copier-coller. Car tu le découvriras vite, moins tu fais de copier-coller plus cela sera synonyme de code propre, bien structuré et cohérent.</p>
+<div class="encadre encadre--info"><div class="encadre__titre">Info</div><div class="encadre__corps"><p>Le fait de se répéter le moins possible dans son code est le principe du code <strong>DRY</strong> ( <strong>D</strong>on't <strong>R</strong>epeat <strong>Y</strong>ourself).
+En programmation, tu découvriras qu'il existe de nombreux &quot;courants philosophiques&quot;, prônant différentes approches pour produire un code propre, fonctionnel et optimisé. DRY en est un.</p>
+</div></div>
+<p>Pour <strong>définir une fonction</strong>, tu dois en premier lieu faire appel au mot clé <code>function</code>.</p>
+<p>Il suffit ensuite de lui donner un nom. Tu es libre de l'appeler comme tu veux ! Du moment que tu respectes les contraintes qu'impose PHP, qui sont les mêmes que pour les variables. Pour rappel :</p>
+<ul>
+<li>Un nom de fonction ne peut pas commencer par une valeur numérique,</li>
+<li>Ne doit pas contenir de caractères interdits : <code>@</code> ou <code>-</code></li>
+<li>Chaque nom doit être unique et ne pas être un nom réservé. Comme <code>function()</code> ou <code>string()</code> par exemple.</li>
+</ul>
+<p>Tu dois également penser à la propreté et à la maintenabilité du code. Comme pour nommer ses variables, il est important de bien nommer ses fonctions. Un script rempli de <code>toto();</code>, <code>tata();</code> et de <code>doSomething();</code> et  <code>getStuff();</code>,  ne sera pas très facile à comprendre.
+Utilise des noms cohérents, représentatifs de ce que cela fait, et utilisant la syntaxe camelCase qui est préconisée. Comme par exemple <code>getTotalPrice($price, $taxeRate);</code> ou <code>filterSubscribedUsers($users);</code></p>
+<p>Ce qui te donne, pour définir une fonction appelée <code>myFunction</code>, la définition ci-dessous :</p>
+<div class="bloc-code"><div class="bloc-code__langue">php</div><pre><code class="hljs language-php"><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">myFunction</span>(<span class="hljs-params"></span>)
+</span>{
+  <span class="hljs-comment">//Some code here...</span>
+}
+</code></pre></div>
+<p>Et pour appeler la fonction, fraîchement définie, tu dois faire exactement comme pour une fonction interne à PHP :</p>
+<div class="bloc-code"><div class="bloc-code__langue">php</div><pre><code class="hljs language-php"><span class="hljs-title function_ invoke__">myFunction</span>();
+</code></pre></div>
+<a class="ressource" href="http://php.net/manual/fr/functions.variable-functions.php" target="_blank" rel="noopener noreferrer">
+  <div class="ressource__icone">↗</div>
+  <div class="ressource__texte">
+    <div class="ressource__titre">Fonctions variables</div>
+    <div class="ressource__desc"><p>De même avec les fonctions anonymes.</p>
+</div>
+    <div class="ressource__hote">php.net</div>
+  </div>
+</a>
+<a class="ressource" href="http://php.net/manual/fr/functions.user-defined.php" target="_blank" rel="noopener noreferrer">
+  <div class="ressource__icone">↗</div>
+  <div class="ressource__texte">
+    <div class="ressource__titre">Les fonctions définies par l'utilisateur</div>
+    <div class="ressource__desc"><p>La doc officielle explique les subtilités des fonctions définies par l'utilisateur.</p>
+</div>
+    <div class="ressource__hote">php.net</div>
+  </div>
+</a>
+<a class="ressource" href="http://www.commitstrip.com/fr/2015/10/27/one-of-the-coders-hardest-problems/" target="_blank" rel="noopener noreferrer">
+  <div class="ressource__icone">↗</div>
+  <div class="ressource__texte">
+    <div class="ressource__titre">Dilemme de développeur</div>
+    <div class="ressource__desc"><p><em>&quot;Un grand pouvoir implique de grandes responsabilités&quot;</em>, un jour toi aussi tu seras confronté à ce grave problème.</p>
+</div>
+    <div class="ressource__hote">commitstrip.com</div>
+  </div>
+</a>
+<h1>Les paramètres de fonction.</h1>
+<p>Dans la première partie, pour que la fonction <code>count()</code> <em>&quot;fonctionne&quot;</em> tu as dû lui &quot;passer en paramètre&quot;, ou &quot;argument&quot;, le tableau <code>$moviesList</code>. Le code ne peut pas deviner ce que tu as en tête, tu dois lui fournir des choses précises. Ce nombre de paramètres est différent pour chaque fonction, selon ce qu'elle fait, et des informations dont elle a besoin pour s’exécuter.</p>
+<p>Revenons sur des fonctions que tu as déjà vues passer dans les quêtes précédentes :</p>
+<ul>
+<li>
+<p>La fonction <code>count()</code> ne nécessite qu'un seul argument. Normal, il ne fait que mesurer la longueur d'un tableau. On l'appelle donc ainsi <code>count($array);</code></p>
+</li>
+<li>
+<p>La fonction <code>explode()</code> quant à elle, nécessite 2 arguments obligatoires. Cette méthode permet de découper une chaîne de caractères selon un séparateur précis. Il est donc évident que, pour l'appeler, tu dois lui préciser la chaîne à traiter et le caractère de référence. Ce qui donne : <code>explode($char, $string);</code>. <strong>Tu as remarqué la virgule pour séparer les paramètres entre eux ?</strong></p>
+</li>
+<li>
+<p>La fonction <code>substr()</code> attend de nombreux paramètres, car elle permet de récupérer un fragment d'une chaîne, d'une lettre à une position précise sur une longueur précise. Ce qui nous fait au moins 3 paramètres : la chaîne, la position de départ, et la longueur de notre sous-chaîne. Cependant, tu n'es pas obligé de tous les renseigner. Certains paramètres sont optionnels car ont des valeurs par défaut. Si on ne précise pas un paramètre, PHP va utiliser les valeurs définies dans la déclaration de la fonction. Dans le cas de cette fonction, que j'appelle <code>substr($string, 0, $stringLength);</code> avec <code>$stringLength</code> ayant pour valeur le nombre total de caractères ou que j'appelle <code>substr($string);</code>, il se passera la même chose.</p>
+</li>
+</ul>
+<p><strong>Pour les versions de PHP antérieures à 8</strong>, lorsqu'une fonction attend plusieurs paramètres, c'est <strong>l'ordre</strong> qui compte et non le <strong>nom</strong> du paramètre ou le type.</p>
+<p>Si par exemple une fonction est définie comme telle :</p>
+<div class="bloc-code"><div class="bloc-code__langue">php</div><pre><code class="hljs language-php"><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">myFunction</span>(<span class="hljs-params"><span class="hljs-variable">$param1</span>, <span class="hljs-variable">$param2</span></span>)
+</span>{
+  <span class="hljs-comment">//Some code here using $param1 and $param2</span>
+}
+
+<span class="hljs-title function_ invoke__">myFunction</span>(<span class="hljs-variable">$varA</span>, <span class="hljs-variable">$varB</span>);
+
+</code></pre></div>
+<p>Lorsque le script sera exécuté, <code>$param1</code> prendra la valeur de <code>$varA</code>, tandis que <code>$param2</code> prendra la valeur de <code>$varB</code>.</p>
+<p>Et si tu écris :</p>
+<div class="bloc-code"><div class="bloc-code__langue">php</div><pre><code class="hljs language-php">
+<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">myFunction</span>(<span class="hljs-params"><span class="hljs-variable">$param1</span>, <span class="hljs-variable">$param2</span></span>)
+</span>{
+  <span class="hljs-comment">//Some code here using $param1 and $param2</span>
+}
+
+<span class="hljs-title function_ invoke__">myFunction</span>(<span class="hljs-variable">$param2</span>, <span class="hljs-variable">$param1</span>);
+
+</code></pre></div>
+<p><code>$param1</code> prendra, dans la fonction, la valeur de <code>$param2</code>, tandis que <code>$param2</code>, toujours dans la fonction, prendra la valeur de <code>$param1</code>.</p>
+<blockquote>
+<p>🆕 <strong>À partir de PHP 8</strong> il est possible d'utiliser <a href="https://www.php.net/manual/fr/functions.arguments.php#functions.named-arguments" target="_blank" rel="noopener noreferrer">les arguments nommés</a> qui permettent d'enlever la contrainte de l'ordre des paramètres. Cela consiste à utiliser le nom de l'argument sans le signe <code>$</code>, suivi de deux points <code>:</code> puis de la variable passée en paramètre. L'exemple précédent pourrait ainsi s'écrire :</p>
+</blockquote>
+<div class="bloc-code"><div class="bloc-code__langue">php</div><pre><code class="hljs language-php">&gt;<span class="hljs-title function_ invoke__">myFunction</span>(<span class="hljs-attr">param2</span>: <span class="hljs-variable">$varB</span>, <span class="hljs-attr">param1</span>: <span class="hljs-variable">$varA</span>);
+&gt;```
+
+&gt;
+&gt;
+&gt;Il s<span class="hljs-string">&#x27;agit d&#x27;</span>une syntaxe très récente et n<span class="hljs-string">&#x27;est donc pas encore très répandue. Familiarise-toi avec les écritures des versions précédentes mais sache que celle-ci existe 😉.
+
+```alert-info
+Généralement, lorsqu&#x27;</span>on appelle une fonction, on nomme les paramètres avec les mêmes noms que ceux utilisés dans la déclaration de la fonction. Ce n<span class="hljs-string">&#x27;est qu&#x27;</span>un usage pour faciliter la compréhension du code, mais comme tu viens de le voir, ce n<span class="hljs-string">&#x27;est pas obligatoire.
+</span></code></pre></div>
+<p>Tout à l'heure, tu as vu que certaines fonctions ont un comportement par défaut lorsque tous les arguments normalement attendus ne sont pas fournis.
+Tu vas pouvoir le gérer également avec les fonctions que tu définis. Pour ce faire, il suffit simplement, lors de la déclaration de ta fonction, d'ajouter la valeur par défaut.
+À savoir que, si tu appelles une fonction en donnant à un paramètre la valeur <code>null</code>, c'est la valeur par défaut de ce paramètre qui sera alors utilisée.</p>
+<div class="bloc-code"><div class="bloc-code__langue">php</div><pre><code class="hljs language-php"><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">myFunction</span>(<span class="hljs-params"><span class="hljs-variable">$param1</span>, <span class="hljs-variable">$param2</span> = <span class="hljs-literal">true</span></span>)
+</span>{
+  <span class="hljs-comment">//Some code here using $param1 and $param2</span>
+}
+</code></pre></div>
+<p>Avec la définition ci-dessus, les trois appels suivants auront exactement le même résultat :</p>
+<div class="bloc-code"><div class="bloc-code__langue">php</div><pre><code class="hljs language-php"><span class="hljs-title function_ invoke__">myFunction</span>(<span class="hljs-variable">$var</span>, <span class="hljs-literal">true</span>);
+<span class="hljs-title function_ invoke__">myFunction</span>(<span class="hljs-variable">$var</span>);
+<span class="hljs-title function_ invoke__">myFunction</span>(<span class="hljs-variable">$var</span>, <span class="hljs-literal">null</span>);
+</code></pre></div>
+<p>Détail important : lors de la définition, tu dois mettre les paramètres avec valeur par défaut après ceux n'en possédant pas. Tu ne peux pas déclarer une fonction comme ceci :</p>
+<div class="bloc-code"><div class="bloc-code__langue">php</div><pre><code class="hljs language-php"><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">myFunction</span>(<span class="hljs-params"><span class="hljs-variable">$param1</span> = <span class="hljs-literal">true</span>, <span class="hljs-variable">$param2</span></span>)
+</span>{
+  <span class="hljs-comment">//Some code here using $param1 and $param2</span>
+}
+</code></pre></div>
+<a class="ressource" href="http://php.net/manual/fr/functions.arguments.php" target="_blank" rel="noopener noreferrer">
+  <div class="ressource__icone">↗</div>
+  <div class="ressource__texte">
+    <div class="ressource__titre">Les arguments de fonction</div>
+    <div class="ressource__desc"><p>Consulte la documentation pour avoir plus de détails sur le passage d'arguments.</p>
+</div>
+    <div class="ressource__hote">php.net</div>
+  </div>
+</a>
+<h1>Les valeurs de retour</h1>
+<p>Une fonction ne doit que très rarement <strong>afficher</strong> directement un résultat. Sauf exception, tu ne dois jamais appeler <code>echo</code> directement dans une fonction. En revanche, tu devras presque toujours <strong>retourner</strong> une valeur, tu dois alors utiliser le mot clé <code>return</code> suivi de la donnée à renvoyer.</p>
+<p>Par exemple, plutôt que d'écrire :</p>
+<div class="bloc-code"><div class="bloc-code__langue">php</div><pre><code class="hljs language-php"><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">myFunction</span>(<span class="hljs-params"><span class="hljs-variable">$param</span></span>)
+</span>{
+  <span class="hljs-comment">//Some code, do some stuff...</span>
+  <span class="hljs-keyword">echo</span> <span class="hljs-variable">$result</span>;
+}
+
+<span class="hljs-title function_ invoke__">myFunction</span>(<span class="hljs-variable">$var</span>);
+</code></pre></div>
+<p>Tu dois écrire :</p>
+<div class="bloc-code"><div class="bloc-code__langue">php</div><pre><code class="hljs language-php"><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">myFunction</span>(<span class="hljs-params"><span class="hljs-variable">$param</span></span>)
+</span>{
+  <span class="hljs-comment">//Some code, do some stuff...</span>
+  <span class="hljs-keyword">return</span> <span class="hljs-variable">$result</span>;
+}
+
+<span class="hljs-keyword">echo</span> <span class="hljs-title function_ invoke__">myFunction</span>(<span class="hljs-variable">$var</span>);
+
+</code></pre></div>
+<p>N'oublie jamais que, dès l'instant où l’interpréteur rencontrera l'instruction <code>return</code>, celui-ci <strong>s’arrêtera là</strong> et sortira de la fonction. Si jamais tu as du code écrit après un <code>return</code>, il ne sera jamais lu. Normalement, ton IDE doit te mettre en garde contre ce genre d’incohérence. Une erreur fréquente consiste à placer un <code>return</code> au milieu d'une boucle. Forcément, dès la première itération (premier tour), l’interpréteur sort de la boucle et celle-ci n'est pas menée à son terme.</p>
+<a class="ressource" href="http://php.net/manual/fr/functions.returning-values.php" target="_blank" rel="noopener noreferrer">
+  <div class="ressource__icone">↗</div>
+  <div class="ressource__texte">
+    <div class="ressource__titre">Les valeurs de retour</div>
+    <div class="ressource__desc"><p>Pour en savoir plus sur les valeurs de retour.</p>
+</div>
+    <div class="ressource__hote">php.net</div>
+  </div>
+</a>
+<h1>Le typage</h1>
+<p>Même si PHP est un langage faiblement typé, comme tu as pu le comprendre dans les précédentes quêtes, le typage tend à prendre de plus en plus de place avec les dernières versions majeures.</p>
+<p>Avec PHP 5, on a vu apparaître la possibilité de typer les paramètres d'une fonction. C'est le <em>type hinting</em>. Les types gérés dans cette version sont assez restreints :</p>
+<ul>
+<li><code>array</code>,</li>
+<li>Un nom de <em>Classe</em> ou d'<em>Interface</em>,</li>
+<li><code>self</code>,</li>
+<li><code>callable</code>.</li>
+</ul>
+<p>À ce stade de la formation, le seul qui te parle, c'est <code>array</code>. C'est normal, tu découvriras les autres ultérieurement.</p>
+<p>Avec PHP 7, les types de paramètres possibles sont étendus à plus de types :</p>
+<ul>
+<li><code>string</code>,</li>
+<li><code>int</code>,</li>
+<li><code>float</code>,</li>
+<li><code>bool</code>,</li>
+<li><code>iterable</code>.</li>
+</ul>
+<p>Le but est de contraindre l'utilisation d'une fonction en s'assurant que les bons types de paramètres sont envoyés. Pour cela, il suffit d’écrire le nom du type devant le nom de la variable .</p>
+<div class="bloc-code"><div class="bloc-code__langue">php</div><pre><code class="hljs language-php">
+<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">myFunction</span>(<span class="hljs-params"><span class="hljs-keyword">array</span> <span class="hljs-variable">$myList</span>, <span class="hljs-keyword">string</span> <span class="hljs-variable">$myText</span></span>)
+</span>{
+  <span class="hljs-comment">//Some code here...</span>
+}
+
+</code></pre></div>
+<p>Dans l'exemple ci-dessus, il s'agit d'une fonction qui attend 2 paramètres :</p>
+<ul>
+<li>
+<p><code>$myList</code> qui doit être un tableau (<code>array</code>),</p>
+</li>
+<li>
+<p><code>$myText</code> qui doit forcément être une chaîne de caractères (<code>string</code>).</p>
+</li>
+</ul>
+<p>Si jamais les arguments passés à la fonction ne correspondent pas à ce qui est attendu, PHP renverra une erreur.</p>
+<p>PHP 7 ajoute également le support des déclarations du type de retour. Ainsi on peut indiquer à une fonction le type de données qu'elle est censée renvoyer. Si la fonction retourne autre chose que ce qui est prévu, PHP renverra une erreur.</p>
+<p>Si on reprend l'exemple précédent, tu peux par exemple lui préciser que tu attends un autre tableau en retour.</p>
+<div class="bloc-code"><div class="bloc-code__langue">php</div><pre><code class="hljs language-php"><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">myFunction</span>(<span class="hljs-params"> <span class="hljs-keyword">array</span> <span class="hljs-variable">$myList</span>, <span class="hljs-keyword">string</span> <span class="hljs-variable">$myText</span></span>): <span class="hljs-title">array</span>
+</span>{
+  <span class="hljs-comment">//Some code here...</span>
+}
+</code></pre></div>
+<p>Tu as évidemment remarqué les deux points <code>:</code> avant le type !</p>
+<p>Ainsi, tu auras une erreur si jamais ta fonction renvoie autre chose qu'un tableau.</p>
+<a class="ressource" href="http://php.net/manual/fr/functions.arguments.php#functions.arguments.type-declaration" target="_blank" rel="noopener noreferrer">
+  <div class="ressource__icone">↗</div>
+  <div class="ressource__texte">
+    <div class="ressource__titre">Le typage des arguments</div>
+    <div class="ressource__desc"><p>Le typage des arguments dans la documentation officielle.</p>
+</div>
+    <div class="ressource__hote">php.net</div>
+  </div>
+</a>
+<a class="ressource" href="http://php.net/manual/fr/functions.returning-values.php#functions.returning-values.type-declaration" target="_blank" rel="noopener noreferrer">
+  <div class="ressource__icone">↗</div>
+  <div class="ressource__texte">
+    <div class="ressource__titre">Le typage des valeurs de retour</div>
+    <div class="ressource__desc"><p>Le typage des valeurs de retour dans la documentation officielle.</p>
+</div>
+    <div class="ressource__hote">php.net</div>
+  </div>
+</a>
+<h1>Le scope</h1>
+<p>Le <strong>scope</strong>, ou <em>la portée</em> en français, désigne le fait qu'une variable est connue, ou non, selon l'endroit où l'on tente de l'utiliser.</p>
+<p>Si tu prends le code ci-dessous :</p>
+<div class="bloc-code"><div class="bloc-code__langue">php</div><pre><code class="hljs language-php">
+<span class="hljs-variable">$trap</span> = <span class="hljs-literal">true</span>;
+
+<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">toggle</span> (<span class="hljs-params"></span>)
+</span>{
+  <span class="hljs-variable">$trap</span> = <span class="hljs-literal">false</span>;
+}
+
+<span class="hljs-title function_ invoke__">toggle</span>();
+<span class="hljs-keyword">echo</span> <span class="hljs-variable">$trap</span>; <span class="hljs-comment">// true</span>
+
+</code></pre></div>
+<p>Comme tu peux le voir, la variable <code>$trap</code> n'est pas modifiée après l'appel à la fonction <code>toggle</code>. Elle reste à <code>true</code> plutôt que de passer à <code>false</code>. Car même si elles ont le même nom, ces variables  ne sont pas les mêmes dans et hors de la fonction.</p>
+<p>En résumé, ce qui se passe dans une fonction, reste dans la fonction. (Enfin, encore une fois, pas toujours... on verra pourquoi et comment plus tard)</p>
+<p>C'est pour cette raison que, lorsque tu veux récupérer le résultat d'une fonction, tu dois faire appel à <code>return</code> que tu viens de voir précédemment.</p>
+<a class="ressource" href="http://php.net/manual/en/language.variables.scope.php" target="_blank" rel="noopener noreferrer">
+  <div class="ressource__icone">↗</div>
+  <div class="ressource__texte">
+    <div class="ressource__titre">Portée des variables</div>
+    <div class="ressource__desc"><p>La documentation officielle sur la portée des variables.</p>
+</div>
+    <div class="ressource__hote">php.net</div>
+  </div>
+</a>
+<a class="ressource" href="https://www.youtube.com/watch?v=sBfSLbMnId0" target="_blank" rel="noopener noreferrer">
+  <div class="ressource__icone">↗</div>
+  <div class="ressource__texte">
+    <div class="ressource__titre">Local and Global Scope in PHP</div>
+    <div class="ressource__desc"><p>Cette très courte vidéo te présente un autre exemple de mise en pratique de la portée des variables.</p>
+</div>
+    <div class="ressource__hote">youtube.com</div>
+  </div>
+</a>
+<h1>Pour résumer</h1>
+<p>Un récapitulatif de tout ce que tu viens de voir sur les fonctions, comment en créer et la gestion des paramètres. Tu peux la visionner avant d'attaquer le challenge pour être sûr d'avoir bien tout saisi.</p>
+<a class="video-lien" href="https://www.youtube.com/watch?v=HvxQww-7NGA" target="_blank" rel="noopener noreferrer">
+  <div class="video-lien__play">▶</div>
+  <div class="video-lien__texte">
+    <div class="video-lien__titre">Vidéo YouTube</div>
+    <div class="video-lien__url">https://www.youtube.com/watch?v=HvxQww-7NGA</div>
+  </div>
+</a>
+<h1>💪 Challenge</h1>
+<h3>Les aventuriers de la fonction perdue.</h3>
+<p>Indy a besoin de ton aide. Il est actuellement devant l'entrée d'un temple et, pour pouvoir entrer, il doit prononcer à voix haute une certaine phrase secrète. Ça parle d'un animal qui s'incline face à un élément, mais il ne sait plus quoi.</p>
+<p><img src="http://images.innoveduc.fr/indi-torch.gif" alt="" loading="lazy"></p>
+<p>Ton challenge dans cette quête consiste à créer une fonction PHP nommée <em>&quot;writeSecretSentence&quot;</em> prenant en argument <strong>deux</strong> paramètres de type chaîne de caractères. À l’intérieur de la fonction, tu dois recréer la phrase mystère suivante : <em>&quot;ANIMAL s'incline face à ELEMENT&quot;</em> en remplaçant <em>&quot;ANIMAL&quot;</em> et <em>&quot;ELEMENT&quot;</em> par le texte reçu en paramètre lors de l'appel. Une fois le résultat obtenu, tu dois faire en sorte que la fonction renvoie ce résultat afin qu’il soit affiché en dehors.</p>
+<p>Indy pourra ainsi appeler plusieurs fois la fonction <code>writeSecretSentence</code> en essayant plusieurs animaux, face à différents éléments, par exemple : &quot;le chat s'incline face à la terre&quot;, &quot;le dragon s'incline face à l'eau&quot;, &quot;le singe s'incline face à l'air&quot;...</p>
+<p>Pour ceci, créer un fichier <em>index.php</em> où tu dois définir ta fonction et l’exécuter.</p>
+<h3>Critères de validation</h3>
+<ul>
+<li>La fonction prend en entrée deux paramètres correctement nommés</li>
+<li>Les bons types sont appliqués aux paramètres et au retour,</li>
+<li>Le mot clé <code>return</code> est utilisé dans la fonction pour renvoyer le résultat,</li>
+<li>L'affichage du résultat se fait bien à l’extérieur de la fonction et non directement dedans,</li>
+<li>Le fichier <code>index.php</code> est disponible depuis un lien PHPSandbox.</li>
+</ul>
+<p>==$==</p>
+<div class="bloc-code"><div class="bloc-code__langue">php</div><pre><code class="hljs language-php"><span class="hljs-comment">// definition of the function</span>
+<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">writeSecretSentence</span>(<span class="hljs-params"><span class="hljs-keyword">string</span> <span class="hljs-variable">$animal</span>, <span class="hljs-keyword">string</span> <span class="hljs-variable">$element</span></span>): <span class="hljs-title">string</span>
+</span>{
+    <span class="hljs-keyword">return</span> <span class="hljs-variable">$animal</span> . <span class="hljs-string">&#x27; s\&#x27;incline face à &#x27;</span> . <span class="hljs-variable">$element</span>;
+}
+
+<span class="hljs-comment">// some examples using the function</span>
+<span class="hljs-keyword">echo</span> <span class="hljs-title function_ invoke__">writeSecretSentence</span>(<span class="hljs-string">&#x27;Le hibou&#x27;</span>, <span class="hljs-string">&#x27;l\&#x27;eau&#x27;</span>) . PHP_EOL;
+<span class="hljs-keyword">echo</span> <span class="hljs-title function_ invoke__">writeSecretSentence</span>(<span class="hljs-string">&#x27;Le cheval&#x27;</span>, <span class="hljs-string">&#x27;la terre&#x27;</span>) . PHP_EOL;
+</code></pre></div>
+
+  </div>
+  <section class="ressources-quete">
+  <h2>Ressources partagées sur cette quête</h2>
+  <ul class="ressources-liste">
+    <li><a href="https://www.pierre-giraud.com/php-mysql-apprendre-coder-cours/introduction-fonction/" target="_blank" rel="noopener noreferrer">Parce que la doc officielle PHP est contreproductive !</a><span class="ressources-liste__url">https://www.pierre-giraud.com/php-mysql-apprendre-coder-cours/introduction-fonction/</span></li>
+    <li><a href="https://www.youtube.com/watch?v=GUcyWuLQ7A4" target="_blank" rel="noopener noreferrer"> #5 - Les fonctions en PHP pour les nuls de CharlieProd (Vidéo de 12 min en français)</a><span class="ressources-liste__url">https://www.youtube.com/watch?v=GUcyWuLQ7A4</span></li>
+  </ul>
+</section>
+</article>
+
+<nav class="nav-quete">
+  <a class="nav-quete__lien nav-quete__lien--prec" href="../../php/006-5-les-conditions-en-php/index.html">
+           <span class="nav-quete__sens">← Précédent</span>
+           <span class="nav-quete__titre">5. Les conditions en PHP</span>
+         </a>
+  <a class="nav-quete__lien nav-quete__lien--suiv" href="../../php/008-7-debug-toi-meme-en-php/index.html">
+           <span class="nav-quete__sens">Suivant →</span>
+           <span class="nav-quete__titre">7. Debug toi même en PHP</span>
+         </a>
+</nav>
+</main>
+<footer class="pied">
+  <p>Archive personnelle des cours suivis à la Wild Code School. Copie hors ligne à usage strictement privé.</p>
+</footer>
+
+<script src="../../assets/copie-code.js"></script>
+<script src="../../assets/progression.js"></script>
+</body>
+</html>

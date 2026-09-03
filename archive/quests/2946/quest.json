@@ -1,0 +1,28 @@
+{
+  "id": 2946,
+  "titre": "3 - Les formulaires en PHP : Vérification et sécurisation des données",
+  "titres": {
+    "fr": "3 - Les formulaires en PHP : Vérification et sécurisation des données"
+  },
+  "theme": {
+    "id": 7,
+    "slug": "php_adv",
+    "nom": "PHP Avancé"
+  },
+  "creeLe": "2024-01-03T15:11:54.802+01:00",
+  "difficulte": "2",
+  "dureeEstimee": 60,
+  "modeValidation": "self",
+  "chapitres": [
+    {
+      "id": 11473,
+      "type": "content",
+      "langue": "fr",
+      "majLe": "2024-05-03T09:34:20.343+02:00",
+      "caracteres": 17911
+    }
+  ],
+  "ressources": [],
+  "urlOrigine": "https://odyssey.wildcodeschool.com/quests/2946",
+  "archiveLe": "2026-09-02T20:52:03.052Z"
+}

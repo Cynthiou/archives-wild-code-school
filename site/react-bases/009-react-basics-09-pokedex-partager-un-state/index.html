@@ -1,0 +1,334 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>👩‍🏫 React Basics 09 - Pokédex - Partager un state — Archives WCS</title>
+<link rel="stylesheet" href="../../assets/style.css">
+</head>
+<body style="--teinte:#4DC4DE">
+<header class="entete">
+  <a class="entete__marque" href="../../index.html">Archives Wild Code School</a>
+</header>
+<main class="contenu">
+<nav class="ariane"><a href="../../index.html">Accueil</a><span class="ariane__sep">›</span><a href="../../react-bases/index.html">React - Bases</a><span class="ariane__sep">›</span><span aria-current="page">👩‍🏫 React Basics 09 - Pokédex - Partager un state</span></nav>
+
+<article class="quete">
+  <header class="quete__entete">
+    <a class="pastille pastille--teintee" href="../../react-bases/index.html">React - Bases</a>
+    <h1>👩‍🏫 React Basics 09 - Pokédex - Partager un state</h1>
+    <p class="quete__meta">Quête 9 sur 10 · 3 images archivées</p>
+  </header>
+  <div class="cours">
+<h2>Objectifs</h2>
+<ul>
+<li>Faire communiquer plusieurs composants entre eux avec un même state.</li>
+</ul>
+<h2>Pré-requis</h2>
+<ol class="etapes"><li class="etape"><div class="etape__puce">1</div><div class="etape__contenu"><h4 class="etape__titre">Valider les quêtes suivantes</h4><div class="renvois"><div class="renvois__titre">Quêtes liées</div><ul><li><a href="../../react-bases/001-react-basics-01-pokedex-introduction/index.html">Quête 2328</a></li><li><a href="../../react-bases/002-react-basics-02-pokedex-ton-premier-composant/index.html">Quête 2332</a></li><li><a href="../../react-bases/003-react-basics-03-pokedex-afficher-des-donnees-dans-un/index.html">Quête 2336</a></li><li><a href="../../react-bases/004-react-basics-04-pokedex-passer-des-props/index.html">Quête 2374</a></li><li><a href="../../react-bases/005-react-basics-05-pokedex-typer-les-props-avec-typescript/index.html">Quête 2375</a></li><li><a href="../../react-bases/006-react-basics-06-pokedex-utiliser-un-state/index.html">Quête 2376</a></li><li><a href="../../react-bases/007-react-basics-07-pokedex-repeter-un-bloc-d-affichage-avec-map/index.html">Quête 2378</a></li></ul></div>
+</div></li></ol>
+<h2>Introduction</h2>
+<p>Dans les quêtes précédentes, nous avons vu comment utiliser les composants, les props et le state.</p>
+<p><img src="images/001-introduction.jpg" alt="" loading="lazy"></p>
+<h2>Sommaire</h2>
+<h2>Un problème de communication.</h2>
+<p>Prenons comme exemple cette architecture d'application :</p>
+<p><img src="images/002-un-probleme-de-communication.jpg" alt="" loading="lazy"></p>
+<p>Ici, nous avons un composant <code>InputMessage</code> et un composant <code>DisplayMessage</code> affichés dans <code>App</code>. Le composant <code>InputMessage</code> affiche un input de type text contrôlé par son state <code>message</code>.</p>
+<p>Tu peux le coder de cette façon :</p>
+<div class="bloc-code"><div class="bloc-code__langue">jsx</div><pre><code class="hljs language-jsx">!--- <span class="hljs-title class_">App</span>.<span class="hljs-property">js</span>
+<span class="hljs-keyword">import</span> <span class="hljs-title class_">InputMessage</span> <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;./InputMessage&quot;</span>;
+<span class="hljs-keyword">import</span> <span class="hljs-title class_">DisplayMessage</span> <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;./DisplayMessage&quot;</span>;
+
+<span class="hljs-keyword">function</span> <span class="hljs-title function_">App</span>(<span class="hljs-params"></span>) {
+  <span class="hljs-keyword">return</span> (
+    <span class="language-xml"><span class="hljs-tag">&lt;&gt;</span>
+      <span class="hljs-tag">&lt;<span class="hljs-name">InputMessage</span> /&gt;</span>
+      <span class="hljs-tag">&lt;<span class="hljs-name">DisplayMessage</span> /&gt;</span>
+    <span class="hljs-tag">&lt;/&gt;</span></span>
+  );
+}
+
+<span class="hljs-keyword">export</span> <span class="hljs-keyword">default</span> <span class="hljs-title class_">App</span>;
+!--- <span class="hljs-title class_">InputMessage</span>.<span class="hljs-property">js</span>
+<span class="hljs-keyword">import</span> { useState } <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;react&quot;</span>;
+
+<span class="hljs-keyword">function</span> <span class="hljs-title function_">InputMessage</span>(<span class="hljs-params"></span>) {
+  <span class="hljs-keyword">const</span> [message, setMessage] = <span class="hljs-title function_">useState</span>(<span class="hljs-string">&quot;&quot;</span>);
+
+  <span class="hljs-keyword">const</span> <span class="hljs-title function_">handleChange</span> = (<span class="hljs-params">event</span>) =&gt; {
+    <span class="hljs-title function_">setMessage</span>(event.<span class="hljs-property">target</span>.<span class="hljs-property">value</span>);
+  };
+
+  <span class="hljs-keyword">return</span> <span class="language-xml"><span class="hljs-tag">&lt;<span class="hljs-name">input</span> <span class="hljs-attr">name</span>=<span class="hljs-string">&quot;message&quot;</span> <span class="hljs-attr">onChange</span>=<span class="hljs-string">{handleChange}</span> /&gt;</span></span>;
+}
+
+<span class="hljs-keyword">export</span> <span class="hljs-keyword">default</span> <span class="hljs-title class_">InputMessage</span>;
+!--- <span class="hljs-title class_">DisplayMessage</span>.<span class="hljs-property">js</span>
+<span class="hljs-keyword">function</span> <span class="hljs-title function_">DisplayMessage</span>(<span class="hljs-params"></span>) {
+  <span class="hljs-keyword">return</span> <span class="language-xml"><span class="hljs-tag">&lt;<span class="hljs-name">p</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">p</span>&gt;</span></span>
+}
+
+<span class="hljs-keyword">export</span> <span class="hljs-keyword">default</span> <span class="hljs-title class_">DisplayMessage</span>;
+</code></pre></div>
+<p>Maintenant, je souhaite afficher le message dans le composant <code>DisplayMessage</code> : comment faire ?</p>
+<h2>Encore et toujours la hiérarchie !</h2>
+<p>Afin de faire communiquer entre eux deux composants, tu dois faire remonter le state au premier ancêtre commun !</p>
+<p>Explications :</p>
+<p>Si tu reprends notre schéma, le state <code>message</code> est déclaré dans le composant <code>InputMessage</code>. Tu ne peux pas y accéder dans le composant <code>DisplayMessage</code>. Pour régler le problème, tu peux faire remonter le state <code>message</code> dans le composant <code>App</code>, puis faire redescendre le state dans <code>InputMessage</code> et dans <code>DisplayMessage</code> grâce aux props.</p>
+<p><img src="images/003-encore-et-toujours-la-hierarchie.jpg" alt="" loading="lazy"></p>
+<p>Tu connais déjà le <code>state</code>. Tu connais également les <code>props</code>. Combine les deux afin de régler notre problème :</p>
+<div class="bloc-code"><div class="bloc-code__langue">jsx</div><pre><code class="hljs language-jsx">!--- <span class="hljs-title class_">App</span>.<span class="hljs-property">js</span>
+<span class="hljs-keyword">import</span> { useState } <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;react&quot;</span>;
+
+<span class="hljs-keyword">import</span> <span class="hljs-title class_">InputMessage</span> <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;./InputMessage&quot;</span>;
+<span class="hljs-keyword">import</span> <span class="hljs-title class_">DisplayMessage</span> <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;./DisplayMessage&quot;</span>;
+
+<span class="hljs-keyword">function</span> <span class="hljs-title function_">App</span>(<span class="hljs-params"></span>) {
+  <span class="hljs-keyword">const</span> [message, setMessage] = <span class="hljs-title function_">useState</span>(<span class="hljs-string">&quot;&quot;</span>);
+
+  <span class="hljs-keyword">return</span> (
+    <span class="language-xml"><span class="hljs-tag">&lt;&gt;</span>
+      <span class="hljs-tag">&lt;<span class="hljs-name">InputMessage</span> <span class="hljs-attr">setMessage</span>=<span class="hljs-string">{setMessage}</span> /&gt;</span>
+      <span class="hljs-tag">&lt;<span class="hljs-name">DisplayMessage</span> <span class="hljs-attr">message</span>=<span class="hljs-string">{message}</span> /&gt;</span>
+    <span class="hljs-tag">&lt;/&gt;</span></span>
+  );
+}
+
+<span class="hljs-keyword">export</span> <span class="hljs-keyword">default</span> <span class="hljs-title class_">App</span>;
+!--- <span class="hljs-title class_">InputMessage</span>.<span class="hljs-property">js</span>
+<span class="hljs-keyword">function</span> <span class="hljs-title function_">InputMessage</span>(<span class="hljs-params">{ setMessage }</span>) {
+  <span class="hljs-keyword">const</span> <span class="hljs-title function_">handleChange</span> = (<span class="hljs-params">event</span>) =&gt; {
+    <span class="hljs-title function_">setMessage</span>(event.<span class="hljs-property">target</span>.<span class="hljs-property">value</span>);
+  };
+
+  <span class="hljs-keyword">return</span> <span class="language-xml"><span class="hljs-tag">&lt;<span class="hljs-name">input</span> <span class="hljs-attr">name</span>=<span class="hljs-string">&quot;message&quot;</span> <span class="hljs-attr">onChange</span>=<span class="hljs-string">{handleChange}</span> /&gt;</span></span>;
+}
+
+<span class="hljs-keyword">export</span> <span class="hljs-keyword">default</span> <span class="hljs-title class_">InputMessage</span>;
+!--- <span class="hljs-title class_">DisplayMessage</span>.<span class="hljs-property">js</span>
+<span class="hljs-keyword">function</span> <span class="hljs-title function_">DisplayMessage</span>(<span class="hljs-params">{ message }</span>) {
+  <span class="hljs-keyword">return</span> <span class="language-xml"><span class="hljs-tag">&lt;<span class="hljs-name">p</span>&gt;</span>{message}<span class="hljs-tag">&lt;/<span class="hljs-name">p</span>&gt;</span></span>
+}
+
+<span class="hljs-keyword">export</span> <span class="hljs-keyword">default</span> <span class="hljs-title class_">DisplayMessage</span>;
+</code></pre></div>
+<p>Le state est déclaré dans <code>App</code> et partagé avec <code>InputMessage</code> et <code>DisplayMessage</code> avec des props :</p>
+<ul>
+<li>Nous passons <code>setMessage</code> en props au composant <code>InputMessage</code> pour lui permettre de modifier le state.</li>
+<li>Nous passons <code>message</code> en props au composant <code>DisplayMessage</code> pour lui permettre d'afficher la valeur du state.</li>
+</ul>
+<p>Tu peux tester par toi-même : si tu modifies le contenu de l'input, alors ces modifications s'afficheront également dans le paragraphe juste en dessous !</p>
+<h2>Challenge</h2>
+<p>Dans ce challenge, tu vas créer un nouveau composant <code>NavBar</code> qui contiendra les boutons de navigation et tu partagera le state de ton <code>App</code> avec ce composant en utilisant les props.</p>
+<ol class="etapes"><li class="etape"><div class="etape__puce">1</div><div class="etape__contenu"><h4 class="etape__titre">Crée une nouvelle branche</h4><p>Ouvre ton projet existant et crée une nouvelle branche appelée <code>state.2</code>. Cette branche sera utilisée pour développer les fonctionnalités liées au partage de state. Assure-toi de partir de la branche <code>rendering-list.1</code>.</p>
+</div></li><li class="etape"><div class="etape__puce">2</div><div class="etape__contenu"><h4 class="etape__titre">Crée le composant NavBar</h4><p>Dans le répertoire <code>components</code> de ton projet, crée un nouveau composant appelé <code>NavBar.tsx</code>. Ce composant sera responsable de l'affichage des boutons de navigation (mais plus tard : pour le mettre en place, un <code>hello, world!</code> fait l'affaire).</p>
+<div class="bloc-code"><div class="bloc-code__langue">jsx</div><pre><code class="hljs language-jsx"><span class="hljs-keyword">function</span> <span class="hljs-title function_">NavBar</span>(<span class="hljs-params"></span>) {
+  <span class="hljs-keyword">return</span> <span class="language-xml"><span class="hljs-tag">&lt;<span class="hljs-name">nav</span>&gt;</span>hello, world!<span class="hljs-tag">&lt;/<span class="hljs-name">nav</span>&gt;</span></span>;
+}
+
+<span class="hljs-keyword">export</span> <span class="hljs-keyword">default</span> <span class="hljs-title class_">NavBar</span>;
+</code></pre></div>
+<p>Utilise-le dès maintenant dans <code>App</code> (n'oublie pas l'import) :</p>
+<div class="bloc-code"><div class="bloc-code__langue">jsx</div><pre><code class="hljs language-jsx"><span class="hljs-keyword">function</span> <span class="hljs-title function_">App</span>(<span class="hljs-params"></span>) {
+  <span class="hljs-keyword">const</span> [pokemonName, setPokemonName] = <span class="hljs-title function_">useState</span>(<span class="hljs-string">&quot;bulbasaur&quot;</span>);
+
+  <span class="hljs-keyword">const</span> pokemon = pokemonList.<span class="hljs-title function_">find</span>(<span class="hljs-function">(<span class="hljs-params">pokemon</span>) =&gt;</span> pokemon.<span class="hljs-property">name</span> === pokemonName);
+
+  <span class="hljs-keyword">if</span> (pokemon == <span class="hljs-literal">null</span>) {
+    <span class="hljs-keyword">throw</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">Error</span>(<span class="hljs-string">&quot;Invalid pokemon name&quot;</span>);
+  }
+
+  <span class="hljs-keyword">return</span> (
+    <span class="language-xml"><span class="hljs-tag">&lt;<span class="hljs-name">div</span>&gt;</span>
+      <span class="hljs-tag">&lt;<span class="hljs-name">nav</span>&gt;</span>
+        {pokemonList.map((onePokemonFromTheList) =&gt; (
+          <span class="hljs-tag">&lt;<span class="hljs-name">button</span>
+            <span class="hljs-attr">key</span>=<span class="hljs-string">{onePokemonFromTheList.name}</span>
+            <span class="hljs-attr">type</span>=<span class="hljs-string">&quot;button&quot;</span>
+            <span class="hljs-attr">onClick</span>=<span class="hljs-string">{()</span> =&gt;</span> setPokemonName(onePokemonFromTheList.name)}
+          &gt;
+            {onePokemonFromTheList.name}
+          <span class="hljs-tag">&lt;/<span class="hljs-name">button</span>&gt;</span>
+        ))}
+      <span class="hljs-tag">&lt;/<span class="hljs-name">nav</span>&gt;</span>
+      <span class="hljs-tag">&lt;<span class="hljs-name">NavBar</span> /&gt;</span>
+      <span class="hljs-tag">&lt;<span class="hljs-name">PokemonCard</span> <span class="hljs-attr">pokemon</span>=<span class="hljs-string">{pokemon}</span> /&gt;</span>
+    <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span></span>
+  );
+}
+</code></pre></div>
+</div></li><li class="etape"><div class="etape__puce">3</div><div class="etape__contenu"><h4 class="etape__titre">Déplace les boutons dans NavBar</h4><p>Copie le bloc <code>&lt;nav&gt;</code> avec les boutons depuis le composant <code>App</code> et colle-le dans le composant <code>NavBar</code>.</p>
+<p>À ce stade, le code de <code>NavBar</code> ne peut pas marcher et c'est normal : <code>pokemonList</code> et <code>setPokemonName</code> ne sont pas définis dans ce composant, mais dans <code>App</code>.</p>
+</div></li><li class="etape"><div class="etape__puce">4</div><div class="etape__contenu"><h4 class="etape__titre">Utilise les props</h4><p>Dans <code>NavBar</code>, ajoute les props nécessaires pour permettre le fonctionnement des boutons. Tu as besoin de recevoir <code>setPokemonName</code> et <code>pokemonList</code>.</p>
+<p>Pour te faire gagner un <s>peu</s> beaucoup de temps, voici les types des props à déclarer dans <code>NavBar</code> :</p>
+<div class="bloc-code"><div class="bloc-code__langue">js</div><pre><code class="hljs language-js">interface <span class="hljs-title class_">Pokemon</span> {
+  <span class="hljs-attr">name</span>: string;
+  imgSrc?: string;
+}
+
+interface <span class="hljs-title class_">NavBarProps</span> {
+  <span class="hljs-attr">setPokemonName</span>: <span class="hljs-function">(<span class="hljs-params">name: string</span>) =&gt;</span> <span class="hljs-keyword">void</span>;
+  <span class="hljs-attr">pokemonList</span>: <span class="hljs-title class_">Pokemon</span>[];
+}
+</code></pre></div>
+<p>Dans <code>App</code>, envoie les valeurs à <code>NavBar</code> :</p>
+<div class="bloc-code"><div class="bloc-code__langue">jsx</div><pre><code class="hljs language-jsx"><span class="hljs-keyword">function</span> <span class="hljs-title function_">App</span>(<span class="hljs-params"></span>) {
+  <span class="hljs-keyword">const</span> [pokemonName, setPokemonName] = <span class="hljs-title function_">useState</span>(<span class="hljs-string">&quot;bulbasaur&quot;</span>);
+
+  <span class="hljs-keyword">const</span> pokemon = pokemonList.<span class="hljs-title function_">find</span>(<span class="hljs-function">(<span class="hljs-params">pokemon</span>) =&gt;</span> pokemon.<span class="hljs-property">name</span> === pokemonName);
+
+  <span class="hljs-keyword">if</span> (pokemon == <span class="hljs-literal">null</span>) {
+    <span class="hljs-keyword">throw</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">Error</span>(<span class="hljs-string">&quot;Invalid pokemon name&quot;</span>);
+  }
+
+  <span class="hljs-keyword">return</span> (
+    <span class="language-xml"><span class="hljs-tag">&lt;<span class="hljs-name">div</span>&gt;</span>
+      <span class="hljs-tag">&lt;<span class="hljs-name">nav</span>&gt;</span>
+        {pokemonList.map((onePokemonFromTheList) =&gt; (
+          <span class="hljs-tag">&lt;<span class="hljs-name">button</span>
+            <span class="hljs-attr">key</span>=<span class="hljs-string">{onePokemonFromTheList.name}</span>
+            <span class="hljs-attr">type</span>=<span class="hljs-string">&quot;button&quot;</span>
+            <span class="hljs-attr">onClick</span>=<span class="hljs-string">{()</span> =&gt;</span> setPokemonName(onePokemonFromTheList.name)}
+          &gt;
+            {onePokemonFromTheList.name}
+          <span class="hljs-tag">&lt;/<span class="hljs-name">button</span>&gt;</span>
+        ))}
+      <span class="hljs-tag">&lt;/<span class="hljs-name">nav</span>&gt;</span>
+      <span class="hljs-tag">&lt;<span class="hljs-name">NavBar</span> <span class="hljs-attr">setPokemonName</span>=<span class="hljs-string">{setPokemonName}</span> <span class="hljs-attr">pokemonList</span>=<span class="hljs-string">{pokemonList}</span> /&gt;</span>
+      <span class="hljs-tag">&lt;<span class="hljs-name">PokemonCard</span> <span class="hljs-attr">pokemon</span>=<span class="hljs-string">{pokemon}</span> /&gt;</span>
+    <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span></span>
+  );
+}
+</code></pre></div>
+</div></li><li class="etape"><div class="etape__puce">5</div><div class="etape__contenu"><h4 class="etape__titre">Supprime les boutons de App</h4><p>Maintenant que les boutons sont fonctionnels dans <code>NavBar</code>, supprime-les du composant <code>App</code> :</p>
+<div class="bloc-code"><div class="bloc-code__langue">jsx</div><pre><code class="hljs language-jsx"><span class="hljs-keyword">function</span> <span class="hljs-title function_">App</span>(<span class="hljs-params"></span>) {
+  <span class="hljs-keyword">const</span> [pokemonName, setPokemonName] = <span class="hljs-title function_">useState</span>(<span class="hljs-string">&quot;bulbasaur&quot;</span>);
+
+  <span class="hljs-keyword">const</span> pokemon = pokemonList.<span class="hljs-title function_">find</span>(<span class="hljs-function">(<span class="hljs-params">pokemon</span>) =&gt;</span> pokemon.<span class="hljs-property">name</span> === pokemonName);
+
+  <span class="hljs-keyword">if</span> (pokemon == <span class="hljs-literal">null</span>) {
+    <span class="hljs-keyword">throw</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">Error</span>(<span class="hljs-string">&quot;Invalid pokemon name&quot;</span>);
+  }
+
+  <span class="hljs-keyword">return</span> (
+    <span class="language-xml"><span class="hljs-tag">&lt;<span class="hljs-name">div</span>&gt;</span>
+      <span class="hljs-tag">&lt;<span class="hljs-name">NavBar</span> <span class="hljs-attr">setPokemonName</span>=<span class="hljs-string">{setPokemonName}</span> <span class="hljs-attr">pokemonList</span>=<span class="hljs-string">{pokemonList}</span> /&gt;</span>
+      <span class="hljs-tag">&lt;<span class="hljs-name">PokemonCard</span> <span class="hljs-attr">pokemon</span>=<span class="hljs-string">{pokemon}</span> /&gt;</span>
+    <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span></span>
+  );
+}
+</code></pre></div>
+</div></li></ol>
+<p>Assure-toi que les boutons fonctionnent correctement avec le composant <code>NavBar</code>.</p>
+<p>Fournis le lien vers la branche <code>state.2</code> de ton dépôt GitHub pour valider cette étape.</p>
+<h3>Critères de validation</h3>
+<ul>
+<li>L'application contient un composant <code>NavBar</code> qui affiche les boutons de navigation.</li>
+<li>Les boutons sont fonctionnels.</li>
+</ul>
+<p>Ce que tu devrais avoir dans :</p>
+<div class="onglets" data-onglets="2"><input type="radio" name="onglets-36" id="onglets-36-0" class="onglets__radio" checked><input type="radio" name="onglets-36" id="onglets-36-1" class="onglets__radio"><div class="onglets__barre"><label class="onglets__label" for="onglets-36-0">App.tsx</label><label class="onglets__label" for="onglets-36-1">NavBar.tsx</label></div><div class="onglets__panneaux"><div class="onglets__panneau"><div class="bloc-code"><div class="bloc-code__langue">jsx</div><pre><code class="hljs language-jsx"><span class="hljs-keyword">import</span> { useState } <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;react&quot;</span>;
+<span class="hljs-keyword">import</span> <span class="hljs-string">&quot;./App.css&quot;</span>;
+
+<span class="hljs-keyword">import</span> <span class="hljs-title class_">PokemonCard</span> <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;./components/PokemonCard&quot;</span>;
+<span class="hljs-keyword">import</span> <span class="hljs-title class_">NavBar</span> <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;./components/NavBar&quot;</span>;
+
+<span class="hljs-keyword">const</span> pokemonList = [
+  {
+    <span class="hljs-attr">name</span>: <span class="hljs-string">&quot;bulbasaur&quot;</span>,
+    <span class="hljs-attr">imgSrc</span>:
+      <span class="hljs-string">&quot;https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/1.png&quot;</span>,
+  },
+  {
+    <span class="hljs-attr">name</span>: <span class="hljs-string">&quot;charmander&quot;</span>,
+    <span class="hljs-attr">imgSrc</span>:
+      <span class="hljs-string">&quot;https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/4.png&quot;</span>,
+  },
+  {
+    <span class="hljs-attr">name</span>: <span class="hljs-string">&quot;squirtle&quot;</span>,
+    <span class="hljs-attr">imgSrc</span>:
+      <span class="hljs-string">&quot;https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/7.png&quot;</span>,
+  },
+  {
+    <span class="hljs-attr">name</span>: <span class="hljs-string">&quot;pikachu&quot;</span>,
+    <span class="hljs-attr">imgSrc</span>:
+      <span class="hljs-string">&quot;https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/25.png&quot;</span>,
+  },
+  {
+    <span class="hljs-attr">name</span>: <span class="hljs-string">&quot;mew&quot;</span>,
+  },
+];
+
+<span class="hljs-keyword">function</span> <span class="hljs-title function_">App</span>(<span class="hljs-params"></span>) {
+  <span class="hljs-keyword">const</span> [pokemonName, setPokemonName] = <span class="hljs-title function_">useState</span>(<span class="hljs-string">&quot;bulbasaur&quot;</span>);
+
+  <span class="hljs-keyword">const</span> pokemon = pokemonList.<span class="hljs-title function_">find</span>(<span class="hljs-function">(<span class="hljs-params">pokemon</span>) =&gt;</span> pokemon.<span class="hljs-property">name</span> === pokemonName);
+
+  <span class="hljs-keyword">if</span> (pokemon == <span class="hljs-literal">null</span>) {
+    <span class="hljs-keyword">throw</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">Error</span>(<span class="hljs-string">&quot;Invalid pokemon name&quot;</span>);
+  }
+
+  <span class="hljs-keyword">return</span> (
+    <span class="language-xml"><span class="hljs-tag">&lt;<span class="hljs-name">div</span>&gt;</span>
+      <span class="hljs-tag">&lt;<span class="hljs-name">NavBar</span> <span class="hljs-attr">setPokemonName</span>=<span class="hljs-string">{setPokemonName}</span> <span class="hljs-attr">pokemonList</span>=<span class="hljs-string">{pokemonList}</span> /&gt;</span>
+      <span class="hljs-tag">&lt;<span class="hljs-name">PokemonCard</span> <span class="hljs-attr">pokemon</span>=<span class="hljs-string">{pokemon}</span> /&gt;</span>
+    <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span></span>
+  );
+}
+
+<span class="hljs-keyword">export</span> <span class="hljs-keyword">default</span> <span class="hljs-title class_">App</span>;
+</code></pre></div>
+</div><div class="onglets__panneau"><div class="bloc-code"><div class="bloc-code__langue">jsx</div><pre><code class="hljs language-jsx">interface <span class="hljs-title class_">Pokemon</span> {
+  <span class="hljs-attr">name</span>: string;
+  imgSrc?: string;
+}
+
+interface <span class="hljs-title class_">NavBarProps</span> {
+  <span class="hljs-attr">setPokemonName</span>: <span class="hljs-function">(<span class="hljs-params">name: string</span>) =&gt;</span> <span class="hljs-keyword">void</span>;
+  <span class="hljs-attr">pokemonList</span>: <span class="hljs-title class_">Pokemon</span>[];
+}
+
+<span class="hljs-keyword">function</span> <span class="hljs-title function_">NavBar</span>(<span class="hljs-params">{ setPokemonName, pokemonList }: NavBarProps</span>) {
+  <span class="hljs-keyword">return</span> (
+    <span class="language-xml"><span class="hljs-tag">&lt;<span class="hljs-name">nav</span>&gt;</span>
+      {pokemonList.map((onePokemonFromTheList) =&gt; (
+        <span class="hljs-tag">&lt;<span class="hljs-name">button</span>
+          <span class="hljs-attr">key</span>=<span class="hljs-string">{onePokemonFromTheList.name}</span>
+          <span class="hljs-attr">type</span>=<span class="hljs-string">&quot;button&quot;</span>
+          <span class="hljs-attr">onClick</span>=<span class="hljs-string">{()</span> =&gt;</span> setPokemonName(onePokemonFromTheList.name)}
+        &gt;
+          {onePokemonFromTheList.name}
+        <span class="hljs-tag">&lt;/<span class="hljs-name">button</span>&gt;</span>
+      ))}
+    <span class="hljs-tag">&lt;/<span class="hljs-name">nav</span>&gt;</span></span>
+  );
+}
+
+<span class="hljs-keyword">export</span> <span class="hljs-keyword">default</span> <span class="hljs-title class_">NavBar</span>;
+</code></pre></div>
+</div></div></div>
+
+  </div>
+  
+</article>
+
+<nav class="nav-quete">
+  <a class="nav-quete__lien nav-quete__lien--prec" href="../../react-bases/008-react-basics-08-pokedex-le-css-dans-react/index.html">
+           <span class="nav-quete__sens">← Précédent</span>
+           <span class="nav-quete__titre">👩‍🏫 React Basics 08 - Pokédex - Le CSS dans React</span>
+         </a>
+  <a class="nav-quete__lien nav-quete__lien--suiv" href="../../react-bases/010-react-basics-10-pokedex-aller-plus-loin-avec-les-evenements/index.html">
+           <span class="nav-quete__sens">Suivant →</span>
+           <span class="nav-quete__titre">👩‍🏫 React Basics 10 - Pokédex - Aller plus loin avec les événements</span>
+         </a>
+</nav>
+</main>
+<footer class="pied">
+  <p>Archive personnelle des cours suivis à la Wild Code School. Copie hors ligne à usage strictement privé.</p>
+</footer>
+
+<script src="../../assets/copie-code.js"></script>
+<script src="../../assets/progression.js"></script>
+</body>
+</html>

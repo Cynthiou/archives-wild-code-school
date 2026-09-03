@@ -1,0 +1,154 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Créer avec ChatGPT : Formation Pratique — Archives WCS</title>
+<link rel="stylesheet" href="../../assets/style.css">
+</head>
+<body style="--teinte:#220f2a">
+<header class="entete">
+  <a class="entete__marque" href="../../index.html">Archives Wild Code School</a>
+</header>
+<main class="contenu">
+<nav class="ariane"><a href="../../index.html">Accueil</a><span class="ariane__sep">›</span><a href="../../ia-generative/index.html">IA Générative</a><span class="ariane__sep">›</span><span aria-current="page">Créer avec ChatGPT : Formation Pratique</span></nav>
+
+<article class="quete">
+  <header class="quete__entete">
+    <a class="pastille pastille--teintee" href="../../ia-generative/index.html">IA Générative</a>
+    <h1>Créer avec ChatGPT : Formation Pratique</h1>
+    <p class="quete__meta">Quête 1 sur 3 · 1 image archivée</p>
+  </header>
+  <div class="cours">
+<h2>Objectifs d'apprentissage</h2>
+<p>À la fin de cette leçon, vous serez être capable de :</p>
+<ul>
+<li>Comprendre les fonctionnalités de ChatGPT.</li>
+<li>Acquérir une vision des applications pratiques de ChatGPT.</li>
+<li>Avoir une compréhension de base de GPT et GPT-4.</li>
+<li>Concevoir des prompts efficacement pour ChatGPT.</li>
+<li>Développer des compétences en ingénierie des prompts.</li>
+</ul>
+<h2>Prérequis</h2>
+<p>Vous devez déjà avoir une compréhension de base des éléments suivants :</p>
+<ul>
+<li>Traitement du langage naturel (NLP)</li>
+<li>Bases de l'apprentissage automatique</li>
+<li>Langage de programmation Python</li>
+</ul>
+<h2>Introduction</h2>
+<p>Dans cette leçon, nous plongerons dans le fascinant monde des transformers pré-entraînés génératifs (GPT), en nous concentrant spécifiquement sur les applications pratiques de ChatGPT. Ce modèle basé sur la conversation, construit à partir des modèles de langage GPT d'OpenAI, a révolutionné les technologies de pointe dans diverses tâches de traitement du langage naturel (NLP). Il est largement utilisé dans des domaines tels que les chatbots IA et autres applications d'IA conversationnelles.</p>
+<p><img src="images/001-introduction.png" alt="" loading="lazy"></p>
+<h2>Sommaire</h2>
+<h2>Mieux comprendre ChatGPT</h2>
+<h3>Qu'est-ce que ChatGPT ?</h3>
+<p>Les chatbots sont devenus de plus en plus populaires au fil des ans, et ChatGPT, développé par OpenAI, est un modèle de premier plan dans ce domaine en raison de ses capacités linguistiques très avancées.</p>
+<p>ChatGPT, où GPT signifie Generative Pretraining Transformer, est un modèle d'IA spécialement conçu pour générer et comprendre du texte semblable à celui produit par un être humain. Il le fait en utilisant une architecture connue sous le nom de Transformer. Sans entrer dans les détails techniques, un Transformer est un modèle d'apprentissage automatique basé sur des mécanismes d'auto-attention, qui lui permet de traiter de manière extrêmement efficace des données séquentielles, telles que des données textuelles.</p>
+<p>On peut considérer ChatGPT comme un chatbot alimenté par GPT. Il est entraîné sur un ensemble de données diversifié provenant du web, bénéficiant ainsi des informations étendues disponibles sur Internet. Cependant, il n'a pas accès aux données personnelles à moins qu'elles ne lui soient explicitement fournies pendant la conversation, il ne sait donc rien de la personne qui interagit avec lui à moins d'être expressément informé.</p>
+<h3>Comment fonctionne ChatGPT ?</h3>
+<p>Le but principal de ChatGPT est de reproduire avec précision une conversation humaine. Pour ce faire, il suit un schéma de réponses basé sur ce avec quoi il a été entraîné dans le passé, organisant ses réponses pour générer des phrases cohérentes et pertinentes. Il utilise le concept d'apprentissage de séquence à séquence, où une séquence d'entrées (comme des mots d'une question) est traduite en une séquence de sorties (mots dans une réponse).</p>
+<p>En pratique, une fois qu'un prompt spécifique (ou une question) est donné, GPT examine la question et génère une réponse appropriée en fonction de son entraînement. Il essaie de créer une réponse qui soit structuralement et contextuellement précise par rapport au prompt initial. Malgré cela, il est important de comprendre que GPT ne &quot;comprend&quot; pas intrinsèquement le texte comme le font les humains. Au contraire, il simule la compréhension sur la base des modèles appris à partir de ses données d'entraînement.</p>
+<p><a href="https://www.youtube.com/watch?v=5sLYAQS9sWQ" target="_blank" rel="noopener noreferrer">https://www.youtube.com/watch?v=5sLYAQS9sWQ</a></p>
+<h2>Applications pratiques de ChatGPT</h2>
+<p>ChatGPT a de nombreuses applications polyvalentes, telles que les jeux, la rédaction d'e-mails, la création de contenu écrit, l'enseignement, la traduction de langues, la simulation de personnages pour les jeux vidéo, et bien d'autres encore. Bien qu'il ne soit pas parfait et qu'il soit parfois sujet à la génération de contenu inapproprié ou biaisé, OpenAI continue d'améliorer et de mettre à jour ce modèle pour améliorer ses résultats au fil du temps.</p>
+<p>La compréhension de ChatGPT et d'autres modèles de langage comme <a href="https://bard.google.com/" target="_blank" rel="noopener noreferrer">Bard</a>, <a href="https://claude.ai/" target="_blank" rel="noopener noreferrer">Claude</a>, <a href="https://www.databricks.com/blog/2023/03/24/hello-dolly-democratizing-magic-chatgpt-open-models.html" target="_blank" rel="noopener noreferrer">Dolly</a> ou <a href="https://mistral.ai/" target="_blank" rel="noopener noreferrer">Mistral</a>, entre autres, est essentielle dans le monde numérique d'aujourd'hui, alors que l'IA et l'apprentissage automatique continuent d'évoluer et de trouver leur place dans la vie quotidienne des êtres humains. Tout en aidant à effectuer des tâches de manière efficace, il pourrait bientôt devenir une interface principale pour interagir avec les ordinateurs, il est donc avantageux pour nous de comprendre les bases de cette technologie.</p>
+<p>Certaines des nombreuses applications pratiques de ChatGPT comprennent :</p>
+<ul>
+<li><strong>Chatbots IA</strong> : ils sont utilisés pour les demandes de service client, fournissant des réponses immédiates aux questions et problèmes courants.</li>
+<li><strong>Recommandations de produits</strong> : il peut fournir des recommandations personnalisées basées sur le comportement ou les intérêts du consommateur.</li>
+<li><strong>Création de contenu</strong> : il peut rédiger du contenu semblable à celui produit par un être humain, y compris des articles, des billets de blog, des poèmes, voire des livres entiers.</li>
+</ul>
+<p>🔬 <strong>Exercice</strong></p>
+<p>À quelles autres applications pouvez-vous penser ? Utilisez vos missions professionnelles actuelles ou passées comme source d'inspiration.</p>
+<h2>GPT et GPT 4</h2>
+<p>GPT, ou Generative Pretrained Transformer, est un type de modèle de prédiction de langage. Il est basé sur l'apprentissage automatique et utilise l'approche de l'apprentissage non supervisé pour générer du texte semblable à celui produit par un être humain. GPT-4 est le dernier modèle de la série, offrant des résultats considérablement améliorés et plus précis par rapport à ses prédécesseurs.</p>
+<p>🔬 <strong>Pour aller plus loin</strong></p>
+<ol>
+<li><a href="https://jalammar.github.io/illustrated-transformer/" target="_blank" rel="noopener noreferrer">The Illustrated Transformer</a> : Cette ressource utilise des illustrations et un langage simple pour expliquer les mécanismes complexes de GPT.</li>
+<li><a href="https://arxiv.org/pdf/1706.03762.pdf" target="_blank" rel="noopener noreferrer">Attention is All You Need</a> : Cet article original de Google présente le modèle transformer, qui est utilisé par GPT. Il s'agit d'une ressource très technique mais essentielle pour comprendre le cœur des modèles GPT.</li>
+</ol>
+<p><a href="https://www.youtube.com/watch?v=ZXiruGOCn9s" target="_blank" rel="noopener noreferrer">https://www.youtube.com/watch?v=ZXiruGOCn9s</a></p>
+<h2>Conception efficace de prompts et compétences en ingénierie des prompts dans ChatGPT</h2>
+<p>La conception de prompts est une partie essentielle du travail avec ChatGPT, car elle influence directement les réponses que vous obtiendrez du modèle. Cela nécessite de la prudence et des compétences pour orienter le modèle vers la génération du type de contenu souhaité. Commencez par un prompt clair à suivre par le modèle, puis affinez itérativement vos prompts en fonction des résultats.</p>
+<p>L'ingénierie des prompts tourne autour de la conception et du peaufinage des prompts pour donner des instructions à un modèle de langage comme ChatGPT afin de générer les sorties souhaitées. Avoir des compétences efficaces en ingénierie des prompts peut améliorer considérablement les applications d'IA. Plongeons plus en profondeur dans les différents aspects de l'ingénierie des prompts :</p>
+<h3>Comprendre le comportement du modèle</h3>
+<p>La première et la plus importante compétence en ingénierie des prompts est de comprendre le comportement du modèle. Familiarisez-vous avec les spécificités de la façon dont le modèle répond à différents prompts. Effectuez des tests fréquents pour observer la portée et les limites des capacités du modèle. Comprendre les nuances du comportement du modèle permet aux ingénieurs de concevoir des prompts efficaces qui suscitent la sortie souhaitée. C'est comme apprendre les points forts et les faiblesses d'une équipe sportive avant de créer un plan de jeu.</p>
+<h3>Développement incrémentiel</h3>
+<p>Le développement incrémentiel est un aspect clé de l'ingénierie des prompts. Au lieu de créer immédiatement un prompt long et complexe, essayez de commencer par un prompt de base et d'ajouter progressivement de la complexité. Cette méthode vous permet de contrôler et de déterminer comment chaque élément ajouté impacte la réponse du modèle. Le développement incrémentiel facilite la découverte du design de prompt le plus efficace de manière plus rapide et précise.</p>
+<h3>La spécificité compte</h3>
+<p>La formulation du prompt doit être précise et claire. Les modèles GPT génèrent les meilleures réponses lorsque l'instruction est spécifique et concise. En définissant le format de réponse souhaité dans votre prompt ou en fournissant un contexte détaillé, vous pouvez orienter le modèle pour générer le texte que vous souhaitez. Le jargon spécifique à un domaine ou des expressions uniques peuvent également améliorer la spécificité.</p>
+<h3>Les tests de prompt</h3>
+<p>L'ingénierie des prompts n'est pas complète sans les tests de prompt. Tout comme l'écriture de code nécessite du débogage, l'ingénierie des prompts nécessite des tests de prompt. Expérimentez avec différents prompts et observez les réponses. Utilisez les échecs et les résultats imprévus comme guide pour affiner les prompts. Ce processus permet de révéler des problèmes inattendus et peut améliorer significativement la qualité des résultats finaux. N'hésitez pas à itérer et à retester jusqu'à obtenir les sorties souhaitées.</p>
+<h3>Le raffinement itératif</h3>
+<p>Une technique essentielle en ingénierie des prompts est le raffinement itératif. Il consiste à étendre une conversation avec le modèle en utilisant ses réponses précédentes. Vous ajoutez des instructions supplémentaires en fonction des réponses précédentes pour guider le modèle vers les sorties souhaitées de manière méticuleuse. Cette continuité contribue à affiner les réponses à long terme et détaillées de ChatGPT.</p>
+<p>Essentiellement, comprendre et manipuler ChatGPT avec des compétences en ingénierie des prompts relève plus de l'art que de la science. Le modèle ne se comporte pas toujours de manière prévisible, et il faut une certaine étincelle de créativité pour obtenir les meilleurs résultats. Avec de la pratique et de la persévérance, vous pouvez développer les compétences pour concevoir efficacement des prompts et, en fin de compte, inciter ChatGPT à générer des sorties informatives, divertissantes et utiles.</p>
+<h3>Exercice : Conception et test de prompt avec ChatGPT</h3>
+<p>Mettez en pratique ce que vous avez appris sur la conception de prompts avec ChatGPT ! Dans cet exercice, vous allez expérimenter différents prompts et observer comment le modèle y répond.</p>
+<p><strong>Étapes :</strong></p>
+<ol>
+<li><strong>Choisissez une tâche</strong> : Choisissez une tâche ou un objectif spécifique pour le modèle ChatGPT. N'oubliez pas de commencer par quelque chose de simple, comme générer une petite histoire, rédiger un e-mail ou répondre à des questions triviales.</li>
+<li><strong>Élaborez des prompts initiaux</strong> : Rédigez 3 à 5 prompts différents pour guider le modèle dans l'accomplissement de votre tâche. Chaque prompt doit avoir un angle ou une approche différente de la tâche. N'oubliez pas de prendre en compte des facteurs tels que la spécificité, les instructions et le contexte lors de la conception de vos prompts.</li>
+<li><strong>Testez les prompts</strong> : Entrez chacun de vos prompts dans le modèle ChatGPT et observez comment le modèle y répond. Comparez comment chaque prompt différent affecte la sortie du modèle.</li>
+<li><strong>Évaluez et peaufinez</strong> : En fonction des réponses du modèle, évaluez quels prompts ont donné les meilleurs résultats et travaillez à les peaufiner. Recherchez les schémas communs dans les prompts qui ont conduit à des sorties réussies ainsi que les points où le modèle est moins performant. Pour les prompts qui n'ont pas donné les résultats souhaités, essayez de modifier la spécificité, le contexte ou les instructions supplémentaires.</li>
+<li><strong>Tests cycliques et amélioration</strong> : Répétez les étapes 3 et 4. L'objectif est de tester et d'affiner les prompts de manière répétée jusqu'à ce que vous trouviez ce qui fonctionne le mieux, améliorant ainsi vos compétences en ingénierie des prompts.</li>
+</ol>
+<p><strong>Défi supplémentaire :</strong></p>
+<p>Si vous vous sentez à l'aise avec les étapes précédentes, essayez à nouveau la tâche, mais avec des prompts ou des tâches plus complexes. Vous pouvez également essayer de peaufiner vos prompts afin que le modèle puisse exécuter plusieurs tâches à l'aide d'un seul prompt. Cela mettra à l'épreuve votre maîtrise de l'ingénierie des prompts et vous aidera à comprendre comment guider efficacement le modèle.</p>
+<p>N'oubliez pas, la clé de l'ingénierie des prompts est la patience, car il peut être nécessaire de faire plusieurs itérations pour créer le prompt optimal. C'est un processus d'essais et d'erreurs, mais grâce à cela, vous pouvez mieux comprendre comment manipuler efficacement le comportement du modèle.</p>
+<h2>Comment créer des applications ChatGPT</h2>
+<p>Créer une application alimentée par ChatGPT est une opportunité de mettre en pratique vos connaissances, d'élargir vos compétences et de créer un produit concret qui interagit avec les utilisateurs en langage naturel.</p>
+<h3>Applications possibles avec ChatGPT</h3>
+<p>Les possibilités de ce que vous pouvez créer avec ChatGPT sont presque illimitées. Les capacités conversationnelles du modèle peuvent être exploitées dans diverses applications, notamment :</p>
+<ul>
+<li><strong>Bots de service client</strong> : cela pourrait aider les entreprises à automatiser leurs processus d'interaction avec les clients.</li>
+<li><strong>Assistant virtuel</strong> : comme Siri ou Alexa, mais avec une interaction en langage naturel plus avancée.</li>
+<li>Jeux interactifs : les joueurs peuvent interagir avec des personnages de jeux en utilisant un langage naturel.</li>
+<li><strong>Création de contenu</strong> : développer une plateforme capable de générer du contenu pour des blogs, des newsletters, des publications sur les réseaux sociaux, etc.</li>
+<li><strong>Éducation et tutoriels</strong> : un tuteur IA capable de répondre aux questions et de guider les apprenants à travers un programme d'études.</li>
+<li><strong>Traduction de langues</strong> : création d'un outil de traduction conversationnel.</li>
+</ul>
+<h3>Premiers pas</h3>
+<p>Créer votre première application avec ChatGPT implique quelques étapes clés :</p>
+<ol>
+<li><strong>Choisissez l'application</strong> : la première étape consiste à décider quel type d'application vous souhaitez créer. Cela dépend souvent de vos intérêts, de la demande pour l'application et de son utilité potentielle. Avoir une vision claire de ce que vous voulez réaliser facilite les étapes suivantes.</li>
+<li><strong>Concevez l'application</strong> : ensuite, concevez la structure de base de votre application. Vous voudrez peut-être esquisser l'interface utilisateur ou créer un organigramme décrivant comment l'utilisateur interagira avec votre application alimentée par ChatGPT. Cette étape consiste à identifier comment et où ChatGPT interviendra.</li>
+<li><strong>Ingénierie des prompts</strong> : en fonction de la conception de votre application, concevez les prompts que vous utiliserez pour guider les réponses de ChatGPT. Rappelez-vous les leçons sur la conception efficace des prompts et le développement incrémental.</li>
+<li><strong>Implémentation</strong> : avec vos prompts prêts, il est temps de les mettre en œuvre. Que vous codiez une application basée sur le web ou une application mobile, plusieurs API et plateformes de chatbot sont disponibles, comme l'API d'OpenAI, pour vous aider à intégrer ChatGPT dans votre application.</li>
+<li><strong>Test et itération</strong> : avec la première version de votre application prête, les étapes suivantes consistent en des tests rigoureux et des améliorations. Testez toutes les interactions possibles avec les utilisateurs, observez comment ChatGPT répond et apportez les ajustements nécessaires. Ce processus itératif de raffinement permet d'améliorer l'expérience utilisateur de l'application au fil du temps.</li>
+</ol>
+<p>N'oubliez pas que travailler avec des modèles d'IA et d'apprentissage automatique implique beaucoup d'expérimentation. Si votre première application ne fonctionne pas comme prévu, ne soyez pas découragé. Utilisez-le comme une expérience d'apprentissage pour comprendre ce qui s'est mal passé et comment l'améliorer. La création de votre première application ChatGPT est le début d'un parcours d'apprentissage itératif et gratifiant.</p>
+<h2>Résumé</h2>
+<p>Cette leçon avait pour objectif de vous enseigner ChatGPT, un modèle d'IA utilisé pour les applications basées sur la conversation. Nous avons abordé sa structure, ses fonctionnalités et la manière dont il produit un texte semblable à celui d'un humain. Nous avons exploré des applications pratiques telles que l'automatisation du service client, la création de contenu et les recommandations de produits personnalisées.</p>
+<p>Nous avons discuté de la technologie sous-jacente de ChatGPT, appelée GPT, et de sa dernière version, GPT-4. Nous avons mis en évidence les améliorations et le potentiel futur de cette technologie.</p>
+<p>Une partie importante de la leçon a été consacrée à la conception et à l'ingénierie des prompts. Nous avons fourni des informations sur la composition de prompts efficaces, la compréhension du comportement du modèle et les tests continus.</p>
+<p>La leçon s'est conclue en vous mettant au défi de construire votre première application avec ChatGPT. Nous vous avons guidé à travers une approche systématique et fourni des exercices pour pratiquer la conception de prompts et les stratégies d'ingénierie.</p>
+<p>En comprenant et en appliquant ces concepts, vous pouvez utiliser efficacement ChatGPT à diverses fins. Nous espérons que ce parcours enrichira votre compréhension et posera les bases de vos futures initiatives en matière d'IA.</p>
+<h3>Ressources recommandées</h3>
+<ul>
+<li><a href="http://jalammar.github.io/illustrated-transformer/" target="_blank" rel="noopener noreferrer">The Illustrated Transformer</a></li>
+<li><a href="https://arxiv.org/abs/1706.03762" target="_blank" rel="noopener noreferrer">Attention is All You Need</a></li>
+<li><a href="https://beta.openai.com/docs/" target="_blank" rel="noopener noreferrer">OpenAI API</a></li>
+<li><a href="https://platform.openai.com/docs/guides/chat/" target="_blank" rel="noopener noreferrer">Guide des modèles de chat d'OpenAI</a></li>
+<li><a href="https://zapier.com/blog/how-does-chatgpt-work/" target="_blank" rel="noopener noreferrer">Comment fonctionne ChatGPT ?</a></li>
+<li><a href="https://www.databricks.com/blog/2023/03/20/fine-tuning-large-language-models-hugging-face-and-deepspeed.html" target="_blank" rel="noopener noreferrer">Ajustement fin des grands modèles de langage avec Hugging Face et DeepSpeed</a></li>
+</ul>
+
+  </div>
+  
+</article>
+
+<nav class="nav-quete">
+  <span class="nav-quete__lien nav-quete__lien--vide"></span>
+  <a class="nav-quete__lien nav-quete__lien--suiv" href="../../ia-generative/002-demystifier-l-ia-generative-une-introduction-complete/index.html">
+           <span class="nav-quete__sens">Suivant →</span>
+           <span class="nav-quete__titre">Démystifier l'IA Générative : une Introduction Complète</span>
+         </a>
+</nav>
+</main>
+<footer class="pied">
+  <p>Archive personnelle des cours suivis à la Wild Code School. Copie hors ligne à usage strictement privé.</p>
+</footer>
+
+<script src="../../assets/progression.js"></script>
+</body>
+</html>

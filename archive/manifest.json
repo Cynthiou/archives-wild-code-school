@@ -1,0 +1,1927 @@
+{
+  "version": 1,
+  "creeLe": "2026-09-02T20:47:18.637Z",
+  "majLe": "2026-09-02T23:22:17.722Z",
+  "compte": "Cynthia Flores",
+  "quetes": {
+    "8": {
+      "id": 8,
+      "titre": "1. Installation des outils PHP",
+      "theme": "PHP",
+      "dossier": "php/001-1-installation-des-outils-php",
+      "urlOrigine": "https://odyssey.wildcodeschool.com/quests/8",
+      "archiveLe": "2026-09-02T23:21:27.140Z",
+      "statut": "partiel",
+      "nbImages": 1,
+      "imagesEchouees": [
+        {
+          "url": "http://images.innoveduc.fr/php_parcours/install/elephant.gif",
+          "erreur": "HTTP 404"
+        }
+      ]
+    },
+    "29": {
+      "id": 29,
+      "titre": "04.1 - Les bases de la modélisation : MCD",
+      "theme": "Base de données",
+      "dossier": "base-de-donnees/005-04-1-les-bases-de-la-modelisation-mcd",
+      "urlOrigine": "https://odyssey.wildcodeschool.com/quests/29",
+      "archiveLe": "2026-09-02T20:47:23.641Z",
+      "statut": "ok",
+      "nbImages": 5,
+      "imagesEchouees": []
+    },
+    "30": {
+      "id": 30,
+      "titre": "04.2 - Les bases de la modélisation : MLD",
+      "theme": "Base de données",
+      "dossier": "base-de-donnees/006-04-2-les-bases-de-la-modelisation-mld",
+      "urlOrigine": "https://odyssey.wildcodeschool.com/quests/30",
+      "archiveLe": "2026-09-02T20:51:51.460Z",
+      "statut": "ok",
+      "nbImages": 8,
+      "imagesEchouees": []
+    },
+    "36": {
+      "id": 36,
+      "titre": "Révisions : PHP orienté objet",
+      "theme": "PHP Orienté Objet",
+      "dossier": "php-oriente-objet/011-revisions-php-oriente-objet",
+      "urlOrigine": "https://odyssey.wildcodeschool.com/quests/36",
+      "archiveLe": "2026-09-02T20:53:57.845Z",
+      "statut": "ok",
+      "nbImages": 1,
+      "imagesEchouees": []
+    },
+    "110": {
+      "id": 110,
+      "titre": "Découverte du TypeScript",
+      "theme": "Typescript",
+      "dossier": "typescript/001-decouverte-du-typescript",
+      "urlOrigine": "https://odyssey.wildcodeschool.com/quests/110",
+      "archiveLe": "2026-09-02T23:22:00.469Z",
+      "statut": "partiel",
+      "nbImages": 1,
+      "imagesEchouees": [
+        {
+          "url": "http://blog.soat.fr/wp-content/uploads/2016/03/ts_skyline_fglogo-1024x300.png",
+          "erreur": "HTTP 404"
+        }
+      ]
+    },
+    "139": {
+      "id": 139,
+      "titre": "3. Les chaînes de caractères en PHP",
+      "theme": "PHP",
+      "dossier": "php/003-3-les-chaines-de-caracteres-en-php",
+      "urlOrigine": "https://odyssey.wildcodeschool.com/quests/139",
+      "archiveLe": "2026-09-02T23:21:30.120Z",
+      "statut": "partiel",
+      "nbImages": 0,
+      "imagesEchouees": [
+        {
+          "url": "http://images.innoveduc.fr/strings_harry_steven_georges.png",
+          "erreur": "HTTP 404"
+        },
+        {
+          "url": "http://images.innoveduc.fr/string_indie_tableau.jpeg",
+          "erreur": "HTTP 404"
+        },
+        {
+          "url": "http://images.innoveduc.fr/string_sean_harry.gif",
+          "erreur": "HTTP 404"
+        }
+      ]
+    },
+    "140": {
+      "id": 140,
+      "titre": "5. Les conditions en PHP",
+      "theme": "PHP",
+      "dossier": "php/006-5-les-conditions-en-php",
+      "urlOrigine": "https://odyssey.wildcodeschool.com/quests/140",
+      "archiveLe": "2026-09-02T23:21:34.855Z",
+      "statut": "partiel",
+      "nbImages": 0,
+      "imagesEchouees": [
+        {
+          "url": "http://images.innoveduc.fr/php_proc_conditions_indy.gif",
+          "erreur": "HTTP 404"
+        },
+        {
+          "url": "http://images.innoveduc.fr/php_proc_conditions_indy_gun.gif",
+          "erreur": "HTTP 404"
+        },
+        {
+          "url": "http://images.innoveduc.fr/php_proc_conditions_yodajones.jpg",
+          "erreur": "HTTP 404"
+        }
+      ]
+    },
+    "141": {
+      "id": 141,
+      "titre": "2. Les variables en PHP",
+      "theme": "PHP",
+      "dossier": "php/002-2-les-variables-en-php",
+      "urlOrigine": "https://odyssey.wildcodeschool.com/quests/141",
+      "archiveLe": "2026-09-02T23:21:28.637Z",
+      "statut": "partiel",
+      "nbImages": 0,
+      "imagesEchouees": [
+        {
+          "url": "http://images.innoveduc.fr/variables_boxes.jpeg",
+          "erreur": "HTTP 404"
+        },
+        {
+          "url": "http://images.innoveduc.fr/variables_last_cruisade.jpeg",
+          "erreur": "HTTP 404"
+        },
+        {
+          "url": "http://images.innoveduc.fr/variables_camel.gif",
+          "erreur": "HTTP 404"
+        }
+      ]
+    },
+    "142": {
+      "id": 142,
+      "titre": "6. Les fonctions avec PHP",
+      "theme": "PHP",
+      "dossier": "php/007-6-les-fonctions-avec-php",
+      "urlOrigine": "https://odyssey.wildcodeschool.com/quests/142",
+      "archiveLe": "2026-09-02T23:21:36.347Z",
+      "statut": "partiel",
+      "nbImages": 0,
+      "imagesEchouees": [
+        {
+          "url": "http://images.innoveduc.fr/trust-indy.gif",
+          "erreur": "HTTP 404"
+        },
+        {
+          "url": "http://images.innoveduc.fr/indi-torch.gif",
+          "erreur": "HTTP 404"
+        },
+        {
+          "url": "http://images.innoveduc.fr/agraphes_chapeau.gif",
+          "erreur": "HTTP 404"
+        }
+      ]
+    },
+    "161": {
+      "id": 161,
+      "titre": "Démystifier l'IA Générative : une Introduction Complète",
+      "theme": "IA Générative",
+      "dossier": "ia-generative/002-demystifier-l-ia-generative-une-introduction-complete",
+      "urlOrigine": "https://odyssey.wildcodeschool.com/quests/161",
+      "archiveLe": "2026-09-02T20:53:16.538Z",
+      "statut": "ok",
+      "nbImages": 1,
+      "imagesEchouees": []
+    },
+    "292": {
+      "id": 292,
+      "titre": "Initiation au terminal : Premiers pas",
+      "theme": "Terminal",
+      "dossier": "terminal/001-initiation-au-terminal-premiers-pas",
+      "urlOrigine": "https://odyssey.wildcodeschool.com/quests/292",
+      "archiveLe": "2026-09-02T20:53:28.481Z",
+      "statut": "ok",
+      "nbImages": 0,
+      "imagesEchouees": []
+    },
+    "469": {
+      "id": 469,
+      "titre": "Créer avec ChatGPT : Formation Pratique",
+      "theme": "IA Générative",
+      "dossier": "ia-generative/001-creer-avec-chatgpt-formation-pratique",
+      "urlOrigine": "https://odyssey.wildcodeschool.com/quests/469",
+      "archiveLe": "2026-09-02T20:53:15.472Z",
+      "statut": "ok",
+      "nbImages": 1,
+      "imagesEchouees": []
+    },
+    "477": {
+      "id": 477,
+      "titre": "Développer Efficacement avec GitHub Copilot",
+      "theme": "IA Générative",
+      "dossier": "ia-generative/003-developper-efficacement-avec-github-copilot",
+      "urlOrigine": "https://odyssey.wildcodeschool.com/quests/477",
+      "archiveLe": "2026-09-02T20:53:18.244Z",
+      "statut": "ok",
+      "nbImages": 12,
+      "imagesEchouees": []
+    },
+    "479": {
+      "id": 479,
+      "titre": "01 - Introduction aux bases de données relationnelles",
+      "theme": "Base de données",
+      "dossier": "base-de-donnees/002-01-introduction-aux-bases-de-donnees-relationnelles",
+      "urlOrigine": "https://odyssey.wildcodeschool.com/quests/479",
+      "archiveLe": "2026-09-02T20:47:20.871Z",
+      "statut": "ok",
+      "nbImages": 1,
+      "imagesEchouees": []
+    },
+    "484": {
+      "id": 484,
+      "titre": "02 - Récupérer des informations avec SELECT",
+      "theme": "Base de données",
+      "dossier": "base-de-donnees/003-02-recuperer-des-informations-avec-select",
+      "urlOrigine": "https://odyssey.wildcodeschool.com/quests/484",
+      "archiveLe": "2026-09-02T20:47:21.748Z",
+      "statut": "ok",
+      "nbImages": 4,
+      "imagesEchouees": []
+    },
+    "485": {
+      "id": 485,
+      "titre": "03 - Manipulation des données",
+      "theme": "Base de données",
+      "dossier": "base-de-donnees/004-03-manipulation-des-donnees",
+      "urlOrigine": "https://odyssey.wildcodeschool.com/quests/485",
+      "archiveLe": "2026-09-02T20:47:22.513Z",
+      "statut": "ok",
+      "nbImages": 1,
+      "imagesEchouees": []
+    },
+    "492": {
+      "id": 492,
+      "titre": "CSS imbriqué",
+      "theme": "CSS",
+      "dossier": "css/009-css-imbrique",
+      "urlOrigine": "https://odyssey.wildcodeschool.com/quests/492",
+      "archiveLe": "2026-09-02T20:52:52.617Z",
+      "statut": "ok",
+      "nbImages": 0,
+      "imagesEchouees": []
+    },
+    "519": {
+      "id": 519,
+      "titre": "05 - Les jointures",
+      "theme": "Base de données",
+      "dossier": "base-de-donnees/008-05-les-jointures",
+      "urlOrigine": "https://odyssey.wildcodeschool.com/quests/519",
+      "archiveLe": "2026-09-02T20:51:53.001Z",
+      "statut": "ok",
+      "nbImages": 3,
+      "imagesEchouees": []
+    },
+    "520": {
+      "id": 520,
+      "titre": "06 - SQL Group By",
+      "theme": "Base de données",
+      "dossier": "base-de-donnees/009-06-sql-group-by",
+      "urlOrigine": "https://odyssey.wildcodeschool.com/quests/520",
+      "archiveLe": "2026-09-02T20:51:53.682Z",
+      "statut": "ok",
+      "nbImages": 1,
+      "imagesEchouees": []
+    },
+    "573": {
+      "id": 573,
+      "titre": "Installer et configurer MySQL",
+      "theme": "Développement Web",
+      "dossier": "developpement-web/005-installer-et-configurer-mysql",
+      "urlOrigine": "https://odyssey.wildcodeschool.com/quests/573",
+      "archiveLe": "2026-09-02T20:52:58.836Z",
+      "statut": "ok",
+      "nbImages": 6,
+      "imagesEchouees": []
+    },
+    "574": {
+      "id": 574,
+      "titre": "04.3 - Les bases de la modélisation : MPD",
+      "theme": "Base de données",
+      "dossier": "base-de-donnees/007-04-3-les-bases-de-la-modelisation-mpd",
+      "urlOrigine": "https://odyssey.wildcodeschool.com/quests/574",
+      "archiveLe": "2026-09-02T20:51:52.132Z",
+      "statut": "ok",
+      "nbImages": 1,
+      "imagesEchouees": []
+    },
+    "588": {
+      "id": 588,
+      "titre": "01 - JS Monorepo : Wild Series, la genèse",
+      "theme": "JS Monorepo",
+      "dossier": "js-monorepo/002-01-js-monorepo-wild-series-la-genese",
+      "urlOrigine": "https://odyssey.wildcodeschool.com/quests/588",
+      "archiveLe": "2026-09-02T20:51:55.848Z",
+      "statut": "ok",
+      "nbImages": 9,
+      "imagesEchouees": []
+    },
+    "589": {
+      "id": 589,
+      "titre": "02 - JS Monorepo : Installation et initialisation d'un projet full-stack",
+      "theme": "JS Monorepo",
+      "dossier": "js-monorepo/003-02-js-monorepo-installation-et-initialisation-d-un-projet",
+      "urlOrigine": "https://odyssey.wildcodeschool.com/quests/589",
+      "archiveLe": "2026-09-02T20:51:56.581Z",
+      "statut": "ok",
+      "nbImages": 2,
+      "imagesEchouees": []
+    },
+    "590": {
+      "id": 590,
+      "titre": "03 - JS Monorepo : Routing",
+      "theme": "JS Monorepo",
+      "dossier": "js-monorepo/004-03-js-monorepo-routing",
+      "urlOrigine": "https://odyssey.wildcodeschool.com/quests/590",
+      "archiveLe": "2026-09-02T20:51:57.364Z",
+      "statut": "ok",
+      "nbImages": 3,
+      "imagesEchouees": []
+    },
+    "591": {
+      "id": 591,
+      "titre": "04 - JS Monorepo : Routing avancé",
+      "theme": "JS Monorepo",
+      "dossier": "js-monorepo/005-04-js-monorepo-routing-avance",
+      "urlOrigine": "https://odyssey.wildcodeschool.com/quests/591",
+      "archiveLe": "2026-09-02T20:51:58.115Z",
+      "statut": "ok",
+      "nbImages": 3,
+      "imagesEchouees": []
+    },
+    "592": {
+      "id": 592,
+      "titre": "05 - JS Monorepo : Mettre en place une base de données",
+      "theme": "JS Monorepo",
+      "dossier": "js-monorepo/006-05-js-monorepo-mettre-en-place-une-base-de-donnees",
+      "urlOrigine": "https://odyssey.wildcodeschool.com/quests/592",
+      "archiveLe": "2026-09-02T20:51:58.824Z",
+      "statut": "ok",
+      "nbImages": 1,
+      "imagesEchouees": []
+    },
+    "612": {
+      "id": 612,
+      "titre": "Maquetter des interfaces utilisateur web",
+      "theme": "Développement Web",
+      "dossier": "developpement-web/011-maquetter-des-interfaces-utilisateur-web",
+      "urlOrigine": "https://odyssey.wildcodeschool.com/quests/612",
+      "archiveLe": "2026-09-02T20:53:04.131Z",
+      "statut": "ok",
+      "nbImages": 4,
+      "imagesEchouees": []
+    },
+    "614": {
+      "id": 614,
+      "titre": "JS - React & Express - Monorepo",
+      "theme": "Développement Web",
+      "dossier": "developpement-web/010-js-react-express-monorepo",
+      "urlOrigine": "https://odyssey.wildcodeschool.com/quests/614",
+      "archiveLe": "2026-09-02T20:53:03.081Z",
+      "statut": "ok",
+      "nbImages": 0,
+      "imagesEchouees": []
+    },
+    "629": {
+      "id": 629,
+      "titre": "Onboarding - Odyssey",
+      "theme": "Onboarding students",
+      "dossier": "onboarding-students/004-onboarding-odyssey",
+      "urlOrigine": "https://odyssey.wildcodeschool.com/quests/629",
+      "archiveLe": "2026-09-02T20:53:36.518Z",
+      "statut": "ok",
+      "nbImages": 12,
+      "imagesEchouees": []
+    },
+    "676": {
+      "id": 676,
+      "titre": "7. Debug toi même en PHP",
+      "theme": "PHP",
+      "dossier": "php/008-7-debug-toi-meme-en-php",
+      "urlOrigine": "https://odyssey.wildcodeschool.com/quests/676",
+      "archiveLe": "2026-09-02T23:21:39.273Z",
+      "statut": "partiel",
+      "nbImages": 2,
+      "imagesEchouees": [
+        {
+          "url": "http://images.innoveduc.fr/helloworld_debug.png",
+          "erreur": "HTTP 404"
+        },
+        {
+          "url": "http://images.innoveduc.fr/phpdebug_pre.png",
+          "erreur": "HTTP 404"
+        },
+        {
+          "url": "http://images.innoveduc.fr/phpdebug_xdebug.png",
+          "erreur": "HTTP 404"
+        },
+        {
+          "url": "http://images.innoveduc.fr/php_error_xdebug.png",
+          "erreur": "HTTP 404"
+        }
+      ]
+    },
+    "685": {
+      "id": 685,
+      "titre": "PDO, un ami pour la vie.",
+      "theme": "PHP Avancé",
+      "dossier": "php-avance/008-pdo-un-ami-pour-la-vie",
+      "urlOrigine": "https://odyssey.wildcodeschool.com/quests/685",
+      "archiveLe": "2026-09-02T23:21:25.686Z",
+      "statut": "partiel",
+      "nbImages": 1,
+      "imagesEchouees": [
+        {
+          "url": "http://images.innoveduc.fr/php_parcours/pdo/monica_thumb.gif",
+          "erreur": "HTTP 404"
+        },
+        {
+          "url": "http://images.innoveduc.fr/php_parcours/pdo/chandler.gif",
+          "erreur": "HTTP 404"
+        },
+        {
+          "url": "http://images.innoveduc.fr/php_parcours/pdo/form_injection_sql.png",
+          "erreur": "HTTP 404"
+        },
+        {
+          "url": "http://images.innoveduc.fr/php_parcours/pdo/form_injection_sql_truncate.png",
+          "erreur": "HTTP 404"
+        },
+        {
+          "url": "http://images.innoveduc.fr/php_parcours/pdo/we_know.gif",
+          "erreur": "HTTP 404"
+        },
+        {
+          "url": "http://images.innoveduc.fr/php_parcours/pdo/unagi.gif",
+          "erreur": "HTTP 404"
+        },
+        {
+          "url": "http://images.innoveduc.fr/php_parcours/pdo/friends-keys.jpg",
+          "erreur": "HTTP 404"
+        },
+        {
+          "url": "http://images.innoveduc.fr/php_parcours/pdo/victory.gif",
+          "erreur": "HTTP 404"
+        }
+      ]
+    },
+    "824": {
+      "id": 824,
+      "titre": "06 - JS Monorepo : Créer ton premier Repository",
+      "theme": "JS Monorepo",
+      "dossier": "js-monorepo/007-06-js-monorepo-creer-ton-premier-repository",
+      "urlOrigine": "https://odyssey.wildcodeschool.com/quests/824",
+      "archiveLe": "2026-09-02T20:51:59.615Z",
+      "statut": "ok",
+      "nbImages": 1,
+      "imagesEchouees": []
+    },
+    "825": {
+      "id": 825,
+      "titre": "07 - JS Monorepo : Mettre en place un CRUD / BREAD 🍞",
+      "theme": "JS Monorepo",
+      "dossier": "js-monorepo/008-07-js-monorepo-mettre-en-place-un-crud-bread",
+      "urlOrigine": "https://odyssey.wildcodeschool.com/quests/825",
+      "archiveLe": "2026-09-02T20:52:00.298Z",
+      "statut": "ok",
+      "nbImages": 1,
+      "imagesEchouees": []
+    },
+    "834": {
+      "id": 834,
+      "titre": "JS - First script",
+      "theme": "Développement Web",
+      "dossier": "developpement-web/007-js-first-script",
+      "urlOrigine": "https://odyssey.wildcodeschool.com/quests/834",
+      "archiveLe": "2026-09-02T20:53:00.164Z",
+      "statut": "ok",
+      "nbImages": 1,
+      "imagesEchouees": []
+    },
+    "1024": {
+      "id": 1024,
+      "titre": "Node 02 - 🛰️ Utiliser un fichier .env",
+      "theme": "Node.js",
+      "dossier": "node-js/002-node-02-utiliser-un-fichier-env",
+      "urlOrigine": "https://odyssey.wildcodeschool.com/quests/1024",
+      "archiveLe": "2026-09-02T20:53:40.881Z",
+      "statut": "ok",
+      "nbImages": 4,
+      "imagesEchouees": []
+    },
+    "1144": {
+      "id": 1144,
+      "titre": "Composer -  2. PSR-4 & Autoload",
+      "theme": "PHP Avancé",
+      "dossier": "php-avance/004-composer-2-psr-4-autoload",
+      "urlOrigine": "https://odyssey.wildcodeschool.com/quests/1144",
+      "archiveLe": "2026-09-02T23:21:21.668Z",
+      "statut": "partiel",
+      "nbImages": 1,
+      "imagesEchouees": [
+        {
+          "url": "http://images.innoveduc.fr/php_parcours/logo-composer.png",
+          "erreur": "HTTP 404"
+        },
+        {
+          "url": "http://images.innoveduc.fr/php_parcours/bricks.gif",
+          "erreur": "HTTP 404"
+        }
+      ]
+    },
+    "1149": {
+      "id": 1149,
+      "titre": "Composer - 3. Package Management",
+      "theme": "PHP Avancé",
+      "dossier": "php-avance/006-composer-3-package-management",
+      "urlOrigine": "https://odyssey.wildcodeschool.com/quests/1149",
+      "archiveLe": "2026-09-02T23:21:23.101Z",
+      "statut": "partiel",
+      "nbImages": 3,
+      "imagesEchouees": [
+        {
+          "url": "http://images.innoveduc.fr/php_parcours/lock.gif",
+          "erreur": "HTTP 404"
+        }
+      ]
+    },
+    "1259": {
+      "id": 1259,
+      "titre": "👩‍🏫 JS Intermédiaire 01.1 - Introduction à la manipulation du DOM",
+      "theme": "JavaScript - Beyond the Basics",
+      "dossier": "javascript-beyond-the-basics/001-js-intermediaire-01-1-introduction-a-la-manipulation-du-dom",
+      "urlOrigine": "https://odyssey.wildcodeschool.com/quests/1259",
+      "archiveLe": "2026-09-02T20:54:55.414Z",
+      "statut": "ok",
+      "nbImages": 6,
+      "imagesEchouees": []
+    },
+    "1262": {
+      "id": 1262,
+      "titre": "👩‍🏫 JS Basics 01 - Qu'est-ce que JavaScript",
+      "theme": "JavaScript",
+      "dossier": "javascript/001-js-basics-01-qu-est-ce-que-javascript",
+      "urlOrigine": "https://odyssey.wildcodeschool.com/quests/1262",
+      "archiveLe": "2026-09-02T20:54:23.469Z",
+      "statut": "ok",
+      "nbImages": 7,
+      "imagesEchouees": []
+    },
+    "1267": {
+      "id": 1267,
+      "titre": "👩‍🏫 JS Basics 02 - Syntaxe et concepts de base",
+      "theme": "JavaScript",
+      "dossier": "javascript/002-js-basics-02-syntaxe-et-concepts-de-base",
+      "urlOrigine": "https://odyssey.wildcodeschool.com/quests/1267",
+      "archiveLe": "2026-09-02T20:54:28.939Z",
+      "statut": "ok",
+      "nbImages": 10,
+      "imagesEchouees": []
+    },
+    "1268": {
+      "id": 1268,
+      "titre": "👩‍🏫 JS Basics 03 - Les variables",
+      "theme": "JavaScript",
+      "dossier": "javascript/003-js-basics-03-les-variables",
+      "urlOrigine": "https://odyssey.wildcodeschool.com/quests/1268",
+      "archiveLe": "2026-09-02T23:22:17.143Z",
+      "statut": "partiel",
+      "nbImages": 5,
+      "imagesEchouees": [
+        {
+          "url": "https://media1.tenor.com/images/a06d2dfc9e6a651eaa133e7810b7578b/tenor.gif?itemid=16024432",
+          "erreur": "HTTP 404"
+        }
+      ]
+    },
+    "1269": {
+      "id": 1269,
+      "titre": "👩‍🏫 JS Basics 04 - Les types de données",
+      "theme": "JavaScript",
+      "dossier": "javascript/004-js-basics-04-les-types-de-donnees",
+      "urlOrigine": "https://odyssey.wildcodeschool.com/quests/1269",
+      "archiveLe": "2026-09-02T20:54:35.297Z",
+      "statut": "ok",
+      "nbImages": 4,
+      "imagesEchouees": []
+    },
+    "1270": {
+      "id": 1270,
+      "titre": "👩‍🏫 JS Basics 05 - Les instructions conditionnelles",
+      "theme": "JavaScript",
+      "dossier": "javascript/005-js-basics-05-les-instructions-conditionnelles",
+      "urlOrigine": "https://odyssey.wildcodeschool.com/quests/1270",
+      "archiveLe": "2026-09-02T20:54:40.247Z",
+      "statut": "ok",
+      "nbImages": 6,
+      "imagesEchouees": []
+    },
+    "1278": {
+      "id": 1278,
+      "titre": "👩‍🏫 JS Basics 06 - Les fonctions",
+      "theme": "JavaScript",
+      "dossier": "javascript/006-js-basics-06-les-fonctions",
+      "urlOrigine": "https://odyssey.wildcodeschool.com/quests/1278",
+      "archiveLe": "2026-09-02T20:54:43.719Z",
+      "statut": "ok",
+      "nbImages": 5,
+      "imagesEchouees": []
+    },
+    "1281": {
+      "id": 1281,
+      "titre": "👩‍🏫 JS Basics 07 - Les tableaux",
+      "theme": "JavaScript",
+      "dossier": "javascript/008-js-basics-07-les-tableaux",
+      "urlOrigine": "https://odyssey.wildcodeschool.com/quests/1281",
+      "archiveLe": "2026-09-02T20:54:45.615Z",
+      "statut": "ok",
+      "nbImages": 4,
+      "imagesEchouees": []
+    },
+    "1282": {
+      "id": 1282,
+      "titre": "👩‍🏫 JS Basics 09 - Les objets",
+      "theme": "JavaScript",
+      "dossier": "javascript/011-js-basics-09-les-objets",
+      "urlOrigine": "https://odyssey.wildcodeschool.com/quests/1282",
+      "archiveLe": "2026-09-02T20:54:53.788Z",
+      "statut": "ok",
+      "nbImages": 2,
+      "imagesEchouees": []
+    },
+    "1283": {
+      "id": 1283,
+      "titre": "👩‍🏫 JS Basics 08 - Les boucles",
+      "theme": "JavaScript",
+      "dossier": "javascript/010-js-basics-08-les-boucles",
+      "urlOrigine": "https://odyssey.wildcodeschool.com/quests/1283",
+      "archiveLe": "2026-09-02T20:54:50.366Z",
+      "statut": "ok",
+      "nbImages": 6,
+      "imagesEchouees": []
+    },
+    "1285": {
+      "id": 1285,
+      "titre": "👩‍🏫 CSS 6 : Responsive Design & Media queries",
+      "theme": "CSS",
+      "dossier": "css/006-css-6-responsive-design-media-queries",
+      "urlOrigine": "https://odyssey.wildcodeschool.com/quests/1285",
+      "archiveLe": "2026-09-02T20:52:48.387Z",
+      "statut": "ok",
+      "nbImages": 9,
+      "imagesEchouees": []
+    },
+    "1287": {
+      "id": 1287,
+      "titre": "👩‍🏫 CSS 4 : Flexbox",
+      "theme": "CSS",
+      "dossier": "css/004-css-4-flexbox",
+      "urlOrigine": "https://odyssey.wildcodeschool.com/quests/1287",
+      "archiveLe": "2026-09-02T20:52:44.940Z",
+      "statut": "ok",
+      "nbImages": 12,
+      "imagesEchouees": []
+    },
+    "1292": {
+      "id": 1292,
+      "titre": "👩‍🏫 CSS 5 : Grid",
+      "theme": "CSS",
+      "dossier": "css/005-css-5-grid",
+      "urlOrigine": "https://odyssey.wildcodeschool.com/quests/1292",
+      "archiveLe": "2026-09-02T20:52:46.483Z",
+      "statut": "ok",
+      "nbImages": 14,
+      "imagesEchouees": []
+    },
+    "1293": {
+      "id": 1293,
+      "titre": "Pourquoi le CSS Ça Saoule Souvent ?",
+      "theme": "CSS",
+      "dossier": "css/010-pourquoi-le-css-ca-saoule-souvent",
+      "urlOrigine": "https://odyssey.wildcodeschool.com/quests/1293",
+      "archiveLe": "2026-09-02T20:52:53.446Z",
+      "statut": "ok",
+      "nbImages": 2,
+      "imagesEchouees": []
+    },
+    "1301": {
+      "id": 1301,
+      "titre": "Introduction à la méthodologie Agile et Scrum",
+      "theme": "Scrum",
+      "dossier": "scrum/001-introduction-a-la-methodologie-agile-et-scrum",
+      "urlOrigine": "https://odyssey.wildcodeschool.com/quests/1301",
+      "archiveLe": "2026-09-02T23:22:02.260Z",
+      "statut": "partiel",
+      "nbImages": 5,
+      "imagesEchouees": [
+        {
+          "url": "https://storage.googleapis.com/quest\\_editor\\_uploads/wM75q4jNrucLfoPhgSNB3UynEXr9mVta.png",
+          "erreur": "HTTP 403"
+        }
+      ]
+    },
+    "1303": {
+      "id": 1303,
+      "titre": "Scrum: Lancer un sprint",
+      "theme": "Scrum",
+      "dossier": "scrum/002-scrum-lancer-un-sprint",
+      "urlOrigine": "https://odyssey.wildcodeschool.com/quests/1303",
+      "archiveLe": "2026-09-02T20:53:31.452Z",
+      "statut": "ok",
+      "nbImages": 8,
+      "imagesEchouees": []
+    },
+    "1304": {
+      "id": 1304,
+      "titre": "👩‍🏫 HTML - Chapitre 9 | Performance & Structure",
+      "theme": "HTML",
+      "dossier": "html/009-html-chapitre-9-performance-structure",
+      "urlOrigine": "https://odyssey.wildcodeschool.com/quests/1304",
+      "archiveLe": "2026-09-02T20:54:17.166Z",
+      "statut": "ok",
+      "nbImages": 2,
+      "imagesEchouees": []
+    },
+    "1307": {
+      "id": 1307,
+      "titre": "👩‍🏫 CSS 8 : Animations",
+      "theme": "CSS",
+      "dossier": "css/008-css-8-animations",
+      "urlOrigine": "https://odyssey.wildcodeschool.com/quests/1307",
+      "archiveLe": "2026-09-02T20:52:52.068Z",
+      "statut": "ok",
+      "nbImages": 6,
+      "imagesEchouees": []
+    },
+    "1309": {
+      "id": 1309,
+      "titre": "Git/GitHub 2 : Git en local",
+      "theme": "Git",
+      "dossier": "git/002-git-github-2-git-en-local",
+      "urlOrigine": "https://odyssey.wildcodeschool.com/quests/1309",
+      "archiveLe": "2026-09-02T20:53:22.816Z",
+      "statut": "ok",
+      "nbImages": 2,
+      "imagesEchouees": []
+    },
+    "1312": {
+      "id": 1312,
+      "titre": "Git/GitHub 5 : Merge & Conflits",
+      "theme": "Git",
+      "dossier": "git/005-git-github-5-merge-conflits",
+      "urlOrigine": "https://odyssey.wildcodeschool.com/quests/1312",
+      "archiveLe": "2026-09-02T20:53:25.614Z",
+      "statut": "ok",
+      "nbImages": 1,
+      "imagesEchouees": []
+    },
+    "1313": {
+      "id": 1313,
+      "titre": "Git/GitHub 4 : Branche et flow",
+      "theme": "Git",
+      "dossier": "git/004-git-github-4-branche-et-flow",
+      "urlOrigine": "https://odyssey.wildcodeschool.com/quests/1313",
+      "archiveLe": "2026-09-02T20:53:24.700Z",
+      "statut": "ok",
+      "nbImages": 1,
+      "imagesEchouees": []
+    },
+    "1314": {
+      "id": 1314,
+      "titre": "Installer et configurer Git",
+      "theme": "Développement Web",
+      "dossier": "developpement-web/004-installer-et-configurer-git",
+      "urlOrigine": "https://odyssey.wildcodeschool.com/quests/1314",
+      "archiveLe": "2026-09-02T20:52:57.666Z",
+      "statut": "ok",
+      "nbImages": 1,
+      "imagesEchouees": []
+    },
+    "1320": {
+      "id": 1320,
+      "titre": "👩‍🏫 JS Intermédiaire 05 - Programmation Orientée Objet",
+      "theme": "JavaScript - Beyond the Basics",
+      "dossier": "javascript-beyond-the-basics/007-js-intermediaire-05-programmation-orientee-objet",
+      "urlOrigine": "https://odyssey.wildcodeschool.com/quests/1320",
+      "archiveLe": "2026-09-02T20:55:00.622Z",
+      "statut": "ok",
+      "nbImages": 1,
+      "imagesEchouees": []
+    },
+    "1334": {
+      "id": 1334,
+      "titre": "Node 01 - 👩‍🏫 Introduction à Node.js et npm",
+      "theme": "Node.js",
+      "dossier": "node-js/001-node-01-introduction-a-node-js-et-npm",
+      "urlOrigine": "https://odyssey.wildcodeschool.com/quests/1334",
+      "archiveLe": "2026-09-02T20:53:40.070Z",
+      "statut": "ok",
+      "nbImages": 6,
+      "imagesEchouees": []
+    },
+    "1342": {
+      "id": 1342,
+      "titre": "👩‍🏫 JS Intermédiaire 02bis -Tableaux : d'autres méthodes fonctionnelles",
+      "theme": "JavaScript - Beyond the Basics",
+      "dossier": "javascript-beyond-the-basics/005-js-intermediaire-02bis-tableaux-d-autres-methodes",
+      "urlOrigine": "https://odyssey.wildcodeschool.com/quests/1342",
+      "archiveLe": "2026-09-02T20:54:59.024Z",
+      "statut": "ok",
+      "nbImages": 1,
+      "imagesEchouees": []
+    },
+    "1343": {
+      "id": 1343,
+      "titre": "JS - Manipulation du DOM",
+      "theme": "Développement Web",
+      "dossier": "developpement-web/008-js-manipulation-du-dom",
+      "urlOrigine": "https://odyssey.wildcodeschool.com/quests/1343",
+      "archiveLe": "2026-09-02T23:21:50.069Z",
+      "statut": "partiel",
+      "nbImages": 0,
+      "imagesEchouees": [
+        {
+          "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/c/c4/Savannah_Cat_portrait.jpg/160px-Savannah_Cat_portrait.jpg",
+          "erreur": "HTTP 400"
+        }
+      ]
+    },
+    "1345": {
+      "id": 1345,
+      "titre": "👩‍🏫 CSS 7 : Les variables",
+      "theme": "CSS",
+      "dossier": "css/007-css-7-les-variables",
+      "urlOrigine": "https://odyssey.wildcodeschool.com/quests/1345",
+      "archiveLe": "2026-09-02T20:52:48.952Z",
+      "statut": "ok",
+      "nbImages": 0,
+      "imagesEchouees": []
+    },
+    "1348": {
+      "id": 1348,
+      "titre": "4.2. Les tableaux multidimensionnels en PHP",
+      "theme": "PHP",
+      "dossier": "php/005-4-2-les-tableaux-multidimensionnels-en-php",
+      "urlOrigine": "https://odyssey.wildcodeschool.com/quests/1348",
+      "archiveLe": "2026-09-02T23:21:33.296Z",
+      "statut": "partiel",
+      "nbImages": 1,
+      "imagesEchouees": [
+        {
+          "url": "http://images.innoveduc.fr/php_array_pas_clar.gif",
+          "erreur": "HTTP 404"
+        }
+      ]
+    },
+    "1356": {
+      "id": 1356,
+      "titre": "4.1. Les tableaux et boucles en PHP",
+      "theme": "PHP",
+      "dossier": "php/004-4-1-les-tableaux-et-boucles-en-php",
+      "urlOrigine": "https://odyssey.wildcodeschool.com/quests/1356",
+      "archiveLe": "2026-09-02T23:21:31.900Z",
+      "statut": "partiel",
+      "nbImages": 1,
+      "imagesEchouees": [
+        {
+          "url": "http://images.innoveduc.fr/php_array_trust_me.gif",
+          "erreur": "HTTP 404"
+        },
+        {
+          "url": "http://images.innoveduc.fr/php_array_indy_weapons.jpg",
+          "erreur": "HTTP 404"
+        },
+        {
+          "url": "http://images.innoveduc.fr/php_proc_loop.jpg",
+          "erreur": "HTTP 404"
+        },
+        {
+          "url": "http://images.innoveduc.fr/php_array_nuclear.png",
+          "erreur": "HTTP 404"
+        }
+      ]
+    },
+    "1376": {
+      "id": 1376,
+      "titre": "Installer et configurer Node",
+      "theme": "Développement Web",
+      "dossier": "developpement-web/006-installer-et-configurer-node",
+      "urlOrigine": "https://odyssey.wildcodeschool.com/quests/1376",
+      "archiveLe": "2026-09-02T20:52:59.386Z",
+      "statut": "ok",
+      "nbImages": 0,
+      "imagesEchouees": []
+    },
+    "1387": {
+      "id": 1387,
+      "titre": "Node 03 - 👨🏻‍🚀 Commence à linter et à formater ton code en utilisant Biome",
+      "theme": "Node.js",
+      "dossier": "node-js/003-node-03-commence-a-linter-et-a-formater-ton-code-en",
+      "urlOrigine": "https://odyssey.wildcodeschool.com/quests/1387",
+      "archiveLe": "2026-09-02T20:53:41.693Z",
+      "statut": "ok",
+      "nbImages": 1,
+      "imagesEchouees": []
+    },
+    "1400": {
+      "id": 1400,
+      "titre": "Checkpoint 1 - JS",
+      "theme": "Développement Web",
+      "dossier": "developpement-web/001-checkpoint-1-js",
+      "urlOrigine": "https://odyssey.wildcodeschool.com/quests/1400",
+      "archiveLe": "2026-09-02T20:52:53.991Z",
+      "statut": "ok",
+      "nbImages": 0,
+      "imagesEchouees": []
+    },
+    "1401": {
+      "id": 1401,
+      "titre": "JS - React - Props and State",
+      "theme": "Développement Web",
+      "dossier": "developpement-web/009-js-react-props-and-state",
+      "urlOrigine": "https://odyssey.wildcodeschool.com/quests/1401",
+      "archiveLe": "2026-09-02T20:53:02.527Z",
+      "statut": "ok",
+      "nbImages": 4,
+      "imagesEchouees": []
+    },
+    "1447": {
+      "id": 1447,
+      "titre": "React Intermédiaire 03.1 - Formulaires et composants contrôlés",
+      "theme": "React - Intermédiaire",
+      "dossier": "react-intermediaire/003-react-intermediaire-03-1-formulaires-et-composants-controles",
+      "urlOrigine": "https://odyssey.wildcodeschool.com/quests/1447",
+      "archiveLe": "2026-09-02T20:54:00.363Z",
+      "statut": "ok",
+      "nbImages": 0,
+      "imagesEchouees": []
+    },
+    "1450": {
+      "id": 1450,
+      "titre": "React Intermédiaire 01 - Fetcher des données depuis une API avec React",
+      "theme": "React - Intermédiaire",
+      "dossier": "react-intermediaire/001-react-intermediaire-01-fetcher-des-donnees-depuis-une-api",
+      "urlOrigine": "https://odyssey.wildcodeschool.com/quests/1450",
+      "archiveLe": "2026-09-02T20:53:59.039Z",
+      "statut": "ok",
+      "nbImages": 2,
+      "imagesEchouees": []
+    },
+    "1549": {
+      "id": 1549,
+      "titre": "00 - JS Monorepo : Introduction",
+      "theme": "JS Monorepo",
+      "dossier": "js-monorepo/001-00-js-monorepo-introduction",
+      "urlOrigine": "https://odyssey.wildcodeschool.com/quests/1549",
+      "archiveLe": "2026-09-02T20:51:54.664Z",
+      "statut": "ok",
+      "nbImages": 6,
+      "imagesEchouees": []
+    },
+    "1554": {
+      "id": 1554,
+      "titre": "👩‍🏫 JS Intermédiaire 01.2 - Manipulation du DOM - Créer des éléments",
+      "theme": "JavaScript - Beyond the Basics",
+      "dossier": "javascript-beyond-the-basics/002-js-intermediaire-01-2-manipulation-du-dom-creer-des-elements",
+      "urlOrigine": "https://odyssey.wildcodeschool.com/quests/1554",
+      "archiveLe": "2026-09-02T20:54:56.855Z",
+      "statut": "ok",
+      "nbImages": 10,
+      "imagesEchouees": []
+    },
+    "1555": {
+      "id": 1555,
+      "titre": "👩‍🏫 JS Intermédiaire 01.3 - Manipulation du DOM - Gestion des événements",
+      "theme": "JavaScript - Beyond the Basics",
+      "dossier": "javascript-beyond-the-basics/003-js-intermediaire-01-3-manipulation-du-dom-gestion-des",
+      "urlOrigine": "https://odyssey.wildcodeschool.com/quests/1555",
+      "archiveLe": "2026-09-02T20:54:57.370Z",
+      "statut": "ok",
+      "nbImages": 0,
+      "imagesEchouees": []
+    },
+    "1559": {
+      "id": 1559,
+      "titre": "👩‍🏫 JS Basics 06bis - Fonctions d'ordre supérieur",
+      "theme": "JavaScript",
+      "dossier": "javascript/007-js-basics-06bis-fonctions-d-ordre-superieur",
+      "urlOrigine": "https://odyssey.wildcodeschool.com/quests/1559",
+      "archiveLe": "2026-09-02T20:54:44.547Z",
+      "statut": "ok",
+      "nbImages": 1,
+      "imagesEchouees": []
+    },
+    "1561": {
+      "id": 1561,
+      "titre": "08 - JS Monorepo : Validation",
+      "theme": "JS Monorepo",
+      "dossier": "js-monorepo/009-08-js-monorepo-validation",
+      "urlOrigine": "https://odyssey.wildcodeschool.com/quests/1561",
+      "archiveLe": "2026-09-02T20:52:01.049Z",
+      "statut": "ok",
+      "nbImages": 1,
+      "imagesEchouees": []
+    },
+    "1589": {
+      "id": 1589,
+      "titre": "👩‍🏫 JS Intermédiaire 02 - Tableaux : méthodes fonctionnelles",
+      "theme": "JavaScript - Beyond the Basics",
+      "dossier": "javascript-beyond-the-basics/004-js-intermediaire-02-tableaux-methodes-fonctionnelles",
+      "urlOrigine": "https://odyssey.wildcodeschool.com/quests/1589",
+      "archiveLe": "2026-09-02T20:54:58.187Z",
+      "statut": "ok",
+      "nbImages": 2,
+      "imagesEchouees": []
+    },
+    "1614": {
+      "id": 1614,
+      "titre": "Twig - 02. Héritage et inclusion",
+      "theme": "PHP Avancé",
+      "dossier": "php-avance/010-twig-02-heritage-et-inclusion",
+      "urlOrigine": "https://odyssey.wildcodeschool.com/quests/1614",
+      "archiveLe": "2026-09-02T20:52:12.453Z",
+      "statut": "ok",
+      "nbImages": 2,
+      "imagesEchouees": []
+    },
+    "1623": {
+      "id": 1623,
+      "titre": "Twig - 01. Démarrage et utilisation",
+      "theme": "PHP Avancé",
+      "dossier": "php-avance/009-twig-01-demarrage-et-utilisation",
+      "urlOrigine": "https://odyssey.wildcodeschool.com/quests/1623",
+      "archiveLe": "2026-09-02T20:52:11.076Z",
+      "statut": "ok",
+      "nbImages": 0,
+      "imagesEchouees": []
+    },
+    "1624": {
+      "id": 1624,
+      "titre": "Composer - 1. Installation",
+      "theme": "PHP Avancé",
+      "dossier": "php-avance/005-composer-1-installation",
+      "urlOrigine": "https://odyssey.wildcodeschool.com/quests/1624",
+      "archiveLe": "2026-09-02T20:52:05.648Z",
+      "statut": "ok",
+      "nbImages": 1,
+      "imagesEchouees": []
+    },
+    "1644": {
+      "id": 1644,
+      "titre": "Checkpoint 2 - JS - React",
+      "theme": "Développement Web",
+      "dossier": "developpement-web/002-checkpoint-2-js-react",
+      "urlOrigine": "https://odyssey.wildcodeschool.com/quests/1644",
+      "archiveLe": "2026-09-02T20:52:54.534Z",
+      "statut": "ok",
+      "nbImages": 0,
+      "imagesEchouees": []
+    },
+    "1670": {
+      "id": 1670,
+      "titre": "Twig - 03. Les globales",
+      "theme": "PHP Avancé",
+      "dossier": "php-avance/011-twig-03-les-globales",
+      "urlOrigine": "https://odyssey.wildcodeschool.com/quests/1670",
+      "archiveLe": "2026-09-02T20:52:13.397Z",
+      "statut": "ok",
+      "nbImages": 3,
+      "imagesEchouees": []
+    },
+    "1680": {
+      "id": 1680,
+      "titre": "👩‍🏫 CSS 3 : Box model",
+      "theme": "CSS",
+      "dossier": "css/003-css-3-box-model",
+      "urlOrigine": "https://odyssey.wildcodeschool.com/quests/1680",
+      "archiveLe": "2026-09-02T20:52:43.506Z",
+      "statut": "ok",
+      "nbImages": 3,
+      "imagesEchouees": []
+    },
+    "1791": {
+      "id": 1791,
+      "titre": "React Intermédiaire 03.2 - Contrôler la saisie dans un formulaire via le state",
+      "theme": "React - Intermédiaire",
+      "dossier": "react-intermediaire/004-react-intermediaire-03-2-controler-la-saisie-dans-un",
+      "urlOrigine": "https://odyssey.wildcodeschool.com/quests/1791",
+      "archiveLe": "2026-09-02T20:54:01.275Z",
+      "statut": "ok",
+      "nbImages": 2,
+      "imagesEchouees": []
+    },
+    "1795": {
+      "id": 1795,
+      "titre": "👩‍🏫 React Basics 08 - Pokédex - Le CSS dans React",
+      "theme": "React - Bases",
+      "dossier": "react-bases/008-react-basics-08-pokedex-le-css-dans-react",
+      "urlOrigine": "https://odyssey.wildcodeschool.com/quests/1795",
+      "archiveLe": "2026-09-02T20:55:08.624Z",
+      "statut": "ok",
+      "nbImages": 4,
+      "imagesEchouees": []
+    },
+    "1797": {
+      "id": 1797,
+      "titre": "Node 04 - 🔧 Rechercher et choisir un paquet npm (ou pas !)",
+      "theme": "Node.js",
+      "dossier": "node-js/004-node-04-rechercher-et-choisir-un-paquet-npm-ou-pas",
+      "urlOrigine": "https://odyssey.wildcodeschool.com/quests/1797",
+      "archiveLe": "2026-09-02T20:53:43.586Z",
+      "statut": "ok",
+      "nbImages": 5,
+      "imagesEchouees": []
+    },
+    "1798": {
+      "id": 1798,
+      "titre": "✏️ Exercise 1 - Naming Variables",
+      "theme": "PHP",
+      "dossier": "php/009-exercise-1-naming-variables",
+      "urlOrigine": "https://odyssey.wildcodeschool.com/quests/1798",
+      "archiveLe": "2026-09-02T20:52:31.284Z",
+      "statut": "ok",
+      "nbImages": 1,
+      "imagesEchouees": []
+    },
+    "1799": {
+      "id": 1799,
+      "titre": "✏️ Exercise 2 - Operateurs",
+      "theme": "PHP",
+      "dossier": "php/010-exercise-2-operateurs",
+      "urlOrigine": "https://odyssey.wildcodeschool.com/quests/1799",
+      "archiveLe": "2026-09-02T23:21:43.171Z",
+      "statut": "partiel",
+      "nbImages": 0,
+      "imagesEchouees": [
+        {
+          "url": "https://hinditutorialspoint.com/wp-content/uploads/2020/08/operators-in-php-in-hindi.jpeg",
+          "erreur": "fetch failed"
+        }
+      ]
+    },
+    "1800": {
+      "id": 1800,
+      "titre": "✏️ Exercise 3 - String manipulation",
+      "theme": "PHP",
+      "dossier": "php/011-exercise-3-string-manipulation",
+      "urlOrigine": "https://odyssey.wildcodeschool.com/quests/1800",
+      "archiveLe": "2026-09-02T23:21:45.090Z",
+      "statut": "partiel",
+      "nbImages": 0,
+      "imagesEchouees": [
+        {
+          "url": "https://s1.qwant.com/thumbr/0x380/9/a/5f8fa9fea9f45e9833d4020246441fd67fac3406e2baf217620a1bef642b22/1622188_1.jpg?u=https%3A%2F%2Fres.cloudinary.com%2Fteepublic%2Fimage%2Fprivate%2Fs--sUIWdTvr--%2Ft_Preview%2Fb_rgb%3A191919%2Cc_limit%2Cf_jpg%2Ch_630%2Cq_90%2Cw_630%2Fv1495643999%2Fproduction%2Fdesigns%2F1622188_1.jpg&q=0&b=1&p=0&a=0",
+          "erreur": "HTTP 404"
+        }
+      ]
+    },
+    "1801": {
+      "id": 1801,
+      "titre": "✏️ Exercise 4 - Conditions",
+      "theme": "PHP",
+      "dossier": "php/012-exercise-4-conditions",
+      "urlOrigine": "https://odyssey.wildcodeschool.com/quests/1801",
+      "archiveLe": "2026-09-02T23:21:46.403Z",
+      "statut": "partiel",
+      "nbImages": 0,
+      "imagesEchouees": [
+        {
+          "url": "https://www.mashbox.org/wp-content/uploads/2017/03/panda7.jpg",
+          "erreur": "fetch failed"
+        }
+      ]
+    },
+    "1802": {
+      "id": 1802,
+      "titre": "✏️ Exercise 5 - Loops",
+      "theme": "PHP",
+      "dossier": "php/013-exercise-5-loops",
+      "urlOrigine": "https://odyssey.wildcodeschool.com/quests/1802",
+      "archiveLe": "2026-09-02T20:52:38.359Z",
+      "statut": "ok",
+      "nbImages": 2,
+      "imagesEchouees": []
+    },
+    "1820": {
+      "id": 1820,
+      "titre": "Node 05 - 🚀 Concepts avancés et alternatives à la CLI de npm",
+      "theme": "Node.js",
+      "dossier": "node-js/005-node-05-concepts-avances-et-alternatives-a-la-cli-de-npm",
+      "urlOrigine": "https://odyssey.wildcodeschool.com/quests/1820",
+      "archiveLe": "2026-09-02T20:53:44.414Z",
+      "statut": "ok",
+      "nbImages": 2,
+      "imagesEchouees": []
+    },
+    "1830": {
+      "id": 1830,
+      "titre": "👩‍🏫 JS Intermédiaire 03 - Affectation par décomposition",
+      "theme": "JavaScript - Beyond the Basics",
+      "dossier": "javascript-beyond-the-basics/006-js-intermediaire-03-affectation-par-decomposition",
+      "urlOrigine": "https://odyssey.wildcodeschool.com/quests/1830",
+      "archiveLe": "2026-09-02T20:54:59.822Z",
+      "statut": "ok",
+      "nbImages": 1,
+      "imagesEchouees": []
+    },
+    "1872": {
+      "id": 1872,
+      "titre": "React Intermédiaire 02 - Context API",
+      "theme": "React - Intermédiaire",
+      "dossier": "react-intermediaire/002-react-intermediaire-02-context-api",
+      "urlOrigine": "https://odyssey.wildcodeschool.com/quests/1872",
+      "archiveLe": "2026-09-02T20:53:59.831Z",
+      "statut": "ok",
+      "nbImages": 3,
+      "imagesEchouees": []
+    },
+    "1924": {
+      "id": 1924,
+      "titre": "👩‍🏫 CSS 1 : Introduction",
+      "theme": "CSS",
+      "dossier": "css/001-css-1-introduction",
+      "urlOrigine": "https://odyssey.wildcodeschool.com/quests/1924",
+      "archiveLe": "2026-09-02T20:52:40.998Z",
+      "statut": "ok",
+      "nbImages": 4,
+      "imagesEchouees": []
+    },
+    "1932": {
+      "id": 1932,
+      "titre": "👩‍🏫 JS Basics 07bis - Les tableaux - Autres méthodes utiles",
+      "theme": "JavaScript",
+      "dossier": "javascript/009-js-basics-07bis-les-tableaux-autres-methodes-utiles",
+      "urlOrigine": "https://odyssey.wildcodeschool.com/quests/1932",
+      "archiveLe": "2026-09-02T20:54:46.138Z",
+      "statut": "ok",
+      "nbImages": 0,
+      "imagesEchouees": []
+    },
+    "1938": {
+      "id": 1938,
+      "titre": "👩‍🏫 JS Intermédiaire 05bis - Programmation Orientée Objet - Prototype",
+      "theme": "JavaScript - Beyond the Basics",
+      "dossier": "javascript-beyond-the-basics/008-js-intermediaire-05bis-programmation-orientee-objet",
+      "urlOrigine": "https://odyssey.wildcodeschool.com/quests/1938",
+      "archiveLe": "2026-09-02T20:55:01.560Z",
+      "statut": "ok",
+      "nbImages": 1,
+      "imagesEchouees": []
+    },
+    "2093": {
+      "id": 2093,
+      "titre": "👩‍🏫  Introduction au web et à internet",
+      "theme": "Web Design",
+      "dossier": "web-design/001-introduction-au-web-et-a-internet",
+      "urlOrigine": "https://odyssey.wildcodeschool.com/quests/2093",
+      "archiveLe": "2026-09-02T20:54:03.233Z",
+      "statut": "ok",
+      "nbImages": 11,
+      "imagesEchouees": []
+    },
+    "2113": {
+      "id": 2113,
+      "titre": "👩‍🏫 HTML - Chapitre 1 | Introduction au HTML",
+      "theme": "HTML",
+      "dossier": "html/001-html-chapitre-1-introduction-au-html",
+      "urlOrigine": "https://odyssey.wildcodeschool.com/quests/2113",
+      "archiveLe": "2026-09-02T23:22:05.307Z",
+      "statut": "partiel",
+      "nbImages": 3,
+      "imagesEchouees": [
+        {
+          "url": "...",
+          "erreur": "Failed to parse URL from ..."
+        }
+      ]
+    },
+    "2114": {
+      "id": 2114,
+      "titre": "👩‍🏫 Installer et utiliser Visual Studio Code",
+      "theme": "Outils",
+      "dossier": "outils/001-installer-et-utiliser-visual-studio-code",
+      "urlOrigine": "https://odyssey.wildcodeschool.com/quests/2114",
+      "archiveLe": "2026-09-02T20:54:20.911Z",
+      "statut": "ok",
+      "nbImages": 11,
+      "imagesEchouees": []
+    },
+    "2118": {
+      "id": 2118,
+      "titre": "👩‍🏫 HTML - Chapitre 2 | What's in your <head> ?",
+      "theme": "HTML",
+      "dossier": "html/002-html-chapitre-2-what-s-in-your-head",
+      "urlOrigine": "https://odyssey.wildcodeschool.com/quests/2118",
+      "archiveLe": "2026-09-02T23:22:06.874Z",
+      "statut": "partiel",
+      "nbImages": 3,
+      "imagesEchouees": [
+        {
+          "url": "https://placekitten.com/200/287",
+          "erreur": "HTTP 521"
+        }
+      ]
+    },
+    "2119": {
+      "id": 2119,
+      "titre": "👩‍🏫 HTML - Chapitre 3 |  L'écrit sous toutes ses formes",
+      "theme": "HTML",
+      "dossier": "html/003-html-chapitre-3-l-ecrit-sous-toutes-ses-formes",
+      "urlOrigine": "https://odyssey.wildcodeschool.com/quests/2119",
+      "archiveLe": "2026-09-02T20:54:07.582Z",
+      "statut": "ok",
+      "nbImages": 1,
+      "imagesEchouees": []
+    },
+    "2122": {
+      "id": 2122,
+      "titre": "👩‍🏫 HTML - Chapitre 5 |  Structure et sémantique",
+      "theme": "HTML",
+      "dossier": "html/005-html-chapitre-5-structure-et-semantique",
+      "urlOrigine": "https://odyssey.wildcodeschool.com/quests/2122",
+      "archiveLe": "2026-09-02T23:22:09.603Z",
+      "statut": "partiel",
+      "nbImages": 2,
+      "imagesEchouees": [
+        {
+          "url": "assets/logo.png",
+          "erreur": "Failed to parse URL from assets/logo.png"
+        }
+      ]
+    },
+    "2123": {
+      "id": 2123,
+      "titre": "👩‍🏫 HTML - Chapitre 4 | Les liens hypertexte",
+      "theme": "HTML",
+      "dossier": "html/004-html-chapitre-4-les-liens-hypertexte",
+      "urlOrigine": "https://odyssey.wildcodeschool.com/quests/2123",
+      "archiveLe": "2026-09-02T23:22:08.344Z",
+      "statut": "partiel",
+      "nbImages": 0,
+      "imagesEchouees": [
+        {
+          "url": "https://placekitten.com/200/287",
+          "erreur": "HTTP 521"
+        }
+      ]
+    },
+    "2124": {
+      "id": 2124,
+      "titre": "👩‍🏫 HTML - Chapitre 6 |  Multimédias",
+      "theme": "HTML",
+      "dossier": "html/006-html-chapitre-6-multimedias",
+      "urlOrigine": "https://odyssey.wildcodeschool.com/quests/2124",
+      "archiveLe": "2026-09-02T23:22:11.830Z",
+      "statut": "partiel",
+      "nbImages": 2,
+      "imagesEchouees": [
+        {
+          "url": "/images/my-favorite-cat.jpeg",
+          "erreur": "Failed to parse URL from /images/my-favorite-cat.jpeg"
+        },
+        {
+          "url": "https://placekitten.com/200/287",
+          "erreur": "HTTP 521"
+        },
+        {
+          "url": "/images/john.jpeg",
+          "erreur": "Failed to parse URL from /images/john.jpeg"
+        },
+        {
+          "url": "https://placekitten.com/408/287",
+          "erreur": "HTTP 521"
+        },
+        {
+          "url": "img_graphique_cat_speed.jpg",
+          "erreur": "Failed to parse URL from img_graphique_cat_speed.jpg"
+        },
+        {
+          "url": "loo.svg",
+          "erreur": "Failed to parse URL from loo.svg"
+        }
+      ]
+    },
+    "2133": {
+      "id": 2133,
+      "titre": "Git/GitHub 1 : Découvrir GitHub",
+      "theme": "Git",
+      "dossier": "git/001-git-github-1-decouvrir-github",
+      "urlOrigine": "https://odyssey.wildcodeschool.com/quests/2133",
+      "archiveLe": "2026-09-02T20:53:21.914Z",
+      "statut": "ok",
+      "nbImages": 1,
+      "imagesEchouees": []
+    },
+    "2136": {
+      "id": 2136,
+      "titre": "👩‍🏫 HTML - Chapitre 7 | Les formulaires",
+      "theme": "HTML",
+      "dossier": "html/007-html-chapitre-7-les-formulaires",
+      "urlOrigine": "https://odyssey.wildcodeschool.com/quests/2136",
+      "archiveLe": "2026-09-02T23:22:13.964Z",
+      "statut": "partiel",
+      "nbImages": 13,
+      "imagesEchouees": [
+        {
+          "url": "https://placekitten.com/200/287",
+          "erreur": "HTTP 521"
+        }
+      ]
+    },
+    "2138": {
+      "id": 2138,
+      "titre": "Git/GitHub 3 : Remote",
+      "theme": "Git",
+      "dossier": "git/003-git-github-3-remote",
+      "urlOrigine": "https://odyssey.wildcodeschool.com/quests/2138",
+      "archiveLe": "2026-09-02T20:53:23.668Z",
+      "statut": "ok",
+      "nbImages": 2,
+      "imagesEchouees": []
+    },
+    "2140": {
+      "id": 2140,
+      "titre": "👩‍🏫 HTML - Chapitre 8 | Les tableaux",
+      "theme": "HTML",
+      "dossier": "html/008-html-chapitre-8-les-tableaux",
+      "urlOrigine": "https://odyssey.wildcodeschool.com/quests/2140",
+      "archiveLe": "2026-09-02T23:22:15.221Z",
+      "statut": "partiel",
+      "nbImages": 0,
+      "imagesEchouees": [
+        {
+          "url": "/photos/lucky.jpeg",
+          "erreur": "Failed to parse URL from /photos/lucky.jpeg"
+        },
+        {
+          "url": "/photos/symba.jpeg",
+          "erreur": "Failed to parse URL from /photos/symba.jpeg"
+        }
+      ]
+    },
+    "2148": {
+      "id": 2148,
+      "titre": "Tes interlocuteurs",
+      "theme": "Onboarding students",
+      "dossier": "onboarding-students/006-tes-interlocuteurs",
+      "urlOrigine": "https://odyssey.wildcodeschool.com/quests/2148",
+      "archiveLe": "2026-09-02T20:53:38.953Z",
+      "statut": "ok",
+      "nbImages": 1,
+      "imagesEchouees": []
+    },
+    "2149": {
+      "id": 2149,
+      "titre": "La Culture et les Valeurs",
+      "theme": "Onboarding students",
+      "dossier": "onboarding-students/001-la-culture-et-les-valeurs",
+      "urlOrigine": "https://odyssey.wildcodeschool.com/quests/2149",
+      "archiveLe": "2026-09-02T20:53:31.987Z",
+      "statut": "ok",
+      "nbImages": 0,
+      "imagesEchouees": []
+    },
+    "2152": {
+      "id": 2152,
+      "titre": "Les règles de fonctionnement",
+      "theme": "Onboarding students",
+      "dossier": "onboarding-students/003-les-regles-de-fonctionnement",
+      "urlOrigine": "https://odyssey.wildcodeschool.com/quests/2152",
+      "archiveLe": "2026-09-02T20:53:34.967Z",
+      "statut": "ok",
+      "nbImages": 2,
+      "imagesEchouees": []
+    },
+    "2153": {
+      "id": 2153,
+      "titre": "Les outils",
+      "theme": "Onboarding students",
+      "dossier": "onboarding-students/002-les-outils",
+      "urlOrigine": "https://odyssey.wildcodeschool.com/quests/2153",
+      "archiveLe": "2026-09-02T20:53:34.132Z",
+      "statut": "ok",
+      "nbImages": 1,
+      "imagesEchouees": []
+    },
+    "2166": {
+      "id": 2166,
+      "titre": "Préparation technique",
+      "theme": "Onboarding students",
+      "dossier": "onboarding-students/005-preparation-technique",
+      "urlOrigine": "https://odyssey.wildcodeschool.com/quests/2166",
+      "archiveLe": "2026-09-02T20:53:37.054Z",
+      "statut": "ok",
+      "nbImages": 0,
+      "imagesEchouees": []
+    },
+    "2239": {
+      "id": 2239,
+      "titre": "POO1 - Introduction à la Programmation Orientée Objet",
+      "theme": "PHP Orienté Objet",
+      "dossier": "php-oriente-objet/001-poo1-introduction-a-la-programmation-orientee-objet",
+      "urlOrigine": "https://odyssey.wildcodeschool.com/quests/2239",
+      "archiveLe": "2026-09-02T20:53:45.237Z",
+      "statut": "ok",
+      "nbImages": 1,
+      "imagesEchouees": []
+    },
+    "2241": {
+      "id": 2241,
+      "titre": "POO2 - Les propriétés",
+      "theme": "PHP Orienté Objet",
+      "dossier": "php-oriente-objet/003-poo2-les-proprietes",
+      "urlOrigine": "https://odyssey.wildcodeschool.com/quests/2241",
+      "archiveLe": "2026-09-02T20:53:47.500Z",
+      "statut": "ok",
+      "nbImages": 0,
+      "imagesEchouees": []
+    },
+    "2249": {
+      "id": 2249,
+      "titre": "POO3 - Les méthodes",
+      "theme": "PHP Orienté Objet",
+      "dossier": "php-oriente-objet/004-poo3-les-methodes",
+      "urlOrigine": "https://odyssey.wildcodeschool.com/quests/2249",
+      "archiveLe": "2026-09-02T20:53:49.757Z",
+      "statut": "ok",
+      "nbImages": 2,
+      "imagesEchouees": []
+    },
+    "2258": {
+      "id": 2258,
+      "titre": "POO4 - Constructeur et visibilité",
+      "theme": "PHP Orienté Objet",
+      "dossier": "php-oriente-objet/005-poo4-constructeur-et-visibilite",
+      "urlOrigine": "https://odyssey.wildcodeschool.com/quests/2258",
+      "archiveLe": "2026-09-02T20:53:51.799Z",
+      "statut": "ok",
+      "nbImages": 2,
+      "imagesEchouees": []
+    },
+    "2265": {
+      "id": 2265,
+      "titre": "POO5 - Les constantes de classe",
+      "theme": "PHP Orienté Objet",
+      "dossier": "php-oriente-objet/006-poo5-les-constantes-de-classe",
+      "urlOrigine": "https://odyssey.wildcodeschool.com/quests/2265",
+      "archiveLe": "2026-09-02T20:53:52.601Z",
+      "statut": "ok",
+      "nbImages": 2,
+      "imagesEchouees": []
+    },
+    "2295": {
+      "id": 2295,
+      "titre": "POO6 - Intéraction entre objets",
+      "theme": "PHP Orienté Objet",
+      "dossier": "php-oriente-objet/007-poo6-interaction-entre-objets",
+      "urlOrigine": "https://odyssey.wildcodeschool.com/quests/2295",
+      "archiveLe": "2026-09-02T20:53:53.339Z",
+      "statut": "ok",
+      "nbImages": 1,
+      "imagesEchouees": []
+    },
+    "2309": {
+      "id": 2309,
+      "titre": "POO7 - Héritage",
+      "theme": "PHP Orienté Objet",
+      "dossier": "php-oriente-objet/008-poo7-heritage",
+      "urlOrigine": "https://odyssey.wildcodeschool.com/quests/2309",
+      "archiveLe": "2026-09-02T20:53:54.138Z",
+      "statut": "ok",
+      "nbImages": 2,
+      "imagesEchouees": []
+    },
+    "2328": {
+      "id": 2328,
+      "titre": "👩‍🏫 React Basics 01 - Pokédex - Introduction",
+      "theme": "React - Bases",
+      "dossier": "react-bases/001-react-basics-01-pokedex-introduction",
+      "urlOrigine": "https://odyssey.wildcodeschool.com/quests/2328",
+      "archiveLe": "2026-09-02T20:55:02.373Z",
+      "statut": "ok",
+      "nbImages": 2,
+      "imagesEchouees": []
+    },
+    "2332": {
+      "id": 2332,
+      "titre": "👩‍🏫 React Basics 02 - Pokédex - Ton premier composant",
+      "theme": "React - Bases",
+      "dossier": "react-bases/002-react-basics-02-pokedex-ton-premier-composant",
+      "urlOrigine": "https://odyssey.wildcodeschool.com/quests/2332",
+      "archiveLe": "2026-09-02T20:55:03.323Z",
+      "statut": "ok",
+      "nbImages": 3,
+      "imagesEchouees": []
+    },
+    "2333": {
+      "id": 2333,
+      "titre": "Concevoir des prototypes",
+      "theme": "UI Design",
+      "dossier": "ui-design/002-concevoir-des-prototypes",
+      "urlOrigine": "https://odyssey.wildcodeschool.com/quests/2333",
+      "archiveLe": "2026-09-02T20:53:14.260Z",
+      "statut": "ok",
+      "nbImages": 5,
+      "imagesEchouees": []
+    },
+    "2336": {
+      "id": 2336,
+      "titre": "👩‍🏫 React Basics 03 - Pokédex - Afficher des données dans un composant",
+      "theme": "React - Bases",
+      "dossier": "react-bases/003-react-basics-03-pokedex-afficher-des-donnees-dans-un",
+      "urlOrigine": "https://odyssey.wildcodeschool.com/quests/2336",
+      "archiveLe": "2026-09-02T20:55:04.153Z",
+      "statut": "ok",
+      "nbImages": 2,
+      "imagesEchouees": []
+    },
+    "2354": {
+      "id": 2354,
+      "titre": "POO8 - Exceptions",
+      "theme": "PHP Orienté Objet",
+      "dossier": "php-oriente-objet/009-poo8-exceptions",
+      "urlOrigine": "https://odyssey.wildcodeschool.com/quests/2354",
+      "archiveLe": "2026-09-02T23:22:04.031Z",
+      "statut": "partiel",
+      "nbImages": 0,
+      "imagesEchouees": [
+        {
+          "url": "http://solution.com",
+          "erreur": "fetch failed"
+        },
+        {
+          "url": "https://i.stack.imgur.com/qlTsJ.png",
+          "erreur": "HTTP 403"
+        }
+      ]
+    },
+    "2374": {
+      "id": 2374,
+      "titre": "👩‍🏫 React Basics 04 - Pokédex - Passer des props",
+      "theme": "React - Bases",
+      "dossier": "react-bases/004-react-basics-04-pokedex-passer-des-props",
+      "urlOrigine": "https://odyssey.wildcodeschool.com/quests/2374",
+      "archiveLe": "2026-09-02T20:55:05.022Z",
+      "statut": "ok",
+      "nbImages": 2,
+      "imagesEchouees": []
+    },
+    "2375": {
+      "id": 2375,
+      "titre": "👩‍🏫 React Basics 05 - Pokédex - Typer les props avec TypeScript",
+      "theme": "React - Bases",
+      "dossier": "react-bases/005-react-basics-05-pokedex-typer-les-props-avec-typescript",
+      "urlOrigine": "https://odyssey.wildcodeschool.com/quests/2375",
+      "archiveLe": "2026-09-02T20:55:06.120Z",
+      "statut": "ok",
+      "nbImages": 2,
+      "imagesEchouees": []
+    },
+    "2376": {
+      "id": 2376,
+      "titre": "👩‍🏫 React Basics 06 - Pokédex - Utiliser un state",
+      "theme": "React - Bases",
+      "dossier": "react-bases/006-react-basics-06-pokedex-utiliser-un-state",
+      "urlOrigine": "https://odyssey.wildcodeschool.com/quests/2376",
+      "archiveLe": "2026-09-02T20:55:06.939Z",
+      "statut": "ok",
+      "nbImages": 1,
+      "imagesEchouees": []
+    },
+    "2377": {
+      "id": 2377,
+      "titre": "👩‍🏫 React Basics 09 - Pokédex - Partager un state",
+      "theme": "React - Bases",
+      "dossier": "react-bases/009-react-basics-09-pokedex-partager-un-state",
+      "urlOrigine": "https://odyssey.wildcodeschool.com/quests/2377",
+      "archiveLe": "2026-09-02T20:55:09.521Z",
+      "statut": "ok",
+      "nbImages": 3,
+      "imagesEchouees": []
+    },
+    "2378": {
+      "id": 2378,
+      "titre": "👩‍🏫 React Basics 07 - Pokédex - Répéter un bloc d'affichage avec map",
+      "theme": "React - Bases",
+      "dossier": "react-bases/007-react-basics-07-pokedex-repeter-un-bloc-d-affichage-avec-map",
+      "urlOrigine": "https://odyssey.wildcodeschool.com/quests/2378",
+      "archiveLe": "2026-09-02T20:55:07.738Z",
+      "statut": "ok",
+      "nbImages": 2,
+      "imagesEchouees": []
+    },
+    "2381": {
+      "id": 2381,
+      "titre": "👩‍🏫 React Basics 10 - Pokédex - Aller plus loin avec les événements",
+      "theme": "React - Bases",
+      "dossier": "react-bases/010-react-basics-10-pokedex-aller-plus-loin-avec-les-evenements",
+      "urlOrigine": "https://odyssey.wildcodeschool.com/quests/2381",
+      "archiveLe": "2026-09-02T20:55:10.205Z",
+      "statut": "ok",
+      "nbImages": 1,
+      "imagesEchouees": []
+    },
+    "2395": {
+      "id": 2395,
+      "titre": "POO9 - Abstraction",
+      "theme": "PHP Orienté Objet",
+      "dossier": "php-oriente-objet/010-poo9-abstraction",
+      "urlOrigine": "https://odyssey.wildcodeschool.com/quests/2395",
+      "archiveLe": "2026-09-02T20:53:56.952Z",
+      "statut": "ok",
+      "nbImages": 4,
+      "imagesEchouees": []
+    },
+    "2427": {
+      "id": 2427,
+      "titre": "👩‍🏫 CSS 2 : Inspecteur",
+      "theme": "CSS",
+      "dossier": "css/002-css-2-inspecteur",
+      "urlOrigine": "https://odyssey.wildcodeschool.com/quests/2427",
+      "archiveLe": "2026-09-02T20:52:42.050Z",
+      "statut": "ok",
+      "nbImages": 2,
+      "imagesEchouees": []
+    },
+    "2456": {
+      "id": 2456,
+      "titre": "POO10 - Interfaces",
+      "theme": "PHP Orienté Objet",
+      "dossier": "php-oriente-objet/002-poo10-interfaces",
+      "urlOrigine": "https://odyssey.wildcodeschool.com/quests/2456",
+      "archiveLe": "2026-09-02T20:53:46.969Z",
+      "statut": "ok",
+      "nbImages": 4,
+      "imagesEchouees": []
+    },
+    "2472": {
+      "id": 2472,
+      "titre": "00 - Installer MySQL",
+      "theme": "Base de données",
+      "dossier": "base-de-donnees/001-00-installer-mysql",
+      "urlOrigine": "https://odyssey.wildcodeschool.com/quests/2472",
+      "archiveLe": "2026-09-02T20:47:19.936Z",
+      "statut": "ok",
+      "nbImages": 15,
+      "imagesEchouees": []
+    },
+    "2726": {
+      "id": 2726,
+      "titre": "👩‍🏫 Les composants d'interface utilisateur",
+      "theme": "UI Design",
+      "dossier": "ui-design/001-les-composants-d-interface-utilisateur",
+      "urlOrigine": "https://odyssey.wildcodeschool.com/quests/2726",
+      "archiveLe": "2026-09-02T23:21:57.368Z",
+      "statut": "partiel",
+      "nbImages": 14,
+      "imagesEchouees": [
+        {
+          "url": "https://dpbnri2zg3lc2.cloudfront.net/en/wp-content/uploads/old-blog-uploads/click-element.gif",
+          "erreur": "fetch failed"
+        },
+        {
+          "url": "https://dpbnri2zg3lc2.cloudfront.net/en/wp-content/uploads/old-blog-uploads/date-picker-ui-element.gif",
+          "erreur": "fetch failed"
+        },
+        {
+          "url": "https://dpbnri2zg3lc2.cloudfront.net/en/wp-content/uploads/old-blog-uploads/icon-buttons-ui-elements.png",
+          "erreur": "fetch failed"
+        },
+        {
+          "url": "https://dpbnri2zg3lc2.cloudfront.net/en/wp-content/uploads/old-blog-uploads/breadcrumb-ui-element.png",
+          "erreur": "fetch failed"
+        },
+        {
+          "url": "https://dpbnri2zg3lc2.cloudfront.net/en/wp-content/uploads/old-blog-uploads/tab-bar-ui-element.gif",
+          "erreur": "fetch failed"
+        },
+        {
+          "url": "https://media.web.userguiding.com/uploads/2022/02/22011344/good-tooltip-example.jpeg",
+          "erreur": "fetch failed"
+        },
+        {
+          "url": "https://dpbnri2zg3lc2.cloudfront.net/en/wp-content/uploads/old-blog-uploads/load-screen-ui-element.gif",
+          "erreur": "fetch failed"
+        },
+        {
+          "url": "https://dpbnri2zg3lc2.cloudfront.net/en/wp-content/uploads/old-blog-uploads/subscription-modal-ui-element.gif",
+          "erreur": "fetch failed"
+        },
+        {
+          "url": "https://dpbnri2zg3lc2.cloudfront.net/en/wp-content/uploads/old-blog-uploads/cards-ui-elements.png",
+          "erreur": "fetch failed"
+        },
+        {
+          "url": "https://atlassian.design/static/bd38931ff8e98d55d5f16895dc09e721/toggle.svg",
+          "erreur": "HTTP 404"
+        }
+      ]
+    },
+    "2933": {
+      "id": 2933,
+      "titre": "👩‍🏫 Express 101 : part of your symphony",
+      "theme": "Express.js",
+      "dossier": "express-js/001-express-101-part-of-your-symphony",
+      "urlOrigine": "https://odyssey.wildcodeschool.com/quests/2933",
+      "archiveLe": "2026-09-02T20:54:03.965Z",
+      "statut": "ok",
+      "nbImages": 3,
+      "imagesEchouees": []
+    },
+    "2943": {
+      "id": 2943,
+      "titre": "1 - Les formulaires en PHP : structure HTML",
+      "theme": "PHP Avancé",
+      "dossier": "php-avance/001-1-les-formulaires-en-php-structure-html",
+      "urlOrigine": "https://odyssey.wildcodeschool.com/quests/2943",
+      "archiveLe": "2026-09-02T20:52:01.780Z",
+      "statut": "ok",
+      "nbImages": 1,
+      "imagesEchouees": []
+    },
+    "2945": {
+      "id": 2945,
+      "titre": "2 - Les formulaires en PHP : récupération des données",
+      "theme": "PHP Avancé",
+      "dossier": "php-avance/002-2-les-formulaires-en-php-recuperation-des-donnees",
+      "urlOrigine": "https://odyssey.wildcodeschool.com/quests/2945",
+      "archiveLe": "2026-09-02T20:52:02.562Z",
+      "statut": "ok",
+      "nbImages": 2,
+      "imagesEchouees": []
+    },
+    "2946": {
+      "id": 2946,
+      "titre": "3 - Les formulaires en PHP : Vérification et sécurisation des données",
+      "theme": "PHP Avancé",
+      "dossier": "php-avance/003-3-les-formulaires-en-php-verification-et-securisation-des",
+      "urlOrigine": "https://odyssey.wildcodeschool.com/quests/2946",
+      "archiveLe": "2026-09-02T20:52:03.345Z",
+      "statut": "ok",
+      "nbImages": 3,
+      "imagesEchouees": []
+    },
+    "2985": {
+      "id": 2985,
+      "titre": "Intégration de PHP et HTML",
+      "theme": "PHP",
+      "dossier": "php/014-integration-de-php-et-html",
+      "urlOrigine": "https://odyssey.wildcodeschool.com/quests/2985",
+      "archiveLe": "2026-09-02T20:52:38.923Z",
+      "statut": "ok",
+      "nbImages": 0,
+      "imagesEchouees": []
+    },
+    "2999": {
+      "id": 2999,
+      "titre": "HTML & CSS 1 : Bienvenue à bord",
+      "theme": "Développement Web",
+      "dossier": "developpement-web/003-html-css-1-bienvenue-a-bord",
+      "urlOrigine": "https://odyssey.wildcodeschool.com/quests/2999",
+      "archiveLe": "2026-09-02T23:21:48.695Z",
+      "statut": "partiel",
+      "nbImages": 2,
+      "imagesEchouees": [
+        {
+          "url": "https://fakeimg.pl/200x200/?text=logo.svg",
+          "erreur": "HTTP 403"
+        },
+        {
+          "url": "https://fakeimg.pl/800x800/?text=avatar.png",
+          "erreur": "HTTP 403"
+        },
+        {
+          "url": "https://fakeimg.pl/800x533/?text=responsive.png",
+          "erreur": "HTTP 403"
+        },
+        {
+          "url": "https://fakeimg.pl/800x800/?text=scalable.png",
+          "erreur": "HTTP 403"
+        },
+        {
+          "url": "https://fakeimg.pl/800x590/?text=inclusive.png",
+          "erreur": "HTTP 403"
+        }
+      ]
+    },
+    "3011": {
+      "id": 3011,
+      "titre": "Les formulaires en PHP : Prendre contact",
+      "theme": "PHP Avancé",
+      "dossier": "php-avance/007-les-formulaires-en-php-prendre-contact",
+      "urlOrigine": "https://odyssey.wildcodeschool.com/quests/3011",
+      "archiveLe": "2026-09-02T20:52:07.967Z",
+      "statut": "ok",
+      "nbImages": 2,
+      "imagesEchouees": []
+    },
+    "3042": {
+      "id": 3042,
+      "titre": "Utiliser GitHub",
+      "theme": "Git",
+      "dossier": "git/006-utiliser-github",
+      "urlOrigine": "https://odyssey.wildcodeschool.com/quests/3042",
+      "archiveLe": "2026-09-02T20:53:27.924Z",
+      "statut": "ok",
+      "nbImages": 3,
+      "imagesEchouees": []
+    }
+  },
+  "replays": {
+    "releveLe": "2026-09-02T23:22:17.720Z",
+    "total": 125,
+    "telecharges": {}
+  }
+}

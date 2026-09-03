@@ -1,0 +1,156 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>👩‍🏫 JS Intermédiaire 02bis -Tableaux : d'autres méthodes fonctionnelles — Archives WCS</title>
+<link rel="stylesheet" href="../../assets/style.css">
+</head>
+<body style="--teinte:#854200">
+<header class="entete">
+  <a class="entete__marque" href="../../index.html">Archives Wild Code School</a>
+</header>
+<main class="contenu">
+<nav class="ariane"><a href="../../index.html">Accueil</a><span class="ariane__sep">›</span><a href="../../javascript-beyond-the-basics/index.html">JavaScript - Beyond the Basics</a><span class="ariane__sep">›</span><span aria-current="page">👩‍🏫 JS Intermédiaire 02bis -Tableaux : d'autres méthodes fonctionnelles</span></nav>
+
+<article class="quete">
+  <header class="quete__entete">
+    <a class="pastille pastille--teintee" href="../../javascript-beyond-the-basics/index.html">JavaScript - Beyond the Basics</a>
+    <h1>👩‍🏫 JS Intermédiaire 02bis -Tableaux : d'autres méthodes fonctionnelles</h1>
+    <p class="quete__meta">Quête 5 sur 8 · 1 image archivée</p>
+  </header>
+  <div class="cours">
+<h6>⚠️ Avant de commencer cette quête, tu dois avoir terminé la quête suivante :</h6>
+<div class="renvois"><div class="renvois__titre">Quêtes liées</div><ul><li><a href="../../javascript-beyond-the-basics/004-js-intermediaire-02-tableaux-methodes-fonctionnelles/index.html">Quête 1589</a></li></ul></div>
+<h1>Introduction</h1>
+<p>Cette quête rajoute quelques méthodes couramment utilisées sur les tableaux à ton arsenal .</p>
+<h1>🤓 <strong>À la fin de cette quête, tu comprendras:</strong></h1>
+<p>✅ Comment utiliser <strong><code>every</code></strong> pour vérifier si toutes les valeurs d'un tableau répondent à une condition
+✅ Comment utiliser <strong><code>some</code></strong> pour vérifier si au moins une des valeurs d'un tableau répond à une condition
+✅ Comment réduire (<strong><code>reduce</code></strong>) un tableau pour obtenir une valeur unique</p>
+<hr>
+<h2>Every</h2>
+<p>La méthode <code>every</code> vérifie si tous les éléments d'un tableau répondent à une condition. Le résultat de la méthode <code>every</code> est un booléen.</p>
+<p>Ex : Nous voulons tester si tous les éléments sont supérieurs à 10 :</p>
+<div class="bloc-code"><div class="bloc-code__langue">javascript</div><pre><code class="hljs language-javascript"><span class="hljs-keyword">const</span> myArray = [<span class="hljs-number">11</span>, <span class="hljs-number">34</span>, <span class="hljs-number">54</span>, <span class="hljs-number">32</span>, <span class="hljs-number">54</span>];
+<span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(myArray.<span class="hljs-title function_">every</span>(<span class="hljs-function"><span class="hljs-params">element</span> =&gt;</span> element &gt; <span class="hljs-number">10</span>));
+<span class="hljs-comment">// true </span>
+</code></pre></div>
+<h3>🔬 Expérience</h3>
+<p>Mettre en place la fonction <code>checkIfAdult</code> qui doit vérifier si tous les membres d'une équipe sont des adultes (leur âge doit être supérieur à 18 ans)</p>
+<div class="bloc-code"><div class="bloc-code__langue">codesandbox</div><pre><code class="hljs language-codesandbox">https://codesandbox.io/s/ex-every-ycv4o
+</code></pre></div>
+<div class="bloc-code"><div class="bloc-code__langue">hidden</div><pre><code class="hljs language-hidden">Montrer la solution|||javascript|||Problèmes pour trouver la solution ? |||0|||Cacher
+function checkIfAdult(array) {
+  if (array.every((element) =&gt; element.age &gt; 18)) {
+    console.log(&quot;All the players have the required age to play&quot;);
+  } else {
+    console.log(&quot;At least one of the team player doesn't have the minimum age&quot;);
+  }
+}
+</code></pre></div>
+<h2>Some</h2>
+<p><code>some</code> est très similaire à <code>every</code>, excepté qu'il suffit d'un élément du tableau vérifiant la condition pour que cette méthode renvoie <code>true</code>.</p>
+<p>Ex : Nous voulons tester si au moins un des éléments est supérieur à 30 :</p>
+<div class="bloc-code"><div class="bloc-code__langue">javascript</div><pre><code class="hljs language-javascript"><span class="hljs-keyword">const</span> myArray = [<span class="hljs-number">11</span>, <span class="hljs-number">34</span>, <span class="hljs-number">54</span>, <span class="hljs-number">32</span>, <span class="hljs-number">54</span>];
+<span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(myArray.<span class="hljs-title function_">some</span>(<span class="hljs-function"><span class="hljs-params">element</span> =&gt;</span> element &gt; <span class="hljs-number">30</span>)); <span class="hljs-comment">// true </span>
+</code></pre></div>
+<h2>Reduce</h2>
+<p>La méthode <code>reduce</code> réduira le tableau à une seule valeur.</p>
+<p>Ex : Nous avons un tableau de nombres et nous voulons connaître la somme de tous les nombres</p>
+<div class="bloc-code"><div class="bloc-code__langue">javascript</div><pre><code class="hljs language-javascript"><span class="hljs-keyword">const</span> myArray = [<span class="hljs-number">13</span>, <span class="hljs-number">200</span>, <span class="hljs-number">404</span>, <span class="hljs-number">430</span>, <span class="hljs-number">10</span>];
+<span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(myArray.<span class="hljs-title function_">reduce</span>(<span class="hljs-function">(<span class="hljs-params">acc, currentValue</span>) =&gt;</span> acc + currentValue));
+<span class="hljs-comment">// 1057</span>
+</code></pre></div>
+<p>Le premier argument donné à la méthode <code>reduce</code> est une fonction de rappel qui sera exécutée pour tous les elements du tableau (par défaut à partir du 2ème).
+Cette fonction sera rappelée par reduce avec les arguments suivants :</p>
+<ul>
+<li><strong>L'accumulateur</strong> : c'est le résultat de toutes les opérations précédentes. Dans notre cas, l'accumulateur commence avec la valeur du premier élément dans le tableau.</li>
+<li><strong>La valeur de l'element actuellement parcouru dans le tableau</strong>, qui sera égale à 200 au premier tour de la boucle, puis 404, puis 430, et ainsi de suite...</li>
+</ul>
+<p>Cette fonction de rappel retourne la valeur de l'accumulateur pour l'itération suivante.
+La méthode <code>reduce</code> quand à elle retournera la valeur finale de l'accumulateur une fois les éléments parcourus.</p>
+<p>Voyons ce qui se passe en détail :</p>
+<div class="bloc-code"><div class="bloc-code__langue">javascript</div><pre><code class="hljs language-javascript"><span class="hljs-comment">/*
+  Premier tour : acc = 13, currentValue = 200. acc + currentValue = 213. L&#x27;accumulateur est maintenant à 213. 
+  Deuxième tour : acc : 213, currentValue = 404. acc + currentValue = 617. L&#x27;accumulateur est maintenant à 617.
+  Troisième tour : acc : 617, currentValue = 430. acc + currentValue = 1047. L&#x27;accumulateur est maintenant à 1047.
+  Quatrième tour : acc : 1047, currentValue = 10. acc + currentValue = 1057. L&#x27;accumulateur est maintenant à 1057.
+
+  Renverra le résultat final : 1057. 
+*/</span>
+</code></pre></div>
+<p>Cette méthode peut être un peu difficile à comprendre au début. Ne t'inquiète pas et laisse toi le temps de la pratiquer.</p>
+<h4>Préciser une valeur de départ</h4>
+<p>Tu peux spécifier une valeur départ comme deuxième argument de la méthode <code>reduce</code>. Par exemple, si je veux que mon accumulateur commence à 100 :</p>
+<div class="bloc-code"><div class="bloc-code__langue">javascript</div><pre><code class="hljs language-javascript"><span class="hljs-keyword">const</span> myArray = [<span class="hljs-number">13</span>, <span class="hljs-number">200</span>, <span class="hljs-number">404</span>, <span class="hljs-number">430</span>, <span class="hljs-number">10</span>];
+<span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(myArray.<span class="hljs-title function_">reduce</span>(<span class="hljs-function">(<span class="hljs-params">acc, currentValue</span>) =&gt;</span> acc + currentValue, <span class="hljs-number">100</span>));
+<span class="hljs-comment">// 1157</span>
+</code></pre></div>
+<h3>🔬 Expérience</h3>
+<p>Utilise la méthode <code>reduce</code> pour trouver le prix total de ce panier.</p>
+<p>Conseil : pour que cela fonctionne, tu devras faire en sorte que la réduction commence à 0, sinon le premier élément sera un objet et non le prix.</p>
+<div class="bloc-code"><div class="bloc-code__langue">codesandbox</div><pre><code class="hljs language-codesandbox">https://codesandbox.io/s/ex-reduce-oizpf
+</code></pre></div>
+<div class="bloc-code"><div class="bloc-code__langue">hidden</div><pre><code class="hljs language-hidden">Montrer la solution|||javascript|||Problèmes pour trouver la solution ? |||0|||Cacher
+const result = cart.reduce((acc, currentValue) =&gt; {
+  console.log(currentValue);
+  return acc + currentValue.price;
+}, 0);
+console.log(result);
+</code></pre></div>
+<hr>
+<h1>☝️En résumé</h1>
+<p>Les tableaux ont de nombreuses méthodes que tu peux utiliser afin de les manipuler</p>
+<p>Une image valant 1000 mots :</p>
+<p><img src="images/001-image.png" alt="image" loading="lazy"></p>
+<h1>💪 Défi</h1>
+<p>Tu as donc l'impression de tout savoir sur les tableaux ?</p>
+<p>Ici, tu as un défi à relever pour le prouver !</p>
+<p>Ces 2 exercices sont destinés à tester les nouvelles méthodes que tu as apprises sur les tableaux, alors garde-les à l'esprit pour les résoudre.</p>
+<h1>🏁 Exercice</h1>
+<h3>PARTIE 1</h3>
+<p>Étant donné un tableau avec différents objets à l'intérieur, représentant des profils d'instructeurs (nom, disponibilité, spécialités), tu dois créer un <strong>nouveau tableau</strong> qui contient <strong>seulement</strong> les instructeurs qui connaissent Javascript et qui sont disponibles le week-end.</p>
+<p>Si leur disponibilité est <code>all</code>, cela signifie qu'ils sont également disponibles le week-end, il faut donc les inclure aussi.</p>
+<h3>PARTIE 2</h3>
+<p>Utilise ce nouveau tableau d'instructeurs disponibles et affiche un message par instructeur disant</p>
+<p><code>Hi nameOfInstructor, we inform you that this weekend you will be doing the support class</code></p>
+<h3>PARTIE 3</h3>
+<p>Modifie le message précédent en vérifiant que si un instructeur connaît aussi Python, le message doit être :</p>
+<p><code>Hi nameOfInstructor, we inform you that this weekend you will be doing the support class and you need to prepare a Python workshop</code></p>
+<p>Fork ce repl.it et poste le lien quand tu as fini comme solution à ce défi.</p>
+<div class="bloc-code"><div class="bloc-code__langue">replit</div><pre><code class="hljs language-replit">https://repl.it/@WildCodeSchool/JavaScript-Exercises-Advanced-Arrays
+</code></pre></div>
+<h1>🧐 Critères d'acceptation</h1>
+<ul>
+<li>[ ] Tous les exercices sont faits correctement</li>
+</ul>
+
+  </div>
+  <section class="ressources-quete">
+  <h2>Ressources partagées sur cette quête</h2>
+  <ul class="ressources-liste">
+    <li><a href="https://www.youtube.com/watch?v=Bp1fnysQkh0&amp;ab_channel=BenBK" target="_blank" rel="noopener noreferrer">En live ca aide Tuto [Fr]</a><span class="ressources-liste__url">https://www.youtube.com/watch?v=Bp1fnysQkh0&amp;ab_channel=BenBK</span></li>
+  </ul>
+</section>
+</article>
+
+<nav class="nav-quete">
+  <a class="nav-quete__lien nav-quete__lien--prec" href="../../javascript-beyond-the-basics/004-js-intermediaire-02-tableaux-methodes-fonctionnelles/index.html">
+           <span class="nav-quete__sens">← Précédent</span>
+           <span class="nav-quete__titre">👩‍🏫 JS Intermédiaire 02 - Tableaux : méthodes fonctionnelles</span>
+         </a>
+  <a class="nav-quete__lien nav-quete__lien--suiv" href="../../javascript-beyond-the-basics/006-js-intermediaire-03-affectation-par-decomposition/index.html">
+           <span class="nav-quete__sens">Suivant →</span>
+           <span class="nav-quete__titre">👩‍🏫 JS Intermédiaire 03 - Affectation par décomposition</span>
+         </a>
+</nav>
+</main>
+<footer class="pied">
+  <p>Archive personnelle des cours suivis à la Wild Code School. Copie hors ligne à usage strictement privé.</p>
+</footer>
+
+<script src="../../assets/copie-code.js"></script>
+<script src="../../assets/progression.js"></script>
+</body>
+</html>

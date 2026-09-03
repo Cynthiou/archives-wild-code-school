@@ -1,0 +1,174 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>👩‍🏫 Les composants d'interface utilisateur — Archives WCS</title>
+<link rel="stylesheet" href="../../assets/style.css">
+</head>
+<body style="--teinte:#0b7771">
+<header class="entete">
+  <a class="entete__marque" href="../../index.html">Archives Wild Code School</a>
+</header>
+<main class="contenu">
+<nav class="ariane"><a href="../../index.html">Accueil</a><span class="ariane__sep">›</span><a href="../../ui-design/index.html">UI Design</a><span class="ariane__sep">›</span><span aria-current="page">👩‍🏫 Les composants d'interface utilisateur</span></nav>
+
+<article class="quete">
+  <header class="quete__entete">
+    <a class="pastille pastille--teintee" href="../../ui-design/index.html">UI Design</a>
+    <h1>👩‍🏫 Les composants d'interface utilisateur</h1>
+    <p class="quete__meta">Quête 1 sur 2 · 14 images archivées</p>
+  </header>
+  <div class="cours">
+<div class="bloc-code"><div class="bloc-code__langue">title</div><pre><code class="hljs language-title">Les composants de l’interface utilisateur, c’est quoi ?
+</code></pre></div>
+<p>Lorsque vous faites le design d’une interface, vous devez tout faire pour <strong>garder une cohérence et une logique dans vos choix</strong>. En tant qu’utilisateurs, nous nous sommes familiarisés avec certaines mécaniques. Par exemple, pour la plupart d’entre nous, nous savons qu’une icône d’avion en papier situé à proximité d’un champ de texte signifie qu’au clic/appui, nous enverrons le message saisi, et ce même sans qu’un libellé “envoyer” ne soit accolé.</p>
+<p>S’assurer de faciliter la vie de nos utilisateurs les aide ainsi à réaliser les actions avec <strong>plus d’efficience et de satisfaction</strong>.</p>
+<h4>🤓 A la fin de cette quête, tu sauras :</h4>
+<p>✅ ce que sont les composants d'interface utilisateur,
+✅ quels sont les principales catégories et types de composants,
+✅ comment et dans quel but les utiliser.</p>
+<hr>
+<h2>Les composants, ces briques de Lego 🧱</h2>
+<p>Les composants d’interface utilisateur correspondent à tous les éléments visuels que l’on pourrait “découper” dans une interface. Cela comprend, par exemple :</p>
+<ul>
+<li><strong>les inputs</strong>, ou éléments avec lesquels nous pourrons effectuer des actions et des choix : checkboxes, boutons radio, listes déroulantes, boutons, switch, champs textes, date pickers…</li>
+<li><strong>les icônes</strong>,</li>
+<li>les composants de <strong>navigation</strong> : menus burger &amp; co, fil d’ariane, carousels, champs de recherche, pagination, tags, tab bars/onglets, listes…</li>
+<li>les composants d’<strong>information</strong> : tooltips, loaders, barres de progression, notifications, pop-ups/fenêtres modales…</li>
+<li>les <strong>conteneurs</strong> : zones dépliables/accordéons, zones modulables, cartes…</li>
+</ul>
+<p>Et ces composants, on va les assembler comme des Legos. C’est cette construction qui donnera les écrans et pages de notre interface utilisateur, en suivant la charte graphique (ou plutôt, design system) établie.</p>
+<h3>Les inputs</h3>
+<h4>Checkboxes</h4>
+<p><img src="images/001-checkboxes.webp" alt="" loading="lazy"><em>Harry Burns</em></p>
+<p>Ces petites coches permettent, souvent dans un formulaire ou une liste, de <strong>sélectionner un ou plusieurs choix</strong> (ex : choix de filtres dans une recherche). Les checkboxes sont aussi utilisables pour des options booléennes de par leur fonction binaire (ex : accepter ou refuser des conditions)</p>
+<h4>Boutons radio</h4>
+<p><img src="images/002-boutons-radio.webp" alt="" loading="lazy"><em>Simon Lürwer</em></p>
+<p>Comme les checkboxes, les boutons radios souvent trouvés dans les formulaires permettent d’effectuer un choix. La grande différence, hormis leur affichage traditionnel en rond, est qu’ils offrent <strong>un choix UNIQUE entre plusieurs options</strong> (ex : couleur d’un article)</p>
+<h4>Boutons</h4>
+<p><img src="https://dpbnri2zg3lc2.cloudfront.net/en/wp-content/uploads/old-blog-uploads/click-element.gif" alt="" loading="lazy"><em>Gal Shir</em></p>
+<p>C’est l’un des fondamentaux de l’interface utilisateur. Le plus souvent accompagné d’un libellé d’action, d’une icône ou les deux, il propose à l’utilisateur la <strong>réalisation d’une action</strong> (envoyer un formulaire, valider une opération…)</p>
+<h4>Listes déroulantes</h4>
+<p><img src="images/004-listes-deroulantes.webp" alt="" loading="lazy">
+<em>Maaike Koolbergen</em></p>
+<p>Un encart, traditionnellement accompagné d’une petite flèche, qui au clic/appui offre <strong>une liste de choix qui se “déroule”</strong>.</p>
+<div class="encadre encadre--info"><div class="encadre__titre">Info</div><div class="encadre__corps"><p>Elles sont à utiliser avec précaution, car elles peuvent dégrader l’expérience utilisateur si elles sont mal exploitées. Par exemple, lorsque peu d’options sont disponibles, on pourra leur préférer des boutons radio. Moins de clics, toutes les options directement visibles…</p>
+<p>Pour aller plus loin, vous pouvez regarder la conférence &quot;You Know What? Fuck Dropdowns.&quot; : <a href="https://www.youtube.com/watch?v=hcYAHix-riY" target="_blank" rel="noopener noreferrer">https://www.youtube.com/watch?v=hcYAHix-riY</a></p>
+</div></div>
+<h4>Switches/toggle</h4>
+<p><img src="https://atlassian.design/static/bd38931ff8e98d55d5f16895dc09e721/toggle.svg" alt="" loading="lazy"><em>Atlassian</em></p>
+<p>Proches des checkboxes dans leur fonctionnement “on/off”, en termes d’expérience utilisateur ces petites barres coulissantes ne seront néanmoins pas utilisées pour faire des choix multiples mais plutôt à privilégier pour <strong>des choix d’activation/désactivation d’options</strong>.</p>
+<h4>Champs textes</h4>
+<p><img src="images/006-champs-textes.webp" alt="" loading="lazy"><em>Yaroslav Samoilov</em></p>
+<p>Rien de plus simple : <strong>une zone dédiée à la saisie de texte</strong>. Elle peut être en une ligne (input), en plusieurs (textarea), signifiée par un cadre, un fond … Simplistes, on s’assurera néanmoins de les soigner : <strong>un champ pour saisir un nombre à deux chiffres sera bien différent visuellement d’un champ pour envoyer un message privé</strong> !</p>
+<h4>Date/time pickers</h4>
+<p><img src="https://dpbnri2zg3lc2.cloudfront.net/en/wp-content/uploads/old-blog-uploads/date-picker-ui-element.gif" alt="" loading="lazy"><em>Edoardo Mercati</em></p>
+<p>Trouvable lorsque l’on doit choisir une date ou une heure dans une interface, on pourra les retrouver <strong>sous forme de petits calendriers</strong> en tooltip sur ordinateur ou <strong>en boîte modale</strong> sur smartphone.</p>
+<h3>Icônes</h3>
+<p><img src="images/008-icones.webp" alt="" loading="lazy"><em>Anton Klapko</em></p>
+<p>Ces <strong>illustrations simplifiées</strong> sont utilisables <strong>pour la navigation ou donner une information</strong>. Il est préférable de les penser en <strong>vectoriel</strong>, et qu’elles puissent être affichables <strong>en tout petit</strong>. Elles se doivent d’être explicites, représentatives de l’action ou de l’information pour aider l’utilisateur à se repérer et naviguer dans l’interface.</p>
+<p><img src="https://dpbnri2zg3lc2.cloudfront.net/en/wp-content/uploads/old-blog-uploads/icon-buttons-ui-elements.png" alt="" loading="lazy"><em>Eddie Lobanovskiy</em></p>
+<p>Elles peuvent être interactives dans un contexte de navigation/opérations ou simplement informatives (attention à ne pas perdre les utilisateurs entre les icônes interactives et informatives !)</p>
+<h3>Navigation</h3>
+<h4>Menus burger/bento/döner...</h4>
+<p><img src="images/010-menus-burger-bento-doner.webp" alt="" loading="lazy">
+<em>Alex Lockwood</em></p>
+<p>Est-ce en référence au &quot;menu&quot; que tous ont un petit nom de plat ? Sûrement ! Toujours est-il qu’on trouve dans cette catégorie un ensemble de pictogrammes de menus aux significations différentes :</p>
+<ul>
+<li>
+<p>Le <strong>menu hamburger</strong>, universel, souvent positionné en haut à gauche,  est un set de trois lignes indiquant qu’un menu liste est disponible au clic/appui.</p>
+</li>
+<li>
+<p>Le <strong>menu döner</strong>, composé de lignes se réduisant en tailles, est plutôt utiliser pour des systèmes de filtres.</p>
+</li>
+<li>
+<p>Le <strong>menu bento</strong>, quant à lui, représente souvent un menu dont les éléments sont disposés en forme de grille.</p>
+</li>
+<li>
+<p>Le <strong>menu kebab</strong> : les trois petits points représentant généralement que des options complémentaires sont disponibles pour la page/écran ou un de ses sous-éléments.</p>
+</li>
+</ul>
+<h4>Fil d’ariane</h4>
+<p><img src="https://dpbnri2zg3lc2.cloudfront.net/en/wp-content/uploads/old-blog-uploads/breadcrumb-ui-element.png" alt="" loading="lazy"><em>Sharon Olorunniwo</em></p>
+<p>Celui qu’on appelle “breadcrumb” en anglais : souvent représenté par une succession de liens entrecoupée par des chevrons, il permet à l’utilisateur <strong>de savoir où il en est dans un process</strong>, ou alors de lui indiquer les catégories/sous-catégories d’un produit par exemple, et lui offrir la possibilité de remonter dans ce fil.</p>
+<h4>Carrousels</h4>
+<p>Une <strong>succession d’encarts/images défilantes</strong> pouvant emmener directement vers des endroits clés d’un site, ou que l’on souhaite délibérément mettre en avant (exemple : une promotion, une news importante…).</p>
+<h4>Champs de recherche</h4>
+<p><img src="images/012-champs-de-recherche.webp" alt="" loading="lazy"><em>Jan Hoffman</em></p>
+<p><strong>Dérivés d’un champ texte</strong>, ils s’accompagnent souvent d’une petite loupe, et fréquemment d’un menu contextuel proposant rapidement des pages/écrans/résultats en lien avec la recherche (typiquement : Google !)</p>
+<h4>Pagination</h4>
+<p><img src="images/013-pagination.gif" alt="" loading="lazy"><em>Oleg Frolov</em></p>
+<p><strong>Liste de numéros ou de points en bas de pages</strong>, pouvant être accompagnées de raccourcis type “première page”, “dernière page”, ils sont utilisés souvent pour des affichages de listes de contenus : résultats de recherches, produits, actus…
+Niveau expérience utilisateur, on peut trouver l'alternative du <strong>“scroll infini”</strong>, chargeant automatiquement de nouveaux résultats lorsque l’on atteint le bas de page (YouTube).</p>
+<h4>Tags</h4>
+<p><img src="images/014-tags.png" alt="" loading="lazy"><em>Alex Zlatkus</em></p>
+<p>Ils permettent de trouver du contenu dans des <strong>thématiques liées par des mots-clés</strong>. Leur avantage est leur transversalité et la possibilité de les combiner : on peut sélectionner une catégorie comme une propriété et un mot-clé associé à un produit par exemple.
+Selon les contextes, on peut proposer la création de tags personnalisés à l’utilisateur.</p>
+<h4>Tab bars/onglets</h4>
+<p><img src="https://dpbnri2zg3lc2.cloudfront.net/en/wp-content/uploads/old-blog-uploads/tab-bar-ui-element.gif" alt="" loading="lazy"><em>Hoang Nguyen</em></p>
+<p>Contenant un certains nombre de raccourcis, elle permet aux utilisateurs de se <strong>déplacer rapidement entre les principales sections d’un système</strong> (souvent utilisée en bas des applications via de simples icônes)</p>
+<h4>Listes</h4>
+<p><img src="images/016-listes.webp" alt="" loading="lazy"><em>Emily Feng</em></p>
+<p>Une <strong>succession d’”items”</strong>, horizontale, verticale ou en grille, qui peut être organisée selon de nombreuses possibilités : alphabétique, numérique, chronologique, aléatoire…</p>
+<h3>Information</h3>
+<h4>Tooltips</h4>
+<p><img src="https://media.web.userguiding.com/uploads/2022/02/22011344/good-tooltip-example.jpeg" alt="" loading="lazy"></p>
+<p>Aussi appelées “Infobulles” en français, elles permettent d’afficher des <strong>conseils/infos complémentaires au survol</strong> d’un élément, voire parfois d’effectuer des actions contextuelles simples rapidement.</p>
+<h4>Loaders</h4>
+<p><img src="https://dpbnri2zg3lc2.cloudfront.net/en/wp-content/uploads/old-blog-uploads/load-screen-ui-element.gif" alt="" loading="lazy"><em>Kickass</em></p>
+<p>On retrouvera ici tous les composants permettant d’indiquer à l’utilisateur <strong>qu’un chargement de contenu/une opération est en cours</strong>, l’invitant à patienter : les traditionnels petits sabliers, barres de chargement… mais aussi des formes plus créatives, comme des animations, ou plus user-friendly, comme <strong>le &quot;skeleton screen&quot;</strong>, une structure squelette qui représente la disposition du futur contenu :</p>
+<p><img src="images/019-loaders.gif" alt="" loading="lazy"></p>
+<h4>Barres de progression</h4>
+<p><img src="images/020-barres-de-progression.webp" alt="" loading="lazy"></p>
+<p>Les barres de progression aident les utilisateurs à <strong>visualiser où ils en sont dans une série d'étapes</strong>. On en trouve par exemple lors des achats, marquant les différentes étapes qu'un utilisateur comme la facturation et l'expédition.</p>
+<h4>Notifications</h4>
+<p><img src="images/021-notifications.png" alt="" loading="lazy"></p>
+<p>Vous trouverez ces petits points partout sur les interfaces aujourd'hui, possiblement accompagnés de chiffres ou de glyphes. <strong>Ils informent facilement d’une nouveauté</strong> sans être sur l’écran concerné, ni passer par un moyen envahissant : message, erreur, réussite, actu…</p>
+<h4>Pop-up/fenêtre modale</h4>
+<p><img src="https://dpbnri2zg3lc2.cloudfront.net/en/wp-content/uploads/old-blog-uploads/subscription-modal-ui-element.gif" alt="" loading="lazy"><em>Joshua Krohn</em></p>
+<p>Une fenêtre modale est une petite fenêtre contenant du contenu ou un message <strong>qui va venir se superposer sur l’écran/page</strong>. Elle est souvent accompagnée d’un layout, un arrière-plan semi-opaque, pour recentrer l’attention sur elle le temps qu’elle soit refermée.
+Elle peut servir dans de nombreux cas : on la trouvera souvent pour confirmer une action sensible (ex : “Voulez-vous vraiment supprimer cet élément” ?)</p>
+<h3>Conteneurs</h3>
+<h4>Zones dépliables/accordéons</h4>
+<p><img src="images/023-zones-depliables-accordeons.webp" alt="" loading="lazy"><em>Louvrissime</em></p>
+<p>Les accordéons permettent aux utilisateurs de <strong>développer et de réduire des sections de contenu</strong>. Ils aident à naviguer rapidement dans entre les infos et permettent d'inclure de grandes quantités d'informations dans un espace limité.</p>
+<h4>Cartes</h4>
+<p><img src="https://dpbnri2zg3lc2.cloudfront.net/en/wp-content/uploads/old-blog-uploads/cards-ui-elements.png" alt="" loading="lazy"><em>Crank</em></p>
+<p>Les cartes, ou cards, sont de <strong>petits encarts rectangulaires ou carrés</strong> qui contiennent différents types d'informations, sous la forme de boutons, de texte, de médias... Les cartes agissent comme un point d'entrée pour l'utilisateur, affichant différents types de contenu côte à côte sur lesquels l'utilisateur peut ensuite cliquer. Les cartes sont un excellent choix de conception d'interface utilisateur si vous souhaitez utiliser intelligemment l'espace disponible et présenter à l'utilisateur plusieurs options de contenu, sans les faire défiler dans une liste traditionnelle.</p>
+<hr>
+<h2>En conclusion</h2>
+<p>Cette liste est loin d'être exhaustive : tout élément imbricable dans une interface est un composant !
+Pour aller plus loin, nombreux frameworks en lignes présentent leur librairie de composants :</p>
+<p><a href="https://m3.material.io/components" target="_blank" rel="noopener noreferrer">https://m3.material.io/components</a>
+<a href="https://ionicframework.com/docs/components" target="_blank" rel="noopener noreferrer">https://ionicframework.com/docs/components</a>
+<a href="https://atlassian.design/components/" target="_blank" rel="noopener noreferrer">https://atlassian.design/components/</a></p>
+<p>Des presets de composants sont aussi proposés sous de nombreux formats de template : Figma, Xd, voire même Illustrator...</p>
+<hr>
+<h2>☝️ Résumé</h2>
+<ul>
+<li>Les composants d'interface utilisateur <strong>sont des éléments &quot;sécables&quot; de l'interface</strong> que l'on assemble pour créer les pages/écrans.</li>
+<li>Il en existe <strong>de nombreux types</strong>, de nouveaux voient le jour régulièrement, et tous ont des fonctions différentes : permettre une action, naviguer, donner une information...</li>
+<li>On peut les rassembler dans des kits que l'on appellera des <strong>librairies de composants</strong>, utilisables à souhait pour homogénéiser les interfaces.</li>
+</ul>
+
+  </div>
+  
+</article>
+
+<nav class="nav-quete">
+  <span class="nav-quete__lien nav-quete__lien--vide"></span>
+  <a class="nav-quete__lien nav-quete__lien--suiv" href="../../ui-design/002-concevoir-des-prototypes/index.html">
+           <span class="nav-quete__sens">Suivant →</span>
+           <span class="nav-quete__titre">Concevoir des prototypes</span>
+         </a>
+</nav>
+</main>
+<footer class="pied">
+  <p>Archive personnelle des cours suivis à la Wild Code School. Copie hors ligne à usage strictement privé.</p>
+</footer>
+
+<script src="../../assets/copie-code.js"></script>
+<script src="../../assets/progression.js"></script>
+</body>
+</html>

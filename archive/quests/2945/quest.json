@@ -1,0 +1,28 @@
+{
+  "id": 2945,
+  "titre": "2 - Les formulaires en PHP : récupération des données",
+  "titres": {
+    "fr": "2 - Les formulaires en PHP : récupération des données"
+  },
+  "theme": {
+    "id": 7,
+    "slug": "php_adv",
+    "nom": "PHP Avancé"
+  },
+  "creeLe": "2024-01-03T11:59:34.840+01:00",
+  "difficulte": "2",
+  "dureeEstimee": 60,
+  "modeValidation": "self",
+  "chapitres": [
+    {
+      "id": 11222,
+      "type": "content",
+      "langue": "fr",
+      "majLe": "2024-03-07T10:33:11.958+01:00",
+      "caracteres": 13813
+    }
+  ],
+  "ressources": [],
+  "urlOrigine": "https://odyssey.wildcodeschool.com/quests/2945",
+  "archiveLe": "2026-09-02T20:52:02.284Z"
+}

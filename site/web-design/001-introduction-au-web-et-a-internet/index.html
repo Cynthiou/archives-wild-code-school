@@ -1,0 +1,152 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>👩‍🏫  Introduction au web et à internet — Archives WCS</title>
+<link rel="stylesheet" href="../../assets/style.css">
+</head>
+<body style="--teinte:#4d4e4d">
+<header class="entete">
+  <a class="entete__marque" href="../../index.html">Archives Wild Code School</a>
+</header>
+<main class="contenu">
+<nav class="ariane"><a href="../../index.html">Accueil</a><span class="ariane__sep">›</span><a href="../../web-design/index.html">Web Design</a><span class="ariane__sep">›</span><span aria-current="page">👩‍🏫  Introduction au web et à internet</span></nav>
+
+<article class="quete">
+  <header class="quete__entete">
+    <a class="pastille pastille--teintee" href="../../web-design/index.html">Web Design</a>
+    <h1>👩‍🏫  Introduction au web et à internet</h1>
+    <p class="quete__meta">Quête 1 sur 1 · 11 images archivées</p>
+  </header>
+  <div class="cours">
+<h1>Introduction au web et à internet</h1>
+<p>Le web? Internet?</p>
+<p>Qu'est-ce que c'est exactement et comment cela fonctionne? C'est ce que vous allez découvrir dans ce cours! Vous apprendrez les bases de ce qu'est le web et d'internet.
+Nous verrons ce que signifie un &quot;Client&quot; et un &quot;Serveur&quot; mais également ce qu'est un hébergeur, un nom de domaine ainsi que comment fonctionne notre navigateur en détail.</p>
+<p><img src="images/001-photo-earth-nasa.jpg" alt="Photo earth - Nasa" loading="lazy"></p>
+<h4>🤓 À la fin de cette quête, tu sauras :</h4>
+<p>✅ Ce qu'est le web et internet
+✅ Le fonctionnement de base d'un navigateur internet
+✅ Ce qu'est un Client et un serveur
+✅ Ce qu'est un hébergeur et un nom de domaine</p>
+<hr>
+<h1>Qu'est-ce qu'internet ?</h1>
+<p><img src="images/002-image.jpg" alt="image" loading="lazy">
+Ce qu'on appelle internet est un <strong>vaste réseau d'ordinateurs</strong> qui communiquent ensemble à l'aide de <strong>protocoles standardisés</strong>.</p>
+<p>Internet est composé de milliers de <strong>réseaux privés et publics</strong> <strong>interconnectés</strong> entre eux. Les ordinateurs qui communiquent ensemble sont appelés <strong>« nœuds »</strong>.</p>
+<p>Chaque nœud peut héberger <strong>un ou plusieurs sites web</strong>. Lorsque vous vous connectez à un site web, votre ordinateur se connecte au nœud qui héberge ce site.</p>
+<p>Les <strong>protocoles</strong> utilisés sur internet permettent de faire <strong>circuler les données</strong> entre les différents nœuds. Le plus connu est le protocole <strong>HTTP</strong> (HyperText Transfer Protocol).</p>
+<h2>L'évolution d'internet en vidéo</h2>
+<a class="video-lien" href="https://www.youtube.com/watch?v=OzDgI0sJQBA" target="_blank" rel="noopener noreferrer">
+  <div class="video-lien__play">▶</div>
+  <div class="video-lien__texte">
+    <div class="video-lien__titre">Vidéo YouTube</div>
+    <div class="video-lien__url">https://www.youtube.com/watch?v=OzDgI0sJQBA</div>
+  </div>
+</a>
+<h1>Qu'est-ce qu'un réseau ?</h1>
+<p>On appelle &quot;réseau&quot; deux machines ou plus <strong>connectés entre elles</strong>. Ces machines peuvent <strong>partager des ressources</strong> comme des imprimantes, une connexion internet, une application, etc.</p>
+<p>Ces machines sont souvent reliées entre elles à l'aide de <strong>système de connexion sans fil</strong> ou bien avec des <strong>câbles</strong>.</p>
+<p><img src="images/003-image.png" alt="image" loading="lazy"><img src="images/004-image.png" alt="image" loading="lazy"></p>
+<h1>Qu'est-ce qu'une adresse ip?</h1>
+<p><img src="images/005-image.webp" alt="image" loading="lazy">
+<em>source: <a href="https://www.hostinger.com/tutorials/what-is-ip-address" target="_blank" rel="noopener noreferrer">https://www.hostinger.com/tutorials/what-is-ip-address</a></em></p>
+<p>Lorsque tu te connectes à un réseau, ta machine se voit assigner une <strong>adresse unique</strong>. Un peu à la manière de ton adresse postale, cette adresse permet de <strong>situer ta machine dans le réseau</strong> et de pouvoir <strong>envoyer et recevoir des requêtes</strong>.</p>
+<p>Une adresse ip est une <strong>succession de 4 nombres allant chacun de 0 à 255 séparés par un point</strong>.</p>
+<p><em>ex: 62.255.173.183</em></p>
+<h1>Qu'est-ce que le web ?</h1>
+<p><img src="images/006-image.png" alt="image" loading="lazy">
+Nous venons de voir qu'internet est un réseau de machines connectées entre elles.</p>
+<p>Mais le réseau internet n'est que la connexion entre les machines. Comment arrive-t-on à accéder à des ressources sur ces machines?</p>
+<p>Le World Wide Web (ou Web) est un <strong>ensemble de sites ou de pages Web stockés dans des serveurs Web</strong> et connectés à des ordinateurs locaux <strong>via</strong> <strong>internet</strong>.</p>
+<p>Ces sites web contiennent des pages de <strong>texte</strong>, des <strong>images</strong> <strong>numériques</strong>, des <strong>audios</strong>, des <strong>vidéos</strong>, etc.</p>
+<h1>Que se passe-t-il lorsque j'essaie d'accéder à un site web ?</h1>
+<p><img src="images/007-image.png" alt="image" loading="lazy">
+Imaginons que tu veuilles visiter le site Web de la Wild Code School.</p>
+<p>Tu tapes l'URL dans la barre de navigation de ton navigateur et appuies sur la touche Entrée.</p>
+<p><img src="images/008-image.png" alt="image" loading="lazy"></p>
+<p>Ton navigateur va alors envoyer cette demande à ton <strong>router</strong> (ta box internet) à travers ton <strong>réseau local</strong>.</p>
+<p>Ton router va alors, à travers des câbles ainsi que des antennes transmettre la demande à ton <strong>fournisseur d'accès à internet</strong> (orange, free, bouygues, etc..).</p>
+<p>Nous avons vu précédemment que les machines sur le réseau ont des adresses ip, pour le moment, tu demandes à accéder au site web &quot;wildcodeschool.com&quot; ce site se trouve sur une machine, quelque part, dans le monde.</p>
+<p>Pour pouvoir y accéder, il va falloir <strong>trouver l'adresse de la machine qui correspond à l'url que tu as fournie</strong> à ton navigateur.</p>
+<p>Le <strong>DNS</strong> (Domain Name System) est un <strong>registre</strong>, un peu à la manière d'un annuaire, qui répertorie les adresses des machines correspondantes aux domaines.</p>
+<p>Ta demande va être transmise à un <strong>DNS</strong> qui va trouver l'adresse de la machine (l’adresse ip du serveur qui héberge le site wildcodeschool.com est <a href="http://104.21.79.167/" target="_blank" rel="noopener noreferrer">104.21.79.167</a> en revanche, comme tu peux le voir sur la page, l’hébergeur a été paramétré pour refuser les connexions via l'adresse ip)</p>
+<p><img src="images/009-image.png" alt="image" loading="lazy"></p>
+<p>Dernière étape, ton fournisseur d'accès va alors <strong>envoyer la demande</strong>, à l'aide d'antennes et de câbles sous-marins, <strong>jusqu'à la machine</strong> qui contient la ressource.</p>
+<p>La machine va alors <strong>répondre à la demande</strong>, qui prendra alors le chemin inverse jusque ta machine via ton fournisseur d'accès à internet.</p>
+<p>Et tout ça, en un clignement d'œil...</p>
+<h1>Comprendre l'architecture client/serveur</h1>
+<p>L'architecture client/serveur est le mode de communication <strong>le plus répandu sur Internet</strong>.</p>
+<p>Cette architecture se définit par <strong>une entité qui fournit un service à une autre entité</strong>.</p>
+<p>Dans un environnement client/serveur, le client est l'entité qui demande un service à un autre ordinateur, appelé serveur. Voyons cela plus en détail:</p>
+<h2>Le client</h2>
+<p>Ce qu'on appelle client est une application qui utilise les services d'un serveur pour effectuer des tâches.</p>
+<p>Tu en utilises un à l'instant même ou tu lis ces lignes ! Et oui, ton navigateur est ce qu'on appelle un <strong>client</strong>.</p>
+<h4>Un Navigateur?</h4>
+<p>Ce qu'on appelle Navigateur désigne un logiciel qui permet de naviguer sur internet. C'est-à-dire de lire des pages web.</p>
+<p>Il existe une multitude de navigateurs, dont tu connais certainement les noms, les plus populaires sont:
+Google Chrome, Safari, Mozilla Firefox et Microsoft Edge.</p>
+<p>Nous te recommandons, pour la formation d'utiliser un navigateur moderne comme Mozilla Firefox ou Google Chrome, ces navigateurs sont les plus adaptés pour apprendre le code et profiter au maximum des possibilités offertes par les navigateurs.</p>
+<a class="ressource" href="https://www.mozilla.org/fr/firefox/new/" target="_blank" rel="noopener noreferrer">
+  <div class="ressource__icone">↗</div>
+  <div class="ressource__texte">
+    <div class="ressource__titre">Télécharger Firefox</div>
+    
+    <div class="ressource__hote">mozilla.org</div>
+  </div>
+</a>
+<a class="ressource" href="https://www.google.com/intl/fr/chrome/" target="_blank" rel="noopener noreferrer">
+  <div class="ressource__icone">↗</div>
+  <div class="ressource__texte">
+    <div class="ressource__titre">Télécharger Chrome</div>
+    
+    <div class="ressource__hote">google.com</div>
+  </div>
+</a>
+<p>Lorsque tu utilises ton navigateur pour afficher une page web, ton navigateur (le client) va effectuer ce qu'on appelle une <strong>requête HTTP</strong> à un serveur, et le serveur va répondre à la requête en renvoyant la ressource correspondante.</p>
+<h2>Un serveur?</h2>
+<p>Ce qu'on appelle serveur, c'est simplement un ordinateur dont le but est de répondre à des demandes de clients.</p>
+<p>Le serveur est généralement une machine, connectée en permanence à internet, et dont le but est de recevoir des requêtes et d'y répondre.</p>
+<p>Par exemple, lorsque vous utilisez votre navigateur pour visiter le site de google, votre client va effectuer une demande HTTP aux serveurs sur lesquels sont stockées les pages de google. Et le serveur va répondre en renvoyant les ressources associées.</p>
+<p>Les sites que l'on voit sur notre navigateur sont des pages HTML, le serveur de google va donc répondre en renvoyant une page HTML qui sera ensuite lue par le navigateur, et grâce à ça, la page va s'afficher !</p>
+<h1>Qu'est ce qu'un hébergeur ?</h1>
+<p><img src="images/010-image.png" alt="image" loading="lazy">
+Les sites internet que nous allons créer ont besoin d'être accessibles sur internet, et comme nous l'avons vu précédemment les sites internet sont stockés sur des <strong>serveurs.</strong></p>
+<p>Il est possible de louer de l'espace sur un serveur grace à ce qu'on appelle un <strong>hébergeur web.</strong></p>
+<p>Il existe de nombreux hébergeurs sur internet, ce qui est important lorsqu'on choisit un hébergeur web, c'est de s'assurer de la qualité de celui-ci, un bon hébergeur doit être sécurisé, rapide et offrir une bonne assistance technique.</p>
+<h2>Nom de domaine</h2>
+<p><img src="images/011-image.jpg" alt="image" loading="lazy"></p>
+<p>Par défaut, lorsque tu souscris à un hébergement,  tu peux accéder à ta machine en utilisant son adresse ip, cependant, ce n'est pas pratique pour tes utilisateurs pour se souvenir de ton site internet.</p>
+<p>C'est pourquoi il faudra maintenant investir dans un <strong>nom de domaine.</strong> Un nom de domaine se compose de deux parties:</p>
+<ul>
+<li>Le nom (ex: wildcodeschool)</li>
+<li>L'extension (ex: .com)</li>
+</ul>
+<p>Il existe une multitude d'extensions (.com, .fr, .net, .news, etc...) mais les plus efficaces restent les .com et .fr !</p>
+<hr>
+<h1>☝️ Résumé</h1>
+<ul>
+<li>Internet est un vaste réseau d'ordinateurs qui communiquent ensemble à l'aide de <strong>protocoles</strong> standardisés.</li>
+<li>Le web est un <strong>ensemble de sites ou de pages Web stockés dans des serveurs Web et connectés à des ordinateurs locaux via internet</strong>.</li>
+<li>L'architecture <strong>client/serveur</strong> est le mode de communication le plus répandu sur Internet.</li>
+<li>Un hébergeur web est un hébergeur qui propose à des clients une connexion à son serveur, en échange d'une somme d'argent.</li>
+<li>Un nom de domaine est un nom unique et une extension qui pointe vers une adresse IP sur internet.</li>
+</ul>
+
+  </div>
+  
+</article>
+
+<nav class="nav-quete">
+  <span class="nav-quete__lien nav-quete__lien--vide"></span>
+  <span class="nav-quete__lien nav-quete__lien--vide"></span>
+</nav>
+</main>
+<footer class="pied">
+  <p>Archive personnelle des cours suivis à la Wild Code School. Copie hors ligne à usage strictement privé.</p>
+</footer>
+
+<script src="../../assets/progression.js"></script>
+</body>
+</html>

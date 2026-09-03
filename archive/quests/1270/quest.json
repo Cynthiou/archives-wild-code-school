@@ -1,0 +1,49 @@
+{
+  "id": 1270,
+  "titre": "👩‍🏫 JS Basics 05 - Les instructions conditionnelles",
+  "titres": {
+    "fr": "👩‍🏫 JS Basics 05 - Les instructions conditionnelles"
+  },
+  "theme": {
+    "id": 9,
+    "slug": "javascript",
+    "nom": "JavaScript"
+  },
+  "creeLe": "2020-07-01T20:26:54.643+02:00",
+  "difficulte": "0",
+  "dureeEstimee": null,
+  "modeValidation": "student",
+  "chapitres": [
+    {
+      "id": 12599,
+      "type": "content",
+      "langue": "fr",
+      "majLe": "2024-11-09T11:15:08.981+01:00",
+      "caracteres": 15239
+    }
+  ],
+  "ressources": [
+    {
+      "link": "https://dorey.github.io/JavaScript-Equality-Table/",
+      "description": "Pour savour ce qui est 'truthy' et 'falsy'"
+    },
+    {
+      "link": "https://www.youtube.com/watch?v=DQ_ztRXD8vs",
+      "description": "Une façon simple de comprendre switch case en JS"
+    },
+    {
+      "link": "https://www.youtube.com/watch?v=DmHuw9dGYRw&ab_channel=Grafikart.fr",
+      "description": "Les conditions mis en pratique "
+    },
+    {
+      "link": "https://www.youtube.com/watch?v=OXpTBQtL4nY",
+      "description": "Courte vidéo pour comprendre parseInt et parseFloat :)"
+    },
+    {
+      "link": "https://www.freecodecamp.org/learn/javascript-algorithms-and-data-structures-v8/",
+      "description": "Bon site pour s'exercer et découvrir le Javascript"
+    }
+  ],
+  "urlOrigine": "https://odyssey.wildcodeschool.com/quests/1270",
+  "archiveLe": "2026-09-02T20:54:35.906Z"
+}

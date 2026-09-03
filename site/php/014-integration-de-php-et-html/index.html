@@ -1,0 +1,342 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Intégration de PHP et HTML — Archives WCS</title>
+<link rel="stylesheet" href="../../assets/style.css">
+</head>
+<body style="--teinte:#5F83B2">
+<header class="entete">
+  <a class="entete__marque" href="../../index.html">Archives Wild Code School</a>
+</header>
+<main class="contenu">
+<nav class="ariane"><a href="../../index.html">Accueil</a><span class="ariane__sep">›</span><a href="../../php/index.html">PHP</a><span class="ariane__sep">›</span><span aria-current="page">Intégration de PHP et HTML</span></nav>
+
+<article class="quete">
+  <header class="quete__entete">
+    <a class="pastille pastille--teintee" href="../../php/index.html">PHP</a>
+    <h1>Intégration de PHP et HTML</h1>
+    <p class="quete__meta">Quête 14 sur 14</p>
+  </header>
+  <div class="cours">
+<p>⚠️ Avant de commencer cette quête, tu dois avoir terminé les quêtes suivantes :</p>
+<div class="renvois"><div class="renvois__titre">Quêtes liées</div><ul><li><a href="../../php/004-4-1-les-tableaux-et-boucles-en-php/index.html">Quête 1356</a></li><li><a href="../../php/005-4-2-les-tableaux-multidimensionnels-en-php/index.html">Quête 1348</a></li><li><a href="../../php/006-5-les-conditions-en-php/index.html">Quête 140</a></li></ul></div>
+<div class="bloc-code"><div class="bloc-code__langue">title-book</div><pre><code class="hljs language-title-book">Introduction
+</code></pre></div>
+<p>Dans cette quête, tu vas découvrir comment PHP, un langage de script côté serveur, peut être utilisé pour générer du contenu HTML dynamique. Cette compétence est essentielle dans le développement web pour créer des sites interactifs et personnalisés.</p>
+<h2>🤓 À la fin de cette quête, tu seras capable de :</h2>
+<ul>
+<li>✅ Lancer un serveur de développement PHP,</li>
+</ul>
+<ul>
+<li>✅ Afficher du contenu HTML dynamique dans le navigateur,</li>
+<li>✅ Utiliser les boucles pour générer du contenu HTML répété,</li>
+<li>✅ Afficher des éléments HTML selon une condition.</li>
+</ul>
+<h1>Lancer un serveur de développement PHP</h1>
+<p>Comme tu l'as appris lors d'une précédente quête, pour démarrer le serveur interne de PHP, il suffit d'ouvrir un terminal, de se placer dans le dossier dans lequel tu veux exécuter ton code PHP et de taper la commande :</p>
+<div class="bloc-code"><div class="bloc-code__langue">shell</div><pre><code class="hljs language-shell">php -S localhost:8000
+</code></pre></div>
+<p>Ensuite, accède à <a href="http://localhost:8000/nomDuFichier.php" target="_blank" rel="noopener noreferrer">http://localhost:8000/nomDuFichier.php</a> dans ton navigateur pour voir le résultat.</p>
+<p>Imaginons une application concrète : la création d'une page web pour le journal <strong>Wild News</strong>, qui nécessite l'affichage d'articles. Dans un nouveau répertoire, crée un fichier <code>index.php</code> avec cette structure HTML :</p>
+<div class="bloc-code"><div class="bloc-code__langue">php</div><pre><code class="hljs language-php">&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+&lt;head&gt;
+    &lt;title&gt;Wild News | Le site de news des Wilders&lt;/title&gt;
+&lt;/head&gt;
+&lt;body&gt;
+   &lt;header&gt;
+       &lt;h1&gt;Wild News&lt;/h1&gt;
+   &lt;/header&gt;
+
+   &lt;section <span class="hljs-class"><span class="hljs-keyword">class</span>=&quot;<span class="hljs-title">cards</span>-<span class="hljs-title">container</span>&quot;&gt;
+       &lt;<span class="hljs-title">article</span> <span class="hljs-title">class</span>=&quot;<span class="hljs-title">card</span>&quot;&gt;
+           &lt;<span class="hljs-title">h2</span>&gt;<span class="hljs-title">Titre</span> 1&lt;/<span class="hljs-title">h2</span>&gt;
+           &lt;<span class="hljs-title">p</span>&gt;<span class="hljs-title">Contenu</span> 1&lt;/<span class="hljs-title">p</span>&gt;
+           &lt;<span class="hljs-title">a</span> <span class="hljs-title">href</span>=&quot;#&quot;&gt;<span class="hljs-title">Lire</span> <span class="hljs-title">la</span> <span class="hljs-title">suite</span>...&lt;/<span class="hljs-title">a</span>&gt;
+       &lt;/<span class="hljs-title">article</span>&gt;
+
+       &lt;<span class="hljs-title">article</span> <span class="hljs-title">class</span>=&quot;<span class="hljs-title">card</span>&quot;&gt;
+           &lt;<span class="hljs-title">h2</span>&gt;<span class="hljs-title">Titre</span> 2&lt;/<span class="hljs-title">h2</span>&gt;
+           &lt;<span class="hljs-title">p</span>&gt;<span class="hljs-title">Contenu</span> 2&lt;/<span class="hljs-title">p</span>&gt;
+           &lt;<span class="hljs-title">a</span> <span class="hljs-title">href</span>=&quot;#&quot;&gt;<span class="hljs-title">Lire</span> <span class="hljs-title">la</span> <span class="hljs-title">suite</span>...&lt;/<span class="hljs-title">a</span>&gt;
+       &lt;/<span class="hljs-title">article</span>&gt;
+
+       &lt;<span class="hljs-title">article</span> <span class="hljs-title">class</span>=&quot;<span class="hljs-title">card</span>&quot;&gt;
+           &lt;<span class="hljs-title">h2</span>&gt;<span class="hljs-title">Titre</span> 3&lt;/<span class="hljs-title">h2</span>&gt;
+           &lt;<span class="hljs-title">p</span>&gt;<span class="hljs-title">Contenu</span> 3.&lt;/<span class="hljs-title">p</span>&gt;
+           &lt;<span class="hljs-title">a</span> <span class="hljs-title">href</span>=&quot;#&quot;&gt;<span class="hljs-title">Lire</span> <span class="hljs-title">la</span> <span class="hljs-title">suite</span>...&lt;/<span class="hljs-title">a</span>&gt;
+       &lt;/<span class="hljs-title">article</span>&gt;
+   &lt;/<span class="hljs-title">section</span>&gt;
+
+   &lt;<span class="hljs-title">footer</span>&gt;
+       &lt;<span class="hljs-title">p</span>&gt;&amp;<span class="hljs-title">copy</span>; 2024 - <span class="hljs-title">Wild</span> <span class="hljs-title">News</span>&lt;/<span class="hljs-title">p</span>&gt;
+   &lt;/<span class="hljs-title">footer</span>&gt;
+&lt;/<span class="hljs-title">body</span>&gt;
+&lt;/<span class="hljs-title">html</span>&gt;
+</span></code></pre></div>
+<p>Lance ton serveur de développement et regarde ce qu'il se passe sur ton navigateur : le contenu HTML apparaît bien.</p>
+<blockquote>
+<p>En effet, lorsque le serveur exécute un fichier PHP, il envoie le résultat au navigateur pour un affichage approprié (du code HTML dans notre exemple).</p>
+</blockquote>
+<p>Super ! Tu vas pouvoir maintenant optimiser ton code pour le rendre dynamique.</p>
+<h1>Afficher du contenu HTML dynamique dans le navigateur</h1>
+<h2>Afficher la valeur d'une variable</h2>
+<p>Si tu regardes bien ton code, tu peux remarquer que le nom du journal est répété plusieurs fois sur la page, au niveau des balises <code>title</code>, <code>h1</code> et <code>footer</code> : pas très DRY tout ça :disappointed_relieved:. Imagine que le nom du journal change : il te faudrait modifier à la main chaque balise, une opération qui peut être longue et risquée.</p>
+<p>Pour faciliter la maintenance de ton code, nous allons afficher le nom du journal à l'aide d'une variable.</p>
+<p>Pour cela, tu vas insérer du PHP en utilisant les balises <code>&lt;?php</code> et <code>?&gt;</code>.</p>
+<p>Tout d'abord, crée une variable <code>$name</code> qui aura pour valeur <code>'Wild News'</code> dans un bloc <code>php</code> situé au dessus du code <code>HTML</code> : ce sera dans ce bloc où seront déclarées les variables et fonctions nécessaires à l'affichage de ta page.</p>
+<p>Affiche ensuite cette variable dans le code HTML :</p>
+<div class="bloc-code"><div class="bloc-code__langue">php</div><pre><code class="hljs language-php"><span class="hljs-meta">&lt;?php</span>
+
+    <span class="hljs-variable">$name</span> = <span class="hljs-string">&#x27;Wild News&#x27;</span>;
+
+<span class="hljs-meta">?&gt;</span>
+
+&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+&lt;head&gt;
+    &lt;title&gt;<span class="hljs-meta">&lt;?php</span> <span class="hljs-keyword">echo</span> <span class="hljs-variable">$name</span>; <span class="hljs-meta">?&gt;</span> | Le site de news des Wilders&lt;/title&gt;
+&lt;/head&gt;
+&lt;body&gt;
+   &lt;header&gt;
+       &lt;h1&gt;<span class="hljs-meta">&lt;?php</span> <span class="hljs-keyword">echo</span> <span class="hljs-variable">$name</span>; <span class="hljs-meta">?&gt;</span>&lt;/h1&gt;
+   &lt;/header&gt;
+
+
+   &lt;section <span class="hljs-class"><span class="hljs-keyword">class</span>=&quot;<span class="hljs-title">card</span>-<span class="hljs-title">container</span>&quot;&gt;
+       &lt;<span class="hljs-title">article</span> <span class="hljs-title">class</span>=&quot;<span class="hljs-title">card</span>&quot;&gt;
+           &lt;<span class="hljs-title">h2</span>&gt;<span class="hljs-title">Titre</span> 1&lt;/<span class="hljs-title">h2</span>&gt;
+           &lt;<span class="hljs-title">p</span>&gt;<span class="hljs-title">Contenu</span> 1&lt;/<span class="hljs-title">p</span>&gt;
+           &lt;<span class="hljs-title">a</span> <span class="hljs-title">href</span>=&quot;#&quot;&gt;<span class="hljs-title">Lire</span> <span class="hljs-title">la</span> <span class="hljs-title">suite</span>...&lt;/<span class="hljs-title">a</span>&gt;
+       &lt;/<span class="hljs-title">article</span>&gt;
+
+
+       &lt;<span class="hljs-title">article</span> <span class="hljs-title">class</span>=&quot;<span class="hljs-title">card</span>&quot;&gt;
+           &lt;<span class="hljs-title">h2</span>&gt;<span class="hljs-title">Titre</span> 2&lt;/<span class="hljs-title">h2</span>&gt;
+           &lt;<span class="hljs-title">p</span>&gt;<span class="hljs-title">Contenu</span> 2&lt;/<span class="hljs-title">p</span>&gt;
+           &lt;<span class="hljs-title">a</span> <span class="hljs-title">href</span>=&quot;#&quot;&gt;<span class="hljs-title">Lire</span> <span class="hljs-title">la</span> <span class="hljs-title">suite</span>...&lt;/<span class="hljs-title">a</span>&gt;
+       &lt;/<span class="hljs-title">article</span>&gt;
+
+
+       &lt;<span class="hljs-title">article</span> <span class="hljs-title">class</span>=&quot;<span class="hljs-title">card</span>&quot;&gt;
+           &lt;<span class="hljs-title">h2</span>&gt;<span class="hljs-title">Titre</span> 3&lt;/<span class="hljs-title">h2</span>&gt;
+           &lt;<span class="hljs-title">p</span>&gt;<span class="hljs-title">Contenu</span> 3.&lt;/<span class="hljs-title">p</span>&gt;
+           &lt;<span class="hljs-title">a</span> <span class="hljs-title">href</span>=&quot;#&quot;&gt;<span class="hljs-title">Lire</span> <span class="hljs-title">la</span> <span class="hljs-title">suite</span>...&lt;/<span class="hljs-title">a</span>&gt;
+       &lt;/<span class="hljs-title">article</span>&gt;
+   &lt;/<span class="hljs-title">section</span>&gt;
+
+
+   &lt;<span class="hljs-title">footer</span>&gt;
+       &lt;<span class="hljs-title">p</span>&gt;&amp;<span class="hljs-title">copy</span>; 2024 - &lt;?<span class="hljs-title">php</span> <span class="hljs-title">echo</span> $<span class="hljs-title">name</span>; ?&gt;&lt;/<span class="hljs-title">p</span>&gt;
+   &lt;/<span class="hljs-title">footer</span>&gt;
+
+&lt;/<span class="hljs-title">body</span>&gt;
+&lt;/<span class="hljs-title">html</span>&gt;
+</span></code></pre></div>
+<p>Recharge ton navigateur : le nom du journal reste affiché au niveau du <code>title</code>, du <code>h1</code> et du <code>footer</code>. Si tu modifies la variable <code>$name</code>, la modification s'applique sur l'ensemble des balises.</p>
+<blockquote>
+<p>Dans un fichier PHP contenant du HTML, il est recommandé de placer un bloc PHP en haut pour définir les variables et les fonctions avant le HTML. De cette manière, on sépare la logique de traitement des données de la structure de présentation : d'abord on prépare les données, ensuite on les affiche.</p>
+</blockquote>
+<blockquote>
+<p>Les balises <code>&lt;?php</code> et <code>?&gt;</code> servent à délimiter le code PHP à l'intérieur du fichier.
+La fonction <code>echo</code> sert à afficher du texte comme contenu d'une balise, ce qui le rend visible dans le navigateur.</p>
+</blockquote>
+<div class="encadre encadre--info"><div class="encadre__titre">Info</div><div class="encadre__corps"><h1>Syntaxe courte</h1>
+<p>Tu peux remplacer <code>&lt;?php echo</code> par <code>&lt;?=</code> :</p>
+<div class="bloc-code"><div class="bloc-code__langue">php</div><pre><code class="hljs language-php">&lt;title&gt;<span class="hljs-meta">&lt;?=</span> <span class="hljs-variable">$name</span>; <span class="hljs-meta">?&gt;</span> | Le site de news des Wilders&lt;/title&gt;
+</code></pre></div>
+</div></div>
+<h2>Afficher la valeur retournée par une fonction</h2>
+<p>Dans le code présenté, tu constates aussi que l'année est écrite en dur :</p>
+<div class="bloc-code"><div class="bloc-code__langue">php</div><pre><code class="hljs language-php">   &lt;footer&gt;
+       &lt;p&gt;&amp;copy; <span class="hljs-number">2024</span> - <span class="hljs-meta">&lt;?=</span> <span class="hljs-variable">$name</span>; <span class="hljs-meta">?&gt;</span>&lt;/p&gt;
+   &lt;/footer&gt;
+</code></pre></div>
+<p>Grâce à PHP, tu peux rendre l'affichage de l'année en cours automatique :wink:</p>
+<p>Pour cela, on peut utiliser la fonction <code>date()</code> qui formate une date/heure locale. Pour afficher l'année en cours, on peut lui ajouter le paramètre <code>'Y'</code> pour lui indiquer de retourner l'année sur quatre chiffres :</p>
+<div class="bloc-code"><div class="bloc-code__langue">php</div><pre><code class="hljs language-php">   &lt;footer&gt;
+       &lt;p&gt;&amp;copy; <span class="hljs-meta">&lt;?=</span> <span class="hljs-title function_ invoke__">date</span>(<span class="hljs-string">&#x27;Y&#x27;</span>); <span class="hljs-meta">?&gt;</span> - <span class="hljs-meta">&lt;?=</span> <span class="hljs-variable">$name</span>; <span class="hljs-meta">?&gt;</span>&lt;/p&gt;
+   &lt;/footer&gt;
+</code></pre></div>
+<p>Recharge ton navigateur : l'année en cours est bien affichée et sera automatiquement mise à jour chaque 1er janvier :confetti_ball:</p>
+<a class="ressource" href="https://www.php.net/manual/fr/function.date.php" target="_blank" rel="noopener noreferrer">
+  <div class="ressource__icone">↗</div>
+  <div class="ressource__texte">
+    <div class="ressource__titre">Documentation</div>
+    <div class="ressource__desc"><p>Fonction <code>date()</code> en PHP</p>
+</div>
+    <div class="ressource__hote">php.net</div>
+  </div>
+</a>
+<h1>Utiliser les boucles pour générer du contenu HTML répété</h1>
+<p>Tu vas le voir, PHP va nous permettre de rendre notre code plus clair et efficace, grâce aux boucles !
+Dans le code actuel, on constate qu'il y a autant de balises <code>article</code> que de publications du journal. Au fur et à mesure des publications, le code HTML deviendra vite illisible et l'application sera de plus en plus difficile à maintenir.</p>
+<p>Dans un premier temps, ce que je te propose c'est de gérer le titre et le contenu de chaque article dans un tableau. Pour cela, dans le bloc PHP où tu as précédemment créé la variable <code>$name</code>, crée un tableau <code>$articles</code>.</p>
+<div class="bloc-code"><div class="bloc-code__langue">hidden</div><pre><code class="hljs language-hidden">Voir le code|||php|||Tu peux te servir de cet exemple si tu es en manque d'inspiration|||0|||Hide
+$articles = [
+    [
+      'title' =&gt; 'Top 3 des livres indispensables pour développeurs',
+      'content' =&gt; 'Avant de commencer, il faut qu\'on discute du pourquoi tu devrais acheter un livre quand tu as les internets mondiales à ta disposition. La réponse simple. Il n\'y a aucune comparaison de qualité.',
+    ],
+    [
+      'title' =&gt; '8 habitudes de développeurs qui font progresser',
+      'content' =&gt; 'Avec le temps, j\'ai fini par comprendre que ce qui comptait le plus dans ce métier, c\'était les habitudes. Toutes ces petites décisions, ces façons de faire et de voir les choses. Ça a l\'air de rien au jour le jour, mais mis bout à bout, c\'est une locomotive pour ta progression. OK vas-y on en parle.',
+    ],
+    [
+      'title' =&gt; 'Faut-il être passionné pour être développeur ?',
+      'content' =&gt; 'La passion chez les développeurs est un concept qui met une pression folle à beaucoup de gens. Tu en entends parler en permanence. Tu le vois dans toutes les offres d\'emplois, comme une obligation absolue.',
+    ],
+    [
+      'title' =&gt; 'Compétences clefs pour développeurs',
+      'content' =&gt; 'Résoudre des problèmes c\'est ton activité principale et donc ta principale compétence clef. Si tu deviens bon là-dedans, tu vas commencer à léviter dans l\'open space et rien ne pourra t\'arrêter.',
+    ],
+    [
+      'title' =&gt; 'Conseils pour développeur junior',
+      'content' =&gt; 'Je reçois énormément de mails de développeur(euse)s juniors concernant ce sujet. Du coup, pourquoi ne pas répondre à tous le monde en même temps ? Assieds-toi bien confort j\'ai plein de trucs à te raconter.',
+    ],
+    [
+      'title' =&gt; 'Comment bien donner et recevoir une code review',
+      'content' =&gt; 'Il y a bien longtemps, dans une galaxie lointaine, très lointaine je bossais dans une équipe d\'une dizaine de développeurs. Lorsque du nouveau code devait être intégré dans le système, il passait d\'abord par la grande instance de la code review.',
+    ],
+    [
+      'title' =&gt; 'Design patterns : l\'indispensable à savoir',
+      'content' =&gt; 'Les design patterns sont inévitables pour tous les développeurs. Si tu ne les connais pas, sache que tu les utilises déjà sans le savoir. Il y a des choses indispensables à savoir pour ne pas être complètement perdu au milieu du champ des design patterns. Ça te servira toute ta carrière, peu importe ton poste.',
+    ],
+    [
+      'title' =&gt; '20 outils webs indispensables pour développeurs',
+      'content' =&gt; 'Avoir les bons outils en tant que développeur va te faire gagner un temps fou sur tout. Que ce soit pour produire du code, vérifier de la donnée ou valider des commandes et des configurations, ça devient vite indispensable. Je te dévoile mon dossier favoris, j\'ai mis plusieurs années à construire cette liste !',
+    ],
+  ];
+</code></pre></div>
+<p>Avec PHP, tu vas avoir la possibilité d'utiliser des boucles pour éviter de répéter du code inutilement. Tu vas avoir le choix entre les boucles <code>foreach</code>, <code>for</code>, <code>while</code> et <code>do while</code>. Dans notre cas, je te propose d'utiliser la boucle <code>foreach</code>.</p>
+<p>Dans la balise <code>section</code>, conserve une seule occurrence de la balise <code>article</code>: c'est cet élément que nous allons vouloir répéter.</p>
+<p>Entoure la balise <code>article</code> d'une boucle <code>foreach</code> en utilisant les balises <code>php</code> comme ceci :</p>
+<div class="bloc-code"><div class="bloc-code__langue">php</div><pre><code class="hljs language-php">&lt;section <span class="hljs-class"><span class="hljs-keyword">class</span>=&quot;<span class="hljs-title">cards</span>-<span class="hljs-title">container</span>&quot;&gt;
+   &lt;?<span class="hljs-title">php</span> <span class="hljs-title">foreach</span> ($<span class="hljs-title">articles</span> <span class="hljs-title">as</span> $<span class="hljs-title">article</span>) </span>{ <span class="hljs-meta">?&gt;</span>
+      &lt;article <span class="hljs-class"><span class="hljs-keyword">class</span>=&quot;<span class="hljs-title">card</span>&quot;&gt;
+         &lt;<span class="hljs-title">h2</span>&gt;&lt;?= $<span class="hljs-title">article</span>[&#x27;<span class="hljs-title">title</span>&#x27;] ?&gt;&lt;/<span class="hljs-title">h2</span>&gt;
+         &lt;<span class="hljs-title">p</span>&gt;&lt;?= $<span class="hljs-title">article</span>[&#x27;<span class="hljs-title">content</span>&#x27;] ?&gt;&lt;/<span class="hljs-title">p</span>&gt;
+         &lt;<span class="hljs-title">a</span> <span class="hljs-title">href</span>=&quot;#&quot;&gt;<span class="hljs-title">Lire</span> <span class="hljs-title">la</span> <span class="hljs-title">suite</span>...&lt;/<span class="hljs-title">a</span>&gt;
+      &lt;/<span class="hljs-title">article</span>&gt;
+   &lt;?<span class="hljs-title">php</span> } ?&gt;
+&lt;/<span class="hljs-title">section</span>&gt;
+</span></code></pre></div>
+<blockquote>
+<p>On utilise ici la syntaxe classique d'une boucle <code>foreach</code> en PHP, en plaçant le contenu à itérer entre les accolades.</p>
+</blockquote>
+<div class="encadre encadre--info"><div class="encadre__titre">Info</div><div class="encadre__corps"><h1>Syntaxe alternative</h1>
+<p>Il existe une autre syntaxe pour permettre une lecture plus claire du code, en remplaçant l'accolade ouvrante par des <code>:</code> et l'accolade fermante par <code>endforeach</code>.</p>
+<div class="bloc-code"><div class="bloc-code__langue">php</div><pre><code class="hljs language-php">&lt;section <span class="hljs-class"><span class="hljs-keyword">class</span>=&quot;<span class="hljs-title">cards</span>-<span class="hljs-title">container</span>&quot;&gt;
+   &lt;?<span class="hljs-title">php</span> <span class="hljs-title">foreach</span> ($<span class="hljs-title">articles</span> <span class="hljs-title">as</span> $<span class="hljs-title">article</span>) : ?&gt;
+      &lt;<span class="hljs-title">article</span> <span class="hljs-title">class</span>=&quot;<span class="hljs-title">card</span>&quot;&gt;
+         &lt;<span class="hljs-title">h2</span>&gt;&lt;?= $<span class="hljs-title">article</span>[&#x27;<span class="hljs-title">title</span>&#x27;] ?&gt;&lt;/<span class="hljs-title">h2</span>&gt;
+         &lt;<span class="hljs-title">p</span>&gt;&lt;?= $<span class="hljs-title">article</span>[&#x27;<span class="hljs-title">content</span>&#x27;] ?&gt;&lt;/<span class="hljs-title">p</span>&gt;
+         &lt;<span class="hljs-title">a</span> <span class="hljs-title">href</span>=&quot;#&quot;&gt;<span class="hljs-title">Lire</span> <span class="hljs-title">la</span> <span class="hljs-title">suite</span>...&lt;/<span class="hljs-title">a</span>&gt;
+      &lt;/<span class="hljs-title">article</span>&gt;
+   &lt;?<span class="hljs-title">php</span> <span class="hljs-title">endforeach</span> ?&gt;
+&lt;/<span class="hljs-title">section</span>&gt;
+</span></code></pre></div>
+</div></div>
+<a class="ressource" href="https://www.php.net/manual/fr/control-structures.alternative-syntax.php" target="_blank" rel="noopener noreferrer">
+  <div class="ressource__icone">↗</div>
+  <div class="ressource__texte">
+    <div class="ressource__titre">Syntaxe alternative des structures de contrôles</div>
+    <div class="ressource__desc"><p>Retrouve d'autres exemples de syntaxe alternative dans la documentation php</p>
+</div>
+    <div class="ressource__hote">php.net</div>
+  </div>
+</a>
+<p>Rafraichis une nouvelle fois ton navigateur : tous les articles du tableau s'affichent avec une seule balise <code>article</code> dans le bloc HTML.</p>
+<h1>Afficher des éléments HTML selon une condition</h1>
+<p>Souvent, tu vas avoir besoin d'afficher des éléments HTML selon une condition, par exemple :</p>
+<ul>
+<li>Afficher un message de bienvenue selon l'heure de la journée,</li>
+<li>Afficher des messages d'erreurs en cas d'anomalie constatée,</li>
+<li>Afficher des éléments selon un état, etc...</li>
+</ul>
+<p>Pour afficher un contenu différent selon une condition, tu peux utiliser les structures <code>if</code>, <code>elseif</code> et <code>else</code>.</p>
+<p>Reprenons l'exemple de notre journal Wild News. Jusqu'à maintenant, tous les articles sont listés sur la page du site. Il serait pratique de permettre la rédaction d'articles en mode brouillon, qui ne seraient publiés qu'après finalisation. Pour mettre en place cette fonctionnalité, ajoute la clé <code>published</code> à chaque article de ton tableau de données et attribue une valeur <code>true</code> pour les articles prêts à être publiés, ou <code>false</code> pour les brouillons.</p>
+<div class="bloc-code"><div class="bloc-code__langue">hidden</div><pre><code class="hljs language-hidden">Voir le code|||php|||Tu peux retrouver ici le tableau contenant les articles modifiés|||0|||Hide
+$articles = [
+    [
+      'title' =&gt; 'Top 3 des livres indispensables pour développeurs',
+      'content' =&gt; 'Avant de commencer, il faut qu\'on discute du pourquoi tu devrais acheter un livre quand tu as les internets mondiales à ta disposition. La réponse simple. Il n\'y a aucune comparaison de qualité.',
+      'published' =&gt; false,
+    ],
+    [
+      'title' =&gt; '8 habitudes de développeurs qui font progresser',
+      'content' =&gt; 'Avec le temps, j\'ai fini par comprendre que ce qui comptait le plus dans ce métier, c\'était les habitudes. Toutes ces petites décisions, ces façons de faire et de voir les choses. Ça a l\'air de rien au jour le jour, mais mis bout à bout, c\'est une locomotive pour ta progression. OK vas-y on en parle.',
+      'published' =&gt; true,
+    ],
+    [
+      'title' =&gt; 'Faut-il être passionné pour être développeur ?',
+      'content' =&gt; 'La passion chez les développeurs est un concept qui met une pression folle à beaucoup de gens. Tu en entends parler en permanence. Tu le vois dans toutes les offres d\'emplois, comme une obligation absolue.',
+      'published' =&gt; false,
+    ],
+    [
+      'title' =&gt; 'Compétences clefs pour développeurs',
+      'content' =&gt; 'Résoudre des problèmes c\'est ton activité principale et donc ta principale compétence clef. Si tu deviens bon là-dedans, tu vas commencer à léviter dans l\'open space et rien ne pourra t\'arrêter.',
+      'published' =&gt; true,
+    ],
+    [
+      'title' =&gt; 'Conseils pour développeur junior',
+      'content' =&gt; 'Je reçois énormément de mails de développeur(euse)s juniors concernant ce sujet. Du coup, pourquoi ne pas répondre à tous le monde en même temps ? Assieds-toi bien confort j\'ai plein de trucs à te raconter.',
+      'published' =&gt; false,
+    ],
+    [
+      'title' =&gt; 'Comment bien donner et recevoir une code review',
+      'content' =&gt; 'Il y a bien longtemps, dans une galaxie lointaine, très lointaine je bossais dans une équipe d\'une dizaine de développeurs. Lorsque du nouveau code devait être intégré dans le système, il passait d\'abord par la grande instance de la code review.',
+      'published' =&gt; false,
+    ],
+    [
+      'title' =&gt; 'Design patterns : l\'indispensable à savoir',
+      'content' =&gt; 'Les design patterns sont inévitables pour tous les développeurs. Si tu ne les connais pas, sache que tu les utilises déjà sans le savoir. Il y a des choses indispensables à savoir pour ne pas être complètement perdu au milieu du champ des design patterns. Ça te servira toute ta carrière, peu importe ton poste.',
+      'published' =&gt; true,
+    ],
+    [
+      'title' =&gt; '20 outils webs indispensables pour développeurs',
+      'content' =&gt; 'Avoir les bons outils en tant que développeur va te faire gagner un temps fou sur tout. Que ce soit pour produire du code, vérifier de la donnée ou valider des commandes et des configurations, ça devient vite indispensable. Je te dévoile mon dossier favoris, j\'ai mis plusieurs années à construire cette liste !',
+      'published' =&gt; false,
+    ],
+  ];
+</code></pre></div>
+<p>Dans le bloc HTML, entoure chaque élément <code>article</code> avec une condition vérifiant si l'article doit être affiché :</p>
+<div class="bloc-code"><div class="bloc-code__langue">php</div><pre><code class="hljs language-php">&lt;section <span class="hljs-class"><span class="hljs-keyword">class</span>=&quot;<span class="hljs-title">cards</span>-<span class="hljs-title">container</span>&quot;&gt;
+      &lt;?<span class="hljs-title">php</span> <span class="hljs-title">foreach</span> ($<span class="hljs-title">articles</span> <span class="hljs-title">as</span> $<span class="hljs-title">article</span>): ?&gt;
+        &lt;?<span class="hljs-title">php</span> <span class="hljs-title">if</span>($<span class="hljs-title">article</span>[&#x27;<span class="hljs-title">published</span>&#x27;]): ?&gt;
+          &lt;<span class="hljs-title">article</span> <span class="hljs-title">class</span>=&quot;<span class="hljs-title">card</span>&quot;&gt;
+              &lt;<span class="hljs-title">h2</span>&gt;&lt;?= $<span class="hljs-title">article</span>[&#x27;<span class="hljs-title">title</span>&#x27;] ?&gt;&lt;/<span class="hljs-title">h2</span>&gt;
+              &lt;<span class="hljs-title">p</span>&gt;&lt;?= $<span class="hljs-title">article</span>[&#x27;<span class="hljs-title">content</span>&#x27;] ?&gt;&lt;/<span class="hljs-title">p</span>&gt;
+              &lt;<span class="hljs-title">a</span> <span class="hljs-title">href</span>=&quot;#&quot;&gt;<span class="hljs-title">Lire</span> <span class="hljs-title">la</span> <span class="hljs-title">suite</span>...&lt;/<span class="hljs-title">a</span>&gt;
+          &lt;/<span class="hljs-title">article</span>&gt;
+        &lt;?<span class="hljs-title">php</span> <span class="hljs-title">endif</span> ?&gt;
+      &lt;?<span class="hljs-title">php</span> <span class="hljs-title">endforeach</span> ?&gt;
+    &lt;/<span class="hljs-title">section</span>&gt;
+</span></code></pre></div>
+<blockquote>
+<p>La condition ajoutée va vérifier si la valeur de <code>$article['published']</code> est égale à <code>true</code> pour afficher les détails de l'article.</p>
+</blockquote>
+<p>Bravo ! Tu maîtrises maintenant l'art de dynamiser et d'animer une page HTML en utilisant PHP</p>
+
+  </div>
+  
+</article>
+
+<nav class="nav-quete">
+  <a class="nav-quete__lien nav-quete__lien--prec" href="../../php/013-exercise-5-loops/index.html">
+           <span class="nav-quete__sens">← Précédent</span>
+           <span class="nav-quete__titre">✏️ Exercise 5 - Loops</span>
+         </a>
+  <span class="nav-quete__lien nav-quete__lien--vide"></span>
+</nav>
+</main>
+<footer class="pied">
+  <p>Archive personnelle des cours suivis à la Wild Code School. Copie hors ligne à usage strictement privé.</p>
+</footer>
+
+<script src="../../assets/copie-code.js"></script>
+<script src="../../assets/progression.js"></script>
+</body>
+</html>

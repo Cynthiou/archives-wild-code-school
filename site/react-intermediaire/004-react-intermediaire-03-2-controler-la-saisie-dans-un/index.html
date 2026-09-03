@@ -1,0 +1,679 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>React Intermédiaire 03.2 - Contrôler la saisie dans un formulaire via le state — Archives WCS</title>
+<link rel="stylesheet" href="../../assets/style.css">
+</head>
+<body style="--teinte:#5B76DF">
+<header class="entete">
+  <a class="entete__marque" href="../../index.html">Archives Wild Code School</a>
+</header>
+<main class="contenu">
+<nav class="ariane"><a href="../../index.html">Accueil</a><span class="ariane__sep">›</span><a href="../../react-intermediaire/index.html">React - Intermédiaire</a><span class="ariane__sep">›</span><span aria-current="page">React Intermédiaire 03.2 - Contrôler la saisie dans un formulaire via le state</span></nav>
+
+<article class="quete">
+  <header class="quete__entete">
+    <a class="pastille pastille--teintee" href="../../react-intermediaire/index.html">React - Intermédiaire</a>
+    <h1>React Intermédiaire 03.2 - Contrôler la saisie dans un formulaire via le state</h1>
+    <p class="quete__meta">Quête 4 sur 4 · 2 images archivées</p>
+  </header>
+  <div class="cours">
+<h4>Introduction</h4>
+<p>Dans la quête précédente, tu as vu les concepts de composants <em>Contrôlés</em> et <em>Non contrôlés</em>.</p>
+<p>Nous allons poursuivre en voyant comment nous pouvons utiliser ces concepts avec des données dynamiques que nous recevons de l'entrée du formulaire.</p>
+<p>Allons-y ! 🚀</p>
+<p><img src="images/001-image.avif" alt="image" loading="lazy"></p>
+<h4>🤓 À la fin de cette quête, tu seras en mesure de :</h4>
+<p>✅ Mettre à jour le state de ton composant en fonction de ce qui est saisi dans un formulaire par l'utilisateur.</p>
+<h3>Changer la valeur dans le state</h3>
+<p>Commençons par un exemple avec une liste de composants et un formulaire :</p>
+<div class="bloc-code"><div class="bloc-code__langue">jsx</div><pre><code class="hljs language-jsx">!--- <span class="hljs-title class_">App</span>.<span class="hljs-property">js</span>
+<span class="hljs-keyword">import</span> <span class="hljs-title class_">QuoteList</span> <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;./components/QuoteList&quot;</span>;
+<span class="hljs-keyword">import</span> <span class="hljs-title class_">QuoteForm</span> <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;./components/QuoteForm&quot;</span>;
+
+<span class="hljs-keyword">function</span> <span class="hljs-title function_">App</span>(<span class="hljs-params"></span>) {
+  <span class="hljs-keyword">return</span> (
+    <span class="language-xml"><span class="hljs-tag">&lt;<span class="hljs-name">main</span> <span class="hljs-attr">className</span>=<span class="hljs-string">&quot;App&quot;</span>&gt;</span>
+      <span class="hljs-tag">&lt;<span class="hljs-name">QuoteForm</span> /&gt;</span>
+      <span class="hljs-tag">&lt;<span class="hljs-name">QuoteList</span> /&gt;</span>
+    <span class="hljs-tag">&lt;/<span class="hljs-name">main</span>&gt;</span></span>
+  );
+}
+
+<span class="hljs-keyword">export</span> <span class="hljs-keyword">default</span> <span class="hljs-title class_">App</span>;
+!--- components/<span class="hljs-title class_">QuoteForm</span>.<span class="hljs-property">js</span>
+<span class="hljs-keyword">import</span> { useState } <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;react&quot;</span>;
+
+<span class="hljs-keyword">import</span> <span class="hljs-string">&quot;./QuoteForm.css&quot;</span>;
+
+<span class="hljs-keyword">function</span> <span class="hljs-title function_">QuoteForm</span>(<span class="hljs-params"></span>) {
+  <span class="hljs-keyword">const</span> [character, setCharacter] = <span class="hljs-title function_">useState</span>(<span class="hljs-string">&quot;Homer Simpson&quot;</span>);
+
+  <span class="hljs-keyword">return</span> (
+    <span class="language-xml"><span class="hljs-tag">&lt;<span class="hljs-name">form</span> <span class="hljs-attr">className</span>=<span class="hljs-string">&quot;QuoteForm&quot;</span> <span class="hljs-attr">onSubmit</span>=<span class="hljs-string">{event</span> =&gt;</span> event.preventDefault()}&gt;
+      <span class="hljs-tag">&lt;<span class="hljs-name">label</span> <span class="hljs-attr">htmlFor</span>=<span class="hljs-string">&quot;character&quot;</span>&gt;</span>Character:<span class="hljs-tag">&lt;/<span class="hljs-name">label</span>&gt;</span>
+      <span class="hljs-tag">&lt;<span class="hljs-name">input</span>
+        <span class="hljs-attr">id</span>=<span class="hljs-string">&quot;name&quot;</span>
+        <span class="hljs-attr">name</span>=<span class="hljs-string">&quot;character&quot;</span>
+        <span class="hljs-attr">type</span>=<span class="hljs-string">&quot;text&quot;</span>
+        <span class="hljs-attr">value</span>=<span class="hljs-string">{character}</span>
+        <span class="hljs-attr">onChange</span>=<span class="hljs-string">{event</span> =&gt;</span> {
+          const input = event.target;
+          console.log(&quot;NAME:&quot;, input.name, &quot;VALUE:&quot;, input.value);
+        }}
+      /&gt;
+    <span class="hljs-tag">&lt;/<span class="hljs-name">form</span>&gt;</span></span>
+  );
+}
+
+<span class="hljs-keyword">export</span> <span class="hljs-keyword">default</span> <span class="hljs-title class_">QuoteForm</span>;
+!--- components/<span class="hljs-title class_">QuoteForm</span>.<span class="hljs-property">css</span>
+.<span class="hljs-property">QuoteForm</span> {
+  <span class="hljs-attr">padding</span>: <span class="hljs-number">1.</span>25em;
+  <span class="hljs-attr">width</span>: 450px;
+  font-<span class="hljs-attr">size</span>: <span class="hljs-number">1.</span>2em;
+  padding-<span class="hljs-attr">left</span>: <span class="hljs-title function_">calc</span>(40px + 1em);
+  margin-<span class="hljs-attr">top</span>: 1rem;
+}
+
+.<span class="hljs-property">QuoteForm</span> h3 {
+  <span class="hljs-attr">margin</span>: <span class="hljs-number">0</span> <span class="hljs-number">0</span> <span class="hljs-number">0.</span>5rem <span class="hljs-number">0</span>;
+}
+
+.<span class="hljs-property">QuoteForm</span> label,
+.<span class="hljs-property">QuoteForm</span> input,
+.<span class="hljs-property">QuoteForm</span> textarea {
+  <span class="hljs-attr">display</span>: block;
+}
+
+.<span class="hljs-property">QuoteForm</span> label {
+  font-<span class="hljs-attr">size</span>: <span class="hljs-number">0.</span>925rem;
+}
+
+.<span class="hljs-property">QuoteForm</span> input,
+.<span class="hljs-property">QuoteForm</span> textarea {
+  margin-<span class="hljs-attr">bottom</span>: 1em;
+  <span class="hljs-attr">width</span>: <span class="hljs-number">90</span>%;
+  <span class="hljs-attr">padding</span>: <span class="hljs-number">0.</span>25rem;
+  <span class="hljs-attr">border</span>: 1px solid #ddd;
+  border-<span class="hljs-attr">radius</span>: 3px;
+}
+
+.<span class="hljs-property">QuoteForm</span> button {
+  <span class="hljs-attr">background</span>: #<span class="hljs-number">554478</span>;
+  <span class="hljs-attr">border</span>: 1px solid #<span class="hljs-number">554478</span>;
+  border-<span class="hljs-attr">radius</span>: 3px;
+  <span class="hljs-attr">color</span>: #fff;
+  font-<span class="hljs-attr">size</span>: 1rem;
+}
+!--- components/<span class="hljs-title class_">QuoteList</span>.<span class="hljs-property">js</span>
+<span class="hljs-keyword">import</span> <span class="hljs-title class_">QuoteCard</span> <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;./QuoteCard&quot;</span>;
+
+<span class="hljs-comment">// An array of objects</span>
+<span class="hljs-keyword">const</span> quotes = [
+  {
+    <span class="hljs-attr">quote</span>:
+      <span class="hljs-string">&quot;Facts are meaningless. You could use facts to prove anything that&#x27;s even remotely true.&quot;</span>,
+    <span class="hljs-attr">character</span>: <span class="hljs-string">&quot;Homer Simpson&quot;</span>,
+    <span class="hljs-attr">image</span>:
+      <span class="hljs-string">&quot;https://cdn.glitch.com/3c3ffadc-3406-4440-bb95-d40ec8fcde72%2FHomerSimpson.png?1497567511939&quot;</span>
+  },
+  {
+    <span class="hljs-attr">quote</span>: <span class="hljs-string">&quot;Nothing you say can upset us. We&#x27;re the MTV generation.&quot;</span>,
+    <span class="hljs-attr">character</span>: <span class="hljs-string">&quot;Bart Simpson&quot;</span>,
+    <span class="hljs-attr">image</span>:
+      <span class="hljs-string">&quot;https://cdn.glitch.com/3c3ffadc-3406-4440-bb95-d40ec8fcde72%2FBartSimpson.png?1497567511638&quot;</span>
+  },
+  {
+    <span class="hljs-attr">quote</span>: <span class="hljs-string">&quot;That&#x27;s where I saw the leprechaun...He told me to burn things.&quot;</span>,
+    <span class="hljs-attr">character</span>: <span class="hljs-string">&quot;Ralph Wiggum&quot;</span>,
+    <span class="hljs-attr">image</span>:
+      <span class="hljs-string">&quot;https://cdn.glitch.com/3c3ffadc-3406-4440-bb95-d40ec8fcde72%2FRalphWiggum.png?1497567511523&quot;</span>
+  },
+  {
+    <span class="hljs-attr">quote</span>:
+      <span class="hljs-string">&quot;Hello, Simpson. I&#x27;m riding the bus today because Mother hid my car keys to punish me for talking to a woman on the phone. She was right to do it.&quot;</span>,
+    <span class="hljs-attr">character</span>: <span class="hljs-string">&quot;Principal Skinner&quot;</span>,
+    <span class="hljs-attr">image</span>:
+      <span class="hljs-string">&quot;https://cdn.glitch.com/3c3ffadc-3406-4440-bb95-d40ec8fcde72%2FSeymourSkinner.png?1497567511460&quot;</span>
+  }
+];
+
+<span class="hljs-keyword">function</span> <span class="hljs-title function_">QuoteList</span>(<span class="hljs-params"></span>) {
+  <span class="hljs-keyword">return</span> (
+    <span class="language-xml"><span class="hljs-tag">&lt;&gt;</span>
+      {quotes.map(item =&gt; (
+        <span class="hljs-tag">&lt;<span class="hljs-name">QuoteCard</span>
+          <span class="hljs-attr">key</span>=<span class="hljs-string">{item.quote}</span>
+          <span class="hljs-attr">quote</span>=<span class="hljs-string">{item.quote}</span>
+          <span class="hljs-attr">image</span>=<span class="hljs-string">{item.image}</span>
+          <span class="hljs-attr">character</span>=<span class="hljs-string">{item.character}</span>
+        /&gt;</span>
+      ))}
+    <span class="hljs-tag">&lt;/&gt;</span></span>
+  );
+}
+
+<span class="hljs-keyword">export</span> <span class="hljs-keyword">default</span> <span class="hljs-title class_">QuoteList</span>;
+!--- components/<span class="hljs-title class_">QuoteCard</span>.<span class="hljs-property">js</span>
+<span class="hljs-keyword">import</span> { useState } <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;react&quot;</span>;
+
+<span class="hljs-keyword">import</span> <span class="hljs-string">&quot;./QuoteCard.css&quot;</span>;
+
+<span class="hljs-keyword">function</span> <span class="hljs-title function_">QuoteCard</span>(<span class="hljs-params">{ image, quote, character }</span>) {
+  <span class="hljs-keyword">const</span> [favorite, setFavorite] = <span class="hljs-title function_">useState</span>(<span class="hljs-literal">false</span>);
+
+  <span class="hljs-keyword">return</span> (
+    <span class="language-xml"><span class="hljs-tag">&lt;<span class="hljs-name">figure</span> <span class="hljs-attr">className</span>=<span class="hljs-string">&quot;QuoteCard&quot;</span>&gt;</span>
+      <span class="hljs-tag">&lt;<span class="hljs-name">img</span> <span class="hljs-attr">src</span>=<span class="hljs-string">{image}</span> <span class="hljs-attr">alt</span>=<span class="hljs-string">{character}</span> /&gt;</span>
+      <span class="hljs-tag">&lt;<span class="hljs-name">figcaption</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">blockquote</span>&gt;</span>{quote}<span class="hljs-tag">&lt;/<span class="hljs-name">blockquote</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">p</span>&gt;</span>
+          <span class="hljs-tag">&lt;<span class="hljs-name">cite</span>&gt;</span>{character}<span class="hljs-tag">&lt;/<span class="hljs-name">cite</span>&gt;</span>
+          <span class="hljs-tag">&lt;<span class="hljs-name">button</span>
+            <span class="hljs-attr">className</span>=<span class="hljs-string">{favorite</span> ? &quot;<span class="hljs-attr">is-favorite</span>&quot; <span class="hljs-attr">:</span> &quot;&quot;}
+            <span class="hljs-attr">onClick</span>=<span class="hljs-string">{event</span> =&gt;</span> {
+              const newFavorite = !favorite;
+              setFavorite(newFavorite);
+            }}
+          &gt;
+            <span class="hljs-symbol">&amp;#9733;</span>
+          <span class="hljs-tag">&lt;/<span class="hljs-name">button</span>&gt;</span>
+        <span class="hljs-tag">&lt;/<span class="hljs-name">p</span>&gt;</span>
+      <span class="hljs-tag">&lt;/<span class="hljs-name">figcaption</span>&gt;</span>
+    <span class="hljs-tag">&lt;/<span class="hljs-name">figure</span>&gt;</span></span>
+  );
+}
+
+<span class="hljs-keyword">export</span> <span class="hljs-keyword">default</span> <span class="hljs-title class_">QuoteCard</span>;
+!--- components/<span class="hljs-title class_">QuoteCard</span>.<span class="hljs-property">css</span>
+.<span class="hljs-property">QuoteCard</span> {
+  <span class="hljs-attr">display</span>: flex;
+  <span class="hljs-attr">padding</span>: <span class="hljs-number">1.</span>25em;
+  <span class="hljs-attr">width</span>: 400px;
+  <span class="hljs-attr">border</span>: 1px solid #f8f8f8;
+  border-<span class="hljs-attr">radius</span>: 2px;
+  box-<span class="hljs-attr">shadow</span>: 1px 1px 1px <span class="hljs-title function_">rgba</span>(<span class="hljs-number">0</span>, <span class="hljs-number">0</span>, <span class="hljs-number">0</span>, <span class="hljs-number">0.15</span>);
+  font-<span class="hljs-attr">size</span>: <span class="hljs-number">1.</span>2em;
+}
+
+.<span class="hljs-property">QuoteCard</span> figcaption {
+  <span class="hljs-attr">width</span>: <span class="hljs-number">100</span>%;
+}
+
+.<span class="hljs-property">QuoteCard</span> img {
+  <span class="hljs-attr">display</span>: flex;
+  max-<span class="hljs-attr">height</span>: 120px;
+  margin-<span class="hljs-attr">right</span>: <span class="hljs-number">1.</span>5rem;
+}
+
+.<span class="hljs-property">QuoteCard</span> blockquote {
+  <span class="hljs-attr">margin</span>: <span class="hljs-number">0</span> <span class="hljs-number">0</span> 1rem <span class="hljs-number">0</span>;
+}
+
+.<span class="hljs-property">QuoteCard</span> figcaption p {
+  <span class="hljs-attr">margin</span>: <span class="hljs-number">0.</span>125rem <span class="hljs-number">0</span> <span class="hljs-number">0</span> <span class="hljs-number">0</span>;
+  <span class="hljs-attr">display</span>: flex;
+  justify-<span class="hljs-attr">content</span>: space-between;
+  align-<span class="hljs-attr">items</span>: flex-end;
+}
+
+.<span class="hljs-property">QuoteCard</span> figcaption p button {
+  <span class="hljs-attr">color</span>: #eee;
+}
+
+.<span class="hljs-property">QuoteCard</span> figcaption p button.<span class="hljs-property">is</span>-favorite {
+  <span class="hljs-attr">color</span>: #ecc94b;
+}
+</code></pre></div>
+<p>Dans cet exemple, nous avons un formulaire de base avec un input dans le fichier <code>QuoteForm.js</code>.</p>
+<p>Comme tu peux le voir, nous créons un state spécifique <code>character</code> que nous utilisons comme value pour notre input : tu peux également remarquer que nous utilisons <code>event.preventDefault</code> lorsque le formulaire est soumis.</p>
+<p>Par défaut, lorsqu'un utilisateur soumet un formulaire (en appuyant sur la touche entrée par exemple), la page se recharge. En utilisant <code>event.preventDefault</code>, nous empêchons que cela se produise.</p>
+<p>Jusqu'à présent, l'input est inutile, car, comme tu l'as peut-être remarqué, rien ne se passe si tu essayes de taper quelque chose dedans.</p>
+<p>Maintenant que la valeur provient du state, tu dois changer cette valeur lorsque l'événement <code>change</code> sera émis et détecté via <code>onChange</code>.</p>
+<p>Afin de récupérer l'événement, nous allons devoir modifier notre <em>event listener</em> (ou <em>event handler</em> : gestionnaire d'événement), qui pour l'instant ne fait qu'un affichage dans la console. Voici son code actuel (on met juste ce qui est envoyé par <code>onChange</code>) :</p>
+<div class="bloc-code"><div class="bloc-code__langue">javascript</div><pre><code class="hljs language-javascript">(event) =&gt; {
+  <span class="hljs-keyword">const</span> input = event.<span class="hljs-property">target</span>;
+  <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(<span class="hljs-string">&quot;NAME:&quot;</span>, input.<span class="hljs-property">name</span>, <span class="hljs-string">&quot;VALUE:&quot;</span>, input.<span class="hljs-property">value</span>);
+}
+</code></pre></div>
+<p>Essaye de modifier le code de la sandbox précédente de façon à ce que l'état change lorsque l'utilisateur saisi quelque chose dans l'input.</p>
+<p>De même, si tu souhaites que l'entrée soit initialisée avec une chaîne vide, tu peux écraser la valeur initiale <code>&quot;Homer Simpson&quot;</code> avec une chaîne de caractères vide afin que l'input soit vide au chargement du composant.</p>
+<details class="solution"><summary>Voir la solution</summary><div class="solution__corps"><div class="bloc-code"><div class="bloc-code__langue">jsx</div><pre><code class="hljs language-jsx"><span class="hljs-keyword">function</span> <span class="hljs-title function_">QuoteForm</span>(<span class="hljs-params"></span>) {
+  <span class="hljs-keyword">const</span> [character, setCharacter] = <span class="hljs-title function_">useState</span>(<span class="hljs-string">&quot;&quot;</span>);
+
+  <span class="hljs-keyword">return</span> (
+    <span class="language-xml"><span class="hljs-tag">&lt;<span class="hljs-name">form</span> <span class="hljs-attr">className</span>=<span class="hljs-string">&quot;QuoteForm&quot;</span> <span class="hljs-attr">onSubmit</span>=<span class="hljs-string">{(event)</span> =&gt;</span> event.preventDefault()}&gt;
+      <span class="hljs-tag">&lt;<span class="hljs-name">label</span> <span class="hljs-attr">htmlFor</span>=<span class="hljs-string">&quot;character&quot;</span>&gt;</span>Character:<span class="hljs-tag">&lt;/<span class="hljs-name">label</span>&gt;</span>
+      <span class="hljs-tag">&lt;<span class="hljs-name">input</span>
+        <span class="hljs-attr">id</span>=<span class="hljs-string">&quot;name&quot;</span>
+        <span class="hljs-attr">name</span>=<span class="hljs-string">&quot;character&quot;</span>
+        <span class="hljs-attr">type</span>=<span class="hljs-string">&quot;text&quot;</span>
+        <span class="hljs-attr">value</span>=<span class="hljs-string">{character}</span>
+        <span class="hljs-attr">onChange</span>=<span class="hljs-string">{(event)</span> =&gt;</span> {
+          const input = event.target;
+          setCharacter(input.value);
+        }}
+      /&gt;
+    <span class="hljs-tag">&lt;/<span class="hljs-name">form</span>&gt;</span></span>
+  );
+}
+</code></pre></div>
+</div></details>
+<p>Après ces modifications, ton champ <code>input</code> réagit enfin à la saisie de l'utilisateur !</p>
+<p>En résumé, le composant contrôlé fonctionne selon un cycle qui peut être illustré comme suit :</p>
+<p><img src="images/002-image.svg" alt="image" loading="lazy"></p>
+<ul>
+<li>La <code>value</code> du champ est définie par une valeur provenant du state du composant.</li>
+<li>Lorsqu'une modification est effectuée dans le champ, elle est prise en compte pour modifier la valeur du state.</li>
+</ul>
+<h3>Le gestionnaire d'événements dans des fonctions</h3>
+<p>Dans les projets React, tu verras qu'écrire l'<em>event listener</em> à l'intérieur des accolades derrière <code>onChange</code> a tendance à rendre notre code moins lisible, d'autant plus que les <em>event listeners</em> contiennent souvent plus de lignes que cet exemple.</p>
+<p>C'est pourquoi ils sont souvent écrits dans des fonctions séparées...</p>
+<div class="bloc-code"><div class="bloc-code__langue">jsx</div><pre><code class="hljs language-jsx"><span class="hljs-keyword">function</span> <span class="hljs-title function_">QuoteForm</span>(<span class="hljs-params"></span>) {
+  <span class="hljs-keyword">const</span> [character, setCharacter] = <span class="hljs-title function_">useState</span>(<span class="hljs-string">&quot;&quot;</span>);
+
+  <span class="hljs-comment">// We move the code outside of the onChange and onSubmit into separate function for better readability </span>
+  <span class="hljs-keyword">const</span> <span class="hljs-title function_">handleSubmit</span> = (<span class="hljs-params">event</span>) =&gt; event.<span class="hljs-title function_">preventDefault</span>();
+
+  <span class="hljs-keyword">const</span> <span class="hljs-title function_">handleChange</span> = (<span class="hljs-params">event</span>) =&gt; {
+    <span class="hljs-title function_">setCharacter</span>(event.<span class="hljs-property">target</span>.<span class="hljs-property">value</span>);
+  };
+
+  <span class="hljs-keyword">return</span> (
+    <span class="language-xml"><span class="hljs-tag">&lt;<span class="hljs-name">form</span> <span class="hljs-attr">className</span>=<span class="hljs-string">&quot;QuoteForm&quot;</span> <span class="hljs-attr">onSubmit</span>=<span class="hljs-string">{handleSubmit}</span>&gt;</span>
+      <span class="hljs-tag">&lt;<span class="hljs-name">label</span> <span class="hljs-attr">htmlFor</span>=<span class="hljs-string">&quot;character&quot;</span>&gt;</span>Character:<span class="hljs-tag">&lt;/<span class="hljs-name">label</span>&gt;</span>
+      <span class="hljs-tag">&lt;<span class="hljs-name">input</span>
+        <span class="hljs-attr">id</span>=<span class="hljs-string">&quot;name&quot;</span>
+        <span class="hljs-attr">name</span>=<span class="hljs-string">&quot;character&quot;</span>
+        <span class="hljs-attr">type</span>=<span class="hljs-string">&quot;text&quot;</span>
+        <span class="hljs-attr">value</span>=<span class="hljs-string">{character}</span>
+        <span class="hljs-attr">onChange</span>=<span class="hljs-string">{handleChange}</span>
+      /&gt;</span>
+    <span class="hljs-tag">&lt;/<span class="hljs-name">form</span>&gt;</span></span>
+  );
+}
+</code></pre></div>
+<h3>Dernière étape</h3>
+<p>Dernière étape ! Maintenant que tu as déplacé le code des <em>event listenenrs</em> hors du JSX, tu seras plus à l'aise pour enrichir leur code.</p>
+<h4>Limitation de la saisie à 30 caractères</h4>
+<p>Pour faire quelque chose dans l'esprit du formulaire d'inscription de GitHub, ou du champ de saisie d'un tweet de Twitter, nous allons limiter la saisie dans l'<code>input</code> à 30 caractères, et afficher un indicateur, permettant à l'utilisateur de savoir combien de caractères supplémentaires peuvent être tapés.</p>
+<p>Afin de pouvoir récupérer facilement la longueur maximale, déclare-la comme une constante, juste au-dessus de la déclaration de la fonction <code>QuoteForm</code> :</p>
+<div class="bloc-code"><div class="bloc-code__langue">javascript</div><pre><code class="hljs language-javascript"><span class="hljs-keyword">const</span> <span class="hljs-variable constant_">MAX_LENGTH</span> = <span class="hljs-number">30</span>; <span class="hljs-comment">// Feel free to change the value</span>
+</code></pre></div>
+<p>Dans l'<em>event listener</em>, si le nombre maximal de caractères a déjà été atteint, nous ignorons toutes les nouvelles entrées.</p>
+<p>Comment y parvenir ? Eh bien, il y a plus d'une façon de le faire.</p>
+<p>Mais voici probablement le moyen le plus simple :</p>
+<ul>
+<li>Dans la fonction <code>handleChange</code>, vérifier la nouvelle valeur en utilisant <code>event.target.value</code>.</li>
+<li>Si la longueur de la nouvelle valeur est inférieure à la longueur maximale, stocker la valeur dans le state.</li>
+<li>Sinon, ne rien faire !</li>
+</ul>
+<p>Essaye de mettre cela en œuvre par toi-même !</p>
+<div class="bloc-code"><div class="bloc-code__langue">hidden</div><pre><code class="hljs language-hidden">Montrer la solution|||javascript|||Des problèmes de compréhension ?|||0|||Cacher
+const handleChange = (event) =&gt; {
+  if (event.target.value.length &lt;= MAX_LENGTH) {
+    setCharacter(event.target.value);
+  }
+};
+</code></pre></div>
+<h4>Ajout d'un repère visuel</h4>
+<p>En plus d'empêcher la poursuite de la saisie au-delà d'un seuil maximal, deux indicateurs visuels peuvent être ajoutés :</p>
+<ul>
+<li>une classe CSS pour entourer le champ d'une bordure verte ou rouge, selon que le maximum est atteint ou non.</li>
+<li>un texte &quot;nombre de caractères restants&quot; sous le champ.</li>
+</ul>
+<p>Dans le premier cas, nous devrons vérifier la même condition que dans l'écouteur d'événements : le maximum a-t-il été atteint ?
+En fonction de la réponse, une classe ou une autre sera attribuée à l'attribut <code>className</code> de la balise <code>&lt;input&gt;</code>.</p>
+<p>C'est encore le rendu conditionnel ! Les classes à appliquer sont <code>length-ok</code> (moins que la longueur maximale) et <code>length-maximum-reached</code> (dans l'autre cas).</p>
+<p>Dans le second cas, nous pourrons calculer la différence entre <code>MAX_LENGTH</code> et la longueur de la chaîne <code>character</code> stockée dans le state , et nous pourrons afficher cette valeur :<code>caractères restants</code>.</p>
+<p>Encore une fois, nous te laissons y réfléchir. Essaye de le faire toi-même avant de vérifier la solution.</p>
+<details class="solution"><summary>Voir la solution</summary><div class="solution__corps"><div class="bloc-code"><div class="bloc-code__langue">jsx</div><pre><code class="hljs language-jsx"><span class="hljs-keyword">const</span> <span class="hljs-variable constant_">MAX_LENGTH</span> = <span class="hljs-number">30</span>; <span class="hljs-comment">// Feel free to change the value</span>
+
+<span class="hljs-keyword">function</span> <span class="hljs-title function_">QuoteForm</span>(<span class="hljs-params"></span>) {
+  <span class="hljs-keyword">const</span> [character, setCharacter] = <span class="hljs-title function_">useState</span>(<span class="hljs-string">&quot;&quot;</span>);
+
+  <span class="hljs-keyword">const</span> <span class="hljs-title function_">handleSubmit</span> = (<span class="hljs-params">event</span>) =&gt; event.<span class="hljs-title function_">preventDefault</span>();
+
+  <span class="hljs-keyword">const</span> <span class="hljs-title function_">handleChange</span> = (<span class="hljs-params">event</span>) =&gt; {
+    <span class="hljs-keyword">if</span> (event.<span class="hljs-property">target</span>.<span class="hljs-property">value</span>.<span class="hljs-property">length</span> &lt;= <span class="hljs-variable constant_">MAX_LENGTH</span>) {
+      <span class="hljs-title function_">setCharacter</span>(event.<span class="hljs-property">target</span>.<span class="hljs-property">value</span>);
+    }
+  };
+
+  <span class="hljs-comment">// SOLUTION for conditional border color : compute a BOOLEAN</span>
+  <span class="hljs-comment">// telling if we&#x27;ve reached the maximum, and use it in the input&#x27;s className</span>
+  <span class="hljs-keyword">const</span> maximumReached = character.<span class="hljs-property">length</span> &gt;= <span class="hljs-variable constant_">MAX_LENGTH</span>;
+
+  <span class="hljs-comment">// SOLUTION for displaying the number of remaining characters :</span>
+  <span class="hljs-comment">// we compute it here and use it below</span>
+  <span class="hljs-keyword">const</span> numRemaining = <span class="hljs-variable constant_">MAX_LENGTH</span> - character.<span class="hljs-property">length</span>;
+
+  <span class="hljs-keyword">return</span> (
+    <span class="language-xml"><span class="hljs-tag">&lt;<span class="hljs-name">form</span> <span class="hljs-attr">className</span>=<span class="hljs-string">&quot;QuoteForm&quot;</span> <span class="hljs-attr">onSubmit</span>=<span class="hljs-string">{handleSubmit}</span>&gt;</span>
+      <span class="hljs-tag">&lt;<span class="hljs-name">label</span> <span class="hljs-attr">htmlFor</span>=<span class="hljs-string">&quot;character&quot;</span>&gt;</span>Character:<span class="hljs-tag">&lt;/<span class="hljs-name">label</span>&gt;</span>
+      <span class="hljs-tag">&lt;<span class="hljs-name">input</span>
+        <span class="hljs-attr">className</span>=<span class="hljs-string">{maximumReached</span> ? &quot;<span class="hljs-attr">length-maximum-reached</span>&quot; <span class="hljs-attr">:</span> &quot;<span class="hljs-attr">length-ok</span>&quot;}
+        <span class="hljs-attr">id</span>=<span class="hljs-string">&quot;name&quot;</span>
+        <span class="hljs-attr">name</span>=<span class="hljs-string">&quot;character&quot;</span>
+        <span class="hljs-attr">type</span>=<span class="hljs-string">&quot;text&quot;</span>
+        <span class="hljs-attr">value</span>=<span class="hljs-string">{character}</span>
+        <span class="hljs-attr">onChange</span>=<span class="hljs-string">{handleChange}</span>
+      /&gt;</span>
+      <span class="hljs-tag">&lt;<span class="hljs-name">small</span> <span class="hljs-attr">className</span>=<span class="hljs-string">&quot;remaining-characters&quot;</span>&gt;</span>
+        {numRemaining} remaining characters
+      <span class="hljs-tag">&lt;/<span class="hljs-name">small</span>&gt;</span>
+    <span class="hljs-tag">&lt;/<span class="hljs-name">form</span>&gt;</span></span>
+  );
+}
+</code></pre></div>
+</div></details>
+<p>Une démo du code final :</p>
+<div class="bloc-code"><div class="bloc-code__langue">jsx</div><pre><code class="hljs language-jsx">!--- <span class="hljs-title class_">App</span>.<span class="hljs-property">js</span>
+<span class="hljs-keyword">import</span> <span class="hljs-title class_">QuoteList</span> <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;./components/QuoteList&quot;</span>;
+<span class="hljs-keyword">import</span> <span class="hljs-title class_">QuoteForm</span> <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;./components/QuoteForm&quot;</span>;
+
+<span class="hljs-keyword">function</span> <span class="hljs-title function_">App</span>(<span class="hljs-params"></span>) {
+  <span class="hljs-keyword">return</span> (
+    <span class="language-xml"><span class="hljs-tag">&lt;<span class="hljs-name">main</span> <span class="hljs-attr">className</span>=<span class="hljs-string">&quot;App&quot;</span>&gt;</span>
+      <span class="hljs-tag">&lt;<span class="hljs-name">QuoteForm</span> /&gt;</span>
+      <span class="hljs-tag">&lt;<span class="hljs-name">QuoteList</span> /&gt;</span>
+    <span class="hljs-tag">&lt;/<span class="hljs-name">main</span>&gt;</span></span>
+  );
+}
+
+<span class="hljs-keyword">export</span> <span class="hljs-keyword">default</span> <span class="hljs-title class_">App</span>;
+!--- components/<span class="hljs-title class_">QuoteForm</span>.<span class="hljs-property">js</span>
+<span class="hljs-keyword">import</span> { useState } <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;react&quot;</span>;
+
+<span class="hljs-keyword">import</span> <span class="hljs-string">&quot;./QuoteForm.css&quot;</span>;
+
+<span class="hljs-keyword">const</span> <span class="hljs-variable constant_">MAX_LENGTH</span> = <span class="hljs-number">30</span>; <span class="hljs-comment">// Feel free to change the value</span>
+
+<span class="hljs-keyword">function</span> <span class="hljs-title function_">QuoteForm</span>(<span class="hljs-params"></span>) {
+  <span class="hljs-keyword">const</span> [character, setCharacter] = <span class="hljs-title function_">useState</span>(<span class="hljs-string">&quot;&quot;</span>);
+
+  <span class="hljs-keyword">const</span> <span class="hljs-title function_">handleSubmit</span> = event =&gt; event.<span class="hljs-title function_">preventDefault</span>();
+
+  <span class="hljs-keyword">const</span> <span class="hljs-title function_">handleChange</span> = event =&gt; {
+    <span class="hljs-keyword">if</span> (event.<span class="hljs-property">target</span>.<span class="hljs-property">value</span>.<span class="hljs-property">length</span> &lt;= <span class="hljs-variable constant_">MAX_LENGTH</span>) {
+      <span class="hljs-title function_">setCharacter</span>(event.<span class="hljs-property">target</span>.<span class="hljs-property">value</span>);
+    }
+  };
+
+  <span class="hljs-comment">// SOLUTION for conditional border color : compute a BOOLEAN</span>
+  <span class="hljs-comment">// telling if we&#x27;ve reached the maximum, and use it in the input&#x27;s className</span>
+  <span class="hljs-keyword">const</span> maximumReached = character.<span class="hljs-property">length</span> &gt;= <span class="hljs-variable constant_">MAX_LENGTH</span>;
+
+  <span class="hljs-comment">// SOLUTION for displaying the number of remaining characters :</span>
+  <span class="hljs-comment">// we compute it here and use it below</span>
+  <span class="hljs-keyword">const</span> numRemaining = <span class="hljs-variable constant_">MAX_LENGTH</span> - character.<span class="hljs-property">length</span>;
+
+  <span class="hljs-keyword">return</span> (
+    <span class="language-xml"><span class="hljs-tag">&lt;<span class="hljs-name">form</span> <span class="hljs-attr">className</span>=<span class="hljs-string">&quot;QuoteForm&quot;</span> <span class="hljs-attr">onSubmit</span>=<span class="hljs-string">{handleSubmit}</span>&gt;</span>
+      <span class="hljs-tag">&lt;<span class="hljs-name">label</span> <span class="hljs-attr">htmlFor</span>=<span class="hljs-string">&quot;character&quot;</span>&gt;</span>Character:<span class="hljs-tag">&lt;/<span class="hljs-name">label</span>&gt;</span>
+      <span class="hljs-tag">&lt;<span class="hljs-name">input</span>
+        <span class="hljs-attr">className</span>=<span class="hljs-string">{maximumReached</span> ? &quot;<span class="hljs-attr">length-maximum-reached</span>&quot; <span class="hljs-attr">:</span> &quot;<span class="hljs-attr">length-ok</span>&quot;}
+        <span class="hljs-attr">id</span>=<span class="hljs-string">&quot;name&quot;</span>
+        <span class="hljs-attr">name</span>=<span class="hljs-string">&quot;character&quot;</span>
+        <span class="hljs-attr">type</span>=<span class="hljs-string">&quot;text&quot;</span>
+        <span class="hljs-attr">value</span>=<span class="hljs-string">{character}</span>
+        <span class="hljs-attr">onChange</span>=<span class="hljs-string">{handleChange}</span>
+      /&gt;</span>
+      <span class="hljs-tag">&lt;<span class="hljs-name">small</span> <span class="hljs-attr">className</span>=<span class="hljs-string">&quot;remaining-characters&quot;</span>&gt;</span>
+        {numRemaining} remaining characters
+      <span class="hljs-tag">&lt;/<span class="hljs-name">small</span>&gt;</span>
+    <span class="hljs-tag">&lt;/<span class="hljs-name">form</span>&gt;</span></span>
+  );
+}
+
+<span class="hljs-keyword">export</span> <span class="hljs-keyword">default</span> <span class="hljs-title class_">QuoteForm</span>;
+!--- components/<span class="hljs-title class_">QuoteForm</span>.<span class="hljs-property">css</span>
+.<span class="hljs-property">QuoteForm</span> {
+  <span class="hljs-attr">padding</span>: <span class="hljs-number">1.</span>25em;
+  <span class="hljs-attr">width</span>: 450px;
+  font-<span class="hljs-attr">size</span>: <span class="hljs-number">1.</span>2em;
+  padding-<span class="hljs-attr">left</span>: <span class="hljs-title function_">calc</span>(40px + 1em);
+  margin-<span class="hljs-attr">top</span>: 1rem;
+}
+
+.<span class="hljs-property">QuoteForm</span> h3 {
+  <span class="hljs-attr">margin</span>: <span class="hljs-number">0</span> <span class="hljs-number">0</span> <span class="hljs-number">0.</span>5rem <span class="hljs-number">0</span>;
+}
+
+.<span class="hljs-property">QuoteForm</span> label,
+.<span class="hljs-property">QuoteForm</span> input,
+.<span class="hljs-property">QuoteForm</span> textarea {
+  <span class="hljs-attr">display</span>: block;
+}
+
+.<span class="hljs-property">QuoteForm</span> label {
+  font-<span class="hljs-attr">size</span>: <span class="hljs-number">0.</span>925rem;
+}
+
+.<span class="hljs-property">QuoteForm</span> input,
+.<span class="hljs-property">QuoteForm</span> textarea {
+  margin-<span class="hljs-attr">bottom</span>: 1em;
+  <span class="hljs-attr">width</span>: <span class="hljs-number">90</span>%;
+  <span class="hljs-attr">padding</span>: <span class="hljs-number">0.</span>25rem;
+  <span class="hljs-attr">border</span>: 1px solid #ddd;
+  border-<span class="hljs-attr">radius</span>: 3px;
+}
+
+.<span class="hljs-property">QuoteForm</span> button {
+  <span class="hljs-attr">background</span>: #<span class="hljs-number">554478</span>;
+  <span class="hljs-attr">border</span>: 1px solid #<span class="hljs-number">554478</span>;
+  border-<span class="hljs-attr">radius</span>: 3px;
+  <span class="hljs-attr">color</span>: #fff;
+  font-<span class="hljs-attr">size</span>: 1rem;
+}
+
+.<span class="hljs-property">QuoteForm</span> .<span class="hljs-property">length</span>-ok {
+  <span class="hljs-attr">border</span>: 1px solid #9ae6b4;
+}
+
+.<span class="hljs-property">QuoteForm</span> .<span class="hljs-property">length</span>-maximum-reached {
+  <span class="hljs-attr">border</span>: 1px solid #fc8181;
+}
+
+.<span class="hljs-property">QuoteForm</span> .<span class="hljs-property">remaining</span>-characters {
+  <span class="hljs-attr">color</span>: #<span class="hljs-number">555</span>;
+}
+!--- components/<span class="hljs-title class_">QuoteList</span>.<span class="hljs-property">js</span>
+<span class="hljs-keyword">import</span> <span class="hljs-title class_">QuoteCard</span> <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;./QuoteCard&quot;</span>;
+
+<span class="hljs-comment">// An array of objects</span>
+<span class="hljs-keyword">const</span> quotes = [
+  {
+    <span class="hljs-attr">quote</span>:
+      <span class="hljs-string">&quot;Facts are meaningless. You could use facts to prove anything that&#x27;s even remotely true.&quot;</span>,
+    <span class="hljs-attr">character</span>: <span class="hljs-string">&quot;Homer Simpson&quot;</span>,
+    <span class="hljs-attr">image</span>:
+      <span class="hljs-string">&quot;https://cdn.glitch.com/3c3ffadc-3406-4440-bb95-d40ec8fcde72%2FHomerSimpson.png?1497567511939&quot;</span>
+  },
+  {
+    <span class="hljs-attr">quote</span>: <span class="hljs-string">&quot;Nothing you say can upset us. We&#x27;re the MTV generation.&quot;</span>,
+    <span class="hljs-attr">character</span>: <span class="hljs-string">&quot;Bart Simpson&quot;</span>,
+    <span class="hljs-attr">image</span>:
+      <span class="hljs-string">&quot;https://cdn.glitch.com/3c3ffadc-3406-4440-bb95-d40ec8fcde72%2FBartSimpson.png?1497567511638&quot;</span>
+  },
+  {
+    <span class="hljs-attr">quote</span>: <span class="hljs-string">&quot;That&#x27;s where I saw the leprechaun...He told me to burn things.&quot;</span>,
+    <span class="hljs-attr">character</span>: <span class="hljs-string">&quot;Ralph Wiggum&quot;</span>,
+    <span class="hljs-attr">image</span>:
+      <span class="hljs-string">&quot;https://cdn.glitch.com/3c3ffadc-3406-4440-bb95-d40ec8fcde72%2FRalphWiggum.png?1497567511523&quot;</span>
+  },
+  {
+    <span class="hljs-attr">quote</span>:
+      <span class="hljs-string">&quot;Hello, Simpson. I&#x27;m riding the bus today because Mother hid my car keys to punish me for talking to a woman on the phone. She was right to do it.&quot;</span>,
+    <span class="hljs-attr">character</span>: <span class="hljs-string">&quot;Principal Skinner&quot;</span>,
+    <span class="hljs-attr">image</span>:
+      <span class="hljs-string">&quot;https://cdn.glitch.com/3c3ffadc-3406-4440-bb95-d40ec8fcde72%2FSeymourSkinner.png?1497567511460&quot;</span>
+  }
+];
+
+<span class="hljs-keyword">function</span> <span class="hljs-title function_">QuoteList</span>(<span class="hljs-params"></span>) {
+  <span class="hljs-keyword">return</span> (
+    <span class="language-xml"><span class="hljs-tag">&lt;&gt;</span>
+      {quotes.map(item =&gt; (
+        <span class="hljs-tag">&lt;<span class="hljs-name">QuoteCard</span>
+          <span class="hljs-attr">key</span>=<span class="hljs-string">{item.quote}</span>
+          <span class="hljs-attr">quote</span>=<span class="hljs-string">{item.quote}</span>
+          <span class="hljs-attr">image</span>=<span class="hljs-string">{item.image}</span>
+          <span class="hljs-attr">character</span>=<span class="hljs-string">{item.character}</span>
+        /&gt;</span>
+      ))}
+    <span class="hljs-tag">&lt;/&gt;</span></span>
+  );
+}
+
+<span class="hljs-keyword">export</span> <span class="hljs-keyword">default</span> <span class="hljs-title class_">QuoteList</span>;
+!--- components/<span class="hljs-title class_">QuoteCard</span>.<span class="hljs-property">js</span>
+<span class="hljs-keyword">import</span> { useState } <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;react&quot;</span>;
+
+<span class="hljs-keyword">import</span> <span class="hljs-string">&quot;./QuoteCard.css&quot;</span>;
+
+<span class="hljs-keyword">function</span> <span class="hljs-title function_">QuoteCard</span>(<span class="hljs-params">{ image, quote, character }</span>) {
+  <span class="hljs-keyword">const</span> [favorite, setFavorite] = <span class="hljs-title function_">useState</span>(<span class="hljs-literal">false</span>);
+
+  <span class="hljs-keyword">return</span> (
+    <span class="language-xml"><span class="hljs-tag">&lt;<span class="hljs-name">figure</span> <span class="hljs-attr">className</span>=<span class="hljs-string">&quot;QuoteCard&quot;</span>&gt;</span>
+      <span class="hljs-tag">&lt;<span class="hljs-name">img</span> <span class="hljs-attr">src</span>=<span class="hljs-string">{image}</span> <span class="hljs-attr">alt</span>=<span class="hljs-string">{character}</span> /&gt;</span>
+      <span class="hljs-tag">&lt;<span class="hljs-name">figcaption</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">blockquote</span>&gt;</span>{quote}<span class="hljs-tag">&lt;/<span class="hljs-name">blockquote</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">p</span>&gt;</span>
+          <span class="hljs-tag">&lt;<span class="hljs-name">cite</span>&gt;</span>{character}<span class="hljs-tag">&lt;/<span class="hljs-name">cite</span>&gt;</span>
+          <span class="hljs-tag">&lt;<span class="hljs-name">button</span>
+            <span class="hljs-attr">className</span>=<span class="hljs-string">{favorite</span> ? &quot;<span class="hljs-attr">is-favorite</span>&quot; <span class="hljs-attr">:</span> &quot;&quot;}
+            <span class="hljs-attr">onClick</span>=<span class="hljs-string">{event</span> =&gt;</span> {
+              const newFavorite = !favorite;
+              setFavorite(newFavorite);
+            }}
+          &gt;
+            <span class="hljs-symbol">&amp;#9733;</span>
+          <span class="hljs-tag">&lt;/<span class="hljs-name">button</span>&gt;</span>
+        <span class="hljs-tag">&lt;/<span class="hljs-name">p</span>&gt;</span>
+      <span class="hljs-tag">&lt;/<span class="hljs-name">figcaption</span>&gt;</span>
+    <span class="hljs-tag">&lt;/<span class="hljs-name">figure</span>&gt;</span></span>
+  );
+}
+
+<span class="hljs-keyword">export</span> <span class="hljs-keyword">default</span> <span class="hljs-title class_">QuoteCard</span>;
+!--- components/<span class="hljs-title class_">QuoteCard</span>.<span class="hljs-property">css</span>
+.<span class="hljs-property">QuoteCard</span> {
+  <span class="hljs-attr">display</span>: flex;
+  <span class="hljs-attr">padding</span>: <span class="hljs-number">1.</span>25em;
+  <span class="hljs-attr">width</span>: 400px;
+  <span class="hljs-attr">border</span>: 1px solid #f8f8f8;
+  border-<span class="hljs-attr">radius</span>: 2px;
+  box-<span class="hljs-attr">shadow</span>: 1px 1px 1px <span class="hljs-title function_">rgba</span>(<span class="hljs-number">0</span>, <span class="hljs-number">0</span>, <span class="hljs-number">0</span>, <span class="hljs-number">0.15</span>);
+  font-<span class="hljs-attr">size</span>: <span class="hljs-number">1.</span>2em;
+}
+
+.<span class="hljs-property">QuoteCard</span> figcaption {
+  <span class="hljs-attr">width</span>: <span class="hljs-number">100</span>%;
+}
+
+.<span class="hljs-property">QuoteCard</span> img {
+  <span class="hljs-attr">display</span>: flex;
+  max-<span class="hljs-attr">height</span>: 120px;
+  margin-<span class="hljs-attr">right</span>: <span class="hljs-number">1.</span>5rem;
+}
+
+.<span class="hljs-property">QuoteCard</span> blockquote {
+  <span class="hljs-attr">margin</span>: <span class="hljs-number">0</span> <span class="hljs-number">0</span> 1rem <span class="hljs-number">0</span>;
+}
+
+.<span class="hljs-property">QuoteCard</span> figcaption p {
+  <span class="hljs-attr">margin</span>: <span class="hljs-number">0.</span>125rem <span class="hljs-number">0</span> <span class="hljs-number">0</span> <span class="hljs-number">0</span>;
+  <span class="hljs-attr">display</span>: flex;
+  justify-<span class="hljs-attr">content</span>: space-between;
+  align-<span class="hljs-attr">items</span>: flex-end;
+}
+
+.<span class="hljs-property">QuoteCard</span> figcaption p button {
+  <span class="hljs-attr">color</span>: #eee;
+}
+
+.<span class="hljs-property">QuoteCard</span> figcaption p button.<span class="hljs-property">is</span>-favorite {
+  <span class="hljs-attr">color</span>: #ecc94b;
+}
+</code></pre></div>
+<h1>💪 Challenge</h1>
+<h3>Synchronisation de l'affichage avec l'input</h3>
+<p>Tu vas construire un formulaire qui affichera le contenu saisi dans l'input, à l'intérieur d'un élément <code>&lt;h1&gt;</code>.</p>
+<ul>
+<li>Pour soumettre ce défi, tu dois faire un fork de ce template :</li>
+</ul>
+<div class="bloc-code"><div class="bloc-code__langue">jsx</div><pre><code class="hljs language-jsx">!--- <span class="hljs-title class_">App</span>.<span class="hljs-property">js</span>
+<span class="hljs-keyword">import</span> <span class="hljs-title class_">MyTitleForm</span> <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;./MyTitleForm&quot;</span>;
+
+<span class="hljs-keyword">function</span> <span class="hljs-title function_">App</span>(<span class="hljs-params"></span>) {
+  <span class="hljs-keyword">return</span> (
+    <span class="language-xml"><span class="hljs-tag">&lt;<span class="hljs-name">main</span>&gt;</span>
+      <span class="hljs-tag">&lt;<span class="hljs-name">MyTitleForm</span> /&gt;</span>
+    <span class="hljs-tag">&lt;/<span class="hljs-name">main</span>&gt;</span></span>
+  );
+}
+
+<span class="hljs-keyword">export</span> <span class="hljs-keyword">default</span> <span class="hljs-title class_">App</span>;
+!--- <span class="hljs-title class_">MyTitleForm</span>.<span class="hljs-property">js</span>
+<span class="hljs-keyword">import</span> { useState } <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;react&quot;</span>;
+
+<span class="hljs-keyword">function</span> <span class="hljs-title function_">MyTitleForm</span>(<span class="hljs-params"></span>) {
+  <span class="hljs-keyword">const</span> [title, setTitle] = <span class="hljs-title function_">useState</span>(<span class="hljs-string">&quot;Awesome Title&quot;</span>);
+
+  <span class="hljs-keyword">return</span> (
+    <span class="language-xml"><span class="hljs-tag">&lt;<span class="hljs-name">header</span>&gt;</span>
+      <span class="hljs-tag">&lt;<span class="hljs-name">h1</span>&gt;</span>Bad Title<span class="hljs-tag">&lt;/<span class="hljs-name">h1</span>&gt;</span>
+      <span class="hljs-tag">&lt;<span class="hljs-name">label</span> <span class="hljs-attr">htmlFor</span>=<span class="hljs-string">&quot;title&quot;</span>&gt;</span>Title :<span class="hljs-tag">&lt;/<span class="hljs-name">label</span>&gt;</span>
+      <span class="hljs-tag">&lt;<span class="hljs-name">input</span> <span class="hljs-attr">id</span>=<span class="hljs-string">&quot;title&quot;</span> <span class="hljs-attr">type</span>=<span class="hljs-string">&quot;text&quot;</span> /&gt;</span>
+    <span class="hljs-tag">&lt;/<span class="hljs-name">header</span>&gt;</span></span>
+  );
+}
+
+<span class="hljs-keyword">export</span> <span class="hljs-keyword">default</span> <span class="hljs-title class_">MyTitleForm</span>;
+</code></pre></div>
+<ul>
+<li>Ajoute ton code au fichier correspondant, afin que la saisie des entrées de l'utilisateur soient affichées à la fois dans l'input et dans le <code>&lt;h1&gt;</code>.</li>
+<li>Inspire toi de l'approche détaillée dans cette quête pour transformer le composant non contrôlé en composant contrôlé.</li>
+<li>Transforme la valeur saisie par l'utilisateur, en la traitant pour ignorer le caractère <code>*</code>. Tu peux t'inspirer de la façon dont nous avons ignoré les entrées de l'utilisateur au-delà de la longueur maximale, dans le dernier exemple.</li>
+<li><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String/includes" target="_blank" rel="noopener noreferrer">Ceci</a> s'avérera utile, afin de décider si tu dois modifier le state.</li>
+<li>Poste le lien vers ton fork pour valider ta quête.</li>
+</ul>
+<h1>🧐 Critères de validation</h1>
+<ul>
+<li>[ ] Le lien fourni pointe vers ton fork du template.</li>
+<li>[ ] Le champ <code>&lt;h1&gt;</code> doit changer en même temps que la valeur dans le <code>&lt;input&gt;</code>.</li>
+<li>[ ] La valeur du <code>&lt;input&gt;</code> n'est pas fixe et provient du <em>state</em>.</li>
+<li>[ ] La valeur de l'<code>&lt;input&gt;</code> est mise à jour en utilisant un gestionnaire d'événement associé à <code>onChange</code>.</li>
+<li>[ ] Le caractère &quot;*&quot; n'est pas affiché lorsqu'il est saisi.</li>
+</ul>
+
+  </div>
+  <section class="ressources-quete">
+  <h2>Ressources partagées sur cette quête</h2>
+  <ul class="ressources-liste">
+    <li><a href="https://www.youtube.com/watch?v=h2a0cSC1Vz8&amp;list=LL&amp;index=1&amp;t=3697s" target="_blank" rel="noopener noreferrer">Il rappele en video les principes de react mais en plus il y a une partie formulaire...</a><span class="ressources-liste__url">https://www.youtube.com/watch?v=h2a0cSC1Vz8&amp;list=LL&amp;index=1&amp;t=3697s</span></li>
+  </ul>
+</section>
+</article>
+
+<nav class="nav-quete">
+  <a class="nav-quete__lien nav-quete__lien--prec" href="../../react-intermediaire/003-react-intermediaire-03-1-formulaires-et-composants-controles/index.html">
+           <span class="nav-quete__sens">← Précédent</span>
+           <span class="nav-quete__titre">React Intermédiaire 03.1 - Formulaires et composants contrôlés</span>
+         </a>
+  <span class="nav-quete__lien nav-quete__lien--vide"></span>
+</nav>
+</main>
+<footer class="pied">
+  <p>Archive personnelle des cours suivis à la Wild Code School. Copie hors ligne à usage strictement privé.</p>
+</footer>
+
+<script src="../../assets/copie-code.js"></script>
+<script src="../../assets/progression.js"></script>
+</body>
+</html>

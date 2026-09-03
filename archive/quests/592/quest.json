@@ -1,0 +1,35 @@
+{
+  "id": 592,
+  "titre": "05 - JS Monorepo : Mettre en place une base de données",
+  "titres": {
+    "fr": "05 - JS Monorepo : Mettre en place une base de données"
+  },
+  "theme": {
+    "id": 43,
+    "slug": "prepa",
+    "nom": "JS Monorepo"
+  },
+  "creeLe": "2019-05-19T23:20:21.201+02:00",
+  "difficulte": "",
+  "dureeEstimee": null,
+  "modeValidation": "student",
+  "chapitres": [
+    {
+      "id": 14878,
+      "type": "content",
+      "langue": "fr",
+      "majLe": "2024-12-21T19:30:45.574+01:00",
+      "caracteres": 25865
+    },
+    {
+      "id": 12616,
+      "type": "solution",
+      "langue": "fr",
+      "majLe": "2024-11-10T18:05:54.090+01:00",
+      "caracteres": 2225
+    }
+  ],
+  "ressources": [],
+  "urlOrigine": "https://odyssey.wildcodeschool.com/quests/592",
+  "archiveLe": "2026-09-02T20:51:58.626Z"
+}

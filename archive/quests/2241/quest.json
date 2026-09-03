@@ -1,0 +1,28 @@
+{
+  "id": 2241,
+  "titre": "POO2 - Les propriétés",
+  "titres": {
+    "fr": "POO2 - Les propriétés"
+  },
+  "theme": {
+    "id": 70,
+    "slug": "php-object-oriented",
+    "nom": "PHP Orienté Objet"
+  },
+  "creeLe": "2022-09-09T17:24:30.138+02:00",
+  "difficulte": "1",
+  "dureeEstimee": null,
+  "modeValidation": "student",
+  "chapitres": [
+    {
+      "id": 9328,
+      "type": "content",
+      "langue": "fr",
+      "majLe": "2023-03-27T12:29:02.345+02:00",
+      "caracteres": 7425
+    }
+  ],
+  "ressources": [],
+  "urlOrigine": "https://odyssey.wildcodeschool.com/quests/2241",
+  "archiveLe": "2026-09-02T20:53:47.493Z"
+}

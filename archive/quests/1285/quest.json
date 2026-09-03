@@ -1,0 +1,45 @@
+{
+  "id": 1285,
+  "titre": "👩‍🏫 CSS 6 : Responsive Design & Media queries",
+  "titres": {
+    "fr": "👩‍🏫 CSS 6 : Responsive Design & Media queries"
+  },
+  "theme": {
+    "id": 12,
+    "slug": "html",
+    "nom": "CSS"
+  },
+  "creeLe": "2020-07-08T23:22:29.146+02:00",
+  "difficulte": "0",
+  "dureeEstimee": null,
+  "modeValidation": "self",
+  "chapitres": [
+    {
+      "id": 12568,
+      "type": "content",
+      "langue": "fr",
+      "majLe": "2024-11-05T09:53:12.717+01:00",
+      "caracteres": 20149
+    }
+  ],
+  "ressources": [
+    {
+      "link": "https://www.youtube.com/watch?v=wu1Sk8iOPnE&list=PLjwdMgw5TTLVjTZQocrMwKicV5wsZlRpj&index=20",
+      "description": "vidéo très claire et complète expliquant en détail le responsive et les média queries :D"
+    },
+    {
+      "link": "https://1linelayouts.glitch.me",
+      "description": "soooooooo good one-liners css for alignment :D"
+    },
+    {
+      "link": "https://linuxfr.org/news/gameshell-apprendre-les-rudiments-du-shell-en-s-amusant",
+      "description": "Apprendre les commandes shell en s'amusant (aurait sa place dans une quete ici)"
+    },
+    {
+      "link": "https://www.youtube.com/watch?v=x4u1yp3Msao",
+      "description": "Vidéo de 20 minutes en anglais qui explique pas à pas comment rendre une page responsive :)"
+    }
+  ],
+  "urlOrigine": "https://odyssey.wildcodeschool.com/quests/1285",
+  "archiveLe": "2026-09-02T20:52:47.026Z"
+}

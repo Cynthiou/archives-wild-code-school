@@ -1,0 +1,44 @@
+{
+  "id": 1401,
+  "titre": "JS - React - Props and State",
+  "titres": {
+    "fr": "JS - React - Props and State"
+  },
+  "theme": {
+    "id": 149,
+    "slug": "web-development",
+    "nom": "Développement Web"
+  },
+  "creeLe": "2020-10-07T17:35:47.922+02:00",
+  "difficulte": "0",
+  "dureeEstimee": null,
+  "modeValidation": "trainer",
+  "chapitres": [
+    {
+      "id": 12469,
+      "type": "content",
+      "langue": "fr",
+      "majLe": "2024-10-28T20:35:13.762+01:00",
+      "caracteres": 18961
+    },
+    {
+      "id": 12199,
+      "type": "solution",
+      "langue": "fr",
+      "majLe": "2024-09-21T18:43:30.242+02:00",
+      "caracteres": 3840
+    }
+  ],
+  "ressources": [
+    {
+      "link": "https://www.youtube.com/watch?v=ahKsy1FS45k",
+      "description": "Video about how to lifting the state"
+    },
+    {
+      "link": "https://www.youtube.com/watch?v=Gnx-37VLH24",
+      "description": "Cela devrait vous aider pour réaliser la seconde partie de l'exercice avec le State et le \"toggle\""
+    }
+  ],
+  "urlOrigine": "https://odyssey.wildcodeschool.com/quests/1401",
+  "archiveLe": "2026-09-02T20:53:02.139Z"
+}

@@ -1,0 +1,298 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>2. Les variables en PHP — Archives WCS</title>
+<link rel="stylesheet" href="../../assets/style.css">
+</head>
+<body style="--teinte:#5F83B2">
+<header class="entete">
+  <a class="entete__marque" href="../../index.html">Archives Wild Code School</a>
+</header>
+<main class="contenu">
+<nav class="ariane"><a href="../../index.html">Accueil</a><span class="ariane__sep">›</span><a href="../../php/index.html">PHP</a><span class="ariane__sep">›</span><span aria-current="page">2. Les variables en PHP</span></nav>
+
+<article class="quete">
+  <header class="quete__entete">
+    <a class="pastille pastille--teintee" href="../../php/index.html">PHP</a>
+    <h1>2. Les variables en PHP</h1>
+    <p class="quete__meta">Quête 2 sur 14</p>
+  </header>
+  <div class="cours">
+<p><strong>⚠️ Avant de commencer cette quête, tu dois avoir terminé les quêtes suivantes :</strong></p>
+<div class="renvois"><div class="renvois__titre">Quêtes liées</div><ul><li><a href="../../php/001-1-installation-des-outils-php/index.html">Quête 8</a></li></ul></div>
+<h1>Introduction</h1>
+<p>Tous les langages informatiques utilisent des variables.
+Cela permet d'enregistrer de manière temporaire (c'est-à-dire le temps de l'exécution du programme) des informations dans la mémoire de l'ordinateur.</p>
+<p>Les noms des variables sont choisis par le développeur (en suivant certaines normes pouvant varier d'un langage à l'autre) qui peut y enregistrer des valeurs de différents types (nombres, texte, ...).
+Ainsi stockées dans des variables, les données sont faciles à retrouver et à manipuler.
+Il existe aussi des variables prédéfinies, accessibles dès le départ sans que l'on ait besoin de les créer.</p>
+<p>Pour te donner un exemple parlant, les variables sont un peu comme des boîtes, dans lesquelles tu peux mettre différentes choses, et qui ont une étiquette dessus avec un nom, suffisamment parlant pour que tu saches ce que tu y as mis.</p>
+<p><img src="http://images.innoveduc.fr/variables_boxes.jpeg" alt="" loading="lazy"></p>
+<h2>🤓 <strong>À la fin de cette quête, tu seras capable de:</strong></h2>
+<ul>
+<li>✅ Manipuler des variables en PHP,</li>
+<li>✅ Bien nommer les variables</li>
+<li>✅ Connaître les différents types de variables</li>
+</ul>
+<h1>Les règles associées au nom des variables</h1>
+<ul>
+<li>Une variable commence toujours par le caractère '$' (dollar).</li>
+<li>Ne doit pas commencer par un chiffre.</li>
+<li>Ne peut contenir que des chiffres, des lettres et le caractère '_' (souligné).</li>
+</ul>
+<h4>✅ Exemples de noms de variables valides :</h4>
+<div class="bloc-code"><div class="bloc-code__langue">php</div><pre><code class="hljs language-php"><span class="hljs-variable">$str</span>
+<span class="hljs-variable">$my_value</span>
+<span class="hljs-variable">$_old</span>
+<span class="hljs-variable">$theBestValue</span>
+
+</code></pre></div>
+<p>Attention, les noms des variables sont sensibles à la casse. $Black et $black sont deux variables différentes.</p>
+<h4>❌ Exemples de noms de variables invalides :</h4>
+<div class="bloc-code"><div class="bloc-code__langue">php</div><pre><code class="hljs language-php">$<span class="hljs-number">4</span>days            <span class="hljs-comment">// commence par un chiffre</span>
+day4              <span class="hljs-comment">// pas de symbole $</span>
+<span class="hljs-variable">$my</span>-bad           <span class="hljs-comment">// contient un caractère interdit (-)</span>
+$                 <span class="hljs-comment">// pas de nom</span>
+<span class="hljs-variable">$name</span>@domain      <span class="hljs-comment">// caractère interdit (@)</span>
+<span class="hljs-variable">$first</span> name       <span class="hljs-comment">// caractère interdit ( )</span>
+
+</code></pre></div>
+<h4>Les bonnes pratiques :</h4>
+<ul>
+<li>
+<p>Un nom de variable doit toujours t'aider à identifier ce qu'elle contient. Cela permet de simplifier et d'accélérer
+la lecture et la compréhension du code. N'oublie jamais que le code que tu écris sera relu et réutilisé par d'autres
+développeurs qui ne sont pas dans ta tête. Il faut toujours avoir à l'esprit la nécessité d'être clair, simple et concis.</p>
+</li>
+<li>
+<p>Toujours en anglais. Cela permettra à ton code d'être international et plus facilement accessible aux développeurs
+non francophones.</p>
+</li>
+<li>
+<p>N'hésite pas à utiliser plusieurs mots dans le nom de ta variable, afin de mieux décrire son contenu.</p>
+</li>
+<li>
+<p>Il est recommandé, en PHP, de nommer ses variables en <em>camelCase</em>. Ce n'est pas une obligation technique du langage mais une convention, une bonne pratique utilisée notamment dans la plupart des gros projets écrits en PHP.
+L'écriture camelCase consiste à écrire en minuscule et si le nom contient plusieurs mots, chaque mot (sauf le premier) commence par une majuscule. Cela forme donc des 'bosses', d'où le nom de camelCase.</p>
+</li>
+</ul>
+<p><img src="http://images.innoveduc.fr/variables_camel.gif" alt="" loading="lazy"></p>
+<blockquote>
+<p><strong>Remarque</strong> Il existe d'autres conventions de nommage que le camelCase. On notera par exemple l'UpperCamelCase ou encore le snake_case.</p>
+</blockquote>
+<h4>✅ Exemples de variables bien nommées :</h4>
+<ul>
+<li>
+<p>une variable contenant le nom d'une voiture : $carName ($car_name ou $CarName sont techniquement valides mais déconseillés)</p>
+</li>
+<li>
+<p>une variable contenant le résultat d'une addition : $total ou $result ($value, $number, $resultat sont techniquement valides mais peu précis ou non en anglais, ce qui est également déconseillé)</p>
+</li>
+</ul>
+<blockquote>
+<p>Choisir un bon nom de variable est quelque chose d'<strong>extrêmement important</strong>. Ne néglige surtout pas cela. Il vaut souvent mieux prendre quelques secondes pour trouver un nom de variable cohérent plutôt que de se retrouver au final avec un code contenant $var1, $var2, $toto, $maVariable, $duTexte... qui deviendront vite incompréhensibles.</p>
+</blockquote>
+<a class="ressource" href="https://sulfureetcontreculture.blogspot.fr/2008/07/programmation-quest-ce-quune-variable.html" target="_blank" rel="noopener noreferrer">
+  <div class="ressource__icone">↗</div>
+  <div class="ressource__texte">
+    <div class="ressource__titre">C'est dans la boîte</div>
+    <div class="ressource__desc"><p>Une petite explication courte et claire du concept de variable informatique.</p>
+</div>
+    <div class="ressource__hote">sulfureetcontreculture.blogspot.fr</div>
+  </div>
+</a>
+<a class="ressource" href="http://php.net/manual/fr/language.variables.basics.php" target="_blank" rel="noopener noreferrer">
+  <div class="ressource__icone">↗</div>
+  <div class="ressource__texte">
+    <div class="ressource__titre">Les bases des variables</div>
+    <div class="ressource__desc"><p>Quelques principes de base sur la documentation officielle.</p>
+</div>
+    <div class="ressource__hote">php.net</div>
+  </div>
+</a>
+<h1>Les types</h1>
+<p>Que met-on dans une variable ? Eh bien, des valeurs, des données, ce que l'on veut !
+Le PHP est un langage dit à <em>typage faible</em>. Cela signifie que l'on ne va pas définir le type d'une variable de manière explicite,
+mais que c'est le contenu de la variable qui va définir son type ainsi que son contexte.
+Retiens seulement que PHP est assez souple sur les types de variables, ce qui n'est pas le cas d'autres langages comme le C ou le Java.</p>
+<p>Il existe deux grandes familles de types de données :</p>
+<ul>
+<li>
+<p>scalaire</p>
+</li>
+<li>
+<p>composé</p>
+</li>
+</ul>
+<p>Les variables scalaires sont des variables ne contenant qu'une seule valeur à la fois. Elles sont composées des types suivants :</p>
+<ul>
+<li>
+<p>Entier (nombre sans virgule) : c'est le type <em>integer</em>.</p>
+</li>
+<li>
+<p>Réel (nombre à virgule. En php, le séparateur décimal est en fait un point) : c'est le type <em>float</em>.</p>
+</li>
+<li>
+<p>Booléen (2 valeurs, vrai ou faux) : c'est le type <em>boolean</em>.</p>
+</li>
+<li>
+<p>Chaîne de caractères (valeurs encadrées par des simples quotes ou des doubles quotes) : c'est le type <em>string</em></p>
+</li>
+</ul>
+<p>Les variables composées sont des variables comportant plusieurs éléments.</p>
+<ul>
+<li>
+<p>Tableaux : c'est le type <em>array</em></p>
+</li>
+<li>
+<p>Objets : c'est le type <em>object</em></p>
+</li>
+</ul>
+<p>Il existe également 2 types spéciaux :</p>
+<ul>
+<li>
+<p>Les ressources : variable spéciale faisant référence à une ressource externe (fichier, connexion à une base de données...). On ne va pas s'étendre sur le sujet pour le moment.</p>
+</li>
+<li>
+<p>NULL : représente une variable qui n'a pas de valeur.</p>
+</li>
+</ul>
+<p>La gestion et le fonctionnement des tableaux et objets seront vus dans d'autres quêtes.</p>
+<p>Lorsque l'on souhaite créer une variable, on parle de <strong>déclaration</strong>.
+Lorsque l'on souhaite lui attribuer (ou modifier) une valeur, il faut utiliser l'<strong>opérateur d'affectation</strong> <code>=</code>. On parle donc d'<strong>affectation</strong>.
+À la première déclaration de la variable, on parle d'<strong>initialisation</strong> et on affecte  une valeur à cette variable.
+Dans certains langages, il est possible de déclarer une variable sans l'initialiser tout de suite, mais en PHP l'initialisation et la déclaration se font en même temps.
+Le nom de la variable est toujours écrit en premier, suivi de l'opérateur d'affectation, suivi de la valeur.</p>
+<div class="bloc-code"><div class="bloc-code__langue">php</div><pre><code class="hljs language-php"><span class="hljs-variable">$i</span> = <span class="hljs-number">1</span>; <span class="hljs-comment">// on affecte la valeur 1 à la variable $i;</span>
+
+<span class="hljs-number">1</span> = <span class="hljs-variable">$i</span>; <span class="hljs-comment">// renvoie une erreur car 1 n&#x27;est pas une variable, on ne peut donc pas lui affecter de valeur.</span>
+
+</code></pre></div>
+<h4>Exemples de déclaration de variables :</h4>
+<ul>
+<li>
+<p>Entiers : <code>$size = 200;</code> <code>$start = 0;</code></p>
+</li>
+<li>
+<p>Réels <code>$pi = 3.141592654;</code> <code>$half = 0.5;</code></p>
+</li>
+<li>
+<p>Booléens <code>$isSaved = true;</code> <code>$hasField = false;</code></p>
+</li>
+<li>
+<p>Chaînes <code>$firstName = &quot;Indiana&quot;;</code> <code>$lastName = 'Jones';</code></p>
+</li>
+</ul>
+<p>Tu noteras qu'il est également possible d'affecter une même valeur à plusieurs variables d'un coup :</p>
+<div class="bloc-code"><div class="bloc-code__langue">php</div><pre><code class="hljs language-php">    <span class="hljs-variable">$a</span> = <span class="hljs-variable">$b</span> = <span class="hljs-variable">$c</span> = <span class="hljs-number">2</span>; <span class="hljs-comment">// les trois variables $a, $b et $c sont initialisées en même temps à 2</span>
+
+</code></pre></div>
+<h4>Les bonnes pratiques :</h4>
+<p>Pour des raisons de lisibilité du code, dès l'instant que l'on va &quot;typer&quot; une variable en assignant une valeur, on fera
+en sorte de toujours utiliser le même type pour cette variable.</p>
+<a class="ressource" href="http://php.net/manual/fr/language.types.intro.php" target="_blank" rel="noopener noreferrer">
+  <div class="ressource__icone">↗</div>
+  <div class="ressource__texte">
+    <div class="ressource__titre">Les types des variables</div>
+    
+    <div class="ressource__hote">php.net</div>
+  </div>
+</a>
+<a class="ressource" href="https://secure.php.net/manual/fr/language.operators.assignment.php" target="_blank" rel="noopener noreferrer">
+  <div class="ressource__icone">↗</div>
+  <div class="ressource__texte">
+    <div class="ressource__titre">L'affectation</div>
+    
+    <div class="ressource__hote">secure.php.net</div>
+  </div>
+</a>
+<h1>La portée (ou scope) des variables</h1>
+<p>La zone dans le code où est déclarée une variable est importante. Une variable peut ne pas être visible par l'ensemble
+de ton code.</p>
+<p>Dans la plupart des cas, quand tu déclares une variable, celle-ci est dans tout le script <strong>en- dessous</strong> de l'endroit où tu l'affectes. On parle de <strong>variable à portée globale</strong>.</p>
+<div class="bloc-code"><div class="bloc-code__langue">php</div><pre><code class="hljs language-php"><span class="hljs-meta">&lt;?php</span>
+
+<span class="hljs-keyword">echo</span>﻿ <span class="hljs-variable">$movie</span>; <span class="hljs-comment">// erreur car $movie n&#x27;existe pas;</span>
+
+<span class="hljs-variable">$movie</span> = <span class="hljs-string">&#x27;Indiana Jones et le Royaume du crâne de cristal&#x27;</span>;
+<span class="hljs-keyword">echo</span> <span class="hljs-variable">$movie</span> ; <span class="hljs-comment">// affiche bien le contenu de $movie car la variable a été définie au-dessus.</span>
+
+</code></pre></div>
+<p>Si au contraire, tu déclares une variable à l'intérieur d'une fonction (tu verras en détail les fonctions dans une future quête), cette variable ne sera <em>visible</em> et donc accessible <strong>que dans ce bloc</strong>. On parle cette fois de <strong>variable à portée locale</strong>. De plus, les variables à portée globale ne sont pas non plus accessibles à l'intérieur de la fonction.
+En d'autres termes : ce qui se passe dans une fonction, reste dans la fonction !</p>
+<h4>Exemple :</h4>
+<div class="bloc-code"><div class="bloc-code__langue">phpsandbox</div><pre><code class="hljs language-phpsandbox">https://phpsandbox.io/n/q2-wrong-variable-axlls?&amp;layout=Editor
+</code></pre></div>
+<a class="ressource" href="http://php.net/manual/fr/language.variables.scope.php" target="_blank" rel="noopener noreferrer">
+  <div class="ressource__icone">↗</div>
+  <div class="ressource__texte">
+    <div class="ressource__titre">La portée des variables</div>
+    
+    <div class="ressource__hote">php.net</div>
+  </div>
+</a>
+<h1>💪 Challenge</h1>
+<h3>Déclarer et afficher des variables</h3>
+<p>Ecris un petit programme qui va déclarer 4 variables de 4 types différents (à toi de choisir le bon type selon les cas)
+Pour réaliser ce programme, utilise les valeurs que tu trouveras sur le site IMDB, sur la fiche de <a href="http://www.imdb.com/title/tt0097576/?ref_=nv_sr_1" target="_blank" rel="noopener noreferrer">la dernière croisade</a></p>
+<ul>
+<li>La première variable doit contenir le nom de ce film d'Indiana Jones, en VO</li>
+<li>La seconde variable te permettra d'indiquer si tu as vu, ou non, le film en question</li>
+<li>La troisième sera l'année de sortie en salle.</li>
+<li>La quatrième la note du film sur le site IMDB.</li>
+</ul>
+<p>Affiche ces valeurs les unes sous les autres (tu peux utiliser <code>echo</code> pour afficher une variable.)</p>
+<p><img src="http://images.innoveduc.fr/variables_last_cruisade.jpeg" alt="" loading="lazy"></p>
+<h3>Critères de validation</h3>
+<ul>
+<li>4 types différents de variables sont représentés et utilisés à bon escient (integer, string, boolean et float)</li>
+<li>les noms des variables sont bien nommés (respect des bonnes pratiques et noms cohérents avec la valeur associée)</li>
+<li>ça fonctionne : le contenu des variables est affiché quand on lance le code.</li>
+</ul>
+<p>==$==</p>
+<div class="bloc-code"><div class="bloc-code__langue">php</div><pre><code class="hljs language-php"><span class="hljs-meta">&lt;?php</span>
+
+<span class="hljs-variable">$movieName</span> = <span class="hljs-string">&#x27;Indiana Jones and the Last Crusade&#x27;</span>;
+<span class="hljs-variable">$movieSeen</span> = <span class="hljs-literal">true</span>;
+<span class="hljs-variable">$movieReleaseYear</span> = <span class="hljs-number">1989</span>;
+<span class="hljs-variable">$movieScore</span> = <span class="hljs-number">8.3</span>;
+
+<span class="hljs-keyword">echo</span> <span class="hljs-variable">$movieName</span>;
+<span class="hljs-keyword">echo</span> <span class="hljs-variable">$movieSeen</span>;
+<span class="hljs-keyword">echo</span> <span class="hljs-variable">$movieReleaseYear</span>;
+<span class="hljs-keyword">echo</span> <span class="hljs-variable">$movieScore</span>;
+
+</code></pre></div>
+
+  </div>
+  <section class="ressources-quete">
+  <h2>Ressources partagées sur cette quête</h2>
+  <ul class="ressources-liste">
+    <li><a href="https://www.pierre-giraud.com/php-mysql-apprendre-coder-cours/introduction-variables/" target="_blank" rel="noopener noreferrer">Pour echo, beaucoup plus explicite que la doc officielle ^^</a><span class="ressources-liste__url">https://www.pierre-giraud.com/php-mysql-apprendre-coder-cours/introduction-variables/</span></li>
+    <li><a href="https://extendsclass.com/php.html" target="_blank" rel="noopener noreferrer">Un site pour tester son code en ligne</a><span class="ressources-liste__url">https://extendsclass.com/php.html</span></li>
+    <li><a href="https://www.mail-tester.com/" target="_blank" rel="noopener noreferrer"> Un site pour tester la note des mails et éviter de terminer dans les spams.</a><span class="ressources-liste__url">https://www.mail-tester.com/</span></li>
+  </ul>
+</section>
+</article>
+
+<nav class="nav-quete">
+  <a class="nav-quete__lien nav-quete__lien--prec" href="../../php/001-1-installation-des-outils-php/index.html">
+           <span class="nav-quete__sens">← Précédent</span>
+           <span class="nav-quete__titre">1. Installation des outils PHP</span>
+         </a>
+  <a class="nav-quete__lien nav-quete__lien--suiv" href="../../php/003-3-les-chaines-de-caracteres-en-php/index.html">
+           <span class="nav-quete__sens">Suivant →</span>
+           <span class="nav-quete__titre">3. Les chaînes de caractères en PHP</span>
+         </a>
+</nav>
+</main>
+<footer class="pied">
+  <p>Archive personnelle des cours suivis à la Wild Code School. Copie hors ligne à usage strictement privé.</p>
+</footer>
+
+<script src="../../assets/copie-code.js"></script>
+<script src="../../assets/progression.js"></script>
+</body>
+</html>

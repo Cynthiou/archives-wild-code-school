@@ -1,0 +1,410 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>👩‍🏫 HTML - Chapitre 5 |  Structure et sémantique — Archives WCS</title>
+<link rel="stylesheet" href="../../assets/style.css">
+</head>
+<body style="--teinte:#a03737">
+<header class="entete">
+  <a class="entete__marque" href="../../index.html">Archives Wild Code School</a>
+</header>
+<main class="contenu">
+<nav class="ariane"><a href="../../index.html">Accueil</a><span class="ariane__sep">›</span><a href="../../html/index.html">HTML</a><span class="ariane__sep">›</span><span aria-current="page">👩‍🏫 HTML - Chapitre 5 |  Structure et sémantique</span></nav>
+
+<article class="quete">
+  <header class="quete__entete">
+    <a class="pastille pastille--teintee" href="../../html/index.html">HTML</a>
+    <h1>👩‍🏫 HTML - Chapitre 5 |  Structure et sémantique</h1>
+    <p class="quete__meta">Quête 5 sur 9 · 2 images archivées</p>
+  </header>
+  <div class="cours">
+<h2>Objectifs</h2>
+<ul>
+<li>Structurer tes pages web</li>
+<li>Utiliser des balises sémantiques</li>
+</ul>
+<h2>Pré-requis</h2>
+<ol class="etapes"><li class="etape"><div class="etape__puce">1</div><div class="etape__contenu"><h4 class="etape__titre">Valider la quête suivante</h4><div class="renvois"><div class="renvois__titre">Quêtes liées</div><ul><li><a href="../../html/001-html-chapitre-1-introduction-au-html/index.html">Quête 2113</a></li></ul></div>
+</div></li><li class="etape"><div class="etape__puce">2</div><div class="etape__contenu"><h4 class="etape__titre">Être à l'aise avec l'imbrication de balises HTML</h4><div class="bloc-code"><div class="bloc-code__langue">html</div><pre><code class="hljs language-html"><span class="hljs-tag">&lt;<span class="hljs-name">p</span>&gt;</span>Bienvenue sur mon incroyable <span class="hljs-tag">&lt;<span class="hljs-name">strong</span>&gt;</span>site web<span class="hljs-tag">&lt;/<span class="hljs-name">strong</span>&gt;</span> !<span class="hljs-tag">&lt;/<span class="hljs-name">p</span>&gt;</span>
+</code></pre></div>
+</div></li></ol>
+<h2>Introduction</h2>
+<p>Précédemment, tu as vu les principes de bases du langage HTML.</p>
+<p>Dans cette quête nous allons nous concentrer sur l'organisation et la structure des pages avec des balises sémantiques.</p>
+<h2>Sommaire</h2>
+<h2>La structure d'une page HTML</h2>
+<p>As-tu déjà remarqué que la plupart des sites internet suivent plus ou moins une structure similaire ?</p>
+<p>La plupart des sites sont composés de plusieurs &quot;zones&quot;, comme l'en tête (en anglais &quot;Header&quot;) la navigation, le pied de page (&quot;Footer&quot;), différentes sections, des articles, etc.</p>
+<p><img src="images/001-image.png" alt="image" loading="lazy"></p>
+<p>Utiliser des balises sémantiques pour rendre la structure lisible par des programmes est encore une fois très important pour le référencement et l'accessibilité.</p>
+<p>Les balises que tu vas voir dans cette quête n'ont pas d'impact sur la manière dont les éléments s'affichent. Comme nous l'avons vu, le HTML nous permet de décrire la structure d'une page : nous verrons bientôt comment nous pouvons styliser les éléments grâce au CSS.</p>
+<h2>La balise <header></h2>
+<p>La balise <code>&lt;header&gt;</code> est une balise que tu peux utiliser pour spécifier l'en-tête d'une page, d'un article ou d'une section.</p>
+<div class="encadre encadre--warning"><div class="encadre__titre">Attention</div><div class="encadre__corps"><p>Tu dois bien faire la différence entre la balise <code>&lt;head&gt;</code> et la balise <code>&lt;header&gt;</code> : les 2 correspondent à la notion &quot;d'en-tête&quot;. La balise <code>&lt;head&gt;</code> représente l'en-tête du document : elle contient des informations techniques pour le navigateur. La balise <code>&lt;header&gt;</code> représente un en-tête dans la page : elle contient du contenu visible sur la page, comme sur du <a href="https://fr.wikipedia.org/wiki/Papier_%C3%A0_en-t%C3%AAte" target="_blank" rel="noopener noreferrer">papier à en-tête</a>.</p>
+<p><img src="images/002-papier-a-en-tete-de-wood-industry-huber-de.jpg" alt="Papier à en-tête de Wood Industry Huber de Bozen, Italie, 1918" loading="lazy"></p>
+</div></div>
+<p>Tu peux utiliser plusieurs <code>&lt;header&gt;</code> au sein d'une page web :</p>
+<div class="bloc-code"><div class="bloc-code__langue">html</div><pre><code class="hljs language-html"><span class="hljs-meta">&lt;!DOCTYPE <span class="hljs-keyword">html</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">html</span> <span class="hljs-attr">lang</span>=<span class="hljs-string">&quot;fr&quot;</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">head</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">meta</span> <span class="hljs-attr">charset</span>=<span class="hljs-string">&quot;UTF-8&quot;</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">meta</span> <span class="hljs-attr">name</span>=<span class="hljs-string">&quot;viewport&quot;</span> <span class="hljs-attr">content</span>=<span class="hljs-string">&quot;width=device-width, initial-scale=1.0&quot;</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">title</span>&gt;</span>Qui sont les chats | Le monde des chats<span class="hljs-tag">&lt;/<span class="hljs-name">title</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">head</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">body</span>&gt;</span>
+
+<span class="hljs-tag">&lt;<span class="hljs-name">header</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">h1</span>&gt;</span>Bienvenue sur Le Monde des chats<span class="hljs-tag">&lt;/<span class="hljs-name">h1</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">p</span>&gt;</span>Le premier site sur vos animaux favoris<span class="hljs-tag">&lt;/<span class="hljs-name">p</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">header</span>&gt;</span>
+
+<span class="hljs-tag">&lt;<span class="hljs-name">section</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">header</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">h2</span>&gt;</span>Qui sont les chats ?<span class="hljs-tag">&lt;/<span class="hljs-name">h2</span>&gt;</span>
+    <span class="hljs-tag">&lt;/<span class="hljs-name">header</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">p</span>&gt;</span>Les <span class="hljs-tag">&lt;<span class="hljs-name">strong</span>&gt;</span>chats<span class="hljs-tag">&lt;/<span class="hljs-name">strong</span>&gt;</span> sont les membres de la famille des <span class="hljs-tag">&lt;<span class="hljs-name">em</span>&gt;</span>félins<span class="hljs-tag">&lt;/<span class="hljs-name">em</span>&gt;</span>, et ils partagent de nombreuses
+        caractéristiques avec leurs
+        cousins ​​les lions, les tigres et les panthères. Les chats domestiques sont les plus populaires au monde et
+        sont adorés par des millions de personnes pour leur compagnie et leur affectueuse nature.<span class="hljs-tag">&lt;/<span class="hljs-name">p</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">section</span>&gt;</span>
+
+<span class="hljs-tag">&lt;/<span class="hljs-name">body</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">html</span>&gt;</span>
+</code></pre></div>
+<div class="encadre encadre--note encadre--arrow"><div class="encadre__corps"><p><strong>🎯 À toi de jouer !</strong></p>
+<p>Utilise le document HTML <code>index.html</code> créé dans les quêtes précédentes et ajoute la balise <code>&lt;header&gt;</code> dans l'en-tête de ta page web (pour le moment, laisse la balise vide).</p>
+</div></div>
+<h2>La balise <nav></h2>
+<p>La plupart des sites internet (si ce n'est la totalité) possède une navigation. La navigation permet aux utilisateurs de naviguer entre les différentes pages de ton site et est représentée en HTML grâce à la balise <code>&lt;nav&gt;</code>. Tu peux intégrer ta <code>&lt;nav&gt;</code> dans le <code>&lt;header&gt;</code> ou la placer comme un bloc indépendant :</p>
+<div class="bloc-code"><div class="bloc-code__langue">html</div><pre><code class="hljs language-html"><span class="hljs-tag">&lt;<span class="hljs-name">nav</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">nav</span>&gt;</span>
+</code></pre></div>
+<p>À l'intérieur de la navigation, utilise une liste non ordonnée de liens :</p>
+<div class="bloc-code"><div class="bloc-code__langue">html</div><pre><code class="hljs language-html"><span class="hljs-tag">&lt;<span class="hljs-name">nav</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">ul</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">li</span>&gt;</span><span class="hljs-tag">&lt;<span class="hljs-name">a</span> <span class="hljs-attr">href</span>=<span class="hljs-string">&quot;index.html&quot;</span>&gt;</span><span class="hljs-tag">&lt;<span class="hljs-name">img</span> <span class="hljs-attr">src</span>=<span class="hljs-string">&quot;assets/logo.png&quot;</span> <span class="hljs-attr">alt</span>=<span class="hljs-string">&quot;Accueil&quot;</span> /&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">a</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">li</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">li</span>&gt;</span><span class="hljs-tag">&lt;<span class="hljs-name">a</span> <span class="hljs-attr">href</span>=<span class="hljs-string">&quot;informations.html&quot;</span>&gt;</span>S&#x27;informer<span class="hljs-tag">&lt;/<span class="hljs-name">a</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">li</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">li</span>&gt;</span><span class="hljs-tag">&lt;<span class="hljs-name">a</span> <span class="hljs-attr">href</span>=<span class="hljs-string">&quot;adoption.html&quot;</span>&gt;</span>Adopter<span class="hljs-tag">&lt;/<span class="hljs-name">a</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">li</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">li</span>&gt;</span><span class="hljs-tag">&lt;<span class="hljs-name">a</span> <span class="hljs-attr">href</span>=<span class="hljs-string">&quot;blog.html&quot;</span>&gt;</span>Blog<span class="hljs-tag">&lt;/<span class="hljs-name">a</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">li</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">li</span>&gt;</span><span class="hljs-tag">&lt;<span class="hljs-name">a</span> <span class="hljs-attr">href</span>=<span class="hljs-string">&quot;about.html&quot;</span>&gt;</span>À propos<span class="hljs-tag">&lt;/<span class="hljs-name">a</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">li</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">li</span>&gt;</span><span class="hljs-tag">&lt;<span class="hljs-name">a</span> <span class="hljs-attr">href</span>=<span class="hljs-string">&quot;contact.html&quot;</span>&gt;</span>Contact<span class="hljs-tag">&lt;/<span class="hljs-name">a</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">li</span>&gt;</span>
+    <span class="hljs-tag">&lt;/<span class="hljs-name">ul</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">nav</span>&gt;</span>
+</code></pre></div>
+<p>Ce format de liste est plus accessible : il fournit d'avantage de repères à des logiciels de lecture d'écran.</p>
+<div class="encadre encadre--note encadre--arrow"><div class="encadre__corps"><p><strong>🎯 À toi de jouer !</strong></p>
+<p>Ajoute <strong>à l'intérieur de la balise <code>&lt;header&gt;</code></strong> la navigation sur la page <code>index.html</code> avec les liens suivant:</p>
+<ul>
+<li>Accueil (redirige vers &quot;index.html&quot;)</li>
+<li>À propos (redirige vers &quot;about.html&quot;)</li>
+<li>Contact (redirige vers &quot;contact.html&quot;)</li>
+</ul>
+</div></div>
+<h2>La balise <main></h2>
+<p>La balise <code>&lt;main&gt;</code> est utilisé pour représenter le contenu principal d'une page web : c'est typiquement le contenu qui change d'une page à l'autre d'un même site. Par opposition, le <code>&lt;header&gt;</code> et la <code>nav</code> sont des parties qui restent les mêmes.</p>
+<p>Une page ne doit avoir qu'une seule balise <code>&lt;main&gt;</code> :</p>
+<div class="bloc-code"><div class="bloc-code__langue">html</div><pre><code class="hljs language-html"><span class="hljs-tag">&lt;<span class="hljs-name">main</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">h1</span>&gt;</span>Blog<span class="hljs-tag">&lt;/<span class="hljs-name">h1</span>&gt;</span>
+
+    <span class="hljs-tag">&lt;<span class="hljs-name">h2</span>&gt;</span>Qui sont les chats ?<span class="hljs-tag">&lt;/<span class="hljs-name">h2</span>&gt;</span>
+
+    <span class="hljs-tag">&lt;<span class="hljs-name">p</span>&gt;</span>Les <span class="hljs-tag">&lt;<span class="hljs-name">strong</span>&gt;</span>chats<span class="hljs-tag">&lt;/<span class="hljs-name">strong</span>&gt;</span> sont les membres de la famille des <span class="hljs-tag">&lt;<span class="hljs-name">em</span>&gt;</span>félins<span class="hljs-tag">&lt;/<span class="hljs-name">em</span>&gt;</span>, et ils partagent de nombreuses
+        caractéristiques avec leurs
+        cousins ​​les lions, les tigres et les panthères. Les chats domestiques sont les plus populaires au monde et
+        sont adorés par des millions de personnes pour leur compagnie et leur affectueuse nature.
+        ...
+     <span class="hljs-tag">&lt;/<span class="hljs-name">p</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">main</span>&gt;</span>
+</code></pre></div>
+<p>La balise main contient généralement d'autres balises comme la balise <code>&lt;article&gt;</code> pour des compositions et <code>&lt;section&gt;</code> pour délimiter chaque section du site web.</p>
+<p>Voyons-les plus en détail.</p>
+<h2>La balise <article></h2>
+<p>La balise <code>&lt;article&gt;</code> est un <em>conteneur</em> : littéralement un élément qui contient du contenu. Par exemple un article de blog, un message sur un forum, une fiche produit, etc.</p>
+<p>Une page HTML peut contenir plusieurs <code>&lt;article&gt;</code>. Chaque <code>&lt;article&gt;</code> doit pouvoir être sorti du contexte de la page et avoir du sens seul : c'est la caractéristique des articles. Comme un article que tu pourrais découper dans un journal pour le garder en souvenir.</p>
+<div class="bloc-code"><div class="bloc-code__langue">html</div><pre><code class="hljs language-html"><span class="hljs-tag">&lt;<span class="hljs-name">main</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">h1</span>&gt;</span>Blog<span class="hljs-tag">&lt;/<span class="hljs-name">h1</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">article</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">header</span>&gt;</span>
+            <span class="hljs-tag">&lt;<span class="hljs-name">h2</span>&gt;</span>Qui sont les chats ?<span class="hljs-tag">&lt;/<span class="hljs-name">h2</span>&gt;</span>
+        <span class="hljs-tag">&lt;/<span class="hljs-name">header</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">p</span>&gt;</span>Les <span class="hljs-tag">&lt;<span class="hljs-name">strong</span>&gt;</span>chats<span class="hljs-tag">&lt;/<span class="hljs-name">strong</span>&gt;</span> sont les membres de la famille des <span class="hljs-tag">&lt;<span class="hljs-name">em</span>&gt;</span>félins<span class="hljs-tag">&lt;/<span class="hljs-name">em</span>&gt;</span>, et ils partagent de
+            nombreuses
+            caractéristiques avec leurs
+            cousins ​​les lions, les tigres et les panthères. Les chats domestiques sont les plus populaires au
+            monde et
+            sont adorés par des millions de personnes pour leur compagnie et leur affectueuse nature.<span class="hljs-tag">&lt;/<span class="hljs-name">p</span>&gt;</span>
+        ...
+    <span class="hljs-tag">&lt;/<span class="hljs-name">article</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">article</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">header</span>&gt;</span>
+            <span class="hljs-tag">&lt;<span class="hljs-name">h2</span>&gt;</span>Comment adopter un chat ?<span class="hljs-tag">&lt;/<span class="hljs-name">h2</span>&gt;</span>
+        <span class="hljs-tag">&lt;/<span class="hljs-name">header</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">p</span>&gt;</span>Les <span class="hljs-tag">&lt;<span class="hljs-name">strong</span>&gt;</span>chats<span class="hljs-tag">&lt;/<span class="hljs-name">strong</span>&gt;</span> sont les membres de la famille des <span class="hljs-tag">&lt;<span class="hljs-name">em</span>&gt;</span>félins<span class="hljs-tag">&lt;/<span class="hljs-name">em</span>&gt;</span>, et ils partagent de
+            nombreuses
+            caractéristiques avec leurs
+            cousins ​​les lions, les tigres et les panthères. Les chats domestiques sont les plus populaires au
+            monde et
+            sont adorés par des millions de personnes pour leur compagnie et leur affectueuse nature.<span class="hljs-tag">&lt;/<span class="hljs-name">p</span>&gt;</span>
+        ...
+    <span class="hljs-tag">&lt;/<span class="hljs-name">article</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">main</span>&gt;</span>
+</code></pre></div>
+<h2>La balise <section></h2>
+<p>La balise <code>&lt;section&gt;</code> est un conteneur, comme la balise <code>&lt;article&gt;</code>. La différence est qu'une section n'est pas indépendante des autres sections autour. Pour reprendre l'image du journal, la section &quot;sport&quot; a du sens par ce qu'il existe une section &quot;faits divers&quot; à côté : s'il n'y avait qu'une section, ce ne serait pas nécessaire d'utiliser une balise <code>&lt;section&gt;</code>.</p>
+<p>Attention à ne pas confondre <code>&lt;article&gt;</code> et <code>&lt;section&gt;</code>,</p>
+<div class="encadre encadre--note encadre--arrow"><div class="encadre__corps"><p><strong>🎯 À toi de jouer !</strong></p>
+<p>Dans notre page <code>index.html</code>, ajoute une balise <code>&lt;main&gt;</code> à la suite du header.</p>
+<p>Mets le titre de la page à l'intérieur de la balise <code>&lt;main&gt;</code> puis ajoute une balise <code>&lt;section&gt;</code> avec un titre &quot;Blog&quot; (attention à utiliser le bon niveau de titre).</p>
+<p>À l'intérieur de la section blog, ajoute deux articles avec chacun un header avec un titre et un paragraphe.</p>
+<p>Si tu n'as pas d'inspiration pour le texte, tu peux utiliser du faux texte comme le <a href="https://fr.wikipedia.org/wiki/Lorem_ipsum" target="_blank" rel="noopener noreferrer">Lorem Ipsum</a>.</p>
+</div></div>
+<h2>La balise <aside></h2>
+<p>La balise <code>&lt;aside&gt;</code> représente une partie d'une page, d'un article ou d'une section qui donne des informations complémentaires sur la page, l'article ou la section.</p>
+<p>Il s'agit souvent de contenu facultatif. Il est utilisé par exemple pour :</p>
+<ul>
+<li>les publicités,</li>
+<li>les barres de recherche,</li>
+<li>les encadrés.</li>
+</ul>
+<p>Une page peut avoir plusieurs blocs <code>&lt;aside&gt;</code>, et chacun de ces blocs peut être placé soit avant, soit après le contenu qu'il complémente.</p>
+<div class="bloc-code"><div class="bloc-code__langue">html</div><pre><code class="hljs language-html"><span class="hljs-tag">&lt;<span class="hljs-name">section</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">h1</span>&gt;</span>Blog<span class="hljs-tag">&lt;/<span class="hljs-name">h1</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">article</span>&gt;</span>
+        <span class="hljs-comment">&lt;!-- Article #1 de la section blog --&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">header</span>&gt;</span>
+            <span class="hljs-tag">&lt;<span class="hljs-name">h2</span>&gt;</span>Qui sont les chats ?<span class="hljs-tag">&lt;/<span class="hljs-name">h2</span>&gt;</span>
+        <span class="hljs-tag">&lt;/<span class="hljs-name">header</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">p</span>&gt;</span>Les <span class="hljs-tag">&lt;<span class="hljs-name">strong</span>&gt;</span>chats<span class="hljs-tag">&lt;/<span class="hljs-name">strong</span>&gt;</span> sont les membres de la famille des <span class="hljs-tag">&lt;<span class="hljs-name">em</span>&gt;</span>félins<span class="hljs-tag">&lt;/<span class="hljs-name">em</span>&gt;</span>, et ils partagent de
+            nombreuses
+            caractéristiques avec leurs
+            cousins ​​les lions, les tigres et les panthères. Les chats domestiques sont les plus populaires au
+            monde et
+            sont adorés par des millions de personnes pour leur compagnie et leur affectueuse nature.<span class="hljs-tag">&lt;/<span class="hljs-name">p</span>&gt;</span>
+
+        <span class="hljs-tag">&lt;<span class="hljs-name">aside</span>&gt;</span>
+            <span class="hljs-comment">&lt;!-- Commentaires de l&#x27;article--&gt;</span>
+            <span class="hljs-tag">&lt;<span class="hljs-name">header</span>&gt;</span>
+                <span class="hljs-tag">&lt;<span class="hljs-name">h2</span>&gt;</span>Commentaires<span class="hljs-tag">&lt;/<span class="hljs-name">h2</span>&gt;</span>
+            <span class="hljs-tag">&lt;/<span class="hljs-name">header</span>&gt;</span>
+            <span class="hljs-tag">&lt;<span class="hljs-name">article</span>&gt;</span>
+                <span class="hljs-comment">&lt;!-- Commentaire #1 de l&#x27;article--&gt;</span>
+                <span class="hljs-tag">&lt;<span class="hljs-name">header</span>&gt;</span>
+                    <span class="hljs-tag">&lt;<span class="hljs-name">h3</span>&gt;</span>Laurent<span class="hljs-tag">&lt;/<span class="hljs-name">h3</span>&gt;</span>
+                <span class="hljs-tag">&lt;/<span class="hljs-name">header</span>&gt;</span>
+                <span class="hljs-tag">&lt;<span class="hljs-name">p</span>&gt;</span>J&#x27;adore les chats !<span class="hljs-tag">&lt;/<span class="hljs-name">p</span>&gt;</span>
+            <span class="hljs-tag">&lt;/<span class="hljs-name">article</span>&gt;</span>
+        <span class="hljs-tag">&lt;/<span class="hljs-name">aside</span>&gt;</span>
+    <span class="hljs-tag">&lt;/<span class="hljs-name">article</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">section</span>&gt;</span>
+</code></pre></div>
+<div class="encadre encadre--note encadre--arrow"><div class="encadre__corps"><p><strong>🎯 À toi de jouer !</strong></p>
+<p>Ajoute un <code>&lt;aside&gt;</code> dans tes deux articles avec un commentaire.</p>
+</div></div>
+<h2>La balise <footer></h2>
+<p>La balise <code>&lt;footer&gt;</code> est utilisée pour le pied de page, généralement pour des informations sur la page comme une mention de copyright ou des liens vers des pages supplémentaires :</p>
+<div class="bloc-code"><div class="bloc-code__langue">html</div><pre><code class="hljs language-html"><span class="hljs-tag">&lt;<span class="hljs-name">footer</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">nav</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">ul</span>&gt;</span>
+            <span class="hljs-tag">&lt;<span class="hljs-name">li</span>&gt;</span><span class="hljs-tag">&lt;<span class="hljs-name">a</span> <span class="hljs-attr">href</span>=<span class="hljs-string">&quot;/&quot;</span>&gt;</span>Accueil<span class="hljs-tag">&lt;/<span class="hljs-name">a</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">li</span>&gt;</span>
+            <span class="hljs-tag">&lt;<span class="hljs-name">li</span>&gt;</span><span class="hljs-tag">&lt;<span class="hljs-name">a</span> <span class="hljs-attr">href</span>=<span class="hljs-string">&quot;/articles&quot;</span>&gt;</span>Articles<span class="hljs-tag">&lt;/<span class="hljs-name">a</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">li</span>&gt;</span>
+            <span class="hljs-tag">&lt;<span class="hljs-name">li</span>&gt;</span><span class="hljs-tag">&lt;<span class="hljs-name">a</span> <span class="hljs-attr">href</span>=<span class="hljs-string">&quot;/about&quot;</span>&gt;</span>À propos<span class="hljs-tag">&lt;/<span class="hljs-name">a</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">li</span>&gt;</span>
+        <span class="hljs-tag">&lt;/<span class="hljs-name">ul</span>&gt;</span>
+    <span class="hljs-tag">&lt;/<span class="hljs-name">nav</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">p</span>&gt;</span>Contact : <span class="hljs-tag">&lt;<span class="hljs-name">a</span> <span class="hljs-attr">href</span>=<span class="hljs-string">&quot;mailto:bob.smith@gmail.com&quot;</span>&gt;</span>bob.smith@gmail.com<span class="hljs-tag">&lt;/<span class="hljs-name">a</span>&gt;</span> <span class="hljs-tag">&lt;/<span class="hljs-name">p</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">p</span>&gt;</span>Copyright 2022<span class="hljs-tag">&lt;/<span class="hljs-name">p</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">footer</span>&gt;</span>
+</code></pre></div>
+<p>La balise <code>&lt;footer&gt;</code> peut aussi être utilisée pour créer un pied de section ou d'article :</p>
+<div class="bloc-code"><div class="bloc-code__langue">html</div><pre><code class="hljs language-html"><span class="hljs-tag">&lt;<span class="hljs-name">article</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">h1</span>&gt;</span>Titre de mon article<span class="hljs-tag">&lt;/<span class="hljs-name">h1</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">p</span>&gt;</span>...<span class="hljs-tag">&lt;/<span class="hljs-name">p</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">footer</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">p</span>&gt;</span>© 2022<span class="hljs-tag">&lt;/<span class="hljs-name">p</span>&gt;</span>
+    <span class="hljs-tag">&lt;/<span class="hljs-name">footer</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">article</span>&gt;</span>
+</code></pre></div>
+<div class="encadre encadre--note encadre--arrow"><div class="encadre__corps"><p><strong>🎯 À toi de jouer !</strong></p>
+<p>Ajoute un pied de page à ta page <code>index.html</code> avec les différents liens de ton site internet ainsi que les informations de contact suivi du Copyright.</p>
+</div></div>
+<h2>Quand tout le reste a échoué</h2>
+<h3>Saut de ligne</h3>
+<p>Tu peux effectuer un saut de ligne en HTML avec la balise <code>&lt;br&gt;</code>. Attention, la balise <code>&lt;br&gt;</code> doit être utilisée pour des retours à la ligne <strong>à l'intérieur d'un paragraphe</strong> ou d'une balise <code>&lt;address&gt;</code>. À l'intérieur d'un paragraphe, elle est utilisée pour la présentation d'un poème par exemple. Elle ne doit pas être utilisée pour mettre de l'espace <strong>entre</strong> les paragraphes. Pour cela tu utiliseras des propriétés CSS.</p>
+<div class="bloc-code"><div class="bloc-code__langue">html</div><pre><code class="hljs language-html"><span class="hljs-tag">&lt;<span class="hljs-name">h3</span>&gt;</span>le petit chat<span class="hljs-tag">&lt;/<span class="hljs-name">h3</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">p</span>&gt;</span>J&#x27;aime beaucoup mon petit chat,<span class="hljs-tag">&lt;<span class="hljs-name">br</span>&gt;</span>
+Ce n&#x27;est pas que je vous déteste,<span class="hljs-tag">&lt;<span class="hljs-name">br</span>&gt;</span>
+Mais moins que vous il est ingrat,<span class="hljs-tag">&lt;<span class="hljs-name">br</span>&gt;</span>
+Méchant, hypocrite et le reste !
+<span class="hljs-tag">&lt;/<span class="hljs-name">p</span>&gt;</span>
+</code></pre></div>
+<h3>Séparateurs</h3>
+<p>Tu peux mettre un séparateur avec la balise <code>&lt;hr&gt;</code> pour marquer un changement de thématique :</p>
+<div class="bloc-code"><div class="bloc-code__langue">html</div><pre><code class="hljs language-html"><span class="hljs-tag">&lt;<span class="hljs-name">h2</span>&gt;</span>Poèmes sur les chats<span class="hljs-tag">&lt;/<span class="hljs-name">h2</span>&gt;</span>
+
+<span class="hljs-tag">&lt;<span class="hljs-name">h3</span>&gt;</span>le petit chat<span class="hljs-tag">&lt;/<span class="hljs-name">h3</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">p</span>&gt;</span>J&#x27;aime beaucoup mon petit chat,<span class="hljs-tag">&lt;<span class="hljs-name">br</span>&gt;</span>
+Ce n&#x27;est pas que je vous déteste,<span class="hljs-tag">&lt;<span class="hljs-name">br</span>&gt;</span>
+Mais moins que vous il est ingrat,<span class="hljs-tag">&lt;<span class="hljs-name">br</span>&gt;</span>
+Méchant, hypocrite et le reste !<span class="hljs-tag">&lt;/<span class="hljs-name">p</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">p</span>&gt;</span>Auteur inconnu<span class="hljs-tag">&lt;/<span class="hljs-name">p</span>&gt;</span>
+
+<span class="hljs-tag">&lt;<span class="hljs-name">hr</span>&gt;</span>
+
+<span class="hljs-tag">&lt;<span class="hljs-name">p</span>&gt;</span>Sur le chemin de Chatham,<span class="hljs-tag">&lt;<span class="hljs-name">br</span>&gt;</span>
+J&#x27;ai vu un homme avec sept femmes.<span class="hljs-tag">&lt;<span class="hljs-name">br</span>&gt;</span>
+Chaque femme avait sept sacs,<span class="hljs-tag">&lt;<span class="hljs-name">br</span>&gt;</span>
+Chaque sac contenait sept chats,<span class="hljs-tag">&lt;<span class="hljs-name">br</span>&gt;</span>
+Chaque chat avait sept chatons :<span class="hljs-tag">&lt;<span class="hljs-name">br</span>&gt;</span>
+Combien cheminaient vers Chatham ?<span class="hljs-tag">&lt;/<span class="hljs-name">p</span>&gt;</span>
+
+<span class="hljs-tag">&lt;<span class="hljs-name">h2</span>&gt;</span>Quelles sont les caractéristiques des chats ?<span class="hljs-tag">&lt;/<span class="hljs-name">h2</span>&gt;</span>
+</code></pre></div>
+<h3>Les balises <div> et <span></h3>
+<p>La balise <code>&lt;div&gt;</code> est un conteneur de type <strong>block</strong> et <code>&lt;span&gt;</code> est un conteneur de type <strong>inline</strong>.</p>
+<p>Nous avons déjà vu plusieurs conteneurs comme <code>&lt;header&gt;</code>, <code>&lt;footer&gt;</code>, <code>&lt;article&gt;</code>, etc.</p>
+<p>À la différence de ces <em>conteneurs sémantiques</em> qui ont une <strong>sémantique forte</strong>, les balises <code>&lt;span&gt;</code> et <code>&lt;div&gt;</code> ne donnent aucune information quant au type de contenu qu'elles contiennent.</p>
+<p>Elles doivent être utilisées lorsqu'aucun élément avec une sémantique plus forte n'est adapté au contenu. La balise <code>&lt;div&gt;</code> pour délimiter une <strong>div</strong>ision, une partie d'un tout. La balise <code>&lt;span&gt;</code> pour délimiter une portion de contenu en ligne.</p>
+<h2>Récapitulatif</h2>
+<ul>
+<li>
+<p>En HTML, tu dois respecter la structure et la sémantique de tes pages.</p>
+</li>
+<li>
+<p>La balise <code>&lt;header&gt;</code> sert à déclarer l'en-tête d'une page, d'un article ou d'une section.</p>
+</li>
+<li>
+<p>La balise <code>&lt;nav&gt;</code> sert à déclarer un élément de navigation.</p>
+</li>
+<li>
+<p>La balise <code>&lt;main&gt;</code> est utilisée pour délimiter la partie principale d'une page web. Tu ne dois utiliser qu'une seule balise <code>&lt;main&gt;</code> par page.</p>
+</li>
+<li>
+<p>La balise <code>&lt;article&gt;</code> sert à déclarer un contenu qui a du sens même s'il est sorti de son contexte (article de blog, fiche produit, etc.).</p>
+</li>
+<li>
+<p>La balise <code>&lt;section&gt;</code> sert à délimiter des sections différentes dans ta page.</p>
+</li>
+<li>
+<p>La balise <code>&lt;aside&gt;</code> sert à déclarer du contenu &quot;à part&quot; (commentaires, publicités, etc.).</p>
+</li>
+<li>
+<p>La balise <code>&lt;footer&gt;</code> sert à déclarer un pied de page, de section ou d'article.</p>
+</li>
+</ul>
+<h2>Challenge</h2>
+<p>Mets en forme le travail que tu as réalisé durant cette quête et compare le résultat avec la solution qui est proposée !</p>
+<p>Tu peux effacer le contenu que nous avons fait dans les précédentes quêtes pour plus de clarté.</p>
+<h3>Critères de validation</h3>
+<ul>
+<li>[ ] La page web respecte les principes de structure et de sémantique découverts dans la quête</li>
+<li>[ ] La page contient un header avec une navigation contenant une liste de liens</li>
+<li>[ ] La page contient une section blog</li>
+<li>[ ] La page contient des articles de blog</li>
+<li>[ ] Les articles contiennent des commentaires bien structurées</li>
+<li>[ ] La page contient un footer avec une navigation contenant différents liens, l'email de contact et le copyright</li>
+</ul>
+<details class="solution"><summary>Voir la solution</summary><div class="solution__corps"><div class="bloc-code"><div class="bloc-code__langue">html</div><pre><code class="hljs language-html"><span class="hljs-meta">&lt;!DOCTYPE <span class="hljs-keyword">html</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">html</span> <span class="hljs-attr">lang</span>=<span class="hljs-string">&quot;fr&quot;</span>&gt;</span>
+<span class="hljs-comment">&lt;!-- Head of the document --&gt;</span>
+
+<span class="hljs-tag">&lt;<span class="hljs-name">head</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">title</span>&gt;</span>Bienvenue sur mon site internet | Bob Smith Webdesigner<span class="hljs-tag">&lt;/<span class="hljs-name">title</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">link</span> <span class="hljs-attr">rel</span>=<span class="hljs-string">&quot;shortcut icon&quot;</span> <span class="hljs-attr">href</span>=<span class="hljs-string">&quot;favicon.ico&quot;</span> <span class="hljs-attr">type</span>=<span class="hljs-string">&quot;image/x-icon&quot;</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">meta</span> <span class="hljs-attr">name</span>=<span class="hljs-string">&quot;author&quot;</span> <span class="hljs-attr">content</span>=<span class="hljs-string">&quot;Bob Smith&quot;</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">meta</span> <span class="hljs-attr">name</span>=<span class="hljs-string">&quot;description&quot;</span>
+        <span class="hljs-attr">content</span>=<span class="hljs-string">&quot;Webdesigner, graphiste et developpeur frontend freelance, je designe et developpe des applications web innovantes et créatives !&quot;</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">head</span>&gt;</span>
+
+<span class="hljs-comment">&lt;!-- Body of the document --&gt;</span>
+
+<span class="hljs-tag">&lt;<span class="hljs-name">body</span>&gt;</span>
+
+    <span class="hljs-tag">&lt;<span class="hljs-name">header</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">nav</span>&gt;</span>
+            <span class="hljs-tag">&lt;<span class="hljs-name">ul</span>&gt;</span>
+                <span class="hljs-tag">&lt;<span class="hljs-name">li</span>&gt;</span><span class="hljs-tag">&lt;<span class="hljs-name">a</span> <span class="hljs-attr">href</span>=<span class="hljs-string">&quot;informations.html&quot;</span>&gt;</span>Accueil<span class="hljs-tag">&lt;/<span class="hljs-name">a</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">li</span>&gt;</span>
+                <span class="hljs-tag">&lt;<span class="hljs-name">li</span>&gt;</span><span class="hljs-tag">&lt;<span class="hljs-name">a</span> <span class="hljs-attr">href</span>=<span class="hljs-string">&quot;about.html&quot;</span>&gt;</span>À propos<span class="hljs-tag">&lt;/<span class="hljs-name">a</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">li</span>&gt;</span>
+                <span class="hljs-tag">&lt;<span class="hljs-name">li</span>&gt;</span><span class="hljs-tag">&lt;<span class="hljs-name">a</span> <span class="hljs-attr">href</span>=<span class="hljs-string">&quot;contact.html&quot;</span>&gt;</span>Contact<span class="hljs-tag">&lt;/<span class="hljs-name">a</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">li</span>&gt;</span>
+            <span class="hljs-tag">&lt;/<span class="hljs-name">ul</span>&gt;</span>
+        <span class="hljs-tag">&lt;/<span class="hljs-name">nav</span>&gt;</span>
+    <span class="hljs-tag">&lt;/<span class="hljs-name">header</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">main</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">h1</span>&gt;</span>Welcome to my website!<span class="hljs-tag">&lt;/<span class="hljs-name">h1</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">p</span>&gt;</span>Bienvenue sur mon <span class="hljs-tag">&lt;<span class="hljs-name">strong</span>&gt;</span>incroyable<span class="hljs-tag">&lt;/<span class="hljs-name">strong</span>&gt;</span> site internet!<span class="hljs-tag">&lt;/<span class="hljs-name">p</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">section</span>&gt;</span>
+            <span class="hljs-comment">&lt;!-- Section blog --&gt;</span>
+            <span class="hljs-tag">&lt;<span class="hljs-name">h2</span>&gt;</span>Blog<span class="hljs-tag">&lt;/<span class="hljs-name">h2</span>&gt;</span>
+
+            <span class="hljs-tag">&lt;<span class="hljs-name">article</span>&gt;</span>
+                <span class="hljs-comment">&lt;!-- Article #1 --&gt;</span>
+                <span class="hljs-tag">&lt;<span class="hljs-name">header</span>&gt;</span>
+                    <span class="hljs-comment">&lt;!-- Header de l&#x27;article #1 --&gt;</span>
+                    <span class="hljs-tag">&lt;<span class="hljs-name">h2</span>&gt;</span>Lorem<span class="hljs-tag">&lt;/<span class="hljs-name">h2</span>&gt;</span>
+                <span class="hljs-tag">&lt;/<span class="hljs-name">header</span>&gt;</span>
+                <span class="hljs-tag">&lt;<span class="hljs-name">p</span>&gt;</span>Lorem ipsum dolor sit amet, consectetur adipisicing elit. <span class="hljs-tag">&lt;<span class="hljs-name">br</span>&gt;</span> Illo ipsa doloribus voluptas odio
+                    voluptatibus soluta nihil aut vel assumenda at! Ipsa rerum laborum, quam quae cumque maxime eos
+                    ullam recusandae.<span class="hljs-tag">&lt;/<span class="hljs-name">p</span>&gt;</span>
+
+                <span class="hljs-tag">&lt;<span class="hljs-name">aside</span>&gt;</span>
+                    <span class="hljs-comment">&lt;!-- Commentaires de l&#x27;article--&gt;</span>
+                    <span class="hljs-tag">&lt;<span class="hljs-name">header</span>&gt;</span>
+                        <span class="hljs-tag">&lt;<span class="hljs-name">h2</span>&gt;</span>Commentaires<span class="hljs-tag">&lt;/<span class="hljs-name">h2</span>&gt;</span>
+                    <span class="hljs-tag">&lt;/<span class="hljs-name">header</span>&gt;</span>
+                    <span class="hljs-tag">&lt;<span class="hljs-name">article</span>&gt;</span>
+                        <span class="hljs-comment">&lt;!-- Commentaire #1 de l&#x27;article--&gt;</span>
+                        <span class="hljs-tag">&lt;<span class="hljs-name">header</span>&gt;</span>
+                            <span class="hljs-comment">&lt;!-- Header du commentaire --&gt;</span>
+                            <span class="hljs-tag">&lt;<span class="hljs-name">h3</span>&gt;</span>Laurent<span class="hljs-tag">&lt;/<span class="hljs-name">h3</span>&gt;</span>
+                        <span class="hljs-tag">&lt;/<span class="hljs-name">header</span>&gt;</span>
+                        <span class="hljs-tag">&lt;<span class="hljs-name">p</span>&gt;</span>Lorem ipsum!<span class="hljs-tag">&lt;/<span class="hljs-name">p</span>&gt;</span>
+                    <span class="hljs-tag">&lt;/<span class="hljs-name">article</span>&gt;</span>
+                <span class="hljs-tag">&lt;/<span class="hljs-name">aside</span>&gt;</span>
+            <span class="hljs-tag">&lt;/<span class="hljs-name">article</span>&gt;</span>
+        <span class="hljs-tag">&lt;/<span class="hljs-name">section</span>&gt;</span>
+    <span class="hljs-tag">&lt;/<span class="hljs-name">main</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">footer</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">nav</span>&gt;</span>
+            <span class="hljs-tag">&lt;<span class="hljs-name">ul</span>&gt;</span>
+                <span class="hljs-tag">&lt;<span class="hljs-name">li</span>&gt;</span><span class="hljs-tag">&lt;<span class="hljs-name">a</span> <span class="hljs-attr">href</span>=<span class="hljs-string">&quot;informations.html&quot;</span>&gt;</span>Accueil<span class="hljs-tag">&lt;/<span class="hljs-name">a</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">li</span>&gt;</span>
+                <span class="hljs-tag">&lt;<span class="hljs-name">li</span>&gt;</span><span class="hljs-tag">&lt;<span class="hljs-name">a</span> <span class="hljs-attr">href</span>=<span class="hljs-string">&quot;about.html&quot;</span>&gt;</span>À propos<span class="hljs-tag">&lt;/<span class="hljs-name">a</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">li</span>&gt;</span>
+                <span class="hljs-tag">&lt;<span class="hljs-name">li</span>&gt;</span><span class="hljs-tag">&lt;<span class="hljs-name">a</span> <span class="hljs-attr">href</span>=<span class="hljs-string">&quot;contact.html&quot;</span>&gt;</span>Contact<span class="hljs-tag">&lt;/<span class="hljs-name">a</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">li</span>&gt;</span>
+            <span class="hljs-tag">&lt;/<span class="hljs-name">ul</span>&gt;</span>
+        <span class="hljs-tag">&lt;/<span class="hljs-name">nav</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">p</span>&gt;</span>Contact : <span class="hljs-tag">&lt;<span class="hljs-name">a</span> <span class="hljs-attr">href</span>=<span class="hljs-string">&quot;mailto:bob.smith@gmail.com&quot;</span>&gt;</span>bob.smith@gmail.com<span class="hljs-tag">&lt;/<span class="hljs-name">a</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">p</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">p</span>&gt;</span>© 2022<span class="hljs-tag">&lt;/<span class="hljs-name">p</span>&gt;</span>
+    <span class="hljs-tag">&lt;/<span class="hljs-name">footer</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">body</span>&gt;</span>
+
+<span class="hljs-tag">&lt;/<span class="hljs-name">html</span>&gt;</span>
+</code></pre></div>
+</div></details>
+
+  </div>
+  <section class="ressources-quete">
+  <h2>Ressources partagées sur cette quête</h2>
+  <ul class="ressources-liste">
+    <li><a href="https://gist.github.com/busy-gnl/6d3ad082bf5b49f3166336f6f72ec822" target="_blank" rel="noopener noreferrer">Condensé des balises HTML spéciales sur un gist</a><span class="ressources-liste__url">https://gist.github.com/busy-gnl/6d3ad082bf5b49f3166336f6f72ec822</span></li>
+  </ul>
+</section>
+</article>
+
+<nav class="nav-quete">
+  <a class="nav-quete__lien nav-quete__lien--prec" href="../../html/004-html-chapitre-4-les-liens-hypertexte/index.html">
+           <span class="nav-quete__sens">← Précédent</span>
+           <span class="nav-quete__titre">👩‍🏫 HTML - Chapitre 4 | Les liens hypertexte</span>
+         </a>
+  <a class="nav-quete__lien nav-quete__lien--suiv" href="../../html/006-html-chapitre-6-multimedias/index.html">
+           <span class="nav-quete__sens">Suivant →</span>
+           <span class="nav-quete__titre">👩‍🏫 HTML - Chapitre 6 |  Multimédias</span>
+         </a>
+</nav>
+</main>
+<footer class="pied">
+  <p>Archive personnelle des cours suivis à la Wild Code School. Copie hors ligne à usage strictement privé.</p>
+</footer>
+
+<script src="../../assets/copie-code.js"></script>
+<script src="../../assets/progression.js"></script>
+</body>
+</html>

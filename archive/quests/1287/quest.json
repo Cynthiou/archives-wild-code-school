@@ -1,0 +1,77 @@
+{
+  "id": 1287,
+  "titre": "👩‍🏫 CSS 4 : Flexbox",
+  "titres": {
+    "fr": "👩‍🏫 CSS 4 : Flexbox"
+  },
+  "theme": {
+    "id": 12,
+    "slug": "html",
+    "nom": "CSS"
+  },
+  "creeLe": "2020-07-10T19:40:07.613+02:00",
+  "difficulte": "0",
+  "dureeEstimee": null,
+  "modeValidation": "self",
+  "chapitres": [
+    {
+      "id": 12566,
+      "type": "content",
+      "langue": "fr",
+      "majLe": "2024-11-05T09:46:26.899+01:00",
+      "caracteres": 17035
+    }
+  ],
+  "ressources": [
+    {
+      "link": "https://flexbox.malven.co/",
+      "description": "Un excellent cheatsheet visuel pour les properties flexbox"
+    },
+    {
+      "link": "https://css-tricks.com/snippets/css/a-guide-to-flexbox/",
+      "description": "Bonne présentation et synthétique"
+    },
+    {
+      "link": "https://www.pierre-giraud.com/html-css-apprendre-coder-cours/flexbox-modele-boite-flexible/",
+      "description": "J'ai appris le flexbox grâce à ce site."
+    },
+    {
+      "link": "https://flexboxfroggy.com/#fr",
+      "description": "Jeu qui met en pratique le Flexbox"
+    },
+    {
+      "link": "https://paletton.com/",
+      "description": "Un excellent outil pour vous aider dans vos choix de couleurs CSS"
+    },
+    {
+      "link": "https://mastery.games/flexboxzombies/",
+      "description": "Flex-Box sous forme d'un jeu ! Un peu plus long que flexfroggy mais avec plus de propriétés !"
+    },
+    {
+      "link": "https://flexbox.help/",
+      "description": "Préparez vos flexbox directement avec ce site."
+    },
+    {
+      "link": "https://www.youtube.com/kepowob",
+      "description": "Le boss du css : Kevin Powell ! Excellente chaine youtube avec tout un tas de tips"
+    },
+    {
+      "link": "https://yoksel.github.io/flex-cheatsheet/#section-order",
+      "description": "Facile pour visualiser l'action de chaque flexbox instantanément."
+    },
+    {
+      "link": "https://www.freecodecamp.org/news/css-flexbox-tutorial-with-cheatsheet/",
+      "description": "Du CSS et des chats, pour celles et ceux qui ont un mode d'apprentissage plus visuel ;)"
+    },
+    {
+      "link": "https://www.youtube.com/watch?v=LNqBKTeeiWo&list=PLjwdMgw5TTLVjTZQocrMwKicV5wsZlRpj&index=11",
+      "description": "Tour d'horizon en vidéo complet sur tout ce qu'on peut faire en flexbox"
+    },
+    {
+      "link": "https://youtu.be/DPHgIIdrmFk?si=WEoJcYYVHwbS9SDV",
+      "description": "une vidéo explicative courte et concise et compréhensible "
+    }
+  ],
+  "urlOrigine": "https://odyssey.wildcodeschool.com/quests/1287",
+  "archiveLe": "2026-09-02T20:52:44.048Z"
+}

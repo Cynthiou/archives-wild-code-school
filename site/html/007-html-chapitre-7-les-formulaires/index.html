@@ -1,0 +1,329 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>👩‍🏫 HTML - Chapitre 7 | Les formulaires — Archives WCS</title>
+<link rel="stylesheet" href="../../assets/style.css">
+</head>
+<body style="--teinte:#a03737">
+<header class="entete">
+  <a class="entete__marque" href="../../index.html">Archives Wild Code School</a>
+</header>
+<main class="contenu">
+<nav class="ariane"><a href="../../index.html">Accueil</a><span class="ariane__sep">›</span><a href="../../html/index.html">HTML</a><span class="ariane__sep">›</span><span aria-current="page">👩‍🏫 HTML - Chapitre 7 | Les formulaires</span></nav>
+
+<article class="quete">
+  <header class="quete__entete">
+    <a class="pastille pastille--teintee" href="../../html/index.html">HTML</a>
+    <h1>👩‍🏫 HTML - Chapitre 7 | Les formulaires</h1>
+    <p class="quete__meta">Quête 7 sur 9 · 13 images archivées</p>
+  </header>
+  <div class="cours">
+<h2>Pré-requis</h2>
+<ol class="etapes"><li class="etape"><div class="etape__puce">1</div><div class="etape__contenu"><h4 class="etape__titre">Valider la quête suivante</h4><div class="renvois"><div class="renvois__titre">Quêtes liées</div><ul><li><a href="../../html/001-html-chapitre-1-introduction-au-html/index.html">Quête 2113</a></li></ul></div>
+</div></li><li class="etape"><div class="etape__puce">2</div><div class="etape__contenu"><h4 class="etape__titre">Être à l'aise avec l'imbrication de balises HTML</h4><div class="bloc-code"><div class="bloc-code__langue">html</div><pre><code class="hljs language-html"><span class="hljs-tag">&lt;<span class="hljs-name">p</span>&gt;</span>Bienvenue sur mon incroyable <span class="hljs-tag">&lt;<span class="hljs-name">strong</span>&gt;</span>site web<span class="hljs-tag">&lt;/<span class="hljs-name">strong</span>&gt;</span> !<span class="hljs-tag">&lt;/<span class="hljs-name">p</span>&gt;</span>
+</code></pre></div>
+</div></li><li class="etape"><div class="etape__puce">3</div><div class="etape__contenu"><h4 class="etape__titre">Être à l'aise avec l'utilisation des attributs HTML</h4><div class="bloc-code"><div class="bloc-code__langue">html</div><pre><code class="hljs language-html"><span class="hljs-tag">&lt;<span class="hljs-name">img</span> <span class="hljs-attr">src</span>=<span class="hljs-string">&quot;https://placekitten.com/200/287&quot;</span> <span class="hljs-attr">alt</span>=<span class="hljs-string">&quot;A cute cat&quot;</span> /&gt;</span>
+</code></pre></div>
+</div></li></ol>
+<h2>Introduction</h2>
+<p>Précédemment, tu as vu les principes de bases du langage HTML.</p>
+<p>Dans cette quête, nous allons apprendre comment réaliser des formulaires en HTML afin de pouvoir recueillir des informations de l'utilisateur.</p>
+<h2>Objectifs</h2>
+<ul>
+<li>Créer des formulaires en HTML</li>
+</ul>
+<h2>Sommaire</h2>
+<h2>Qu'est ce qu'un formulaire ?</h2>
+<p>Un formulaire HTML permet de récolter des informations de la part d'un utilisateur afin qu'il puisse envoyer des données/interagir avec le site web.</p>
+<p>Comme toujours, tu dois faire attention à l'accessibilité de tes formulaires afin de les rendre simple à comprendre et à utiliser.</p>
+<p><img src="images/001-image.gif" alt="image" loading="lazy"></p>
+<h3>La balise <form></h3>
+<p>Pour déclarer un formulaire, tu dois toujours commencer par la balise <code>&lt;form&gt;</code>.</p>
+<p><code>&lt;form&gt;</code> est le conteneur dans lequel tu ajoutes les différentes composantes de ton formulaire.</p>
+<p><code>&lt;form&gt;</code> est généralement utilisé avec les attributs <code>action</code> et <code>method</code>.</p>
+<ul>
+<li>L'attribut <code>action</code> définit l'URL où doivent être envoyé les données</li>
+<li>L'attribut <code>method</code> définit la méthode utilisée pour envoyer le formulaire (&quot;get&quot; ou &quot;post&quot;).</li>
+</ul>
+<div class="bloc-code"><div class="bloc-code__langue">html</div><pre><code class="hljs language-html"><span class="hljs-tag">&lt;<span class="hljs-name">form</span> <span class="hljs-attr">action</span>=<span class="hljs-string">&quot;/adoption-demand&quot;</span> <span class="hljs-attr">method</span>=<span class="hljs-string">&quot;post&quot;</span>&gt;</span>
+
+<span class="hljs-tag">&lt;/<span class="hljs-name">form</span>&gt;</span>
+</code></pre></div>
+<div class="encadre encadre--info"><div class="encadre__titre">Info</div><div class="encadre__corps"><p>Étant donné que nous n'avons pour le moment aucun serveur où envoyer les données, nous laisserons les attributs <code>action</code> et <code>method</code> vides dans les prochains exemples.</p>
+</div></div>
+<h3>Ajouter un champ de saisie</h3>
+<p>Pour ajouter un champ de saisie dans ton formulaire, tu dois utiliser la balise <code>&lt;input&gt;</code>.</p>
+<p>La balise <code>&lt;input&gt;</code> permet de créer différent types de champs : tu peux spécifier celui que tu veux avec l'attribut <code>type</code>. Par exemple, <code>type=&quot;text&quot;</code> pour un champ texte :</p>
+<p><img src="images/002-image.jpg" alt="image" loading="lazy"></p>
+<p>Pour des raisons d'accessibilité, pense à <strong>toujours</strong> ajouter une &quot;étiquette&quot; sur chacun des éléments de ton formulaire à l'aide de la balise <code>&lt;label&gt;</code>.</p>
+<p>La balise <code>&lt;label&gt;</code> permet de préciser à quoi sert un élément du formulaire. Par exemple:</p>
+<div class="bloc-code"><div class="bloc-code__langue">html</div><pre><code class="hljs language-html"><span class="hljs-tag">&lt;<span class="hljs-name">form</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">label</span> <span class="hljs-attr">for</span>=<span class="hljs-string">&quot;firstname&quot;</span>&gt;</span>What&#x27;s your firstname ?<span class="hljs-tag">&lt;/<span class="hljs-name">label</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">input</span> <span class="hljs-attr">type</span>=<span class="hljs-string">&quot;text&quot;</span> <span class="hljs-attr">id</span>=<span class="hljs-string">&quot;firstname&quot;</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">form</span>&gt;</span>
+</code></pre></div>
+<p>Comme tu peux le voir dans cet exemple, l'attribut <code>for</code> du <code>&lt;label&gt;</code> doit correspondre à l'attribut <code>id</code> de l'élément <code>&lt;input&gt;</code> afin de lier les deux.</p>
+<p>Une autre approche consiste à ajouter l'élément <code>&lt;input&gt;</code> dans la balise <code>&lt;label&gt;</code> :</p>
+<div class="bloc-code"><div class="bloc-code__langue">html</div><pre><code class="hljs language-html"><span class="hljs-tag">&lt;<span class="hljs-name">label</span>&gt;</span>What&#x27;s your firstname ?
+    <span class="hljs-tag">&lt;<span class="hljs-name">input</span> <span class="hljs-attr">type</span>=<span class="hljs-string">&quot;text&quot;</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">label</span>&gt;</span>
+</code></pre></div>
+<p>Dans ce cas, les attributs <code>for</code>et <code>id</code> ne sont pas nécessaires.</p>
+<p>Enfin, tu peux ajouter l'attribut <code>required</code> pour indiquer au navigateur que le champ doit être rempli.</p>
+<div class="encadre encadre--note encadre--arrow"><div class="encadre__corps"><p><strong>🎯 À toi de jouer !</strong></p>
+<p>Sur ton dossier de travail, crée un fichier contact.html.</p>
+<p>Ajoute la structure d'un fichier HTML, et n'oublie pas les bonnes pratiques pour la balise <code>&lt;head&gt;</code> vu précédemment!</p>
+<p>À l'intérieur du <code>&lt;body&gt;</code> tu peux ajouter la navigation et le pied de page que nous avons fait précédemment et à l'intérieur de la balise <code>&lt;main&gt;</code> ajoute un titre de niveau 1 &quot;Me contacter&quot;. Ajoute ensuite une balise <code>&lt;form&gt;</code> avec deux champs textes (n'oublie pas les labels) pour demander à l'utilisateur son prénom et son nom de famille.</p>
+<p>Tu peux contenir chaque <code>&lt;input&gt;</code> avec son <code>&lt;label&gt;</code> dans une balise <code>&lt;p&gt;</code>.</p>
+</div></div>
+<h3>Bouton de soumission</h3>
+<p>Enfin, tu peux utiliser une balise <code>&lt;button&gt;</code> avec le type <code>submit</code> pour compléter ton formulaire :</p>
+<div class="bloc-code"><div class="bloc-code__langue">html</div><pre><code class="hljs language-html"><span class="hljs-tag">&lt;<span class="hljs-name">button</span> <span class="hljs-attr">type</span>=<span class="hljs-string">&quot;submit&quot;</span>&gt;</span>Valider mon inscription<span class="hljs-tag">&lt;/<span class="hljs-name">button</span>&gt;</span>
+</code></pre></div>
+<div class="encadre encadre--info"><div class="encadre__titre">Info</div><div class="encadre__corps"><p>Le type <code>&quot;submit&quot;</code> sur un <code>&lt;input&gt;</code> te permet aussi de créer un bouton qui enverra le formulaire. Le texte du bouton est spécifié avec l'attribut <code>value</code> :</p>
+<div class="bloc-code"><div class="bloc-code__langue">html</div><pre><code class="hljs language-html"><span class="hljs-tag">&lt;<span class="hljs-name">input</span> <span class="hljs-attr">type</span>=<span class="hljs-string">&quot;submit&quot;</span> <span class="hljs-attr">value</span>=<span class="hljs-string">&quot;Valider mon inscription&quot;</span>&gt;</span>
+</code></pre></div>
+<p>Cependant, la balise <code>&lt;button&gt;</code> te laisse plus de libertés : tu peux par exemple mettre une image dans ton bouton.</p>
+</div></div>
+<h2>Les types de champs &quot;simples&quot;</h2>
+<h3>Text</h3>
+<p>Le type <code>&quot;text&quot;</code> permet d'afficher un champ texte sur une seule ligne.</p>
+<p>Tu peux l'utiliser pour les champs textes qui ne sont pas des emails ou des mots de passe.</p>
+<p><img src="images/003-image.jpg" alt="image" loading="lazy"></p>
+<h3>Email</h3>
+<p>Le type <code>&quot;email&quot;</code> permet d'ajouter un champ email :</p>
+<div class="bloc-code"><div class="bloc-code__langue">html</div><pre><code class="hljs language-html"><span class="hljs-tag">&lt;<span class="hljs-name">label</span>&gt;</span>Quel est votre email: <span class="hljs-tag">&lt;<span class="hljs-name">input</span> <span class="hljs-attr">type</span>=<span class="hljs-string">&quot;email&quot;</span> <span class="hljs-attr">required</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">label</span>&gt;</span>
+</code></pre></div>
+<p><img src="images/004-image.png" alt="image" loading="lazy"></p>
+<h3>Date</h3>
+<p>Le type <code>&quot;date&quot;</code> permet d'ajouter un sélecteur de date :</p>
+<div class="bloc-code"><div class="bloc-code__langue">html</div><pre><code class="hljs language-html"><span class="hljs-tag">&lt;<span class="hljs-name">label</span>&gt;</span>Quelle est votre date de naissance: <span class="hljs-tag">&lt;<span class="hljs-name">input</span> <span class="hljs-attr">type</span>=<span class="hljs-string">&quot;date&quot;</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">label</span>&gt;</span>
+</code></pre></div>
+<p><img src="images/005-image.png" alt="image" loading="lazy"></p>
+<h3>Number</h3>
+<p>Le type <code>&quot;number&quot;</code> permet de sélectionner un nombre :</p>
+<div class="bloc-code"><div class="bloc-code__langue">html</div><pre><code class="hljs language-html"><span class="hljs-tag">&lt;<span class="hljs-name">label</span>&gt;</span>Nombre de personnes: <span class="hljs-tag">&lt;<span class="hljs-name">input</span> <span class="hljs-attr">type</span>=<span class="hljs-string">&quot;number&quot;</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">label</span>&gt;</span>
+</code></pre></div>
+<p><img src="images/006-image.png" alt="image" loading="lazy"></p>
+<h3>Password</h3>
+<p>Le type <code>&quot;password&quot;</code> permet de taper un mot de passe, les caractères seront donc masqués :</p>
+<div class="bloc-code"><div class="bloc-code__langue">html</div><pre><code class="hljs language-html"><span class="hljs-tag">&lt;<span class="hljs-name">label</span>&gt;</span>Password: <span class="hljs-tag">&lt;<span class="hljs-name">input</span> <span class="hljs-attr">type</span>=<span class="hljs-string">&quot;password&quot;</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">label</span>&gt;</span>
+</code></pre></div>
+<p><img src="images/007-image.png" alt="image" loading="lazy"></p>
+<div class="encadre encadre--note encadre--arrow"><div class="encadre__corps"><p><strong>🎯 À toi de jouer !</strong></p>
+<p>Ajoute un champ email et date de naissance sur ton formulaire de contact. Pense à bien ajouter la balise <code>&lt;label&gt;</code>.</p>
+</div></div>
+<h2>Autres types de champs</h2>
+<h3>Case à cocher</h3>
+<p>Le type <code>&quot;checkbox&quot;</code> permet d'afficher une case à cocher sur la page. Tu peux utiliser l'attribut <code>checked</code> pour définir l'état initial de la checkbox :</p>
+<div class="bloc-code"><div class="bloc-code__langue">html</div><pre><code class="hljs language-html"><span class="hljs-tag">&lt;<span class="hljs-name">label</span>&gt;</span>S&#x27;inscrire à la newsletter <span class="hljs-tag">&lt;<span class="hljs-name">input</span> <span class="hljs-attr">type</span>=<span class="hljs-string">&quot;checkbox&quot;</span> <span class="hljs-attr">checked</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">label</span>&gt;</span>
+</code></pre></div>
+<p><img src="images/008-image.png" alt="image" loading="lazy"></p>
+<p>Lorsque tu as plusieurs checkboxes, tu peux les regrouper en utilisant la balise <code>&lt;fieldset&gt;</code> et ajouter une légende avec la balise <code>&lt;legend&gt;</code>.</p>
+<p>La balise <code>&lt;fieldset&gt;</code> est utilisée pour regrouper plusieurs <code>&lt;input&gt;</code> et <code>&lt;label&gt;</code>:</p>
+<div class="bloc-code"><div class="bloc-code__langue">html</div><pre><code class="hljs language-html"><span class="hljs-tag">&lt;<span class="hljs-name">fieldset</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">legend</span>&gt;</span>Veuillez choisir vos skills :<span class="hljs-tag">&lt;/<span class="hljs-name">legend</span>&gt;</span>
+
+    <span class="hljs-tag">&lt;<span class="hljs-name">input</span> <span class="hljs-attr">type</span>=<span class="hljs-string">&quot;checkbox&quot;</span> <span class="hljs-attr">id</span>=<span class="hljs-string">&quot;webdev&quot;</span> <span class="hljs-attr">name</span>=<span class="hljs-string">&quot;interest&quot;</span> <span class="hljs-attr">value</span>=<span class="hljs-string">&quot;coding&quot;</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">label</span> <span class="hljs-attr">for</span>=<span class="hljs-string">&quot;webdev&quot;</span>&gt;</span>Developpement Web<span class="hljs-tag">&lt;/<span class="hljs-name">label</span>&gt;</span>
+
+    <span class="hljs-tag">&lt;<span class="hljs-name">input</span> <span class="hljs-attr">type</span>=<span class="hljs-string">&quot;checkbox&quot;</span> <span class="hljs-attr">id</span>=<span class="hljs-string">&quot;music&quot;</span> <span class="hljs-attr">name</span>=<span class="hljs-string">&quot;interest&quot;</span> <span class="hljs-attr">value</span>=<span class="hljs-string">&quot;music&quot;</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">label</span> <span class="hljs-attr">for</span>=<span class="hljs-string">&quot;music&quot;</span>&gt;</span>Musique<span class="hljs-tag">&lt;/<span class="hljs-name">label</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">fieldset</span>&gt;</span>
+</code></pre></div>
+<p><img src="images/009-image.png" alt="image" loading="lazy"></p>
+<h3>Boutons radio</h3>
+<p>Le type <code>&quot;radio&quot;</code> permet d'afficher une sélection d'éléments et de laisser l'utilisateur choisir une option dans la liste.</p>
+<p>De la même manière, tu peux utiliser la balise <code>&lt;fieldset&gt;</code> pour regrouper les éléments :</p>
+<div class="bloc-code"><div class="bloc-code__langue">html</div><pre><code class="hljs language-html"><span class="hljs-tag">&lt;<span class="hljs-name">fieldset</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">legend</span>&gt;</span>Quel est votre langage de programmation favori:<span class="hljs-tag">&lt;/<span class="hljs-name">legend</span>&gt;</span>
+
+    <span class="hljs-tag">&lt;<span class="hljs-name">input</span> <span class="hljs-attr">type</span>=<span class="hljs-string">&quot;radio&quot;</span> <span class="hljs-attr">id</span>=<span class="hljs-string">&quot;javascript&quot;</span> <span class="hljs-attr">name</span>=<span class="hljs-string">&quot;favoriteLanguage&quot;</span> <span class="hljs-attr">value</span>=<span class="hljs-string">&quot;javascript&quot;</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">label</span> <span class="hljs-attr">for</span>=<span class="hljs-string">&quot;javascript&quot;</span>&gt;</span>JavaScript<span class="hljs-tag">&lt;/<span class="hljs-name">label</span>&gt;</span>
+
+    <span class="hljs-tag">&lt;<span class="hljs-name">input</span> <span class="hljs-attr">type</span>=<span class="hljs-string">&quot;radio&quot;</span> <span class="hljs-attr">id</span>=<span class="hljs-string">&quot;python&quot;</span> <span class="hljs-attr">name</span>=<span class="hljs-string">&quot;favoriteLanguage&quot;</span> <span class="hljs-attr">value</span>=<span class="hljs-string">&quot;python&quot;</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">label</span> <span class="hljs-attr">for</span>=<span class="hljs-string">&quot;python&quot;</span>&gt;</span>Python<span class="hljs-tag">&lt;/<span class="hljs-name">label</span>&gt;</span>
+
+    <span class="hljs-tag">&lt;<span class="hljs-name">input</span> <span class="hljs-attr">type</span>=<span class="hljs-string">&quot;radio&quot;</span> <span class="hljs-attr">id</span>=<span class="hljs-string">&quot;java&quot;</span> <span class="hljs-attr">name</span>=<span class="hljs-string">&quot;favoriteLanguage&quot;</span> <span class="hljs-attr">value</span>=<span class="hljs-string">&quot;java&quot;</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">label</span> <span class="hljs-attr">for</span>=<span class="hljs-string">&quot;java&quot;</span>&gt;</span>Java<span class="hljs-tag">&lt;/<span class="hljs-name">label</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">fieldset</span>&gt;</span>
+</code></pre></div>
+<p><img src="images/010-image.png" alt="image" loading="lazy"></p>
+<h3>Jauge</h3>
+<p>Le type <code>&quot;range&quot;</code> affiche un sélecteur permettant à l'utilisateur de choisir une valeur numérique entre un minimum et un maximum :</p>
+<div class="bloc-code"><div class="bloc-code__langue">html</div><pre><code class="hljs language-html"><span class="hljs-tag">&lt;<span class="hljs-name">input</span> <span class="hljs-attr">type</span>=<span class="hljs-string">&quot;range&quot;</span> <span class="hljs-attr">id</span>=<span class="hljs-string">&quot;volume&quot;</span> <span class="hljs-attr">name</span>=<span class="hljs-string">&quot;volume&quot;</span> <span class="hljs-attr">min</span>=<span class="hljs-string">&quot;0&quot;</span> <span class="hljs-attr">max</span>=<span class="hljs-string">&quot;11&quot;</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">label</span> <span class="hljs-attr">for</span>=<span class="hljs-string">&quot;volume&quot;</span>&gt;</span>Volume<span class="hljs-tag">&lt;/<span class="hljs-name">label</span>&gt;</span>
+</code></pre></div>
+<p><img src="images/011-image.png" alt="image" loading="lazy"></p>
+<p>Dans cet example, l'utilisateur peut définir le volume entre 0 et 11 en déplaçant le curseur.</p>
+<h3>Autres</h3>
+<p>Les types que nous avons vus sont les principaux types pour la balise <code>&lt;input&gt;</code>. Si tu souhaites en voir davantage, n'hésite pas à consulter la documentation du site MDN.</p>
+<a class="ressource" href="https://developer.mozilla.org/fr/docs/Web/HTML/Element/input" target="_blank" rel="noopener noreferrer">
+  <div class="ressource__icone">↗</div>
+  <div class="ressource__texte">
+    <div class="ressource__titre">&lt;input&gt; : l'élément de saisie dans un formulaire | MDN</div>
+    
+    <div class="ressource__hote">developer.mozilla.org</div>
+  </div>
+</a>
+<div class="encadre encadre--note encadre--arrow"><div class="encadre__corps"><p><strong>🎯 À toi de jouer !</strong></p>
+<p>Ajoute une checkbox pour que l'utilisateur choisisse s'il veut aussi s'inscrire à la newsletter. Ajoute également des boutons radios (groupés avec un fieldset et une legende) pour que l'utilisateur choisisse quel genre de musique il aime.</p>
+<p>Ajoute ensuite un bouton &quot;submit&quot; afin que l'utilisateur puisse valider le formulaire.</p>
+</div></div>
+<h2>Les listes déroulantes</h2>
+<p>Tu peux créer des menus déroulants pour tes formulaire à l'aide de la balise <code>&lt;select&gt;</code>.</p>
+<p>À l'intérieur de la balise <code>&lt;select&gt;</code>, ajoute une balise <code>&lt;option&gt;</code> pour chaque choix que tu veux proposer.</p>
+<p>Le texte contenu dans la balise <code>&lt;option&gt;</code> sera affiché à l'utilisateur. Tu peux ajouter un attribut <code>value</code> à chaque option pour fournir une &quot;représentation machine&quot; : la valeur de l'attribut <code>value</code> sera utilisée par le programme qui traitera ton formulaire :</p>
+<div class="bloc-code"><div class="bloc-code__langue">html</div><pre><code class="hljs language-html"><span class="hljs-tag">&lt;<span class="hljs-name">label</span> <span class="hljs-attr">for</span>=<span class="hljs-string">&quot;pet-select&quot;</span>&gt;</span>Quel animal voulez vous adopter?<span class="hljs-tag">&lt;/<span class="hljs-name">label</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">select</span> <span class="hljs-attr">name</span>=<span class="hljs-string">&quot;pets&quot;</span> <span class="hljs-attr">id</span>=<span class="hljs-string">&quot;pet-select&quot;</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">option</span> <span class="hljs-attr">value</span>=<span class="hljs-string">&quot;&quot;</span>&gt;</span>--Veuillez choisir une option--<span class="hljs-tag">&lt;/<span class="hljs-name">option</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">option</span> <span class="hljs-attr">value</span>=<span class="hljs-string">&quot;dog&quot;</span>&gt;</span>Chien<span class="hljs-tag">&lt;/<span class="hljs-name">option</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">option</span> <span class="hljs-attr">value</span>=<span class="hljs-string">&quot;cat&quot;</span>&gt;</span>Chat<span class="hljs-tag">&lt;/<span class="hljs-name">option</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">option</span> <span class="hljs-attr">value</span>=<span class="hljs-string">&quot;hamster&quot;</span>&gt;</span>Hamster<span class="hljs-tag">&lt;/<span class="hljs-name">option</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">select</span>&gt;</span>
+</code></pre></div>
+<p><img src="images/012-image.png" alt="image" loading="lazy"></p>
+<div class="encadre encadre--note encadre--arrow"><div class="encadre__corps"><p><strong>🎯 À toi de jouer !</strong></p>
+<p>Ajoute un menu déroulant à la suite de la date de naissance pour que les utilisateurs puissent choisir la raison de leur message.</p>
+<p>Par exemple, &quot;Information sur mes prestations&quot;, &quot;Problème avec mon site internet&quot;, etc...</p>
+</div></div>
+<h2>Les zones de texte multilignes</h2>
+<p>La balise <code>&lt;textarea&gt;</code> ajoute une zone de texte multilignes. Elle est généralement utilisée pour que l'utilisateur tape un message ou du texte long.</p>
+<p>Tu peux définir le nombre de lignes et de colonnes avec les attributs <code>rows</code> et <code>cols</code>. Tu peux également fixer la longueur maximum du texte avec <code>maxlength</code>, et le retour à la ligne automatique avec <code>wrap</code> :</p>
+<div class="bloc-code"><div class="bloc-code__langue">html</div><pre><code class="hljs language-html"><span class="hljs-tag">&lt;<span class="hljs-name">label</span>&gt;</span>Ecrivez votre message:
+  <span class="hljs-tag">&lt;<span class="hljs-name">textarea</span> <span class="hljs-attr">id</span>=<span class="hljs-string">&quot;message&quot;</span> <span class="hljs-attr">name</span>=<span class="hljs-string">&quot;message&quot;</span> <span class="hljs-attr">rows</span>=<span class="hljs-string">&quot;5&quot;</span> <span class="hljs-attr">cols</span>=<span class="hljs-string">&quot;33&quot;</span> <span class="hljs-attr">maxlength</span>=<span class="hljs-string">&quot;500&quot;</span> <span class="hljs-attr">wrap</span> <span class="hljs-attr">placeholder</span>=<span class="hljs-string">&quot;Tapez votre message ici...&quot;</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">textarea</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">label</span>&gt;</span>
+</code></pre></div>
+<p><img src="images/013-image.png" alt="image" loading="lazy"></p>
+<div class="encadre encadre--note encadre--arrow"><div class="encadre__corps"><p><strong>🎯 À toi de jouer !</strong></p>
+<p>Ajoute une balise <code>&lt;textarea&gt;</code> avant le bouton &quot;submit&quot; pour que les utilisateurs puissent écrire leur message.</p>
+</div></div>
+<h2>Récapitulatif</h2>
+<ul>
+<li>
+<p>Tu peux créer des formulaires en HTML en utilisant la balise <code>&lt;form&gt;</code></p>
+</li>
+<li>
+<p>Lors de l'utilisation de la balise <code>&lt;form&gt;</code>, tu peux spécifier vers quelle URL et avec quelle méthode le formulaire doit être envoyé</p>
+</li>
+<li>
+<p>Chaque champ d'un formulaire doit être labélisé pour des raisons d'accessibilité</p>
+</li>
+</ul>
+<h2>Challenge</h2>
+<p>Mets en forme le travail que tu as réalisé durant cette quête et compare le résultat avec la solution qui est proposée !</p>
+<h3>Critères de validation</h3>
+<ul>
+<li>[ ] Le site contient un formulaire avec deux champs textes (nom et prénom), un champ email, un champ date de naissance, une checkbox, un textarea, un menu déroulant et un bouton d'envoi</li>
+<li>[ ] Chaque champ a son label</li>
+</ul>
+<details class="solution"><summary>Voir la solution</summary><div class="solution__corps"><div class="bloc-code"><div class="bloc-code__langue">html</div><pre><code class="hljs language-html"><span class="hljs-meta">&lt;!DOCTYPE <span class="hljs-keyword">html</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">html</span> <span class="hljs-attr">lang</span>=<span class="hljs-string">&quot;en&quot;</span>&gt;</span>
+
+<span class="hljs-tag">&lt;<span class="hljs-name">head</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">title</span>&gt;</span>Contactez-moi! | Bob Smith Webdesigner<span class="hljs-tag">&lt;/<span class="hljs-name">title</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">link</span> <span class="hljs-attr">rel</span>=<span class="hljs-string">&quot;shortcut icon&quot;</span> <span class="hljs-attr">href</span>=<span class="hljs-string">&quot;favicon.ico&quot;</span> <span class="hljs-attr">type</span>=<span class="hljs-string">&quot;image/x-icon&quot;</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">meta</span> <span class="hljs-attr">name</span>=<span class="hljs-string">&quot;author&quot;</span> <span class="hljs-attr">content</span>=<span class="hljs-string">&quot;Bob Smith&quot;</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">meta</span> <span class="hljs-attr">name</span>=<span class="hljs-string">&quot;description&quot;</span>
+        <span class="hljs-attr">content</span>=<span class="hljs-string">&quot;Webdesigner, graphiste et developpeur frontend freelance, je designe et developpe des applications web innovantes et créatives !&quot;</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">meta</span> <span class="hljs-attr">property</span>=<span class="hljs-string">&quot;og:image&quot;</span> <span class="hljs-attr">content</span>=<span class="hljs-string">&quot;https://placekitten.com/200/287&quot;</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">meta</span> <span class="hljs-attr">property</span>=<span class="hljs-string">&quot;og:title&quot;</span> <span class="hljs-attr">content</span>=<span class="hljs-string">&quot;Contactez-moi | Bob Smith Webdesigner&quot;</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">meta</span> <span class="hljs-attr">property</span>=<span class="hljs-string">&quot;og:description&quot;</span>
+        <span class="hljs-attr">content</span>=<span class="hljs-string">&quot;Webdesigner, graphiste et developpeur frontend freelance, je designe et developpe des applications web innovantes et créatives !&quot;</span>&gt;</span>
+
+    <span class="hljs-tag">&lt;<span class="hljs-name">meta</span> <span class="hljs-attr">name</span>=<span class="hljs-string">&quot;twitter:card&quot;</span> <span class="hljs-attr">content</span>=<span class="hljs-string">&quot;summary_large_image&quot;</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">meta</span> <span class="hljs-attr">name</span>=<span class="hljs-string">&quot;twitter:title&quot;</span> <span class="hljs-attr">content</span>=<span class="hljs-string">&quot;Contactez-moi | Bob Smith Webdesigner&quot;</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">meta</span> <span class="hljs-attr">name</span>=<span class="hljs-string">&quot;twitter:description&quot;</span>
+        <span class="hljs-attr">content</span>=<span class="hljs-string">&quot;Webdesigner, graphiste et developpeur frontend freelance, je designe et developpe des applications web innovantes et créatives !&quot;</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">meta</span> <span class="hljs-attr">name</span>=<span class="hljs-string">&quot;twitter:site&quot;</span> <span class="hljs-attr">content</span>=<span class="hljs-string">&quot;@bob_smith&quot;</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">meta</span> <span class="hljs-attr">name</span>=<span class="hljs-string">&quot;twitter:image&quot;</span> <span class="hljs-attr">content</span>=<span class="hljs-string">&quot;https://placekitten.com/200/287&quot;</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">head</span>&gt;</span>
+
+<span class="hljs-tag">&lt;<span class="hljs-name">body</span>&gt;</span>
+
+    <span class="hljs-tag">&lt;<span class="hljs-name">header</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">nav</span>&gt;</span>
+            <span class="hljs-tag">&lt;<span class="hljs-name">ul</span>&gt;</span>
+                <span class="hljs-tag">&lt;<span class="hljs-name">li</span>&gt;</span><span class="hljs-tag">&lt;<span class="hljs-name">a</span> <span class="hljs-attr">href</span>=<span class="hljs-string">&quot;index.html&quot;</span>&gt;</span>Accueil<span class="hljs-tag">&lt;/<span class="hljs-name">a</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">li</span>&gt;</span>
+                <span class="hljs-tag">&lt;<span class="hljs-name">li</span>&gt;</span><span class="hljs-tag">&lt;<span class="hljs-name">a</span> <span class="hljs-attr">href</span>=<span class="hljs-string">&quot;about.html&quot;</span>&gt;</span>À propos<span class="hljs-tag">&lt;/<span class="hljs-name">a</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">li</span>&gt;</span>
+                <span class="hljs-tag">&lt;<span class="hljs-name">li</span>&gt;</span><span class="hljs-tag">&lt;<span class="hljs-name">a</span> <span class="hljs-attr">href</span>=<span class="hljs-string">&quot;contact.html&quot;</span>&gt;</span>Contact<span class="hljs-tag">&lt;/<span class="hljs-name">a</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">li</span>&gt;</span>
+            <span class="hljs-tag">&lt;/<span class="hljs-name">ul</span>&gt;</span>
+        <span class="hljs-tag">&lt;/<span class="hljs-name">nav</span>&gt;</span>
+    <span class="hljs-tag">&lt;/<span class="hljs-name">header</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">hr</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">main</span>&gt;</span>
+
+        <span class="hljs-tag">&lt;<span class="hljs-name">h1</span>&gt;</span>Me contacter!<span class="hljs-tag">&lt;/<span class="hljs-name">h1</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">form</span>&gt;</span>
+            <span class="hljs-tag">&lt;<span class="hljs-name">label</span>&gt;</span>Quel est votre prénom: <span class="hljs-tag">&lt;<span class="hljs-name">input</span> <span class="hljs-attr">type</span>=<span class="hljs-string">&quot;text&quot;</span> /&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">label</span>&gt;</span>
+            <span class="hljs-tag">&lt;<span class="hljs-name">br</span>&gt;</span>
+            <span class="hljs-tag">&lt;<span class="hljs-name">label</span>&gt;</span>Quel est votre nom: <span class="hljs-tag">&lt;<span class="hljs-name">input</span> <span class="hljs-attr">type</span>=<span class="hljs-string">&quot;text&quot;</span> /&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">label</span>&gt;</span>
+            <span class="hljs-tag">&lt;<span class="hljs-name">br</span>&gt;</span>
+            <span class="hljs-tag">&lt;<span class="hljs-name">label</span>&gt;</span>Quel est votre email: <span class="hljs-tag">&lt;<span class="hljs-name">input</span> <span class="hljs-attr">type</span>=<span class="hljs-string">&quot;email&quot;</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">label</span>&gt;</span>
+            <span class="hljs-tag">&lt;<span class="hljs-name">br</span>&gt;</span>
+            <span class="hljs-tag">&lt;<span class="hljs-name">label</span>&gt;</span>Quel est votre date de naissance: <span class="hljs-tag">&lt;<span class="hljs-name">input</span> <span class="hljs-attr">type</span>=<span class="hljs-string">&quot;date&quot;</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">label</span>&gt;</span>
+            <span class="hljs-tag">&lt;<span class="hljs-name">br</span>&gt;</span>
+            <span class="hljs-tag">&lt;<span class="hljs-name">label</span> <span class="hljs-attr">for</span>=<span class="hljs-string">&quot;contact-reason&quot;</span>&gt;</span>Quel est la raison de votre contact ?<span class="hljs-tag">&lt;/<span class="hljs-name">label</span>&gt;</span>
+
+            <span class="hljs-tag">&lt;<span class="hljs-name">select</span> <span class="hljs-attr">name</span>=<span class="hljs-string">&quot;reason&quot;</span> <span class="hljs-attr">id</span>=<span class="hljs-string">&quot;contact-reason&quot;</span>&gt;</span>
+                <span class="hljs-tag">&lt;<span class="hljs-name">option</span> <span class="hljs-attr">value</span>=<span class="hljs-string">&quot;&quot;</span>&gt;</span>--Choisissez une option--<span class="hljs-tag">&lt;/<span class="hljs-name">option</span>&gt;</span>
+                <span class="hljs-tag">&lt;<span class="hljs-name">option</span> <span class="hljs-attr">value</span>=<span class="hljs-string">&quot;informations&quot;</span>&gt;</span>Je souhaite plus d&#x27;informations sur vos prestations<span class="hljs-tag">&lt;/<span class="hljs-name">option</span>&gt;</span>
+                <span class="hljs-tag">&lt;<span class="hljs-name">option</span> <span class="hljs-attr">value</span>=<span class="hljs-string">&quot;bug&quot;</span>&gt;</span>Reporter un bug sur le site web<span class="hljs-tag">&lt;/<span class="hljs-name">option</span>&gt;</span>
+                <span class="hljs-tag">&lt;<span class="hljs-name">option</span> <span class="hljs-attr">value</span>=<span class="hljs-string">&quot;discute&quot;</span>&gt;</span>J&#x27;aimerais discuter<span class="hljs-tag">&lt;/<span class="hljs-name">option</span>&gt;</span>
+            <span class="hljs-tag">&lt;/<span class="hljs-name">select</span>&gt;</span>
+            <span class="hljs-tag">&lt;<span class="hljs-name">br</span>&gt;</span>
+            <span class="hljs-tag">&lt;<span class="hljs-name">label</span>&gt;</span>S&#x27;inscrire à la newsletter <span class="hljs-tag">&lt;<span class="hljs-name">input</span> <span class="hljs-attr">type</span>=<span class="hljs-string">&quot;checkbox&quot;</span> <span class="hljs-attr">value</span>=<span class="hljs-string">&quot;newsletter&quot;</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">label</span>&gt;</span>
+            <span class="hljs-tag">&lt;<span class="hljs-name">br</span>&gt;</span>
+            <span class="hljs-tag">&lt;<span class="hljs-name">label</span>&gt;</span>Ecrivez votre message:
+                <span class="hljs-tag">&lt;<span class="hljs-name">br</span>&gt;</span>
+                <span class="hljs-tag">&lt;<span class="hljs-name">textarea</span> <span class="hljs-attr">id</span>=<span class="hljs-string">&quot;message&quot;</span> <span class="hljs-attr">name</span>=<span class="hljs-string">&quot;message&quot;</span> <span class="hljs-attr">rows</span>=<span class="hljs-string">&quot;5&quot;</span> <span class="hljs-attr">cols</span>=<span class="hljs-string">&quot;33&quot;</span> <span class="hljs-attr">maxlength</span>=<span class="hljs-string">&quot;500&quot;</span> <span class="hljs-attr">wrap</span> <span class="hljs-attr">placeholder</span>=<span class="hljs-string">&quot;Tapez votre message ici...&quot;</span>&gt;</span>
+                <span class="hljs-tag">&lt;/<span class="hljs-name">textarea</span>&gt;</span>
+            <span class="hljs-tag">&lt;/<span class="hljs-name">label</span>&gt;</span>
+            <span class="hljs-tag">&lt;<span class="hljs-name">br</span>&gt;</span>
+            <span class="hljs-tag">&lt;<span class="hljs-name">input</span> <span class="hljs-attr">type</span>=<span class="hljs-string">&quot;submit&quot;</span> <span class="hljs-attr">value</span>=<span class="hljs-string">&quot;Envoyer le formulaire&quot;</span>&gt;</span>
+        <span class="hljs-tag">&lt;/<span class="hljs-name">form</span>&gt;</span>
+    <span class="hljs-tag">&lt;/<span class="hljs-name">main</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">hr</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">footer</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">nav</span>&gt;</span>
+            <span class="hljs-tag">&lt;<span class="hljs-name">ul</span>&gt;</span>
+                <span class="hljs-tag">&lt;<span class="hljs-name">li</span>&gt;</span><span class="hljs-tag">&lt;<span class="hljs-name">a</span> <span class="hljs-attr">href</span>=<span class="hljs-string">&quot;informations.html&quot;</span>&gt;</span>Accueil<span class="hljs-tag">&lt;/<span class="hljs-name">a</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">li</span>&gt;</span>
+                <span class="hljs-tag">&lt;<span class="hljs-name">li</span>&gt;</span><span class="hljs-tag">&lt;<span class="hljs-name">a</span> <span class="hljs-attr">href</span>=<span class="hljs-string">&quot;about.html&quot;</span>&gt;</span>À propos<span class="hljs-tag">&lt;/<span class="hljs-name">a</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">li</span>&gt;</span>
+                <span class="hljs-tag">&lt;<span class="hljs-name">li</span>&gt;</span><span class="hljs-tag">&lt;<span class="hljs-name">a</span> <span class="hljs-attr">href</span>=<span class="hljs-string">&quot;contact.html&quot;</span>&gt;</span>Contact<span class="hljs-tag">&lt;/<span class="hljs-name">a</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">li</span>&gt;</span>
+                <span class="hljs-tag">&lt;<span class="hljs-name">li</span>&gt;</span><span class="hljs-tag">&lt;<span class="hljs-name">a</span> <span class="hljs-attr">href</span>=<span class="hljs-string">&quot;contact.html&quot;</span>&gt;</span>Contact<span class="hljs-tag">&lt;/<span class="hljs-name">a</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">li</span>&gt;</span>
+            <span class="hljs-tag">&lt;/<span class="hljs-name">ul</span>&gt;</span>
+        <span class="hljs-tag">&lt;/<span class="hljs-name">nav</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">p</span>&gt;</span>Contact : <span class="hljs-tag">&lt;<span class="hljs-name">a</span> <span class="hljs-attr">href</span>=<span class="hljs-string">&quot;mailto:bob.smith@gmail.com&quot;</span>&gt;</span>bob.smith@gmail.com<span class="hljs-tag">&lt;/<span class="hljs-name">a</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">p</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">p</span>&gt;</span>@Copyright 2022<span class="hljs-tag">&lt;/<span class="hljs-name">p</span>&gt;</span>
+    <span class="hljs-tag">&lt;/<span class="hljs-name">footer</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">body</span>&gt;</span>
+
+<span class="hljs-tag">&lt;/<span class="hljs-name">html</span>&gt;</span>
+</code></pre></div>
+</div></details>
+
+  </div>
+  
+</article>
+
+<nav class="nav-quete">
+  <a class="nav-quete__lien nav-quete__lien--prec" href="../../html/006-html-chapitre-6-multimedias/index.html">
+           <span class="nav-quete__sens">← Précédent</span>
+           <span class="nav-quete__titre">👩‍🏫 HTML - Chapitre 6 |  Multimédias</span>
+         </a>
+  <a class="nav-quete__lien nav-quete__lien--suiv" href="../../html/008-html-chapitre-8-les-tableaux/index.html">
+           <span class="nav-quete__sens">Suivant →</span>
+           <span class="nav-quete__titre">👩‍🏫 HTML - Chapitre 8 | Les tableaux</span>
+         </a>
+</nav>
+</main>
+<footer class="pied">
+  <p>Archive personnelle des cours suivis à la Wild Code School. Copie hors ligne à usage strictement privé.</p>
+</footer>
+
+<script src="../../assets/copie-code.js"></script>
+<script src="../../assets/progression.js"></script>
+</body>
+</html>

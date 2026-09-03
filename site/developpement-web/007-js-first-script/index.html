@@ -1,0 +1,413 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>JS - First script — Archives WCS</title>
+<link rel="stylesheet" href="../../assets/style.css">
+</head>
+<body style="--teinte:#000000">
+<header class="entete">
+  <a class="entete__marque" href="../../index.html">Archives Wild Code School</a>
+</header>
+<main class="contenu">
+<nav class="ariane"><a href="../../index.html">Accueil</a><span class="ariane__sep">›</span><a href="../../developpement-web/index.html">Développement Web</a><span class="ariane__sep">›</span><span aria-current="page">JS - First script</span></nav>
+
+<article class="quete">
+  <header class="quete__entete">
+    <a class="pastille pastille--teintee" href="../../developpement-web/index.html">Développement Web</a>
+    <h1>JS - First script</h1>
+    <p class="quete__meta">Quête 7 sur 11 · 1 image archivée</p>
+  </header>
+  <div class="cours">
+<h2>Objectifs</h2>
+<ul>
+<li>Explorer les principes fondamentaux de JavaScript</li>
+<li>Manipuler des variables, des opérateurs, des conditions...</li>
+<li>Construire des premiers scripts interactifs</li>
+</ul>
+<h2>Pré-requis</h2>
+<ol class="etapes"><li class="etape"><div class="etape__puce">1</div><div class="etape__contenu"><h4 class="etape__titre">Connaitre la structure de base d'un document HTML</h4><div class="bloc-code"><div class="bloc-code__langue">cshtml</div><pre><code class="hljs language-cshtml">&lt;!DOCTYPE html&gt;
+&lt;html lang=&quot;fr&quot;&gt;
+&lt;head&gt;
+    &lt;meta charset=&quot;UTF-8&quot;&gt;
+    &lt;title&gt;Mon super site&lt;/title&gt;
+&lt;/head&gt;
+&lt;body&gt;
+    &lt;p&gt;Hello World&lt;/p&gt;
+&lt;/body&gt;
+&lt;/html&gt;
+</code></pre></div>
+</div></li></ol>
+<h2>Introduction</h2>
+<p>Avec HTML et CSS, JavaScript est le 3e langage exécuté dans les navigateurs web. C'est un langage de programmation complet, basé sur des notions qui se retrouvent dans la plupart des langages de programmation : variables, structures de contrôle...</p>
+<p>Dans cette quête, tu vas faire un premier pas dans l'apprentissage du JS et des langages de programmation. Tu vas aborder des notions fondamentales que tu pourras retrouver dans l'apprentissage de chaque nouveau langage.</p>
+<h2>Sommaire</h2>
+<h2>Mise en place</h2>
+<p>Si tu découvres complètement JavaScript, pas de panique !</p>
+<p>Des guides complets (et en français) existent sur le web, notamment :</p>
+<a class="ressource" href="https://developer.mozilla.org/fr/docs/Learn_web_development/Core/Scripting" target="_blank" rel="noopener noreferrer">
+  <div class="ressource__icone">↗</div>
+  <div class="ressource__texte">
+    <div class="ressource__titre">https://developer.mozilla.org/fr/docs/Learn_web_development/Core/Scripting</div>
+    <div class="ressource__desc"><p>MDN, le site de Mozilla pour les devs</p>
+</div>
+    <div class="ressource__hote">developer.mozilla.org</div>
+  </div>
+</a>
+<a class="ressource" href="https://fr.javascript.info/" target="_blank" rel="noopener noreferrer">
+  <div class="ressource__icone">↗</div>
+  <div class="ressource__texte">
+    <div class="ressource__titre">https://fr.javascript.info/</div>
+    <div class="ressource__desc"><p>Un site/livre avec plus de 1000 pages à jour</p>
+</div>
+    <div class="ressource__hote">fr.javascript.info</div>
+  </div>
+</a>
+<p>Nous avons aussi créé nos propres ressources pour une découverte pas à pas. Tu peux commencer par regarder ces quêtes pour découvrir les concepts de base :</p>
+<div class="renvois"><div class="renvois__titre">Quêtes liées</div><ul><li><a href="../../javascript/001-js-basics-01-qu-est-ce-que-javascript/index.html">Quête 1262</a></li><li><a href="../../javascript/002-js-basics-02-syntaxe-et-concepts-de-base/index.html">Quête 1267</a></li></ul></div>
+<p>Pour expérimenter tout ça, tu vas développer une calculette basique dans ton navigateur.</p>
+<p>Crée un nouveau dossier <code>simple-calculator</code> et crée un fichier <code>index.html</code> vide à l’intérieur.</p>
+<p>Ouvre <code>index.html</code> avec VSCode et ajoute la structure de base d'un document HTML.</p>
+<p>Dans la balise <code>&lt;body&gt;</code>, ajoute une balise <code>&lt;script&gt;</code> avec le code suivant :</p>
+<div class="bloc-code"><div class="bloc-code__langue">javascript</div><pre><code class="hljs language-javascript"><span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(<span class="hljs-string">&quot;Hello wilders!&quot;</span>);
+</code></pre></div>
+<p>Ouvre le fichier <code>index.html</code> dans un navigateur, et affiche la console (F12) : que vois-tu ? Si tu vois ton message ci-dessus, cela signifie que tout fonctionne bien !</p>
+<p>Pour être sûr, explique ce que tu as fait à tes collègues.</p>
+<h3>Ce que tu dois obtenir</h3>
+<p>Voilà la structure HTML de base ainsi que l’ajout de la balise <code>&lt;script&gt;</code> avec le code <code>console.log(&quot;Hello les wilders!&quot;);</code> :</p>
+<div class="bloc-code"><div class="bloc-code__langue">php</div><pre><code class="hljs language-php">&lt;!DOCTYPE html&gt;
+&lt;html lang=<span class="hljs-string">&quot;fr&quot;</span>&gt;
+  &lt;head&gt;
+    &lt;title&gt;Calculatrice basique&lt;/title&gt;
+  &lt;/head&gt;
+  &lt;body&gt;
+    &lt;script&gt;
+      console.<span class="hljs-title function_ invoke__">log</span>(<span class="hljs-string">&quot;Hello wilders!&quot;</span>);
+    &lt;/script&gt;
+  &lt;/body&gt;
+&lt;/html&gt;
+</code></pre></div>
+<p>Dans l'inspecteur :</p>
+<p><img src="images/001-hello-wilders.png" alt="Hello wilders !" loading="lazy"></p>
+<h2>Premières instructions</h2>
+<p>Maintenant que tu as un &quot;bac à sable&quot; pour faire des expériences, tu peux commencer le développement de ta calculatrice. Si la notion de &quot;variable&quot; ne te parle pas encore, tu peux regarder les quêtes suivantes avant de continuer :</p>
+<div class="renvois"><div class="renvois__titre">Quêtes liées</div><ul><li><a href="../../javascript/003-js-basics-03-les-variables/index.html">Quête 1268</a></li><li><a href="../../javascript/004-js-basics-04-les-types-de-donnees/index.html">Quête 1269</a></li></ul></div>
+<p>La première étape de la création de notre calculatrice consiste à <strong>instancier</strong> des variables.</p>
+<p>Crée 3 variables :</p>
+<ul>
+<li><code>firstValue</code> : pour l'instant, affecte le nombre <code>1</code>.</li>
+<li><code>operator</code> : affecte le symbole <code>&quot;+&quot;</code>.</li>
+<li><code>secondValue</code> : affecte le nombre <code>2</code>.</li>
+</ul>
+<p>Maintenant, fais autant de <code>console.log</code> que tu as de variables. Que vois-tu ?</p>
+<p>Et si tu demandais à l’utilisateur de remplir ces variables ? Remplace les nombres <code>1</code> et <code>2</code> par des appels à la fonction <code>prompt</code> (voir <a href="https://developer.mozilla.org/en-US/docs/Web/API/Window/prompt" target="_blank" rel="noopener noreferrer">la documentation</a>). Attention, pas le <code>&quot;+&quot;</code> de <code>operator</code>, juste les valeurs <code>1</code> et <code>2</code> !</p>
+<p>Qu’affichent les <code>console.log</code> ?</p>
+<details class="solution"><summary>Voir la solution</summary><div class="solution__corps"><div class="bloc-code"><div class="bloc-code__langue">php</div><pre><code class="hljs language-php">&lt;!DOCTYPE html&gt;
+&lt;html lang=<span class="hljs-string">&quot;fr&quot;</span>&gt;
+  &lt;head&gt;
+    &lt;title&gt;Calculatrice basique&lt;/title&gt;
+  &lt;/head&gt;
+  &lt;body&gt;
+    &lt;script&gt;
+      console.<span class="hljs-title function_ invoke__">log</span>(<span class="hljs-string">&quot;Hello wilders!&quot;</span>);
+
+      <span class="hljs-keyword">const</span> <span class="hljs-variable constant_">firstValue</span> = <span class="hljs-title function_ invoke__">prompt</span>(<span class="hljs-string">&quot;Premier nombre ?&quot;</span>);
+      <span class="hljs-keyword">const</span> <span class="hljs-variable constant_">operator</span> = <span class="hljs-string">&quot;+&quot;</span>;
+      <span class="hljs-keyword">const</span> <span class="hljs-variable constant_">secondValue</span> = <span class="hljs-title function_ invoke__">prompt</span>(<span class="hljs-string">&quot;Deuxième nombre ?&quot;</span>);
+
+      console.<span class="hljs-title function_ invoke__">log</span>(firstValue);
+      console.<span class="hljs-title function_ invoke__">log</span>(operator);
+      console.<span class="hljs-title function_ invoke__">log</span>(secondValue);
+    &lt;/script&gt;
+  &lt;/body&gt;
+&lt;/html&gt;
+</code></pre></div>
+</div></details>
+<div class="encadre encadre--info"><div class="encadre__titre">Info</div><div class="encadre__corps"><p>Tu peux également regarder deux autres fonctions qui te seront utiles : <a href="https://developer.mozilla.org/fr/docs/Web/API/Window/alert" target="_blank" rel="noopener noreferrer">alert</a> et <a href="https://developer.mozilla.org/fr/docs/Web/API/Window/confirm" target="_blank" rel="noopener noreferrer">confirm</a>.</p>
+</div></div>
+<h3>Comprendre la console</h3>
+<p>Ajoute un <code>console.log</code> de <code>firstValue + secondValue</code> : qu’affiche t-il ? Pourquoi ? Que dois-tu faire ?</p>
+<p>Conseil : regarde <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/parseInt" target="_blank" rel="noopener noreferrer">cette documentation</a>.</p>
+<p>Et maintenant, qu’affiche le <code>console.log</code> ? Pourquoi ?</p>
+<p>Pour être sûr, explique ce que tu as fait à tes collègues.</p>
+<p>Ensuite, réponds aux questions pour voir si tu as bien retenu les concepts abordés jusqu'à maintenant :</p>
+<div class="bloc-code"><div class="bloc-code__langue">quiz</div><pre><code class="hljs language-quiz">true|||true|||true
+# Quel est le rôle de la fonction console.log en JavaScript ?
+[] Afficher des boîtes de dialogue dans le navigateur
+[x] Afficher des messages dans la console du navigateur
+[] Déclarer des variables
+[] Exécuter du code JavaScript
+# Que fait la fonction prompt ?
+[] Affiche un message dans la console
+[x] Affiche une boîte de dialogue pour obtenir une entrée de l'utilisateur
+[] Déclare une variable
+[] Arrête l'exécution du code
+# Comment convertir une chaîne de caractères en nombre entier (sans chiffres après la virgule) en JavaScript ?
+[] toInt()
+[x] parseInt()
+[] Number()
+[] convert()
+</code></pre></div>
+<h2>Agir sur l'opérateur</h2>
+<p>Un peu de ménage : supprime tous les <code>console.log</code>.</p>
+<p>Ajoute un <code>prompt</code> à la place du <code>&quot;+&quot;</code> pour la variable <code>operator</code>. De cette manière, tu permets à l'utilisateur de choisir quelle opération faire. Mais maintenant, tu dois gérer les différentes options dans ton code.</p>
+<p>Tu vas créer un &quot;embranchement&quot; : selon la situation, ton code va prendre un chemin ou un autre. C'est le principe des &quot;conditions&quot; :</p>
+<div class="renvois"><div class="renvois__titre">Quêtes liées</div><ul><li><a href="../../javascript/005-js-basics-05-les-instructions-conditionnelles/index.html">Quête 1270</a></li></ul></div>
+<p>Mets en place une condition sur la variable <code>operator</code> :</p>
+<ul>
+<li>Si elle contient la valeur <code>&quot;+&quot;</code> alors, tu dois <em>additionner</em> les deux valeurs, stocker le résultat dans une variable <code>result</code>, à afficher dans un <code>console.log</code>.</li>
+<li>Sinon, dans tous les autres cas, <em>soustrais</em> les deux valeurs, stocke le résultat dans une variable <code>result</code>, à afficher dans un <code>console.log</code>.</li>
+</ul>
+<p>Explique ce que tu as fait à tes collègues.</p>
+<details class="solution"><summary>Voir la solution</summary><div class="solution__corps"><div class="bloc-code"><div class="bloc-code__langue">php</div><pre><code class="hljs language-php">&lt;!DOCTYPE html&gt;
+&lt;html lang=<span class="hljs-string">&quot;fr&quot;</span>&gt;
+  &lt;head&gt;
+    &lt;title&gt;Calculatrice basique&lt;/title&gt;
+  &lt;/head&gt;
+  &lt;body&gt;
+    &lt;script&gt;
+      <span class="hljs-keyword">const</span> <span class="hljs-variable constant_">firstValue</span> = <span class="hljs-title function_ invoke__">prompt</span>(<span class="hljs-string">&quot;Premier nombre ?&quot;</span>);
+      <span class="hljs-keyword">const</span> <span class="hljs-variable constant_">operator</span> = <span class="hljs-title function_ invoke__">prompt</span>(<span class="hljs-string">&quot;Quelle opération ?&quot;</span>);
+      <span class="hljs-keyword">const</span> <span class="hljs-variable constant_">secondValue</span> = <span class="hljs-title function_ invoke__">prompt</span>(<span class="hljs-string">&quot;Deuxième nombre ?&quot;</span>);
+
+      <span class="hljs-keyword">if</span> (operator === <span class="hljs-string">&quot;+&quot;</span>) {
+        <span class="hljs-keyword">const</span> <span class="hljs-variable constant_">result</span> = <span class="hljs-title function_ invoke__">parseInt</span>(firstValue) + <span class="hljs-title function_ invoke__">parseInt</span>(secondValue);
+
+        console.<span class="hljs-title function_ invoke__">log</span>(result);
+      } <span class="hljs-keyword">else</span> {
+        <span class="hljs-keyword">const</span> <span class="hljs-variable constant_">result</span> = <span class="hljs-title function_ invoke__">parseInt</span>(firstValue) - <span class="hljs-title function_ invoke__">parseInt</span>(secondValue);
+
+        console.<span class="hljs-title function_ invoke__">log</span>(result);
+      }
+    &lt;/script&gt;
+  &lt;/body&gt;
+&lt;/html&gt;
+</code></pre></div>
+</div></details>
+<h2>Dernières instructions</h2>
+<p>Tu as presque fini ! Maintenant que tu as fait une première condition, ajoute les conditions pour <em>tous les opérateurs</em> :</p>
+<ul>
+<li>Modifie ton code et ajoute des conditions pour les opérateurs <code>&quot;-&quot;</code>, <code>&quot;*&quot;</code> et <code>&quot;/&quot;</code> : pense à la construction <code>else if</code>.</li>
+<li>Dans chaque cas, affiche le résultat de l’opération mathématique correspondante avec un <code>console.log</code>.</li>
+<li>Ajoute un cas par défaut avec un <code>else</code> final qui affiche <code>&quot;Opération inconnue&quot;</code>.</li>
+</ul>
+<details class="solution"><summary>Voir la solution</summary><div class="solution__corps"><div class="bloc-code"><div class="bloc-code__langue">php</div><pre><code class="hljs language-php">&lt;!DOCTYPE html&gt;
+&lt;html lang=<span class="hljs-string">&quot;fr&quot;</span>&gt;
+  &lt;head&gt;
+    &lt;title&gt;Calculatrice basique&lt;/title&gt;
+  &lt;/head&gt;
+  &lt;body&gt;
+    &lt;script&gt;
+      <span class="hljs-keyword">const</span> <span class="hljs-variable constant_">firstValue</span> = <span class="hljs-title function_ invoke__">prompt</span>(<span class="hljs-string">&quot;Premier nombre ?&quot;</span>);
+      <span class="hljs-keyword">const</span> <span class="hljs-variable constant_">operator</span> = <span class="hljs-title function_ invoke__">prompt</span>(<span class="hljs-string">&quot;Quelle opération ?&quot;</span>);
+      <span class="hljs-keyword">const</span> <span class="hljs-variable constant_">secondValue</span> = <span class="hljs-title function_ invoke__">prompt</span>(<span class="hljs-string">&quot;Deuxième nombre ?&quot;</span>);
+
+      <span class="hljs-keyword">if</span> (operator === <span class="hljs-string">&quot;+&quot;</span>) {
+        <span class="hljs-keyword">const</span> <span class="hljs-variable constant_">result</span> = <span class="hljs-title function_ invoke__">parseInt</span>(firstValue) + <span class="hljs-title function_ invoke__">parseInt</span>(secondValue);
+
+        console.<span class="hljs-title function_ invoke__">log</span>(result);
+      } <span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span> (operator === <span class="hljs-string">&quot;-&quot;</span>) {
+        <span class="hljs-keyword">const</span> <span class="hljs-variable constant_">result</span> = <span class="hljs-title function_ invoke__">parseInt</span>(firstValue) - <span class="hljs-title function_ invoke__">parseInt</span>(secondValue);
+
+        console.<span class="hljs-title function_ invoke__">log</span>(result);
+      } <span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span> (operator === <span class="hljs-string">&quot;*&quot;</span>) {
+        <span class="hljs-keyword">const</span> <span class="hljs-variable constant_">result</span> = <span class="hljs-title function_ invoke__">parseInt</span>(firstValue) * <span class="hljs-title function_ invoke__">parseInt</span>(secondValue);
+
+        console.<span class="hljs-title function_ invoke__">log</span>(result);
+      } <span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span> (operator === <span class="hljs-string">&quot;/&quot;</span>) {
+        <span class="hljs-keyword">const</span> <span class="hljs-variable constant_">result</span> = <span class="hljs-title function_ invoke__">parseInt</span>(firstValue) / <span class="hljs-title function_ invoke__">parseInt</span>(secondValue);
+
+        console.<span class="hljs-title function_ invoke__">log</span>(result);
+      } <span class="hljs-keyword">else</span> {
+        console.<span class="hljs-title function_ invoke__">log</span>(<span class="hljs-string">&quot;Opération inconnue&quot;</span>);
+      }
+    &lt;/script&gt;
+  &lt;/body&gt;
+&lt;/html&gt;
+</code></pre></div>
+</div></details>
+<h2>Aller plus loin</h2>
+<p>Tu peux explorer d'autres notions fondamentales des langages de programmation dans ces quêtes :</p>
+<div class="renvois"><div class="renvois__titre">Quêtes liées</div><ul><li><a href="../../javascript/006-js-basics-06-les-fonctions/index.html">Quête 1278</a></li><li><a href="../../javascript/008-js-basics-07-les-tableaux/index.html">Quête 1281</a></li><li><a href="../../javascript/010-js-basics-08-les-boucles/index.html">Quête 1283</a></li><li><a href="../../javascript/011-js-basics-09-les-objets/index.html">Quête 1282</a></li></ul></div>
+<h3>More JS coming up</h3>
+<p>Tu aimes jouer ? Alors c’est le moment de créer un petit jeu : le &quot;Juste prix&quot; !</p>
+<p>Reprend les étapes de la partie <a href="#mise-en-place">“Mise en place”</a> en changeant le nom du dossier : crée un dossier <code>price-is-right</code>.</p>
+<p>Puis :</p>
+<ul>
+<li>
+<p>Demande le nom du joueur ou de la joueuse.</p>
+</li>
+<li>
+<p>Stocke un nombre aléatoire entre 1 et 100 (le prix à trouver) :</p>
+<div class="bloc-code"><div class="bloc-code__langue">javascript</div><pre><code class="hljs language-javascript"><span class="hljs-keyword">const</span> rightPrice = <span class="hljs-title class_">Math</span>.<span class="hljs-title function_">ceil</span>(<span class="hljs-title class_">Math</span>.<span class="hljs-title function_">random</span>() * <span class="hljs-number">100</span>);
+</code></pre></div>
+</li>
+<li>
+<p>Demande un nombre au joueur ou à la joueuse (entre 1 et 100).</p>
+</li>
+<li>
+<p>Si le nombre est supérieur au juste prix, affiche <code>&quot;C’est moins&quot;</code>.</p>
+</li>
+<li>
+<p>Si le nombre est inférieur au juste prix, affiche <code>&quot;C’est plus&quot;</code>.</p>
+</li>
+<li>
+<p>Si le nombre est égal au juste prix, affiche <code>&quot;Bravo &lt;nom&gt; tu as gagné !&quot;</code> avec <code>&lt;nom&gt;</code> qui est remplacé par le nom &quot;prompté&quot; au début du jeu.</p>
+</li>
+<li>
+<p>Le jeu tourne en boucle jusqu'à la victoire.</p>
+</li>
+</ul>
+<details class="solution"><summary>Voir la solution</summary><div class="solution__corps"><div class="bloc-code"><div class="bloc-code__langue">php</div><pre><code class="hljs language-php">&lt;!DOCTYPE html&gt;
+&lt;html lang=<span class="hljs-string">&quot;fr&quot;</span>&gt;
+  &lt;head&gt;
+    &lt;title&gt;Juste prix&lt;/title&gt;
+  &lt;/head&gt;
+  &lt;body&gt;
+    &lt;script&gt;
+      <span class="hljs-keyword">const</span> <span class="hljs-variable constant_">username</span> = <span class="hljs-title function_ invoke__">prompt</span>(<span class="hljs-string">&quot;Votre nom ?&quot;</span>);
+      <span class="hljs-keyword">const</span> <span class="hljs-variable constant_">rightPrice</span> = Math.<span class="hljs-title function_ invoke__">ceil</span>(Math.<span class="hljs-title function_ invoke__">random</span>() * <span class="hljs-number">100</span>);
+
+      let price = <span class="hljs-literal">null</span>;
+
+      <span class="hljs-keyword">while</span> (<span class="hljs-title function_ invoke__">parseInt</span>(price) !== rightPrice) {
+        price = <span class="hljs-title function_ invoke__">prompt</span>(<span class="hljs-string">&quot;Combien ? (1-100)&quot;</span>);
+
+        <span class="hljs-keyword">if</span> (<span class="hljs-title function_ invoke__">parseInt</span>(price) &lt; rightPrice) {
+          <span class="hljs-title function_ invoke__">alert</span>(<span class="hljs-string">&quot;C&#x27;est plus&quot;</span>);
+        } <span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span> (<span class="hljs-title function_ invoke__">parseInt</span>(price) &gt; rightPrice) {
+          <span class="hljs-title function_ invoke__">alert</span>(<span class="hljs-string">&quot;C&#x27;est moins&quot;</span>);
+        }
+      }
+
+      <span class="hljs-title function_ invoke__">alert</span>(`Bravo ${username} tu <span class="hljs-keyword">as</span> gagné !`);
+    &lt;/script&gt;
+  &lt;/body&gt;
+&lt;/html&gt;
+</code></pre></div>
+</div></details>
+<h2>Challenge</h2>
+<p>Dans le même genre que le &quot;Juste prix&quot;, j'ai voulu créé une machine à café. Le principe :</p>
+<ul>
+<li>La machine propose :
+<ul>
+<li>&quot;thé ou café ?&quot;</li>
+<li>&quot;sucre ?&quot;</li>
+<li>&quot;lait ?&quot;
+<ul>
+<li>Si oui, &quot;végétal ?&quot;</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>La machine récapitule la commande et demande confirmation. Un exemple de commande : <code>&quot;café, sans sucre, lait de vache&quot;</code>.</li>
+<li>Tant que la demande n'est pas confirmée, le programme recommence.</li>
+</ul>
+<p>Malheureusement, j'ai renversé mon café sur le prototype et des parties du code ont été effacées :</p>
+<div class="bloc-code"><div class="bloc-code__langue">php</div><pre><code class="hljs language-php">&lt;!DOCTYPE html&gt;
+&lt;html lang=<span class="hljs-string">&quot;fr&quot;</span>&gt;
+
+&lt;head&gt;
+  &lt;meta charset=<span class="hljs-string">&quot;UTF-8&quot;</span>&gt;
+  &lt;title&gt;Prototype de Machine à Café&lt;/title&gt;
+&lt;/head&gt;
+
+&lt;body&gt;
+  &lt;script&gt;
+    **<span class="hljs-number">1</span>** order = <span class="hljs-literal">null</span>;
+    **<span class="hljs-number">2</span>** isConfirmed = <span class="hljs-literal">false</span>;
+
+    **<span class="hljs-number">3</span>** (isConfirmed === <span class="hljs-literal">false</span>) {
+      <span class="hljs-keyword">while</span> (order !== <span class="hljs-string">&quot;thé&quot;</span> &amp;&amp; order !== <span class="hljs-string">&quot;café&quot;</span>) {
+        order = <span class="hljs-title function_ invoke__">prompt</span>(<span class="hljs-string">&quot;thé ou café ?&quot;</span>);
+      }
+
+      order += <span class="hljs-title function_ invoke__">confirm</span>(<span class="hljs-string">&quot;sucre ?&quot;</span>) ? **<span class="hljs-number">4</span>** : **<span class="hljs-number">5</span>**;
+
+      **<span class="hljs-number">6</span>** (<span class="hljs-title function_ invoke__">confirm</span>(<span class="hljs-string">&quot;lait ?&quot;</span>)) {
+        **<span class="hljs-number">7</span>** (<span class="hljs-title function_ invoke__">confirm</span>(<span class="hljs-string">&quot;végétal ?&quot;</span>)) {
+          order += <span class="hljs-string">&quot;, lait végétal&quot;</span>;
+        } **<span class="hljs-number">8</span>** {
+          order += <span class="hljs-string">&quot;, lait de vache&quot;</span>;
+        }
+      }
+
+      isConfirmed = <span class="hljs-title function_ invoke__">confirm</span>(`confirmer votre commande : ${order}`);
+    }
+
+    <span class="hljs-title function_ invoke__">alert</span>(`votre ${order} sera prêt dans une minute`);
+  &lt;/script&gt;
+&lt;/body&gt;
+
+&lt;/html&gt;
+</code></pre></div>
+<p>Aide-moi à retrouver le code complet en remplaçant les parties effacées <code>**1**</code>, <code>**2**</code>, ..., <code>**8**</code> par du JavaScript.</p>
+<p>Poste ton code comme solution de cette quête.</p>
+<h3>Critères de validation</h3>
+<ul>
+<li>[ ] Le code est disponible.</li>
+<li>[ ] Quand tu copies le code dans un fichier HTML, et que tu l'ouvres dans le navigateur, tu peux passer ta commande.</li>
+</ul>
+<h2>La solution attendue :</h2>
+<div class="bloc-code"><div class="bloc-code__langue">php</div><pre><code class="hljs language-php">&lt;!DOCTYPE html&gt;
+&lt;html lang=<span class="hljs-string">&quot;fr&quot;</span>&gt;
+
+&lt;head&gt;
+  &lt;meta charset=<span class="hljs-string">&quot;UTF-8&quot;</span>&gt;
+  &lt;title&gt;Prototype de Machine à Café&lt;/title&gt;
+&lt;/head&gt;
+
+&lt;body&gt;
+  &lt;script&gt;
+    let order = <span class="hljs-literal">null</span>;
+    let isConfirmed = <span class="hljs-literal">false</span>;
+
+    <span class="hljs-keyword">while</span> (isConfirmed === <span class="hljs-literal">false</span>) {
+      <span class="hljs-keyword">while</span> (order !== <span class="hljs-string">&quot;thé&quot;</span> &amp;&amp; order !== <span class="hljs-string">&quot;café&quot;</span>) {
+        order = <span class="hljs-title function_ invoke__">prompt</span>(<span class="hljs-string">&quot;thé ou café ?&quot;</span>);
+      }
+
+      order += <span class="hljs-title function_ invoke__">confirm</span>(<span class="hljs-string">&quot;sucre ?&quot;</span>) ? <span class="hljs-string">&quot;, avec sucre&quot;</span> : <span class="hljs-string">&quot;, sans sucre&quot;</span>;
+
+      <span class="hljs-keyword">if</span> (<span class="hljs-title function_ invoke__">confirm</span>(<span class="hljs-string">&quot;lait ?&quot;</span>)) {
+        <span class="hljs-keyword">if</span> (<span class="hljs-title function_ invoke__">confirm</span>(<span class="hljs-string">&quot;végétal ?&quot;</span>)) {
+          order += <span class="hljs-string">&quot;, lait végétal&quot;</span>;
+        } <span class="hljs-keyword">else</span> {
+          order += <span class="hljs-string">&quot;, lait de vache&quot;</span>;
+        }
+      }
+
+      isConfirmed = <span class="hljs-title function_ invoke__">confirm</span>(`confirmer votre commande : ${order}`);
+    }
+
+    <span class="hljs-title function_ invoke__">alert</span>(`votre ${order} sera prêt dans une minute`);
+  &lt;/script&gt;
+&lt;/body&gt;
+
+&lt;/html&gt;
+</code></pre></div>
+
+  </div>
+  
+</article>
+
+<nav class="nav-quete">
+  <a class="nav-quete__lien nav-quete__lien--prec" href="../../developpement-web/006-installer-et-configurer-node/index.html">
+           <span class="nav-quete__sens">← Précédent</span>
+           <span class="nav-quete__titre">Installer et configurer Node</span>
+         </a>
+  <a class="nav-quete__lien nav-quete__lien--suiv" href="../../developpement-web/008-js-manipulation-du-dom/index.html">
+           <span class="nav-quete__sens">Suivant →</span>
+           <span class="nav-quete__titre">JS - Manipulation du DOM</span>
+         </a>
+</nav>
+</main>
+<footer class="pied">
+  <p>Archive personnelle des cours suivis à la Wild Code School. Copie hors ligne à usage strictement privé.</p>
+</footer>
+
+<script src="../../assets/copie-code.js"></script>
+<script src="../../assets/progression.js"></script>
+</body>
+</html>

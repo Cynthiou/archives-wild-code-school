@@ -1,0 +1,244 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>POO10 - Interfaces — Archives WCS</title>
+<link rel="stylesheet" href="../../assets/style.css">
+</head>
+<body style="--teinte:#464985">
+<header class="entete">
+  <a class="entete__marque" href="../../index.html">Archives Wild Code School</a>
+</header>
+<main class="contenu">
+<nav class="ariane"><a href="../../index.html">Accueil</a><span class="ariane__sep">›</span><a href="../../php-oriente-objet/index.html">PHP Orienté Objet</a><span class="ariane__sep">›</span><span aria-current="page">POO10 - Interfaces</span></nav>
+
+<article class="quete">
+  <header class="quete__entete">
+    <a class="pastille pastille--teintee" href="../../php-oriente-objet/index.html">PHP Orienté Objet</a>
+    <h1>POO10 - Interfaces</h1>
+    <p class="quete__meta">Quête 2 sur 11 · 4 images archivées</p>
+  </header>
+  <div class="cours">
+<h1>Prérequis</h1>
+<div class="renvois"><div class="renvois__titre">Quêtes liées</div><ul><li><a href="../../php-oriente-objet/010-poo9-abstraction/index.html">Quête 2395</a></li></ul></div>
+<div class="bloc-code"><div class="bloc-code__langue">title-book</div><pre><code class="hljs language-title-book">Introduction
+</code></pre></div>
+<div class="encadre encadre--story"><div class="encadre__titre">Le récit</div><div class="encadre__corps"><p>Passe sur la branche <strong>poo10</strong> de ton <a href="https://github.com/WildCodeSchool/php-wildzoo" target="_blank" rel="noopener noreferrer">Wild Zoo</a>. Dans cette quête, tu vas découvrir les interfaces en Programmation Orienté Objet (à ne pas confondre avec les interfaces utilisateur) et comprendre quand et comment les implémenter.</p>
+</div></div>
+<h2>🤓 À la fin de cette quête, tu seras capable de :</h2>
+<ul>
+<li>✅ Comprendre le concept d'interface</li>
+<li>✅ Créer une interface</li>
+<li>✅ Implémenter une interface</li>
+</ul>
+<h1>Définition des interfaces</h1>
+<p>Les interfaces complètent le mécanisme d'abstraction que tu as vu dans la quête précédente. L'abstraction permet de définir des comportements attendus, sans imposer d'implémentation, tout en restant intimement liée au concept d’héritage : il doit forcément y avoir un lien logique entre la classe mère abstraite et sa fille. Mais dans certains cas, deux classes totalement différentes peuvent avoir un certain nombre de comportements en commun. Il n’est alors pas logique ou possible de définir un héritage (souviens toi, une classe ne peut avoir qu'une seule mère). Les interfaces viennent répondre à ce besoin : définir des comportements communs entre des classes sans héritage.</p>
+<p>Prenons un exemple concret : dans un cadre d'héritage, nous pouvons dire que les poissons :fish: savent nager, donc toutes les classes filles de poisson hériteront de cette capacité. Il est possible d'implémenter une méthode <code>swim()</code> dans <strong>Fish</strong>. Maintenant, une baleine :whale:  ou un dauphin :dolphin: va également nager de manière assez proche d'un poisson (queue, nageoire) tout en étant des mammifères. De même, un chien :dog: va pouvoir nager assez bien en battant des quatre pattes, mais tout le monde sait que les chat :cat: sont moins friands de natation. De même, un hippopotame :hippopotamus: sera très à l'aise dans l'eau mais un rhinocéros :rhinoceros: peut-être moins. Coté reptile, un crocodile :crocodile: va nager, une tortue marine :turtle: aussi, mais pas un lézard :lizard:. Côté oiseaux, les canards :duck:, les cygnes :swan: ou les manchots :penguin: seront plus à l'aise en milieu aquatique que l'autruche, etc.</p>
+<p>En résumé, certains animaux savent nager, d'autres non ! Et pour ceux qui savent, chacun le fait un peu à sa manière en fonction de son anatomie. On pourrait mettre une méthode abstraite dans l'ancêtre commun de plus haut niveau (ici <strong>Animal</strong>), permettant ainsi à chacun d'implémenter sa propre manière de nager. Le problème de cette approche est qu'elle force l’implémentation de la méthode également pour les animaux qui ne savent pas nager, ce qui crée du code inutile et doit être évité.</p>
+<p>De plus, tu peux aisément imaginer des cas où il n'y a même pas d'ancêtre commun. Imagine que tu crées un drone marin qui &quot;nage&quot; et que tu veuilles comparer ses performances avec des animaux sachant nager. Tu souhaiterais que les deux classes possèdent la méthode <code>swim()</code>, mais il n'y a cependant aucun lien entre un robot et un animal.</p>
+<p><img src="images/001-swim-drone.webp" alt="swim drone" loading="lazy">
+C'est donc dans ces cas là : absence de lien d'héritage et/ou comportement non commun à toutes les classes filles, que le concept d'interface sera utilisé. Les interfaces sont souvent comparées à des <strong>contrats</strong>, qu'une classe implémentant une interface devra <strong>obligatoirement suivre</strong>. L’interface ne sert à rien d’autre car, comme tu vas le voir, elle ne contient aucun code métier, seulement des définitions de méthodes, ce en quoi elles sont similaires aux méthodes abstraites.</p>
+<h1>Créer une interface</h1>
+<p>Créer une interface est assez proche de créer une classe. Il faut créer un nouveau fichier que tu nommeras en UpperCamelCase.</p>
+<div class="bloc-code"><div class="bloc-code__langue">php</div><pre><code class="hljs language-php"><span class="hljs-meta">&lt;?php</span>
+<span class="hljs-comment">// fichier src/Swimmable.php</span>
+
+<span class="hljs-keyword">namespace</span> <span class="hljs-title class_">App</span>;
+
+<span class="hljs-class"><span class="hljs-keyword">interface</span> <span class="hljs-title">Swimmable</span> 
+</span>{
+    <span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">swim</span>(<span class="hljs-params"></span>): <span class="hljs-title">string</span></span>;
+}
+</code></pre></div>
+<p>À l'intérieur, tu définieras un <em>namespace</em> et reprendras le même nom pour l'interface que pour le fichier créé. Par contre, au lieu du mot-clé <code>class</code>, il faut utiliser le mot clé <code>interface</code>.
+Ensuite, l'interface contient uniquement des définitions de méthodes sans implémentations. Une interface est un peu comme une classe ne contenant que des méthodes abstraites (sans utiliser le mot clé <code>abstract</code>). Note également qu'une interface peut contenir des constantes, <strong>mais pas des propriétés</strong>. Ici, l'interface attend une seule méthode <code>swim()</code> qui retournera un <em>string</em>. Pour simplifier les choses dans notre zoo, l'implémentation de la nage (différente entre les types d'animaux) se fera simplement par une chaine de caractères expliquant comment l'animal s'y prend pour nager.</p>
+<div class="encadre encadre--info"><div class="encadre__titre">Info</div><div class="encadre__corps"><p>Côté nommage, les interfaces sont souvent nommées avec le suffixe &quot;able&quot; (pour montrer qu'elle apporte une capacité, un comportement nouveau) ou avec le suffixe &quot;Interface&quot;. Ici, il a été choisi de nommer l'interface <strong>Swimmable</strong> mais on aurait également pu l'appeler <strong>SwimInterface</strong>. L'idée est surtout de choisir un type de nommage et de s'y conformer pour toutes les interfaces du projet, par cohérence.</p>
+</div></div>
+<p>🖥️ Crée l'interface <strong>Swimmable</strong> dans ton projet WildZoo
+Un bouton &quot;Try to swim&quot; doit apparaître en haut à droite de la page. Pour l'instant, aucun animal ne se sert de ton interface <strong>Swimmable</strong>, ce n'est peut-être pas une bonne idée d'appuyer sur le bouton... Si ? Bon essaie...</p>
+<div class="bloc-code"><div class="bloc-code__langue">hidden</div><pre><code class="hljs language-hidden">Click to reveal||||||Que vient-il de se passer ?|||0|||Hide
+:clap: Bravo, tu viens de noyer tout ton zoo, la quête est terminée :skull: ! 
+
+... Bon, non on ne va pas se quitter si proche de la fin, mais prend un peu plus soin de tes animaux quand même !
+
+Ici, aucun animal n'avait implémenté **Swimmable**, donc aucun n'avait le comportement de `swim()`.
+</code></pre></div>
+<h1>Implémenter une interface</h1>
+<p>Bon, essayons de résoudre cette situation.
+🖥️ Commençons par les poissons, qui à priori savent tous nager. Met à jour ta classe <strong>Fish</strong> comme ci-dessous :</p>
+<div class="bloc-code"><div class="bloc-code__langue">php</div><pre><code class="hljs language-php"><span class="hljs-meta">&lt;?php</span>
+
+<span class="hljs-keyword">namespace</span> <span class="hljs-title class_">App</span>\<span class="hljs-title class_">Animal</span>;
+
+<span class="hljs-keyword">use</span> <span class="hljs-title">App</span>\<span class="hljs-title">Swimmable</span>;
+
+<span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Fish</span> <span class="hljs-keyword">extends</span> <span class="hljs-title">Animal</span> <span class="hljs-keyword">implements</span> <span class="hljs-title">Swimmable</span>
+</span>{
+    <span class="hljs-keyword">private</span> <span class="hljs-keyword">int</span> <span class="hljs-variable">$pawNumber</span> = <span class="hljs-number">0</span>;
+    
+    <span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">__construct</span>(<span class="hljs-params"><span class="hljs-keyword">string</span> <span class="hljs-variable">$name</span></span>)
+    </span>{
+        <span class="hljs-built_in">parent</span>::<span class="hljs-title function_ invoke__">__construct</span>(<span class="hljs-variable">$name</span>, <span class="hljs-variable">$this</span>-&gt;pawNumber);
+    }
+
+    <span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">swim</span>(<span class="hljs-params"></span>): <span class="hljs-title">string</span> 
+    </span>{
+        <span class="hljs-keyword">return</span> <span class="hljs-string">&#x27;Je nage grâce à mes nageoires et je respire sous l\&#x27;eau&#x27;</span>;
+    }
+}
+</code></pre></div>
+<p>Pour utiliser une interface, il faut utiliser le mot clé <code>implements</code>. Si la classe étend une classe mère, le mot clé <code>implements</code> se placera après <code>extends</code>.</p>
+<p>Une caractéristique importante des interfaces, est de permettre l'utilisation multiple. Contrairement à l'héritage où l'on ne peut étendre qu'une seule classe, il est possible d'implémenter <strong>autant d'interfaces qu'on le désire</strong>, séparées par des virgules.</p>
+<div class="bloc-code"><div class="bloc-code__langue">php</div><pre><code class="hljs language-php"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Daughter</span> <span class="hljs-keyword">extends</span> <span class="hljs-title">Mother</span> <span class="hljs-keyword">implements</span> <span class="hljs-title">FirstInterface</span>, <span class="hljs-title">SecondInterface</span>, <span class="hljs-title">ThirdInterface</span>
+</span></code></pre></div>
+<div class="encadre encadre--info"><div class="encadre__titre">Info</div><div class="encadre__corps"><h1>Remarque SOLID</h1>
+<p>Tu connais maintenant l'accronyme SOLID, cet ensemble de bonnes pratiques autour de la POO. Le &quot;I&quot; de SOLID signifie <em>Interface Segregation</em> : il vaut mieux créer plusieurs interfaces contenant peu de méthodes mais bien spécifiques à l'interface, plutôt qu'une seule grosse interface fourre-tout qui sera moins modulable. Par exemple, il vaut mieux créer les interfaces <strong>Swimmable, Flyable, Walkable</strong>, plutôt qu'une grosse interface <strong>Movable</strong> contenant des méthodes <code>swim()</code>, <code>fly()</code> et <code>walk()</code>. Ainsi, un animal qui se déplace mais qui ne sait pas voler n'a pas à implémenter une méthode <code>fly()</code> qu'il laisserait vide.
+Pour faciliter l'organisation et le découpage des interfaces, il est également possible de faire de l'héritage entre interface.</p>
+</div></div>
+<p>L'interface étant un <strong>contrat</strong>, si tu n'implémentes pas les méthodes qu'elle contient, tu auras une erreur. Ici tu es donc <strong>forcé</strong> de créer une méthode <code>swim()</code>. De plus, comme pour les méthodes abstraites, la signature de la méthode sera identique (même nom de méthode, noms et types des paramètres, type de sortie).</p>
+<a class="ressource" href="https://www.php.net/manual/fr/language.oop5.interfaces.php" target="_blank" rel="noopener noreferrer">
+  <div class="ressource__icone">↗</div>
+  <div class="ressource__texte">
+    <div class="ressource__titre">https://www.php.net/manual/fr/language.oop5.interfaces.php</div>
+    <div class="ressource__desc"><p>Documentation officielle des interfaces en PHP</p>
+</div>
+    <div class="ressource__hote">php.net</div>
+  </div>
+</a>
+<p>🖥️ Une fois l'interface implémentée, un petit ℹ️ apparaît à côté du nom de la classe correspondante dans le panneau en haut à droite des cartes d'animaux. Quand une classe mère implémente une interface, la classe fille l'implémente par héritage. De plus, quand tu survoles la carte, en plus de son message, la chaine de caractères retournée par <code>swim()</code> s'affiche également.</p>
+<p>Si tu cliques à nouveau sur le bouton &quot;Try to swim&quot;, ton requin devrait maintenant réussir à nager ! :tada:</p>
+<p>Implémente l'interface <strong>Swimmable</strong> sur les autres animaux sachant nager : le serpent et l'éléphant, ou amuse toi à en ajouter d'autres.</p>
+<h2>BONUS : Retour sur l'aquarium</h2>
+<p>Tu peux corriger l'implémentation de ta classe Aquarium qui n'acceptait que des poissons, afin qu'elle accepte maintenant tous les animaux implémentant <strong>Swimmable</strong>.</p>
+<div class="bloc-code"><div class="bloc-code__langue">php</div><pre><code class="hljs language-php"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Aquarium</span> <span class="hljs-keyword">extends</span> <span class="hljs-title">Area</span>
+</span>{
+    <span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">isValid</span>(<span class="hljs-params">Animal <span class="hljs-variable">$animal</span></span>): <span class="hljs-title">bool</span> 
+    </span>{
+        <span class="hljs-keyword">return</span> <span class="hljs-variable">$animal</span> <span class="hljs-keyword">instanceof</span> Swimmable;
+    }
+}
+</code></pre></div>
+<p>Tu remarques que <code>instanceof</code> s'utilise aussi avec des interfaces. Note aussi que, comme tu peux le faire avec un nom de classe, tu peux typer avec un nom d'interface.
+Maintenant, ton aquarium accepte tous les animaux capable de nager. Ainsi, si tu souhaites par la suite manipuler les animaux dans ton aquarium, tu es sûr qu'ils auront tous à disposition la méthode <code>swim()</code>, grâce à ce contrat qu'est l'interface.</p>
+<h1>:muscle: Challenge</h1>
+<p>Nous avons géré les animaux qui savent nager. À toi de jouer maintenant, fais la même chose avec ceux sachant voler !</p>
+<ul>
+<li>Crée l'interface <strong>Flyable</strong> contenant une méthode <code>fly()</code> qui retourne un <em>string</em>.</li>
+<li>Tous les oiseaux ne volant pas, il n'est pas pertinent d'implémenter <strong>Flyable</strong> directement sur <strong>Bird</strong>. Tu vas passer <strong>Bird</strong> en classe abstraite puis créer les classe filles suivantes depuis <strong>Bird</strong>. Pour chacune des classes, crée un objet correspondant dans <em>index.php</em>, les images sont disponibles, et ajoute les à ton zoo  :
+<ul>
+<li><strong>Parrot</strong> :parrot: qui implémentera <strong>Flyable</strong>. Dans ce cas il faut modifier l'objet <strong>Bird</strong> (maintenant classe abstraite) dans <em>index.php</em> pour utiliser cette nouvelle classe <strong>Parrot</strong>.</li>
+<li><strong>Penguin</strong> :penguin: (c'est le <a href="https://www.youtube.com/watch?v=qgxC1AgslGs" target="_blank" rel="noopener noreferrer">manchot</a> en français, c'est un faux ami, car le pingouin, <em>auk</em> en anglais, vole bien lui) : ton manchot implémentera <strong>Swimmable</strong> mais pas <strong>Flyable</strong>.</li>
+<li><strong>Ostrich</strong> 🦤 qui n'implémentera pas <strong>Flyable</strong>.</li>
+<li><strong>Duck</strong> :duck: qui implémentera <strong>Flyable</strong> et <strong>Swimmable</strong>.</li>
+</ul>
+</li>
+<li>Implémente aussi <strong>Flyable</strong> sur les insectes :fly: (en réalité, tous les insectes ne volent pas, mais nous allons simplifier pour l'exercice, cependant si tu cherches l'exactitude biologique, libre à toi de créer une classe fille <strong>Pterygota</strong> (correspondant aux insectes volant) qui elle implémentera <strong>Flyable</strong> et non <strong>Insect</strong>.</li>
+<li>Crée la classe <strong>Bat</strong> :bat:, fille de <strong>Mammal</strong>, qui implémentera également <strong>Flyable</strong>.</li>
+</ul>
+<p>🖥️ Dès que l'interface <strong>Flyable</strong> est créée, un nouveau bouton &quot;Try to Fly&quot; apparaît en plus de &quot;Try to Swim&quot;.</p>
+<p><img src="images/002-muscle-challenge.gif" alt="" loading="lazy"></p>
+<h1>Validation</h1>
+<p>Poste une capture d'écran de ton zoo après avoir cliqué sur &quot;Try to Fly&quot;. Tous les animaux préexistants et les nouveaux créés doivent apparaître. Tous les animaux sont écrasés au sol :skull: sauf :</p>
+<ul>
+<li>le perroquet :parrot:</li>
+<li>le canard :duck:</li>
+<li>l'abeille :bee:</li>
+<li>la chauve-souris :bat:</li>
+</ul>
+<h1>:wave: Conclusion</h1>
+<p>Bravo, tu as fini ce parcours de quêtes POO (et tu ne t'es pas trop mal occupé de tes animaux finalement). N'hésite pas a continuer de t'amuser avec ton code pour étendre les fonctionnalités de ton zoo et t'améliorer. La programmation orientée objet est une compétence absolument essentielle en PHP, mais également dans la plupart des langages de programmation, où tu retrouveras (à quelques variations près) le même vocabulaire et les mêmes mécanismes :-)
+La POO est bien plus large que ces quelques quêtes, le plus difficile n'étant pas de l'utiliser, mais de réussir à l'utiliser proprement ! Les principes SOLID ou les <em>design patterns</em>, sont des guides pour t'aider à mieux organiser ton code lorsqu'il se complexifie. Cela dépasse le cadre de ta formation actuelle, mais sois curieux, informe toi et, surtout, pratique !</p>
+<p><img src="images/003-soigneur.webp" alt="soigneur" loading="lazy"></p>
+<p>==$==</p>
+<p>Quelques exemples des fichiers que tu dois obtenir.</p>
+<div class="bloc-code"><div class="bloc-code__langue">php</div><pre><code class="hljs language-php"><span class="hljs-meta">&lt;?php</span>
+<span class="hljs-comment">// src/Flyable.php</span>
+
+<span class="hljs-keyword">namespace</span> <span class="hljs-title class_">App</span>;
+
+<span class="hljs-class"><span class="hljs-keyword">interface</span> <span class="hljs-title">Flyable</span> 
+</span>{
+    <span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">fly</span>(<span class="hljs-params"></span>): <span class="hljs-title">string</span></span>;
+}
+</code></pre></div>
+<div class="bloc-code"><div class="bloc-code__langue">php</div><pre><code class="hljs language-php"><span class="hljs-meta">&lt;?php</span>
+<span class="hljs-comment">// src/Animal/Parrot.php</span>
+<span class="hljs-keyword">namespace</span> <span class="hljs-title class_">App</span>\<span class="hljs-title class_">Animal</span>;
+
+<span class="hljs-keyword">use</span> <span class="hljs-title">App</span>\<span class="hljs-title">Flyable</span>;
+
+<span class="hljs-keyword">final</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Parrot</span> <span class="hljs-keyword">extends</span> <span class="hljs-title">Bird</span> <span class="hljs-keyword">implements</span> <span class="hljs-title">Flyable</span>
+</span>{    
+    <span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">fly</span>(<span class="hljs-params"></span>): <span class="hljs-title">string</span>
+    </span>{
+        <span class="hljs-keyword">return</span> <span class="hljs-string">&#x27;Je vole grace à mes longues plumes colorées&#x27;</span>;
+    }
+}
+</code></pre></div>
+<div class="bloc-code"><div class="bloc-code__langue">php</div><pre><code class="hljs language-php"><span class="hljs-meta">&lt;?php</span>
+<span class="hljs-comment">// src/Animal/Duck.php</span>
+<span class="hljs-keyword">namespace</span> <span class="hljs-title class_">App</span>\<span class="hljs-title class_">Animal</span>;
+
+<span class="hljs-keyword">use</span> <span class="hljs-title">App</span>\<span class="hljs-title">Flyable</span>;
+<span class="hljs-keyword">use</span> <span class="hljs-title">App</span>\<span class="hljs-title">Swimmable</span>;
+
+<span class="hljs-keyword">final</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Duck</span> <span class="hljs-keyword">extends</span> <span class="hljs-title">Bird</span> <span class="hljs-keyword">implements</span> <span class="hljs-title">Swimmable</span>, <span class="hljs-title">Flyable</span>
+</span>{    
+    <span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">swim</span>(<span class="hljs-params"></span>): <span class="hljs-title">string</span>
+    </span>{
+        <span class="hljs-keyword">return</span> <span class="hljs-string">&#x27;Je nage grace à mes pattes palmées&#x27;</span>;
+    } 
+    
+    <span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">fly</span>(<span class="hljs-params"></span>): <span class="hljs-title">string</span>
+    </span>{
+        <span class="hljs-keyword">return</span> <span class="hljs-string">&#x27;Je vole grace à mes ailes plumées&#x27;</span>;
+    }
+}
+</code></pre></div>
+<div class="bloc-code"><div class="bloc-code__langue">php</div><pre><code class="hljs language-php"><span class="hljs-meta">&lt;?php</span>
+<span class="hljs-comment">// src/Animal/Insect.php</span>
+<span class="hljs-keyword">namespace</span> <span class="hljs-title class_">App</span>\<span class="hljs-title class_">Animal</span>;
+
+<span class="hljs-keyword">use</span> <span class="hljs-title">App</span>\<span class="hljs-title">Flyable</span>;
+
+<span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Insect</span> <span class="hljs-keyword">extends</span> <span class="hljs-title">Arthropode</span> <span class="hljs-keyword">implements</span> <span class="hljs-title">Flyable</span>
+</span>{
+    <span class="hljs-keyword">private</span> <span class="hljs-keyword">int</span> <span class="hljs-variable">$pawNumber</span> = <span class="hljs-number">6</span>;
+    
+    <span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">__construct</span>(<span class="hljs-params"><span class="hljs-keyword">string</span> <span class="hljs-variable">$name</span></span>)
+    </span>{
+        <span class="hljs-built_in">parent</span>::<span class="hljs-title function_ invoke__">__construct</span>(<span class="hljs-variable">$name</span>, <span class="hljs-variable">$this</span>-&gt;pawNumber);
+    }
+
+    <span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">fly</span>(<span class="hljs-params"></span>): <span class="hljs-title">string</span> 
+    </span>{
+        <span class="hljs-keyword">return</span> <span class="hljs-string">&#x27;Je vole grâce à mes deux paires d\&#x27;ailes&#x27;</span>;
+    }
+}
+</code></pre></div>
+<p><img src="images/004-wave-conclusion.jpg" alt="" loading="lazy"></p>
+
+  </div>
+  
+</article>
+
+<nav class="nav-quete">
+  <a class="nav-quete__lien nav-quete__lien--prec" href="../../php-oriente-objet/001-poo1-introduction-a-la-programmation-orientee-objet/index.html">
+           <span class="nav-quete__sens">← Précédent</span>
+           <span class="nav-quete__titre">POO1 - Introduction à la Programmation Orientée Objet</span>
+         </a>
+  <a class="nav-quete__lien nav-quete__lien--suiv" href="../../php-oriente-objet/003-poo2-les-proprietes/index.html">
+           <span class="nav-quete__sens">Suivant →</span>
+           <span class="nav-quete__titre">POO2 - Les propriétés</span>
+         </a>
+</nav>
+</main>
+<footer class="pied">
+  <p>Archive personnelle des cours suivis à la Wild Code School. Copie hors ligne à usage strictement privé.</p>
+</footer>
+
+<script src="../../assets/copie-code.js"></script>
+<script src="../../assets/progression.js"></script>
+</body>
+</html>

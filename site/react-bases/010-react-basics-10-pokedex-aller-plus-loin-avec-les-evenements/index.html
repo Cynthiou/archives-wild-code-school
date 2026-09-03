@@ -1,0 +1,248 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>👩‍🏫 React Basics 10 - Pokédex - Aller plus loin avec les événements — Archives WCS</title>
+<link rel="stylesheet" href="../../assets/style.css">
+</head>
+<body style="--teinte:#4DC4DE">
+<header class="entete">
+  <a class="entete__marque" href="../../index.html">Archives Wild Code School</a>
+</header>
+<main class="contenu">
+<nav class="ariane"><a href="../../index.html">Accueil</a><span class="ariane__sep">›</span><a href="../../react-bases/index.html">React - Bases</a><span class="ariane__sep">›</span><span aria-current="page">👩‍🏫 React Basics 10 - Pokédex - Aller plus loin avec les événements</span></nav>
+
+<article class="quete">
+  <header class="quete__entete">
+    <a class="pastille pastille--teintee" href="../../react-bases/index.html">React - Bases</a>
+    <h1>👩‍🏫 React Basics 10 - Pokédex - Aller plus loin avec les événements</h1>
+    <p class="quete__meta">Quête 10 sur 10 · 1 image archivée</p>
+  </header>
+  <div class="cours">
+<h2>Objectifs</h2>
+<ul>
+<li>Implémenter un <em>event listener</em> dans React</li>
+<li>Exploiter des événements spécifiques à React</li>
+</ul>
+<h2>Pré-requis</h2>
+<ol class="etapes"><li class="etape"><div class="etape__puce">1</div><div class="etape__contenu"><h4 class="etape__titre">Valider les quêtes suivantes</h4><div class="renvois"><div class="renvois__titre">Quêtes liées</div><ul><li><a href="../../react-bases/001-react-basics-01-pokedex-introduction/index.html">Quête 2328</a></li><li><a href="../../react-bases/002-react-basics-02-pokedex-ton-premier-composant/index.html">Quête 2332</a></li><li><a href="../../react-bases/003-react-basics-03-pokedex-afficher-des-donnees-dans-un/index.html">Quête 2336</a></li><li><a href="../../react-bases/004-react-basics-04-pokedex-passer-des-props/index.html">Quête 2374</a></li><li><a href="../../react-bases/005-react-basics-05-pokedex-typer-les-props-avec-typescript/index.html">Quête 2375</a></li><li><a href="../../react-bases/006-react-basics-06-pokedex-utiliser-un-state/index.html">Quête 2376</a></li><li><a href="../../react-bases/007-react-basics-07-pokedex-repeter-un-bloc-d-affichage-avec-map/index.html">Quête 2378</a></li><li><a href="../../react-bases/008-react-basics-08-pokedex-le-css-dans-react/index.html">Quête 1795</a></li><li><a href="../../react-bases/009-react-basics-09-pokedex-partager-un-state/index.html">Quête 2377</a></li></ul></div>
+</div></li></ol>
+<h2>Introduction</h2>
+<p>Précédemment, nous avons abordé la notion d'<em>event listener</em>. Nous allons approfondir cette notion dans le cadre spécifique de React.</p>
+<p><img src="images/001-introduction.webp" alt="" loading="lazy"></p>
+<h2>Sommaire</h2>
+<h2>Rappel du DOM</h2>
+<p>Les événements HTML sont des &quot;choses&quot; qui arrivent aux éléments HTML. Ils sont générés automatiquement par le navigateur pour toutes nos actions (taper du texte, bouger la souris, survoler un élément, en sortir, cliquer sur un bouton...).</p>
+<a class="ressource" href="https://www.w3schools.com/tags/ref_eventattributes.asp" target="_blank" rel="noopener noreferrer">
+  <div class="ressource__icone">↗</div>
+  <div class="ressource__texte">
+    <div class="ressource__titre">https://www.w3schools.com/tags/ref_eventattributes.asp</div>
+    <div class="ressource__desc"><p>Liste non exhaustive d’événements HTML</p>
+</div>
+    <div class="ressource__hote">w3schools.com</div>
+  </div>
+</a>
+<p>Lorsque tu codes des pages HTML, JavaScript permet de &quot;réagir&quot; à ces événements en les écoutant de manière spécifique. Rappelle-toi... Le fameux :</p>
+<div class="bloc-code"><div class="bloc-code__langue">js</div><pre><code class="hljs language-js"><span class="hljs-keyword">const</span> <span class="hljs-title function_">doSomething</span> = (<span class="hljs-params"></span>) =&gt; {
+  <span class="hljs-comment">// do something</span>
+};
+
+element.<span class="hljs-title function_">addEventListener</span>(<span class="hljs-string">&#x27;click&#x27;</span>, doSomething)<span class="hljs-string">`
+</span></code></pre></div>
+<h2>Et dans React ?</h2>
+<p>Dans React, tu dois oublier la méthode <code>addEventListener</code> et utiliser les attributs comme <code>onClick</code> directement dans les balises :</p>
+<div class="bloc-code"><div class="bloc-code__langue">jsx</div><pre><code class="hljs language-jsx">&lt;button onClick={doSomething}&gt;<span class="hljs-title class_">Click</span> <span class="hljs-title class_">Me</span>&lt;/button&gt;
+</code></pre></div>
+<p>Dans React, note que la syntaxe des attributs est en camelCase :</p>
+<ul>
+<li><code>onclick</code> =&gt; <code>onClick</code></li>
+<li><code>onchange</code> =&gt; <code>onChange</code></li>
+<li><code>onmouseleave</code> =&gt; <code>onMouseLeave</code></li>
+<li>...</li>
+</ul>
+<p>Un exemple complet :</p>
+<div class="bloc-code"><div class="bloc-code__langue">jsx</div><pre><code class="hljs language-jsx"><span class="hljs-keyword">function</span> <span class="hljs-title function_">Button</span> (<span class="hljs-params"></span>) {
+  <span class="hljs-keyword">const</span> <span class="hljs-title function_">handleClick</span> = (<span class="hljs-params"></span>) =&gt; {
+    <span class="hljs-title function_">alert</span>(<span class="hljs-string">&quot;Yes, you clicked me!&quot;</span>);
+  };
+
+  <span class="hljs-keyword">return</span> (
+    <span class="language-xml"><span class="hljs-tag">&lt;<span class="hljs-name">button</span> <span class="hljs-attr">onClick</span>=<span class="hljs-string">{handleClick}</span>&gt;</span>
+      Click Me
+    <span class="hljs-tag">&lt;/<span class="hljs-name">button</span>&gt;</span></span>
+  );
+}
+
+<span class="hljs-keyword">export</span> <span class="hljs-keyword">default</span> <span class="hljs-title class_">Button</span>;
+</code></pre></div>
+<p>Génial ! tu sais maintenant écouter les actions de tes utilisateurs.</p>
+<a class="ressource" href="https://react.dev/learn/responding-to-events#adding-event-handlers" target="_blank" rel="noopener noreferrer">
+  <div class="ressource__icone">↗</div>
+  <div class="ressource__texte">
+    <div class="ressource__titre">https://react.dev/learn/responding-to-events#adding-event-handlers</div>
+    <div class="ressource__desc"><p>Pour en savoir plus sur la gestion des événements React.</p>
+</div>
+    <div class="ressource__hote">react.dev</div>
+  </div>
+</a>
+<p>Minute... Comment faire si tu veux déclencher quelque chose sans action d'un utilisateur ? Un bandeau cookies par exemple ?</p>
+<h2>Des événements spécifiques à React</h2>
+<p>Pour cela, tu peux utiliser un autre <em>hook</em> de React : <code>useEffect</code>. Nous allons le découvrir rapidement aujourd'hui et reviendrons plus en profondeur dessus un peu plus tard pour mieux le comprendre...</p>
+<p>Pour le moment, retiens sa syntaxe : <code>useEffect</code>(<code>fonction fléchée</code>, <code>tableau vide</code>)</p>
+<p>Soit :</p>
+<div class="bloc-code"><div class="bloc-code__langue">jsx</div><pre><code class="hljs language-jsx"><span class="hljs-title function_">useEffect</span>(
+   <span class="hljs-function">() =&gt;</span>  {
+     <span class="hljs-comment">// ton code à exécuter</span>
+   }, 
+   []
+);
+</code></pre></div>
+<p>Par exemple :</p>
+<div class="bloc-code"><div class="bloc-code__langue">jsx</div><pre><code class="hljs language-jsx"><span class="hljs-keyword">import</span> { useEffect } <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;react&quot;</span>;
+
+<span class="hljs-keyword">function</span> <span class="hljs-title function_">App</span>(<span class="hljs-params"></span>) {
+  <span class="hljs-title function_">useEffect</span>(
+    <span class="hljs-function">() =&gt;</span> {
+      <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(<span class="hljs-string">&quot;Welcome in this amazing world, this is an automatic message !!!&quot;</span>);
+    },
+    []
+  );
+
+  <span class="hljs-keyword">return</span> <span class="language-xml"><span class="hljs-tag">&lt;<span class="hljs-name">p</span>&gt;</span>Hello !<span class="hljs-tag">&lt;/<span class="hljs-name">p</span>&gt;</span></span>;
+};
+
+<span class="hljs-keyword">export</span> <span class="hljs-keyword">default</span> <span class="hljs-title class_">App</span>;
+</code></pre></div>
+<a class="ressource" href="https://react.dev/learn/synchronizing-with-effects" target="_blank" rel="noopener noreferrer">
+  <div class="ressource__icone">↗</div>
+  <div class="ressource__texte">
+    <div class="ressource__titre">https://react.dev/learn/synchronizing-with-effects</div>
+    <div class="ressource__desc"><p>Pour en savoir plus, tu peux consulter la doc officielle.</p>
+</div>
+    <div class="ressource__hote">react.dev</div>
+  </div>
+</a>
+<h2>Challenge</h2>
+<p>Dans ce challenge, tu vas travailler avec les événements de React pour déclencher des <a href="https://developer.mozilla.org/fr/docs/Web/API/Window/alert" target="_blank" rel="noopener noreferrer">alertes</a> à des moments spécifiques de la vie de ton application.</p>
+<ol class="etapes"><li class="etape"><div class="etape__puce">1</div><div class="etape__contenu"><h4 class="etape__titre">Crée une nouvelle branche</h4><p>Ouvre ton projet existant et crée une nouvelle branche appelée <code>events.1</code>. Cette branche sera utilisée pour développer les fonctionnalités liées aux événements. Assure-toi de partir de la branche <code>state.2</code>.</p>
+</div></li><li class="etape"><div class="etape__puce">2</div><div class="etape__contenu"><h4 class="etape__titre">Ouvre une alerte au démarrage</h4><p>Dans le composant <code>App</code>, ouvre une alerte au &quot;démarrage&quot; de l'application avec le message <code>&quot;hello pokemon trainer :)&quot;</code>. Tu peux utiliser le hook <code>useEffect</code> ici.</p>
+</div></li><li class="etape"><div class="etape__puce">3</div><div class="etape__contenu"><h4 class="etape__titre">Ouvre une alerte lors de la sélection de Pikachu</h4><p>Dans le composant <code>NavBar</code>, détecte lorsque le Pokémon sélectionné devient <code>&quot;pikachu&quot;</code>. Lorsque cela se produit, ouvre une alerte avec le message <code>&quot;pika pikachu !!!&quot;</code>. Tu ne devrais pas utiliser le hook <code>useEffect</code> ici (voir <a href="https://beta.reactjs.org/learn/you-might-not-need-an-effect" target="_blank" rel="noopener noreferrer">&quot;You Might Not Need an Effect&quot;</a>).</p>
+</div></li></ol>
+<p>Vérifie que les alertes s'affichent correctement au démarrage de l'application et lorsque Pikachu est sélectionné dans <code>NavBar</code>.</p>
+<p>Fournis le lien vers la branche <code>events.1</code> de ton dépôt GitHub pour valider cette étape.</p>
+<h3>Critères de validation</h3>
+<ul>
+<li>L'application ouvre une alerte avec le message <code>&quot;hello pokemon trainer :)&quot;</code> au démarrage.</li>
+<li>L'application ouvre une alerte avec le message <code>&quot;pika pikachu !!!&quot;</code> quand le pokemon choisi devient <code>&quot;pikachu&quot;</code>.</li>
+</ul>
+<p>Ce que tu devrais avoir dans :</p>
+<div class="onglets" data-onglets="2"><input type="radio" name="onglets-37" id="onglets-37-0" class="onglets__radio" checked><input type="radio" name="onglets-37" id="onglets-37-1" class="onglets__radio"><div class="onglets__barre"><label class="onglets__label" for="onglets-37-0">App.tsx</label><label class="onglets__label" for="onglets-37-1">NavBar.tsx</label></div><div class="onglets__panneaux"><div class="onglets__panneau"><div class="bloc-code"><div class="bloc-code__langue">jsx</div><pre><code class="hljs language-jsx"><span class="hljs-keyword">import</span> { useEffect, useState } <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;react&quot;</span>;
+<span class="hljs-keyword">import</span> <span class="hljs-string">&quot;./App.css&quot;</span>;
+
+<span class="hljs-keyword">import</span> <span class="hljs-title class_">PokemonCard</span> <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;./components/PokemonCard&quot;</span>;
+<span class="hljs-keyword">import</span> <span class="hljs-title class_">NavBar</span> <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;./components/NavBar&quot;</span>;
+
+<span class="hljs-keyword">const</span> pokemonList = [
+  {
+    <span class="hljs-attr">name</span>: <span class="hljs-string">&quot;bulbasaur&quot;</span>,
+    <span class="hljs-attr">imgSrc</span>:
+      <span class="hljs-string">&quot;https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/1.png&quot;</span>,
+  },
+  {
+    <span class="hljs-attr">name</span>: <span class="hljs-string">&quot;charmander&quot;</span>,
+    <span class="hljs-attr">imgSrc</span>:
+      <span class="hljs-string">&quot;https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/4.png&quot;</span>,
+  },
+  {
+    <span class="hljs-attr">name</span>: <span class="hljs-string">&quot;squirtle&quot;</span>,
+    <span class="hljs-attr">imgSrc</span>:
+      <span class="hljs-string">&quot;https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/7.png&quot;</span>,
+  },
+  {
+    <span class="hljs-attr">name</span>: <span class="hljs-string">&quot;pikachu&quot;</span>,
+    <span class="hljs-attr">imgSrc</span>:
+      <span class="hljs-string">&quot;https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/25.png&quot;</span>,
+  },
+  {
+    <span class="hljs-attr">name</span>: <span class="hljs-string">&quot;mew&quot;</span>,
+  },
+];
+
+<span class="hljs-keyword">function</span> <span class="hljs-title function_">App</span>(<span class="hljs-params"></span>) {
+  <span class="hljs-keyword">const</span> [pokemonName, setPokemonName] = <span class="hljs-title function_">useState</span>(<span class="hljs-string">&quot;bulbasaur&quot;</span>);
+
+  <span class="hljs-title function_">useEffect</span>(<span class="hljs-function">() =&gt;</span> {
+    <span class="hljs-title function_">alert</span>(<span class="hljs-string">&quot;hello pokemon trainer :)&quot;</span>);
+  }, []);
+
+  <span class="hljs-keyword">const</span> pokemon = pokemonList.<span class="hljs-title function_">find</span>(<span class="hljs-function">(<span class="hljs-params">pokemon</span>) =&gt;</span> pokemon.<span class="hljs-property">name</span> === pokemonName);
+
+  <span class="hljs-keyword">if</span> (pokemon == <span class="hljs-literal">null</span>) {
+    <span class="hljs-keyword">throw</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">Error</span>(<span class="hljs-string">&quot;Invalid pokemon name&quot;</span>);
+  }
+  <span class="hljs-keyword">return</span> (
+    <span class="language-xml"><span class="hljs-tag">&lt;<span class="hljs-name">div</span>&gt;</span>
+      <span class="hljs-tag">&lt;<span class="hljs-name">NavBar</span> <span class="hljs-attr">setPokemonName</span>=<span class="hljs-string">{setPokemonName}</span> <span class="hljs-attr">pokemonList</span>=<span class="hljs-string">{pokemonList}</span> /&gt;</span>
+      <span class="hljs-tag">&lt;<span class="hljs-name">PokemonCard</span> <span class="hljs-attr">pokemon</span>=<span class="hljs-string">{pokemon}</span> /&gt;</span>
+    <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span></span>
+  );
+}
+
+<span class="hljs-keyword">export</span> <span class="hljs-keyword">default</span> <span class="hljs-title class_">App</span>;
+</code></pre></div>
+</div><div class="onglets__panneau"><div class="bloc-code"><div class="bloc-code__langue">jsx</div><pre><code class="hljs language-jsx">interface <span class="hljs-title class_">Pokemon</span> {
+  <span class="hljs-attr">name</span>: string;
+  imgSrc?: string;
+}
+
+interface <span class="hljs-title class_">NavBarProps</span> {
+  <span class="hljs-attr">setPokemonName</span>: <span class="hljs-function">(<span class="hljs-params">name: string</span>) =&gt;</span> <span class="hljs-keyword">void</span>;
+  <span class="hljs-attr">pokemonList</span>: <span class="hljs-title class_">Pokemon</span>[];
+}
+
+<span class="hljs-keyword">function</span> <span class="hljs-title function_">NavBar</span>(<span class="hljs-params">{ setPokemonName, pokemonList }: NavBarProps</span>) {
+  <span class="hljs-keyword">return</span> (
+    <span class="language-xml"><span class="hljs-tag">&lt;<span class="hljs-name">nav</span>&gt;</span>
+      {pokemonList.map((onePokemonFromTheList) =&gt; (
+        <span class="hljs-tag">&lt;<span class="hljs-name">button</span>
+          <span class="hljs-attr">key</span>=<span class="hljs-string">{onePokemonFromTheList.name}</span>
+          <span class="hljs-attr">type</span>=<span class="hljs-string">&quot;button&quot;</span>
+          <span class="hljs-attr">onClick</span>=<span class="hljs-string">{()</span> =&gt;</span> {
+            if (onePokemonFromTheList.name === &quot;pikachu&quot;) {
+              alert(&quot;pika pikachu !!!&quot;);
+            }
+            setPokemonName(onePokemonFromTheList.name);
+          }}
+        &gt;
+          {onePokemonFromTheList.name}
+        <span class="hljs-tag">&lt;/<span class="hljs-name">button</span>&gt;</span>
+      ))}
+    <span class="hljs-tag">&lt;/<span class="hljs-name">nav</span>&gt;</span></span>
+  );
+}
+
+<span class="hljs-keyword">export</span> <span class="hljs-keyword">default</span> <span class="hljs-title class_">NavBar</span>;
+</code></pre></div>
+</div></div></div>
+
+  </div>
+  
+</article>
+
+<nav class="nav-quete">
+  <a class="nav-quete__lien nav-quete__lien--prec" href="../../react-bases/009-react-basics-09-pokedex-partager-un-state/index.html">
+           <span class="nav-quete__sens">← Précédent</span>
+           <span class="nav-quete__titre">👩‍🏫 React Basics 09 - Pokédex - Partager un state</span>
+         </a>
+  <span class="nav-quete__lien nav-quete__lien--vide"></span>
+</nav>
+</main>
+<footer class="pied">
+  <p>Archive personnelle des cours suivis à la Wild Code School. Copie hors ligne à usage strictement privé.</p>
+</footer>
+
+<script src="../../assets/copie-code.js"></script>
+<script src="../../assets/progression.js"></script>
+</body>
+</html>

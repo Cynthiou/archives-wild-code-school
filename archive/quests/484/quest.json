@@ -1,0 +1,44 @@
+{
+  "id": 484,
+  "titre": "02 - Récupérer des informations avec SELECT",
+  "titres": {
+    "fr": "02 - Récupérer des informations avec SELECT"
+  },
+  "theme": {
+    "id": 8,
+    "slug": "database",
+    "nom": "Base de données"
+  },
+  "creeLe": "2019-03-20T15:56:37.069+01:00",
+  "difficulte": "",
+  "dureeEstimee": null,
+  "modeValidation": "student",
+  "chapitres": [
+    {
+      "id": 13841,
+      "type": "content",
+      "langue": "fr",
+      "majLe": "2024-12-01T12:39:12.506+01:00",
+      "caracteres": 9430
+    },
+    {
+      "id": 12487,
+      "type": "solution",
+      "langue": "fr",
+      "majLe": "2024-10-30T14:35:18.343+01:00",
+      "caracteres": 2403
+    }
+  ],
+  "ressources": [
+    {
+      "link": "https://sqlzoo.net/wiki/SQL_Tutorial",
+      "description": "Pour reviser et s'entrainer aux requêtes SQL"
+    },
+    {
+      "link": "https://sql.sh/ressources/document/mysql-aide-memoire-sql.pdf",
+      "description": "Un mémo bien fait sur les requêtes, fonctions t type de données SQL"
+    }
+  ],
+  "urlOrigine": "https://odyssey.wildcodeschool.com/quests/484",
+  "archiveLe": "2026-09-02T20:47:21.398Z"
+}

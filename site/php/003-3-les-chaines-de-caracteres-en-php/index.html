@@ -1,0 +1,305 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>3. Les chaînes de caractères en PHP — Archives WCS</title>
+<link rel="stylesheet" href="../../assets/style.css">
+</head>
+<body style="--teinte:#5F83B2">
+<header class="entete">
+  <a class="entete__marque" href="../../index.html">Archives Wild Code School</a>
+</header>
+<main class="contenu">
+<nav class="ariane"><a href="../../index.html">Accueil</a><span class="ariane__sep">›</span><a href="../../php/index.html">PHP</a><span class="ariane__sep">›</span><span aria-current="page">3. Les chaînes de caractères en PHP</span></nav>
+
+<article class="quete">
+  <header class="quete__entete">
+    <a class="pastille pastille--teintee" href="../../php/index.html">PHP</a>
+    <h1>3. Les chaînes de caractères en PHP</h1>
+    <p class="quete__meta">Quête 3 sur 14</p>
+  </header>
+  <div class="cours">
+<h6>⚠️ Avant de commencer cette quête, tu dois avoir terminé les quêtes suivantes :</h6>
+<div class="renvois"><div class="renvois__titre">Quêtes liées</div><ul><li><a href="../../php/002-2-les-variables-en-php/index.html">Quête 141</a></li></ul></div>
+<h1>Introduction</h1>
+<p>Une chaîne de caractères (ou <em>string</em> en anglais) est, comme son nom l'indique, une suite de caractères (lettres, chiffres, ponctuation...), placés dans un ordre défini.
+Pour faire plus simple, un mot ou une phrase sont des chaînes de caractères. Au même titre que les <em>integer</em> ou les <em>array</em>, les <em>string</em> sont un <strong>type de données</strong> en PHP (mais également dans la plupart des langages informatiques).</p>
+<h2>🤓 <strong>À la fin de cette quête, tu seras capable de:</strong></h2>
+<ul>
+<li>✅ Définir et concaténer des chaînes de caractères.</li>
+<li>✅ Effectuer des manipulations simples dessus.</li>
+</ul>
+<h3>Définir une chaîne de caractères</h3>
+<p>En PHP, c'est simple, une chaîne de caractères se définit en l'encadrant par des guillemets simples ou doubles (il y a une petite différence entre les deux, que tu verras juste après).
+On parle plus généralement de <em>simple quote</em> <code>'</code> ou <em>double quote</em> <code>&quot;</code>.</p>
+<p>Il y a plusieurs moyens d'afficher une chaîne de caractères en PHP, mais dans l'immense majorité des cas, tu feras appel à <code>echo</code></p>
+<div class="bloc-code"><div class="bloc-code__langue">php</div><pre><code class="hljs language-php"><span class="hljs-keyword">echo</span> <span class="hljs-string">&#x27;Je suis professeur&#x27;</span>; <span class="hljs-comment">// affiche : Je suis professeur</span>
+
+</code></pre></div>
+<p>Si la chaîne comporte elle-même le caractère <code>'</code> (apostrophe par exemple), il est possible de forcer son affichage en mettant un antislash devant. C'est ce qu'on appelle <em>échapper</em> un caractère.
+Il ne sera alors pas interprété comme une fin de chaîne.</p>
+<div class="bloc-code"><div class="bloc-code__langue">php</div><pre><code class="hljs language-php"><span class="hljs-keyword">echo</span> <span class="hljs-string">&#x27;J\&#x27;aime porter un chapeau&#x27;</span>; <span class="hljs-comment">// affiche : J&#x27;aime porter un chapeau</span>
+<span class="hljs-keyword">echo</span> <span class="hljs-string">&quot;J&#x27;aime porter un chapeau&quot;</span>; <span class="hljs-comment">// affiche la même chose, pas besoin d&#x27;échapper une simple quote dans des doubles quotes et vice versa</span>
+
+</code></pre></div>
+<p>Une chaîne est une donnée, elle peut donc être enregistrée dans une variable. Pour afficher une simple variable, il ne faut pas mettre de quote.</p>
+<div class="bloc-code"><div class="bloc-code__langue">php</div><pre><code class="hljs language-php"><span class="hljs-variable">$firstname</span> = <span class="hljs-string">&#x27;Indiana&#x27;</span>;
+<span class="hljs-variable">$presentation</span> = <span class="hljs-string">&#x27;Indiana Jones est un célèbre archéologue&#x27;</span>;
+
+<span class="hljs-keyword">echo</span> <span class="hljs-variable">$firstname</span>; <span class="hljs-comment">// affiche : Indiana</span>
+
+</code></pre></div>
+<p><img src="http://images.innoveduc.fr/string_indie_tableau.jpeg" alt="" loading="lazy"></p>
+<p>Si tu mets une simple quote autour d'une variable, celle-ci ne sera pas interprétée comme telle.</p>
+<div class="bloc-code"><div class="bloc-code__langue">php</div><pre><code class="hljs language-php"><span class="hljs-keyword">echo</span> <span class="hljs-string">&#x27;$firstname&#x27;</span>; <span class="hljs-comment">// affiche : $firstname</span>
+
+</code></pre></div>
+<p>Par contre (et c'est là la grosse différence), si tu utilises des <strong>doubles</strong> quotes autour d'une variable, celle-ci est bien interprétée.</p>
+<div class="bloc-code"><div class="bloc-code__langue">php</div><pre><code class="hljs language-php"><span class="hljs-keyword">echo</span> <span class="hljs-string">&quot;<span class="hljs-subst">$firstname</span>&quot;</span>; <span class="hljs-comment">// affiche : Indiana</span>
+
+</code></pre></div>
+<p>Du coup, tu peux te demander quand utiliser les simples ou les doubles quotes. Il n'y a pas de règle absolue.
+Généralement, pour de simples chaînes, les simples quotes sont utilisées.  Tu les utiliseras donc la plupart du temps.
+Par contre, dans certains cas, tu seras amené à manipuler des chaînes complexes, c'est-à-dire dans lesquelles tu souhaites afficher le contenu de plusieurs variables. Dans ce cas, les doubles quotes peuvent s'avérer plus adaptées.</p>
+<p>Tu viens de voir comment créer et afficher une chaîne, mais il est également possible de fusionner deux chaînes. C'est ce qui s'appelle, la <strong>concaténation</strong>.</p>
+<p>Pour cela, rien de plus simple, il suffit d'utiliser l'opérateur de concaténation. En PHP, c'est le point <code>.</code> qui sert à cela.</p>
+<div class="bloc-code"><div class="bloc-code__langue">php</div><pre><code class="hljs language-php"><span class="hljs-variable">$firstname</span> = <span class="hljs-string">&#x27;Indiana&#x27;</span>;
+<span class="hljs-variable">$lastname</span> = <span class="hljs-string">&#x27;Jones&#x27;</span>;
+
+<span class="hljs-keyword">echo</span> <span class="hljs-variable">$firstname</span> . <span class="hljs-variable">$lastname</span>;  <span class="hljs-comment">// affiche : IndianaJones</span>
+
+</code></pre></div>
+<p>Comme tu peux le voir, le <code>.</code> a permis de <em>coller</em> les deux chaînes, de les concaténer.
+S'il est d'usage de mettre un espace de part et d'autre du point pour faciliter la lisibilité, ceux-ci ne sont pas considérés comme faisant partie de la chaîne.
+De ce fait, il n'y a pas d'espace entre &quot;Indiana&quot; et &quot;Jones&quot; dans l'exemple. Embêtant, non ?</p>
+<p>Tu vas donc ajouter la chaîne de caractères ' ' entre les deux autres chaînes.</p>
+<div class="bloc-code"><div class="bloc-code__langue">php</div><pre><code class="hljs language-php"><span class="hljs-variable">$fullname</span> = <span class="hljs-variable">$firstname</span> . <span class="hljs-string">&#x27; &#x27;</span> . <span class="hljs-variable">$lastname</span>; <span class="hljs-comment">// le résultat d&#x27;une concaténation peut aussi être enregistré dans une variable.  </span>
+<span class="hljs-keyword">echo</span> <span class="hljs-variable">$fullname</span>; <span class="hljs-comment">// affiche : Indiana Jones</span>
+
+</code></pre></div>
+<p>Cette fois, <code>$fullname</code> contient bien <code>$firstname</code>, suivi d'un espace, suivi de <code>$lastname</code>, super !</p>
+<p>Tu peux aussi dans ce cas utiliser la syntaxe des doubles quotes, ce qui donnera :</p>
+<div class="bloc-code"><div class="bloc-code__langue">php</div><pre><code class="hljs language-php"><span class="hljs-variable">$presentation</span> = <span class="hljs-string">&quot;<span class="hljs-subst">$firstname</span> <span class="hljs-subst">$lastname</span> est un célèbre archéologue&quot;</span>; <span class="hljs-comment">// les variables sont interprétées </span>
+<span class="hljs-keyword">echo</span> <span class="hljs-variable">$presentation</span>; <span class="hljs-comment">// affiche : Indiana Jones est un célèbre archéologue</span>
+
+</code></pre></div>
+<div class="encadre encadre--warning"><div class="encadre__titre">Attention</div><div class="encadre__corps"><p>Tu pourrais être tenté d'utiliser les doubles quotes partout. Ce n'est pas forcément une bonne idée , car une variable perdue dans une longue chaîne peut parfois être difficilement lisible.
+De plus, même si dans la grande majorité des cas tu ne verras aucune différence, note que l'interprétation des variables entre doubles quotes est moins performante qu'utiliser la concaténation.</p>
+</div></div>
+<p>L'opérateur de concaténation peut être utilisé pour ajouter du texte, avant ou après une chaîne.</p>
+<div class="bloc-code"><div class="bloc-code__langue">php</div><pre><code class="hljs language-php"><span class="hljs-variable">$film</span> = <span class="hljs-variable">$fullname</span> . <span class="hljs-string">&#x27; et le temple maudit&#x27;</span>;
+<span class="hljs-keyword">echo</span> <span class="hljs-variable">$film</span>; <span class="hljs-comment">// affiche : Indiana Jones et le temple maudit;</span>
+
+<span class="hljs-variable">$avis</span> = <span class="hljs-string">&#x27;J\&#x27;aime bien regarder &#x27;</span> . <span class="hljs-variable">$film</span>;
+<span class="hljs-keyword">echo</span> <span class="hljs-variable">$avis</span>;  <span class="hljs-comment">// affiche : J&#x27;aime bien regarder Indiana Jones et le temple maudit;</span>
+</code></pre></div>
+<p>Si tu souhaites ajouter un texte en fin d'une chaîne, et affecter cette nouvelle chaîne à la même variable (donc écraser la valeur en cours), tu peux utiliser la syntaxe simplifiée <code>.=</code> (qui mixe l'opérateur de concaténation <code>.</code> et l'opérateur d'affectation <code>=</code>).</p>
+<div class="bloc-code"><div class="bloc-code__langue">php</div><pre><code class="hljs language-php"><span class="hljs-variable">$name</span> = <span class="hljs-string">&#x27;Indiana&#x27;</span>;
+<span class="hljs-variable">$name</span> .= <span class="hljs-string">&#x27; Jones&#x27;</span>; <span class="hljs-comment">// équivalent à $name = $name . &#x27; Jones&#x27;;</span>
+<span class="hljs-keyword">echo</span> <span class="hljs-variable">$name</span>; <span class="hljs-comment">// affiche : Indiana Jones</span>
+
+</code></pre></div>
+<a class="ressource" href="https://secure.php.net/manual/fr/function.echo.php" target="_blank" rel="noopener noreferrer">
+  <div class="ressource__icone">↗</div>
+  <div class="ressource__texte">
+    <div class="ressource__titre">Manuel de echo</div>
+    <div class="ressource__desc"><p>C'est relativement simple à comprendre. Par contre, commence à t'intéresser à la syntaxe courte <code>&lt;?= ?&gt;</code> qui est notamment très utile quand on mixe affichage PHP et HTML.</p>
+</div>
+    <div class="ressource__hote">secure.php.net</div>
+  </div>
+</a>
+<a class="ressource" href="https://secure.php.net/manual/fr/language.types.string.php#language.types.string.syntax.single" target="_blank" rel="noopener noreferrer">
+  <div class="ressource__icone">↗</div>
+  <div class="ressource__texte">
+    <div class="ressource__titre">Petit tour de la documentation sur les strings</div>
+    <div class="ressource__desc"><p>Concentre-toi sur le début de la documentation qui évoque les simples et doubles quotes. Nous n'aborderons pas la syntaxe Heredoc et Nowdoc.</p>
+</div>
+    <div class="ressource__hote">secure.php.net</div>
+  </div>
+</a>
+<h3>Manipulations simples</h3>
+<p>Tu as vu comment créer, afficher et concaténer des chaînes. C'est déjà bien, mais tu vas vite avoir besoin d'aller un peu plus loin que ça.
+Tout d'abord, ta chaîne est constituée de caractères. Parfois, tu veux avoir accès à tel ou tel caractère de cette chaîne.
+Pour cela c'est très simple, la chaîne est manipulable un peu à la manière d'un tableau. Il suffit donc d'indiquer l'index du caractère que tu souhaites récupérer, en commençant bien entendu par zéro pour le premier caractère de la chaîne, et en appelant uniquement des index existants.</p>
+<div class="bloc-code"><div class="bloc-code__langue">phpsandbox</div><pre><code class="hljs language-phpsandbox">https://phpsandbox.io/n/q3-string-manipulation-1-xnxyq?&amp;layout=Editor
+</code></pre></div>
+<div class="encadre encadre--info"><div class="encadre__titre">Info</div><div class="encadre__corps"><p>La constante <code>PHP_EOL</code> que tu vois dans l'exemple ci-dessus sert à effectuer des retours à la ligne qui seront visibles <strong>dans ton terminal</strong>. EOL signifie ici End Of Line. La valeur associée à cette constante est la chaîne de caractères &quot;\n&quot; et puisque c'est une <em>string</em>, elle s'utilise avec l'opérateur de concaténation.</p>
+</div></div>
+<p>Il est possible d'indiquer un index négatif. Cela a le même effet, mais parcours la chaîne depuis la fin, le dernier caractère correspondant à l'index -1.</p>
+<div class="bloc-code"><div class="bloc-code__langue">phpsandbox</div><pre><code class="hljs language-phpsandbox">https://phpsandbox.io/n/q3-string-manipulation-2-pfz4r?&amp;layout=Editor
+</code></pre></div>
+<p><img src="http://images.innoveduc.fr/string_sean_harry.gif" alt="" loading="lazy"></p>
+<p>Tout ça est bien pratique, mais un peu limité tout de même pour des manipulations plus complexes.
+Heureusement, PHP possède un très grand nombre de fonctions natives qui vont te permettre de gagner beaucoup de temps.
+Il en existe vraiment beaucoup, mais certaines sont plus utilisées que d'autres... Tu vas vite connaître par coeur certaines des plus communes.
+Pour les autres, pas de panique, tu n'es pas obligé de tout connaître, il faut juste que tu puisses facilement les retrouver dans la documentation.</p>
+<p>Voici donc une liste non exhaustive de quelques fonctions parmi les plus couramment utilisées.</p>
+<ul>
+<li><a href="https://secure.php.net/manual/en/function.strlen.php" target="_blank" rel="noopener noreferrer">strlen</a> : permet de connaître la taille d'une chaîne, c'est-à-dire le nombre de caractères qui la composent.</li>
+</ul>
+<div class="bloc-code"><div class="bloc-code__langue">php</div><pre><code class="hljs language-php"><span class="hljs-variable">$weapon</span> = <span class="hljs-string">&#x27;fouet&#x27;</span>;
+<span class="hljs-variable">$length</span> = <span class="hljs-title function_ invoke__">strlen</span>(<span class="hljs-variable">$weapon</span>); <span class="hljs-comment">// vaut 5, car fouet contient 5 caractères;</span>
+
+</code></pre></div>
+<ul>
+<li><a href="https://secure.php.net/manual/fr/function.trim.php" target="_blank" rel="noopener noreferrer">trim</a> : permet de tronquer les caractères blancs (espaces, tabulation...) en début et fin d'une chaîne. Il existe les variantes <code>ltrim</code> (<em>left</em>) et <code>rtrim</code> (<em>right</em>) qui font la même chose, mais seulement à gauche et à droite de la chaîne.
+Note également qu'il est possible (optionnellement) d'indiquer à trim un autre type de caractère à tronquer à la place des blancs.</li>
+</ul>
+<div class="bloc-code"><div class="bloc-code__langue">php</div><pre><code class="hljs language-php"><span class="hljs-variable">$temple</span> = <span class="hljs-string">&#x27; maudit  &#x27;</span>;
+<span class="hljs-keyword">echo</span> <span class="hljs-variable">$temple</span>; <span class="hljs-comment">// affiche &quot; maudit  &quot;</span>
+<span class="hljs-keyword">echo</span> <span class="hljs-title function_ invoke__">trim</span>(<span class="hljs-variable">$temple</span>); <span class="hljs-comment">//  affiche &quot;maudit&quot;</span>
+<span class="hljs-keyword">echo</span> <span class="hljs-title function_ invoke__">ltrim</span>(<span class="hljs-variable">$temple</span>); <span class="hljs-comment">// affiche &quot;maudit  &quot;;</span>
+<span class="hljs-keyword">echo</span> <span class="hljs-title function_ invoke__">rtrim</span>(<span class="hljs-variable">$temple</span>); <span class="hljs-comment">// affiche &quot; maudit&quot;;</span>
+
+</code></pre></div>
+<ul>
+<li>
+<p>Manipulation de la casse : PHP est sensible à la casse. C'est-à-dire qu'un caractère minuscule est différent du même caractère en majuscule.
+Autrement dit, <code>'a' != 'A'</code>. Il existe cependant plusieurs fonctions pour modifier la casse.
+Ainsi, <a href="https://secure.php.net/manual/fr/function.strtoupper.php" target="_blank" rel="noopener noreferrer">strtoupper</a>, renvoie une chaîne en majuscule, tandis que <a href="https://secure.php.net/manual/fr/function.strtolower.php" target="_blank" rel="noopener noreferrer">strtolower</a> renvoie une chaîne en minuscule.
+Des variantes existent, comme <a href="https://secure.php.net/manual/fr/function.ucfirst.php" target="_blank" rel="noopener noreferrer">ucfirst</a> qui convertit le premier caractère d'une chaîne en majuscule, ou encore <a href="https://secure.php.net/manual/fr/function.ucwords.php" target="_blank" rel="noopener noreferrer">ucwords</a> qui convertit chaque première lettre des mots d'une phrase en majuscule.</p>
+</li>
+<li>
+<p><a href="https://secure.php.net/manual/fr/function.str-replace.php" target="_blank" rel="noopener noreferrer">str_replace</a> : cette fonction permet de remplacer tout ou partie d'une chaîne par une autre chaîne.</p>
+</li>
+</ul>
+<div class="bloc-code"><div class="bloc-code__langue">phpsandbox</div><pre><code class="hljs language-phpsandbox">https://phpsandbox.io/n/q3-string-manipulation-3-zus4n?&amp;layout=Editor
+</code></pre></div>
+<p>Bien entendu, cela fonctionne uniquement si le motif recherché est trouvé dans la chaîne, sinon la chaîne d'origine non modifiée est renvoyée. Par défaut, <code>str_replace</code> est sensible à la casse, mais il existe <code>str_ireplace</code> qui lui, y est insensible.</p>
+<ul>
+<li>
+<p>Conversion : il existe également des fonctions qui vont aider à échapper certains caractères automatiquement. Par exemple, <a href="https://secure.php.net/manual/fr/function.htmlentities.php" target="_blank" rel="noopener noreferrer">htmlentities</a> convertit automatiquement les balises HTML contenues dans la chaîne, pour qu'elles ne soient pas interprétées à l'affichage.
+Cela évite des problèmes d'affichage ou d'injection de code malveillant dans une page. Il existe d'autres fonctions utiles comme <a href="https://secure.php.net/manual/fr/function.addslashes.php" target="_blank" rel="noopener noreferrer">addslashes</a>, <a href="https://secure.php.net/manual/fr/function.urlencode.php" target="_blank" rel="noopener noreferrer">url_encode</a>, <a href="https://secure.php.net/manual/fr/function.nl2br.php" target="_blank" rel="noopener noreferrer">nl2br</a>...</p>
+</li>
+<li>
+<p><a href="https://secure.php.net/manual/fr/function.explode.php" target="_blank" rel="noopener noreferrer">explode</a> et <a href="https://secure.php.net/manual/fr/function.implode.php" target="_blank" rel="noopener noreferrer">implode</a> : Ces deux fonctions, souvent indissociables l'une de l'autre, sont très utilisées.
+Elles permettent pour <code>explode</code> de convertir une chaîne de caractères en un tableau (en fonction d'un délimiteur) et pour <code>implode</code>, de faire l'opération inverse.</p>
+</li>
+</ul>
+<div class="bloc-code"><div class="bloc-code__langue">php</div><pre><code class="hljs language-php"><span class="hljs-variable">$team</span> = <span class="hljs-string">&#x27;Harrison Steven George&#x27;</span>;
+<span class="hljs-variable">$persons</span> = <span class="hljs-title function_ invoke__">explode</span>(<span class="hljs-string">&#x27; &#x27;</span>, <span class="hljs-variable">$team</span>); 
+<span class="hljs-comment">// la chaîne $team a été explosée en fonction du délimiteur &#x27;espace&#x27;, en un tableau contenant [&#x27;Harrison&#x27;, &#x27;Steven&#x27;, &#x27;George&#x27;]. </span>
+<span class="hljs-comment">// le caractère délimiteur &#x27;espace&#x27; n&#x27;est plus présent dans le tableau obtenu.</span>
+<span class="hljs-comment">// Pour utiliser explode(), le délimiteur est un paramètre obligatoire.</span>
+
+<span class="hljs-keyword">echo</span> <span class="hljs-title function_ invoke__">implode</span> (<span class="hljs-string">&#x27;,&#x27;</span>, <span class="hljs-variable">$persons</span>); 
+<span class="hljs-comment">// implode prend en paramètres un délimiteur et un tableau. </span>
+<span class="hljs-comment">// affiche &quot;Harrison,Steven,George&quot;. Une chaîne est créée à partir des chaînes contenues dans le tableau, et le délimiteur (ici la virgule) est placé entre chaque élément du tableau.</span>
+<span class="hljs-comment">// pour utiliser implode(), le délimiteur est un paramètre optionnel</span>
+<span class="hljs-keyword">echo</span> <span class="hljs-title function_ invoke__">implode</span>(<span class="hljs-variable">$persons</span>); <span class="hljs-comment">// affiche &quot;HarrisonStevenGeorge&quot;.</span>
+
+</code></pre></div>
+<p><img src="http://images.innoveduc.fr/strings_harry_steven_georges.png" alt="" loading="lazy"></p>
+<div class="encadre encadre--info"><div class="encadre__titre">Info</div><div class="encadre__corps"><p>Certains caractères, notamment les caractères accentués ou de langues étrangères, sont codés sur plusieurs octets (car un seul ne suffisait pas).
+Dans ce cas, l'utilisation des fonctions de manipulation de chaînes classiques peut poser des problèmes (obtentions de résultats tronqués, erronés, de chaînes corrompues...).
+Par exemple, <code>strlen('é')</code> donne 2 et non 1, car le caractère 'é' est codé sur 2 octets !
+Pour résoudre cette problématique, il a été ajouté à PHP un module appelé mbstring,  qui fournit des équivalences multi-octets aux fonctions de chaînes de caractères classiques.
+Elles sont alors préfixées par mb_, par exemple mb_strlen, mb_strtoupper... Si ce module n'est pas installé, tu peux le faire dans ton terminal via la commande
+<code>sudo apt install php-mbstring</code>. Tu devras ensuite relancer ton serveur HTTP.</p>
+</div></div>
+<a class="ressource" href="https://secure.php.net/manual/fr/book.mbstring.php" target="_blank" rel="noopener noreferrer">
+  <div class="ressource__icone">↗</div>
+  <div class="ressource__texte">
+    <div class="ressource__titre">Les mêmes dans leur version multi-octets</div>
+    <div class="ressource__desc"><p>Pense à ces fonctions si tu es amené à travailler, par exemple, avec des caractères accentués ou étrangers.</p>
+</div>
+    <div class="ressource__hote">secure.php.net</div>
+  </div>
+</a>
+<a class="ressource" href="https://secure.php.net/manual/fr/ref.strings.php" target="_blank" rel="noopener noreferrer">
+  <div class="ressource__icone">↗</div>
+  <div class="ressource__texte">
+    <div class="ressource__titre">Principales fonctions pour manipuler les strings</div>
+    <div class="ressource__desc"><p>Cette liste est à peu près exhaustive, ça fait beaucoup ! Tu n'as pas à toutes les apprendre, mais il faut savoir les retrouver facilement dans la doc.</p>
+</div>
+    <div class="ressource__hote">secure.php.net</div>
+  </div>
+</a>
+<h1>💪 Challenge</h1>
+<h3>Un message codé pour Indy</h3>
+<p>Indiana Jones, le célèbre professeur/archéologue/aventurier, vient de récupérer trois papyrus antiques contenant chacun un message codé !
+Heureusement, il a également découvert la manière de le déchiffrer, mais c'est un peu compliqué de le faire à la main.
+Il te donne alors les instructions pour que tu développes un petit script permettant d'automatiser le processus.
+Cela pourra être d'autant plus utile s'il rencontre à nouveau ce système de chiffrement plus tard.</p>
+<p>Voici comment procéder :</p>
+<ul>
+<li>Calculer la longueur de la chaîne et la diviser par 2, tu obtiendras ainsi le &quot;chiffre-clé&quot;.</li>
+<li>Récupère ensuite la <a href="https://secure.php.net/manual/fr/function.substr.php" target="_blank" rel="noopener noreferrer">sous-chaîne</a> de la longueur du chiffre-clé en commençant à partir du 6ème caractère.</li>
+<li>Remplace les chaînes '@#?' par un espace.</li>
+<li>Pour finir, <a href="https://secure.php.net/manual/fr/function.strrev.php" target="_blank" rel="noopener noreferrer">inverse</a> la chaîne de caractères.</li>
+</ul>
+<p>Lance ton code sur chacun des messages suivants, et poste ensuite le code PHP que tu as écrit, ainsi que les textes déchiffrés en commentaires.</p>
+<ul>
+<li>message 1 : 0@sn9sirppa@#?ia'jgtvryko1</li>
+<li>message 2 : q8e?wsellecif@#?sel@#?setuotpazdsy0*b9+mw@x1vj</li>
+<li>message 3 : aopi?sgnirts@#?sedhtg+p9l!</li>
+</ul>
+<h3>Critères de validation</h3>
+<ul>
+<li>Le message secret est bien déchiffré. Il faudra lancer le script trois fois, une fois pour chaque message, pour confirmer que tout fonctionne correctement.</li>
+</ul>
+<p>==$==</p>
+<h1>Solution 1</h1>
+<div class="bloc-code"><div class="bloc-code__langue">php</div><pre><code class="hljs language-php"><span class="hljs-meta">&lt;?php</span>
+
+<span class="hljs-variable">$message1</span> = <span class="hljs-string">&quot;0@sn9sirppa@#?ia&#x27;jgtvryko1&quot;</span>;
+<span class="hljs-variable">$keyFigure</span> = <span class="hljs-title function_ invoke__">mb_strlen</span>(<span class="hljs-variable">$message1</span>) / <span class="hljs-number">2</span>;
+<span class="hljs-variable">$message1</span> = <span class="hljs-title function_ invoke__">substr</span>(<span class="hljs-variable">$message1</span>, <span class="hljs-number">5</span>, <span class="hljs-variable">$keyFigure</span>);
+<span class="hljs-variable">$message1</span> = <span class="hljs-title function_ invoke__">str_replace</span>(<span class="hljs-string">&#x27;@#?&#x27;</span>, <span class="hljs-string">&#x27; &#x27;</span>, <span class="hljs-variable">$message1</span>);
+<span class="hljs-keyword">echo</span> <span class="hljs-title function_ invoke__">strrev</span>(<span class="hljs-variable">$message1</span>) . PHP_EOL;
+
+<span class="hljs-variable">$message2</span> = <span class="hljs-string">&quot;q8e?wsellecif@#?sel@#?setuotpazdsy0*b9+mw@x1vj&quot;</span>;
+<span class="hljs-variable">$keyFigure</span> = <span class="hljs-title function_ invoke__">mb_strlen</span>(<span class="hljs-variable">$message2</span>) / <span class="hljs-number">2</span>;
+<span class="hljs-variable">$message2</span> = <span class="hljs-title function_ invoke__">substr</span>(<span class="hljs-variable">$message2</span>, <span class="hljs-number">5</span>, <span class="hljs-variable">$keyFigure</span>);
+<span class="hljs-variable">$message2</span> = <span class="hljs-title function_ invoke__">str_replace</span>(<span class="hljs-string">&#x27;@#?&#x27;</span>, <span class="hljs-string">&#x27; &#x27;</span>, <span class="hljs-variable">$message2</span>);
+<span class="hljs-keyword">echo</span> <span class="hljs-title function_ invoke__">strrev</span>(<span class="hljs-variable">$message2</span>) . PHP_EOL;
+
+<span class="hljs-variable">$message3</span> = <span class="hljs-string">&quot;aopi?sgnirts@#?sedhtg+p9l!&quot;</span>;
+<span class="hljs-variable">$keyFigure</span> = <span class="hljs-title function_ invoke__">mb_strlen</span>(<span class="hljs-variable">$message3</span>) / <span class="hljs-number">2</span>;
+<span class="hljs-variable">$message3</span> = <span class="hljs-title function_ invoke__">substr</span>(<span class="hljs-variable">$message3</span>, <span class="hljs-number">5</span>, <span class="hljs-variable">$keyFigure</span>);
+<span class="hljs-variable">$message3</span> = <span class="hljs-title function_ invoke__">str_replace</span>(<span class="hljs-string">&#x27;@#?&#x27;</span>, <span class="hljs-string">&#x27; &#x27;</span>, <span class="hljs-variable">$message3</span>);
+<span class="hljs-keyword">echo</span> <span class="hljs-title function_ invoke__">strrev</span>(<span class="hljs-variable">$message3</span>) . PHP_EOL;
+</code></pre></div>
+<h1>Solution 2</h1>
+<p>Identique à la solution 1 mais en utilisant une fonction pour éviter de répéter le code commun.</p>
+<div class="bloc-code"><div class="bloc-code__langue">php</div><pre><code class="hljs language-php"><span class="hljs-meta">&lt;?php</span>
+
+<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">decryptMessage</span>(<span class="hljs-params"><span class="hljs-variable">$message</span></span>) </span>{
+    <span class="hljs-variable">$keyFigure</span> = <span class="hljs-title function_ invoke__">mb_strlen</span>(<span class="hljs-variable">$message</span>) / <span class="hljs-number">2</span>;
+    <span class="hljs-variable">$message</span> = <span class="hljs-title function_ invoke__">substr</span>(<span class="hljs-variable">$message</span>, <span class="hljs-number">5</span>, <span class="hljs-variable">$keyFigure</span>);
+    <span class="hljs-variable">$message</span> = <span class="hljs-title function_ invoke__">str_replace</span>(<span class="hljs-string">&#x27;@#?&#x27;</span>, <span class="hljs-string">&#x27; &#x27;</span>, <span class="hljs-variable">$message</span>);
+    <span class="hljs-keyword">return</span> <span class="hljs-title function_ invoke__">strrev</span>(<span class="hljs-variable">$message</span>);
+}
+
+<span class="hljs-variable">$message1</span> = <span class="hljs-string">&quot;0@sn9sirppa@#?ia&#x27;jgtvryko1&quot;</span>;
+<span class="hljs-keyword">echo</span> <span class="hljs-title function_ invoke__">decryptMessage</span>(<span class="hljs-variable">$message1</span>) . PHP_EOL;
+<span class="hljs-variable">$message2</span> = <span class="hljs-string">&quot;q8e?wsellecif@#?sel@#?setuotpazdsy0*b9+mw@x1vj&quot;</span>;
+<span class="hljs-keyword">echo</span> <span class="hljs-title function_ invoke__">decryptMessage</span>(<span class="hljs-variable">$message2</span>) . PHP_EOL;
+<span class="hljs-variable">$message3</span> = <span class="hljs-string">&quot;aopi?sgnirts@#?sedhtg+p9l!&quot;</span>;
+<span class="hljs-keyword">echo</span> <span class="hljs-title function_ invoke__">decryptMessage</span>(<span class="hljs-variable">$message3</span>) . PHP_EOL;
+</code></pre></div>
+
+  </div>
+  
+</article>
+
+<nav class="nav-quete">
+  <a class="nav-quete__lien nav-quete__lien--prec" href="../../php/002-2-les-variables-en-php/index.html">
+           <span class="nav-quete__sens">← Précédent</span>
+           <span class="nav-quete__titre">2. Les variables en PHP</span>
+         </a>
+  <a class="nav-quete__lien nav-quete__lien--suiv" href="../../php/004-4-1-les-tableaux-et-boucles-en-php/index.html">
+           <span class="nav-quete__sens">Suivant →</span>
+           <span class="nav-quete__titre">4.1. Les tableaux et boucles en PHP</span>
+         </a>
+</nav>
+</main>
+<footer class="pied">
+  <p>Archive personnelle des cours suivis à la Wild Code School. Copie hors ligne à usage strictement privé.</p>
+</footer>
+
+<script src="../../assets/copie-code.js"></script>
+<script src="../../assets/progression.js"></script>
+</body>
+</html>

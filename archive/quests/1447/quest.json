@@ -1,0 +1,28 @@
+{
+  "id": 1447,
+  "titre": "React Intermédiaire 03.1 - Formulaires et composants contrôlés",
+  "titres": {
+    "fr": "React Intermédiaire 03.1 - Formulaires et composants contrôlés"
+  },
+  "theme": {
+    "id": 78,
+    "slug": "react-intermediate",
+    "nom": "React - Intermédiaire"
+  },
+  "creeLe": "2020-10-26T16:26:42.951+01:00",
+  "difficulte": "0",
+  "dureeEstimee": null,
+  "modeValidation": "self",
+  "chapitres": [
+    {
+      "id": 17733,
+      "type": "content",
+      "langue": "fr",
+      "majLe": "2025-04-07T07:47:32.326+02:00",
+      "caracteres": 8379
+    }
+  ],
+  "ressources": [],
+  "urlOrigine": "https://odyssey.wildcodeschool.com/quests/1447",
+  "archiveLe": "2026-09-02T20:54:00.358Z"
+}

@@ -1,0 +1,153 @@
+{
+  "id": 3042,
+  "titre": "Utiliser GitHub",
+  "titres": {
+    "fr": "Utiliser GitHub"
+  },
+  "theme": {
+    "id": 6,
+    "slug": "git",
+    "nom": "Git"
+  },
+  "creeLe": "2024-04-30T12:19:40.964+02:00",
+  "difficulte": "1",
+  "dureeEstimee": null,
+  "modeValidation": "self",
+  "chapitres": [
+    {
+      "id": 16088,
+      "type": "content",
+      "langue": "fr",
+      "majLe": "2025-02-12T19:04:01.102+01:00",
+      "caracteres": 9938
+    }
+  ],
+  "ressources": [
+    {
+      "link": "https://github.com/juliabelhassen/wildcodeschoolprojects/blob/main/README.md",
+      "description": "Mon premier readme sur github"
+    },
+    {
+      "link": "https://github.com/Saddemga/Saddemga",
+      "description": "1ère quête !"
+    },
+    {
+      "link": "https://github.com/Pdev33/test.git",
+      "description": "Première quête !"
+    },
+    {
+      "link": "https://github.com/Jordan-182/Wild",
+      "description": "Première quête"
+    },
+    {
+      "link": "https://github.com/Joey-dev85/Exo1",
+      "description": "1ere quête "
+    },
+    {
+      "link": "https://github.com/Alexhian/Test",
+      "description": "Première quête"
+    },
+    {
+      "link": "https://github.com/franksena/firstwild",
+      "description": "nouvelle quête"
+    },
+    {
+      "link": "https://github.com/Sylviatoo/1sttry.git",
+      "description": "Mon premier projet github wild code school"
+    },
+    {
+      "link": "https://github.com/itisalicia/premierProjetWildCodeSchool.git",
+      "description": "Premier projet Wild Code School !"
+    },
+    {
+      "link": "https://github.com/hakkenheiner/go-to-the-wild-code-school",
+      "description": "Première quête réalisée ! "
+    },
+    {
+      "link": "https://github.com/Aghiles-Belkalem/README.md.git",
+      "description": "Premier pas sur Github"
+    },
+    {
+      "link": "https://github.com/EmiLy-Ly-san/FictionalProjectWilders.git",
+      "description": "Premier repo avec la Wild Code School"
+    },
+    {
+      "link": "https://github.com/CharlesMwilder/WildSchoolDepot1/blob/main/README.md",
+      "description": "Mon dépôt Github avec Solution et Readme avec image!"
+    },
+    {
+      "link": "https://learngitbranching.js.org/?locale=fr_FR",
+      "description": "Permet d'apprendre à utiliser les branches, toussa toussa"
+    },
+    {
+      "link": "https://github.com/Edwige-Roussin/Mon-premier_projet",
+      "description": "Mon premier dossier sur github"
+    },
+    {
+      "link": "https://github.com/CharlesCatto/Myfirstone.git",
+      "description": "Premier projet :)"
+    },
+    {
+      "link": "https://github.com/Lesageemeric/Nouveau_d-p-t_perso.git",
+      "description": "Premiers pas, ça ne ressemble à rien x)"
+    },
+    {
+      "link": "https://github.com/Icebergb1/First-Try/tree/main",
+      "description": "Le 1er d'une longue série"
+    },
+    {
+      "link": "https://github.com/Fakez92/Quete1.git",
+      "description": "Quête numéro 1."
+    },
+    {
+      "link": "https://github.com/Prehistory-Banane/Factory",
+      "description": "Première quête"
+    },
+    {
+      "link": "https://github.com/cedricrighi/quete1.git",
+      "description": "Quête 1 github"
+    },
+    {
+      "link": "https://github.com/CamilleCalvel/Test-Github.git",
+      "description": "Ma première quête sur GitHub"
+    },
+    {
+      "link": "https://github.com/Philyon/Demarrage-formation-TSSR",
+      "description": "Aller hop, c'est parti pour un premier repo sur Git !"
+    },
+    {
+      "link": "https://github.com/Baudwild/Challenge-GitHub-",
+      "description": "première fois sur GitHub "
+    },
+    {
+      "link": "https://github.com/Antoine227/Projet_perso_1",
+      "description": "Quête Github"
+    },
+    {
+      "link": "https://github.com/JeremyPerezGit/NoNameAllowed",
+      "description": "ça c'est un lien incroyable"
+    },
+    {
+      "link": "https://github.com/Ochoooooo/Test-Projet",
+      "description": "Première quête !"
+    },
+    {
+      "link": "https://github.com/Faricoder/solution.txt",
+      "description": "Challenge en cours!!"
+    },
+    {
+      "link": "https://github.com/Balt21/Wild-Code-School",
+      "description": "Première quête "
+    },
+    {
+      "link": "https://github.com/RomainVarra/Test",
+      "description": "1ère quête ! "
+    },
+    {
+      "link": "https://github.com/gregorydatis/Github.git",
+      "description": "mon premier dépôt github"
+    }
+  ],
+  "urlOrigine": "https://odyssey.wildcodeschool.com/quests/3042",
+  "archiveLe": "2026-09-02T20:53:26.194Z"
+}

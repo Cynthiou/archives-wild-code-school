@@ -1,0 +1,74 @@
+{
+  "id": 2138,
+  "titre": "Git/GitHub 3 : Remote",
+  "titres": {
+    "en": "Git/GitHub 3: Remote",
+    "fr": "Git/GitHub 3 : Remote"
+  },
+  "theme": {
+    "id": 6,
+    "slug": "git",
+    "nom": "Git"
+  },
+  "creeLe": "2022-06-28T11:41:45.293+02:00",
+  "difficulte": "0",
+  "dureeEstimee": null,
+  "modeValidation": "student",
+  "chapitres": [
+    {
+      "id": 12261,
+      "type": "content",
+      "langue": "fr",
+      "majLe": "2024-10-01T14:41:12.980+02:00",
+      "caracteres": 10459
+    }
+  ],
+  "ressources": [
+    {
+      "link": "https://www.youtube.com/watch?v=yXT1ElMEkW8",
+      "description": "using push pull commit remote...."
+    },
+    {
+      "link": "https://fr.w3docs.com/snippets/git/comment-generer-une-cle-ssh-pour-git.html",
+      "description": "Pour gérer les clees SSH c'est trés bien argumenté "
+    },
+    {
+      "link": "https://www.youtube.com/watch?v=gxQKw7A6qDM&ab_channel=IT-Connect",
+      "description": "Qu'est-ce que le protocole SSH ? A quoi sert le protocole SSH ? Terminal distant, transfert de fichiers, etc..."
+    },
+    {
+      "link": "https://www.youtube.com/watch?v=RGOj5yH7evk&ab_channel=freeCodeCamp.org",
+      "description": "crash course on the basics "
+    },
+    {
+      "link": "https://education.github.com/git-cheat-sheet-education.pdf",
+      "description": "git cheat sheet la feuille qui explique les commande de git. Disponible en français dans les ressources de la quête 2"
+    },
+    {
+      "link": "https://www.youtube.com/watch?v=8X4u9sca3Io",
+      "description": "Great Youtube video explaining in details how to create and add your ssh key to GitHub"
+    },
+    {
+      "link": "https://www.youtube.com/watch?v=RGOj5yH7evk",
+      "description": "Git and GitHub CrashCourse (May20, 1h08, time-stamped sections)"
+    },
+    {
+      "link": "https://training.github.com/downloads/fr/github-git-cheat-sheet.pdf",
+      "description": "Pour avoir les commandes de bases de GIT !"
+    },
+    {
+      "link": "https://www.hostinger.fr/tutoriels/commandes-git#Git_config",
+      "description": "les commandes de git"
+    },
+    {
+      "link": "https://docs.github.com/en/authentication/connecting-to-github-with-ssh",
+      "description": "La doc officielle de github pour troubleshooter des problèmes SSH"
+    },
+    {
+      "link": "https://desktop.github.com/download/",
+      "description": "Petit outils très efficace pour les synchros sans soucis de clé SSH"
+    }
+  ],
+  "urlOrigine": "https://odyssey.wildcodeschool.com/quests/2138",
+  "archiveLe": "2026-09-02T20:53:23.347Z"
+}

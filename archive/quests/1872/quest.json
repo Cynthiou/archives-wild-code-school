@@ -1,0 +1,37 @@
+{
+  "id": 1872,
+  "titre": "React Intermédiaire 02 - Context API",
+  "titres": {
+    "fr": "React Intermédiaire 02 - Context API"
+  },
+  "theme": {
+    "id": 78,
+    "slug": "react-intermediate",
+    "nom": "React - Intermédiaire"
+  },
+  "creeLe": "2021-11-08T11:59:05.698+01:00",
+  "difficulte": "0",
+  "dureeEstimee": null,
+  "modeValidation": "student",
+  "chapitres": [
+    {
+      "id": 18186,
+      "type": "content",
+      "langue": "fr",
+      "majLe": "2025-05-12T17:20:21.650+02:00",
+      "caracteres": 9421
+    }
+  ],
+  "ressources": [
+    {
+      "link": "https://youtu.be/AhnPjl5rovQ",
+      "description": "React Context : la communication entre composants éloignés. Lior nous fait un exemple sans context, puis démontre l'intérêt de Context"
+    },
+    {
+      "link": "https://www.youtube.com/watch?v=WayVzizZRLk&ab_channel=Grafikart.fr",
+      "description": "React : Chapitre 23, Les contextes  Grafikart.fr"
+    }
+  ],
+  "urlOrigine": "https://odyssey.wildcodeschool.com/quests/1872",
+  "archiveLe": "2026-09-02T20:53:59.582Z"
+}

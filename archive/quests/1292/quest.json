@@ -1,0 +1,49 @@
+{
+  "id": 1292,
+  "titre": "👩‍🏫 CSS 5 : Grid",
+  "titres": {
+    "fr": "👩‍🏫 CSS 5 : Grid"
+  },
+  "theme": {
+    "id": 12,
+    "slug": "html",
+    "nom": "CSS"
+  },
+  "creeLe": "2020-07-15T16:24:00.723+02:00",
+  "difficulte": "0",
+  "dureeEstimee": null,
+  "modeValidation": "self",
+  "chapitres": [
+    {
+      "id": 12567,
+      "type": "content",
+      "langue": "fr",
+      "majLe": "2024-11-05T09:50:13.179+01:00",
+      "caracteres": 15860
+    }
+  ],
+  "ressources": [
+    {
+      "link": "https://cssgridgarden.com/#fr",
+      "description": "It's a game like FLEXBOX FROGGY . So cool for understand Grid"
+    },
+    {
+      "link": "https://css-tricks.com/snippets/css/complete-guide-grid/",
+      "description": "Best grid ressource"
+    },
+    {
+      "link": "https://webkit.org/demos/css-grid/",
+      "description": "Guide Demo Grid"
+    },
+    {
+      "link": "https://fireship.io/lessons/three-responsive-css-grid-layouts/",
+      "description": "The following lesson contains three examples of CSS Grid layouts. To create a photo gallery for exemple."
+    },
+    {
+      "link": "https://grid.layoutit.com/?source=codeur-com-blog&utm_source=codeur-com-blog",
+      "description": "Pour aider à la réaliser des Grid"
+    }
+  ],
+  "urlOrigine": "https://odyssey.wildcodeschool.com/quests/1292",
+  "archiveLe": "2026-09-02T20:52:45.480Z"
+}

@@ -1,0 +1,216 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>👩‍🏫 JS Intermédiaire 05bis - Programmation Orientée Objet - Prototype — Archives WCS</title>
+<link rel="stylesheet" href="../../assets/style.css">
+</head>
+<body style="--teinte:#854200">
+<header class="entete">
+  <a class="entete__marque" href="../../index.html">Archives Wild Code School</a>
+</header>
+<main class="contenu">
+<nav class="ariane"><a href="../../index.html">Accueil</a><span class="ariane__sep">›</span><a href="../../javascript-beyond-the-basics/index.html">JavaScript - Beyond the Basics</a><span class="ariane__sep">›</span><span aria-current="page">👩‍🏫 JS Intermédiaire 05bis - Programmation Orientée Objet - Prototype</span></nav>
+
+<article class="quete">
+  <header class="quete__entete">
+    <a class="pastille pastille--teintee" href="../../javascript-beyond-the-basics/index.html">JavaScript - Beyond the Basics</a>
+    <h1>👩‍🏫 JS Intermédiaire 05bis - Programmation Orientée Objet - Prototype</h1>
+    <p class="quete__meta">Quête 8 sur 8 · 1 image archivée</p>
+  </header>
+  <div class="cours">
+<h6>⚠️ Avant de démarrer cette quête, nous te conseillons de compléter d'abord celle-ci :</h6>
+<div class="renvois"><div class="renvois__titre">Quêtes liées</div><ul><li><a href="../../javascript-beyond-the-basics/007-js-intermediaire-05-programmation-orientee-objet/index.html">Quête 1320</a></li></ul></div>
+<h1>Introduction</h1>
+<p>Bien que le mot-clé <code>class</code> soit disponible depuis la version ES6 de JavaScript, cela n'a pas toujours été le cas, et pourtant la POO était déjà possible. En effet, le mot-clé <code>class</code> n'est que du <a href="https://fr.wikipedia.org/wiki/Sucre_syntaxique" target="_blank" rel="noopener noreferrer">sucre syntaxique</a> qui &quot;cache&quot; des mécanismes sous-jacents.</p>
+<p>Javascript est souvent décrit comme un <strong>langage basé sur des prototypes.</strong> Nous allons voir pourquoi dans quelques instants.</p>
+<p>Si tu veux avoir une compréhension plus profonde du fonctionnement de JavaScript, cette quête est pour toi !</p>
+<h1>🤓 A la fin de cette quête, tu seras capable :</h1>
+<p>✅ Comprendre la notion de prototype
+✅ Comprendre la notion d'héritage prototypique</p>
+<h1>💫 Les prototypes</h1>
+<p>Partons de cet exemple :</p>
+<div class="bloc-code"><div class="bloc-code__langue">javascript</div><pre><code class="hljs language-javascript"><span class="hljs-keyword">function</span> <span class="hljs-title function_">Enemy</span>(<span class="hljs-params">name, level, emoji, attackName</span>) {
+  <span class="hljs-variable language_">this</span>.<span class="hljs-property">name</span> = name;
+  <span class="hljs-variable language_">this</span>.<span class="hljs-property">level</span> = level;
+  <span class="hljs-variable language_">this</span>.<span class="hljs-property">emoji</span> = emoji;
+  <span class="hljs-variable language_">this</span>.<span class="hljs-property">attackName</span> = attackName;
+
+  <span class="hljs-variable language_">this</span>.<span class="hljs-property">attack</span> = <span class="hljs-keyword">function</span> (<span class="hljs-params"></span>) {
+    <span class="hljs-keyword">return</span> <span class="hljs-string">`<span class="hljs-subst">${<span class="hljs-variable language_">this</span>.name}</span> <span class="hljs-subst">${<span class="hljs-variable language_">this</span>.attackName}</span> you!`</span>;
+  };
+}
+
+<span class="hljs-keyword">const</span> enemies = [
+  <span class="hljs-keyword">new</span> <span class="hljs-title class_">Enemy</span>(<span class="hljs-string">&quot;Spider&quot;</span>, <span class="hljs-number">1</span>, <span class="hljs-string">&quot;🕷&quot;</span>, <span class="hljs-string">&quot;bites&quot;</span>),
+  <span class="hljs-keyword">new</span> <span class="hljs-title class_">Enemy</span>(<span class="hljs-string">&quot;Snake&quot;</span>, <span class="hljs-number">6</span>, <span class="hljs-string">&quot;🐍&quot;</span>, <span class="hljs-string">&quot;bites&quot;</span>),
+  <span class="hljs-keyword">new</span> <span class="hljs-title class_">Enemy</span>(<span class="hljs-string">&quot;Bear&quot;</span>, <span class="hljs-number">25</span>, <span class="hljs-string">&quot;🐻&quot;</span>, <span class="hljs-string">&quot;scratches&quot;</span>),
+];
+</code></pre></div>
+<p>Il y a un petit problème : ici, chaque fois que nous créons une nouvelle <strong>instance</strong> de l'ennemi (ce qui est renvoyé par le mot-clé <code>new</code> s'appelle une instance), <strong>nous recréons aussi une nouvelle fonction</strong> <code>attack</code><strong>.</strong></p>
+<p>Si les autres propriétés (name, level, ...) diffèrent d'une instance à l'autre (puisque différents objets auront des caractéristiques différentes), la fonction <code>attack</code> fait quant à elle strictement la même chose pour chacune des instances. Cela n'a donc pas vraiment de sens de créer une nouvelle fonction à chaque fois.</p>
+<p>Pour résoudre ce problème, nous pouvons utiliser ce que nous appelons le prototype.
+Le <strong>prototype</strong> est la <strong>boîte à outils</strong> d'un objet.</p>
+<p>Lorsque tu crées une <strong>nouvelle</strong> instance, cette dernière <strong>hérite</strong> des propriétés du prototype et aura accès à toutes les fonctions définies sur ce dernier.</p>
+<p>Dès lors qu'on passe par le prototype, on ne recrée pas la fonction pour chaque <strong>instance</strong>.</p>
+<p>Tu te souviens quand nous utilisions des <strong>méthodes sur nos tableaux</strong>, par exemple des <code>includes</code> pour vérifier si une valeur est dans le tableau ?</p>
+<div class="bloc-code"><div class="bloc-code__langue">javascript</div><pre><code class="hljs language-javascript"><span class="hljs-keyword">const</span> fruits = [<span class="hljs-string">&quot;apple&quot;</span>, <span class="hljs-string">&quot;kiwi&quot;</span>, <span class="hljs-string">&quot;banana&quot;</span>];
+<span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(fruits.<span class="hljs-title function_">includes</span>(<span class="hljs-string">&quot;apple&quot;</span>)); <span class="hljs-comment">// true</span>
+<span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(fruits.<span class="hljs-title function_">includes</span>(<span class="hljs-string">&quot;pineapple&quot;</span>)); <span class="hljs-comment">// false</span>
+</code></pre></div>
+<p>D'où penses-tu que cette méthode vienne ?</p>
+<p><strong>Du prototype !</strong></p>
+<p>En fait, lorsque nous créons un tableau en JS, nous créons une nouvelle instance à partir de la fonction constructrice <strong>Array</strong>.</p>
+<div class="bloc-code"><div class="bloc-code__langue">javascript</div><pre><code class="hljs language-javascript"><span class="hljs-keyword">const</span> fruits = <span class="hljs-keyword">new</span> <span class="hljs-title class_">Array</span>(<span class="hljs-string">&#x27;Apple&#x27;</span>, <span class="hljs-string">&#x27;Banana&#x27;</span>, <span class="hljs-string">&#x27;Strawberry&#x27;</span>);
+</code></pre></div>
+<p>Cela signifie qu'il existe &quot;quelque part&quot; une définition de ce qu'est un tableau et des fonctions disponibles pour manipuler ce type d'objet.</p>
+<p>Et bien ce &quot;quelque part&quot; est ce qu'on appelle <strong>le prototype</strong>.</p>
+<p>Évidemment, nous ne voulons pas que toutes les fonctions (includes, join, filter, ...) soient recréées à chaque fois que nous créons un nouveau tableau, c'est pourquoi les tableaux ont leur propre prototype.</p>
+<p>Si tu veux voir le prototype d'un objet, tu peux utiliser <code>Object.getPrototypeOf(obj)</code>.</p>
+<div class="bloc-code"><div class="bloc-code__langue">javascript</div><pre><code class="hljs language-javascript"><span class="hljs-keyword">const</span> fruits = [<span class="hljs-string">&quot;apple&quot;</span>, <span class="hljs-string">&quot;kiwi&quot;</span>, <span class="hljs-string">&quot;banana&quot;</span>];
+<span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(<span class="hljs-title class_">Object</span>.<span class="hljs-title function_">getPrototypeOf</span>(fruits));
+</code></pre></div>
+<p>Tu es en mesure de voir <strong>toutes les méthodes</strong> auxquelles ton tableau a accès.</p>
+<p>Et si tu regardes de plus près, tu peux également voir le <strong>constructor</strong> vue précédemment.</p>
+<div class="bloc-code"><div class="bloc-code__langue">javascript</div><pre><code class="hljs language-javascript"><span class="hljs-attr">concat</span>: ƒ <span class="hljs-title function_">concat</span>()
+<span class="hljs-attr">constructor</span>: ƒ <span class="hljs-title class_">Array</span>()
+<span class="hljs-attr">copyWithin</span>: ƒ <span class="hljs-title function_">copyWithin</span>()
+<span class="hljs-attr">entries</span>: ƒ <span class="hljs-title function_">entries</span>()
+<span class="hljs-attr">every</span>: ƒ <span class="hljs-title function_">every</span>()
+<span class="hljs-attr">fill</span>: ƒ <span class="hljs-title function_">fill</span>()
+<span class="hljs-attr">filter</span>: ƒ <span class="hljs-title function_">filter</span>()
+<span class="hljs-attr">find</span>: ƒ <span class="hljs-title function_">find</span>()
+<span class="hljs-attr">findIndex</span>: ƒ <span class="hljs-title function_">findIndex</span>()
+<span class="hljs-attr">flat</span>: ƒ <span class="hljs-title function_">flat</span>()
+<span class="hljs-attr">flatMap</span>: ƒ <span class="hljs-title function_">flatMap</span>()
+<span class="hljs-attr">forEach</span>: ƒ <span class="hljs-title function_">forEach</span>()
+<span class="hljs-attr">includes</span>: ƒ <span class="hljs-title function_">includes</span>()
+<span class="hljs-attr">indexOf</span>: ƒ <span class="hljs-title function_">indexOf</span>()
+<span class="hljs-attr">join</span>: ƒ <span class="hljs-title function_">join</span>()
+<span class="hljs-attr">keys</span>: ƒ <span class="hljs-title function_">keys</span>()
+<span class="hljs-attr">lastIndexOf</span>: ƒ <span class="hljs-title function_">lastIndexOf</span>()
+<span class="hljs-attr">length</span>: <span class="hljs-number">0</span>
+<span class="hljs-attr">map</span>: ƒ <span class="hljs-title function_">map</span>()
+<span class="hljs-attr">pop</span>: ƒ <span class="hljs-title function_">pop</span>()
+<span class="hljs-attr">push</span>: ƒ <span class="hljs-title function_">push</span>()
+<span class="hljs-attr">reduce</span>: ƒ <span class="hljs-title function_">reduce</span>()
+<span class="hljs-attr">reduceRight</span>: ƒ <span class="hljs-title function_">reduceRight</span>()
+<span class="hljs-attr">reverse</span>: ƒ <span class="hljs-title function_">reverse</span>()
+<span class="hljs-attr">shift</span>: ƒ <span class="hljs-title function_">shift</span>()
+<span class="hljs-attr">slice</span>: ƒ <span class="hljs-title function_">slice</span>()
+<span class="hljs-attr">some</span>: ƒ <span class="hljs-title function_">some</span>()
+<span class="hljs-attr">sort</span>: ƒ <span class="hljs-title function_">sort</span>()
+<span class="hljs-attr">splice</span>: ƒ <span class="hljs-title function_">splice</span>()
+<span class="hljs-attr">toLocaleString</span>: ƒ <span class="hljs-title function_">toLocaleString</span>()
+<span class="hljs-attr">toString</span>: ƒ <span class="hljs-title function_">toString</span>()
+<span class="hljs-attr">unshift</span>: ƒ <span class="hljs-title function_">unshift</span>()
+<span class="hljs-attr">values</span>: ƒ <span class="hljs-title function_">values</span>()
+</code></pre></div>
+<p>Ajoutons maintenant notre méthode <code>attack</code> au prototype de notre ennemi.</p>
+<p>Pour ajouter une méthode accessible à toutes les instances de type <em>Enemy</em> , tu peux <strong>ajouter une propriété au prototype</strong> de <em>Enemy</em>.</p>
+<div class="bloc-code"><div class="bloc-code__langue">javascript</div><pre><code class="hljs language-javascript"><span class="hljs-keyword">function</span> <span class="hljs-title function_">Enemy</span>(<span class="hljs-params">name, level, emoji, attackName</span>) {
+  <span class="hljs-variable language_">this</span>.<span class="hljs-property">name</span> = name;
+  <span class="hljs-variable language_">this</span>.<span class="hljs-property">level</span> = level;
+  <span class="hljs-variable language_">this</span>.<span class="hljs-property">emoji</span> = emoji;
+  <span class="hljs-variable language_">this</span>.<span class="hljs-property">attackName</span> = attackName;
+}
+
+<span class="hljs-title class_">Enemy</span>.<span class="hljs-property"><span class="hljs-keyword">prototype</span></span>.<span class="hljs-property">attack</span> = <span class="hljs-keyword">function</span> (<span class="hljs-params"></span>) {
+  <span class="hljs-keyword">return</span> <span class="hljs-string">`<span class="hljs-subst">${<span class="hljs-variable language_">this</span>.name}</span> <span class="hljs-subst">${<span class="hljs-variable language_">this</span>.attackName}</span> you!`</span>;
+};
+
+<span class="hljs-keyword">const</span> enemies = [
+  <span class="hljs-keyword">new</span> <span class="hljs-title class_">Enemy</span>(<span class="hljs-string">&quot;Spider&quot;</span>, <span class="hljs-number">1</span>, <span class="hljs-string">&quot;🕷&quot;</span>, <span class="hljs-string">&quot;bites&quot;</span>),
+  <span class="hljs-keyword">new</span> <span class="hljs-title class_">Enemy</span>(<span class="hljs-string">&quot;Snake&quot;</span>, <span class="hljs-number">6</span>, <span class="hljs-string">&quot;🐍&quot;</span>, <span class="hljs-string">&quot;bites&quot;</span>),
+  <span class="hljs-keyword">new</span> <span class="hljs-title class_">Enemy</span>(<span class="hljs-string">&quot;Bear&quot;</span>, <span class="hljs-number">25</span>, <span class="hljs-string">&quot;🐻&quot;</span>, <span class="hljs-string">&quot;scratches&quot;</span>),
+];
+
+<span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(enemies[<span class="hljs-number">0</span>]);
+<span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(enemies[<span class="hljs-number">0</span>].<span class="hljs-title function_">attack</span>());
+</code></pre></div>
+<p>Quand tu <code>console.log</code> le premier enemi, tu peux voir que la fonction <code>attack</code> n'est pas disponible sur l'objet en lui même.</p>
+<div class="bloc-code"><div class="bloc-code__langue">javascript</div><pre><code class="hljs language-javascript"><span class="hljs-comment">// attackName: &quot;bites&quot;</span>
+<span class="hljs-comment">// emoji: &quot;🕷&quot;</span>
+<span class="hljs-comment">// level: 1</span>
+<span class="hljs-comment">// name: &quot;Spider&quot;</span>
+<span class="hljs-comment">// __proto__: Object</span>
+</code></pre></div>
+<p>Cependant, tu peux voir que <strong>nous pouvons tout de même utiliser la fonction</strong><code>attack</code>.</p>
+<p>C'est parce que cette fonction est disponible dans le prototype, accessible dans l'objet via une propriété spéciale qui s'appelle <code>__proto__</code> (on parle de &quot;dunder proto&quot; dans la littérature).</p>
+<p>Cette propriété spéciale <code>__proto__</code>, définie sur chaque instance, pointe vers le même <strong>objet prototype</strong> lié à la fonction constructrice de l'instance (<strong>Enemy.prototype</strong>).</p>
+<p><img src="images/001-image.png" alt="image" loading="lazy"></p>
+<p>Lorsque tu appelles une méthode sur un objet, l'interpréteur JS va d'abord regarder si la <strong>méthode est disponible sur l'objet en lui même.</strong> Si ce n'est pas le cas, alors il va vérifier la propriété <code>__proto__</code> de l'instance pour voir si cette méthode est disponible sur le prototype.</p>
+<p>L'araignée hérite donc de la fonction &quot;attack&quot; <strong>par le biais du prototype</strong> lié à Enemy. <strong>C'est ce que nous appelons un héritage prototypique.</strong></p>
+<h3>🔬 Teste par toi-même</h3>
+<p>Essaie de faire la même chose pour ton héros ! Mets la méthode &quot;sayHello&quot; dans le prototype afin de ne pas la recréer à chaque instanciation d'un héro.</p>
+<div class="bloc-code"><div class="bloc-code__langue">codesandbox</div><pre><code class="hljs language-codesandbox">https://codesandbox.io/s/class-oop-0dse2?file=/src/index.js
+</code></pre></div>
+<div class="bloc-code"><div class="bloc-code__langue">hidden</div><pre><code class="hljs language-hidden">Afficher la solution|||javascript|||Des problèmes pour trouver la solution ? |||0|||Masquer
+function Hero(name, level, weapon) {
+  this.name = name;
+  this.level = level;
+  this.weapon = weapon;
+}
+
+Hero.prototype.sayHello = function () {
+  return `Hello my name is ${this.name}`;
+};
+
+const bob = new Hero(&quot;Bob&quot;, 10, &quot;Sword&quot;);
+console.log(bob.sayHello());
+</code></pre></div>
+<p>Voici quelques resources qui pourront t'aider grandement si tu souhaites vraiment comprendre les prototypes :</p>
+<a class="ressource" href="https://medium.com/better-programming/prototypes-in-javascript-5bba2990e04b" target="_blank" rel="noopener noreferrer">
+  <div class="ressource__icone">↗</div>
+  <div class="ressource__texte">
+    <div class="ressource__titre">Les Protoypes en Javascript</div>
+    <div class="ressource__desc"><p>Un article sympa avec pleins de schémas pour comprendre les relations entre <code>.prototype</code>, <code>__proto__</code>, le constructeur et l'instance !</p>
+</div>
+    <div class="ressource__hote">medium.com</div>
+  </div>
+</a>
+<a class="ressource" href="https://stackoverflow.com/questions/1646698/what-is-the-new-keyword-in-javascript" target="_blank" rel="noopener noreferrer">
+  <div class="ressource__icone">↗</div>
+  <div class="ressource__texte">
+    <div class="ressource__titre">What is the 'new' keyword in JavaScript?</div>
+    <div class="ressource__desc"><p>Un thread SO sur le mot clé &quot;new&quot;</p>
+</div>
+    <div class="ressource__hote">stackoverflow.com</div>
+  </div>
+</a>
+<a class="ressource" href="https://stackoverflow.com/questions/9959727/proto-vs-prototype-in-javascript" target="_blank" rel="noopener noreferrer">
+  <div class="ressource__icone">↗</div>
+  <div class="ressource__texte">
+    <div class="ressource__titre">__proto__ VS. prototype en JavaScript</div>
+    <div class="ressource__desc"><p>(Encore) un thread SO qui répond à une question très populaire.</p>
+</div>
+    <div class="ressource__hote">stackoverflow.com</div>
+  </div>
+</a>
+
+  </div>
+  <section class="ressources-quete">
+  <h2>Ressources partagées sur cette quête</h2>
+  <ul class="ressources-liste">
+    <li><a href="https://www.youtube.com/watch?v=q9eaEnfIfz4" target="_blank" rel="noopener noreferrer">Voila voila, tout en français et c'est clair</a><span class="ressources-liste__url">https://www.youtube.com/watch?v=q9eaEnfIfz4</span></li>
+  </ul>
+</section>
+</article>
+
+<nav class="nav-quete">
+  <a class="nav-quete__lien nav-quete__lien--prec" href="../../javascript-beyond-the-basics/007-js-intermediaire-05-programmation-orientee-objet/index.html">
+           <span class="nav-quete__sens">← Précédent</span>
+           <span class="nav-quete__titre">👩‍🏫 JS Intermédiaire 05 - Programmation Orientée Objet</span>
+         </a>
+  <span class="nav-quete__lien nav-quete__lien--vide"></span>
+</nav>
+</main>
+<footer class="pied">
+  <p>Archive personnelle des cours suivis à la Wild Code School. Copie hors ligne à usage strictement privé.</p>
+</footer>
+
+<script src="../../assets/copie-code.js"></script>
+<script src="../../assets/progression.js"></script>
+</body>
+</html>

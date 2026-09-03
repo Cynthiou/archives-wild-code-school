@@ -1,0 +1,102 @@
+{
+  "id": 1309,
+  "titre": "Git/GitHub 2 : Git en local",
+  "titres": {
+    "en": "Git/GitHub 2: Git in local",
+    "fr": "Git/GitHub 2 : Git en local"
+  },
+  "theme": {
+    "id": 6,
+    "slug": "git",
+    "nom": "Git"
+  },
+  "creeLe": "2020-08-05T18:09:33.439+02:00",
+  "difficulte": "0",
+  "dureeEstimee": null,
+  "modeValidation": "student",
+  "chapitres": [
+    {
+      "id": 16963,
+      "type": "content",
+      "langue": "fr",
+      "majLe": "2025-03-06T15:04:50.588+01:00",
+      "caracteres": 8838
+    }
+  ],
+  "ressources": [
+    {
+      "link": "https://people.irisa.fr/Anthony.Baire/git/git-for-beginners-handout.pdf",
+      "description": "pdf avec des commandes de base pour GIT"
+    },
+    {
+      "link": "https://training.github.com/downloads/fr/github-git-cheat-sheet/",
+      "description": "Petit cheat sheet pour git bien pratique"
+    },
+    {
+      "link": "https://www.youtube.com/watch?v=gp_k0UVOYMw",
+      "description": "Comprendre le fonctionnement de Git de façon simplifiée"
+    },
+    {
+      "link": "https://www.youtube.com/watch?v=syXt9-AdfPs&t=319s",
+      "description": "Video FR sur \"git init\" \"git add\" et \"git commit\""
+    },
+    {
+      "link": "https://doc.ubuntu-fr.org/git",
+      "description": "commande Linux"
+    },
+    {
+      "link": "https://www.youtube.com/watch?v=hPfgekYUKgk&ab_channel=LaCapsule",
+      "description": "Vidéo en français qui explique bien tout le process pour travailler sur git et git hub en 30 min"
+    },
+    {
+      "link": "https://github.com/JustFS/cours-github/blob/master/versionner.png",
+      "description": "Condensé des raccourci Git"
+    },
+    {
+      "link": "https://gist.github.com/YannBouyeron/7f7c5486b5daa20c2a6080f67b2af344",
+      "description": "Quelques bases plutôt bien expliquée !"
+    },
+    {
+      "link": "https://git-scm.com/book/fr/v2/Les-bases-de-Git-D%C3%A9marrer-un-d%C3%A9p%C3%B4t-Git",
+      "description": "petite lecture sur les bases "
+    },
+    {
+      "link": "https://www.youtube.com/watch?v=tRZGeaHPoaw&list=PLB4ymnBGpxDdK6Mr-RSZDaNIu3boHsZvQ&index=5&t=2465s",
+      "description": "Super ressource en anglais !"
+    },
+    {
+      "link": "https://www.delftstack.com/fr/howto/git/",
+      "description": "Quelques explications sur les différentes commandes GIT"
+    },
+    {
+      "link": "https://www.atlassian.com/fr/git/tutorials/saving-changes/git-commit",
+      "description": "Cours écrit sur les bases git dont la solution pour le message en autre"
+    },
+    {
+      "link": "https://www.yoozio.com/erreur-git-apres-mise-a-jour-de-mac-os-high-sierra-xcrun-error-invalid-active-developer-path-85/",
+      "description": "Pour ceux qui sont sur mac, ce lien est très très important !"
+    },
+    {
+      "link": "https://www.youtube.com/watch?v=UFEby2zo-9E&ab_channel=LearnWebCode",
+      "description": "Good explanation with example how to create local repo and work in"
+    },
+    {
+      "link": "https://docs.github.com/en/authentication/connecting-to-github-with-ssh",
+      "description": "les étapes pour mettre en place l'authentification par clé SSH avec Git"
+    },
+    {
+      "link": "https://education.github.com/git-cheat-sheet-education.pdf",
+      "description": "Cheat sheet pour comande git"
+    },
+    {
+      "link": "https://www.youtube.com/watch?v=tRZGeaHPoaw",
+      "description": "Git and GitHub Tutorial (Jun22, 46min, time-stamped sections)"
+    },
+    {
+      "link": "https://adeniyekehinde0.medium.com/creating-a-index-html-file-using-git-881007727411",
+      "description": "Creer un fichier HTML"
+    }
+  ],
+  "urlOrigine": "https://odyssey.wildcodeschool.com/quests/1309",
+  "archiveLe": "2026-09-02T20:53:22.456Z"
+}

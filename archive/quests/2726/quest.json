@@ -1,0 +1,28 @@
+{
+  "id": 2726,
+  "titre": "👩‍🏫 Les composants d'interface utilisateur",
+  "titres": {
+    "fr": "👩‍🏫 Les composants d'interface utilisateur"
+  },
+  "theme": {
+    "id": 127,
+    "slug": "ui-design",
+    "nom": "UI Design"
+  },
+  "creeLe": "2023-04-21T12:04:15.925+02:00",
+  "difficulte": "1",
+  "dureeEstimee": null,
+  "modeValidation": "self",
+  "chapitres": [
+    {
+      "id": 11978,
+      "type": "content",
+      "langue": "fr",
+      "majLe": "2024-08-29T11:08:29.555+02:00",
+      "caracteres": 14676
+    }
+  ],
+  "ressources": [],
+  "urlOrigine": "https://odyssey.wildcodeschool.com/quests/2726",
+  "archiveLe": "2026-09-02T23:21:50.618Z"
+}

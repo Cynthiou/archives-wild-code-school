@@ -1,0 +1,171 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>POO9 - Abstraction — Archives WCS</title>
+<link rel="stylesheet" href="../../assets/style.css">
+</head>
+<body style="--teinte:#464985">
+<header class="entete">
+  <a class="entete__marque" href="../../index.html">Archives Wild Code School</a>
+</header>
+<main class="contenu">
+<nav class="ariane"><a href="../../index.html">Accueil</a><span class="ariane__sep">›</span><a href="../../php-oriente-objet/index.html">PHP Orienté Objet</a><span class="ariane__sep">›</span><span aria-current="page">POO9 - Abstraction</span></nav>
+
+<article class="quete">
+  <header class="quete__entete">
+    <a class="pastille pastille--teintee" href="../../php-oriente-objet/index.html">PHP Orienté Objet</a>
+    <h1>POO9 - Abstraction</h1>
+    <p class="quete__meta">Quête 10 sur 11 · 4 images archivées</p>
+  </header>
+  <div class="cours">
+<h1>Prérequis</h1>
+<div class="renvois"><div class="renvois__titre">Quêtes liées</div><ul><li><a href="../../php-oriente-objet/009-poo8-exceptions/index.html">Quête 2354</a></li></ul></div>
+<div class="bloc-code"><div class="bloc-code__langue">title-book</div><pre><code class="hljs language-title-book">Introduction
+</code></pre></div>
+<div class="encadre encadre--story"><div class="encadre__titre">Le récit</div><div class="encadre__corps"><p>Il est temps de passer à la branche <strong>poo9</strong> de ton <a href="https://github.com/WildCodeSchool/php-wildzoo" target="_blank" rel="noopener noreferrer">Wild zoo</a>. Dans cette quête, tu vas découvrir le concept d'abstraction et comprendre comment l'implémenter.</p>
+</div></div>
+<h2>🤓 À la fin de cette quête, tu seras capable de :</h2>
+<ul>
+<li>✅ Comprendre le concept d'abstraction</li>
+<li>✅ Créer une classe abstraite</li>
+<li>✅ Implémenter une méthode abstraite</li>
+</ul>
+<h1>Définition de l'abstraction</h1>
+<p>Une fois encore, l'un des objectifs de la programmation orientée objet est de coller au plus proche à la réalité métier. Jusqu'à maintenant, nous avons créé une classe <strong>Animal</strong>, puis des classes filles sur plusieurs niveaux, pour terminer par des classes avec le mot clé <em>final</em>.</p>
+<div class="encadre encadre--info"><div class="encadre__titre">Info</div><div class="encadre__corps"><p>Pour rappel, l'interface graphique t'indique dans un petit encart en haut à droite de chaque animal, les relations d'héritages entre les classes. Pour l'instant, le lion est une instance de <strong>Felid</strong> (classe finale 🚫), héritant de <strong>Mammal</strong>, qui hérite elle-même de <strong>Animal</strong>.</p>
+<p><img src="images/001-lion-class-hierarchy.png" alt="lion class hierarchy" loading="lazy"></p>
+</div></div>
+<p>Maintenant, si on crée un nouvel animal directement à partir de la classe <strong>Animal</strong>, on obtient bien un objet de type <strong>Animal</strong>, mais d'un point de vue <em>métier</em>, pour notre zoo, cela n'a plus trop de sens, car ce pourrait-être aussi bien une fourmi qu'une baleine. Cette instance n'est plus représentative d'un d'animal précis, c'est un <em>concept</em>, une notion <strong>abstraite</strong>. De ce fait, il n'est pas logique de demander la <em>size</em> d'un concept d'animal aussi variable. La classe <strong>Animal</strong> est très utile pour y mettre du code commun entre tous les animaux, mais on souhaiterait <strong>ne pas pouvoir directement instancier</strong> cette classe. C'est à cela que sert le concept d'abstraction en POO, empêcher que l'on puisse instancier certaines classes, quand celles-ci ne représentent pas quelque chose de concret mais uniquement des concepts abstraits.</p>
+<p><img src="images/002-abstract-animal.webp" alt="abstract animal" loading="lazy"></p>
+<h1>Classe abstraite</h1>
+<p>Pour créer ce type de classe abstraite, il suffit d'utiliser le mot clé <code>abstract</code> devant le nom de la classe.</p>
+<p>🖥️ Sur l'interface, tu vois un <code>$abstractAnimal</code> qui s'appelle &quot;abstract&quot;. Dans le fichier <em>index.php</em>, tu constateras que c'est une instance d'Animal.</p>
+<p>Modifie maintenant la classe <strong>Animal</strong> pour la rendre abstraite.</p>
+<div class="bloc-code"><div class="bloc-code__langue">php</div><pre><code class="hljs language-php"><span class="hljs-keyword">abstract</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Animal</span>
+</span>{
+    <span class="hljs-comment">//...</span>
+}
+</code></pre></div>
+<p>Réactualise l'interface, tu vas obtenir une erreur.</p>
+<div class="encadre encadre--error"><div class="encadre__titre">Important</div><div class="encadre__corps"><p>Fatal error: Uncaught Error: Cannot instantiate abstract class App\Animal\Animal in ...</p>
+</div></div>
+<p>C'est normal, maintenant que la classe est devenue abstraite, PHP refuse de créer un objet directement à partir de celle-ci. Tu vas donc être forcé de passer par l'une de ses classes filles non abstraite. Efface ce <code>$abstractAnimal</code> et enlève le du tableau <code>$animals</code>. Réactualise, la page se réaffiche bien.</p>
+<div class="encadre encadre--info"><div class="encadre__titre">Info</div><div class="encadre__corps"><p>Tu constateras également sur le schéma récapitulatif de chaque animal, que la classe <strong>Animal</strong> est maintenant accompagnée du symbole 🎨 qui indique ici qu'elle est abstraite.</p>
+<p><img src="images/003-abstract-symbol.png" alt="abstract symbol" loading="lazy"></p>
+</div></div>
+<p>🖥️ Pour mettre en pratique, rend également la famille des Arthropodes abstraites. Tu ne peux plus instancier directement des <strong>Arthropode</strong>, mais toujours des <strong>Arachnide</strong> ou des <strong>Insect</strong>.</p>
+<h1>Méthode abstraite</h1>
+<p>🖥️ De la même manière que pour les animaux, la classe <strong>Area</strong> est un concept abstrait, modifie-la en conséquence.</p>
+<p>Chaque classe fille d'<strong>Area</strong> (Aquarium, Desert...) correspond à une aire bien précise du zoo, ayant ses caractéristiques et étant adaptée à certains animaux. Par exemple, un aquarium est adapté aux animaux aquatiques, une volière aux animaux volants, <em>etc</em>. Lorsque tu ajoutes un animal dans une zone, il faudrait pouvoir vérifier que cet animal est bien compatible avec la zone en question.</p>
+<p>Pour cela, on aimerait avoir une méthode <code>isValid(Animal $animal)</code> qui prendrait un animal en paramètre. La méthode renverrait un booléen si l'animal est compatible ou non avec la zone.
+Cette méthode devra être utilisée dans la méthode <code>addAnimal()</code> et lever une exception si elle renvoie false, mets à jour comme cela :</p>
+<div class="bloc-code"><div class="bloc-code__langue">php</div><pre><code class="hljs language-php"><span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">addAnimal</span>(<span class="hljs-params">Animal <span class="hljs-variable">$animal</span></span>)
+</span>{
+    <span class="hljs-keyword">if</span> (!<span class="hljs-variable language_">$this</span>-&gt;<span class="hljs-title function_ invoke__">isValid</span>(<span class="hljs-variable">$animal</span>)) {
+         <span class="hljs-keyword">throw</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">\Exception</span>(<span class="hljs-string">&#x27;impossible d\&#x27;ajouter le &#x27;</span> . <span class="hljs-variable">$animal</span>-&gt;<span class="hljs-title function_ invoke__">getName</span>() . <span class="hljs-string">&#x27; au &#x27;</span> . <span class="hljs-variable language_">$this</span>-&gt;<span class="hljs-title function_ invoke__">getName</span>());
+    }
+    
+    <span class="hljs-variable language_">$this</span>-&gt;animals[] = <span class="hljs-variable">$animal</span>;
+    
+}
+</code></pre></div>
+<p>Cette validation se fait au niveau de la classe mère <strong>Area</strong>, car la logique est la même pour toutes les classes filles.</p>
+<p>🚫 Le code ne fonctionne pas pour le moment puisque la méthode méthode <code>isValid()</code> n'est pas encore créée. Cependant, la logique d'implémentation de <code>isValid()</code> est différente d'une <strong>Area</strong> à l'autre (entre un Aquarium, une jungle, un désert...), il n'est donc pas possible de définir UNE logique précise dans la classe <strong>Area</strong>, dont hériterait toutes les filles. La méthode DOIT exister dans chaque fille (avec la même signature) MAIS la logique d'implémentation (c'est-à-dire le corps de la méthode) est différente entre chacune de ces filles. C'est ce qu'on appelle une <strong>méthode abstraite</strong>.</p>
+<p>Pour créer une méthode abstraite, il faut ajouter le mot clé <code>abstract</code> devant le nom, mais <strong>laisser le corps de la fonction vide</strong>, donc finir la ligne directement par un point virgule, sans les accolades :</p>
+<div class="bloc-code"><div class="bloc-code__langue">php</div><pre><code class="hljs language-php"><span class="hljs-keyword">abstract</span> <span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">isValid</span>(<span class="hljs-params">Animal <span class="hljs-variable">$animal</span></span>): <span class="hljs-title">bool</span></span>;
+</code></pre></div>
+<p>Il faut indiquer les éventuels paramètres et leur type (ici <code>Animal $animal</code>), ainsi que le type de retour (ici <code>bool</code>).
+À partir de maintenant, toutes les classes filles héritent de la méthode abstraite et sont donc obligées d'implémenter une logique pour cette méthode, sinon PHP renverra une erreur.</p>
+<div class="encadre encadre--warning"><div class="encadre__titre">Attention</div><div class="encadre__corps"><p>Une classe possédant au moins une méthode abstraite doit forcément être elle-même abstraite (et ne pourra donc plus être directement instanciée sans passer par une fille).</p>
+</div></div>
+<p>Si tu réactualises, tu vas avoir le message d'erreur suivant pour chaque classe fille d'<strong>Area</strong>, indiquant l'obligation d'implémenter la méthode <code>isValid()</code> héritée de la mère :</p>
+<div class="encadre encadre--error"><div class="encadre__titre">Important</div><div class="encadre__corps"><p>Fatal error: Class App\Area\XXXX contains 1 abstract method and must therefore be declared abstract or implement the remaining methods (App\Area\Area::isValid)</p>
+</div></div>
+<p>Dans chaque classe fille, tu vas donc devoir implémenter <code>isValid()</code> avec une logique qui lui est propre. Voici l'implémentation qui est attendue pour les 3 classes existantes :</p>
+<ul>
+<li><strong>Aquarium</strong> : ne sont valides que les animaux de type <strong>Fish</strong></li>
+<li><strong>Jungle</strong> : accepte tous les animaux</li>
+<li><strong>Desert</strong> : ne sont valides que les animaux ayant 4 pattes ou plus</li>
+</ul>
+<div class="bloc-code"><div class="bloc-code__langue">hidden</div><pre><code class="hljs language-hidden">Click to reveal|||php|||Si tu as besoin d'aide, voici la solution attendue pour l'implementation de isValid() dans la classe Aquarium. Cela peut te servir de base pour les deux autres classes.|||0|||Hide
+&lt;?php
+
+namespace App\Area;
+
+use App\Animal\Animal;
+use App\Animal\Fish;
+
+class Aquarium extends Area
+{
+    public function isValid(Animal $animal): bool 
+    {
+        return $animal instanceof Fish;
+    }
+}
+</code></pre></div>
+<p>Une fois les 3 implémentations effectuées, tu vas encore avoir des erreurs car certains animaux sont actuellement affectés dans de mauvaises zones. Fais en sorte de corriger les erreurs en retirant ou modifiant les animaux qui seraient dans les mauvaises <strong>Area</strong> afin de suivre les règles métiers du zoo <em>(normalement le crocodile ne devrait pas se trouver dans l'aquarium car ce n'est pas un poisson, remplace-le par un requin (shark))</em> .</p>
+<p>🖥️ Lorsque tu te rends sur la page d'une zone (en passant par la carte en haut à droite de l'interface), tu vois maintenant à droite de la page la liste de tous les animaux : en vert ceux qui sont acceptables dans cette zone, en rouge les autres.</p>
+<p><img src="images/004-aquarium-area.png" alt="aquarium_area" loading="lazy"></p>
+<h2>💪 Challenge</h2>
+<p>Pour ce challenge, ajoute deux nouvelles classe fille d'<strong>Area</strong> : <strong>Box</strong> et <strong>Cage</strong>.</p>
+<ul>
+<li>Box acceptera uniquement les animaux de taille &lt;50,</li>
+<li>Cage uniquement les animaux dangereux (utilise la méthode <code>isDangerous()</code> préalablement créée)</li>
+</ul>
+<p>Puis ajoute des animaux compatible dans chacune.</p>
+<h2>Validation</h2>
+<p>Les classes <strong>Cage</strong> et <strong>Box</strong> sont correctement créées et apparaissent sur la carte dans l'interface.
+Des animaux compatibles avec la méthode <code>isValid()</code> sont ajoutés à ces deux nouvelles zones.</p>
+<p>==$==</p>
+<div class="bloc-code"><div class="bloc-code__langue">php</div><pre><code class="hljs language-php"><span class="hljs-meta">&lt;?php</span>
+
+<span class="hljs-keyword">namespace</span> <span class="hljs-title class_">App</span>\<span class="hljs-title class_">Area</span>;
+
+<span class="hljs-keyword">use</span> <span class="hljs-title">App</span>\<span class="hljs-title">Animal</span>\<span class="hljs-title">Animal</span>;
+
+<span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Cage</span> <span class="hljs-keyword">extends</span> <span class="hljs-title">Area</span>
+</span>{
+    <span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">isValid</span>(<span class="hljs-params">Animal <span class="hljs-variable">$animal</span></span>): <span class="hljs-title">bool</span> </span>{
+        <span class="hljs-keyword">return</span> <span class="hljs-variable">$animal</span>-&gt;<span class="hljs-title function_ invoke__">isDangerous</span>();
+    }
+}
+</code></pre></div>
+<div class="bloc-code"><div class="bloc-code__langue">php</div><pre><code class="hljs language-php"><span class="hljs-meta">&lt;?php</span>
+
+<span class="hljs-keyword">namespace</span> <span class="hljs-title class_">App</span>\<span class="hljs-title class_">Area</span>;
+
+<span class="hljs-keyword">use</span> <span class="hljs-title">App</span>\<span class="hljs-title">Animal</span>\<span class="hljs-title">Animal</span>;
+
+<span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Box</span> <span class="hljs-keyword">extends</span> <span class="hljs-title">Area</span>
+</span>{
+    <span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">isValid</span>(<span class="hljs-params">Animal <span class="hljs-variable">$animal</span></span>): <span class="hljs-title">bool</span> </span>{
+        <span class="hljs-keyword">return</span> <span class="hljs-variable">$animal</span>-&gt;<span class="hljs-title function_ invoke__">getSize</span>() &lt; <span class="hljs-number">50</span>;
+    }
+}
+</code></pre></div>
+
+  </div>
+  
+</article>
+
+<nav class="nav-quete">
+  <a class="nav-quete__lien nav-quete__lien--prec" href="../../php-oriente-objet/009-poo8-exceptions/index.html">
+           <span class="nav-quete__sens">← Précédent</span>
+           <span class="nav-quete__titre">POO8 - Exceptions</span>
+         </a>
+  <a class="nav-quete__lien nav-quete__lien--suiv" href="../../php-oriente-objet/011-revisions-php-oriente-objet/index.html">
+           <span class="nav-quete__sens">Suivant →</span>
+           <span class="nav-quete__titre">Révisions : PHP orienté objet</span>
+         </a>
+</nav>
+</main>
+<footer class="pied">
+  <p>Archive personnelle des cours suivis à la Wild Code School. Copie hors ligne à usage strictement privé.</p>
+</footer>
+
+<script src="../../assets/copie-code.js"></script>
+<script src="../../assets/progression.js"></script>
+</body>
+</html>
