@@ -20,19 +20,19 @@
     <p class="quete__meta">Quête 1 sur 10 · 2 images archivées</p>
   </header>
   <div class="cours">
-<h2>Objectifs</h2>
+<h2 id="t-objectifs">Objectifs</h2>
 <ul>
 <li>Initialiser une application React</li>
 <li>Découvrir les fichiers générés par l'initialisation</li>
 </ul>
-<h2>Pré-requis</h2>
+<h2 id="t-pre-requis">Pré-requis</h2>
 <ol class="etapes"><li class="etape"><div class="etape__puce">1</div><div class="etape__contenu"><h4 class="etape__titre">Répondre à la question &quot;c'est quoi React ?&quot;</h4><div class="encadre encadre--note encadre--story"><div class="encadre__corps"><p><strong>React</strong> (aussi appelé <strong>React.js</strong> ou <strong>ReactJS</strong>) est une <strong>bibliothèque open source JavaScript</strong> pour créer des interfaces utilisateurs. Elle est maintenue par <strong>Meta</strong> (anciennement <strong>Facebook</strong>) ainsi que par une communauté de développeurs individuels et d'entreprises <strong>depuis 2013</strong>.</p>
 <p>Le but principal de cette bibliothèque est de faciliter la création d'application web monopage, via la création de composants dépendant d'un état et générant une page (ou portion) HTML à chaque changement d'état.</p>
 <p>React est une bibliothèque qui ne gère que l'interface de l'application [...]</p>
 </div></div>
 <p>Source : <a href="https://fr.m.wikipedia.org/wiki/React" target="_blank" rel="noopener noreferrer">https://fr.m.wikipedia.org/wiki/React</a></p>
 </div></li></ol>
-<h2>Introduction</h2>
+<h2 id="t-introduction">Introduction</h2>
 <p>Afin de découvrir la bibliothèque React et ses principales fonctionnalités, nous allons créer pas à pas un projet qui prendra ici la forme d'un pokedex en Typescript.</p>
 <div class="encadre encadre--note encadre--intro"><div class="encadre__corps"><p>Rassure-toi si tu ne connais pas Typescript : tout code JavaScript est du code TypeScript valide. Tu as appris Typescript depuis le début de ta formation 🎉</p>
 <p>Intégrer Typescript dans ce projet te donnera des indications précieuses sur des erreurs courantes : c'est comme avoir une IA qui relie ton code en direct et te prévient dès qu'il y a une incohérence.</p>
@@ -48,8 +48,9 @@
 </ul>
 <p>À la fin, nous devrions avoir un pokedex qui nous permet d'afficher une liste de Pokemon, de filtrer cette liste en fonction du type de Pokemon et de sélectionner un Pokemon dans cette liste pour afficher sa photo.</p>
 <p><img src="images/001-image.webp" alt="image" loading="lazy"></p>
-<h2>Sommaire</h2>
-<h2>Un peu d'histoire</h2>
+<h2 id="t-sommaire">Sommaire</h2>
+<nav class="sommaire" aria-label="Sommaire de la quête"><ol class="sommaire__liste"><li><a href="#t-un-peu-d-histoire">Un peu d'histoire</a></li><li><a href="#t-comment-ca-marche">Comment ça marche ?</a></li><li><a href="#t-qu-avons-nous-la">Qu'avons-nous là ?</a></li><li><a href="#t-recapitulatif">Récapitulatif</a></li><li><a href="#t-challenge">Challenge</a><ul><li><a href="#t-critere-d-acceptation">Critère d'acceptation</a></li></ul></li></ol></nav>
+<h2 id="t-un-peu-d-histoire">Un peu d'histoire</h2>
 <p>Suite à l'adoption massive de sa bibliothèque, en 2016 l'équipe en charge du développement de React a sorti un installateur nommé <a href="https://github.com/facebook/create-react-app" target="_blank" rel="noopener noreferrer">Create React App</a>.</p>
 <p>Ce dernier permet d'initialiser des applications monopage (<strong>Single Page Application ou SPA</strong>), d'avoir un serveur de développement (permettant notamment de reconstruire l'application lors de la modification des fichiers), de &quot;construire&quot; (build) l'application afin de la mettre en production, et tout un tas d'autres choses que tu trouveras sur la <a href="https://create-react-app.dev/" target="_blank" rel="noopener noreferrer">documentation officielle</a>.</p>
 <p>Le tout <strong>sans aucune configuration</strong> !</p>
@@ -92,7 +93,7 @@
     <div class="ressource__hote">blog.logrocket.com</div>
   </div>
 </a>
-<h2>Comment ça marche ?</h2>
+<h2 id="t-comment-ca-marche">Comment ça marche ?</h2>
 <p>Ouvre un terminal et saisis la commande suivante, en remplaçant <code>my-react-app</code> par le nom de ton projet :</p>
 <div class="bloc-code"><div class="bloc-code__langue">bash</div><pre><code class="hljs language-bash">npm create vite@latest my-react-app
 </code></pre></div>
@@ -251,19 +252,19 @@ package.json      src        tsconfig.node.json
 <p>Pour vérifier si ton installation fonctionne, tape la commande suivante pour lancer l'application React en mode &quot;développement&quot; :</p>
 <div class="bloc-code"><pre><code class="hljs language-plaintext">npm run dev
 </code></pre></div>
-<h2>Qu'avons-nous là ?</h2>
+<h2 id="t-qu-avons-nous-la">Qu'avons-nous là ?</h2>
 <p>Si tu ouvres le répertoire de l'application dans ton IDE favori, tu devrais avoir quelque chose comme ça :</p>
 <p><img src="images/002-arbre-des-fichiers-avec-un-focus-sur-le-fichier.png" alt="arbre des fichiers avec un focus sur le fichier App.tsx" loading="lazy"></p>
 <p>Ce qui va nous intéresser ici, c'est le répertoire <code>src</code> : c'est notre répertoire de travail. C'est ici que nous rangerons nos composants (que nous découvrirons plus loin dans le parcours), ainsi que tous les fichiers CSS et les fichiers JavaScript / Typescript.</p>
 <p>Dans ce répertoire, le fichier à regarder en premier est le fichier <code>App.tsx</code>. C'est le composant principal de notre application (tu peux noter également le fichier CSS du même nom qui comme tu l'as sûrement deviné peut servir à styliser le composant App).</p>
-<h2>Récapitulatif</h2>
+<h2 id="t-recapitulatif">Récapitulatif</h2>
 <ul>
 <li>Utilise ViteJS pour initialiser une application React.</li>
 <li>L'architecture des fichiers sera toujours plus ou moins la même, peu importe l'outil que tu utilises pour développer ton application.</li>
 </ul>
-<h2>Challenge</h2>
+<h2 id="t-challenge">Challenge</h2>
 <p>Tu dois initialiser une application avec ViteJS, React, Typescript et la mettre sur un repository GitHub : elle servira de base pour la réalisation de ton pokedex !</p>
-<h3>Critère d'acceptation</h3>
+<h3 id="t-critere-d-acceptation">Critère d'acceptation</h3>
 <ul>
 <li>[ ] Le repository est disponible sur GitHub et contient une application React initialisée avec ViteJS.</li>
 <li>[ ] L'application utilise Typescript.</li>
@@ -285,7 +286,5 @@ package.json      src        tsconfig.node.json
   <p>Archive personnelle des cours suivis à la Wild Code School. Copie hors ligne à usage strictement privé.</p>
 </footer>
 
-<script src="../../assets/copie-code.js"></script>
-<script src="../../assets/progression.js"></script>
 </body>
 </html>

@@ -20,24 +20,25 @@
     <p class="quete__meta">Quête 2 sur 11 · 10 images archivées</p>
   </header>
   <div class="cours">
-<h2>Objectifs</h2>
+<h2 id="t-objectifs">Objectifs</h2>
 <ul>
 <li>Ajouter du JavaScript à tes sites web</li>
 <li>Afficher des <strong>messages</strong> dans la <strong>console de ton navigateur</strong></li>
 <li>Faire des <strong>calculs</strong> et des <strong>comparaisons</strong> avec Javascript</li>
 <li>Écrire des commentaires dans ton code</li>
 </ul>
-<h2>Pré-requis</h2>
+<h2 id="t-pre-requis">Pré-requis</h2>
 <p>Avoir validé la quête suivante :</p>
 <div class="renvois"><div class="renvois__titre">Quêtes liées</div><ul><li><a href="../../javascript/001-js-basics-01-qu-est-ce-que-javascript/index.html">Quête 1262</a></li></ul></div>
-<h2>Introduction</h2>
+<h2 id="t-introduction">Introduction</h2>
 <p>Précédemment, tu as <strong>découvert ce qu'était le JS</strong>.
 <strong>Avant de commencer à coder</strong>, nous avons un petit truc à faire : apprendre la <strong>syntaxe</strong> !</p>
 <p><strong>En langage humain</strong>, un langage de programmation <strong>possède un ensemble de règles</strong> que tu dois suivre, sinon ton code ne fonctionnera pas 😛</p>
 <p><strong>C'est parti !</strong></p>
 <p><img src="images/001-image.png" alt="image" loading="lazy"></p>
-<h2>Sommaire</h2>
-<h2>Comment ajouter du JS dans une page web?</h2>
+<h2 id="t-sommaire">Sommaire</h2>
+<nav class="sommaire" aria-label="Sommaire de la quête"><ol class="sommaire__liste"><li><a href="#t-comment-ajouter-du-js-dans-une-page-web">Comment ajouter du JS dans une page web?</a><ul><li><a href="#t-ajouter-un-fichier-externe">Ajouter un fichier externe</a></li></ul></li><li><a href="#t-la-console-du-navigateur">La console du navigateur</a><ul><li><a href="#t-ouvrir-la-console">Ouvrir la console</a></li></ul></li><li><a href="#t-syntaxe-de-base">Syntaxe de base</a><ul><li><a href="#t-string">String</a></li><li><a href="#t-console-log">Console.log</a></li><li><a href="#t-erreurs">Erreurs</a></li><li><a href="#t-sensibilite-a-la-casse">Sensibilité à la casse</a></li><li><a href="#t-ecrire-des-commentaires">Écrire des commentaires</a></li><li><a href="#t-operations-arithmetiques">Opérations arithmétiques</a></li><li><a href="#t-operation-logiques-comparaisons">Opération logiques : comparaisons</a></li></ul></li><li><a href="#t-indentation">Indentation</a></li><li><a href="#t-resume">Résumé</a></li></ol></nav>
+<h2 id="t-comment-ajouter-du-js-dans-une-page-web">Comment ajouter du JS dans une page web?</h2>
 <p>Quels sont les ingrédients pour écrire du JS ?
 La première chose dont tu as besoin est une page HTML. Ouvre ton IDE préféré et crée un nouveau <strong>document HTML</strong>. À la fin de ce document, juste avant de fermer le tag <code>&lt;/body&gt;</code>, ajoutes un tag <code>&lt;script&gt;</code></p>
 <blockquote>
@@ -67,7 +68,7 @@ La première chose dont tu as besoin est une page HTML. Ouvre ton IDE préféré
 </code></pre></div>
 <p>Bien joué ! Tu as juste créé ton premier code Javascript! Si tu ouvres ton fichier <code>index.html</code> dans ton navigateur, tu ne dois rien voir de particulier.
 C'est normal, le message que tu as créé est uniquement visible dans <strong>la console du navigateur</strong>.</p>
-<h3>Ajouter un fichier externe</h3>
+<h3 id="t-ajouter-un-fichier-externe">Ajouter un fichier externe</h3>
 <p>Comme avec CSS, il est recommandé d'écrire du Javascript dans un fichier <code>.js</code> séparé.</p>
 <p>Crée un nouveau fichier appelé <code>script.js</code>. Tu peux utiliser le nom de ton choix, mais par convention les fichiers JavaScript sont appelés <code>script.js</code>, <code>main.js</code> ou <code>index.js</code>.</p>
 <p>Ensuite, <strong>à l'intérieur de ce fichier , tu peux directement écrire du… Javascript</strong> ! (obviously 😏)</p>
@@ -76,7 +77,7 @@ C'est normal, le message que tu as créé est uniquement visible dans <strong>la
 <p>Une fois que cela est fait, ajoute l'attribut <code>src</code> (comme tu ferais pour une image) à ta balise <code>script</code> et donne lui <strong>le chemin de ton fichier JS</strong>.</p>
 <div class="bloc-code"><div class="bloc-code__langue">jsx</div><pre><code class="hljs language-jsx">&lt;script src=<span class="hljs-string">&quot;script.js&quot;</span>&gt;&lt;/script&gt;
 </code></pre></div>
-<h2>La console du navigateur</h2>
+<h2 id="t-la-console-du-navigateur">La console du navigateur</h2>
 <p>Nos navigateurs web ont beaucoup d'outils tous plus fantastiques les uns que les autres, qui sont là pour nous aider à comprendre <strong>ce qui se passe dans nos applications</strong>.</p>
 <p>L'un d'eux est la <strong>console</strong>.
 La console va certainement être <strong>ton meilleur ami pour debugger</strong> tes programmes. C'est là où tu pourras voir les messages d'erreurs, les avertissements ou même des choses que tu essaies par toi même pour vérifier une hypothèse (par example : &quot;je ne suis plus très sûr si <em>&quot;1&quot; == 1</em> vaut <em>true</em> ou <em>false</em>&quot; --&gt; &quot;je tape simplement cette expression dans la console de mon navigateur pour vérifier !&quot;)</p>
@@ -89,7 +90,7 @@ La console va certainement être <strong>ton meilleur ami pour debugger</strong>
     <div class="ressource__hote">digitalocean.com</div>
   </div>
 </a>
-<h3>Ouvrir la console</h3>
+<h3 id="t-ouvrir-la-console">Ouvrir la console</h3>
 <div class="onglets" data-onglets="2"><input type="radio" name="onglets-8" id="onglets-8-0" class="onglets__radio" checked><input type="radio" name="onglets-8" id="onglets-8-1" class="onglets__radio"><div class="onglets__barre"><label class="onglets__label" for="onglets-8-0">Chrome</label><label class="onglets__label" for="onglets-8-1">Firefox</label></div><div class="onglets__panneaux"><div class="onglets__panneau"><p>Pour ouvrir la console dans Chrome, clic-droit dans la page &gt; <strong>inspecter</strong>, puis clique sur l'onglet <strong>Console</strong>, <em>that's it</em> !
 P.S. : Tu peux aussi simplement appuyer sur <code>F12</code></p>
 <p><img src="images/002-js-console-chrome.gif" alt="JS console Chrome" loading="lazy"></p>
@@ -98,7 +99,7 @@ P.S. : Tu peux aussi simplement appuyer sur <code>F12</code></p>
 <p><img src="images/003-firefox-console-js.gif" alt="Firefox console Js" loading="lazy"></p>
 </div></div></div>
 <p><strong>Tu devrais voir &quot;Hello, World!&quot; s'afficher dans la console</strong></p>
-<h2>Syntaxe de base</h2>
+<h2 id="t-syntaxe-de-base">Syntaxe de base</h2>
 <p><img src="images/004-image.jpg" alt="image" loading="lazy"></p>
 <p>Le code Javascript <strong>se termine avec un point-virgule <em>(semi-colon 🇬🇧 )</em></strong>
 Le point-virgule indique la fin de la commande.</p>
@@ -114,12 +115,12 @@ Le point-virgule indique la fin de la commande.</p>
 <div class="bloc-code"><div class="bloc-code__langue">javascript</div><pre><code class="hljs language-javascript"><span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(<span class="hljs-string">&quot;Hello, world!&quot;</span>);
 <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(<span class="hljs-string">&quot;Hi, world!&quot;</span>);
 </code></pre></div>
-<h3>String</h3>
+<h3 id="t-string">String</h3>
 <p>Les <em>strings</em> en Javascript sont des chaînes de caractères. Elles doivent être entourées de guillemets <em>(quotes 🇬🇧)</em> (simple ou double)</p>
 <div class="bloc-code"><div class="bloc-code__langue">javascript</div><pre><code class="hljs language-javascript"><span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(<span class="hljs-string">&quot;Hello, world&quot;</span>);
 <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(<span class="hljs-string">&#x27;Hello, world&#x27;</span>);
 </code></pre></div>
-<h3>Console.log</h3>
+<h3 id="t-console-log">Console.log</h3>
 <p><code>console.log</code> est une <strong>fonction Javascript</strong> (on parlera un peu plus des fonctions dans un futur proche)</p>
 <p><strong>Une fonction en Javascript est un bout de code réutilisable</strong> que l'on peut <strong>appeler</strong> pour effectuer certaines opérations.</p>
 <p><strong>Le Javascript et le navigateur</strong> viennent avec tout un tas de <strong>fonctions intégrées</strong>, mais tu verras un peu plus tard que <strong>tu peux écrire tes propres fonctions</strong>.</p>
@@ -128,7 +129,7 @@ Ces APIs web ne font pas partie des standards ECMAScript.</p>
 <p>Pour utiliser <code>console.log</code>, tu as juste besoin de mettre ton message <strong>entre les parenthèses</strong>. Et parce que ton message est un <strong>String</strong>, il doit être entre des guillemets.</p>
 <div class="bloc-code"><div class="bloc-code__langue">javascript</div><pre><code class="hljs language-javascript"><span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(<span class="hljs-string">&quot;your message&quot;</span>)
 </code></pre></div>
-<h4>Différents types de messages</h4>
+<h4 id="t-differents-types-de-messages">Différents types de messages</h4>
 <p>On peut écrire du Javascript directement dans la console du navigateur pour tester du code.
 Il y a différents types de message de console.
 <code>console.log</code> est celui qu'on va utiliser le plus souvent, il affiche le message de la manière la plus simple.</p>
@@ -142,14 +143,14 @@ Il y a différents types de message de console.
 <p><strong>🔬 Expérimente</strong></p>
 <p>Essaie d'écrire de multiples messages dans la console en utilisant ces commandes et vois ce que ça donne.</p>
 <p><img src="images/005-hello-world-console.png" alt="Hello World console" loading="lazy"></p>
-<h3>Erreurs</h3>
+<h3 id="t-erreurs">Erreurs</h3>
 <p>Si tu fais une erreur dans ton code, tu verras un message d'erreur apparaître dans la console, qui va t'aider à comprendre ce qu'il se passe.</p>
 <p>Ex: Si j'écris <code>console.loge</code> au lieu de <code>console.log</code></p>
 <p><img src="images/006-error-js-console.png" alt="Error js console" loading="lazy">Tu peux voir que la console me dit <code>console.loge is not a function</code>.</p>
-<h3>Sensibilité à la casse</h3>
+<h3 id="t-sensibilite-a-la-casse">Sensibilité à la casse</h3>
 <p>Javascript est <strong>sensible à la casse.</strong> <strong>Écrire <code>console.log</code> et <code>console.Log</code> n'est pas la même chose !</strong>
 Souviens-t'en pour éviter des erreurs bêtes 😏</p>
-<h3>Écrire des commentaires</h3>
+<h3 id="t-ecrire-des-commentaires">Écrire des commentaires</h3>
 <p>Une chose importante en développement est de <strong>documenter ton code</strong>.
 <strong>Documenter ton code</strong> va le rendre <strong>plus lisible</strong> pour toi, mais aussi pour les autres développeurs qui peuvent être amenés à travailler dessus.
 Une façon de documenter est d'écrire des <strong>commentaires</strong>.
@@ -171,7 +172,7 @@ is on multiple lines */</span>
 </code></pre></div>
 <p><strong>🔬 Expérimente</strong></p>
 <p>Écris quelques commentaires dans le fichier JS que tu as créé au début !</p>
-<h3>Opérations arithmétiques</h3>
+<h3 id="t-operations-arithmetiques">Opérations arithmétiques</h3>
 <p>Javascript nous permet d'écrire des <strong>operations arithmétiques.</strong>
 Faisons un peu de <strong>maths</strong> avec Javascript (oui oui des maths !)</p>
 <p><img src="images/008-mathematic-board.png" alt="Mathematic board" loading="lazy">
@@ -195,7 +196,7 @@ Faisons un peu de <strong>maths</strong> avec Javascript (oui oui des maths !)</
 <div class="bloc-code"><div class="bloc-code__langue">javascript</div><pre><code class="hljs language-javascript"><span class="hljs-number">6</span> % <span class="hljs-number">2</span>
 <span class="hljs-comment">// =&gt; 0</span>
 </code></pre></div>
-<h3>Opération logiques : comparaisons</h3>
+<h3 id="t-operation-logiques-comparaisons">Opération logiques : comparaisons</h3>
 <p>Tu peux aussi utiliser Javascript pour comparer des valeurs.
 Javascript te donnera une réponse qui vaudra soit <code>true</code>, soit <code>false</code> (on appelle cela   un <em>booléen</em>).</p>
 <p><img src="images/009-apple-comparison.png" alt="Apple comparison" loading="lazy"></p>
@@ -237,7 +238,7 @@ en ajoutant le symbole d'égalité <code>=</code> juste après le <code>&gt;</co
 </code></pre></div>
 <p><strong>🔬 Expérimente</strong>
 Essaies de faire quelques comparaisons basiques dans ta console.</p>
-<h2>Indentation</h2>
+<h2 id="t-indentation">Indentation</h2>
 <p>Comme en HTML, en CSS, ainsi que dans beaucoup d'autres langages de programmation, il est <strong>essentiel</strong> d'organiser son code pour en améliorer la lisibilité.</p>
 <p><img src="images/010-identation.png" alt="identation" loading="lazy">
 Parfois, ton IDE (<em>Integrated development environment</em>, comme VSCode) va <strong>automatiquement indenter ton code pour toi.</strong>
@@ -251,7 +252,7 @@ Généralement, en JS, à chaque fois que tu ouvres des accolades (<em>curly bra
 	}
 }
 </code></pre></div>
-<h2>Résumé</h2>
+<h2 id="t-resume">Résumé</h2>
 <ul>
 <li>Tu peux écrire du Javascript dans une page HTML en utilisant les tags <code>&lt;script&gt;</code></li>
 <li>Tu peux écrire des messages dans la console de ton navigateur en utilisant <code>console.log</code></li>
@@ -287,7 +288,5 @@ Généralement, en JS, à chaque fois que tu ouvres des accolades (<em>curly bra
   <p>Archive personnelle des cours suivis à la Wild Code School. Copie hors ligne à usage strictement privé.</p>
 </footer>
 
-<script src="../../assets/copie-code.js"></script>
-<script src="../../assets/progression.js"></script>
 </body>
 </html>

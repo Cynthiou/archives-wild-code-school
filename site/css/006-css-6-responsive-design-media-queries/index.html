@@ -20,21 +20,22 @@
     <p class="quete__meta">Quête 6 sur 10 · 9 images archivées</p>
   </header>
   <div class="cours">
-<h2>Objectifs</h2>
+<h2 id="t-objectifs">Objectifs</h2>
 <ul>
 <li>Comprendre ce que sont les <em>media queries</em></li>
 <li>Découvrir comment tu peux les utiliser pour modifier ta mise en page</li>
 <li>Comprendre le concept du <strong>mobile first</strong></li>
 </ul>
-<h2>Introduction</h2>
+<h2 id="t-introduction">Introduction</h2>
 <p>Aux débuts d'Internet, les pages web étaient conçues pour des tailles d'écran très spécifiques.
 Aujourd'hui, <strong>nous avons tous des tailles d'écran différentes</strong>, même nos <strong>smartphones sont tous de tailles différentes</strong>.</p>
 <p>C'est pour résoudre ce problème spécifique que le <em>responsive web design</em> (design web réactif) a été inventé.
 Le <em>responsive web design</em> <strong>est un ensemble de pratiques</strong> qui <strong>permet aux pages web de changer leur mise en page pour s'adapter à des tailles d'écran différentes</strong>.</p>
 <p>Dans cette quête, nous parlerons de ce qu'est le <em>responsive web design</em> et <strong>de la façon dont tu peux appliquer ces pratiques à tes sites web</strong>.</p>
 <p><img src="images/001-desk-responsive.png" alt="Desk Responsive" loading="lazy"></p>
-<h2>Sommaire</h2>
-<h2>L'histoire des différentes mise en page des sites web</h2>
+<h2 id="t-sommaire">Sommaire</h2>
+<nav class="sommaire" aria-label="Sommaire de la quête"><ol class="sommaire__liste"><li><a href="#t-l-histoire-des-differentes-mise-en-page-des-sites-web">L'histoire des différentes mise en page des sites web</a></li><li><a href="#t-responsive-design">Responsive Design</a></li><li><a href="#t-mobile-first">Mobile-first</a></li><li><a href="#t-comment-coder-une-page-web-responsive">Comment coder une page web responsive</a><ul><li><a href="#t-la-balise-meta-viewport">La balise meta viewport</a></li><li><a href="#t-media-queries">Media queries</a></li><li><a href="#t-types-de-media">Types de media</a></li><li><a href="#t-caracteristiques-media">Caractéristiques media</a></li></ul></li><li><a href="#t-points-de-rupture">Points de rupture</a></li><li><a href="#t-images">Images</a></li><li><a href="#t-resume">Résumé</a></li><li><a href="#t-ressources">Ressources</a></li><li><a href="#t-challenge">Challenge</a><ul><li><a href="#t-consignes">Consignes</a></li><li><a href="#t-tips">Tips</a></li><li><a href="#t-solution-pas-a-pas">Solution pas à pas</a></li></ul></li></ol></nav>
+<h2 id="t-l-histoire-des-differentes-mise-en-page-des-sites-web">L'histoire des différentes mise en page des sites web</h2>
 <p>Avant que le concept de sites web réactifs n'existe, il n'y avait que deux façons de concevoir un site web.</p>
 <ul>
 <li>Créer une mise en page fixe (les sites web ont une taille fixe)</li>
@@ -46,11 +47,11 @@ Le <em>responsive web design</em> <strong>est un ensemble de pratiques</strong> 
 <p><img src="images/003-fluid-layout-css.gif" alt="Fluid layout CSS" loading="lazy">
 Source:<a href="https://medium.com/@space.alpaca/so-what-exactly-is-the-difference-between-fixed-fluid-adaptive-and-responsive-layouts-and-why-3773272d8481" target="_blank" rel="noopener noreferrer">https://medium.com/@space.alpaca/so-what-exactly-is-the-difference-between-fixed-fluid-adaptive-and-responsive-layouts-and-why-3773272d8481</a></p>
 <p>Le <em>responsive design</em> a été créé pour résoudre les problèmes des dispositions fixes et liquides.</p>
-<h2>Responsive Design</h2>
+<h2 id="t-responsive-design">Responsive Design</h2>
 <p>Le terme &quot;<em>responsive design</em>&quot; (conception réactive ou adaptative) <strong>ne se réfère pas à une technologie spécifique</strong>. Il fait plutôt référence à un <strong>ensemble d'outils et de pratiques pour créer des mises en page</strong> qui &quot;s'adaptent&quot; à la <strong>taille des écrans</strong>.
 Le terme &quot;<em>responsive design</em>&quot; a été apposé par Ethan Matcotte en 2010.</p>
 <p><img src="images/004-responsive.jpg" alt="Responsive" loading="lazy"></p>
-<h2>Mobile-first</h2>
+<h2 id="t-mobile-first">Mobile-first</h2>
 <p>Un concept qui est également apparu avec le <em>responsive design</em> (et surtout à la &quot;révolution mobile&quot;) est le concept de <strong>mobile-first.</strong></p>
 <p>La philosophie du <em>mobile-first</em> est de toujours commencer à travailler sur la version <strong>mobile avant de construire la version de bureau.</strong></p>
 <p>Non seulement les utilisateurs <strong>auront une meilleure expérience sur mobile</strong>, mais <strong>il est également plus facile de commencer à travailler sur une version mobile.</strong></p>
@@ -73,8 +74,8 @@ Par exemple, <strong>Google donnera un rang à ton site web</strong> en vérifia
     <div class="ressource__hote">developer.mozilla.org</div>
   </div>
 </a>
-<h2>Comment coder une page web responsive</h2>
-<h3>La balise meta viewport</h3>
+<h2 id="t-comment-coder-une-page-web-responsive">Comment coder une page web responsive</h2>
+<h3 id="t-la-balise-meta-viewport">La balise meta viewport</h3>
 <p>Pour indiquer au navigateur que ta page s'adapte à tous les appareils, tu dois ajouter une balise <em>meta</em> dans le <code>&lt;head&gt;</code> de ton document :</p>
 <div class="bloc-code"><div class="bloc-code__langue">html</div><pre><code class="hljs language-html"><span class="hljs-tag">&lt;<span class="hljs-name">head</span>&gt;</span>
   <span class="hljs-tag">&lt;<span class="hljs-name">meta</span> <span class="hljs-attr">name</span>=<span class="hljs-string">&quot;viewport&quot;</span> <span class="hljs-attr">content</span>=<span class="hljs-string">&quot;width=device-width, initial-scale=1.0&quot;</span>&gt;</span>
@@ -91,7 +92,7 @@ Par exemple, <strong>Google donnera un rang à ton site web</strong> en vérifia
 </a>
 <p><img src="images/006-google-viewport-meta.png" alt="Google viewport meta" loading="lazy">
 <em>Source:</em> <a href="https://developers.google.com/search/mobile-sites/mobile-seo/responsive-design" target="_blank" rel="noopener noreferrer">https://developers.google.com/search/mobile-sites/mobile-seo/responsive-design</a></p>
-<h3>Media queries</h3>
+<h3 id="t-media-queries">Media queries</h3>
 <p>Les <em>media queries</em> permettent de modifier la mise en page en fonction de la taille du <strong>viewport</strong>.
 Ce que nous appelons viewport est <strong>la taille de la fenêtre</strong>.</p>
 <p>En utilisant les <em>media queries</em>, tu peux décider de réorganiser certains éléments de ta page web en fonction de la taille de la fenêtre.</p>
@@ -104,7 +105,7 @@ Ce que nous appelons viewport est <strong>la taille de la fenêtre</strong>.</p>
 
 }
 </code></pre></div>
-<h3>Types de <em>media</em></h3>
+<h3 id="t-types-de-media">Types de <em>media</em></h3>
 <p>Le <code>&lt;media_type&gt;</code> décrit la catégorie d'appareil. Voici une liste des différents <strong>types de media</strong> que tu peux utiliser :</p>
 <ul>
 <li>
@@ -121,7 +122,7 @@ Ce que nous appelons viewport est <strong>la taille de la fenêtre</strong>.</p>
 </li>
 </ul>
 <p>Le <strong>plus utilisé</strong> est généralement <code>screen</code>.</p>
-<h3>Caractéristiques media</h3>
+<h3 id="t-caracteristiques-media">Caractéristiques media</h3>
 <p>Ensuite, à la place de <code>&lt;media_features&gt;</code>, tu peux écrire des règles pour lesquelles la media query sera appliquée.
 Les <em>features</em> les plus courantes sont la largeur minimale <code>min-width</code> et la largeur maximale <code>max-width</code>.</p>
 <p>Tu peux trouver une liste complète sur le site w3schools :</p>
@@ -174,7 +175,7 @@ Si la condition est vraie, alors la règle CSS est appliquée et l'élément <co
   }
 }
 </code></pre></div>
-<h2>Points de rupture</h2>
+<h2 id="t-points-de-rupture">Points de rupture</h2>
 <p>Dans la <em>responsive design</em>, un point de rupture (ou <em>breakpoint</em>) est un point auquel la <em>media query</em> se déclenche (et la mise en page s'adapte). Dans l'exemple précédent, tu as utilisé 600px comme point de rupture.</p>
 <p>Nous ne voulons pas que les éléments changent tout le temps pour un grand nombre d'écrans différents.
 Ton site web ne devrait changer que sur les <strong>points d'arrêt</strong> principaux (ex : lorsque le site passe d'un écran de bureau à la tablette, <em>etc.</em>)</p>
@@ -188,7 +189,7 @@ Ton site web ne devrait changer que sur les <strong>points d'arrêt</strong> pri
 </ul>
 <p><img src="images/008-breakpoints.jpg" alt="breakpoints" loading="lazy">
 <em>Source : Pinterest</em> <a href="https://in.pinterest.com/pin/370421138093022328/" target="_blank" rel="noopener noreferrer">https://in.pinterest.com/pin/370421138093022328/</a></p>
-<h2>Images</h2>
+<h2 id="t-images">Images</h2>
 <p>Un autre concept important en <em>responsive design</em> est celui des <strong>images</strong>.
 Nous voulons aussi que les images s'adaptent à la taille de l'écran.</p>
 <p>Nous pouvons utiliser ce code pour nous assurer que l'élément image ne prend pas plus de 100% de la taille du parent :</p>
@@ -227,13 +228,13 @@ Nous voulons aussi que les images s'adaptent à la taille de l'écran.</p>
 [] @query screen and (max-width : 500px) { ... }
 [] @mediaQuery screen and (max-width : 500px) { ... }
 </code></pre></div>
-<h2>Résumé</h2>
+<h2 id="t-resume">Résumé</h2>
 <ul>
 <li>Le <em>responsive design</em> est un <strong>ensemble de pratiques</strong> utilisées pour <strong>créer une mise en page qui &quot;répond&quot; (s'adapte) aux contraintes de l'appareil</strong></li>
 <li>Le principe du <em><strong>mobile-first</strong></em> est un principe important lié au <em>responsive design</em>. Ce principe signifie que tu dois toujours <strong>démarrer la construction de la version mobile</strong> de ton site web <strong>avant la version pour bureau</strong></li>
 <li>Tu peux écrire des <em>media queries</em> pour appliquer des <strong>règles CSS spécifiques</strong> à certaines <strong>tailles d'écran</strong></li>
 </ul>
-<h2>Ressources</h2>
+<h2 id="t-ressources">Ressources</h2>
 <a class="ressource" href="https://www.toptal.com/designers/responsive/responsive-design-best-practices" target="_blank" rel="noopener noreferrer">
   <div class="ressource__icone">↗</div>
   <div class="ressource__texte">
@@ -243,10 +244,10 @@ Nous voulons aussi que les images s'adaptent à la taille de l'écran.</p>
     <div class="ressource__hote">toptal.com</div>
   </div>
 </a>
-<h2>Challenge</h2>
+<h2 id="t-challenge">Challenge</h2>
 <p>En utilisant les <em>media queries</em>, essaie de reproduire l'intégration de la barre de navigation représentée ci-dessous.</p>
 <p><img src="images/009-challenge-responsive.png" alt="Challenge responsive" loading="lazy"></p>
-<h3>Consignes</h3>
+<h3 id="t-consignes">Consignes</h3>
 <ul>
 <li>L'intégration doit être faite pour trois tailles d'écran, soit deux points de ruptures (1024 et 1200px), comme suit :
 <ul>
@@ -260,7 +261,7 @@ Nous voulons aussi que les images s'adaptent à la taille de l'écran.</p>
 <li>Version <strong>tablette</strong> : les icônes ainsi que les textes des liens sont visibles. La barre est fixée à droite de l'écran</li>
 <li>Version <strong>ordinateur</strong> : les icônes sont cachées mais les textes des liens sont visibles ainsi que le logo. La barre de navigation est fixée en haut de la fenêtre.</li>
 </ul>
-<h3>Tips</h3>
+<h3 id="t-tips">Tips</h3>
 <ul>
 <li>Essaie de réaliser ton CSS dans une approche <em><strong>mobile first</strong></em></li>
 <li>Code pour le violet : #A306B6.</li>
@@ -268,7 +269,7 @@ Nous voulons aussi que les images s'adaptent à la taille de l'écran.</p>
 </ul>
 <div class="bloc-code"><div class="bloc-code__langue">html</div><pre><code class="hljs language-html">    <span class="hljs-tag">&lt;<span class="hljs-name">link</span> <span class="hljs-attr">rel</span>=<span class="hljs-string">&quot;stylesheet&quot;</span> <span class="hljs-attr">href</span>=<span class="hljs-string">&quot;https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css&quot;</span>&gt;</span>
 </code></pre></div>
-<h3>Solution pas à pas</h3>
+<h3 id="t-solution-pas-a-pas">Solution pas à pas</h3>
 <ol class="etapes"><li class="etape"><div class="etape__puce">1</div><div class="etape__contenu"><h4 class="etape__titre">Démarrage</h4><p>Je crée les fichiers <code>index.html</code> et <code>style.css</code> dans un dossier approprié.</p>
 </div></li><li class="etape"><div class="etape__puce">2</div><div class="etape__contenu"><h4 class="etape__titre">HTML</h4><p>Je pose l'ensemble des éléments HTML dont je vais avoir besoin pour les trois versions.</p>
 <div class="bloc-code"><div class="bloc-code__langue">html</div><pre><code class="hljs language-html"><span class="hljs-meta">&lt;!DOCTYPE <span class="hljs-keyword">html</span>&gt;</span>
@@ -590,7 +591,5 @@ Voici ce que j'aurais alors obtenu :</p>
   <p>Archive personnelle des cours suivis à la Wild Code School. Copie hors ligne à usage strictement privé.</p>
 </footer>
 
-<script src="../../assets/copie-code.js"></script>
-<script src="../../assets/progression.js"></script>
 </body>
 </html>

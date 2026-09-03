@@ -20,16 +20,17 @@
     <p class="quete__meta">Quête 5 sur 9 · 5 images archivées</p>
   </header>
   <div class="cours">
-<h2>Objectifs</h2>
+<h2 id="t-objectifs">Objectifs</h2>
 <ul>
 <li>Découvrir la méthode Merise</li>
 <li>Apprendre à identifier des entités et des relations</li>
 <li>Comprendre la construction d'un MCD</li>
 </ul>
-<h2>Introduction</h2>
+<h2 id="t-introduction">Introduction</h2>
 <p>Avant de pouvoir créer une base de données, les tables et les champs qui la composent, tu dois réfléchir à comment <strong>architecturer</strong> ces données. C’est l’étape de la modélisation.</p>
-<h2>Sommaire</h2>
-<h2>La méthode Merise</h2>
+<h2 id="t-sommaire">Sommaire</h2>
+<nav class="sommaire" aria-label="Sommaire de la quête"><ol class="sommaire__liste"><li><a href="#t-la-methode-merise">La méthode Merise</a></li><li><a href="#t-mcd-le-schema-entite-relation">MCD : le schéma entité / relation</a><ul><li><a href="#t-les-entites">Les entités</a></li><li><a href="#t-les-relations">Les relations</a></li><li><a href="#t-les-cardinalites">Les cardinalités</a></li></ul></li><li><a href="#t-challenge">Challenge</a><ul><li><a href="#t-criteres-de-validation">Critères de validation</a></li></ul></li></ol></nav>
+<h2 id="t-la-methode-merise">La méthode Merise</h2>
 <p>Modéliser une base de données est une étape cruciale mais complexe. Elle dépend avant tout de la compréhension des règles métiers, c'est-à-dire des <strong>besoins du client</strong>. Parfois, plusieurs façons de modéliser une base peuvent répondre à ces besoins.</p>
 <p>Bref, cela demande avant tout de la <strong>rigueur</strong> et de <strong>l’expérience</strong>. La méthodologie Merise (datant des années 70) apporte des règles précises pour t’aider à modéliser convenablement tes données.</p>
 <div class="encadre encadre--warning"><div class="encadre__titre">Attention</div><div class="encadre__corps"><p>La méthode Merise est très vaste. Nous ne la couvrirons pas de manière exhaustive. Nous allons l'aborder de manière <em>pragmatique</em>.</p>
@@ -51,15 +52,15 @@
     <div class="ressource__hote">ibm.com</div>
   </div>
 </a>
-<h2>MCD : le schéma entité / relation</h2>
+<h2 id="t-mcd-le-schema-entite-relation">MCD : le schéma entité / relation</h2>
 <p>Le schéma “entité/relation” est une première étape dans la modélisation de la base de données. Ce schéma sera ensuite <em>transformé</em> pour refléter la modélisation finale qui, elle, correspondra exactement aux tables et champs à créer en SQL.</p>
-<h3>Les entités</h3>
+<h3 id="t-les-entites">Les entités</h3>
 <p>La modélisation consiste à regrouper de manière logique des données (un élève, une école, un livre) dans des <strong>entités</strong>. Chaque entité possède un certain nombre d’<strong>attributs</strong> qui lui sont propres (un nom et un prénom pour un élève ; un nom et une capacité pour une école ; un titre et un nombre de pages pour un livre, etc.).</p>
 <p>Une entité doit également posséder un <strong>identifiant unique</strong> (correspondant à un ou plusieurs attributs) pour caractériser sans ambiguïté possible une instance de cette entité (un exemplaire d'une entité &quot;livre&quot; par exemple).</p>
 <div class="encadre encadre--info"><div class="encadre__titre">Info</div><div class="encadre__corps"><p>De manière schématique, les entités sont représentées sous forme d’un carré. Le carré contient en haut le nom de la table, et en dessous une liste des attributs.</p>
 </div></div>
 <p><img src="images/001-entites.png" alt="entités" loading="lazy"></p>
-<h3>Les relations</h3>
+<h3 id="t-les-relations">Les relations</h3>
 <p>Les entités d'un système sont reliées par des <strong>actions</strong>. Une &quot;relation&quot; représente cette action entre au moins 2 entités.</p>
 <p>Un exemple :</p>
 <div class="encadre encadre--note encadre--story"><div class="encadre__corps"><p>Dans la bibliothèque de Poudlard, un <em>sorcier</em> peut <strong>lire</strong> un <em>livre</em> ou l'<strong>emprunter</strong>.</p>
@@ -80,7 +81,7 @@
 <div class="encadre encadre--info"><div class="encadre__titre">Info</div><div class="encadre__corps"><p>La relation est symbolisée par un cercle contenant généralement un verbe d’action (ici <em>borrow</em> pour “emprunter”), éventuellement les champs propres à la relation, et un trait (passant par le cercle) reliant les deux entités.</p>
 </div></div>
 <p><img src="images/003-entites-relations.png" alt="entités + relations" loading="lazy"></p>
-<h3>Les cardinalités</h3>
+<h3 id="t-les-cardinalites">Les cardinalités</h3>
 <p>Les <strong>cardinalités</strong> décrivent le nombre d'interactions possibles entre un élément d’une entité et une autre entité. Reprenons une relation de notre exemple :</p>
 <ul>
 <li>sorcier - lire - livre
@@ -148,7 +149,7 @@
 </div></div>
 <p><img src="images/004-entites-relations-cardinalites-mcd-complet.png" alt="entités + relations + cardinalités = MCD complet" loading="lazy"></p>
 <p>Nous avons fini l’étape du MCD de la méthode Merise.</p>
-<h2>Challenge</h2>
+<h2 id="t-challenge">Challenge</h2>
 <p>Bienvenue au cours de potions magiques !</p>
 <p>Chaque potion que tu vas créer a un nom. Les potions utilisent des ingrédients, et chaque ingrédient est défini par son nom.</p>
 <p>Ça fait beaucoup d’informations à retenir... Pour ne rien oublier, tu aimerais stocker en base de données quels ingrédients sont nécessaires pour chaque potion. Prends un papier et un crayon (ou rends-toi sur <a href="https://excalidraw.com/" target="_blank" rel="noopener noreferrer">https://excalidraw.com/</a>), et dessine <strong>le MCD</strong> permettant de modéliser cette problématique.</p>
@@ -159,7 +160,7 @@
 <li>Ajoute les relations.</li>
 <li>Décide des cardinalités.</li>
 </ol>
-<h3>Critères de validation</h3>
+<h3 id="t-criteres-de-validation">Critères de validation</h3>
 <ul>
 <li>Une photo de la modélisation est postée</li>
 <li>La modélisation contient le MCD</li>
@@ -187,6 +188,5 @@
   <p>Archive personnelle des cours suivis à la Wild Code School. Copie hors ligne à usage strictement privé.</p>
 </footer>
 
-<script src="../../assets/progression.js"></script>
 </body>
 </html>

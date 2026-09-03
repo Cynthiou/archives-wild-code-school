@@ -20,18 +20,19 @@
     <p class="quete__meta">Quête 2 sur 5 · 4 images archivées</p>
   </header>
   <div class="cours">
-<h2>Objectifs</h2>
+<h2 id="t-objectifs">Objectifs</h2>
 <ul>
 <li>Comprendre le concept d'environnement.</li>
 <li>Utiliser un fichier <code>.env</code> avec la commande <code>node</code>.</li>
 </ul>
-<h2>Pré-requis</h2>
+<h2 id="t-pre-requis">Pré-requis</h2>
 <ol class="etapes"><li class="etape"><div class="etape__puce">1</div><div class="etape__contenu"><h4 class="etape__titre">Valider la quête suivante</h4><div class="renvois"><div class="renvois__titre">Quêtes liées</div><ul><li><a href="../../node-js/001-node-01-introduction-a-node-js-et-npm/index.html">Quête 1334</a></li></ul></div>
 </div></li></ol>
-<h2>Introduction</h2>
+<h2 id="t-introduction">Introduction</h2>
 <p>Les fichiers <code>.env</code> sont des fichiers de configuration utilisés pour stocker des variables d'environnement dans un format simple, lisible et facile à gérer. Ils sont largement utilisés dans les applications modernes, en particulier dans les projets basés sur des frameworks comme Node.js, Django, Laravel, et bien d'autres.</p>
-<h2>Sommaire</h2>
-<h2>Variables d'environnement ?</h2>
+<h2 id="t-sommaire">Sommaire</h2>
+<nav class="sommaire" aria-label="Sommaire de la quête"><ol class="sommaire__liste"><li><a href="#t-variables-d-environnement">Variables d'environnement ?</a><ul><li><a href="#t-en-pratique">En pratique</a></li></ul></li><li><a href="#t-utiliser-un-fichier-env">Utiliser un fichier .env</a><ul><li><a href="#t-bonnes-pratiques">Bonnes pratiques</a></li></ul></li><li><a href="#t-resume">Résumé</a></li><li><a href="#t-challenge">Challenge</a><ul><li><a href="#t-criteres-de-validation">Critères de validation</a></li></ul></li></ol></nav>
+<h2 id="t-variables-d-environnement">Variables d'environnement ?</h2>
 <p>Les variables d'environnement sont des variables qui sont définies dans le système d'exploitation ou dans le conteneur dans lequel l'application est exécutée.</p>
 <p>Les variables d'environnement remplissent plusieurs rôles :</p>
 <ul>
@@ -39,7 +40,7 @@
 <li>Sécurité : Elles permettent de stocker des informations sensibles hors du code source.</li>
 <li>Portabilité : En les utilisant, tu peux facilement déployer la même application sur plusieurs systèmes (Linux, macOS, Windows) en modifiant uniquement les valeurs des variables d'environnement.</li>
 </ul>
-<h3>En pratique</h3>
+<h3 id="t-en-pratique">En pratique</h3>
 <p>Une variable d'environnement, comme une variable en JavaScript, est un nom associé à une valeur. Par convention, le nom doit être en majuscule :</p>
 <div class="bloc-code"><div class="bloc-code__langue">bash</div><pre><code class="hljs language-bash">MY_VARIABLE=Hello_world
 </code></pre></div>
@@ -59,7 +60,7 @@
 <p>Si tu tapes <code>console.log(process.env.MESSAGE)</code>, tu devrais voir <code>Hello_World</code> :</p>
 <p><img src="images/001-hello-world.png" alt="Hello_world" loading="lazy"></p>
 <p>(Utilise la commande <code>.exit</code> pour quitter la session <code>node</code>)</p>
-<h2>Utiliser un fichier .env</h2>
+<h2 id="t-utiliser-un-fichier-env">Utiliser un fichier .env</h2>
 <p>Définir les variables d'environnement lors du lancement de l'application comme dans l'exemple précédent n'est pas très pratique. Imagine si ton application nécessite plusieurs variables !</p>
 <p>C'est là que les fichiers <code>.env</code> interviennent.</p>
 <p>Un fichier <code>.env</code> est un fichier texte contenant des paires clé-valeur qui définissent des variables d'environnement pour une application. Ces variables peuvent être des informations sensibles ou spécifiques à un environnement, telles que :</p>
@@ -96,7 +97,7 @@ API_KEY=abcd1234xyz
 <p><img src="images/004-node-env-file-env-index-js.png" alt="node --env-file=.env index.js" loading="lazy"></p>
 <div class="encadre encadre--note encadre--callout"><div class="encadre__corps"><p>L'option <code>--env-file</code> est relativement récente. Tu entendras peut-être parler du module <a href="https://www.npmjs.com/package/dotenv" target="_blank" rel="noopener noreferrer">dotenv</a> en discutant avec des devs : c'était la référénce pour utiliser un fichier <code>.env</code> avant l'ajout de l'option <code>--env-file</code> à la commande <code>node</code>.</p>
 </div></div>
-<h3>Bonnes pratiques</h3>
+<h3 id="t-bonnes-pratiques">Bonnes pratiques</h3>
 <p><strong>⚠️ Ne publie jamais d'informations sensibles ! ⚠️</strong></p>
 <p><strong>Le fichier <code>.env</code> doit TOUJOURS être ajouté dans le fichier <code>.gitignore</code> afin de ne pas partager des données sensibles via un dépôt public (sur GitHub par exemple) !</strong></p>
 <div class="bloc-code"><div class="bloc-code__langue">bash</div><pre><code class="hljs language-bash"><span class="hljs-comment"># .gitignore</span>
@@ -115,14 +116,14 @@ DB_PASSWORD=YOUR_DB_PASSWORD
 <span class="hljs-comment"># Clés API</span>
 API_KEY=YOUR_SECRET_API_KEY
 </code></pre></div>
-<h2>Résumé</h2>
+<h2 id="t-resume">Résumé</h2>
 <ul>
 <li>Les paramètres qui dépendent de l'environnement doivent être stockés dans un fichier <code>.env</code>, sous la forme <code>KEY=valeur</code> (une paire clé-valeur par ligne).</li>
 <li>Ce fichier est passé à la commande <code>node</code> avec l'option <code>--env-file</code>.</li>
 <li>Les variables sont ensuite accessibles dans l'application, via <code>process.env.KEY</code> (remplace <code>KEY</code> par le nom de ta variable).</li>
 <li>Le fichier <code>.env</code> <strong>ne doit pas être versionné avec Git</strong> (utilise .gitgnore).</li>
 </ul>
-<h2>Challenge</h2>
+<h2 id="t-challenge">Challenge</h2>
 <p>Crée une petite application JavaScript qui va afficher ce message :</p>
 <p><code>I am &lt;name&gt;, wilder in &lt;city&gt;, and I love &lt;language&gt;</code>.</p>
 <p>Les valeurs <code>&lt;name&gt;</code>, <code>&lt;city&gt;</code> et <code>&lt;language&gt;</code> doivent être remplacées par des variables d'environnement <code>MY_NAME</code>, <code>MY_CITY</code> et <code>MY_LANGUAGE</code>.</p>
@@ -134,7 +135,7 @@ API_KEY=YOUR_SECRET_API_KEY
 <li>Le fichier <code>.env.sample</code>.</li>
 <li>Le fichier <code>.gitignore</code>.</li>
 </ul>
-<h3>Critères de validation</h3>
+<h3 id="t-criteres-de-validation">Critères de validation</h3>
 <ul>
 <li>[ ] L'application utilise les variables d'environnement.</li>
 <li>[ ] Le fichier <code>.env.sample</code> fournit un exemple de ce à quoi le fichier <code>.env</code> devrait ressembler.</li>
@@ -171,7 +172,5 @@ MY_LANGUAGE=Javascript
   <p>Archive personnelle des cours suivis à la Wild Code School. Copie hors ligne à usage strictement privé.</p>
 </footer>
 
-<script src="../../assets/copie-code.js"></script>
-<script src="../../assets/progression.js"></script>
 </body>
 </html>

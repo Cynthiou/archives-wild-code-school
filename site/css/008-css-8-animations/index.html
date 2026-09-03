@@ -26,7 +26,7 @@
 <li>Comment utiliser les <strong>animations CSS</strong></li>
 <li>Respecter les recommandations :def[A11Y]{value=&quot;Accessibility&quot;}</li>
 </ul>
-<h2>Introduction</h2>
+<h2 id="t-introduction">Introduction</h2>
 <div class="encadre encadre--note encadre--intro"><div class="encadre__corps"><p>Dans le passé, faire des animations sur un site web nécessitait l'utilisation de JavaScript en utilisant la manipulation du DOM.</p>
 <p>Aujourd'hui, il est possible de <strong>faire des animations en CSS</strong>, qui sont <strong>plus légères</strong> et <strong>plus faciles</strong> à réaliser.</p>
 <p>Dans cette quête, tu apprendras <strong>ce que sont les animations en CSS</strong> et <strong>comment les utiliser.</strong></p>
@@ -130,23 +130,23 @@ Source: <a href="https://support.animaapp.com/en/articles/2601206-animation-easi
 <p>La propriété <code>transform</code> permet de manipuler un élément en l'inclinant, en le faisant tourner, en le déplaçant ou en le mettant à l'échelle.</p>
 <p><img src="images/002-transform-possibilities.png" alt="Transform possibilities" loading="lazy">
 Source: <a href="https://www.htmldog.com/guides/css/advanced/transformations/" target="_blank" rel="noopener noreferrer">https://www.htmldog.com/guides/css/advanced/transformations/</a></p>
-<h3>Rotation</h3>
+<h3 id="t-rotation">Rotation</h3>
 <p>Pour appliquer une rotation sur un élément tu peux utiliser la fonction <code>rotate</code> :</p>
 <div class="bloc-code"><div class="bloc-code__langue">css</div><pre><code class="hljs language-css"><span class="hljs-attribute">transform</span>: <span class="hljs-built_in">rotate</span>(<span class="hljs-number">10deg</span>);
 </code></pre></div>
-<h3>Mise à l'échelle</h3>
+<h3 id="t-mise-a-l-echelle">Mise à l'échelle</h3>
 <p>Tu peux changer l'échelle en utilisant la fonction <code>scale</code> dans une transformation CSS :</p>
 <div class="bloc-code"><div class="bloc-code__langue">css</div><pre><code class="hljs language-css"><span class="hljs-attribute">transform</span>: <span class="hljs-built_in">scale</span>(<span class="hljs-number">1.5</span>);
 </code></pre></div>
-<h3>Déplacer</h3>
+<h3 id="t-deplacer">Déplacer</h3>
 <p>Tu peux déplacer un élément horizontalement et verticalement en utilisant <code>translate</code>. C'est utile quand tu veux faire bouger tes éléments :</p>
 <div class="bloc-code"><div class="bloc-code__langue">css</div><pre><code class="hljs language-css"><span class="hljs-attribute">transform</span> : <span class="hljs-built_in">translate</span>(<span class="hljs-number">200px</span>,<span class="hljs-number">200px</span>) ;
 </code></pre></div>
-<h3>Incliner</h3>
+<h3 id="t-incliner">Incliner</h3>
 <p>La fonction <code>skew</code> permet d'incliner l'élément :</p>
 <div class="bloc-code"><div class="bloc-code__langue">css</div><pre><code class="hljs language-css"><span class="hljs-attribute">transform</span>: <span class="hljs-built_in">skew</span>(<span class="hljs-number">20deg</span>,<span class="hljs-number">10deg</span>);
 </code></pre></div>
-<h3>Combiner plusieurs transformations</h3>
+<h3 id="t-combiner-plusieurs-transformations">Combiner plusieurs transformations</h3>
 <p>Tu peux combiner plusieurs propriétés en une seule fois dans ta transformation :</p>
 <div class="bloc-code"><div class="bloc-code__langue">css</div><pre><code class="hljs language-css"><span class="hljs-attribute">transform</span>: <span class="hljs-built_in">rotate</span>(<span class="hljs-number">10deg</span>) <span class="hljs-built_in">scale</span>(<span class="hljs-number">1.5</span>);
 </code></pre></div>
@@ -167,7 +167,7 @@ Source: <a href="https://www.htmldog.com/guides/css/advanced/transformations/" t
     <div class="ressource__hote">3dtransforms.desandro.com</div>
   </div>
 </a>
-<h2>🔬 Expérimente</h2>
+<h2 id="t-experimente">🔬 Expérimente</h2>
 <p>C'est ton tour maintenant ! Essaie de combiner les transitions CSS et les transformations CSS pour créer des animations au survol sur les éléments suivants :</p>
 <div class="bloc-code"><div class="bloc-code__langue">js</div><pre><code class="hljs language-js">!--- index.<span class="hljs-property">html</span>
 &lt;!<span class="hljs-variable constant_">DOCTYPE</span> html&gt;
@@ -260,7 +260,7 @@ Source: <a href="https://www.htmldog.com/guides/css/advanced/transformations/" t
 <p>Et si nous voulons créer des animations plus complexes ? Ou une animation qui peut être lancée sans interaction avec l'utilisateur.
 Et bien bonne nouvelle, c'est possible avec les <a href="https://developer.mozilla.org/fr/docs/Web/CSS/animation" target="_blank" rel="noopener noreferrer">animations CSS</a> !</p>
 <p>Pour créer une animation avec CSS, tu dois utiliser des <code>@keyframes</code>.</p>
-<h3>Animations simples</h3>
+<h3 id="t-animations-simples">Animations simples</h3>
 <p>Un exemple vaut des milliers d'explications :</p>
 <div class="bloc-code"><div class="bloc-code__langue">css</div><pre><code class="hljs language-css"><span class="hljs-keyword">@keyframes</span> slideIn {
   <span class="hljs-selector-tag">from</span> {
@@ -283,7 +283,7 @@ Et bien bonne nouvelle, c'est possible avec les <a href="https://developer.mozil
 <span class="hljs-attribute">animation-iteration-count</span>: <span class="hljs-number">3</span>; <span class="hljs-comment">/* animation jouée 3 fois */</span>
 </code></pre></div>
 <p>Et bien d'autres réglages encore…</p>
-<h3>Animations complexes</h3>
+<h3 id="t-animations-complexes">Animations complexes</h3>
 <div class="bloc-code"><div class="bloc-code__langue">js</div><pre><code class="hljs language-js">!--- index.<span class="hljs-property">html</span>
 &lt;!<span class="hljs-variable constant_">DOCTYPE</span> html&gt;
 <span class="language-xml"><span class="hljs-tag">&lt;<span class="hljs-name">html</span>&gt;</span>
@@ -452,7 +452,7 @@ Et bien bonne nouvelle, c'est possible avec les <a href="https://developer.mozil
 !--- index.<span class="hljs-property">js</span>
 <span class="hljs-keyword">import</span> <span class="hljs-string">&quot;./style.css&quot;</span>;
 </code></pre></div>
-<h2>🔬 Expérimente</h2>
+<h2 id="t-experimente-2">🔬 Expérimente</h2>
 <p>Essaie de créer une animation en respectant ces consignes :</p>
 <ol>
 <li>Entre 0 et 50% de l'animation, faire rouler le disque vinyl vers la droite de sorte qu'il tourne d'un demi-tour.</li>
@@ -544,7 +544,7 @@ Le media query <code>prefers-reduced-motion</code> va permettre d'activer ou non
 <li><strong>Safari</strong> : Utiliser la configuration de macOS et iOS.</li>
 </ul>
 </div></div>
-<h2>Résumé</h2>
+<h2 id="t-resume">Résumé</h2>
 <ul>
 <li>Tu peux utiliser les <strong>animations CSS</strong> pour animer les éléments de ton site</li>
 <li>Tu peux utiliser <strong>CSS transform</strong> pour changer la manière dont est rendu un élément (modification de l'échelle, de l'inclinaison, etc)</li>
@@ -578,7 +578,5 @@ Le media query <code>prefers-reduced-motion</code> va permettre d'activer ou non
   <p>Archive personnelle des cours suivis à la Wild Code School. Copie hors ligne à usage strictement privé.</p>
 </footer>
 
-<script src="../../assets/copie-code.js"></script>
-<script src="../../assets/progression.js"></script>
 </body>
 </html>

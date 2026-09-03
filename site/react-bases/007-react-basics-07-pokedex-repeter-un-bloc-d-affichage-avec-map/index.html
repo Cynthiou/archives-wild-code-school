@@ -20,20 +20,21 @@
     <p class="quete__meta">Quête 7 sur 10 · 2 images archivées</p>
   </header>
   <div class="cours">
-<h2>Objectifs</h2>
+<h2 id="t-objectifs">Objectifs</h2>
 <ul>
 <li>Répéter une même structure HTML pour chaque élément contenu dans un tableau.</li>
 <li>Comprendre la mystérieuse prop <code>key</code>.</li>
 </ul>
-<h2>Pré-requis</h2>
+<h2 id="t-pre-requis">Pré-requis</h2>
 <ol class="etapes"><li class="etape"><div class="etape__puce">1</div><div class="etape__contenu"><h4 class="etape__titre">Valider les quêtes suivantes</h4><div class="renvois"><div class="renvois__titre">Quêtes liées</div><ul><li><a href="../../react-bases/001-react-basics-01-pokedex-introduction/index.html">Quête 2328</a></li><li><a href="../../react-bases/002-react-basics-02-pokedex-ton-premier-composant/index.html">Quête 2332</a></li><li><a href="../../react-bases/003-react-basics-03-pokedex-afficher-des-donnees-dans-un/index.html">Quête 2336</a></li><li><a href="../../react-bases/004-react-basics-04-pokedex-passer-des-props/index.html">Quête 2374</a></li><li><a href="../../react-bases/005-react-basics-05-pokedex-typer-les-props-avec-typescript/index.html">Quête 2375</a></li><li><a href="../../react-bases/006-react-basics-06-pokedex-utiliser-un-state/index.html">Quête 2376</a></li></ul></div>
 </div></li></ol>
-<h2>Introduction</h2>
+<h2 id="t-introduction">Introduction</h2>
 <p>Dans les quêtes précédentes, nous avons vu comment créer des composants, comment leur transmettre des données au travers des props ou encore comment utiliser les expressions JavaScript pour afficher conditionnellement du contenu.</p>
 <p>Nous allons maintenant découvrir comment répéter un bloc d'affichage pour chaque élément contenu dans un tableau.</p>
 <p><img src="images/001-introduction.jpg" alt="" loading="lazy"></p>
-<h2>Sommaire</h2>
-<h2>Petit retour sur les expressions</h2>
+<h2 id="t-sommaire">Sommaire</h2>
+<nav class="sommaire" aria-label="Sommaire de la quête"><ol class="sommaire__liste"><li><a href="#t-petit-retour-sur-les-expressions">Petit retour sur les expressions</a></li><li><a href="#t-comment-ca-marche">Comment ça marche ?</a></li><li><a href="#t-comprendre-les-cles">Comprendre les clés</a></li><li><a href="#t-et-c-est-tout">Et c'est tout ?</a></li><li><a href="#t-challenge">Challenge</a><ul><li><a href="#t-criteres-de-validation">Critères de validation</a></li></ul></li></ol></nav>
+<h2 id="t-petit-retour-sur-les-expressions">Petit retour sur les expressions</h2>
 <p>Tu as appris que pour répéter des instructions, tu dois utiliser des boucles (<code>for</code>/<code>while</code>).</p>
 <p>Malheureusement, dans le <code>return</code> d'une fonction composant, tu peux uniquement te servir d'expressions. Quelque soit la façon de l'écrire, une construction <code>return for</code> ne fonctionne pas en JS/TS :</p>
 <div class="bloc-code"><div class="bloc-code__langue">jsx</div><pre><code class="hljs language-jsx"><span class="hljs-keyword">function</span> <span class="hljs-title function_">App</span>(<span class="hljs-params"></span>) {
@@ -54,7 +55,7 @@
 <span class="hljs-keyword">export</span> <span class="hljs-keyword">default</span> <span class="hljs-title class_">App</span>;
 </code></pre></div>
 <p>Heureusement, le JavaScript nous fournit de nombreuses méthodes pour interagir avec les tableaux (listes de données). Ces méthodes sont des expressions puisqu'elles retournent une valeur. Une méthode des tableaux qui va beaucoup nous intéresser dans React est la méthode <code>map</code>.</p>
-<h2>Comment ça marche ?</h2>
+<h2 id="t-comment-ca-marche">Comment ça marche ?</h2>
 <div class="bloc-code"><div class="bloc-code__langue">jsx</div><pre><code class="hljs language-jsx"><span class="hljs-keyword">function</span> <span class="hljs-title function_">App</span>(<span class="hljs-params"></span>) {
   <span class="hljs-keyword">const</span> cart = [<span class="hljs-string">&quot;apple&quot;</span>, <span class="hljs-string">&quot;banana&quot;</span>, <span class="hljs-string">&quot;grape&quot;</span>, <span class="hljs-string">&quot;watermelon&quot;</span>];
 
@@ -137,7 +138,7 @@
 <p>Dans la littérature, cela s'appelle le <strong>component mapping</strong> !</p>
 <p>Regarde le dernier exemple : dans la console, un message y apparaît 🤨 (il apparaît en réalité sur tous les exemples précédents).</p>
 <p>Le message t'indique que dans les éléments produits par notre <code>map</code>, tu dois renseigner une prop <code>key</code>. Aussi, le message te renvoie vers une <a href="https://react.dev/learn/rendering-lists#keeping-list-items-in-order-with-key" target="_blank" rel="noopener noreferrer">page de la documentation</a>.</p>
-<h2>Comprendre les clés</h2>
+<h2 id="t-comprendre-les-cles">Comprendre les clés</h2>
 <p>Afin que React puisse identifier quel élément d'une liste de données (un tableau) est contenu dans le JSX, il a besoin d'un <strong>identifiant unique</strong>. Cet identifiant prend la forme d'une props que tu dois passer à chaque noeud JSX produit par un <code>map</code>. Cette props se nomme <code>key</code> (c'est un mot-clé réservé).</p>
 <p>Concrètement ça donne :</p>
 <div class="bloc-code"><div class="bloc-code__langue">jsx</div><pre><code class="hljs language-jsx"><span class="hljs-keyword">function</span> <span class="hljs-title function_">App</span>(<span class="hljs-params"></span>) {
@@ -250,7 +251,7 @@
 <p>Ici, nous avons utilisé le nom de l'article comme clé. Il est unique, donc le rendu est cohérent.</p>
 <div class="encadre encadre--warning"><div class="encadre__titre">Attention</div><div class="encadre__corps"><p>Dans ce cas, nous avons eu de la chance car tous les noms des articles sont uniques. Avec un jeu de données réelles, tu dois t'assurer que chaque donnée possède bien un identifiant unique.</p>
 </div></div>
-<h2>Et c'est tout ?</h2>
+<h2 id="t-et-c-est-tout">Et c'est tout ?</h2>
 <p>Bien-sûr que non ! Qui dit tableau, dit méthode de tableau. Voici un petit exemple :</p>
 <div class="bloc-code"><div class="bloc-code__langue">jsx</div><pre><code class="hljs language-jsx"><span class="hljs-keyword">function</span> <span class="hljs-title function_">Article</span>(<span class="hljs-params">{ name, emoji }</span>) {
   <span class="hljs-keyword">return</span> (
@@ -290,7 +291,7 @@
 </code></pre></div>
 <p>Dans cet exemple, nous avons filtré le tableau du state afin de ne récupérer que les fruits contenants la lettre &quot;e&quot;, avant de faire le <code>map</code> servant à l'affichage.</p>
 <p>De <a href="https://developer.mozilla.org/fr/docs/Web/JavaScript/Reference/Global_Objects/Array" target="_blank" rel="noopener noreferrer">nombreuses méthodes</a> de tableau existent : tu peux en essayer d'autres en fonction de tes besoins.</p>
-<h2>Challenge</h2>
+<h2 id="t-challenge">Challenge</h2>
 <p>Dans ce challenge, tu vas générer un bouton pour chaque Pokémon dans le composant <code>App</code> en utilisant la méthode <code>map</code> pour parcourir <code>pokemonList</code>.</p>
 <ol class="etapes"><li class="etape"><div class="etape__puce">1</div><div class="etape__contenu"><h4 class="etape__titre">Crée une nouvelle branche</h4><p>Ouvre ton projet existant et crée une nouvelle branche appelée <code>rendering-list.1</code>. Cette branche sera utilisée pour développer les fonctionnalités liées à la génération dynamique de boutons. Assure-toi de partir de la branche <code>state.1</code>.</p>
 </div></li><li class="etape"><div class="etape__puce">2</div><div class="etape__contenu"><h4 class="etape__titre">Supprime les boutons &quot;statiques&quot;</h4><p>Dans le composant <code>App</code>, commence par supprimer les boutons &quot;bulbasaur&quot; et &quot;mew&quot; :</p>
@@ -366,7 +367,7 @@
 <p><img src="images/002-challenge.png" alt="" loading="lazy"></p>
 <p>Vérifie que les boutons pour chaque pokémon mettent à jour correctement le pokémon affiché dans <code>App</code>.</p>
 <p>Fournis le lien vers la branche <code>rendering-list.1</code> de ton dépôt GitHub pour valider cette étape.</p>
-<h3>Critères de validation</h3>
+<h3 id="t-criteres-de-validation">Critères de validation</h3>
 <ul>
 <li>Le composant <code>App</code> affiche un bouton par pokémon.</li>
 <li>Chaque bouton a une <code>key</code> unique.</li>
@@ -454,7 +455,5 @@
   <p>Archive personnelle des cours suivis à la Wild Code School. Copie hors ligne à usage strictement privé.</p>
 </footer>
 
-<script src="../../assets/copie-code.js"></script>
-<script src="../../assets/progression.js"></script>
 </body>
 </html>

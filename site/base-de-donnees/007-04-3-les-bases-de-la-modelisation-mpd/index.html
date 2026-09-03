@@ -20,15 +20,16 @@
     <p class="quete__meta">Quête 7 sur 9 · 1 image archivée</p>
   </header>
   <div class="cours">
-<h2>Objectifs</h2>
+<h2 id="t-objectifs">Objectifs</h2>
 <ul>
 <li>Approfondir la méthode Merise</li>
 <li>Comprendre la construction d'un MPD</li>
 </ul>
-<h2>Introduction</h2>
+<h2 id="t-introduction">Introduction</h2>
 <p>Pour pouvoir créer une base de données, tu as découvert la construction d'un MCD et sa conversion en MLD. La dernière étape est de réaliser un MPD.</p>
-<h2>Sommaire</h2>
-<h2>La méthode Merise (rappels)</h2>
+<h2 id="t-sommaire">Sommaire</h2>
+<nav class="sommaire" aria-label="Sommaire de la quête"><ol class="sommaire__liste"><li><a href="#t-la-methode-merise-rappels">La méthode Merise (rappels)</a></li><li><a href="#t-mpd-specifique-a-ton-sgbd">MPD : spécifique à ton SGBD</a></li><li><a href="#t-challenge">Challenge</a><ul><li><a href="#t-criteres-de-validation">Critères de validation</a></li></ul></li></ol></nav>
+<h2 id="t-la-methode-merise-rappels">La méthode Merise (rappels)</h2>
 <p>Modéliser une base de données est une étape cruciale mais complexe. Elle dépend avant tout de la compréhension des règles métiers, c'est-à-dire des <strong>besoins du client</strong>. Parfois, plusieurs façons de modéliser une base peuvent répondre à ces besoins.</p>
 <p>Bref, cela demande avant tout de la <strong>rigueur</strong> et de <strong>l’expérience</strong>. La méthodologie Merise (datant des années 70) apporte des règles précises pour t’aider à modéliser convenablement tes données.</p>
 <div class="encadre encadre--warning"><div class="encadre__titre">Attention</div><div class="encadre__corps"><p>La méthode Merise est très vaste. Nous ne la couvrirons pas de manière exhaustive. Nous allons l'aborder de manière <em>pragmatique</em>.</p>
@@ -41,7 +42,7 @@
 <li>MPD : Modèle Physique de Données</li>
 </ul>
 <p>Cette quête décrit l'étape 3 : le <strong>Modèle Physique de Données (MPD)</strong>.</p>
-<h2>MPD : spécifique à ton SGBD</h2>
+<h2 id="t-mpd-specifique-a-ton-sgbd">MPD : spécifique à ton SGBD</h2>
 <p>La partie MPD (Modèle Physique de données) est censée prendre en compte les spécificités du SGBDR utilisé. Pour faire simple, tu dois choisir les types de tes champs : certains types particuliers peuvent être spécifiques à des SGBDR et ne pas exister sur d'autres. Le choix de ton système de base de données et la connaissance de ses types spécifiques sera donc important pour cette partie.</p>
 <p>Rassure-toi. Pour les types les plus courants (texte, nombre, date...), la plupart des systèmes basés sur SQL te proposeront les mêmes outils. Pour faire ton MPD, tu peux même directement écrire le script SQL de création de ta base de données :</p>
 <div class="bloc-code"><div class="bloc-code__langue">sql</div><pre><code class="hljs language-sql"><span class="hljs-keyword">CREATE TABLE</span> wizard (
@@ -160,7 +161,7 @@
     <div class="ressource__hote">w3schools.com</div>
   </div>
 </a>
-<h2>Challenge</h2>
+<h2 id="t-challenge">Challenge</h2>
 <p>Bienvenue au cours de potions magiques (étape 3) !</p>
 <p>Chaque potion que tu vas créer a un nom. Les potions utilisent des ingrédients, et chaque ingrédient est défini par son nom.</p>
 <p>Ça fait beaucoup d’informations à retenir... Pour ne rien oublier, tu aimerais stocker en base de données quels ingrédients sont nécessaires pour chaque potion. J'ai travaillé ce MCD et ce MLD pour t'aider :</p>
@@ -169,7 +170,7 @@
 </div></div>
 <p>Propose <strong>un MPD</strong> qui correspond au MLD.</p>
 <p>Astuce : pour la table <code>ingredient_potion</code>, tu auras besoin de créer <a href="https://www.geeksforgeeks.org/composite-key-in-sql/" target="_blank" rel="noopener noreferrer">une clé primaire composite</a>.</p>
-<h3>Critères de validation</h3>
+<h3 id="t-criteres-de-validation">Critères de validation</h3>
 <ul>
 <li>Le code SQL de la modélisation est posté</li>
 <li>La modélisation permet de stocker les informations sur les ingrédients utilisés dans chaque potion.</li>
@@ -218,7 +219,5 @@
   <p>Archive personnelle des cours suivis à la Wild Code School. Copie hors ligne à usage strictement privé.</p>
 </footer>
 
-<script src="../../assets/copie-code.js"></script>
-<script src="../../assets/progression.js"></script>
 </body>
 </html>

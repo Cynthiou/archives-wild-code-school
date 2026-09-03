@@ -20,12 +20,12 @@
     <p class="quete__meta">Quête 9 sur 10</p>
   </header>
   <div class="cours">
-<h2>Objectifs</h2>
+<h2 id="t-objectifs">Objectifs</h2>
 <ul>
 <li>Utiliser le CSS imbriqué pour structurer tes feuilles de style de manière organisée.</li>
 <li>Réduire la répétition de sélecteurs</li>
 </ul>
-<h2>Pré-requis</h2>
+<h2 id="t-pre-requis">Pré-requis</h2>
 <ol class="etapes"><li class="etape"><div class="etape__puce">1</div><div class="etape__contenu"><h4 class="etape__titre">Avoir validé la quête suivante</h4><div class="renvois"><div class="renvois__titre">Quêtes liées</div><ul><li><a href="../../css/001-css-1-introduction/index.html">Quête 1924</a></li></ul></div>
 </div></li><li class="etape"><div class="etape__puce">2</div><div class="etape__contenu"><h4 class="etape__titre">Être à l'aise avec la syntaxe du CSS</h4><p>Comprendre les règles CSS, les sélecteurs combinés, les relations parent/enfant et l’utilisation des classes et des ID pour cibler les éléments avec précision :</p>
 <div class="bloc-code"><div class="bloc-code__langue">css</div><pre><code class="hljs language-css"><span class="hljs-comment">/* Les éléments &lt;li&gt; qui sont des descendants */</span>
@@ -35,11 +35,12 @@
 }
 </code></pre></div>
 </div></li></ol>
-<h2>Introduction</h2>
+<h2 id="t-introduction">Introduction</h2>
 <p>Dans les quêtes précédentes, tu as découvert les bases du CSS et comment structurer des styles pour tes éléments et composants.</p>
 <p>Dans cette quête, tu vas explorer l'imbrication CSS (ou &quot;nesting&quot;), une approche qui permet de regrouper les styles liés sous un même sélecteur pour rendre le code plus lisible et organisé.</p>
-<h2>Sommaire</h2>
-<h2>Mais c'est quoi le CSS imbriqué ?</h2>
+<h2 id="t-sommaire">Sommaire</h2>
+<nav class="sommaire" aria-label="Sommaire de la quête"><ol class="sommaire__liste"><li><a href="#t-mais-c-est-quoi-le-css-imbrique">Mais c'est quoi le CSS imbriqué ?</a></li><li><a href="#t-avantages-de-l-imbrication-du-css">Avantages de l'imbrication du CSS</a></li><li><a href="#t-challenge">Challenge</a><ul><li><a href="#t-criteres-de-validation">Critères de validation</a></li></ul></li></ol></nav>
+<h2 id="t-mais-c-est-quoi-le-css-imbrique">Mais c'est quoi le CSS imbriqué ?</h2>
 <p>L'imbrication CSS (ou nesting) est la possibilité de définir les règles de style d’un élément à l’intérieur d’un autre. Au lieu de répéter plusieurs fois le même sélecteur pour styliser des éléments enfants spécifiques ou des pseudo-sélecteurs, tu peux les imbriquer sous un seul sélecteur.</p>
 <p>L’imbrication permet de regrouper les styles associés et d’écrire le CSS sous une hiérarchie imbriquée, rendant le code plus organisé et lisible.</p>
 <div class="encadre encadre--info"><div class="encadre__titre">Info</div><div class="encadre__corps"><p>Le CSS imbriqué est disponible nativement depuis 2023, avec l'introduction de cette fonctionnalité dans les spécifications CSS officielles.</p>
@@ -166,7 +167,7 @@ header {
 !--- index.js hide
 import &quot;./styles.css&quot;;
 </span></code></pre></div>
-<h2>Avantages de l'imbrication du CSS</h2>
+<h2 id="t-avantages-de-l-imbrication-du-css">Avantages de l'imbrication du CSS</h2>
 <ul>
 <li><strong>Organisation et lisibilité</strong> : Les styles sont regroupés sous des sélecteurs parents, ce qui rend le code plus clair et facile à suivre.</li>
 <li><strong>Réduction de la répétition</strong> : Moins de répétitions de classes et sélecteurs, ce qui allège le code.</li>
@@ -181,7 +182,7 @@ import &quot;./styles.css&quot;;
     <div class="ressource__hote">developer.mozilla.org</div>
   </div>
 </a>
-<h2>Challenge</h2>
+<h2 id="t-challenge">Challenge</h2>
 <div class="bloc-code"><div class="bloc-code__langue">js</div><pre><code class="hljs language-js">!--- index.<span class="hljs-property">html</span>
 &lt;!<span class="hljs-variable constant_">DOCTYPE</span> html&gt;
 <span class="language-xml"><span class="hljs-tag">&lt;<span class="hljs-name">html</span> <span class="hljs-attr">lang</span>=<span class="hljs-string">&quot;en&quot;</span>&gt;</span>
@@ -214,7 +215,7 @@ nav {}
 </code></pre></div>
 <p>Fork ce sandbox et ajoute un peu de style à cette <code>nav</code> grâce à la magie du CSS imbriqué et avec un hover sur les balises <code>&lt;li&gt;</code>.
 Partage le lien de ton fork en solution.</p>
-<h3>Critères de validation</h3>
+<h3 id="t-criteres-de-validation">Critères de validation</h3>
 <ul>
 <li>Le CSS imbriqué est utilisé pour l'ensemble du composant <code>&lt;nav&gt;</code>.</li>
 <li>Le hover est présent et fonctionnel.</li>
@@ -239,7 +240,5 @@ Partage le lien de ton fork en solution.</p>
   <p>Archive personnelle des cours suivis à la Wild Code School. Copie hors ligne à usage strictement privé.</p>
 </footer>
 
-<script src="../../assets/copie-code.js"></script>
-<script src="../../assets/progression.js"></script>
 </body>
 </html>

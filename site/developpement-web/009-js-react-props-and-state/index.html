@@ -20,12 +20,12 @@
     <p class="quete__meta">Quête 9 sur 11 · 4 images archivées</p>
   </header>
   <div class="cours">
-<h2>Objectifs</h2>
+<h2 id="t-objectifs">Objectifs</h2>
 <ul>
 <li>Découvrir la bibliothèque React</li>
 <li>Développer une interface web dynamique avec React</li>
 </ul>
-<h2>Pré-requis</h2>
+<h2 id="t-pre-requis">Pré-requis</h2>
 <ol class="etapes"><li class="etape"><div class="etape__puce">1</div><div class="etape__contenu"><h4 class="etape__titre">Connaitre les bases avancées du JS</h4><div class="bloc-code"><div class="bloc-code__langue">javascript</div><pre><code class="hljs language-javascript"><span class="hljs-keyword">function</span> <span class="hljs-title function_">say</span>(<span class="hljs-params">{ word, name }</span>) {
   <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(<span class="hljs-string">`<span class="hljs-subst">${word}</span> <span class="hljs-subst">${name}</span>!`</span>);
 }
@@ -48,11 +48,12 @@
 <span class="hljs-comment">// Expected output : [2, 4]</span>
 </code></pre></div>
 </div></li></ol>
-<h2>Introduction</h2>
+<h2 id="t-introduction">Introduction</h2>
 <p>React est une bibliothèque JavaScript <strong>open-source</strong>, principalement utilisée pour construire des <strong>interfaces utilisateurs (UI)</strong>. Créée par Facebook en 2013, elle permet de développer des applications web interactives et performantes.</p>
 <p>Dans cette quête, tu vas découvrir les concepts fondamentaux de React : les composants, les props, les states. Tu vas apprendre à manipuler ces concepts jusqu'à construire une application &quot;simple&quot;.</p>
-<h2>Sommaire</h2>
-<h2>Le brief</h2>
+<h2 id="t-sommaire">Sommaire</h2>
+<nav class="sommaire" aria-label="Sommaire de la quête"><ol class="sommaire__liste"><li><a href="#t-le-brief">Le brief</a></li><li><a href="#t-une-interface-web-dynamique">Une interface web dynamique</a><ul><li><a href="#t-mais-c-est-quoi-un-etat">Mais c’est quoi un état ?</a></li><li><a href="#t-demarrer-avec-react">Démarrer avec React</a></li><li><a href="#t-composer-ton-interface">Composer ton interface</a></li><li><a href="#t-props-and-state">Props and State</a></li><li><a href="#t-repeter-avec-map">Répéter avec .map()</a></li><li><a href="#t-aller-plus-loin">Aller plus loin</a></li></ul></li><li><a href="#t-challenge">Challenge</a><ul><li><a href="#t-criteres-de-validation">Critères de validation</a></li></ul></li></ol></nav>
+<h2 id="t-le-brief">Le brief</h2>
 <div class="encadre encadre--note encadre--story"><div class="encadre__corps"><p>Hello 👋,</p>
 <p>Notre restaurant local préféré, <strong>MarmiWild</strong>, a demandé notre aide pour son menu en ligne ! Nous avons pensé à toi pour relever le défi.</p>
 <p><img src="images/001-le-brief.png" alt="" loading="lazy"></p>
@@ -194,10 +195,10 @@ figure figcaption {
 <span class="hljs-keyword">export</span> <span class="hljs-keyword">default</span> <span class="hljs-title class_">MenuItem</span>;
 </code></pre></div>
 </div></div>
-<h2>Une interface web dynamique</h2>
+<h2 id="t-une-interface-web-dynamique">Une interface web dynamique</h2>
 <p>Une interface web dynamique est une interface qui s’adapte en temps réel à ce que fait l’utilisateur. Elle réagit instantanément sans devoir recharger toute la page, rendant l'expérience beaucoup plus fluide et agréable.</p>
 <p>Dans les exemples qui vont suivre, nous allons interagir avec un bouton pour ajouter des articles à un panier et ainsi changer l’état de notre panier.</p>
-<h3>Mais c’est quoi un état ?</h3>
+<h3 id="t-mais-c-est-quoi-un-etat">Mais c’est quoi un état ?</h3>
 <p>Un état, c'est l'information qu'un composant garde en mémoire et qui peut changer au fil du temps : l'état &quot;coché&quot; d'une case à cocher par exemple. Dans un panier, l'état pourrait être le nombre de fois où un article a été ajouté. Chaque fois que cet état change, l'affichage du composant se met à jour pour montrer la nouvelle valeur.</p>
 <div class="bloc-code"><div class="bloc-code__langue">js</div><pre><code class="hljs language-js">!---index.<span class="hljs-property">js</span>
 <span class="hljs-keyword">let</span> counter = <span class="hljs-number">0</span>;
@@ -293,7 +294,7 @@ button.<span class="hljs-title function_">addEventListener</span>(<span class="h
 <p>React est une bibliothèque qui ne gère que l'interface de l'application [...]</p>
 </div></div>
 <p>Source : <a href="https://fr.m.wikipedia.org/wiki/React" target="_blank" rel="noopener noreferrer">https://fr.m.wikipedia.org/wiki/React</a></p>
-<h3>Démarrer avec React</h3>
+<h3 id="t-demarrer-avec-react">Démarrer avec React</h3>
 <p>La meilleure façon de démarrer avec React est de parcourir la <strong>documentation officielle</strong>. Tu y trouveras tout ce que tu dois savoir, expliqué par l'équipe de développement de React elle-même, et — chose rare — traduit en français par la communauté :</p>
 <a class="ressource" href="https://fr.react.dev/learn" target="_blank" rel="noopener noreferrer">
   <div class="ressource__icone">↗</div>
@@ -305,7 +306,7 @@ button.<span class="hljs-title function_">addEventListener</span>(<span class="h
 </a>
 <p>Pour mettre en pratique ce que tu liras dans la doc de React, nous te proposons un parcours de quêtes pour réaliser pas à pas une application. Le parcours commence avec cette quête :</p>
 <div class="renvois"><div class="renvois__titre">Quêtes liées</div><ul><li><a href="../../react-bases/001-react-basics-01-pokedex-introduction/index.html">Quête 2328</a></li></ul></div>
-<h3>Composer ton interface</h3>
+<h3 id="t-composer-ton-interface">Composer ton interface</h3>
 <p>Les composants sont les briques de base dans React. Je te conseille ces chapitres de la doc pour te familiariser avec le concept, avec notre quête dédiée :</p>
 <div class="colonnes"><div class="colonne"><a class="ressource" href="https://fr.react.dev/learn/your-first-component" target="_blank" rel="noopener noreferrer">
   <div class="ressource__icone">↗</div>
@@ -348,7 +349,7 @@ button.<span class="hljs-title function_">addEventListener</span>(<span class="h
 </a>
 </div><div class="colonne"><div class="renvois"><div class="renvois__titre">Quêtes liées</div><ul><li><a href="../../react-bases/003-react-basics-03-pokedex-afficher-des-donnees-dans-un/index.html">Quête 2336</a></li></ul></div>
 </div></div>
-<h3>Props and State</h3>
+<h3 id="t-props-and-state">Props and State</h3>
 <p>Les <em>props</em> et le <em>state</em> sont les outils principaux pour dynamiser ton affichage.</p>
 <p>Regarde ce code HTML :</p>
 <div class="bloc-code"><div class="bloc-code__langue">html</div><pre><code class="hljs language-html"><span class="hljs-tag">&lt;<span class="hljs-name">img</span> <span class="hljs-attr">src</span>=<span class="hljs-string">&quot;images/004-chien-trop-mignon.jpg&quot;</span> <span class="hljs-attr">alt</span>=<span class="hljs-string">&quot;chien trop mignon&quot;</span> /&gt;</span>
@@ -397,7 +398,7 @@ button.<span class="hljs-title function_">addEventListener</span>(<span class="h
 </a>
 </div><div class="colonne"><div class="renvois"><div class="renvois__titre">Quêtes liées</div><ul><li><a href="../../react-bases/006-react-basics-06-pokedex-utiliser-un-state/index.html">Quête 2376</a></li></ul></div>
 </div></div>
-<h3>Répéter avec .map()</h3>
+<h3 id="t-repeter-avec-map">Répéter avec .map()</h3>
 <p>Dans une application, tu pourras répéter un composant avec des données différentes envoyées dans les props :</p>
 <div class="bloc-code"><div class="bloc-code__langue">jsx</div><pre><code class="hljs language-jsx"><span class="hljs-keyword">const</span> pokemonList = [<span class="hljs-comment">/* ... */</span>];
 
@@ -440,10 +441,10 @@ button.<span class="hljs-title function_">addEventListener</span>(<span class="h
 </a>
 </div><div class="colonne"><div class="renvois"><div class="renvois__titre">Quêtes liées</div><ul><li><a href="../../react-bases/007-react-basics-07-pokedex-repeter-un-bloc-d-affichage-avec-map/index.html">Quête 2378</a></li></ul></div>
 </div></div>
-<h3>Aller plus loin</h3>
+<h3 id="t-aller-plus-loin">Aller plus loin</h3>
 <p>Si tu as un peu de temps libre, tu peux compléter ton pokédex en étudiant les différentes manières d'utiliser du CSS avec React :</p>
 <div class="renvois"><div class="renvois__titre">Quêtes liées</div><ul><li><a href="../../react-bases/008-react-basics-08-pokedex-le-css-dans-react/index.html">Quête 1795</a></li></ul></div>
-<h2>Challenge</h2>
+<h2 id="t-challenge">Challenge</h2>
 <div class="encadre encadre--warning"><div class="encadre__titre">Attention</div><div class="encadre__corps"><p>Le codesandbox que tu as reçu est en JS, pas en TS : tu n'auras pas à typer les choses, mais c'est toi qui devras vérifier la cohérence de ton code.</p>
 </div></div>
 <p>Tout d'abord, fork la base de code que tu as reçue :</p>
@@ -590,7 +591,7 @@ figure figcaption {
 </div></li><li class="etape"><div class="etape__puce">7</div><div class="etape__contenu"><h4 class="etape__titre">Dans le composant MenuItem</h4><p>Sur le même <code>button</code>, modifie conditionnellement le contenu, en fonction de l'état <code>isFavorite</code>.</p>
 </div></li></ol>
 <p>Partage le lien de ton fork en solution.</p>
-<h3>Critères de validation</h3>
+<h3 id="t-criteres-de-validation">Critères de validation</h3>
 <ul>
 <li>[ ] l'application affiche correctement les éléments du menu ;</li>
 <li>[ ] quand tu cliques sur l'image du coeur, elle passe de favorite à non favorite.</li>
@@ -773,7 +774,5 @@ figure figcaption {
   <p>Archive personnelle des cours suivis à la Wild Code School. Copie hors ligne à usage strictement privé.</p>
 </footer>
 
-<script src="../../assets/copie-code.js"></script>
-<script src="../../assets/progression.js"></script>
 </body>
 </html>

@@ -20,21 +20,22 @@
     <p class="quete__meta">Quête 4 sur 10 · 12 images archivées</p>
   </header>
   <div class="cours">
-<h2>Objectifs</h2>
+<h2 id="t-objectifs">Objectifs</h2>
 <ul>
 <li>Créer des mises en page adaptées en utilisant flexbox</li>
 <li>Acquérir une compréhension approfondie de ce qu'est flexbox</li>
 </ul>
-<h2>Introduction</h2>
+<h2 id="t-introduction">Introduction</h2>
 <p>Faire de la mise en page en CSS peut être difficile, il existe de nombreuses façons de créer une mise en page en CSS et certaines méthodes sont plus efficaces que d'autres.</p>
 <p>Dans cette quête, nous apprendrons Flexbox, une méthode permettant de créer facilement des mises en page responsive.</p>
 <p><img src="images/001-cat-flex.jpg" alt="cat flex" loading="lazy"></p>
-<h2>Sommaire</h2>
-<h2>Flexible Layout (Flexbox)</h2>
+<h2 id="t-sommaire">Sommaire</h2>
+<nav class="sommaire" aria-label="Sommaire de la quête"><ol class="sommaire__liste"><li><a href="#t-flexible-layout-flexbox">Flexible Layout (Flexbox)</a></li><li><a href="#t-creer-un-conteneur-flex">Créer un conteneur Flex</a></li><li><a href="#t-aligner-des-elements-avec-flex">Aligner des éléments avec flex</a><ul><li><a href="#t-sur-l-axe-principal">Sur l'axe principal</a></li><li><a href="#t-sur-l-axe-transversal">Sur l'axe transversal</a></li></ul></li><li><a href="#t-repartir-les-elements">Répartir les éléments</a><ul><li><a href="#t-a-noter">À noter</a></li></ul></li><li><a href="#t-changer-de-direction">Changer de direction</a></li><li><a href="#t-wrap">Wrap</a></li><li><a href="#t-resume">Résumé</a></li><li><a href="#t-challenge">Challenge</a><ul><li><a href="#t-precisions">Précisions</a></li></ul></li></ol></nav>
+<h2 id="t-flexible-layout-flexbox">Flexible Layout (Flexbox)</h2>
 <p>Le modèle Flexbox est un moyen <strong>très efficace</strong> d'<strong>aligner et de répartir</strong> l'espace entre les éléments.</p>
 <p>Flexbox t'aidera à créer des <strong>mises en page</strong> très rapidement.</p>
 <p>Flexbox peut être difficile au début, ce n'est pas le concept le plus simple, mais sois confiant, quand tu le comprendras et le maîtriseras correctement, tu verras que c'est un outil puissant !</p>
-<h2>Créer un conteneur Flex</h2>
+<h2 id="t-creer-un-conteneur-flex">Créer un conteneur Flex</h2>
 <p>Pour utiliser flexbox, il suffit de <strong>créer un conteneur flex.</strong>
 Le <strong>conteneur flex</strong> contiendra des <strong>éléments enfants</strong> auxquels nous appliquerons <strong>certaines règles</strong>.</p>
 <div class="bloc-code"><div class="bloc-code__langue">css</div><pre><code class="hljs language-css"><span class="hljs-selector-class">.parent</span>{
@@ -50,8 +51,8 @@ Le <strong>conteneur flex</strong> contiendra des <strong>éléments enfants</st
 <li>L'axe transversal (<strong>cross axis</strong>) : vertical</li>
 </ul>
 <p><img src="images/003-axis-flexbox.png" alt="Axis Flexbox" loading="lazy"><img src="images/004-cross-axis-flexbox.png" alt="Cross Axis flexbox" loading="lazy"><em>Source:</em> <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_Flexible_Box_Layout/Basic_Concepts_of_Flexbox" target="_blank" rel="noopener noreferrer">https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_Flexible_Box_Layout/Basic_Concepts_of_Flexbox</a></p>
-<h2>Aligner des éléments avec flex</h2>
-<h3>Sur l'axe principal</h3>
+<h2 id="t-aligner-des-elements-avec-flex">Aligner des éléments avec flex</h2>
+<h3 id="t-sur-l-axe-principal">Sur l'axe principal</h3>
 <p>Pour aligner des éléments le long de l'axe <strong>principal</strong>, utilise <strong>justify-content</strong> suivi d'une des valeurs suivantes :</p>
 <ul>
 <li><strong>flex-start</strong> alignera les éléments au début du conteneur</li>
@@ -63,7 +64,7 @@ Le <strong>conteneur flex</strong> contiendra des <strong>éléments enfants</st
 </ul>
 <p><img src="images/005-justify-content.png" alt="Justify content" loading="lazy"></p>
 <p><strong>Source:</strong> <a href="https://css-tricks.com/snippets/css/a-guide-to-flexbox/#aa-justify-content" target="_blank" rel="noopener noreferrer">https://css-tricks.com/snippets/css/a-guide-to-flexbox/#aa-justify-content</a></p>
-<h3>Sur l'axe transversal</h3>
+<h3 id="t-sur-l-axe-transversal">Sur l'axe transversal</h3>
 <p>Pour aligner les éléments sur l'axe transversal, nous pouvons utiliser les <strong>align-items</strong> en utilisant l'une des valeurs suivantes :</p>
 <ul>
 <li><strong>stretch</strong> étirera les éléments le long de l'axe transversal</li>
@@ -133,7 +134,7 @@ Le <strong>conteneur flex</strong> contiendra des <strong>éléments enfants</st
 }
 </code></pre></div>
 </div></details>
-<h2>Répartir les éléments</h2>
+<h2 id="t-repartir-les-elements">Répartir les éléments</h2>
 <p>Dans notre exemple, les éléments <strong>prennent chacun une largeur de 100px.</strong>
 <strong>100px est la taille principale de l'élément.</strong></p>
 <p>Si nous modifions la largeur de l'élément à 100%, notre conteneur flexbox répartira les éléments sur la rangée.</p>
@@ -317,10 +318,10 @@ Le <strong>conteneur flex</strong> contiendra des <strong>éléments enfants</st
 }
 
 </code></pre></div>
-<h3>À noter</h3>
+<h3 id="t-a-noter">À noter</h3>
 <p>Ligne 8 : la propriété <code>width: 100%;</code> a été retirée et remplacée par <code>flex: 1;</code> indiquant aux éléments <code>.blocs</code> de prendre <strong>un espace flexible</strong> par défaut.</p>
 </div></details>
-<h2>Changer de direction</h2>
+<h2 id="t-changer-de-direction">Changer de direction</h2>
 <p>Nous pouvons <strong>changer la direction</strong> du conteneur flex <strong>en utilisant</strong> <code>flex-direction</code>, par défaut la direction est <strong>row</strong> (ligne) mais nous pouvons aussi utiliser <strong>column</strong> (colonne).</p>
 <div class="encadre encadre--warning"><div class="encadre__titre">Attention</div><div class="encadre__corps"><p>Lorsque tu changes la direction du flex, les axes changent, en mode column, l'axe principal est alors <strong>vertical</strong> et l'axe transversal devient <strong>horizontal</strong>.
 Cela signifie que si tu veux centrer horizontalement, tu dois maintenant utiliser <em><strong>align-items</strong></em>.</p>
@@ -407,7 +408,7 @@ Ils doivent être centrés sur l'axe principal.</p>
 }
 </code></pre></div>
 </div></details>
-<h2>Wrap</h2>
+<h2 id="t-wrap">Wrap</h2>
 <p>Il peut arriver que les <strong>éléments soient trop grands pour le conteneur</strong>.
 Nous pouvons utiliser la propriété <strong>flex-wrap</strong> pour décider comment les élements doivent se comporter lorsque le conteneur n'a pas assez de place pour les éléments.</p>
 <p>Par défaut, le <strong>flex-wrap est réglé sur <code>nowrap</code></strong>.
@@ -477,7 +478,7 @@ Si les éléments n'ont pas assez de place, alors <strong>ils prendront la place
 !--- index.<span class="hljs-property">js</span>
 <span class="hljs-keyword">import</span> <span class="hljs-string">&quot;./style.css&quot;</span>;
 </code></pre></div>
-<h2>Résumé</h2>
+<h2 id="t-resume">Résumé</h2>
 <ul>
 <li>Flexbox est une bonne méthode pour créer une <strong>mise en page responsive</strong>.</li>
 <li>Le conteneur flex peut contrôler le comportement de ses enfants</li>
@@ -520,7 +521,7 @@ Si les éléments n'ont pas assez de place, alors <strong>ils prendront la place
 [] flex-wrap
 [x] flex-direction
 </code></pre></div>
-<h2>Challenge</h2>
+<h2 id="t-challenge">Challenge</h2>
 <p>À partir du code HTML suivant :</p>
 <div class="bloc-code"><div class="bloc-code__langue">html</div><pre><code class="hljs language-html"><span class="hljs-meta">&lt;!DOCTYPE <span class="hljs-keyword">html</span>&gt;</span>
 <span class="hljs-tag">&lt;<span class="hljs-name">html</span> <span class="hljs-attr">lang</span>=<span class="hljs-string">&quot;en&quot;</span>&gt;</span>
@@ -547,7 +548,7 @@ Si les éléments n'ont pas assez de place, alors <strong>ils prendront la place
 </code></pre></div>
 <p>Essaie de reproduire la mise en forme de cette barre de navigation en utilisant le <strong>display flex</strong> :</p>
 <p><img src="images/012-navbar-with-flexbox.png" alt="Navbar with flexbox" loading="lazy"></p>
-<h3>Précisions</h3>
+<h3 id="t-precisions">Précisions</h3>
 <ul>
 <li>Les éléments sont verticalement alignés au centre.</li>
 <li>Le code couleur pour le violet : #A306B6;</li>
@@ -621,7 +622,5 @@ Si les éléments n'ont pas assez de place, alors <strong>ils prendront la place
   <p>Archive personnelle des cours suivis à la Wild Code School. Copie hors ligne à usage strictement privé.</p>
 </footer>
 
-<script src="../../assets/copie-code.js"></script>
-<script src="../../assets/progression.js"></script>
 </body>
 </html>

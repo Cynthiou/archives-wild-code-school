@@ -26,22 +26,23 @@
 <p>La sécurisation contribue également à respecter les réglementations sur la protection des données, à protéger la vie privée et à renforcer la confiance des utilisateurs.</p>
 <p>La partie « <em>Côté serveur</em> » va te prendre un peu de temps pour bien en saisir les contours.
 Arme-toi de patience et de courage 🙂.</p>
-<h2>🤓 À la fin de cette quête, tu seras en mesure de :</h2>
+<h2 id="t-a-la-fin-de-cette-quete-tu-seras-en-mesure-de">🤓 À la fin de cette quête, tu seras en mesure de :</h2>
 <ul>
 <li>✅ Nettoyer et vérifier la saisie de l'utilisateur</li>
 <li>✅ Afficher les erreurs en cas de saisie non conforme</li>
 <li>✅ Effectuer une redirection après traitement</li>
 </ul>
-<h2>Sommaire</h2>
-<h2>Validation des saisies</h2>
+<h2 id="t-sommaire">Sommaire</h2>
+<nav class="sommaire" aria-label="Sommaire de la quête"><ol class="sommaire__liste"><li><a href="#t-validation-des-saisies">Validation des saisies</a></li><li><a href="#t-cote-client">Côté client</a><ul><li><a href="#t-controles-simples-avec-les-attributs">Contrôles simples avec les attributs</a></li><li><a href="#t-controle-avance-avec-pattern">Contrôle avancé avec pattern</a></li><li><a href="#t-controles-avec-javascript">Contrôles avec Javascript</a></li><li><a href="#t-non-fiable-et-insuffisant">⚠️ Non fiable et insuffisant</a></li></ul></li><li><a href="#t-cote-serveur-avec-php">Côté serveur : avec PHP</a><ul><li><a href="#t-la-mise-en-place">La mise en place</a></li><li><a href="#t-les-etapes">Les étapes</a></li></ul></li><li><a href="#t-pour-aller-plus-loin">Pour aller plus loin</a></li></ol></nav>
+<h2 id="t-validation-des-saisies">Validation des saisies</h2>
 <p>Mettre en place un formulaire sur une application web implique des précautions.</p>
 <ul>
 <li>Soit l'utilisateur peut se tromper et saisir des informations erronées, comme saisir son âge dans le champ prévu pour renseigner sa profession.</li>
 <li>Soit l'utilisateur peut tenter de nuire à ton site et utiliser les champs de formulaire pour un autre usage que celui initialement prévu.</li>
 </ul>
 <p>Nous allons voir les premières actions à mener côté client et côté serveur pour répondre à ces problématiques et garantir l'intégrité des saisies.</p>
-<h2>Côté client</h2>
-<h3>Contrôles simples avec les attributs</h3>
+<h2 id="t-cote-client">Côté client</h2>
+<h3 id="t-controles-simples-avec-les-attributs">Contrôles simples avec les attributs</h3>
 <p>Au moment de la soumission du formulaire, les navigateurs effectuent naturellement un premier contrôle des données saisies dès lors que les attributs des champs à remplir sont utilisés de manière appropriée.</p>
 <p>Il est ainsi possible de rendre un champ obligatoire en lui ajoutant l'attribut <code>required</code>.</p>
 <div class="bloc-code"><div class="bloc-code__langue">html</div><pre><code class="hljs language-html"><span class="hljs-tag">&lt;<span class="hljs-name">input</span> <span class="hljs-attr">type</span>=<span class="hljs-string">&quot;text&quot;</span> <span class="hljs-attr">id</span>=<span class="hljs-string">&quot;name&quot;</span> <span class="hljs-attr">name</span>=<span class="hljs-string">&quot;name&quot;</span> <span class="hljs-attr">required</span>&gt;</span>
@@ -51,7 +52,7 @@ Arme-toi de patience et de courage 🙂.</p>
 <div class="bloc-code"><div class="bloc-code__langue">html</div><pre><code class="hljs language-html"><span class="hljs-tag">&lt;<span class="hljs-name">input</span> <span class="hljs-attr">type</span>=<span class="hljs-string">&quot;email&quot;</span> <span class="hljs-attr">id</span>=<span class="hljs-string">&quot;email&quot;</span> <span class="hljs-attr">name</span>=<span class="hljs-string">&quot;email&quot;</span>&gt;</span>
 </code></pre></div>
 <p><img src="images/002-verification-grace-au-type-email-d-un-input.png" alt="Vérification grâce au type email d'un input" loading="lazy"></p>
-<h3>Contrôle avancé avec <em>pattern</em></h3>
+<h3 id="t-controle-avance-avec-pattern">Contrôle avancé avec <em>pattern</em></h3>
 <p>L'<a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Attributes/pattern" target="_blank" rel="noopener noreferrer">attribut <em>pattern</em></a> pourra quant à lui contenir une <a href="https://fr.wikipedia.org/wiki/Expression_r%C3%A9guli%C3%A8re" target="_blank" rel="noopener noreferrer">expression régulière ou (expression rationnelle)</a> permettant de préciser les caractères autorisés, la longueur de la chaîne ou encore la séquence attendue.</p>
 <p>Dans l'exemple ci-dessous, on impose à la saisie du mot de passe une chaîne de 8 caractères minimum composée exclusivement de chiffres ou de lettres (majuscules ou minuscules).</p>
 <div class="bloc-code"><div class="bloc-code__langue">html</div><pre><code class="hljs language-html"><span class="hljs-tag">&lt;<span class="hljs-name">label</span> <span class="hljs-attr">for</span>=<span class="hljs-string">&quot;password&quot;</span>&gt;</span>Mot de passe<span class="hljs-tag">&lt;/<span class="hljs-name">label</span>&gt;</span>
@@ -80,7 +81,7 @@ Convenons qu'il est assez agaçant de s'entendre dire qu'on fait mal sans avoir 
     <div class="ressource__hote">html5pattern.com</div>
   </div>
 </a>
-<h3>Contrôles avec Javascript</h3>
+<h3 id="t-controles-avec-javascript">Contrôles avec Javascript</h3>
 <p>Il est également possible de réaliser des contrôles sur la conformité des données avec JavaScript, que ce soit grâce à du code que tu écris toi-même ou à l'aide de librairies dédiées.
 L'étude de Javascript dans ce cas d'usage nécessiterait toute une quête voire plusieurs et cela ne fait pas partie des objectifs de cette celle-ci 😉.</p>
 <a class="ressource" href="https://www.w3schools.com/js/js_validation.asp" target="_blank" rel="noopener noreferrer">
@@ -91,13 +92,13 @@ L'étude de Javascript dans ce cas d'usage nécessiterait toute une quête voire
     <div class="ressource__hote">w3schools.com</div>
   </div>
 </a>
-<h3>⚠️ Non fiable et insuffisant</h3>
+<h3 id="t-non-fiable-et-insuffisant">⚠️ Non fiable et insuffisant</h3>
 <p>Si le contrôle des informations saisies côté client est important, car il améliore l'expérience des utilisateurs et rend l'usage de tes formulaires plus facile, <strong>on ne peut en aucun cas le considérer comme fiable et suffisant</strong>.</p>
 <p>En effet, il est parfaitement possible d'envoyer les mêmes requêtes HTTP sans avoir à passer par un navigateur (avec un autre client HTTP comme par exemple curl, Postman ou ThunderClient), ou d'outrepasser les contrôles en modifiant tout simplement le code source d'une page via l'inspecteur de code.</p>
-<h2>Côté serveur : avec PHP</h2>
+<h2 id="t-cote-serveur-avec-php">Côté serveur : avec PHP</h2>
 <p>En général, on préfèrera cumuler les deux méthodes, back-end (côté serveur) et front-end (côté client), mais si on doit n’en choisir qu'une, c'est la vérification <strong>coté serveur</strong> à l'aide de PHP qui sera toujours privilégiée.</p>
 <p>On le redit, c'est le <strong>seul</strong> moyen sûr pour valider les données, car un utilisateur malveillant pourrait aisément détourner les vérifications côté client.</p>
-<h3>La mise en place</h3>
+<h3 id="t-la-mise-en-place">La mise en place</h3>
 <div class="encadre encadre--info"><div class="encadre__titre">Info</div><div class="encadre__corps"><p>Pour faciliter la démonstration et les tests, aucune vérification côté client n'a été mise sur les inputs du formulaire de l'exemple ci-dessous.
 Fais-en de même pour pouvoir tester facilement, mais n'oublie que dans un cas réel d'implémentation, il faudra penser à ajouter l'attribut <code>required</code> sur les champs obligatoires ainsi que le <code>type</code> approprié si besoin.</p>
 </div></div>
@@ -112,7 +113,7 @@ Fais-en de même pour pouvoir tester facilement, mais n'oublie que dans un cas r
     <span class="hljs-tag">&lt;<span class="hljs-name">input</span> <span class="hljs-attr">type</span>=<span class="hljs-string">&quot;submit&quot;</span> <span class="hljs-attr">value</span>=<span class="hljs-string">&quot;Envoyer&quot;</span>&gt;</span>
 <span class="hljs-tag">&lt;/<span class="hljs-name">form</span>&gt;</span>
 </code></pre></div>
-<h3>Les étapes</h3>
+<h3 id="t-les-etapes">Les étapes</h3>
 <p>Chaque donnée provenant de l'utilisateur doit être vérifiée et validée. Ces validations peuvent varier en fonction des besoins (longueur d'une chaîne, nombre positif, format de date, format d'email ou d'URL, etc.) et quelques précautions sont à prendre pour accéder à ces valeurs.</p>
 <p>Regardons cela étape par étape.</p>
 <ol class="etapes"><li class="etape"><div class="etape__puce">1</div><div class="etape__contenu"><h4 class="etape__titre">La requête provient-elle d'une soumission en POST ?</h4><p>Pour traiter les données de l'utilisateur, il faut d'abord s'assurer que la requête HTTP est issue d'une soumission de formulaire.</p>
@@ -304,7 +305,7 @@ Si le tableau <code>$errors</code> est vide, autrement dit, s'il n'y a pas d'err
 Nous apprendrons dans une prochaine quête comment régler ce problème lorsque nous aborderons les <em><strong>sessions en PHP</strong></em>.
 Patience 😇.</p>
 </div></li></ol>
-<h2>Pour aller plus loin</h2>
+<h2 id="t-pour-aller-plus-loin">Pour aller plus loin</h2>
 <p>Si tu souhaites approfondir tes connaissances sur le sujet, tu peux consulter les différentes ressources ci-dessous. Elles peuvent t’aider à comprendre certaines notions encore floues.</p>
 <a class="ressource" href="https://developer.mozilla.org/en-US/docs/Learn/HTML/Forms/Sending_and_retrieving_form_data#Common_security_concerns" target="_blank" rel="noopener noreferrer">
   <div class="ressource__icone">↗</div>
@@ -344,7 +345,5 @@ Patience 😇.</p>
   <p>Archive personnelle des cours suivis à la Wild Code School. Copie hors ligne à usage strictement privé.</p>
 </footer>
 
-<script src="../../assets/copie-code.js"></script>
-<script src="../../assets/progression.js"></script>
 </body>
 </html>

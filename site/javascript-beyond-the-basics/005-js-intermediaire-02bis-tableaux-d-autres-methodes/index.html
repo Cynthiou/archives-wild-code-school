@@ -29,14 +29,14 @@
 ✅ Comment utiliser <strong><code>some</code></strong> pour vérifier si au moins une des valeurs d'un tableau répond à une condition
 ✅ Comment réduire (<strong><code>reduce</code></strong>) un tableau pour obtenir une valeur unique</p>
 <hr>
-<h2>Every</h2>
+<h2 id="t-every">Every</h2>
 <p>La méthode <code>every</code> vérifie si tous les éléments d'un tableau répondent à une condition. Le résultat de la méthode <code>every</code> est un booléen.</p>
 <p>Ex : Nous voulons tester si tous les éléments sont supérieurs à 10 :</p>
 <div class="bloc-code"><div class="bloc-code__langue">javascript</div><pre><code class="hljs language-javascript"><span class="hljs-keyword">const</span> myArray = [<span class="hljs-number">11</span>, <span class="hljs-number">34</span>, <span class="hljs-number">54</span>, <span class="hljs-number">32</span>, <span class="hljs-number">54</span>];
 <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(myArray.<span class="hljs-title function_">every</span>(<span class="hljs-function"><span class="hljs-params">element</span> =&gt;</span> element &gt; <span class="hljs-number">10</span>));
 <span class="hljs-comment">// true </span>
 </code></pre></div>
-<h3>🔬 Expérience</h3>
+<h3 id="t-experience">🔬 Expérience</h3>
 <p>Mettre en place la fonction <code>checkIfAdult</code> qui doit vérifier si tous les membres d'une équipe sont des adultes (leur âge doit être supérieur à 18 ans)</p>
 <div class="bloc-code"><div class="bloc-code__langue">codesandbox</div><pre><code class="hljs language-codesandbox">https://codesandbox.io/s/ex-every-ycv4o
 </code></pre></div>
@@ -49,13 +49,13 @@ function checkIfAdult(array) {
   }
 }
 </code></pre></div>
-<h2>Some</h2>
+<h2 id="t-some">Some</h2>
 <p><code>some</code> est très similaire à <code>every</code>, excepté qu'il suffit d'un élément du tableau vérifiant la condition pour que cette méthode renvoie <code>true</code>.</p>
 <p>Ex : Nous voulons tester si au moins un des éléments est supérieur à 30 :</p>
 <div class="bloc-code"><div class="bloc-code__langue">javascript</div><pre><code class="hljs language-javascript"><span class="hljs-keyword">const</span> myArray = [<span class="hljs-number">11</span>, <span class="hljs-number">34</span>, <span class="hljs-number">54</span>, <span class="hljs-number">32</span>, <span class="hljs-number">54</span>];
 <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(myArray.<span class="hljs-title function_">some</span>(<span class="hljs-function"><span class="hljs-params">element</span> =&gt;</span> element &gt; <span class="hljs-number">30</span>)); <span class="hljs-comment">// true </span>
 </code></pre></div>
-<h2>Reduce</h2>
+<h2 id="t-reduce">Reduce</h2>
 <p>La méthode <code>reduce</code> réduira le tableau à une seule valeur.</p>
 <p>Ex : Nous avons un tableau de nombres et nous voulons connaître la somme de tous les nombres</p>
 <div class="bloc-code"><div class="bloc-code__langue">javascript</div><pre><code class="hljs language-javascript"><span class="hljs-keyword">const</span> myArray = [<span class="hljs-number">13</span>, <span class="hljs-number">200</span>, <span class="hljs-number">404</span>, <span class="hljs-number">430</span>, <span class="hljs-number">10</span>];
@@ -81,13 +81,13 @@ La méthode <code>reduce</code> quand à elle retournera la valeur finale de l
 */</span>
 </code></pre></div>
 <p>Cette méthode peut être un peu difficile à comprendre au début. Ne t'inquiète pas et laisse toi le temps de la pratiquer.</p>
-<h4>Préciser une valeur de départ</h4>
+<h4 id="t-preciser-une-valeur-de-depart">Préciser une valeur de départ</h4>
 <p>Tu peux spécifier une valeur départ comme deuxième argument de la méthode <code>reduce</code>. Par exemple, si je veux que mon accumulateur commence à 100 :</p>
 <div class="bloc-code"><div class="bloc-code__langue">javascript</div><pre><code class="hljs language-javascript"><span class="hljs-keyword">const</span> myArray = [<span class="hljs-number">13</span>, <span class="hljs-number">200</span>, <span class="hljs-number">404</span>, <span class="hljs-number">430</span>, <span class="hljs-number">10</span>];
 <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(myArray.<span class="hljs-title function_">reduce</span>(<span class="hljs-function">(<span class="hljs-params">acc, currentValue</span>) =&gt;</span> acc + currentValue, <span class="hljs-number">100</span>));
 <span class="hljs-comment">// 1157</span>
 </code></pre></div>
-<h3>🔬 Expérience</h3>
+<h3 id="t-experience-2">🔬 Expérience</h3>
 <p>Utilise la méthode <code>reduce</code> pour trouver le prix total de ce panier.</p>
 <p>Conseil : pour que cela fonctionne, tu devras faire en sorte que la réduction commence à 0, sinon le premier élément sera un objet et non le prix.</p>
 <div class="bloc-code"><div class="bloc-code__langue">codesandbox</div><pre><code class="hljs language-codesandbox">https://codesandbox.io/s/ex-reduce-oizpf
@@ -109,13 +109,13 @@ console.log(result);
 <p>Ici, tu as un défi à relever pour le prouver !</p>
 <p>Ces 2 exercices sont destinés à tester les nouvelles méthodes que tu as apprises sur les tableaux, alors garde-les à l'esprit pour les résoudre.</p>
 <h1>🏁 Exercice</h1>
-<h3>PARTIE 1</h3>
+<h3 id="t-partie-1">PARTIE 1</h3>
 <p>Étant donné un tableau avec différents objets à l'intérieur, représentant des profils d'instructeurs (nom, disponibilité, spécialités), tu dois créer un <strong>nouveau tableau</strong> qui contient <strong>seulement</strong> les instructeurs qui connaissent Javascript et qui sont disponibles le week-end.</p>
 <p>Si leur disponibilité est <code>all</code>, cela signifie qu'ils sont également disponibles le week-end, il faut donc les inclure aussi.</p>
-<h3>PARTIE 2</h3>
+<h3 id="t-partie-2">PARTIE 2</h3>
 <p>Utilise ce nouveau tableau d'instructeurs disponibles et affiche un message par instructeur disant</p>
 <p><code>Hi nameOfInstructor, we inform you that this weekend you will be doing the support class</code></p>
-<h3>PARTIE 3</h3>
+<h3 id="t-partie-3">PARTIE 3</h3>
 <p>Modifie le message précédent en vérifiant que si un instructeur connaît aussi Python, le message doit être :</p>
 <p><code>Hi nameOfInstructor, we inform you that this weekend you will be doing the support class and you need to prepare a Python workshop</code></p>
 <p>Fork ce repl.it et poste le lien quand tu as fini comme solution à ce défi.</p>
@@ -150,7 +150,5 @@ console.log(result);
   <p>Archive personnelle des cours suivis à la Wild Code School. Copie hors ligne à usage strictement privé.</p>
 </footer>
 
-<script src="../../assets/copie-code.js"></script>
-<script src="../../assets/progression.js"></script>
 </body>
 </html>

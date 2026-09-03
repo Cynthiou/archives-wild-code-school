@@ -20,12 +20,12 @@
     <p class="quete__meta">Quête 9 sur 9 · 1 image archivée</p>
   </header>
   <div class="cours">
-<h2>Objectifs</h2>
+<h2 id="t-objectifs">Objectifs</h2>
 <ul>
 <li>Comprendre comment valider la saisie de l'utilisateur.</li>
 <li>Retourner des réponses appropriées en cas d'erreur du client.</li>
 </ul>
-<h2>Prérequis</h2>
+<h2 id="t-prerequis">Prérequis</h2>
 <ol class="etapes"><li class="etape"><div class="etape__puce">1</div><div class="etape__contenu"><h4 class="etape__titre">Valider la quête suivante</h4><div class="renvois"><div class="renvois__titre">Quêtes liées</div><ul><li><a href="../../js-monorepo/008-07-js-monorepo-mettre-en-place-un-crud-bread/index.html">Quête 825</a></li></ul></div>
 </div></li><li class="etape"><div class="etape__puce">2</div><div class="etape__contenu"><h4 class="etape__titre">Comprendre le principe de middleware dans Express</h4><div class="encadre encadre--note encadre--story"><div class="encadre__corps"><p>Toutes les fonctions <code>(req, res, next) =&gt; {}</code> que tu as vu jusqu'à maintenant sont des <strong>middlewares</strong> : des programmes exécutés entre la réception de requête et l'envoi de la réponse HTTP.</p>
 <p><img src="images/001-prerequis.webp" alt="" loading="lazy"></p>
@@ -50,8 +50,9 @@ app.<span class="hljs-title function_">get</span>(<span class="hljs-string">&quo
 </code></pre></div>
 <p>Chaque middleware modifie <code>req.message</code> et passe ensuite au suivant avec <code>next()</code>. La réponse finale sera <code>&quot;J'ai passé l'étape 1 et l'étape 2&quot;</code>.</p>
 </div></li></ol>
-<h2>Sommaire</h2>
-<h2>Introduction</h2>
+<h2 id="t-sommaire">Sommaire</h2>
+<nav class="sommaire" aria-label="Sommaire de la quête"><ol class="sommaire__liste"><li><a href="#t-introduction">Introduction</a></li><li><a href="#t-pourquoi-valider-la-saisie-utilisateur">Pourquoi valider la saisie utilisateur ?</a><ul><li><a href="#t-la-bonne-erreur">La bonne erreur</a></li></ul></li><li><a href="#t-comment-valider-les-donnees-et-ou">Comment valider les données (et où) ?</a><ul><li><a href="#t-utiliser-des-middlewares-express-pour-la-validation">Utiliser des middlewares Express pour la validation</a></li><li><a href="#t-validation-manuelle">Validation manuelle</a></li><li><a href="#t-validation-avancee-avec-des-modules-tiers">Validation avancée avec des modules tiers</a></li></ul></li><li><a href="#t-recapitulatif">Récapitulatif</a></li><li><a href="#t-challenge">Challenge</a></li></ol></nav>
+<h2 id="t-introduction">Introduction</h2>
 <p>Dans les quêtes précédentes, tu as mis en place une gestion complète de données qui permet à l'utilisateur de saisir des informations côté client pour qu'elles soient traitées côté serveur.</p>
 <p>La validation des données saisies par l'utilisateur est une étape cruciale dans le développement d'applications. Elle permet de s'assurer que les informations sont correctes et cohérentes <em>avant</em> de les traiter. Dans cette quête, tu vas explorer l'importance de la validation de la saisie utilisateur et différentes méthodes pour la mettre en oeuvre dans ton projet Wild Series en tant que <em>middleware</em>.</p>
 <div class="bloc-code"><div class="bloc-code__langue">js</div><pre><code class="hljs language-js">server/
@@ -71,7 +72,7 @@ app.<span class="hljs-title function_">get</span>(<span class="hljs-string">&quo
 ├── .<span class="hljs-property">env</span>
 └── .<span class="hljs-property">env</span>.<span class="hljs-property">sample</span>
 </code></pre></div>
-<h2>Pourquoi valider la saisie utilisateur ?</h2>
+<h2 id="t-pourquoi-valider-la-saisie-utilisateur">Pourquoi valider la saisie utilisateur ?</h2>
 <p>Avant d'aller plus loin, examinons un exemple concret. Imaginons que nous travaillons sur une application de gestion de films (ce n'est pas très loin des séries). Nous aurions une table de base de données pour stocker les détails des films, telle que définie ci-dessous :</p>
 <div class="bloc-code"><div class="bloc-code__langue">sql</div><pre><code class="hljs language-sql"><span class="hljs-keyword">create table</span> movies(
   id <span class="hljs-type">int</span> <span class="hljs-keyword">primary key</span> <span class="hljs-keyword">not null</span> auto_increment,
@@ -83,7 +84,7 @@ app.<span class="hljs-title function_">get</span>(<span class="hljs-string">&quo
 );
 </code></pre></div>
 <p>Dans cet exemple, tous les champs de la table sont obligatoires (<code>NOT NULL</code>). Ainsi, si un utilisateur oublie de saisir l'une de ces informations, cela peut entraîner des erreurs lors de l'insertion des données dans la base de données.</p>
-<h3>La bonne erreur</h3>
+<h3 id="t-la-bonne-erreur">La bonne erreur</h3>
 <p>S'il existait une API pour insérer un nouveau film dans cette table sans validation, voici ce que tu pourrais faire :</p>
 <ol>
 <li>Envoyer une requête POST à <code>/api/movies</code> avec tous les champs requis (<code>title</code>, <code>director</code>...).</li>
@@ -94,7 +95,7 @@ app.<span class="hljs-title function_">get</span>(<span class="hljs-string">&quo
 </div></div>
 <p>L'erreur 500 indique une erreur côté serveur (&quot;Internal Server Error&quot;), ce qui signifie que le serveur a rencontré un problème inattendu, et qu'aucune requête du même type ne sera traitée.</p>
 <p>Le problème était ici &quot;attendu&quot; : la requête était mal formulée, avec une donnée manquante. Pour détecter ce type d'erreur, tu dois valider les données de <code>req.body</code> avant de les insérer dans la base de données. En cas de données invalides, c'est une <strong>erreur 4xx</strong> (erreur côté client) que tu dois produire : cela permet au client web de savoir que la requête doit être modifiée pour être traitée par le serveur. Probablement une erreur <strong>400 Bad Request</strong>.</p>
-<h2>Comment valider les données (et où) ?</h2>
+<h2 id="t-comment-valider-les-donnees-et-ou">Comment valider les données (et où) ?</h2>
 <p>La validation des données peut être effectuée à deux niveaux : côté client et côté serveur. Si tu devais n'en choisir qu'un, tu devrais opter pour la <strong>validation côté serveur</strong>.</p>
 <ul>
 <li>
@@ -104,7 +105,7 @@ app.<span class="hljs-title function_">get</span>(<span class="hljs-string">&quo
 <p>Côté serveur : La validation côté serveur est essentielle pour garantir la sécurité, car un utilisateur malveillant peut contourner les vérifications côté client. Elle consiste à s'assurer que toutes les données nécessaires sont présentes et valides avant de les traiter.</p>
 </li>
 </ul>
-<h3>Utiliser des middlewares Express pour la validation</h3>
+<h3 id="t-utiliser-des-middlewares-express-pour-la-validation">Utiliser des middlewares Express pour la validation</h3>
 <p>Dans ton projet Wild Series, créé une action <code>validate</code> dans <code>server/src/modules/categoryActions.ts</code> :</p>
 <div class="bloc-code"><div class="bloc-code__langue">typescript</div><pre><code class="hljs language-typescript"><span class="hljs-comment">// ...</span>
 
@@ -148,7 +149,7 @@ router.get(&quot;/api/categories/:id&quot;, categoryActions.read);
 router.delete(&quot;/api/categories/:id&quot;, categoryActions.destroy);
 </code></pre></div>
 <p>En ajoutant ainsi ton action <code>validate</code> en tant que middleware sur les routes PUT et POST, tu en fais une étape qui est exécutée avant les middlewares <code>edit</code> et <code>add</code> : les données seront traitées (éditeés ou ajoutées) seulement si la validation passe !</p>
-<h3>Validation manuelle</h3>
+<h3 id="t-validation-manuelle">Validation manuelle</h3>
 <p>Une première option est d'écrire toi-même ton code de validation. L'avantage est que tu n'utilises pas de dépendance supplémentaire. L'inconvénient est que tu dois implémenter toi-même ton code validation.</p>
 <p>Une règle de validation peut être un code &quot;simple&quot;, par exemple pour valider qu'un champ est défini :</p>
 <div class="bloc-code"><div class="bloc-code__langue">typescript</div><pre><code class="hljs language-typescript"><span class="hljs-keyword">if</span> (name == <span class="hljs-literal">null</span>) {
@@ -205,7 +206,7 @@ const validate: RequestHandler = async (req, res, next) =&gt; {
 export default { browse, read, edit, add, destroy, validate };
 </code></pre></div>
 <p>Mais rapidement, sur des données plus complexes, ton code contiendra beaucoup de règles imbriquées. C'est le moment où tu auras envie d'utiliser des modules tiers.</p>
-<h3>Validation avancée avec des modules tiers</h3>
+<h3 id="t-validation-avancee-avec-des-modules-tiers">Validation avancée avec des modules tiers</h3>
 <p>Pour simplifier et renforcer la validation, tu peux utiliser des bibliothèques comme <code>joi</code> ou <code>express-validator</code> (entre autres).</p>
 <p>Un exemple de code utilisant <a href="https://www.npmjs.com/package/joi" target="_blank" rel="noopener noreferrer">joi</a> pour la validation d'un film :</p>
 <div class="bloc-code"><div class="bloc-code__langue">typescript</div><pre><code class="hljs language-typescript"><span class="hljs-comment">// ...</span>
@@ -233,10 +234,10 @@ export default { browse, read, edit, add, destroy, validate };
 <span class="hljs-keyword">export</span> <span class="hljs-keyword">default</span> { <span class="hljs-comment">/* ... */</span>, validate };
 </code></pre></div>
 <p>Tu peux trouver plus d'informations dans la <a href="https://joi.dev/api/?v=17.13.0#introduction" target="_blank" rel="noopener noreferrer">documentation officielle</a>.</p>
-<h2>Récapitulatif</h2>
+<h2 id="t-recapitulatif">Récapitulatif</h2>
 <p>Dans cette quête, tu as appris l'importance de la validation des données saisies par l'utilisateur et comment la mettre en œuvre dans ton application Express en utilisant des middlewares. Tu as également vu comment implémenter une validation manuelle et comment utiliser des bibliothèques tierces pour faciliter ce processus.</p>
 <p>La validation des données est essentielle pour garantir la <strong>sécurité</strong> et la <strong>cohérence</strong> des informations traitées par ton application.</p>
-<h2>Challenge</h2>
+<h2 id="t-challenge">Challenge</h2>
 <p>Applique les concepts de cette quête pour ajouter des validateurs sur les données de ton projet Wild Series. À toi de décider si tu veux faire des validations manuelles ou utiliser des outils tiers comme <code>joi</code>.</p>
 
   </div>
@@ -255,7 +256,5 @@ export default { browse, read, edit, add, destroy, validate };
   <p>Archive personnelle des cours suivis à la Wild Code School. Copie hors ligne à usage strictement privé.</p>
 </footer>
 
-<script src="../../assets/copie-code.js"></script>
-<script src="../../assets/progression.js"></script>
 </body>
 </html>

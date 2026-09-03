@@ -20,20 +20,21 @@
     <p class="quete__meta">Quête 2 sur 10 · 3 images archivées</p>
   </header>
   <div class="cours">
-<h2>Objectifs</h2>
+<h2 id="t-objectifs">Objectifs</h2>
 <ul>
 <li>Comprendre ce qu'est un composant React</li>
 <li>Comprendre la hiérarchie des composants</li>
 <li>Apprendre à exporter et importer des composants</li>
 </ul>
-<h2>Pré-requis</h2>
+<h2 id="t-pre-requis">Pré-requis</h2>
 <ol class="etapes"><li class="etape"><div class="etape__puce">1</div><div class="etape__contenu"><h4 class="etape__titre">Valider la quête suivante</h4><div class="renvois"><div class="renvois__titre">Quêtes liées</div><ul><li><a href="../../react-bases/001-react-basics-01-pokedex-introduction/index.html">Quête 2328</a></li></ul></div>
 </div></li></ol>
-<h2>Introduction</h2>
+<h2 id="t-introduction">Introduction</h2>
 <p>Dans la quête précédente, nous avons vu comment initialiser une application React.</p>
 <p>Nous allons maintenant découvrir ce qu'est un composant, comment le créer et comment l'utiliser.</p>
-<h2>Sommaire</h2>
-<h2>Qu'est-ce qu'un composant ?</h2>
+<h2 id="t-sommaire">Sommaire</h2>
+<nav class="sommaire" aria-label="Sommaire de la quête"><ol class="sommaire__liste"><li><a href="#t-qu-est-ce-qu-un-composant">Qu'est-ce qu'un composant ?</a><ul><li><a href="#t-la-hierarchie-des-composants">La hiérarchie des composants</a></li><li><a href="#t-pourquoi-utiliser-des-composants">Pourquoi utiliser des composants ?</a></li><li><a href="#t-le-jsx">Le JSX</a></li></ul></li><li><a href="#t-bon-et-concretement">Bon, et concrètement ?</a><ul><li><a href="#t-vous-avez-dit-import-export">Vous avez dit import / export ?</a></li></ul></li><li><a href="#t-recapitulatif">Récapitulatif</a></li><li><a href="#t-challenge">Challenge</a><ul><li><a href="#t-criteres-de-validation">Critères de validation</a></li></ul></li></ol></nav>
+<h2 id="t-qu-est-ce-qu-un-composant">Qu'est-ce qu'un composant ?</h2>
 <p>Un composant est une partie (un morceau, une brique...) d'une interface utilisateur. Il permet d'isoler cet élément et les interactions éventuelles qui y sont liées (un événement au clic par exemple).</p>
 <p>Regarde ce screenshot :</p>
 <p><img src="images/001-interface-utilisateur-avec-les-composants-mis.jpg" alt="interface utilisateur avec les composants mis en évidence" loading="lazy"></p>
@@ -45,7 +46,7 @@
 <li>Un composant pour la partie de gauche.</li>
 </ul>
 <p>Si tu regardes chacun de ces &quot;morceaux&quot;, tu peux les découper eux-mêmes en sous-composants...</p>
-<h3>La hiérarchie des composants</h3>
+<h3 id="t-la-hierarchie-des-composants">La hiérarchie des composants</h3>
 <p>Dans React, les composants forment une hiérarchie. C'est-à-dire que certains composants sont <strong>imbriqués</strong> dans d'autres composants.</p>
 <p>Souviens-toi au chapitre précédent : le composant <code>App</code> était le composant principal de notre application. C'est en fait le composant racine  : <code>App</code> va contenir tous les composants de l'application, et ces composants seront imbriqués dans <code>App</code>.</p>
 <p>Voici un exemple de hiérarchie de composants :</p>
@@ -58,7 +59,7 @@
 <p>C'est un exemple basique de ce que tu seras amené à voir et réaliser.</p>
 <div class="encadre encadre--info"><div class="encadre__titre">Info</div><div class="encadre__corps"><p>Point de vocabulaire : <code>App</code> est le composant <strong>parent</strong> de <code>Header</code>, <code>CardList</code> et <code>Footer</code>. Les composants  <code>Header</code>, <code>CardList</code> et <code>Footer</code> sont conséquent des <strong>enfants</strong> de <code>App</code>.</p>
 </div></div>
-<h3>Pourquoi utiliser des composants ?</h3>
+<h3 id="t-pourquoi-utiliser-des-composants">Pourquoi utiliser des composants ?</h3>
 <p>Tu as plusieurs raisons d'utiliser des composants :</p>
 <ul>
 <li>Les composants sont réutilisables et extensibles. Dans notre schéma précédent, nous allons créer une fois le composant <code>Card</code> et l'appeler plusieurs fois.</li>
@@ -74,7 +75,7 @@
     <div class="ressource__hote">react.dev</div>
   </div>
 </a>
-<h3>Le JSX</h3>
+<h3 id="t-le-jsx">Le JSX</h3>
 <p>Dans la suite des quêtes, nous allons parler régulièrement de JSX. Qu'est-ce que c'est ?</p>
 <p>Le JSX est un language de balisage qui ressemble au HTML. Tu peux d'ailleurs y utiliser toutes les balises HTML existantes ou presque, ainsi que les attributs qui peuvent compléter ces balises.</p>
 <p>Mais attention, <strong>le JSX n'est pas du HTML</strong> et il comporte des différences. Il est impossible d'utiliser des mots-clés réservés de JavaScript dans du JSX comme par exemple l'attribut <code>class</code> qui est également le mot-clé qui sert à déclarer une classe en JavaScript.</p>
@@ -91,7 +92,7 @@
 </a>
 <div class="encadre encadre--warning"><div class="encadre__titre">Attention</div><div class="encadre__corps"><p>Accorde une attention particulère aux <a href="https://react.dev/learn/writing-markup-with-jsx#the-rules-of-jsx" target="_blank" rel="noopener noreferrer">Règles du JSX</a></p>
 </div></div>
-<h2>Bon, et concrètement ?</h2>
+<h2 id="t-bon-et-concretement">Bon, et concrètement ?</h2>
 <p>Ouvre ton projet pokedex dans ton IDE. Commence par nettoyer ton composant <code>App</code> en remplaçant le code existant par celui-ci :</p>
 <div class="bloc-code"><div class="bloc-code__langue">jsx</div><pre><code class="hljs language-jsx"><span class="hljs-keyword">import</span> <span class="hljs-string">&quot;./App.css&quot;</span>;
 
@@ -117,7 +118,7 @@
 </div></div>
 <div class="encadre encadre--info"><div class="encadre__titre">Info</div><div class="encadre__corps"><p>Une bonne pratique consiste à créer nos composants dans un répertoire <code>components</code> dans le dossier <code>src</code> du projet.</p>
 </div></div>
-<h3>Vous avez dit import / export ?</h3>
+<h3 id="t-vous-avez-dit-import-export">Vous avez dit import / export ?</h3>
 <p>Dans l'exemple précédent, tu as déclaré le composant <code>MyTitle</code> avec le mot-clé <code>function</code>. Puis, tu as exporté ce composant avec les mots-clés <code>export default</code>. En faisant cela, tu as rendu disponible le composant <code>MyTitle</code> à l'extérieur de ce fichier.</p>
 <p>Maintenant si tu souhaites pouvoir utiliser ce composant dans le composant <code>App</code>, tu dois importer <code>MyTile</code> dans <code>App</code> en procédant comme suit :</p>
 <div class="bloc-code"><div class="bloc-code__langue">jsx</div><pre><code class="hljs language-jsx"><span class="hljs-keyword">import</span> <span class="hljs-string">&quot;./App.css&quot;</span>;
@@ -150,7 +151,7 @@
 <span class="hljs-keyword">export</span> <span class="hljs-keyword">default</span> <span class="hljs-title class_">App</span>;
 </code></pre></div>
 <p>Si tu regardes dans ton navigateur, il n'y a aucune différence. Mais côté développeur, nous venons de créer notre premier composant réutilisable !</p>
-<h2>Récapitulatif</h2>
+<h2 id="t-recapitulatif">Récapitulatif</h2>
 <ul>
 <li>Tu peux découper une interface utilisateur en plusieurs composants.</li>
 <li>Un composant est un bloc réutilisable et extensible.</li>
@@ -158,7 +159,7 @@
 <li>Pour pouvoir utiliser tes composants, tu utilises les <strong>imports</strong> et les <strong>exports</strong>.</li>
 <li>Dans du JSX, tu peux appeler un composant par son nom comme si c'était une balise HTML auto-fermante.</li>
 </ul>
-<h2>Challenge</h2>
+<h2 id="t-challenge">Challenge</h2>
 <p>Pour cette étape, crée un composant appelé <code>PokemonCard</code> qui affiche une carte Pokémon dans ton app React.</p>
 <ol class="etapes"><li class="etape"><div class="etape__puce">1</div><div class="etape__contenu"><h4 class="etape__titre">Crée une nouvelle branche</h4><p>Tout d'abord, ouvre ton projet créé dans la quête précédente, et crée une nouvelle branche appelée <code>components.1</code>. Cette branche servira à développer ton composant <code>PokemonCard</code>. Assure-toi de créer la branche à partir de ta branche principale <code>main</code>.</p>
 </div></li><li class="etape"><div class="etape__puce">2</div><div class="etape__contenu"><h4 class="etape__titre">Crée un composant</h4><p>Dans ton projet, crée un dossier appelé <code>components</code> à la racine du dossier <code>src</code> (tu l'as peut-être déjà fait). À l'intérieur de ce dossier <code>components</code>, crée un fichier nommé <code>PokemonCard.tsx</code>.</p>
@@ -180,7 +181,7 @@
 </div></li></ol>
 <p>Assure-toi que ton composant <code>PokemonCard</code> est correctement créé et affiché dans ton application. N'oublie pas de vérifier que ton serveur de développement est toujours lancé, sinon refait un <code>npm run dev</code>.</p>
 <p>Fournis le lien vers la branche <code>components.1</code> de ton dépôt GitHub pour valider cette étape.</p>
-<h3>Critères de validation</h3>
+<h3 id="t-criteres-de-validation">Critères de validation</h3>
 <ul>
 <li>Le code est disponible sur GitHub sur une branche <code>components.1</code></li>
 <li>Un composant <code>PokemonCard</code> est créé dans le dossier <code>src/components</code>.</li>
@@ -242,7 +243,5 @@
   <p>Archive personnelle des cours suivis à la Wild Code School. Copie hors ligne à usage strictement privé.</p>
 </footer>
 
-<script src="../../assets/copie-code.js"></script>
-<script src="../../assets/progression.js"></script>
 </body>
 </html>

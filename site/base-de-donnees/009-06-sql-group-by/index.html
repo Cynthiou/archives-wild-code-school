@@ -20,12 +20,12 @@
     <p class="quete__meta">Quête 9 sur 9 · 1 image archivée</p>
   </header>
   <div class="cours">
-<h2>Objectifs</h2>
+<h2 id="t-objectifs">Objectifs</h2>
 <ul>
 <li>Reconnaître les principales fonctions SQL</li>
 <li>Comprendre comment grouper des données</li>
 </ul>
-<h2>Introduction</h2>
+<h2 id="t-introduction">Introduction</h2>
 <p>Dans cette nouvelle quête, tu vas voir les fonctions SQL et apprendre comment grouper des données entre elles. Expecto Datatum !</p>
 <div class="encadre encadre--warning"><div class="encadre__titre">Attention</div><div class="encadre__corps"><p>Commence par exécuter ces requêtes pour (re)créer une nouvelle base de données &quot;bac à sable&quot; :</p>
 <div class="bloc-code"><div class="bloc-code__langue">sql</div><pre><code class="hljs language-sql"><span class="hljs-keyword">DROP</span> DATABASE IF <span class="hljs-keyword">EXISTS</span> wild_db_quests_advanced;
@@ -86,10 +86,11 @@ USE wild_db_quests_advanced;
   (<span class="hljs-string">&#x27;dudley&#x27;</span>, <span class="hljs-string">&#x27;dursley&#x27;</span>, <span class="hljs-keyword">NULL</span>);
 </code></pre></div>
 </div></div>
-<h2>Sommaire</h2>
-<h2>Fonctions SQL</h2>
+<h2 id="t-sommaire">Sommaire</h2>
+<nav class="sommaire" aria-label="Sommaire de la quête"><ol class="sommaire__liste"><li><a href="#t-fonctions-sql">Fonctions SQL</a><ul><li><a href="#t-fonctions-d-agregation">Fonctions d’agrégation</a></li><li><a href="#t-autres-fonctions">Autres fonctions</a></li></ul></li><li><a href="#t-grouper-des-donnees">Grouper des données</a><ul><li><a href="#t-group-by">GROUP BY</a></li><li><a href="#t-having">HAVING</a></li></ul></li><li><a href="#t-challenge">Challenge</a><ul><li><a href="#t-criteres-de-validation">Critères de validation</a></li></ul></li></ol></nav>
+<h2 id="t-fonctions-sql">Fonctions SQL</h2>
 <p>SQL possède un grand nombre de fonctions te permettant d’effectuer des calculs mathématiques, des manipulations de chaînes ou de dates, directement dans ta requête (ce qui évite souvent de déporter inutilement ce rôle au langage de programmation, et donc d’optimiser grandement le temps global d’exécution de ton code).</p>
-<h3>Fonctions d’agrégation</h3>
+<h3 id="t-fonctions-d-agregation">Fonctions d’agrégation</h3>
 <p>Ces fonctions permettent de faire un calcul sur un <strong>ensemble de lignes</strong>.</p>
 <p>Par exemple, la fonction <code>COUNT()</code> est très utile, car plutôt que de te renvoyer directement des tuples en résultat, elle va à la place te retourner le <strong>nombre de tuples</strong> concernés par la requête. Entre les parenthèses, tu peux préciser le nom du champ à compter (les lignes à NULL pour ce champ seront alors ignorées). Si tu veux vraiment compter toutes les lignes, tu peux simplement écrire <code>COUNT(*)</code>.</p>
 <p>Par exemple, avec cette requête :</p>
@@ -111,7 +112,7 @@ USE wild_db_quests_advanced;
 <li><code>AVG(champ)</code> : effectue la moyenne des valeurs pour le champ entre les parenthèses.</li>
 <li><code>MIN(champ)</code> et <code>MAX(champ)</code> : retourne la valeur minimale/maximale du champ sélectionné.</li>
 </ul>
-<h3>Autres fonctions</h3>
+<h3 id="t-autres-fonctions">Autres fonctions</h3>
 <p>Tu peux utiliser de nombreuses autres fonctions pour manipuler des chaînes de caractères (<code>LOWER()</code>, <code>UPPER()</code>, <code>LENGTH()</code>...), effectuer des calculs mathématiques (<code>ROUND()</code>, <code>ABS()</code>, <code>SIN()</code>...) ou manipuler des dates (<code>DATEDIFF()</code>, <code>MONTH()</code>, <code>NOW()</code>...). Reporte-toi aux ressources pour voir une liste exhaustive de ces dernières. Voici un exemple avec une fonction de concaténation :</p>
 <div class="bloc-code"><div class="bloc-code__langue">sql</div><pre><code class="hljs language-sql"><span class="hljs-keyword">SELECT</span> CONCAT(firstname, <span class="hljs-string">&#x27; &#x27;</span>, lastname) <span class="hljs-keyword">AS</span> fullname <span class="hljs-keyword">FROM</span> wizard;
 </code></pre></div>
@@ -152,8 +153,8 @@ USE wild_db_quests_advanced;
     <div class="ressource__hote">sql.sh</div>
   </div>
 </a>
-<h2>Grouper des données</h2>
-<h3>GROUP BY</h3>
+<h2 id="t-grouper-des-donnees">Grouper des données</h2>
+<h3 id="t-group-by">GROUP BY</h3>
 <p>Pour le moment, lorsque tu effectuais des requêtes de type <code>SELECT</code>, tu récupérais plus ou moins de tuples (en fonction des filtres imposés via la clause <code>WHERE</code>), mais chaque ligne de résultat était un tuple unique. Il y a cependant des cas de figure où tu aimerais récupérer des résultats, non pas individuels, mais regroupés selon des critères.</p>
 <p>Reprends l’exemple des élèves inscrits dans des écoles. Ce serait intéressant de regrouper ensemble les élèves appartenant à la même école. En l’état, cela peut paraître inutile, mais couplé à des fonctions d'agrégation, cela prend tout son sens. Par exemple, tu peux compter le nombre de lignes dans tel ou tel groupe.</p>
 <p>Reprenons une requête avec une jointure simple entre les tables <code>wizard</code> et <code>school</code> :</p>
@@ -211,7 +212,7 @@ USE wild_db_quests_advanced;
 <span class="hljs-operator">|</span> Uagadou School <span class="hljs-keyword">of</span> Magic                    <span class="hljs-operator">|</span>          <span class="hljs-number">1</span> <span class="hljs-operator">|</span>
 <span class="hljs-operator">+</span><span class="hljs-comment">--------------------------------------------+------------+</span>
 </code></pre></div>
-<h3>HAVING</h3>
+<h3 id="t-having">HAVING</h3>
 <p>Il est possible d’aller encore plus loin dans les regroupements, en y ajoutant des critères de filtre sur ces groupes. Par exemple, si tu souhaites ne ressortir que les groupes ayant plus de trois élèves, tu peux écrire :</p>
 <div class="bloc-code"><div class="bloc-code__langue">sql</div><pre><code class="hljs language-sql"><span class="hljs-keyword">SELECT</span>
   s.name, <span class="hljs-built_in">COUNT</span>(<span class="hljs-operator">*</span>) <span class="hljs-keyword">AS</span> nb_student
@@ -259,7 +260,7 @@ USE wild_db_quests_advanced;
     <div class="ressource__hote">sql.sh</div>
   </div>
 </a>
-<h2>Challenge</h2>
+<h2 id="t-challenge">Challenge</h2>
 <p><strong>Tournoi de quidditch (suite)</strong></p>
 <p>Le tournoi de quidditch continue. Reproduis les mêmes données que dans la quête précédente :</p>
 <div class="bloc-code"><div class="bloc-code__langue">sql</div><pre><code class="hljs language-sql"><span class="hljs-keyword">DROP</span> DATABASE IF <span class="hljs-keyword">EXISTS</span> wild_db_quests_advanced;
@@ -314,7 +315,7 @@ USE wild_db_quests_advanced;
 <li>Retourne uniquement les noms des équipes complètes (ayant 14 joueurs ou plus, c’est-à- dire 7 joueurs et 7 remplaçants minimum), classés par ordre alphabétique.</li>
 <li>L’entraîneur des Gryffindor est superstitieux, son jour préféré est le lundi. Retourne la liste des joueurs de son équipe qui ont été enrôlés un lundi (il souhaite les faire jouer en priorité... si seulement il existait une <a href="https://sql.sh/fonctions/date-heure/dayofweek" target="_blank" rel="noopener noreferrer">fonction SQL pour ça</a>...), et classe les résultats par date d’enrôlement chronologique.</li>
 </ol>
-<h3>Critères de validation</h3>
+<h3 id="t-criteres-de-validation">Critères de validation</h3>
 <ul>
 <li>La solution contient bien les 3 requêtes.</li>
 <li>Lorsque tu testes les requêtes (sur le jeu de données fourni), les résultats de chaque requête sont corrects (fais attention aux champs retournés et au tri des résultats pour qu’ils correspondent précisément aux critères demandés)</li>
@@ -429,7 +430,5 @@ USE wild_db_quests_advanced;
   <p>Archive personnelle des cours suivis à la Wild Code School. Copie hors ligne à usage strictement privé.</p>
 </footer>
 
-<script src="../../assets/copie-code.js"></script>
-<script src="../../assets/progression.js"></script>
 </body>
 </html>

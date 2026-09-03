@@ -30,7 +30,7 @@ Ainsi stockées dans des variables, les données sont faciles à retrouver et à
 Il existe aussi des variables prédéfinies, accessibles dès le départ sans que l'on ait besoin de les créer.</p>
 <p>Pour te donner un exemple parlant, les variables sont un peu comme des boîtes, dans lesquelles tu peux mettre différentes choses, et qui ont une étiquette dessus avec un nom, suffisamment parlant pour que tu saches ce que tu y as mis.</p>
 <p><img src="http://images.innoveduc.fr/variables_boxes.jpeg" alt="" loading="lazy"></p>
-<h2>🤓 <strong>À la fin de cette quête, tu seras capable de:</strong></h2>
+<h2 id="t-a-la-fin-de-cette-quete-tu-seras-capable-de">🤓 <strong>À la fin de cette quête, tu seras capable de:</strong></h2>
 <ul>
 <li>✅ Manipuler des variables en PHP,</li>
 <li>✅ Bien nommer les variables</li>
@@ -42,7 +42,7 @@ Il existe aussi des variables prédéfinies, accessibles dès le départ sans qu
 <li>Ne doit pas commencer par un chiffre.</li>
 <li>Ne peut contenir que des chiffres, des lettres et le caractère '_' (souligné).</li>
 </ul>
-<h4>✅ Exemples de noms de variables valides :</h4>
+<h4 id="t-exemples-de-noms-de-variables-valides">✅ Exemples de noms de variables valides :</h4>
 <div class="bloc-code"><div class="bloc-code__langue">php</div><pre><code class="hljs language-php"><span class="hljs-variable">$str</span>
 <span class="hljs-variable">$my_value</span>
 <span class="hljs-variable">$_old</span>
@@ -50,7 +50,7 @@ Il existe aussi des variables prédéfinies, accessibles dès le départ sans qu
 
 </code></pre></div>
 <p>Attention, les noms des variables sont sensibles à la casse. $Black et $black sont deux variables différentes.</p>
-<h4>❌ Exemples de noms de variables invalides :</h4>
+<h4 id="t-exemples-de-noms-de-variables-invalides">❌ Exemples de noms de variables invalides :</h4>
 <div class="bloc-code"><div class="bloc-code__langue">php</div><pre><code class="hljs language-php">$<span class="hljs-number">4</span>days            <span class="hljs-comment">// commence par un chiffre</span>
 day4              <span class="hljs-comment">// pas de symbole $</span>
 <span class="hljs-variable">$my</span>-bad           <span class="hljs-comment">// contient un caractère interdit (-)</span>
@@ -59,7 +59,7 @@ $                 <span class="hljs-comment">// pas de nom</span>
 <span class="hljs-variable">$first</span> name       <span class="hljs-comment">// caractère interdit ( )</span>
 
 </code></pre></div>
-<h4>Les bonnes pratiques :</h4>
+<h4 id="t-les-bonnes-pratiques">Les bonnes pratiques :</h4>
 <ul>
 <li>
 <p>Un nom de variable doit toujours t'aider à identifier ce qu'elle contient. Cela permet de simplifier et d'accélérer
@@ -82,7 +82,7 @@ L'écriture camelCase consiste à écrire en minuscule et si le nom contient plu
 <blockquote>
 <p><strong>Remarque</strong> Il existe d'autres conventions de nommage que le camelCase. On notera par exemple l'UpperCamelCase ou encore le snake_case.</p>
 </blockquote>
-<h4>✅ Exemples de variables bien nommées :</h4>
+<h4 id="t-exemples-de-variables-bien-nommees">✅ Exemples de variables bien nommées :</h4>
 <ul>
 <li>
 <p>une variable contenant le nom d'une voiture : $carName ($car_name ou $CarName sont techniquement valides mais déconseillés)</p>
@@ -170,7 +170,7 @@ Le nom de la variable est toujours écrit en premier, suivi de l'opérateur d'af
 <span class="hljs-number">1</span> = <span class="hljs-variable">$i</span>; <span class="hljs-comment">// renvoie une erreur car 1 n&#x27;est pas une variable, on ne peut donc pas lui affecter de valeur.</span>
 
 </code></pre></div>
-<h4>Exemples de déclaration de variables :</h4>
+<h4 id="t-exemples-de-declaration-de-variables">Exemples de déclaration de variables :</h4>
 <ul>
 <li>
 <p>Entiers : <code>$size = 200;</code> <code>$start = 0;</code></p>
@@ -189,7 +189,7 @@ Le nom de la variable est toujours écrit en premier, suivi de l'opérateur d'af
 <div class="bloc-code"><div class="bloc-code__langue">php</div><pre><code class="hljs language-php">    <span class="hljs-variable">$a</span> = <span class="hljs-variable">$b</span> = <span class="hljs-variable">$c</span> = <span class="hljs-number">2</span>; <span class="hljs-comment">// les trois variables $a, $b et $c sont initialisées en même temps à 2</span>
 
 </code></pre></div>
-<h4>Les bonnes pratiques :</h4>
+<h4 id="t-les-bonnes-pratiques-2">Les bonnes pratiques :</h4>
 <p>Pour des raisons de lisibilité du code, dès l'instant que l'on va &quot;typer&quot; une variable en assignant une valeur, on fera
 en sorte de toujours utiliser le même type pour cette variable.</p>
 <a class="ressource" href="http://php.net/manual/fr/language.types.intro.php" target="_blank" rel="noopener noreferrer">
@@ -222,7 +222,7 @@ de ton code.</p>
 </code></pre></div>
 <p>Si au contraire, tu déclares une variable à l'intérieur d'une fonction (tu verras en détail les fonctions dans une future quête), cette variable ne sera <em>visible</em> et donc accessible <strong>que dans ce bloc</strong>. On parle cette fois de <strong>variable à portée locale</strong>. De plus, les variables à portée globale ne sont pas non plus accessibles à l'intérieur de la fonction.
 En d'autres termes : ce qui se passe dans une fonction, reste dans la fonction !</p>
-<h4>Exemple :</h4>
+<h4 id="t-exemple">Exemple :</h4>
 <div class="bloc-code"><div class="bloc-code__langue">phpsandbox</div><pre><code class="hljs language-phpsandbox">https://phpsandbox.io/n/q2-wrong-variable-axlls?&amp;layout=Editor
 </code></pre></div>
 <a class="ressource" href="http://php.net/manual/fr/language.variables.scope.php" target="_blank" rel="noopener noreferrer">
@@ -234,7 +234,7 @@ En d'autres termes : ce qui se passe dans une fonction, reste dans la fonction !
   </div>
 </a>
 <h1>💪 Challenge</h1>
-<h3>Déclarer et afficher des variables</h3>
+<h3 id="t-declarer-et-afficher-des-variables">Déclarer et afficher des variables</h3>
 <p>Ecris un petit programme qui va déclarer 4 variables de 4 types différents (à toi de choisir le bon type selon les cas)
 Pour réaliser ce programme, utilise les valeurs que tu trouveras sur le site IMDB, sur la fiche de <a href="http://www.imdb.com/title/tt0097576/?ref_=nv_sr_1" target="_blank" rel="noopener noreferrer">la dernière croisade</a></p>
 <ul>
@@ -245,7 +245,7 @@ Pour réaliser ce programme, utilise les valeurs que tu trouveras sur le site IM
 </ul>
 <p>Affiche ces valeurs les unes sous les autres (tu peux utiliser <code>echo</code> pour afficher une variable.)</p>
 <p><img src="http://images.innoveduc.fr/variables_last_cruisade.jpeg" alt="" loading="lazy"></p>
-<h3>Critères de validation</h3>
+<h3 id="t-criteres-de-validation">Critères de validation</h3>
 <ul>
 <li>4 types différents de variables sont représentés et utilisés à bon escient (integer, string, boolean et float)</li>
 <li>les noms des variables sont bien nommés (respect des bonnes pratiques et noms cohérents avec la valeur associée)</li>
@@ -292,7 +292,5 @@ Pour réaliser ce programme, utilise les valeurs que tu trouveras sur le site IM
   <p>Archive personnelle des cours suivis à la Wild Code School. Copie hors ligne à usage strictement privé.</p>
 </footer>
 
-<script src="../../assets/copie-code.js"></script>
-<script src="../../assets/progression.js"></script>
 </body>
 </html>

@@ -20,14 +20,14 @@
     <p class="quete__meta">Quête 5 sur 11 · 6 images archivées</p>
   </header>
   <div class="cours">
-<h2>Objectifs</h2>
+<h2 id="t-objectifs">Objectifs</h2>
 <ul>
 <li>Écrire des conditions en Javascript</li>
 </ul>
-<h2>Pré-requis</h2>
+<h2 id="t-pre-requis">Pré-requis</h2>
 <p>Avoir validé les quêtes suivantes :</p>
 <div class="renvois"><div class="renvois__titre">Quêtes liées</div><ul><li><a href="../../javascript/001-js-basics-01-qu-est-ce-que-javascript/index.html">Quête 1262</a></li><li><a href="../../javascript/002-js-basics-02-syntaxe-et-concepts-de-base/index.html">Quête 1267</a></li><li><a href="../../javascript/003-js-basics-03-les-variables/index.html">Quête 1268</a></li><li><a href="../../javascript/004-js-basics-04-les-types-de-donnees/index.html">Quête 1269</a></li></ul></div>
-<h2>Introduction</h2>
+<h2 id="t-introduction">Introduction</h2>
 <p>Dans les quêtes précédentes, tu as pu découvrir <strong>ce qu'est Javascript et à quoi ressemble sa syntaxe</strong>.
 Tu as également appris comment <strong>créer des variables</strong> et quels sont les différents <strong>types de données</strong> que l'on peut manipuler.</p>
 <p>Dans cette quête, tu apprendras <strong>comment écrire des instructions conditionnelles</strong> en Javascript.</p>
@@ -35,8 +35,9 @@ Tu as également appris comment <strong>créer des variables</strong> et quels s
 Un programme incapable de prendre une décision se révèle plutôt inutile : c'est grâce à une logique conditionnelle qu'il est possible de savoir si tu es authentifié ou non sur un site web par exemple.</p>
 <p><strong>C'est parti !</strong></p>
 <p><strong><img src="images/001-train-forest.png" alt="Train forest" loading="lazy"></strong></p>
-<h2>Sommaire</h2>
-<h2>Si...Sinon</h2>
+<h2 id="t-sommaire">Sommaire</h2>
+<nav class="sommaire" aria-label="Sommaire de la quête"><ol class="sommaire__liste"><li><a href="#t-si-sinon">Si...Sinon</a><ul><li><a href="#t-prompt">Prompt</a></li><li><a href="#t-utiliser-prompt-avec-des-nombres">Utiliser prompt avec des nombres</a></li></ul></li><li><a href="#t-else-if">Else if</a></li><li><a href="#t-les-valeurs-truthy-et-falsy">Les valeurs "truthy" et "falsy"</a></li><li><a href="#t-inversion-logique">Inversion logique</a></li><li><a href="#t-et-ou">ET / OU</a></li><li><a href="#t-portee-scope-contexte">Portée (scope) / Contexte</a></li><li><a href="#t-les-ternaires">Les ternaires</a></li><li><a href="#t-resume">Résumé</a></li><li><a href="#t-challenge">Challenge</a></li></ol></nav>
+<h2 id="t-si-sinon">Si...Sinon</h2>
 <p>Pour écrire des conditions en Javascript, tu peux utiliser la structure <strong>&quot;if...else&quot;</strong>.</p>
 <p><img src="images/002-autoroute-a-plusieurs-voies.png" alt="Autoroute à plusieurs voies" loading="lazy"></p>
 <p>L'instruction <code>if</code> permet de vérifier une condition (précisée entre les parenthèses). <strong>Si la condition est évaluée comme vraie</strong>, le code est alors exécuté. Sinon, le code est ignoré.</p>
@@ -78,7 +79,7 @@ Si le résultat est vrai, alors on affiche  <strong>&quot;Welcome, Paul &quot;</
 }
 </code></pre></div>
 </div></details>
-<h3>Prompt</h3>
+<h3 id="t-prompt">Prompt</h3>
 <p>Pour rendre les exemples un peu plus interactifs, tu peux utiliser une fonction nommée <code>prompt</code>.</p>
 <p><img src="images/003-question.png" alt="Question" loading="lazy">
 <strong>prompt</strong> est une fonction qui va <strong>afficher une boite de dialogue permettant à l'utilisateur d'entrer du texte</strong>.</p>
@@ -119,7 +120,7 @@ Si le résultat est vrai, alors on affiche  <strong>&quot;Welcome, Paul &quot;</
 }
 </code></pre></div>
 </div></details>
-<h3>Utiliser prompt avec des nombres</h3>
+<h3 id="t-utiliser-prompt-avec-des-nombres">Utiliser prompt avec des nombres</h3>
 <p>Lors de l'utilisation de <code>prompt</code>, ce que l'utilisateur va taper dans la fenêtre de l'invite sera considéré comme une chaîne de caractères.
 Si tu veux travailler avec des nombres, tu dois convertir la chaîne de caractères en un nombre. Pour cela, tu peux utiliser la fonction <code>parseInt</code>.</p>
 <div class="bloc-code"><div class="bloc-code__langue">javascript</div><pre><code class="hljs language-javascript"><span class="hljs-keyword">const</span> age = <span class="hljs-title function_">prompt</span>(<span class="hljs-string">&quot;How old are you?&quot;</span>);
@@ -138,7 +139,7 @@ Si tu veux travailler avec des nombres, tu dois convertir la chaîne de caractè
     <div class="ressource__hote">developer.mozilla.org</div>
   </div>
 </a>
-<h2>Else if</h2>
+<h2 id="t-else-if">Else if</h2>
 <p>Parfois, on peut avoir plus d'une condition. Par exemple, imagine que tu souhaites permettre à plusieurs personnes de jouer avec ton programme d'avant.</p>
 <p>Avec la structure <code>if...else</code> uniquement, cela va générer beaucoup d'instructions imbriquées les unes dans les autres.
 Tu vas heureusement pouvoir gérer des &quot;embranchements&quot; pour traiter plus de cas avec <code>else if</code> !</p>
@@ -177,7 +178,7 @@ Le dernier <code>else</code> correspondra toujours à <strong>tous les autres ca
 }
 </code></pre></div>
 </div></details>
-<h2>Les valeurs &quot;truthy&quot; et &quot;falsy&quot;</h2>
+<h2 id="t-les-valeurs-truthy-et-falsy">Les valeurs &quot;truthy&quot; et &quot;falsy&quot;</h2>
 <p>Lorsque tu écris un bloc <code>if...else</code>, <strong>l'expression que tu écris entre parenthèses est évaluée</strong> et <strong>transformée</strong> en <strong>booléen</strong>.</p>
 <p>Par exemple, l'expression <code>4 === 4</code> est <strong>évaluée comme</strong> (&quot;transformée&quot; en) <code>true</code>. Si on place cette dernière dans les parenthèses d'un <code>if</code>, le code sous condition sera exécuté.</p>
 <p>Mais que se passe-t-il si tu mets autre chose qu'un booléen à l’intérieur d'une condition ?</p>
@@ -212,7 +213,7 @@ Le dernier <code>else</code> correspondra toujours à <strong>tous les autres ca
 }
 </code></pre></div>
 <p>Ici, puisque la variable <code>myName</code> est une <strong>chaîne vide</strong> , la condition est <strong>évaluée comme</strong> <code>false</code>.</p>
-<h2>Inversion logique</h2>
+<h2 id="t-inversion-logique">Inversion logique</h2>
 <p><img src="images/006-not-true.png" alt="Not  true" loading="lazy"></p>
 <p>L'opérateur <code>!</code> permet d'<strong>inverser</strong> un booléen. Ainsi, <code>!false</code> est égal à <code>true</code> et <code>!true</code> est égal à <code>false</code>. Cet opérateur permet d'obtenir l'<em><strong>opposé</strong></em> d'une valeur.
 Si on veut évaluer l'opposé logique d'une valeur, on peut utiliser le <code>!</code>.
@@ -232,7 +233,7 @@ Par exemple, <code>!true</code> vaut <code>false</code> et <code>!false</code> v
 <p>Autre exemple :</p>
 <div class="bloc-code"><div class="bloc-code__langue">replit</div><pre><code class="hljs language-replit">https://repl.it/@WildCodeSchool/SvelteEveryInformationtechnology
 </code></pre></div>
-<h2>ET / OU</h2>
+<h2 id="t-et-ou">ET / OU</h2>
 <p>Dans une condition, on peut aussi déterminer la véracité d'une <strong>combinaison logique</strong> de plusieurs <strong>expressions</strong> en utilisant les mots-clés <code>&amp;&amp;</code> (&quot;and&quot;) et <code>||</code> (&quot;or&quot;).</p>
 <p>Exemple:</p>
 <div class="bloc-code"><div class="bloc-code__langue">replit</div><pre><code class="hljs language-replit">https://repl.it/@WildCodeSchool/Condition-and-or
@@ -292,7 +293,7 @@ Lorsque <code>||</code> est utilisé, si <strong>un des deux booléens vaut <cod
 [] true
 [x] false
 </code></pre></div>
-<h2>Portée (scope) / Contexte</h2>
+<h2 id="t-portee-scope-contexte">Portée (scope) / Contexte</h2>
 <p>En Javascript, dès que l'on écrit du code, <strong>le contexte est très important</strong> : <strong>on ne peut pas utiliser une variable déclarée à l'intérieur d'une condition en dehors de cette dernière</strong>.</p>
 <p>Les accolades  <code>{ }</code> définissent un contexte local.</p>
 <p>Exemple 1 :</p>
@@ -356,7 +357,7 @@ Lorsque <code>||</code> est utilisé, si <strong>un des deux booléens vaut <cod
 [x] true
 [] false
 </code></pre></div>
-<h2>Les ternaires</h2>
+<h2 id="t-les-ternaires">Les ternaires</h2>
 <p>Tu peux simplifier l'écriture d'une condition en utilisant <strong>l'opérateur ternaire</strong>.
 Cet opérateur utilise <code>?</code> et <code>:</code>, respectivement équivalents à <code>if</code> et <code>else</code> :</p>
 <div class="bloc-code"><div class="bloc-code__langue">javascript</div><pre><code class="hljs language-javascript">name === <span class="hljs-string">&quot;Bob&quot;</span> ? <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(<span class="hljs-string">&quot;Hello, Bob&quot;</span>) : <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(<span class="hljs-string">&quot;Go Away!&quot;</span>);
@@ -385,7 +386,7 @@ animalName === <span class="hljs-string">&quot;Lucky&quot;</span> ? <span class=
 <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(animalName === <span class="hljs-string">&quot;Lucky&quot;</span> ? <span class="hljs-string">&quot;Welcome Lucky!&quot;</span> : <span class="hljs-string">&quot;Go Away!&quot;</span>);
 </code></pre></div>
 </div></details>
-<h2>Résumé</h2>
+<h2 id="t-resume">Résumé</h2>
 <ul>
 <li>Les conditions sont indispensables en Javascript pour ajouter de la logique à nos programmes.</li>
 <li>On peut utiliser la structure <code>if...else</code> pour écrire ces dernières.</li>
@@ -399,7 +400,7 @@ animalName === <span class="hljs-string">&quot;Lucky&quot;</span> ? <span class=
     <div class="ressource__hote">developer.mozilla.org</div>
   </div>
 </a>
-<h2>Challenge</h2>
+<h2 id="t-challenge">Challenge</h2>
 <p>Es-tu prêt à relever un défi ?</p>
 <p>Déclare et définis trois variables <code>a</code>, <code>b</code> et <code>c</code> à l'aide d'une valeur numérique.
 (ex : <code>const a = 1</code>)</p>
@@ -438,7 +439,5 @@ animalName === <span class="hljs-string">&quot;Lucky&quot;</span> ? <span class=
   <p>Archive personnelle des cours suivis à la Wild Code School. Copie hors ligne à usage strictement privé.</p>
 </footer>
 
-<script src="../../assets/copie-code.js"></script>
-<script src="../../assets/progression.js"></script>
 </body>
 </html>

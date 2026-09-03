@@ -20,14 +20,15 @@
     <p class="quete__meta">Quête 3 sur 10 · 3 images archivées</p>
   </header>
   <div class="cours">
-<h2>Objectifs</h2>
+<h2 id="t-objectifs">Objectifs</h2>
 <ul>
 <li>Connaître les principes du <em>box model</em> en CSS</li>
 <li>Manipuler les propriétés liées au <em>box model</em></li>
 </ul>
 <p><img src="images/001-box-model.jpg" alt="Box model" loading="lazy"></p>
-<h2>Sommaire</h2>
-<h2>Box model</h2>
+<h2 id="t-sommaire">Sommaire</h2>
+<nav class="sommaire" aria-label="Sommaire de la quête"><ol class="sommaire__liste"><li><a href="#t-box-model">Box model</a></li><li><a href="#t-display-block-vs-inline">Display block vs inline</a></li><li><a href="#t-quiz">Quiz</a></li><li><a href="#t-les-unites">Les unités</a></li><li><a href="#t-le-centre-du-monde">Le Centre du Monde</a></li><li><a href="#t-exercice">Exercice</a><ul><li><a href="#t-quelques-precisions">Quelques précisions</a></li><li><a href="#t-solution">Solution</a></li><li><a href="#t-a-noter">À noter</a></li></ul></li></ol></nav>
+<h2 id="t-box-model">Box model</h2>
 <p>Tous les éléments CSS peuvent être assimilés à des boîtes dont les propriétés (taille, forme, <em>etc.</em>) sont décidées par le développeur. La vidéo ci-dessous te donne un aperçu de ce <em><strong>box model</strong></em>.</p>
 <a class="ressource" href="https://www.youtube.com/watch?v=rIO5326FgPE" target="_blank" rel="noopener noreferrer">
   <div class="ressource__icone">↗</div>
@@ -38,7 +39,7 @@
     <div class="ressource__hote">youtube.com</div>
   </div>
 </a>
-<h2>Display block vs inline</h2>
+<h2 id="t-display-block-vs-inline">Display block vs inline</h2>
 <p>Sur la vidéo précédente, les explications sont faites à partir d'éléments interprétés nativement avec la propriété <code>display: block;</code>. Cette propriété concerne les balises <code>&lt;p&gt;</code>, <code>&lt;div&gt;</code>, les intertitres <code>&lt;h1&gt;</code>, <code>&lt;h2&gt;</code>, … et plein d'autres encore. Les balises <code>&lt;a&gt;</code>, <code>&lt;span&gt;</code>, <code>&lt;em&gt;</code> ou encore <code>&lt;strong&gt;</code> seront quant à elles, interprétées avec la propriété <code>display: inline;</code>.</p>
 <p>Consulte la vidéo suivante pour bien comprendre la différence entre ces deux types d'affichage et les subtilités de leur <em><strong>box model</strong></em>.</p>
 <a class="ressource" href="https://www.youtube.com/watch?v=x_i2gga-sYg&amp;ab_channel=KevinPowell" target="_blank" rel="noopener noreferrer">
@@ -51,7 +52,7 @@
 </a>
 <p>🗝️ Complète en lisant ce <a href="https://developer.mozilla.org/fr/docs/Learn/CSS/Building_blocks/The_box_model" target="_blank" rel="noopener noreferrer">chapitre</a> qui te donne les clés principales de toutes les boîtes et notamment la <a href="https://developer.mozilla.org/fr/docs/Learn/CSS/Building_blocks/The_box_model#le_positionnement_display_inline-block" target="_blank" rel="noopener noreferrer">section display</a> pour encore plus de détails.</p>
 <p>En parallèle de ta lecture, garde sous le coude <a href="https://cssreference.io/box-model/" target="_blank" rel="noopener noreferrer">ce guide</a>, qui offre des exemples visuels des propriétés du <em>box model</em>, et n'hésite pas à le consulter si nécessaire.</p>
-<h2>Quiz</h2>
+<h2 id="t-quiz">Quiz</h2>
 <div class="bloc-code"><div class="bloc-code__langue">quiz</div><pre><code class="hljs language-quiz">false|||false|||true
 # En CSS, la boîte de modèle fait référence :
 [] à l'apparence d'un élément HTML (couleur, bords arrondis, famille de police, etc.)
@@ -92,7 +93,7 @@ Pour cela, repère <strong><em>user agent stylesheet</em></strong> dans l'onglet
     <div class="ressource__hote">internetingishard.netlify.app</div>
   </div>
 </a>
-<h2>Les unités</h2>
+<h2 id="t-les-unites">Les unités</h2>
 <p>Lorsque tu dois intégrer une maquette à partir d'une image (jpeg, png, etc.) ou d'un fichier (ai, pdf, ...), tu n'as pas systématiquement accès aux dimensions et unités utilisées concernant le box-model.</p>
 <p>Le piège à éviter est d'indiquer des unités fixes, comme le pixel (px) par exemple. Si tu commences à définir des largeurs ou autres propriétés de boîtes telles que <code>width: 253px</code> ou <code>margin-left: 27px</code> c'est que tu n'es probablement pas sur le bon chemin et que tu es en train de faire du bricolage. Ta page ne s'adaptera pas correctement aux différentes largeurs d'écran (responsive) ou aux niveaux de zoom des utilisteurs (accessibilité).
 Par défaut, les navigateurs affichent des tailles de polices de caractère à <code>16px</code>. Certains utilisateurs ont besoin de modifier ce réglage. Utiliser l'unité <code>rem</code> t'assure que les proportions seront conservées.
@@ -104,7 +105,7 @@ De manière générale, il est conseillé d'utiliser l'unité <code>%</code> pou
 <li>préfère l'unité <code>%</code> lorsque tu dois définir les largeurs <code>width</code> de tes boîtes.</li>
 </ul>
 </div></div>
-<h2>Le Centre du Monde</h2>
+<h2 id="t-le-centre-du-monde">Le Centre du Monde</h2>
 <p>Maintenant que tu as manipulé le <em>box model</em>, peut-être t'es-tu rendu compte (et si ce n'est pas déjà le cas, cela ne saurait tarder) que <strong>centrer un élément en CSS</strong> peut s'avérer être une entreprise étonnamment <strong>compliquée</strong>. Il existe de nombreuses façons de procéder notamment en utilisant l'affichage <em><strong>flex</strong></em> ou <em><strong>grid</strong></em>, mais nous parlerons de ces derniers dans une prochaine quête.</p>
 <p>Pour le moment, la ressource suivante nous montre comment y parvenir uniquement à partir d'élément de type <em><strong>block</strong></em> ou <em><strong>inline</strong></em> et cela s'avère très souvent bien suffisant.</p>
 <a class="ressource" href="https://css-tricks.com/centering-css-complete-guide/" target="_blank" rel="noopener noreferrer">
@@ -116,7 +117,7 @@ De manière générale, il est conseillé d'utiliser l'unité <code>%</code> pou
     <div class="ressource__hote">css-tricks.com</div>
   </div>
 </a>
-<h2>Exercice</h2>
+<h2 id="t-exercice">Exercice</h2>
 <p>C'est l'heure d'empiler les petites boîtes !
 Commence par copier le code suivant dans un fichier HTML.</p>
 <div class="bloc-code"><div class="bloc-code__langue">html</div><pre><code class="hljs language-html"><span class="hljs-meta">&lt;!DOCTYPE <span class="hljs-keyword">html</span>&gt;</span>
@@ -156,7 +157,7 @@ Commence par copier le code suivant dans un fichier HTML.</p>
 </code></pre></div>
 <p>Utilise les propriétés du <em>box model</em> fraîchement vues dans cette quête (<em>display</em>, <em>margin</em>, <em>padding</em>, etc.) pour modifier le fichier <code>style.css</code> de manière à ce que la page web reproduise cette capture écran.</p>
 <p><img src="images/003-box-model-challenge-center.png" alt="Box model challenge center" loading="lazy">.</p>
-<h3>Quelques précisions</h3>
+<h3 id="t-quelques-precisions">Quelques précisions</h3>
 <ul>
 <li>Entre le titre et les paragraphes, seul le titre est centré.</li>
 <li>Le contenu principal (sur fond blanc) doit être au <strong>centre de la page</strong>, peu importe la largeur de ton écran, et <strong>sa largeur ne doit pas dépasser 800px</strong>.</li>
@@ -170,7 +171,7 @@ Commence par copier le code suivant dans un fichier HTML.</p>
 <li>🕵️‍♂️ N'hésite pas à <strong>utiliser l'inspecteur de ton navigateur</strong> pour expérimenter l'ajout, la suppression ou la modification des propriétés CSS de tes boîtes lorsque tu écris la feuille de style.</li>
 </ul>
 </blockquote>
-<h3>Solution</h3>
+<h3 id="t-solution">Solution</h3>
 <details class="solution"><summary>Voir la solution</summary><div class="solution__corps"><div class="bloc-code"><div class="bloc-code__langue">css</div><pre><code class="hljs language-css">* {
    <span class="hljs-attribute">box-sizing</span>: border-box;
 }
@@ -199,7 +200,7 @@ Commence par copier le code suivant dans un fichier HTML.</p>
     <span class="hljs-attribute">text-decoration</span>: none;
 }
 </code></pre></div>
-<h3>À noter</h3>
+<h3 id="t-a-noter">À noter</h3>
 <p>L'utilisation de <code>display: inline-block;</code> ligne 22 permet au lien situé à l'extérieur des paragraphes de se tenir à bonne distance du bloc voisin et parent. Modifie cette propriété avec ton inspecteur pour mieux te rendre compte.</p>
 </div></details>
 
@@ -244,7 +245,5 @@ Commence par copier le code suivant dans un fichier HTML.</p>
   <p>Archive personnelle des cours suivis à la Wild Code School. Copie hors ligne à usage strictement privé.</p>
 </footer>
 
-<script src="../../assets/copie-code.js"></script>
-<script src="../../assets/progression.js"></script>
 </body>
 </html>

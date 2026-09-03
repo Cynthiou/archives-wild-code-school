@@ -30,7 +30,7 @@
 ✅ Comment utiliser la méthode <code>forEach</code> pour itérer sur les éléments d'un tableau
 ✅ Comment utiliser la méthode <code>filter</code> pour filter un tableau</p>
 <hr>
-<h2>Map</h2>
+<h2 id="t-map">Map</h2>
 <p>Imagine un tableau de nombres pour lequel tu souhaiterais multiplier tous les éléments par 2, tout en gardant les nombres originaux. Pour le moment, tu sais le faire comme ceci :</p>
 <div class="bloc-code"><div class="bloc-code__langue">js</div><pre><code class="hljs language-js"><span class="hljs-keyword">const</span> numbers = [<span class="hljs-number">1</span>, <span class="hljs-number">2</span>, <span class="hljs-number">5</span>, <span class="hljs-number">7</span>];
 <span class="hljs-keyword">const</span> doubles = [];
@@ -55,7 +55,7 @@
 <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(doubles); <span class="hljs-comment">// [2, 4, 10, 14]</span>
 </code></pre></div>
 <p><code>map</code> retourne un nouveau tableau qui a exactement la même taille que le tableau original, mais où les éléments auront été transformés. La fonction de rappel donnée en argument de <code>map</code> est appelée avec chaque élément du tableau original l'un après l'autre et la valeur de retour de ce callback sera la valeur de l'élément dans le nouveau tableau.</p>
-<h3>🔬 Expérience</h3>
+<h3 id="t-experience">🔬 Expérience</h3>
 <p>Ce CodeSandbox contient un tableau d'objets des animaux. Utilise <code>map</code> pour créer un nouveau tableau qui contient le nom de l'animal et l'espèce sous forme de phrase.
 Utilise <code>console.log</code> pour afficher le résultat dans la console.</p>
 <p>Le résultat devrait ressembler à cela :</p>
@@ -82,7 +82,7 @@ const sentences = animals.map(function (animal) {
 
 console.log(sentences);
 </code></pre></div>
-<h4>Map avec fonction fléchée</h4>
+<h4 id="t-map-avec-fonction-flechee">Map avec fonction fléchée</h4>
 <p>Tu peux utiliser une fonction fléchée lorsque tu déclares ta fonction de rappel, voyons un exemple :</p>
 <div class="bloc-code"><div class="bloc-code__langue">javascript</div><pre><code class="hljs language-javascript"><span class="hljs-keyword">const</span> numbers = [<span class="hljs-number">1</span>, <span class="hljs-number">56</span>, <span class="hljs-number">35</span>, <span class="hljs-number">23</span>, <span class="hljs-number">45</span>];
 
@@ -90,7 +90,7 @@ console.log(sentences);
 
 <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(halfNumbers);
 </code></pre></div>
-<h3>🔬 Expérience</h3>
+<h3 id="t-experience-2">🔬 Expérience</h3>
 <p>Prends le code précédent avec les animaux et convertis la fonction en une fonction fléchée.</p>
 <div class="bloc-code"><div class="bloc-code__langue">hidden</div><pre><code class="hljs language-hidden">Montrer la solution|||javascript|||Problèmes pour trouver la solution ? |||0|||Cacher
 const animals = [
@@ -107,7 +107,7 @@ const sentences = animals.map(animal =&gt; `${animal.name} the ${animal.species}
 
 console.log(sentences);
 </code></pre></div>
-<h4>Le paramètre index</h4>
+<h4 id="t-le-parametre-index">Le paramètre index</h4>
 <p>Tu peux utiliser plusieurs paramètres donnés à la fonction de rappel. Le premier est l'élément en cours, le deuxième est l'index de l'élément dans le tableau original.
 L'index est similaire à l'index ou l'itérateur que nous utilisons avec une <strong>boucle for</strong>.</p>
 <p>C'est un nombre qui augmentera à chaque itération de la boucle, en partant de zéro.</p>
@@ -135,7 +135,7 @@ L'index est similaire à l'index ou l'itérateur que nous utilisons avec une <st
 6: &quot;Fedor the Pig, the number 6&quot;
 */</span>
 </code></pre></div>
-<h2>ForEach</h2>
+<h2 id="t-foreach">ForEach</h2>
 <p>Map n'est pas la seule méthode que tu peux utiliser sur les tableaux, une autre méthode utile est <code>forEach</code>.
 Comme son nom l'indique, <code>forEach</code> effectuera une action pour chaque élément du tableau.</p>
 <div class="bloc-code"><div class="bloc-code__langue">javascript</div><pre><code class="hljs language-javascript"><span class="hljs-keyword">const</span> numbers = [<span class="hljs-number">1</span>, <span class="hljs-number">2</span>, <span class="hljs-number">5</span>, <span class="hljs-number">7</span>];
@@ -155,7 +155,7 @@ numbers.<span class="hljs-title function_">forEach</span>(<span class="hljs-func
 <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(sentences); <span class="hljs-comment">// undefined</span>
 </code></pre></div>
 <p>Ici nous avons fait le même code que celui que nous avons utilisé pour <code>map</code> mais nous avons remplacé map par <code>forEach</code>.</p>
-<h3>🔬 Expérience</h3>
+<h3 id="t-experience-3">🔬 Expérience</h3>
 <p>Utilise tes connaissances de la manipulation du DOM combinées avec la boucle <code>forEach</code> pour afficher une liste d'animaux emojis avec leur nom.</p>
 <div class="bloc-code"><div class="bloc-code__langue">codesandbox</div><pre><code class="hljs language-codesandbox">https://codesandbox.io/s/ex-foreach-139ol
 </code></pre></div>
@@ -168,7 +168,7 @@ animals.forEach((animal) =&gt; {
   animalList.appendChild(newAnimal);
 });
 </code></pre></div>
-<h2>Filter</h2>
+<h2 id="t-filter">Filter</h2>
 <p>La méthode <code>filter</code> crée un nouveau tableau avec seulement les éléments qui vérifient une condition donnée.</p>
 <p>Ex : Nous voulons un nouveau tableau avec seulement les nombres qui sont supérieurs à 5</p>
 <div class="bloc-code"><div class="bloc-code__langue">javascript</div><pre><code class="hljs language-javascript"><span class="hljs-keyword">const</span> myArray = [<span class="hljs-number">3</span>, <span class="hljs-number">2</span>, <span class="hljs-number">40</span>, <span class="hljs-number">15</span>, <span class="hljs-number">20</span>];
@@ -177,7 +177,7 @@ animals.forEach((animal) =&gt; {
 <span class="hljs-comment">// [40, 15, 20]</span>
 </code></pre></div>
 <p>Si et seulement si la valeur de retour du callback est <code>true</code>, l'élément sera copié dans le nouveau tableau.</p>
-<h3>🔬 Expérience</h3>
+<h3 id="t-experience-4">🔬 Expérience</h3>
 <p>Utilise la méthode <code>filter</code> pour créer un nouveau tableau avec uniquement des chats et utilise <code>console.log</code> pour afficher le résultat.</p>
 <div class="bloc-code"><div class="bloc-code__langue">codesandbox</div><pre><code class="hljs language-codesandbox">https://codesandbox.io/s/ex-filter-forked-eqish
 </code></pre></div>
@@ -212,7 +212,5 @@ console.log(onlyCats);
   <p>Archive personnelle des cours suivis à la Wild Code School. Copie hors ligne à usage strictement privé.</p>
 </footer>
 
-<script src="../../assets/copie-code.js"></script>
-<script src="../../assets/progression.js"></script>
 </body>
 </html>

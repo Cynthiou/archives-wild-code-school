@@ -28,7 +28,7 @@
 <li>✅ Installer PHP et comprendre comment le configurer,</li>
 <li>✅ Exécuter son premier script PHP sur sa machine.</li>
 </ul>
-<h2>Qu'est-ce-que PHP ?</h2>
+<h2 id="t-qu-est-ce-que-php">Qu'est-ce-que PHP ?</h2>
 <p>PHP (acronyme récursif pour PHP Hypertext Preprocessor) est un langage de programmation créé par Rasmus Lerdorf en 1994. C'est l'un des langages les plus utilisés pour créer des pages web dynamiques. C'est un langage <em>backend</em> car il s’exécute principalement côté serveur à l'aide d'un serveur HTTP. Il permet, entre autres, d'afficher des données dynamiquement, de traiter des formulaires, ou encore de se connecter à une base de données.</p>
 <a class="ressource" href="https://www.php.net/manual/fr/intro-whatis.php" target="_blank" rel="noopener noreferrer">
   <div class="ressource__icone">↗</div>
@@ -39,7 +39,7 @@
   </div>
 </a>
 <p><img src="images/001-php-logo.png" alt="PHP Logo" loading="lazy"></p>
-<h2>Installer PHP 🐘</h2>
+<h2 id="t-installer-php">Installer PHP 🐘</h2>
 <div class="encadre encadre--warning"><div class="encadre__titre">Attention</div><div class="encadre__corps"><p>Avant d'aller plus loin, assures toi que tu n'as pas déjà PHP d'installé sur ta machine. Pour cela, tu peux tout simplement taper dans ton terminal <code>php --version</code>. Si tu as quelque chose comme <code>PHP 8.1...</code> qui s'affiche, alors tu peux directement passer au chapitre &quot;Exécuter du PHP sur un serveur&quot;. Si tu n'as pas PHP <strong>OU</strong> si ta version est inférieure à la version 8.2, suis les procédures ci-dessous (choisis l'onglet correspondant à ton OS)</p>
 <p>Si jamais tu possèdes un autre OS que ceux listés ci-dessous, ou d'une version plus ancienne, n'hésite pas à chercher sur ton moteur de recherche préféré comment installer ou mettre à jour PHP sur ta machine en particulier.</p>
 </div></div>
@@ -78,7 +78,7 @@ Ensuite, dans l'onglet Avancé, sélectionne variables d'environnement. Clique s
 <p>Concentre toi sur la partie &quot;How to Install PHP&quot;, et arrête toi avant la &quot;Step 5&quot;, tu n'as pas besoin d'Apache &gt;pour le moment (voire même pas du tout). Si tu veux t'assurer que PHP est correctement installé, n'oublies pas : <code>php --version</code> dans ton terminal.</p>
 </blockquote>
 </div></div></div>
-<h2>Installer des extensions</h2>
+<h2 id="t-installer-des-extensions">Installer des extensions</h2>
 <p>PHP possède un grand nombre d'extensions (certaines étant activées par défaut, d'autre étant à installer en fonction des besoins). Au cours de ta formation, tu seras sans doute amené à installer certaines d'entre elles.</p>
 <div class="onglets" data-onglets="3"><input type="radio" name="onglets-26" id="onglets-26-0" class="onglets__radio" checked><input type="radio" name="onglets-26" id="onglets-26-1" class="onglets__radio"><input type="radio" name="onglets-26" id="onglets-26-2" class="onglets__radio"><div class="onglets__barre"><label class="onglets__label" for="onglets-26-0">Linux</label><label class="onglets__label" for="onglets-26-1">Mac</label><label class="onglets__label" for="onglets-26-2">Windows</label></div><div class="onglets__panneaux"><div class="onglets__panneau"><div class="bloc-code"><div class="bloc-code__langue">sh</div><pre><code class="hljs language-sh"><span class="hljs-built_in">sudo</span> apt install php8.2-XXX
 </code></pre></div>
@@ -101,7 +101,7 @@ Ensuite, dans l'onglet Avancé, sélectionne variables d'environnement. Clique s
 </ol>
 <p>Une fois que tu as décommenté ces extensions pour les activer, enregistre php.ini. Tu peux maintenant fermer ce fichier et ignorer la dernière étape de cette quête,  <em>Configuration de PHP</em>, le fichier php.ini-development que tu as renommé précédemment étant déjà configuré selon nos besoins.</p>
 </div></div></div>
-<h2>Premières lignes de script 📜</h2>
+<h2 id="t-premieres-lignes-de-script">Premières lignes de script 📜</h2>
 <p>Tu vas écrire tes premières lignes de code PHP dans un fichier dont l’extension sera obligatoirement <code>.php</code>. Les fichiers PHP commencent avec une balise <code>&lt;?php</code> sur la 1ère ligne, pour définir que le fichier contient du code PHP. De plus, chaque ligne d’instructions au sein du fichier doit se terminer par un point virgule <code>;</code>.</p>
 <p>Crée un fichier <code>hello.php</code> qui contient les lignes suivantes :</p>
 <div class="bloc-code"><div class="bloc-code__langue">shell</div><pre><code class="hljs language-shell">&lt;?php
@@ -118,7 +118,7 @@ Ensuite, dans l'onglet Avancé, sélectionne variables d'environnement. Clique s
 </ul>
 <p>Avec le CLI, seul le fichier demandé sera exécuté. Le résultat s'affiche directement dans le terminal.</p>
 <p>Tu peux tester avec ce que tu viens de faire. Dans ton terminal, déplace-toi à l'emplacement du fichier <em>hello.php</em> si ce n’est pas déjà fait. Pour en être sûr, exécute <code>ls</code> dans ton terminal, tu devrais y voir le fichier désiré. Exécute ensuite <code>php hello.php</code>. Ton <strong>Hello wilder!</strong> devrait apparaître dans ton terminal.</p>
-<h3>Executer du PHP avec un serveur</h3>
+<h3 id="t-executer-du-php-avec-un-serveur">Executer du PHP avec un serveur</h3>
 <p>Pour ton développement au quotidien, tu as besoin d'un serveur HTTP le plus simple d'utilisation et de configuration. Et ça tombe bien, car PHP intègre en interne son propre serveur HTTP !</p>
 <blockquote>
 <p><strong>Attention</strong>, ce serveur interne à PHP n'est à utiliser que durant la phase de développement. En production, tu utiliseras un serveur plus robuste comme Apache ou Nginx.</p>
@@ -146,7 +146,7 @@ Ensuite, dans l'onglet Avancé, sélectionne variables d'environnement. Clique s
     <div class="ressource__hote">grafikart.fr</div>
   </div>
 </a>
-<h2>Configuration de PHP ⚙️</h2>
+<h2 id="t-configuration-de-php">Configuration de PHP ⚙️</h2>
 <div class="onglets" data-onglets="3"><input type="radio" name="onglets-27" id="onglets-27-0" class="onglets__radio" checked><input type="radio" name="onglets-27" id="onglets-27-1" class="onglets__radio"><input type="radio" name="onglets-27" id="onglets-27-2" class="onglets__radio"><div class="onglets__barre"><label class="onglets__label" for="onglets-27-0">Linux</label><label class="onglets__label" for="onglets-27-1">Mac</label><label class="onglets__label" for="onglets-27-2">Windows</label></div><div class="onglets__panneaux"><div class="onglets__panneau"><p>Bravo, tu as installé PHP. Nous allons maintenant le configurer. Cette configuration se fait dans un fichier appelé <em>php.ini</em>. Tu peux localiser le fichier en exécutant la commande <code>php --ini</code>. Tu devrais avoir au moins une ligne avec ce résultat :</p>
 <div class="bloc-code"><div class="bloc-code__langue">sh</div><pre><code class="hljs language-sh">/etc/php/8.2/cli/php.ini
 </code></pre></div>
@@ -222,8 +222,8 @@ Il se peut également (selon ton OS) que tu ne trouves pas de fichier php.ini, m
     <div class="ressource__hote">youtube.com</div>
   </div>
 </a>
-<h2>Challenge</h2>
-<h3>Vers tes premiers pas en PHP</h3>
+<h2 id="t-challenge">Challenge</h2>
+<h3 id="t-vers-tes-premiers-pas-en-php">Vers tes premiers pas en PHP</h3>
 <p><img src="http://images.innoveduc.fr/php_parcours/install/elephant.gif" alt="" loading="lazy"></p>
 <ol>
 <li>Créer un dossier <strong>mon-premier-script-php</strong> et se placer dedans avec un terminal.</li>
@@ -234,7 +234,7 @@ Il se peut également (selon ton OS) que tu ne trouves pas de fichier php.ini, m
 <li>Ouvrir l'URL <a href="http://localhost:8000/info.php" target="_blank" rel="noopener noreferrer">http://localhost:8000/info.php</a> et vérifier que le navigateur affiche une page avec les infos sur ton installation de PHP.</li>
 <li>Mettre une capture d'écran de ta page <a href="http://localhost:8000/info.php" target="_blank" rel="noopener noreferrer">http://localhost:8000/info.php</a> dans le champ réponse.</li>
 </ol>
-<h3>Critères de validation</h3>
+<h3 id="t-criteres-de-validation">Critères de validation</h3>
 <ul>
 <li>La page affiche les informations de ton serveur PHP.</li>
 </ul>
@@ -267,7 +267,5 @@ Il se peut également (selon ton OS) que tu ne trouves pas de fichier php.ini, m
   <p>Archive personnelle des cours suivis à la Wild Code School. Copie hors ligne à usage strictement privé.</p>
 </footer>
 
-<script src="../../assets/copie-code.js"></script>
-<script src="../../assets/progression.js"></script>
 </body>
 </html>

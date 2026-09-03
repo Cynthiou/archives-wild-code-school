@@ -20,15 +20,16 @@
     <p class="quete__meta">Quête 6 sur 9 · 8 images archivées</p>
   </header>
   <div class="cours">
-<h2>Objectifs</h2>
+<h2 id="t-objectifs">Objectifs</h2>
 <ul>
 <li>Approfondir la méthode Merise</li>
 <li>Comprendre la construction d'un MLD</li>
 </ul>
-<h2>Introduction</h2>
+<h2 id="t-introduction">Introduction</h2>
 <p>Pour pouvoir créer une base de données, tu as découvert la construction d'un MCD. L'étape suivante est de le convertir en MLD.</p>
-<h2>Sommaire</h2>
-<h2>La méthode Merise (rappels)</h2>
+<h2 id="t-sommaire">Sommaire</h2>
+<nav class="sommaire" aria-label="Sommaire de la quête"><ol class="sommaire__liste"><li><a href="#t-la-methode-merise-rappels">La méthode Merise (rappels)</a></li><li><a href="#t-mld-les-tables-et-les-champs">MLD : les tables et les champs</a><ul><li><a href="#t-les-types-de-relations">Les types de relations</a></li><li><a href="#t-les-cles-etrangeres">Les clés étrangères</a></li></ul></li><li><a href="#t-challenge">Challenge</a><ul><li><a href="#t-criteres-de-validation">Critères de validation</a></li></ul></li></ol></nav>
+<h2 id="t-la-methode-merise-rappels">La méthode Merise (rappels)</h2>
 <p>Modéliser une base de données est une étape cruciale mais complexe. Elle dépend avant tout de la compréhension des règles métiers, c'est-à-dire des <strong>besoins du client</strong>. Parfois, plusieurs façons de modéliser une base peuvent répondre à ces besoins.</p>
 <p>Bref, cela demande avant tout de la <strong>rigueur</strong> et de <strong>l’expérience</strong>. La méthodologie Merise (datant des années 70) apporte des règles précises pour t’aider à modéliser convenablement tes données.</p>
 <div class="encadre encadre--warning"><div class="encadre__titre">Attention</div><div class="encadre__corps"><p>La méthode Merise est très vaste. Nous ne la couvrirons pas de manière exhaustive. Nous allons l'aborder de manière <em>pragmatique</em>.</p>
@@ -41,7 +42,7 @@
 <li>MPD : Modèle Physique de Données</li>
 </ul>
 <p>Cette quête décrit l'étape 2 : le <strong>Modèle Logique de Données (MLD)</strong>.</p>
-<h2>MLD : les tables et les champs</h2>
+<h2 id="t-mld-les-tables-et-les-champs">MLD : les tables et les champs</h2>
 <p>Précédemment, nous avons construit ce MCD :</p>
 <p><img src="images/001-entites-relations-cardinalites-mcd-complet.png" alt="entités + relations + cardinalités = MCD complet" loading="lazy"></p>
 <p>Comment passer de ce schéma avec des entités et des relations à des tables et des champs dans une base de données ? Pour cela, tu dois procéder à quelques transformations. Pour les entités :</p>
@@ -52,7 +53,7 @@
 </ul>
 <p><img src="images/002-entites-tables-champs.png" alt="entités = tables + champs" loading="lazy"></p>
 <p>Là, c’était la partie la plus facile. La partie plus délicate concerne les relations. En fonction des cardinalités d’une relation, le résultat au niveau du schéma de base de données va être différent.</p>
-<h3>Les types de relations</h3>
+<h3 id="t-les-types-de-relations">Les types de relations</h3>
 <p>Comment relier les données d’une table avec celles d’une autre table ? Considère un sorcier (un tuple de la table <code>wizard</code>, identifié par sa clé primaire <code>id</code>) scolarisé dans une école (un tuple de la table <code>school</code>, identifié par sa clé primaire, également appelée <code>id</code>).</p>
 <ol>
 <li>
@@ -75,9 +76,9 @@
 <p>Many To Many (N-N) : une entité peut interagir avec plusieurs éléments d’une autre entité, et <em>vice versa</em>.  Par exemple, un Sorcier peut emprunter <strong>plusieurs</strong> Livres, et un Livre peut être emprunté par <strong>plusieurs</strong> Sorciers.</p>
 </li>
 </ul>
-<h3>Les clés étrangères</h3>
+<h3 id="t-les-cles-etrangeres">Les clés étrangères</h3>
 <p>Maintenant que tu connais les types de relation, tu dois trouver un moyen <strong>concret</strong> (autre qu’un trait) pour indiquer qu'une table est reliée à une autre table.</p>
-<h4>One To Many / Many To One</h4>
+<h4 id="t-one-to-many-many-to-one">One To Many / Many To One</h4>
 <p>Considère à nouveau l’exemple One To Many entre <code>wizard</code> et <code>school</code>. Le <strong>1</strong> de la relation 1-N est côté <code>wizard</code> tandis que le <strong>N</strong> est côté <code>school</code>. Cette fois, le sens est très important : cela veut dire que côté <code>wizard</code>, tu as une valeur à stocker (l'id de son école) alors que côté <code>school</code> tu as une liste de valeur à stocker (la liste des ids de ses élèves). Dans l'orthodoxie des bases de données, un champ doit stocker une seule valeur : tu ne devrais jamais stocker plusieurs valeurs (une liste) dans un seul champ.</p>
 <p>En suivant ce principe, c’est dans la table <code>wizard</code> que tu dois ajouter un nouveau champ. Son but est de concrétiser le lien entre les deux tables. Dans ce contexte, par convention tu l’appellerais <code>school_id</code>. Pour chaque tuple, le but de ce champ sera de prendre la valeur de la <strong>clé primaire</strong> de la table <code>school</code>, identifiant l’école dans laquelle ce sorcier est inscrit.</p>
 <p><img src="images/003-la-cle-primaire-de-l-entite-cote-n-devient-cle.png" alt="la clé primaire de l'entité côté N devient clé étrangère dans l'entité côté 1" loading="lazy"></p>
@@ -89,7 +90,7 @@
 <div class="encadre encadre--note encadre--story"><div class="encadre__corps"><p><strong>Règle de base :</strong> la clé primaire de l'entité côté N devient <strong>clé étrangère</strong> dans l'entité <strong>côté 1</strong>.</p>
 </div></div>
 <p>Tu peux appliquer cette règle pour les relations One To Many / Many To One. Voyons les autres cas.</p>
-<h4>One To One</h4>
+<h4 id="t-one-to-one">One To One</h4>
 <p>Reprends l’exemple donné plus haut d’un Sorcier (table <code>wizard</code>) qui possède <strong>un et un seul</strong> Familier (table <code>pet</code>), un Familier appartenant à <strong>un et un seul</strong> Sorcier. Dans ce cas, il y a deux &quot;côté 1&quot;...</p>
 <p>Tu dois créer <strong>une seule clé étrangère</strong> pour représenter une relation : mettre une clé étrangère de chaque côté reviendrait à stocker une même information 2 fois.</p>
 <p>Que ferais-tu dans ce cas ? Côté <code>wizard</code> ou côté <code>pet</code> ?</p>
@@ -99,7 +100,7 @@
 <li>Soit tu crées une clé étrangère <code>wizard_id</code> dans la table <code>pet</code>.</li>
 </ul>
 </div></details>
-<h4>Many To Many</h4>
+<h4 id="t-many-to-many">Many To Many</h4>
 <p>Retournons dans notre histoire de bibliohèque : un élève peut emprunter <strong>plusieurs</strong> livres, et un livre peut être emprunté par <strong>plusieurs</strong> élèves. Pas de &quot;côté 1&quot;...</p>
 <p>Dans ce cas, tu ne peux ni mettre une clé <code>book_id</code> dans <code>wizard</code>, ni mettre une clé <code>wizard_id</code> dans <code>book</code>. Ni d'un côté, ni de l'autre : ta solution est au milieu. Tu dois créer une <strong>nouvelle table intermédiaire</strong> qui va contenir les deux clés étrangères.</p>
 <p>Par convention, une table intermédiaire (aussi table de jointure) est nommé d'après les noms des tables jointes, dans l'ordre alphabétique. Pour <code>Wizard</code> et <code>Book</code>, cela donnerait <code>Book_Wizard</code>. Tu peux aussi donner un &quot;vrai&quot; nom si tu en as un évident. Plutôt que <code>Book_Wizard</code>, la table pourrait s’appeler par exemple <code>Borrowing</code> (emprunt).</p>
@@ -108,13 +109,13 @@
 <p>Ces différentes règles te permettent de transformer un MCD en un MLD.</p>
 <p>En reprenant chacune des relations que nous avons évoqué, tu peux arriver à un modèle complet :</p>
 <p><img src="images/006-mld-complet.png" alt="MLD complet" loading="lazy"></p>
-<h2>Challenge</h2>
+<h2 id="t-challenge">Challenge</h2>
 <p>Bienvenue au cours de potions magiques (étape 2) !</p>
 <p>Chaque potion que tu vas créer a un nom. Les potions utilisent des ingrédients, et chaque ingrédient est défini par son nom.</p>
 <p>Ça fait beaucoup d’informations à retenir... Pour ne rien oublier, tu aimerais stocker en base de données les ingrédients nécessaires pour chaque potion. J'ai travaillé ce MCD pour t'aider :</p>
 <p><img src="images/007-challenge.png" alt="" loading="lazy"></p>
 <p>Prends un papier et un crayon (ou rends-toi sur <a href="https://excalidraw.com/" target="_blank" rel="noopener noreferrer">https://excalidraw.com/</a>), et dessine <strong>le MLD</strong> qui correspond au MCD proposé.</p>
-<h3>Critères de validation</h3>
+<h3 id="t-criteres-de-validation">Critères de validation</h3>
 <ul>
 <li>Une photo de la modélisation est postée</li>
 <li>La modélisation contient le MLD</li>
@@ -142,6 +143,5 @@
   <p>Archive personnelle des cours suivis à la Wild Code School. Copie hors ligne à usage strictement privé.</p>
 </footer>
 
-<script src="../../assets/progression.js"></script>
 </body>
 </html>

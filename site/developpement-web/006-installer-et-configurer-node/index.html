@@ -20,12 +20,12 @@
     <p class="quete__meta">Quête 6 sur 11</p>
   </header>
   <div class="cours">
-<h2>Objectifs</h2>
+<h2 id="t-objectifs">Objectifs</h2>
 <ul>
 <li>Installer node</li>
 <li>Configurer un premier projet</li>
 </ul>
-<h2>Pré-requis</h2>
+<h2 id="t-pre-requis">Pré-requis</h2>
 <ol class="etapes"><li class="etape"><div class="etape__puce">1</div><div class="etape__contenu"><h4 class="etape__titre">Connaitre les bases du langage JavaScript</h4><div class="bloc-code"><div class="bloc-code__langue">javascript</div><pre><code class="hljs language-javascript"><span class="hljs-keyword">let</span> order = <span class="hljs-literal">null</span>;
 <span class="hljs-keyword">let</span> isConfirmed = <span class="hljs-literal">false</span>;
 
@@ -47,13 +47,14 @@
 </div><div class="onglets__panneau"><p>Télécharger le programme d'installation et double-cliquer dessus.</p>
 </div></div></div>
 </div></li></ol>
-<h2>Introduction</h2>
+<h2 id="t-introduction">Introduction</h2>
 <p>Tu sais exécuter du JavaScript dans ton navigateur, en utilisant une balise <code>&lt;script&gt;</code> ou en tapant du code dans la console de l'inspecteur.</p>
 <p>Dans cette quête, tu vas utiliser un environnement d'exécution <em>en dehors</em> du navigateur : <strong>Node.js</strong>. Avec &quot;node&quot;, tu vas exécuter du JavaScript dans ton terminal et créer tes propres <strong>packages</strong>.</p>
-<h2>Sommaire</h2>
-<h2>Pourquoi Node.js ?</h2>
+<h2 id="t-sommaire">Sommaire</h2>
+<nav class="sommaire" aria-label="Sommaire de la quête"><ol class="sommaire__liste"><li><a href="#t-pourquoi-node-js">Pourquoi Node.js ?</a></li><li><a href="#t-installation">Installation</a><ul><li><a href="#t-configurer-son-environnement">Configurer son environnement</a></li></ul></li><li><a href="#t-faire-du-code-de-qualite">Faire du code de qualité</a></li><li><a href="#t-utiliser-des-packages-existants">Utiliser des packages existants</a></li><li><a href="#t-pour-aller-plus-loin">Pour aller plus loin</a></li><li><a href="#t-challenge">Challenge</a><ul><li><a href="#t-etapes">Étapes</a></li><li><a href="#t-criteres-de-validation">Critères de validation</a></li></ul></li><li><a href="#t-une-solution-possible">Une solution possible</a></li></ol></nav>
+<h2 id="t-pourquoi-node-js">Pourquoi Node.js ?</h2>
 <p>Node.js a été créé en 2009 par Ryan Dahl. Aujourd'hui, il est utilisé par des millions de développeurs pour construire des applications web et des services. Fun fact : Netflix et LinkedIn utilisent Node.js pour leurs serveurs !</p>
-<h2>Installation</h2>
+<h2 id="t-installation">Installation</h2>
 <p>Commence par l'installer sur ta machine et par découvrir son écosystème en suivant cette quête :</p>
 <div class="renvois"><div class="renvois__titre">Quêtes liées</div><ul><li><a href="../../node-js/001-node-01-introduction-a-node-js-et-npm/index.html">Quête 1334</a></li></ul></div>
 <div class="bloc-code"><div class="bloc-code__langue">quiz</div><pre><code class="hljs language-quiz">true|||true|||true
@@ -64,7 +65,7 @@
 [x] npm init
 [] npm run start
 </code></pre></div>
-<h3>Configurer son environnement</h3>
+<h3 id="t-configurer-son-environnement">Configurer son environnement</h3>
 <p>Comprendre la notion d'environnement de développement est crucial. Suis cette quête pour apprendre à configurer ton environnement :</p>
 <div class="renvois"><div class="renvois__titre">Quêtes liées</div><ul><li><a href="../../node-js/002-node-02-utiliser-un-fichier-env/index.html">Quête 1024</a></li></ul></div>
 <div class="bloc-code"><div class="bloc-code__langue">quiz</div><pre><code class="hljs language-quiz">true|||true|||true
@@ -75,7 +76,7 @@
 [x] avec la commande &quot;node&quot;
 [] avec la commande &quot;node-exec&quot;
 </code></pre></div>
-<h2>Faire du code de qualité</h2>
+<h2 id="t-faire-du-code-de-qualite">Faire du code de qualité</h2>
 <p>La qualité du code est essentielle pour tout projet. Apprends comment écrire du code propre et maintenable en suivant cette quête :</p>
 <div class="renvois"><div class="renvois__titre">Quêtes liées</div><ul><li><a href="../../node-js/003-node-03-commence-a-linter-et-a-formater-ton-code-en/index.html">Quête 1387</a></li></ul></div>
 <div class="bloc-code"><div class="bloc-code__langue">quiz</div><pre><code class="hljs language-quiz">true|||true|||true
@@ -86,14 +87,14 @@
 [x] npx @biomejs/biome init
 [] Créer un fichier biomerc.json
 </code></pre></div>
-<h2>Utiliser des packages existants</h2>
+<h2 id="t-utiliser-des-packages-existants">Utiliser des packages existants</h2>
 <p>Le site <a href="https://www.npmjs.com/" target="_blank" rel="noopener noreferrer">https://www.npmjs.com/</a> référence beaucoup de bibliothèques (des packages) publiés par des développeurs et des développeuses du monde entier pour te faciliter la vie.</p>
 <div class="renvois"><div class="renvois__titre">Quêtes liées</div><ul><li><a href="../../node-js/004-node-04-rechercher-et-choisir-un-paquet-npm-ou-pas/index.html">Quête 1797</a></li></ul></div>
 <p>Pense à d'autres projets simples où tu pourrais utiliser des paquets NPM. Note tes idées pour de futurs projets.</p>
-<h2>Pour aller plus loin</h2>
+<h2 id="t-pour-aller-plus-loin">Pour aller plus loin</h2>
 <p>Ta future entreprise peut utiliser une des alternatives à <code>npm</code>, comme <code>pnpm</code> ou <code>yarn</code>. D'autres concepts avancés se cachent dans ton fichier <code>package.json</code>. Si tu veux les découvrir maintenant, tu peux regarder cette quête :</p>
 <div class="renvois"><div class="renvois__titre">Quêtes liées</div><ul><li><a href="../../node-js/005-node-05-concepts-avances-et-alternatives-a-la-cli-de-npm/index.html">Quête 1820</a></li></ul></div>
-<h2>Challenge</h2>
+<h2 id="t-challenge">Challenge</h2>
 <p>Dans ce défi, tu devras installer un paquet appelé CowSay. C'est un paquet qui affichera dans ton terminal une petite vache avec le message de ton choix :</p>
 <div class="bloc-code"><pre><code class="hljs language-plaintext"> ______________________________
 &lt; Hello I&#x27;m Romain from Reims! &gt;
@@ -104,7 +105,7 @@
                 ||----w |
                 ||     ||
 </code></pre></div>
-<h3>Étapes</h3>
+<h3 id="t-etapes">Étapes</h3>
 <ol>
 <li>Crée un nouveau dossier avec le nom de ton choix et initialise un projet dedans avec <code>npm</code>.</li>
 </ol>
@@ -117,12 +118,12 @@
 <li>Exécute ton fichier <code>index.js</code> à l'aide de la commande <code>node</code> et assure-toi que la vache affiche un message qui utilise les informations de ton fichier <code>.env</code>.</li>
 <li>Crée maintenant un fichier <code>.gitignore</code> afin d'ignorer ton dossier <code>node_modules</code> et ton fichier <code>.env</code>. Push ton travail sur GitHub. Partage le lien du repo comme solution du challenge.</li>
 </ol>
-<h3>Critères de validation</h3>
+<h3 id="t-criteres-de-validation">Critères de validation</h3>
 <ul>
 <li>[ ] Le module <code>cowsay</code> est installé et correctement utilisé.</li>
 <li>[ ] Le dossier <code>node_modules</code> et le fichier <code>.env</code> ne sont pas dans le dépôt GitHub.</li>
 </ul>
-<h2>Une solution possible</h2>
+<h2 id="t-une-solution-possible">Une solution possible</h2>
 <div class="bloc-code"><div class="bloc-code__langue">javascript</div><pre><code class="hljs language-javascript"><span class="hljs-keyword">import</span> { say } <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;cowsay&quot;</span>;
 
 <span class="hljs-keyword">const</span> { <span class="hljs-variable constant_">NAME</span>, <span class="hljs-variable constant_">CAMPUS</span> } = process.<span class="hljs-property">env</span>;
@@ -156,7 +157,5 @@
   <p>Archive personnelle des cours suivis à la Wild Code School. Copie hors ligne à usage strictement privé.</p>
 </footer>
 
-<script src="../../assets/copie-code.js"></script>
-<script src="../../assets/progression.js"></script>
 </body>
 </html>

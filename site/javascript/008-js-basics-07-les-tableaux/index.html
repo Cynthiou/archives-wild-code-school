@@ -20,24 +20,25 @@
     <p class="quete__meta">Quête 8 sur 11 · 4 images archivées</p>
   </header>
   <div class="cours">
-<h2>Objectifs</h2>
+<h2 id="t-objectifs">Objectifs</h2>
 <ul>
 <li>Créer des tableaux</li>
 <li>Déterminer la longueur d'un tableau (le nombre d'éléments qu'il contient)</li>
 <li>Lire et écrire des éléments d'un tableau</li>
 <li>Utiliser des méthodes basiques pour manipuler les tableaux</li>
 </ul>
-<h2>Pré-requis</h2>
+<h2 id="t-pre-requis">Pré-requis</h2>
 <div class="renvois"><div class="renvois__titre">Quêtes liées</div><ul><li><a href="../../javascript/001-js-basics-01-qu-est-ce-que-javascript/index.html">Quête 1262</a></li><li><a href="../../javascript/002-js-basics-02-syntaxe-et-concepts-de-base/index.html">Quête 1267</a></li><li><a href="../../javascript/003-js-basics-03-les-variables/index.html">Quête 1268</a></li><li><a href="../../javascript/004-js-basics-04-les-types-de-donnees/index.html">Quête 1269</a></li><li><a href="../../javascript/005-js-basics-05-les-instructions-conditionnelles/index.html">Quête 1270</a></li><li><a href="../../javascript/006-js-basics-06-les-fonctions/index.html">Quête 1278</a></li></ul></div>
-<h2>Introduction</h2>
+<h2 id="t-introduction">Introduction</h2>
 <p>Dans les quêtes précédentes, tu <strong>as découvert ce qu'est le Javascript et à quoi ressemble sa syntaxe</strong>.
 Nous avons également appris <strong>à créer des variables et les différents types de données que nous pouvons utiliser en Javascript.</strong></p>
 <p>Au cours de cette quête, nous parlerons des <strong>tableaux.</strong> Les tableaux sont un excellent moyen de manipuler plusieurs valeurs groupées.
 Dans cette quête, nous verrons <strong>comment créer et manipuler des tableaux en JavaScript.</strong></p>
 <p><strong>Commençons !</strong></p>
 <p><img src="images/001-fruits.png" alt="Fruits" loading="lazy"></p>
-<h2>Sommaire</h2>
-<h2>C'est quoi un tableau ?</h2>
+<h2 id="t-sommaire">Sommaire</h2>
+<nav class="sommaire" aria-label="Sommaire de la quête"><ol class="sommaire__liste"><li><a href="#t-c-est-quoi-un-tableau">C'est quoi un tableau ?</a></li><li><a href="#t-acceder-a-un-element-du-tableau">Accéder à un élément du tableau</a></li><li><a href="#t-obtenir-la-longueur-d-un-tableau">Obtenir la longueur d'un tableau</a></li><li><a href="#t-les-methodes-des-tableaux">Les méthodes des tableaux</a><ul><li><a href="#t-ajouter-un-element-a-un-tableau">Ajouter un élément à un tableau</a></li><li><a href="#t-supprimer-un-element-du-tableau">Supprimer un élément du tableau</a></li></ul></li><li><a href="#t-resume">Résumé</a></li><li><a href="#t-challenge">Challenge</a><ul><li><a href="#t-criteres-d-acceptation">Critères d'acceptation</a></li></ul></li></ol></nav>
+<h2 id="t-c-est-quoi-un-tableau">C'est quoi un tableau ?</h2>
 <p><strong>Un tableau est une structure de données utilisée pour regrouper plusieurs éléments en un seul endroit.</strong></p>
 <p>Imaginons que nous voulions créer une application qui livre des fruits.
 Pour l'instant, sans tableau, <strong>nous devrions créer une variable pour chaque fruit.</strong></p>
@@ -55,7 +56,7 @@ Pour l'instant, sans tableau, <strong>nous devrions créer une variable pour cha
 <p><strong>Un tableau peut contenir tout type de données</strong> : nombre, booléen, chaîne de caractères, objet, fonction ou d'autres tableaux.</p>
 <div class="bloc-code"><div class="bloc-code__langue">javascript</div><pre><code class="hljs language-javascript"><span class="hljs-keyword">const</span> myArray = [<span class="hljs-string">&quot;Hello&quot;</span>, <span class="hljs-number">123</span>, <span class="hljs-literal">true</span>, [<span class="hljs-string">&quot;Hey&quot;</span>, <span class="hljs-string">&quot;Ho&quot;</span>]]; 
 </code></pre></div>
-<h2>Accéder à un élément du tableau</h2>
+<h2 id="t-acceder-a-un-element-du-tableau">Accéder à un élément du tableau</h2>
 <p>Pour accéder à un élément du tableau, tape le <strong>nom du tableau</strong> et la <strong>position de l'élément auquel tu veux accéder entre les crochets.</strong></p>
 <p><em>En JavaScript, la position (index) du premier élément est toujours 0.</em></p>
 <div class="bloc-code"><div class="bloc-code__langue">javascript</div><pre><code class="hljs language-javascript"><span class="hljs-keyword">const</span> fruits = [<span class="hljs-string">&quot;Kiwi&quot;</span>, <span class="hljs-string">&quot;Apple&quot;</span>, <span class="hljs-string">&quot;Pineapple&quot;</span>];
@@ -82,18 +83,18 @@ Pour l'instant, sans tableau, <strong>nous devrions créer une variable pour cha
 <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(animals);
 </code></pre></div>
 </div></details>
-<h2>Obtenir la longueur d'un tableau</h2>
+<h2 id="t-obtenir-la-longueur-d-un-tableau">Obtenir la longueur d'un tableau</h2>
 <p>Pour obtenir le nombre d'items du tableau, nous pouvons utiliser <code>array.length</code>.</p>
 <div class="bloc-code"><div class="bloc-code__langue">javascript</div><pre><code class="hljs language-javascript"><span class="hljs-keyword">const</span> fruits = [<span class="hljs-string">&quot;Kiwi&quot;</span>, <span class="hljs-string">&quot;Apple&quot;</span>, <span class="hljs-string">&quot;Pineapple&quot;</span>];
 <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(fruits.<span class="hljs-property">length</span>); <span class="hljs-comment">// will print 3</span>
 </code></pre></div>
-<h2>Les méthodes des tableaux</h2>
+<h2 id="t-les-methodes-des-tableaux">Les méthodes des tableaux</h2>
 <p>Comme nous l'avons appris dans les cours précédents, <strong>un tableau est un type spécifique d'objet</strong>, et en tant qu'objet, les tableaux sont accompagnés d'un tas de <strong>méthodes</strong>.</p>
 <p>Ces <strong>méthodes sont des fonctions</strong> <strong>que nous pouvons utiliser pour manipuler</strong> les tableaux.</p>
 <p><img src="images/002-tableau.png" alt="Tableau" loading="lazy"></p>
-<h3>Ajouter un élément à un tableau</h3>
+<h3 id="t-ajouter-un-element-a-un-tableau">Ajouter un élément à un tableau</h3>
 <p><img src="images/003-methodes-ajout-element.png" alt="méthodes ajout element" loading="lazy"></p>
-<h4>Push</h4>
+<h4 id="t-push">Push</h4>
 <p>Prends notre exemple précédent avec le tableau de fruits.</p>
 <p>Imagine que nous voulions ajouter un nouveau fruit au tableau. Pour cela, nous utiliserions la méthode <code>push</code>.</p>
 <p>Il suffit d'exécuter la méthode <code>push</code> et de donner le nouvel élément en argument :</p>
@@ -111,7 +112,7 @@ fruits.<span class="hljs-title function_">push</span>(<span class="hljs-string">
 animals.<span class="hljs-title function_">push</span>(<span class="hljs-string">&quot;Cat&quot;</span>);
 </code></pre></div>
 </div></details>
-<h4>Unshift</h4>
+<h4 id="t-unshift">Unshift</h4>
 <p>Si tu veux ajouter un élément au début du tableau, utilise la méthode <code>unshift</code>.</p>
 <div class="bloc-code"><div class="bloc-code__langue">javascript</div><pre><code class="hljs language-javascript"><span class="hljs-keyword">const</span> fruits = [<span class="hljs-string">&quot;Kiwi&quot;</span>, <span class="hljs-string">&quot;Apple&quot;</span>, <span class="hljs-string">&quot;Pineapple&quot;</span>];
 fruits.<span class="hljs-title function_">unshift</span>(<span class="hljs-string">&#x27;Strawberry&#x27;</span>);
@@ -126,9 +127,9 @@ fruits.<span class="hljs-title function_">unshift</span>(<span class="hljs-strin
 animals.<span class="hljs-title function_">unshift</span>(<span class="hljs-string">&quot;Cat&quot;</span>);
 </code></pre></div>
 </div></details>
-<h3>Supprimer un élément du tableau</h3>
+<h3 id="t-supprimer-un-element-du-tableau">Supprimer un élément du tableau</h3>
 <p><img src="images/004-supprimer-du-tableau.png" alt="Supprimer du tableau" loading="lazy"></p>
-<h4>Pop</h4>
+<h4 id="t-pop">Pop</h4>
 <p>Pour supprimer le <strong>dernier élément</strong> d'un tableau, utilise la méthode <code>pop</code>.</p>
 <div class="bloc-code"><div class="bloc-code__langue">javascript</div><pre><code class="hljs language-javascript">fruits.<span class="hljs-title function_">pop</span>();
 <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(fruits);
@@ -142,7 +143,7 @@ animals.<span class="hljs-title function_">unshift</span>(<span class="hljs-stri
 animals.<span class="hljs-title function_">pop</span>();
 </code></pre></div>
 </div></details>
-<h4>Shift</h4>
+<h4 id="t-shift">Shift</h4>
 <p>Pour supprimer le <strong>premier élément</strong>, utilise <code>shift</code>.</p>
 <div class="bloc-code"><div class="bloc-code__langue">javascript</div><pre><code class="hljs language-javascript">fruits.<span class="hljs-title function_">shift</span>();
 <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(fruits);
@@ -180,7 +181,7 @@ animals.<span class="hljs-title function_">shift</span>();
 [] Unshift
 [] Push
 </code></pre></div>
-<h2>Résumé</h2>
+<h2 id="t-resume">Résumé</h2>
 <ul>
 <li>Un tableau est une <strong>liste de valeurs JavaScript regroupées en un seul endroit</strong></li>
 <li>Tu peux accéder aux éléments d'un tableau en utilisant les crochets et un nombre indiquant la position de l'élément auquel tu souhaites accéder</li>
@@ -205,7 +206,7 @@ animals.<span class="hljs-title function_">shift</span>();
     <div class="ressource__hote">developer.mozilla.org</div>
   </div>
 </a>
-<h2>Challenge</h2>
+<h2 id="t-challenge">Challenge</h2>
 <p>Dans ce challenge, tu dois manipuler des éléments à l'intérieur de tableaux en utilisant ce que nous avons appris jusqu'à présent dans les quêtes.</p>
 <p>Recopie ce code et modifie le pour passer tous les tests dans les <code>console.log</code> :</p>
 <div class="bloc-code"><div class="bloc-code__langue">javascript</div><pre><code class="hljs language-javascript"><span class="hljs-comment">// Here are our Astro signs provided as a string.</span>
@@ -293,7 +294,7 @@ animals.<span class="hljs-title function_">shift</span>();
 <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(waterSigns[<span class="hljs-number">0</span>] === <span class="hljs-string">&quot;♋&quot;</span> ? <span class="hljs-string">&quot;Good Answer ✅&quot;</span> : <span class="hljs-string">&quot;Wrong Answer ❌&quot;</span>);
 </code></pre></div>
 <p>Poste ton code en solution.</p>
-<h3>Critères d'acceptation</h3>
+<h3 id="t-criteres-d-acceptation">Critères d'acceptation</h3>
 <ul>
 <li>[ ] La console ne doit pas afficher &quot;Wrong Answer ❌&quot;</li>
 <li>[ ] Les <code>console.log</code> n'ont pas été modifiés</li>
@@ -318,7 +319,5 @@ animals.<span class="hljs-title function_">shift</span>();
   <p>Archive personnelle des cours suivis à la Wild Code School. Copie hors ligne à usage strictement privé.</p>
 </footer>
 
-<script src="../../assets/copie-code.js"></script>
-<script src="../../assets/progression.js"></script>
 </body>
 </html>

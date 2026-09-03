@@ -20,15 +20,16 @@
     <p class="quete__meta">Quête 8 sur 9 · 3 images archivées</p>
   </header>
   <div class="cours">
-<h2>Objectifs</h2>
+<h2 id="t-objectifs">Objectifs</h2>
 <ul>
 <li>Comprendre les jointures</li>
 <li>Utiliser différents types de jointures</li>
 </ul>
-<h2>Introduction</h2>
+<h2 id="t-introduction">Introduction</h2>
 <p>Jeune sorcier, bienvenue dans le cours traitant des jointures ! Prépare-toi, tu vas bientôt être en mesure de <strong>récupérer les informations de plusieurs tables en une requête</strong> !</p>
-<h2>Sommaire</h2>
-<h2>Les jointures</h2>
+<h2 id="t-sommaire">Sommaire</h2>
+<nav class="sommaire" aria-label="Sommaire de la quête"><ol class="sommaire__liste"><li><a href="#t-les-jointures">Les jointures</a><ul><li><a href="#t-utilisation-des-alias">Utilisation des alias</a></li></ul></li><li><a href="#t-jointures-avancees">Jointures avancées</a></li><li><a href="#t-challenge">Challenge</a><ul><li><a href="#t-criteres-de-validation">Critères de validation</a></li></ul></li></ol></nav>
+<h2 id="t-les-jointures">Les jointures</h2>
 <p>Dans la quête sur la modélisation, tu as appris comment relier des tables entres elles, via des <em>clés étrangères</em>. Maintenant que tes tables sont reliées, cela va te permettre de récupérer les informations de plusieurs tables en <strong>une seule</strong> requête SQL. Pour cela, tu vas utiliser un nouveau concept très important, <strong>les jointures</strong>.</p>
 <p>En fonction des données que tu veux récupérer, tu pourras réaliser différents types de jointures. Voici la syntaxe de la plus basique d’entre elles.</p>
 <div class="bloc-code"><div class="bloc-code__langue">sql</div><pre><code class="hljs language-sql"><span class="hljs-keyword">SELECT</span> <span class="hljs-operator">&lt;</span>column1<span class="hljs-operator">&gt;</span>, <span class="hljs-operator">&lt;</span>column2<span class="hljs-operator">&gt;</span>… 
@@ -158,7 +159,7 @@
 <p>La jointure (<code>INNER JOIN</code>) est effectuée entre les tables <code>wizard</code> et <code>school</code> sous la condition (<code>ON</code>) que l’<code>id</code> de la table <code>school</code> ait la même valeur que le champ <code>school_id</code> de <code>wizard</code>. Dans cette condition, tu dois écrire <code>school.id</code> et non juste <code>id</code> car la table <code>wizard</code> possède également un champ appelé <code>id</code> : <code>id</code> tout court serait ambigu sur le champ à utiliser (et le code déclencherait une erreur).</p>
 <p>Au niveau du tableau de résultats, tu observes que les données des deux tables sont bien fusionnées sur une seule et même ligne. De fait, tu retrouves plusieurs fois les mêmes noms d’école car il y a plusieurs élèves inscrits dans un même établissement.</p>
 <p>Une requête de type <code>INNER JOIN</code> ne renvoie <strong>que</strong> les données communes entre les deux tables. Cela veut dire que les tuples qui ne répondent pas à la condition de jointure n’apparaissent pas dans les résultats. Par exemple l'école Castelobruxo qui n'a pas d'élèves enregistrés. Les élèves sans école connue ne sont pas non plus affichés (nous testerons ça dans la partie &quot;Jointures avancées&quot;).</p>
-<h3>Utilisation des alias</h3>
+<h3 id="t-utilisation-des-alias">Utilisation des alias</h3>
 <p>Dans une quête précédente, tu as découvert les <em>alias</em>, qui permettent de donner un nom alternatif (raccourci ou plus explicite) à une table ou un champ. Pour cela, il suffit de rajouter l’alias juste après le nom du champ ou de la table, accompagné (optionnellement) du mot-clé <code>AS</code>, par exemple :</p>
 <div class="bloc-code"><div class="bloc-code__langue">sql</div><pre><code class="hljs language-sql"><span class="hljs-keyword">SELECT</span> name <span class="hljs-keyword">AS</span> school_name <span class="hljs-keyword">FROM</span> school <span class="hljs-keyword">AS</span> s;
 </code></pre></div>
@@ -192,7 +193,7 @@
 <span class="hljs-operator">+</span><span class="hljs-comment">-----------+-------------+--------------------------------------------+</span>
 <span class="hljs-number">18</span> <span class="hljs-keyword">rows</span> <span class="hljs-keyword">in</span> <span class="hljs-keyword">set</span> (<span class="hljs-number">0.00</span> sec)
 </code></pre></div>
-<h2>Jointures avancées</h2>
+<h2 id="t-jointures-avancees">Jointures avancées</h2>
 <p>Il existe plusieurs autres types de jointures. Tu vas t’intéresser ici aux jointures <code>RIGHT</code> et <code>LEFT</code>. Elles sont assez simples à comprendre. Reprends l’exemple : la table <code>wizard</code> possède deux tuples non reliés à une école. Cependant, comment faire si tu souhaites ressortir les informations sur <em>tous</em> les élèves, même ceux non inscrits dans une école ?</p>
 <p>Dans ce cas, c’est la requête <code>LEFT JOIN</code> qui va t’être utile. Elle permet, comme son nom l’indique, de ressortir toutes les informations de la table de <strong>gauche</strong> (à gauche du <code>JOIN</code>), même si celles-ci ne sont reliées à aucune information de la table de droite (en plus des données renvoyées par un <code>JOIN</code> classique).</p>
 <p>Comme le montre l’exemple ci-dessous, pour ces lignes, la colonne <code>school_name</code> prend la valeur <code>NULL</code> :</p>
@@ -285,7 +286,7 @@
     <div class="ressource__hote">sql.sh</div>
   </div>
 </a>
-<h2>Challenge</h2>
+<h2 id="t-challenge">Challenge</h2>
 <p><strong>Tournoi de quidditch</strong></p>
 <p>Tout d’abord, si tu n’as jamais eu l’occasion de voir des joueurs voler après un vif d’or sur leur balai Nimbus 2001 flambant neuf, regarde par <a href="https://www.youtube.com/watch?v=ZNDV1dYs1c8" target="_blank" rel="noopener noreferrer">ici</a>.</p>
 <ul>
@@ -352,7 +353,7 @@ USE wild_db_quests_advanced;
 <li>Retourne uniquement les prénoms et noms des joueurs ayant le rôle de <em>seeker</em> (attrapeur), classés par ordre alphabétique de nom puis prénom</li>
 <li>Retourne la liste de tous les sorciers qui ne pratiquent pas le quidditch.</li>
 </ol>
-<h3>Critères de validation</h3>
+<h3 id="t-criteres-de-validation">Critères de validation</h3>
 <ul>
 <li>La solution contient bien les 3 requêtes.</li>
 <li>Lorsque tu testes les requêtes (sur le jeu de données fourni), les résultats de chaque requête sont corrects (fais attention aux champs retournés et au tri des résultats pour qu’ils correspondent précisément aux critères demandés).</li>
@@ -564,7 +565,5 @@ USE wild_db_quests_advanced;
   <p>Archive personnelle des cours suivis à la Wild Code School. Copie hors ligne à usage strictement privé.</p>
 </footer>
 
-<script src="../../assets/copie-code.js"></script>
-<script src="../../assets/progression.js"></script>
 </body>
 </html>

@@ -27,7 +27,7 @@
 <p>Pendant la phase de développement, tu te retrouveras sans doute bloqué un grand nombre de fois sans trop savoir comment t’en sortir.</p>
 <p><img src="images/001-image.gif" alt="" loading="lazy"></p>
 <p>Dans cette quête, tu vas apprendre les fonctions et les outils qui te permettront de débugger ton code pour te débloquer le plus facilement possible.</p>
-<h2>🤓 <strong>À la fin de cette quête, tu seras capable de :</strong></h2>
+<h2 id="t-a-la-fin-de-cette-quete-tu-seras-capable-de">🤓 <strong>À la fin de cette quête, tu seras capable de :</strong></h2>
 <ul>
 <li>✅ Utiliser les différentes fonctions natives PHP pour te débugger</li>
 <li>✅ Installer et utiliser Xdebug</li>
@@ -63,7 +63,7 @@
 <p>et rends-toi à l’adresse <a href="http://localhost:8000" target="_blank" rel="noopener noreferrer">http://localhost:8000</a> . Tu devrais alors voir ceci :</p>
 <p><img src="http://images.innoveduc.fr/helloworld_debug.png" alt="" loading="lazy"></p>
 <p>Durant cette quête, tu devras remplacer le commentaire par ce qui t'est demandé.</p>
-<h3>echo()</h3>
+<h3 id="t-echo">echo()</h3>
 <p>La fonction <code>echo()</code> permet d'afficher une chaîne de caractères.</p>
 <p>Le tableau précédemment créé contient des chaînes de caractères et ces deux fonctions vont permettre de les afficher.</p>
 <p>Par exemple, si tu veux afficher l'arme de Daryl, tu vas pouvoir remplacer le commentaire par :</p>
@@ -89,7 +89,7 @@
     <div class="ressource__hote">php.net</div>
   </div>
 </a>
-<h3>var_dump()</h3>
+<h3 id="t-var-dump">var_dump()</h3>
 <p>Si tu veux afficher d'autres types de variables comme des tableaux ou des objets (tu ne les connais pas encore, mais ça va venir), tu peux utiliser la fonction <code>var_dump()</code>.</p>
 <p><code>var_dump()</code> va afficher les informations d'une variable :</p>
 <ul>
@@ -138,7 +138,7 @@
     <div class="ressource__hote">php.net</div>
   </div>
 </a>
-<h3>exit() / die()</h3>
+<h3 id="t-exit-die">exit() / die()</h3>
 <p>Tu vas ajouter une redirection vers une autre page dans ton code.</p>
 <div class="bloc-code"><div class="bloc-code__langue">php</div><pre><code class="hljs language-php"><span class="hljs-title function_ invoke__">var_dump</span>(<span class="hljs-variable">$characters</span>[<span class="hljs-string">&quot;Daryl&quot;</span>]);
 <span class="hljs-title function_ invoke__">header</span>(<span class="hljs-string">&quot;location: https://www.google.fr&quot;</span>);
@@ -179,7 +179,7 @@ Astuce : utilise <code>var_dump()</code> dans la boucle et <code>exit()</code> �
   </div>
 </a>
 <h1>Xdebug</h1>
-<h3>Introduction</h3>
+<h3 id="t-introduction">Introduction</h3>
 <p>Xdebug est une extension PHP qui <strong>facilite le développement et le débuggage en PHP</strong> en fournissant une multitude d'informations lors de leur exécution.</p>
 <p><strong>Xdebug</strong> permet, entre autres :</p>
 <ul>
@@ -194,12 +194,12 @@ C’est une pratique assez complexe et avancée. Elle n’est pas demandée dans
 <p>et bien d'autres fonctionnalités que tu ne verras pas ici.</p>
 </li>
 </ul>
-<h3>Installation</h3>
+<h3 id="t-installation">Installation</h3>
 <p>Pour installer Xdebug sur Ubuntu et l'activer :
 <a href="https://www.lucidar.me/fr/aws-cloud9/how-to-install-and-configure-xdebug-on-ubuntu/" target="_blank" rel="noopener noreferrer">Install Xdebug on Ubuntu</a></p>
 <p>Pour les autres plateformes :
 <a href="https://xdebug.org/docs/install" target="_blank" rel="noopener noreferrer">Install Xdebug Documentation</a></p>
-<h3>Utilisation</h3>
+<h3 id="t-utilisation">Utilisation</h3>
 <p>Maintenant que <strong>Xdebug</strong> est installé et fonctionnel, tu peux ajouter à ton code :</p>
 <div class="bloc-code"><div class="bloc-code__langue">php</div><pre><code class="hljs language-php"><span class="hljs-title function_ invoke__">var_dump</span>(<span class="hljs-variable">$characters</span>);
 
@@ -215,7 +215,7 @@ C’est une pratique assez complexe et avancée. Elle n’est pas demandée dans
   </div>
 </a>
 <h1>Lecture d'une erreur PHP</h1>
-<h3>Apprends à lire une erreur PHP</h3>
+<h3 id="t-apprends-a-lire-une-erreur-php">Apprends à lire une erreur PHP</h3>
 <p>Tu vas souvent avoir des erreurs PHP au moment de l’exécution de ton code et il va falloir apprendre à les lire pour comprendre d’où vient le problème.</p>
 <p>Voici par exemple une erreur au format Xdebug qui est survenue (l'exemple est basé sur l’architecture MVC avec un peu de programmation orientée objet que tu n'as pas encore vue, mais ne t'inquiète pas, c'est pour te préparer aux futurs bugs que tu vas affronter 💪) :</p>
 <p><img src="http://images.innoveduc.fr/php_error_xdebug.png" alt="" loading="lazy"></p>
@@ -243,7 +243,7 @@ C’est une pratique assez complexe et avancée. Elle n’est pas demandée dans
 
 </code></pre></div>
 <h1>💪 Challenge</h1>
-<h3>Montre-nous ton plus beau débug</h3>
+<h3 id="t-montre-nous-ton-plus-beau-debug">Montre-nous ton plus beau débug</h3>
 <ol>
 <li>A partir du tableau disponible au début de la quête, ajoute une clé contenant ton nom complet.</li>
 </ol>
@@ -256,7 +256,7 @@ C’est une pratique assez complexe et avancée. Elle n’est pas demandée dans
 <li>Tu devras faire un <code>var_dump()</code> du tableau, et celui-ci devra être mis en forme avec Xdebug.</li>
 <li>Poste en solution le screenshot de ton <code>var_dump()</code>.</li>
 </ol>
-<h3>Critères de validation</h3>
+<h3 id="t-criteres-de-validation">Critères de validation</h3>
 <ul>
 <li>Le screenshot du <code>var_dump()</code> correspond bien au tableau et est correctement formaté avec Xdebug.</li>
 </ul>
@@ -285,7 +285,5 @@ C’est une pratique assez complexe et avancée. Elle n’est pas demandée dans
   <p>Archive personnelle des cours suivis à la Wild Code School. Copie hors ligne à usage strictement privé.</p>
 </footer>
 
-<script src="../../assets/copie-code.js"></script>
-<script src="../../assets/progression.js"></script>
 </body>
 </html>

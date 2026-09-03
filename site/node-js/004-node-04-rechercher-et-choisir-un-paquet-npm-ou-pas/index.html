@@ -20,20 +20,21 @@
     <p class="quete__meta">Quête 4 sur 5 · 5 images archivées</p>
   </header>
   <div class="cours">
-<h2>Objectifs</h2>
+<h2 id="t-objectifs">Objectifs</h2>
 <ul>
 <li>Remettre en question la réelle nécessité d'ajout d'un paquet.</li>
 <li>Rechercher et choisir des paquets de manière efficace.</li>
 <li>Comprendre et limiter les risques associés aux paquets NPM.</li>
 </ul>
-<h2>Pré-requis</h2>
+<h2 id="t-pre-requis">Pré-requis</h2>
 <ol class="etapes"><li class="etape"><div class="etape__puce">1</div><div class="etape__contenu"><h4 class="etape__titre">Valider la quête suivante</h4><div class="renvois"><div class="renvois__titre">Quêtes liées</div><ul><li><a href="../../node-js/001-node-01-introduction-a-node-js-et-npm/index.html">Quête 1334</a></li></ul></div>
 </div></li></ol>
-<h2>Introduction</h2>
+<h2 id="t-introduction">Introduction</h2>
 <p>Imaginons que nous voulons créer un logiciel de facturation et que nous devons générer des fichiers PDF. Nous pourrions passer des semaines ou des mois à implémenter nous-mêmes toute la logique liée à la génération de fichier PDF. Ou bien, nous pourrions chercher sur <a href="https://www.npmjs.com/" target="_blank" rel="noopener noreferrer">npmjs.com</a> si quelqu'un a déjà fait quelque chose de similaire. Cela nous permettrait de construire notre application avec, et de gagner un temps précieux pour faire d'autres choses !</p>
 <p>NPM est un outil formidable car il permet à la communauté JS de partager du code afin de construire des applications plus vite. Mais la gestion des dépendances s'accompagne de certains problèmes et pièges dont tu dois avoir conscience.</p>
-<h2>Sommaire</h2>
-<h2>Tu en as vraiment besoin ?</h2>
+<h2 id="t-sommaire">Sommaire</h2>
+<nav class="sommaire" aria-label="Sommaire de la quête"><ol class="sommaire__liste"><li><a href="#t-tu-en-as-vraiment-besoin">Tu en as vraiment besoin ?</a></li><li><a href="#t-rechercher-et-choisir-des-paquets">Rechercher et choisir des paquets.</a><ul><li><a href="#t-comment-savoir-si-un-paquet-va-me-permettre-de-resoudre-mes">Comment savoir si un paquet va me permettre de résoudre mes problèmes ?</a></li><li><a href="#t-comment-choisir-entre-plusieurs-paquets">Comment choisir entre plusieurs paquets ?</a></li><li><a href="#t-essaie-tu-de-resoudre-le-bon-probleme">Essaie-tu de résoudre le bon problème ?</a></li></ul></li><li><a href="#t-problemes-courants-avec-les-paquets-npm">Problèmes courants avec les paquets NPM</a><ul><li><a href="#t-est-ce-totalement-gratuit-si-oui-qu-est-ce-que-cela-signifie">Est-ce totalement gratuit ? Si oui, qu'est-ce que cela signifie ?</a></li><li><a href="#t-quels-sont-les-risques">Quels sont les risques ?</a></li></ul></li></ol></nav>
+<h2 id="t-tu-en-as-vraiment-besoin">Tu en as vraiment besoin ?</h2>
 <p>La première question à se poser est la suivante : <strong>&quot;Ai-je vraiment besoin d'un paquet pour celà&quot;</strong> ?</p>
 <p>Comme tu le verras rapidement, les dépendances externes comportent certains risques et génèrent parfois une dette technique. Il est donc préférable de les limiter dans nos projets.</p>
 <p>D'un autre côté, de très bonnes dépendances peuvent nous faire gagner beaucoup de temps lors de la construction et de la maintenance de l'application.</p>
@@ -58,7 +59,7 @@
 <p>Est-ce que c'est pertinent d'installer une dépendance qui permet d'économiser 10 lignes de code &quot;simples&quot; ? Probablement pas.</p>
 <p>La recherche d'une bibliothèque pour la génération de fichiers PDF en vaut-elle la peine ? Eh bien, probablement oui !</p>
 </div></div>
-<h2>Rechercher et choisir des paquets.</h2>
+<h2 id="t-rechercher-et-choisir-des-paquets">Rechercher et choisir des paquets.</h2>
 <p>Cherchons <strong>&quot;pdf generation&quot;</strong> sur le <a href="https://www.npmjs.com/search?q=pdf%20generation" target="_blank" rel="noopener noreferrer">site de NPM</a>.</p>
 <p><img src="images/001-rechercher-et-choisir-des-paquets.png" alt="" loading="lazy"></p>
 <p>Tu peux voir que plus d'une centaine de paquets correspondent à notre recherche et peuvent potentiellement nous aider à répondre à notre besoin. Plutôt chouette, à première vue !</p>
@@ -73,23 +74,23 @@
 <li>Des informations sur la licence.</li>
 <li>À droite de la page : le site officiel, le nombre de téléchargements par semaine, la version actuelle, etc.</li>
 </ul>
-<h3>Comment savoir si un paquet va me permettre de résoudre mes problèmes ?</h3>
+<h3 id="t-comment-savoir-si-un-paquet-va-me-permettre-de-resoudre-mes">Comment savoir si un paquet va me permettre de résoudre mes problèmes ?</h3>
 <p>Lis la description du paquet, et surtout les exemples pour voir comment le paquet fonctionne exactement. Dans notre exemple, nous pouvons voir que ce paquet semble être un bon choix car il nous permettra de créer un document PDF, d'insérer du texte, d'ajuster les styles des éléments et d'enregistrer un fichier PDF sur le disque. Nous pouvons voir tout cela juste en regardant les exemples dans les détails du paquet :</p>
 <p><img src="images/002-comment-savoir-si-un-paquet-va-me-permettre-de.png" alt="" loading="lazy"></p>
 <p>Cela peut répondre à notre besoin pour notre application de facturation.</p>
-<h3>Comment choisir entre plusieurs paquets ?</h3>
+<h3 id="t-comment-choisir-entre-plusieurs-paquets">Comment choisir entre plusieurs paquets ?</h3>
 <p>Si plusieurs paquets traitent le même problème, aucune méthode magique n'existe pour trouver le meilleur (à part les tester tous dans tous les cas d'utilisation, mais tu n'auras probablement pas le temps pour cela !)</p>
 <p><img src="images/003-comment-choisir-entre-plusieurs-paquets.png" alt="" loading="lazy"></p>
 <p>Cependant, un bon conseil peut être d'essayer les paquets avec le plus grand nombre de téléchargements hebdomadaires ou ceux qui semblent les plus stables et maintenus. Pour cela, n'hésite pas à regarder les issues du projet et d'autres statistiques comme l'activité des commits sur GitHub !</p>
 <p><img src="images/004-comment-choisir-entre-plusieurs-paquets.png" alt="" loading="lazy"></p>
 <p>Plus le paquet est téléchargé et soutenu par la communauté, plus il est probable que ce paquet soit réellement &quot;bon&quot; et plus tu pourras obtenir de l'aide lors de son utilisation.</p>
 <p>Au moment où j'écris cette quête, le paquet mentionné ci-dessus compte plus de 470 000 téléchargements hebdomadaires. C'est un chiffre tout à fait décent ! Nous pouvons être sûrs que ce paquet a déjà été intégré dans de vrais projets et que la communauté qui l'utilise est assez importante. Cela devrait être relativement facile d'obtenir de l'aide si quelque chose ne va pas ou si nous devons modifier quelque chose.</p>
-<h3>Essaie-tu de résoudre le bon problème ?</h3>
+<h3 id="t-essaie-tu-de-resoudre-le-bon-probleme">Essaie-tu de résoudre le bon problème ?</h3>
 <p>Et si notre problème était plus spécifique ? Au lieu de &quot;nous avons besoin de générer des fichiers PDF&quot;, nous pourrions avoir des informations supplémentaires comme &quot;nous avons besoin de générer des fichiers PDF et nous avons déjà des fichiers HTML/CSS correspondants&quot;. Ensuite, nous pourrions rechercher &quot;html pdf&quot; au lieu de &quot;pdf&quot; ou &quot;pdf generation&quot; afin de trouver quelque chose qui convertirait nos fichiers existants.</p>
 <p>Et si le problème était plus général ? Et si le besoin réel était de générer des factures qui pourraient être facilement imprimées, pas nécessairement en PDF ? Dans ce cas, une option alternative pourrait être d'adapter simplement un fichier CSS pour les supports d'impression et de ne pas générer de PDF du tout !</p>
 <p>Dans la mesure du possible, n'hésite pas à <strong>remettre en question le problème lui-même</strong> avant de te précipiter dans la recherche et l'adoption d'une solution donnée. Peut-être pourras-tu gagner du temps en reformulant ton problème d’une manière plus pertinente.</p>
-<h2>Problèmes courants avec les paquets NPM</h2>
-<h3>Est-ce totalement gratuit ? Si oui, qu'est-ce que cela signifie ?</h3>
+<h2 id="t-problemes-courants-avec-les-paquets-npm">Problèmes courants avec les paquets NPM</h2>
+<h3 id="t-est-ce-totalement-gratuit-si-oui-qu-est-ce-que-cela-signifie">Est-ce totalement gratuit ? Si oui, qu'est-ce que cela signifie ?</h3>
 <p>Les paquets publics présents sur le site de NPM sont tous open source, ce qui peut signifier, dans une certaine mesure, &quot;libre&quot;.</p>
 <p>Toutefois, selon le fondateur de la Free Software Foundation, Richard Stallman, un logiciel &quot;libre&quot; ne signifie pas nécessairement qu’il est gratuit <a href="https://en.wikipedia.org/wiki/Gratis_versus_libre" target="_blank" rel="noopener noreferrer">&quot;free as in free beer&quot;</a>.</p>
 <p><img src="images/005-free-as-in-free-speech.jpg" alt="Free as in free speech" loading="lazy"></p>
@@ -124,7 +125,7 @@
     <div class="ressource__hote">npmjs.com</div>
   </div>
 </a>
-<h3>Quels sont les risques ?</h3>
+<h3 id="t-quels-sont-les-risques">Quels sont les risques ?</h3>
 <p>Très bonne question. Comme tout le monde peut publier des paquets NPM, il peut y avoir des manques en termes de qualité du code, de fiabilité, de documentation, etc.</p>
 <p>N'oublie pas que <strong>beaucoup de logiciels open source sont fournis sans aucune garantie</strong>.</p>
 <p>Pire, certains paquets présentent des <strong>vulnérabilités de sécurité</strong> et certains d'entre eux sont même malveillants 👿.</p>
@@ -206,7 +207,5 @@
   <p>Archive personnelle des cours suivis à la Wild Code School. Copie hors ligne à usage strictement privé.</p>
 </footer>
 
-<script src="../../assets/copie-code.js"></script>
-<script src="../../assets/progression.js"></script>
 </body>
 </html>

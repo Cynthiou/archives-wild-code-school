@@ -20,13 +20,13 @@
     <p class="quete__meta">Quête 4 sur 9 · 3 images archivées</p>
   </header>
   <div class="cours">
-<h2>Objectifs</h2>
+<h2 id="t-objectifs">Objectifs</h2>
 <ul>
 <li>Comprendre la structure d'une application serveur</li>
 <li>Créer un premier &quot;module&quot;</li>
 <li>Découvrir les &quot;actions&quot;</li>
 </ul>
-<h2>Pré-requis</h2>
+<h2 id="t-pre-requis">Pré-requis</h2>
 <ol class="etapes"><li class="etape"><div class="etape__puce">1</div><div class="etape__contenu"><h4 class="etape__titre">Valider la quête suivante</h4><div class="renvois"><div class="renvois__titre">Quêtes liées</div><ul><li><a href="../../js-monorepo/003-02-js-monorepo-installation-et-initialisation-d-un-projet/index.html">Quête 589</a></li></ul></div>
 </div></li><li class="etape"><div class="etape__puce">2</div><div class="etape__contenu"><h4 class="etape__titre">Être complètement à l'aise avec la syntaxe pour déclarer une route sur une application Express</h4><div class="bloc-code"><div class="bloc-code__langue">js</div><pre><code class="hljs language-js"><span class="hljs-comment">// Déclaration d&#x27;une action</span>
 
@@ -40,8 +40,9 @@ app.<span class="hljs-title function_">get</span>(<span class="hljs-string">&quo
 </div></li><li class="etape"><div class="etape__puce">3</div><div class="etape__contenu"><h4 class="etape__titre">Prendre une grande respiration</h4><p>Tu vas naviguer entre plusieurs fichiers dans cette quête : rappelle toi d'y aller étape par étape. Pose des questions si tu as un doute plutôt que de te perdre.
 <img src="images/001-pre-requis.gif" alt="" loading="lazy"></p>
 </div></li></ol>
-<h2>Sommaire</h2>
-<h2>Introduction</h2>
+<h2 id="t-sommaire">Sommaire</h2>
+<nav class="sommaire" aria-label="Sommaire de la quête"><ol class="sommaire__liste"><li><a href="#t-introduction">Introduction</a></li><li><a href="#t-le-fichier-app-ts">Le fichier app.ts</a><ul><li><a href="#t-mais-pourquoi-autant-de-fichiers">Mais pourquoi autant de fichiers ?</a></li></ul></li><li><a href="#t-le-fichier-router-ts">Le fichier router.ts</a><ul><li><a href="#t-les-modules-des-pieces-de-lego">Les modules, des pièces de Lego</a></li></ul></li><li><a href="#t-actions-la-logique-des-routes">Actions : la logique des routes</a></li><li><a href="#t-recapitulatif">Récapitulatif</a></li><li><a href="#t-challenge">Challenge</a><ul><li><a href="#t-criteres-de-validation">Critères de validation</a></li></ul></li></ol></nav>
+<h2 id="t-introduction">Introduction</h2>
 <p>Dans les épisodes précédents, tu as initialisé ton Monorepo et créé une route dans le fichier <code>server/src/main.ts</code>.</p>
 <p>Pour rappel, l'architecture du dossier <code>server</code> dans laquelle tu vas avancer un peu plus :</p>
 <div class="bloc-code"><div class="bloc-code__langue">js</div><pre><code class="hljs language-js">server/
@@ -62,7 +63,7 @@ app.<span class="hljs-title function_">get</span>(<span class="hljs-string">&quo
 └── .<span class="hljs-property">env</span>.<span class="hljs-property">sample</span>
 </code></pre></div>
 <p>Tu as beaucoup de routes à créer pour ton projet Wild Series, et nous allons profiter de la suivante pour apprendre à créer des routes de façon organisée.</p>
-<h2>Le fichier app.ts</h2>
+<h2 id="t-le-fichier-app-ts">Le fichier app.ts</h2>
 <p>Revenons là où nous avons arrêté. Ouvre le fichier <code>server/src/main.ts</code> de ton projet :</p>
 <div class="bloc-code"><div class="bloc-code__langue">typescript</div><pre><code class="hljs language-typescript"><span class="hljs-comment">// Load environment variables from .env file</span>
 <span class="hljs-keyword">import</span> <span class="hljs-string">&quot;dotenv/config&quot;</span>;
@@ -138,7 +139,7 @@ app.<span class="hljs-title function_">use</span>(router);
 notre serveur ; app.ts : Configuration de
 notre application ; router.ts : Déclaration des
 routes Express" loading="lazy"></p>
-<h3>Mais pourquoi autant de fichiers ?</h3>
+<h3 id="t-mais-pourquoi-autant-de-fichiers">Mais pourquoi autant de fichiers ?</h3>
 <p>Durant tout ton parcours à travers ce monorepo, tu remarqueras que chaque fichier se limite essentiellement à une mission. Dans le dossier <code>server</code> :</p>
 <ul>
 <li>Le fichier <code>main.ts</code> lance le serveur.</li>
@@ -161,7 +162,7 @@ routes Express" loading="lazy"></p>
     <div class="ressource__hote">fr.wikipedia.org</div>
   </div>
 </a>
-<h2>Le fichier router.ts</h2>
+<h2 id="t-le-fichier-router-ts">Le fichier router.ts</h2>
 <p>Reprenons le fil de notre exploration. Ouvre le fichier <code>router.ts</code> dans ton dossier <code>server/src</code>. Tu peux y voir ce code :</p>
 <div class="bloc-code"><div class="bloc-code__langue">typescript</div><pre><code class="hljs language-typescript"><span class="hljs-keyword">import</span> express <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;express&quot;</span>;
 
@@ -249,7 +250,7 @@ app
 <p>Tu peux te rendre dans ton navigateur à l'adresse <a href="http://localhost:3310/" target="_blank" rel="noopener noreferrer">http://localhost:3310/</a> pour voir le résultat :</p>
 <div class="encadre encadre--note encadre--story"><div class="encadre__corps"><p>Welcome to Wild Series !</p>
 </div></div>
-<h3>Les modules, des pièces de Lego</h3>
+<h3 id="t-les-modules-des-pieces-de-lego">Les modules, des pièces de Lego</h3>
 <p>Revenons sur le fichier <code>router.ts</code> :</p>
 <div class="bloc-code"><div class="bloc-code__langue">js</div><pre><code class="hljs language-js"><span class="hljs-comment">// ...</span>
 
@@ -276,7 +277,7 @@ router.<span class="hljs-title function_">post</span>(<span class="hljs-string">
 <p>Pour schématiser :</p>
 <p><img src="images/003-modules.png" alt="modules" loading="lazy"></p>
 <p>Tu peux créer autant de modules que nécessaires !</p>
-<h2>Actions : la logique des routes</h2>
+<h2 id="t-actions-la-logique-des-routes">Actions : la logique des routes</h2>
 <p>Nous en avons parlé, un fichier ne doit avoir qu'une seule et unique utilité. Le routeur ne doit donc servir qu'à la déclaration des routes.</p>
 <p>Tu dois séparer la déclaration des routes de leurs &quot;actions&quot;.</p>
 <p>Dans ce code :</p>
@@ -333,13 +334,13 @@ router.<span class="hljs-title function_">get</span>(<span class="hljs-string">&
 </div></div>
 <p>Ouvre la page <a href="http://localhost:3310/" target="_blank" rel="noopener noreferrer">http://localhost:3310/</a> pour t'assurer que ta route fonctionne toujours.</p>
 <p>Tu as désormais une vue globale du système de Routing 🎉.</p>
-<h2>Récapitulatif</h2>
+<h2 id="t-recapitulatif">Récapitulatif</h2>
 <p>Pour ajouter des routes au <code>server</code> de ton projet, tu dois respecter le SRP (Single Responsability Principle) :</p>
 <ul>
 <li>Déclarer tes routes dans le fichier <code>router.ts</code> du dossier <code>server/src</code>.</li>
 <li>Déclarer l'action associée à ta route dans un fichier séparé dans le dossier <code>server/src/modules</code>.</li>
 </ul>
-<h2>Challenge</h2>
+<h2 id="t-challenge">Challenge</h2>
 <p>Tu vas mettre en place la route <code>GET /api/programs</code> dans ton projet Wild Series, afin de servir la liste des séries.</p>
 <div class="colonnes"><div class="colonne"><p><strong>User stories</strong> 📋</p>
 <div class="encadre encadre--note encadre--callout"><div class="encadre__corps"><p>en tant que visiteur, je souhaite récupérer les données d'une série</p>
@@ -404,7 +405,7 @@ router.<span class="hljs-title function_">get</span>(<span class="hljs-string">&
 <li>Crée une page <code>/programs</code> dans ton application côté <code>client</code>. La page doit fetcher la route <code>GET /api/programs</code> de ton <code>server</code> et afficher les séries.</li>
 </ul>
 <p>Pousse ton projet sur GitHub, et partage le lien de ton dépôt pour valider ta quête.</p>
-<h3>Critères de validation</h3>
+<h3 id="t-criteres-de-validation">Critères de validation</h3>
 <ul>
 <li>[ ] Le projet est disponible sur GitHub.</li>
 <li>[ ] Le fichier <code>server/.env</code> n'a pas été push.</li>
@@ -581,7 +582,5 @@ type <span class="hljs-title class_">Program</span> = {
   <p>Archive personnelle des cours suivis à la Wild Code School. Copie hors ligne à usage strictement privé.</p>
 </footer>
 
-<script src="../../assets/copie-code.js"></script>
-<script src="../../assets/progression.js"></script>
 </body>
 </html>

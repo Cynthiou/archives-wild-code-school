@@ -20,12 +20,12 @@
     <p class="quete__meta">Quête 5 sur 9 · 3 images archivées</p>
   </header>
   <div class="cours">
-<h2>Objectifs</h2>
+<h2 id="t-objectifs">Objectifs</h2>
 <ul>
 <li>Utiliser des paramètres d'URL dans tes routes</li>
 <li>Intégrer des segments dynamiques dans tes chemins</li>
 </ul>
-<h2>Pré-requis</h2>
+<h2 id="t-pre-requis">Pré-requis</h2>
 <ol class="etapes"><li class="etape"><div class="etape__puce">1</div><div class="etape__contenu"><h4 class="etape__titre">Valider la quête suivante</h4><div class="renvois"><div class="renvois__titre">Quêtes liées</div><ul><li><a href="../../js-monorepo/004-03-js-monorepo-routing/index.html">Quête 590</a></li></ul></div>
 </div></li><li class="etape"><div class="etape__puce">2</div><div class="etape__contenu"><h4 class="etape__titre">Avoir compris le système de routing du Monorepo</h4><p><img src="images/001-modules.png" alt="modules" loading="lazy"></p>
 </div></li><li class="etape"><div class="etape__puce">3</div><div class="etape__contenu"><h4 class="etape__titre">Comprendre le concept de &quot;query string&quot;</h4><p><img src="images/002-pre-requis.png" alt="" loading="lazy"></p>
@@ -43,12 +43,13 @@
 <div class="encadre encadre--note encadre--story"><div class="encadre__corps"><p>Dans cet exemple, la route <code>&quot;/articles/:id&quot;</code> est configurée avec un segment dynamique <code>:id</code> : ce sont les <code>:</code> qui indiquent que le segment est dynamique. Cela signifie que l’URL <code>/articles/123</code> correspondra à cette route, où <code>123</code> est un exemple d’identifiant d’article. Grâce à ce segment dynamique, nous pouvons extraire l’identifiant de l’article directement depuis l’URL et l’utiliser pour afficher les détails de l’article correspondant.</p>
 </div></div>
 </div></li></ol>
-<h2>Sommaire</h2>
-<h2>Introduction</h2>
+<h2 id="t-sommaire">Sommaire</h2>
+<nav class="sommaire" aria-label="Sommaire de la quête"><ol class="sommaire__liste"><li><a href="#t-introduction">Introduction</a></li><li><a href="#t-avant-de-commencer">Avant de commencer</a></li><li><a href="#t-qu-est-ce-que-req-query">Qu'est-ce que req.query ?</a><ul><li><a href="#t-exemple-d-utilisation">Exemple d'utilisation</a></li></ul></li><li><a href="#t-qu-est-ce-que-req-params">Qu'est-ce que req.params ?</a><ul><li><a href="#t-exemple-d-utilisation-2">Exemple d'utilisation</a></li></ul></li><li><a href="#t-recapitulatif">Récapitulatif</a></li><li><a href="#t-avant-de-finir">Avant de finir</a></li><li><a href="#t-challenge">Challenge</a><ul><li><a href="#t-criteres-de-validation">Critères de validation</a></li></ul></li></ol></nav>
+<h2 id="t-introduction">Introduction</h2>
 <p>Dans les épisodes précédents, tu as exploré le système de routing côté serveur dans le Monorepo. Jusqu'à créer une nouvelle route pour récupérer la liste de tes séries.</p>
 <p>Dans le développement web, tu devras souvent proposer des routes plus &quot;fines&quot; pour récupérer une liste filtrée (en fonction de critères de recherche par exemple), voire même des routes pour récupérer une ressource en particulier (ton profil, la page d'une série...).</p>
 <p>Dans cette quête, tu vas utiliser <code>req.query</code> et <code>req.params</code> pour proposer ce genre de fonctionnalités.</p>
-<h2>Avant de commencer</h2>
+<h2 id="t-avant-de-commencer">Avant de commencer</h2>
 <p>Assure-toi de partir d'un code fonctionnel. Depuis la création de ton projet Wild Series, voici les fichiers que tu as ouverts :</p>
 <div class="onglets" data-onglets="4"><input type="radio" name="onglets-13" id="onglets-13-0" class="onglets__radio" checked><input type="radio" name="onglets-13" id="onglets-13-1" class="onglets__radio"><input type="radio" name="onglets-13" id="onglets-13-2" class="onglets__radio"><input type="radio" name="onglets-13" id="onglets-13-3" class="onglets__radio"><div class="onglets__barre"><label class="onglets__label" for="onglets-13-0">server/src/main.ts</label><label class="onglets__label" for="onglets-13-1">server/src/router.ts</label><label class="onglets__label" for="onglets-13-2">server/src/modules/program/programActions.ts</label><label class="onglets__label" for="onglets-13-3">server/src/modules/say/sayActions.ts</label></div><div class="onglets__panneaux"><div class="onglets__panneau"><div class="bloc-code"><div class="bloc-code__langue">typescript</div><pre><code class="hljs language-typescript"><span class="hljs-comment">// Load environment variables from .env file</span>
 <span class="hljs-keyword">import</span> <span class="hljs-string">&quot;dotenv/config&quot;</span>;
@@ -155,7 +156,7 @@ router.<span class="hljs-title function_">get</span>(<span class="hljs-string">&
 <span class="hljs-keyword">export</span> <span class="hljs-keyword">default</span> { sayWelcome };
 </code></pre></div>
 </div></div></div>
-<h2>Qu'est-ce que req.query ?</h2>
+<h2 id="t-qu-est-ce-que-req-query">Qu'est-ce que req.query ?</h2>
 <p>Ouvre ton fichier <code>sayActions.ts</code> et ajoute un <code>console.info</code> comme ceci :</p>
 <div class="onglets" data-onglets="1"><input type="radio" name="onglets-14" id="onglets-14-0" class="onglets__radio" checked><div class="onglets__barre"><label class="onglets__label" for="onglets-14-0">server/src/modules/say/sayActions.ts</label></div><div class="onglets__panneaux"><div class="onglets__panneau"><div class="bloc-code"><div class="bloc-code__langue">typescript</div><pre><code class="hljs language-typescript"><span class="hljs-comment">// Declare the action</span>
 
@@ -198,7 +199,7 @@ router.<span class="hljs-title function_">get</span>(<span class="hljs-string">&
 <li><a href="http://localhost:3310/?name=Paul" target="_blank" rel="noopener noreferrer">http://localhost:3310/?name=Paul</a></li>
 <li><a href="http://localhost:3310/?name=Anne" target="_blank" rel="noopener noreferrer">http://localhost:3310/?name=Anne</a></li>
 </ul>
-<h3>Exemple d'utilisation</h3>
+<h3 id="t-exemple-d-utilisation">Exemple d'utilisation</h3>
 <p>Tu peux utiliser <code>req.query</code> pour permettre une recherche dans la liste des séries. Modifie ton fichier <code>programActions.ts</code> pour reproduire ce code :</p>
 <div class="onglets" data-onglets="1"><input type="radio" name="onglets-15" id="onglets-15-0" class="onglets__radio" checked><div class="onglets__barre"><label class="onglets__label" for="onglets-15-0">server/src/modules/program/programActions.ts</label></div><div class="onglets__panneaux"><div class="onglets__panneau"><div class="bloc-code"><div class="bloc-code__langue">typescript</div><pre><code class="hljs language-typescript"><span class="hljs-comment">// Some data to make the trick</span>
 
@@ -286,7 +287,7 @@ router.<span class="hljs-title function_">get</span>(<span class="hljs-string">&
 <div class="encadre encadre--note encadre--callout"><div class="encadre__corps"><p>Pourquoi <code>q=</code> dans l'URL ? En soi, tu peux appeler ton paramètre comme tu le souhaites, tant que ton code est cohérent : <code>req.query.toto</code> pour une URL contenant <code>toto=</code>. Pour notre exemple <code>q=</code>, nous avons choisi de <a href="https://www.google.com/search?q=Des+nains+sur+des+%C3%A9paules+de+g%C3%A9ants" target="_blank" rel="noopener noreferrer">copier les géants</a> (prend le temps d'analyser l'URL de ce lien 😉).</p>
 <p>Tu l'as peut être remarqué, mais quand tu lances une recherche depuis la page <a href="https://google.com" target="_blank" rel="noopener noreferrer">https://google.com</a>, le moteur de recherche t'affiche les résultats sur une page dont l'URL commence par <a href="https://google.com/search?q=" target="_blank" rel="noopener noreferrer">https://google.com/search?q=</a> suivi des termes de ta recherche. Cette lettre <code>q</code> est l'abréviation de <em>query</em> (&quot;recherche&quot; en français).</p>
 </div></div>
-<h2>Qu'est-ce que req.params ?</h2>
+<h2 id="t-qu-est-ce-que-req-params">Qu'est-ce que req.params ?</h2>
 <p>Comme <code>req.query</code>, <code>req.params</code> est un objet dans Express que tu peux utiliser pour accéder à des informations de l'URL. Commençons par le rendre visible !</p>
 <p>Ajoute une nouvelle action <code>read</code> dans <code>programActions.ts</code> et une nouvelle route dans <code>api/programs/router.ts</code> :</p>
 <div class="onglets" data-onglets="2"><input type="radio" name="onglets-16" id="onglets-16-0" class="onglets__radio" checked><input type="radio" name="onglets-16" id="onglets-16-1" class="onglets__radio"><div class="onglets__barre"><label class="onglets__label" for="onglets-16-0">server/src/modules/program/programActions.ts</label><label class="onglets__label" for="onglets-16-1">server/src/router.ts</label></div><div class="onglets__panneaux"><div class="onglets__panneau"><div class="bloc-code"><div class="bloc-code__langue">typescript</div><pre><code class="hljs language-typescript"><span class="hljs-comment">// Some data to make the trick</span>
@@ -341,7 +342,7 @@ router.get(&quot;/api/programs&quot;, programActions.browse);
 <p>Le nom <code>id</code> est comme un nom de variable : c'est toi qui le choisis en fonction de ce que tu prévois de stocker dans ton paramètre. Express n'interprète pas, et ne comprend pas le mot <code>id</code>. Express se base uniquement sur la position des segments de l'URL en repérant les <code>/</code> :</p>
 <p><img src="images/003-api-programs-1-api-programs-id-req-params-id-1.png" alt="/api/programs/1 + /api/programs/:id =&gt; req.params.id = 1" loading="lazy"></p>
 <p>Les paramètres d'URL sont des <strong>parties nommées de l'URL</strong> que tu peux utiliser pour récupérer des valeurs spécifiques envoyées par le client. Comme <code>req.query</code>, une fois les données récupérées, tu peux te servir de <code>req.params</code> pour construire des traitements particuliers.</p>
-<h3>Exemple d'utilisation</h3>
+<h3 id="t-exemple-d-utilisation-2">Exemple d'utilisation</h3>
 <p>Tu peux utiliser <code>req.params</code> pour récupérer les données d'une série en particulier à partir de son <code>id</code>. Modifie ton fichier <code>programActions.ts</code> pour reproduire ce code :</p>
 <div class="onglets" data-onglets="1"><input type="radio" name="onglets-17" id="onglets-17-0" class="onglets__radio" checked><div class="onglets__barre"><label class="onglets__label" for="onglets-17-0">server/src/modules/program/programActions.ts</label></div><div class="onglets__panneaux"><div class="onglets__panneau"><div class="bloc-code"><div class="bloc-code__langue">typescript</div><pre><code class="hljs language-typescript"><span class="hljs-comment">// Some data to make the trick</span>
 
@@ -442,14 +443,14 @@ router.get(&quot;/api/programs&quot;, programActions.browse);
 <li><a href="http://localhost:3310/api/programs/2" target="_blank" rel="noopener noreferrer">http://localhost:3310/api/programs/2</a> : Dark</li>
 <li><a href="http://localhost:3310/api/programs/0" target="_blank" rel="noopener noreferrer">http://localhost:3310/api/programs/0</a> : 404 (Not Found)</li>
 </ul>
-<h2>Récapitulatif</h2>
+<h2 id="t-recapitulatif">Récapitulatif</h2>
 <p>Pour récupérer des informations depuis l'URL, Express te fournit 2 objets :</p>
 <ul>
 <li>L'objet <code>req.query</code> te donne accès aux paires clé-valeur de la <em>query string</em>. Tu peux l'utiliser pour récupérer le <code>&quot;Eleanor&quot;</code> dans <code>/api/programs?q=Eleanor</code>.</li>
 <li>L'objet <code>req.params</code> te donne accès aux valeurs des segments dynamiques de ta route. Tu peux l'utiliser pour récupérer le <code>&quot;1&quot;</code> dans <code>/api/programs/1</code>.</li>
 <li>Utilise <code>req.query</code> quand tu veux récupérer une partie d'une liste (toutes les séries dont la catégorie est &quot;Comédie&quot;, tous les utilisateurs dont le nom commence par un &quot;A&quot;...) et <code>req.params</code> quand tu veux récupérer un seul objet (la série pour une page dédiée, mon profil utilisateur...).</li>
 </ul>
-<h2>Avant de finir</h2>
+<h2 id="t-avant-de-finir">Avant de finir</h2>
 <p>Voici le code que tu devrais avoir dans ton projet Wild Series à ce stade :</p>
 <div class="onglets" data-onglets="2"><input type="radio" name="onglets-18" id="onglets-18-0" class="onglets__radio" checked><input type="radio" name="onglets-18" id="onglets-18-1" class="onglets__radio"><div class="onglets__barre"><label class="onglets__label" for="onglets-18-0">server/src/router.ts</label><label class="onglets__label" for="onglets-18-1">server/src/modules/program/programActions.ts</label></div><div class="onglets__panneaux"><div class="onglets__panneau"><div class="bloc-code"><div class="bloc-code__langue">typescript</div><pre><code class="hljs language-typescript"><span class="hljs-keyword">import</span> express <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;express&quot;</span>;
 
@@ -549,7 +550,7 @@ router.<span class="hljs-title function_">get</span>(<span class="hljs-string">&
 <li><a href="http://localhost:3310/api/programs/1" target="_blank" rel="noopener noreferrer">http://localhost:3310/api/programs/1</a> =&gt; un objet avec les données de la série <em>The Good Place</em></li>
 <li><a href="http://localhost:3310/api/programs/0" target="_blank" rel="noopener noreferrer">http://localhost:3310/api/programs/0</a> =&gt; une erreur 404</li>
 </ul>
-<h2>Challenge</h2>
+<h2 id="t-challenge">Challenge</h2>
 <p>Tu as mis en place des routes côté serveur pour &quot;browse&quot; et &quot;read&quot; les séries :</p>
 <div class="colonnes"><div class="colonne"><p><strong>User stories</strong> 📋</p>
 <div class="encadre encadre--note encadre--callout"><div class="encadre__corps"><p>en tant que contributeur, je souhaite ajouter une série</p>
@@ -600,7 +601,7 @@ router.<span class="hljs-title function_">get</span>(<span class="hljs-string">&
 <li>GET <code>/api/categories/:id</code> qui renvoie une catégorie en particulier.</li>
 </ul>
 <p>Pousse ton projet sur GitHub, et partage le lien de ton dépôt pour valider ta quête.</p>
-<h3>Critères de validation</h3>
+<h3 id="t-criteres-de-validation">Critères de validation</h3>
 <ul>
 <li>[ ] Le projet est disponible sur GitHub.</li>
 <li>[ ] Quand tu clones le projet et lance les applications avec <code>npm run dev</code> :
@@ -707,7 +708,5 @@ router.<span class="hljs-title function_">get</span>(<span class="hljs-string">&
   <p>Archive personnelle des cours suivis à la Wild Code School. Copie hors ligne à usage strictement privé.</p>
 </footer>
 
-<script src="../../assets/copie-code.js"></script>
-<script src="../../assets/progression.js"></script>
 </body>
 </html>

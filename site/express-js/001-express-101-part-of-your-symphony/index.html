@@ -20,12 +20,12 @@
     <p class="quete__meta">Quête 1 sur 1 · 3 images archivées</p>
   </header>
   <div class="cours">
-<h2>Objectifs</h2>
+<h2 id="t-objectifs">Objectifs</h2>
 <ul>
 <li>Découvrir Express.js et <strong>comprendre son rôle</strong> dans le développement d'applications web.</li>
 <li>Créer une application avec Express.js.</li>
 </ul>
-<h2>Pré-requis</h2>
+<h2 id="t-pre-requis">Pré-requis</h2>
 <ol class="etapes"><li class="etape"><div class="etape__puce">1</div><div class="etape__contenu"><h4 class="etape__titre">Valider les quêtes suivantes</h4><div class="renvois"><div class="renvois__titre">Quêtes liées</div><ul><li><a href="../../javascript-beyond-the-basics/003-js-intermediaire-01-3-manipulation-du-dom-gestion-des/index.html">Quête 1555</a></li><li><a href="../../node-js/001-node-01-introduction-a-node-js-et-npm/index.html">Quête 1334</a></li></ul></div>
 </div></li><li class="etape"><div class="etape__puce">2</div><div class="etape__contenu"><h4 class="etape__titre">Garder en tête la notion de callback</h4><div class="encadre encadre--note encadre--story"><div class="encadre__corps"><p>Une fonction de rappel (callback) est une fonction passée en paramètre d'une autre fonction.</p>
 </div></div>
@@ -45,8 +45,9 @@ button.<span class="hljs-title function_">addEventListener</span>(<span class="h
 <details class="solution"><summary>Voir la solution</summary><div class="solution__corps"><p>La fonction <code>sayGoodBye</code> est le callback. Dans cet exemple, la fonction <code>sayGoodBye</code> est exécutée par la fonction <code>greet</code>.</p>
 </div></details>
 </div></li></ol>
-<h2>Sommaire</h2>
-<h2>L'architecture client-serveur du web</h2>
+<h2 id="t-sommaire">Sommaire</h2>
+<nav class="sommaire" aria-label="Sommaire de la quête"><ol class="sommaire__liste"><li><a href="#t-l-architecture-client-serveur-du-web">L'architecture client-serveur du web</a><ul><li><a href="#t-le-role-du-client">Le Rôle du Client</a></li><li><a href="#t-le-role-du-serveur">Le Rôle du Serveur</a></li></ul></li><li><a href="#t-zoom-sur-express">Zoom sur Express</a><ul><li><a href="#t-pourquoi-utiliser-express">Pourquoi utiliser Express ?</a></li></ul></li><li><a href="#t-creer-une-application-express">Créer une application Express</a></li><li><a href="#t-retour-sur-le-code">Retour sur le code</a><ul><li><a href="#t-creation-de-l-application-express">Création de l'application Express</a></li><li><a href="#t-declaration-d-une-route">Déclaration d'une route</a></li><li><a href="#t-ecoute-du-port">Écoute du port</a></li></ul></li><li><a href="#t-challenge">Challenge</a></li><li><a href="#t-criteres-de-validations">Critères de validations</a></li></ol></nav>
+<h2 id="t-l-architecture-client-serveur-du-web">L'architecture client-serveur du web</h2>
 <p>Tu as peut-être déjà vu un schéma de ce genre ?</p>
 <p><img src="images/001-architecture-client-serveur-du-web.png" alt="architecture client serveur du web" loading="lazy"></p>
 <p>Il représente l'architecture client-serveur du web : le client web (navigateur web, mobile...) envoie une requête HTTP à un serveur web ; le serveur web traite la requête et retourne une réponse HTTP (le contenu HTML d'une page par exemple).</p>
@@ -68,14 +69,14 @@ button.<span class="hljs-title function_">addEventListener</span>(<span class="h
 </div></div>
 <p>Lors du développement d'applications web et mobiles, comprendre l'interaction entre le client et le serveur est important. Cette compréhension permet de structurer efficacement les applications et d'optimiser les échanges de données.</p>
 <p>L'architecture client-serveur est un modèle fondamental dans le développement d'applications web, où les clients font des requêtes au serveur (<strong>REQUEST</strong>), qui traite ces requêtes et renvoie les réponses appropriées (<strong>RESPONSE</strong>).</p>
-<h3>Le Rôle du Client</h3>
+<h3 id="t-le-role-du-client">Le Rôle du Client</h3>
 <p>Le client peut être un navigateur web, une application mobile, ou tout autre dispositif capable d'<strong>envoyer des requêtes à un serveur</strong>. Le client est l'interface à travers laquelle tu interagis avec le web : sans lui, tu ferais tes requêtes HTTP &quot;à la main&quot; dans un terminal avec ce genre de commandes :</p>
 <div class="bloc-code"><pre><code class="hljs language-plaintext">curl https://fr.wikipedia.org/wiki/Wikip%C3%A9dia:Accueil_principal
 </code></pre></div>
 <div class="encadre encadre--note encadre--callout"><div class="encadre__corps"><p>La commande <code>curl</code> est aussi un exemple de client web. C'est l'équivalent en ligne de commande de la barre d'URL de ton navigateur.</p>
 </div></div>
 <p>Lorsqu'un utilisateur effectue une action nécessitant des données (par exemple, afficher une liste d'articles), le client envoie une requête au serveur pour obtenir ces données.</p>
-<h3>Le Rôle du Serveur</h3>
+<h3 id="t-le-role-du-serveur">Le Rôle du Serveur</h3>
 <p>Le serveur est responsable de la réception des requêtes du client, et de l'envoi des réponses au client. Pour produire une réponse, le serveur exécutera une action &quot;sur mesure&quot; en fonction de la requête. Cette action peut impliquer d'interroger une base de données par exemple.</p>
 <p>Le serveur web agit comme un intermédiaire entre le client et le web, s'assurant que les bonnes actions sont déclenchées, et de manière sécurisée.</p>
 <p>Si tu souhaites en savoir plus sur les serveurs web :</p>
@@ -88,12 +89,12 @@ button.<span class="hljs-title function_">addEventListener</span>(<span class="h
     <div class="ressource__hote">developer.mozilla.org</div>
   </div>
 </a>
-<h2>Zoom sur Express</h2>
+<h2 id="t-zoom-sur-express">Zoom sur Express</h2>
 <p>Express est la pièce du puzzle qui nous intéresse aujourd'hui :</p>
 <p><img src="images/003-focus-sur-express.png" alt="focus sur express" loading="lazy"></p>
 <p>Express.js (ou plus simplement Express) est un <a href="https://fr.wikipedia.org/wiki/Framework" target="_blank" rel="noopener noreferrer">framework</a> minimaliste pour <a href="https://nodejs.org/" target="_blank" rel="noopener noreferrer">Node.js</a> qui permet de créer des applications web et des APIs en JavaScript.</p>
 <p>Express simplifie le développement de code serveur en gérant les requêtes HTTP et en intégrant de nombreux outils pour tracer le chemin entre la requête et la réponse. Cela inclut analyser les URLs, choisir les routes appropriées...</p>
-<h3>Pourquoi utiliser Express ?</h3>
+<h3 id="t-pourquoi-utiliser-express">Pourquoi utiliser Express ?</h3>
 <ul>
 <li>
 <p><strong>Simplicité et flexibilité :</strong> Express offre une approche <strong>minimaliste</strong> du développement web, te permettant de choisir les outils et les bibliothèques que tu souhaites intégrer.</p>
@@ -108,7 +109,7 @@ button.<span class="hljs-title function_">addEventListener</span>(<span class="h
 <p><strong>Performances :</strong> Express est conçu pour offrir une <strong>gestion efficace</strong> des requêtes et des réponses HTTP.</p>
 </li>
 </ul>
-<h2>Créer une application Express</h2>
+<h2 id="t-creer-une-application-express">Créer une application Express</h2>
 <div class="encadre encadre--note encadre--callout"><div class="encadre__corps"><p>Tu peux suivre la <a href="https://expressjs.com/" target="_blank" rel="noopener noreferrer">documentation d'Express</a> pour te familiariser avec ses explications : c'est la ressource de référence où tu trouveras les meilleures infos à jour. Tu peux aussi continuer à lire cette quête si tu le souhaites.</p>
 </div></div>
 <ol class="etapes"><li class="etape"><div class="etape__puce">1</div><div class="etape__contenu"><h4 class="etape__titre">Créé un nouveau répertoire</h4><p>Créé un nouveau répertoire pour contenir ton application, et déplace-toi dedans :</p>
@@ -169,9 +170,9 @@ app.<span class="hljs-title function_">listen</span>(port, <span class="hljs-fun
 </div></div>
 <p>Maintenant tu peux ouvrir ton navigateur à l'adresse <a href="http://localhost:3310/" target="_blank" rel="noopener noreferrer">http://localhost:3310/</a> (change le 3310 dans l'URL si tu as utilisé un autre port) pour voir le message <code>&quot;Hello World!&quot;</code> s'afficher.</p>
 </div></li></ol>
-<h2>Retour sur le code</h2>
+<h2 id="t-retour-sur-le-code">Retour sur le code</h2>
 <p>Pour mieux comprendre comment fonctionne notre application Express, examinons le code, étape par étape.</p>
-<h3>Création de l'application Express</h3>
+<h3 id="t-creation-de-l-application-express">Création de l'application Express</h3>
 <p>Tout d'abord, nous importons le module Express et initialisons une application. Cela crée notre application Express de base :</p>
 <div class="bloc-code"><div class="bloc-code__langue">typescript</div><pre><code class="hljs language-typescript"><span class="hljs-keyword">import</span> express <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;express&quot;</span>;
 
@@ -179,7 +180,7 @@ app.<span class="hljs-title function_">listen</span>(port, <span class="hljs-fun
 </code></pre></div>
 <p>Ce code doit être écrit ainsi, sans raison particulière : c'est le fonctionnement d'Express qui nous l'impose.</p>
 <p>Cette partie pourrait contenir beaucoup plus de lignes sur la configuration de l'application. Tu les découvriras au fur et à mesure de ton apprentissage. L'application &quot;basique&quot; nous suffit à ce stade.</p>
-<h3>Déclaration d'une route</h3>
+<h3 id="t-declaration-d-une-route">Déclaration d'une route</h3>
 <p>Ensuite, nous définissons une route à la racine <code>/</code> de notre application. Lorsqu'un utilisateur accède à cette route via une requête HTTP <code>get</code>, notre application renvoie la réponse <code>&quot;Hello World!&quot;</code> :</p>
 <div class="bloc-code"><div class="bloc-code__langue">typescript</div><pre><code class="hljs language-typescript">app.<span class="hljs-title function_">get</span>(<span class="hljs-string">&quot;/&quot;</span>, <span class="hljs-function">(<span class="hljs-params">req, res</span>) =&gt;</span> {
   res.<span class="hljs-title function_">send</span>(<span class="hljs-string">&quot;Hello World!&quot;</span>);
@@ -232,7 +233,7 @@ app.<span class="hljs-title function_">get</span>(<span class="hljs-string">&quo
 app.<span class="hljs-title function_">get</span>(<span class="hljs-string">&quot;/some-url-path&quot;</span>, someCallback);
 </code></pre></div>
 </div></div>
-<h3>Écoute du port</h3>
+<h3 id="t-ecoute-du-port">Écoute du port</h3>
 <p>Dernière partie dans <code>index.ts</code>, nous spécifions le port sur lequel notre application Express écoutera les requêtes entrantes. Une fois que le serveur est en écoute sur ce port, il peut recevoir et répondre aux requêtes HTTP <em>pour les routes qui ont été définies sur l'application</em> :</p>
 <div class="bloc-code"><div class="bloc-code__langue">typescript</div><pre><code class="hljs language-typescript"><span class="hljs-keyword">const</span> port = <span class="hljs-number">3310</span>;
 
@@ -244,13 +245,13 @@ app.<span class="hljs-title function_">listen</span>(port, <span class="hljs-fun
 <p>C'est un bonus pour ta culture, et tu n'en auras pas besoin pendant la formation.</p>
 <div class="renvois"><div class="renvois__titre">Quêtes liées</div><ul><li>Quête 383 <span class="muet">(hors archive)</span></li></ul></div>
 </div></div>
-<h2>Challenge</h2>
+<h2 id="t-challenge">Challenge</h2>
 <p>Crée un nouveau projet qui crée une application Express dans un fichier <code>index.ts</code>, et qui déclare une route <code>GET /words</code>.</p>
 <p>Ta route doit répondre avec le tableau de données suivant au format JSON :</p>
 <div class="bloc-code"><div class="bloc-code__langue">typescript</div><pre><code class="hljs language-typescript"><span class="hljs-keyword">const</span> data = [<span class="hljs-string">&quot;lorem&quot;</span>, <span class="hljs-string">&quot;ipsum&quot;</span>, <span class="hljs-string">&quot;dolor&quot;</span>, <span class="hljs-string">&quot;sit&quot;</span>, <span class="hljs-string">&quot;amet&quot;</span>];
 </code></pre></div>
 <p>Poste le contenu de ton fichier <code>index.ts</code> en solution.</p>
-<h2>Critères de validations</h2>
+<h2 id="t-criteres-de-validations">Critères de validations</h2>
 <ul>
 <li>[ ] Le code crée une application Express</li>
 <li>[ ] Le code déclare une route <code>GET /words</code></li>
@@ -292,7 +293,5 @@ app.<span class="hljs-title function_">listen</span>(port, <span class="hljs-fun
   <p>Archive personnelle des cours suivis à la Wild Code School. Copie hors ligne à usage strictement privé.</p>
 </footer>
 
-<script src="../../assets/copie-code.js"></script>
-<script src="../../assets/progression.js"></script>
 </body>
 </html>

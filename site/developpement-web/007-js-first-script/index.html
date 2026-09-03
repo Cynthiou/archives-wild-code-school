@@ -20,13 +20,13 @@
     <p class="quete__meta">Quête 7 sur 11 · 1 image archivée</p>
   </header>
   <div class="cours">
-<h2>Objectifs</h2>
+<h2 id="t-objectifs">Objectifs</h2>
 <ul>
 <li>Explorer les principes fondamentaux de JavaScript</li>
 <li>Manipuler des variables, des opérateurs, des conditions...</li>
 <li>Construire des premiers scripts interactifs</li>
 </ul>
-<h2>Pré-requis</h2>
+<h2 id="t-pre-requis">Pré-requis</h2>
 <ol class="etapes"><li class="etape"><div class="etape__puce">1</div><div class="etape__contenu"><h4 class="etape__titre">Connaitre la structure de base d'un document HTML</h4><div class="bloc-code"><div class="bloc-code__langue">cshtml</div><pre><code class="hljs language-cshtml">&lt;!DOCTYPE html&gt;
 &lt;html lang=&quot;fr&quot;&gt;
 &lt;head&gt;
@@ -39,11 +39,12 @@
 &lt;/html&gt;
 </code></pre></div>
 </div></li></ol>
-<h2>Introduction</h2>
+<h2 id="t-introduction">Introduction</h2>
 <p>Avec HTML et CSS, JavaScript est le 3e langage exécuté dans les navigateurs web. C'est un langage de programmation complet, basé sur des notions qui se retrouvent dans la plupart des langages de programmation : variables, structures de contrôle...</p>
 <p>Dans cette quête, tu vas faire un premier pas dans l'apprentissage du JS et des langages de programmation. Tu vas aborder des notions fondamentales que tu pourras retrouver dans l'apprentissage de chaque nouveau langage.</p>
-<h2>Sommaire</h2>
-<h2>Mise en place</h2>
+<h2 id="t-sommaire">Sommaire</h2>
+<nav class="sommaire" aria-label="Sommaire de la quête"><ol class="sommaire__liste"><li><a href="#t-mise-en-place">Mise en place</a><ul><li><a href="#t-ce-que-tu-dois-obtenir">Ce que tu dois obtenir</a></li></ul></li><li><a href="#t-premieres-instructions">Premières instructions</a><ul><li><a href="#t-comprendre-la-console">Comprendre la console</a></li></ul></li><li><a href="#t-agir-sur-l-operateur">Agir sur l'opérateur</a></li><li><a href="#t-dernieres-instructions">Dernières instructions</a></li><li><a href="#t-aller-plus-loin">Aller plus loin</a><ul><li><a href="#t-more-js-coming-up">More JS coming up</a></li></ul></li><li><a href="#t-challenge">Challenge</a><ul><li><a href="#t-criteres-de-validation">Critères de validation</a></li></ul></li><li><a href="#t-la-solution-attendue">La solution attendue :</a></li></ol></nav>
+<h2 id="t-mise-en-place">Mise en place</h2>
 <p>Si tu découvres complètement JavaScript, pas de panique !</p>
 <p>Des guides complets (et en français) existent sur le web, notamment :</p>
 <a class="ressource" href="https://developer.mozilla.org/fr/docs/Learn_web_development/Core/Scripting" target="_blank" rel="noopener noreferrer">
@@ -74,7 +75,7 @@
 </code></pre></div>
 <p>Ouvre le fichier <code>index.html</code> dans un navigateur, et affiche la console (F12) : que vois-tu ? Si tu vois ton message ci-dessus, cela signifie que tout fonctionne bien !</p>
 <p>Pour être sûr, explique ce que tu as fait à tes collègues.</p>
-<h3>Ce que tu dois obtenir</h3>
+<h3 id="t-ce-que-tu-dois-obtenir">Ce que tu dois obtenir</h3>
 <p>Voilà la structure HTML de base ainsi que l’ajout de la balise <code>&lt;script&gt;</code> avec le code <code>console.log(&quot;Hello les wilders!&quot;);</code> :</p>
 <div class="bloc-code"><div class="bloc-code__langue">php</div><pre><code class="hljs language-php">&lt;!DOCTYPE html&gt;
 &lt;html lang=<span class="hljs-string">&quot;fr&quot;</span>&gt;
@@ -90,7 +91,7 @@
 </code></pre></div>
 <p>Dans l'inspecteur :</p>
 <p><img src="images/001-hello-wilders.png" alt="Hello wilders !" loading="lazy"></p>
-<h2>Premières instructions</h2>
+<h2 id="t-premieres-instructions">Premières instructions</h2>
 <p>Maintenant que tu as un &quot;bac à sable&quot; pour faire des expériences, tu peux commencer le développement de ta calculatrice. Si la notion de &quot;variable&quot; ne te parle pas encore, tu peux regarder les quêtes suivantes avant de continuer :</p>
 <div class="renvois"><div class="renvois__titre">Quêtes liées</div><ul><li><a href="../../javascript/003-js-basics-03-les-variables/index.html">Quête 1268</a></li><li><a href="../../javascript/004-js-basics-04-les-types-de-donnees/index.html">Quête 1269</a></li></ul></div>
 <p>La première étape de la création de notre calculatrice consiste à <strong>instancier</strong> des variables.</p>
@@ -126,7 +127,7 @@
 </div></details>
 <div class="encadre encadre--info"><div class="encadre__titre">Info</div><div class="encadre__corps"><p>Tu peux également regarder deux autres fonctions qui te seront utiles : <a href="https://developer.mozilla.org/fr/docs/Web/API/Window/alert" target="_blank" rel="noopener noreferrer">alert</a> et <a href="https://developer.mozilla.org/fr/docs/Web/API/Window/confirm" target="_blank" rel="noopener noreferrer">confirm</a>.</p>
 </div></div>
-<h3>Comprendre la console</h3>
+<h3 id="t-comprendre-la-console">Comprendre la console</h3>
 <p>Ajoute un <code>console.log</code> de <code>firstValue + secondValue</code> : qu’affiche t-il ? Pourquoi ? Que dois-tu faire ?</p>
 <p>Conseil : regarde <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/parseInt" target="_blank" rel="noopener noreferrer">cette documentation</a>.</p>
 <p>Et maintenant, qu’affiche le <code>console.log</code> ? Pourquoi ?</p>
@@ -149,7 +150,7 @@
 [] Number()
 [] convert()
 </code></pre></div>
-<h2>Agir sur l'opérateur</h2>
+<h2 id="t-agir-sur-l-operateur">Agir sur l'opérateur</h2>
 <p>Un peu de ménage : supprime tous les <code>console.log</code>.</p>
 <p>Ajoute un <code>prompt</code> à la place du <code>&quot;+&quot;</code> pour la variable <code>operator</code>. De cette manière, tu permets à l'utilisateur de choisir quelle opération faire. Mais maintenant, tu dois gérer les différentes options dans ton code.</p>
 <p>Tu vas créer un &quot;embranchement&quot; : selon la situation, ton code va prendre un chemin ou un autre. C'est le principe des &quot;conditions&quot; :</p>
@@ -185,7 +186,7 @@
 &lt;/html&gt;
 </code></pre></div>
 </div></details>
-<h2>Dernières instructions</h2>
+<h2 id="t-dernieres-instructions">Dernières instructions</h2>
 <p>Tu as presque fini ! Maintenant que tu as fait une première condition, ajoute les conditions pour <em>tous les opérateurs</em> :</p>
 <ul>
 <li>Modifie ton code et ajoute des conditions pour les opérateurs <code>&quot;-&quot;</code>, <code>&quot;*&quot;</code> et <code>&quot;/&quot;</code> : pense à la construction <code>else if</code>.</li>
@@ -227,10 +228,10 @@
 &lt;/html&gt;
 </code></pre></div>
 </div></details>
-<h2>Aller plus loin</h2>
+<h2 id="t-aller-plus-loin">Aller plus loin</h2>
 <p>Tu peux explorer d'autres notions fondamentales des langages de programmation dans ces quêtes :</p>
 <div class="renvois"><div class="renvois__titre">Quêtes liées</div><ul><li><a href="../../javascript/006-js-basics-06-les-fonctions/index.html">Quête 1278</a></li><li><a href="../../javascript/008-js-basics-07-les-tableaux/index.html">Quête 1281</a></li><li><a href="../../javascript/010-js-basics-08-les-boucles/index.html">Quête 1283</a></li><li><a href="../../javascript/011-js-basics-09-les-objets/index.html">Quête 1282</a></li></ul></div>
-<h3>More JS coming up</h3>
+<h3 id="t-more-js-coming-up">More JS coming up</h3>
 <p>Tu aimes jouer ? Alors c’est le moment de créer un petit jeu : le &quot;Juste prix&quot; !</p>
 <p>Reprend les étapes de la partie <a href="#mise-en-place">“Mise en place”</a> en changeant le nom du dossier : crée un dossier <code>price-is-right</code>.</p>
 <p>Puis :</p>
@@ -287,7 +288,7 @@
 &lt;/html&gt;
 </code></pre></div>
 </div></details>
-<h2>Challenge</h2>
+<h2 id="t-challenge">Challenge</h2>
 <p>Dans le même genre que le &quot;Juste prix&quot;, j'ai voulu créé une machine à café. Le principe :</p>
 <ul>
 <li>La machine propose :
@@ -344,12 +345,12 @@
 </code></pre></div>
 <p>Aide-moi à retrouver le code complet en remplaçant les parties effacées <code>**1**</code>, <code>**2**</code>, ..., <code>**8**</code> par du JavaScript.</p>
 <p>Poste ton code comme solution de cette quête.</p>
-<h3>Critères de validation</h3>
+<h3 id="t-criteres-de-validation">Critères de validation</h3>
 <ul>
 <li>[ ] Le code est disponible.</li>
 <li>[ ] Quand tu copies le code dans un fichier HTML, et que tu l'ouvres dans le navigateur, tu peux passer ta commande.</li>
 </ul>
-<h2>La solution attendue :</h2>
+<h2 id="t-la-solution-attendue">La solution attendue :</h2>
 <div class="bloc-code"><div class="bloc-code__langue">php</div><pre><code class="hljs language-php">&lt;!DOCTYPE html&gt;
 &lt;html lang=<span class="hljs-string">&quot;fr&quot;</span>&gt;
 
@@ -407,7 +408,5 @@
   <p>Archive personnelle des cours suivis à la Wild Code School. Copie hors ligne à usage strictement privé.</p>
 </footer>
 
-<script src="../../assets/copie-code.js"></script>
-<script src="../../assets/progression.js"></script>
 </body>
 </html>

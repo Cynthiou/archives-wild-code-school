@@ -20,20 +20,21 @@
     <p class="quete__meta">Quête 5 sur 5 · 2 images archivées</p>
   </header>
   <div class="cours">
-<h2>Objectifs</h2>
+<h2 id="t-objectifs">Objectifs</h2>
 <ul>
 <li>Savoir comment fonctionne le <strong>versioning sémantique</strong>.</li>
 <li>Gérer les <strong>dépendances</strong> et les <strong>dépendances de développement</strong> dans <code>package.json</code>.</li>
 <li>En savoir plus sur l'écosystème de Node et NPM.</li>
 </ul>
-<h2>Pré-requis</h2>
+<h2 id="t-pre-requis">Pré-requis</h2>
 <ol class="etapes"><li class="etape"><div class="etape__puce">1</div><div class="etape__contenu"><h4 class="etape__titre">Valider la quête suivante</h4><div class="renvois"><div class="renvois__titre">Quêtes liées</div><ul><li><a href="../../node-js/004-node-04-rechercher-et-choisir-un-paquet-npm-ou-pas/index.html">Quête 1797</a></li></ul></div>
 </div></li></ol>
-<h2>Introduction</h2>
+<h2 id="t-introduction">Introduction</h2>
 <p>Jusqu'à présent, tu as appris à utiliser NPM de manière basique.</p>
 <p>Cette quête a pour but d'approfondir un peu plus ta connaissance de NPM, de ses alternatives et des problèmes plus généraux de gestion des dépendances dans tes applications.</p>
-<h2>Sommaire</h2>
-<h2>Versionnage sémantique</h2>
+<h2 id="t-sommaire">Sommaire</h2>
+<nav class="sommaire" aria-label="Sommaire de la quête"><ol class="sommaire__liste"><li><a href="#t-versionnage-semantique">Versionnage sémantique</a></li><li><a href="#t-le-fichier-package-json">Le fichier package.json</a><ul><li><a href="#t-dependencies">dependencies</a></li><li><a href="#t-devdependencies">devDependencies</a></li><li><a href="#t-scripts">scripts</a></li></ul></li><li><a href="#t-le-fichier-package-lock-json">Le fichier package-lock.json</a></li><li><a href="#t-auditer-les-paquets-pour-les-vulnerabilites-de-securite">Auditer les paquets pour les vulnérabilités de sécurité</a></li><li><a href="#t-mise-a-jour-des-paquets">Mise à jour des paquets</a></li><li><a href="#t-correction-d-un-paquet">Correction d'un paquet</a></li><li><a href="#t-le-modele-de-dependance">Le modèle de dépendance</a></li><li><a href="#t-des-alternatives-a-la-cli-de-npm">Des alternatives à la CLI de NPM</a><ul><li><a href="#t-yarn">Yarn</a></li><li><a href="#t-pnpm">PNPM</a></li></ul></li></ol></nav>
+<h2 id="t-versionnage-semantique">Versionnage sémantique</h2>
 <p>Théoriquement, les numéros de version des paquets sur NPM doivent suivre une convention : le <strong>versionnage sémantique</strong> (semver). C'est un moyen de faire évoluer la version d'un logiciel donné de manière explicite, afin de minimiser les incompatibilités et les erreurs.</p>
 <div class="encadre encadre--note encadre--callout"><div class="encadre__corps"><p><strong>Important !</strong></p>
 <p>Le concept du versionnage sémantique (semver) est primordial dans la gestion des dépendances d’un projet. Le versionnage sémantique repose sur trois niveaux de version :</p>
@@ -102,7 +103,7 @@
 [x] 1.x
 [x] 1
 </code></pre></div>
-<h2>Le fichier package.json</h2>
+<h2 id="t-le-fichier-package-json">Le fichier package.json</h2>
 <p>Voici un exemple :</p>
 <div class="bloc-code"><div class="bloc-code__langue">json</div><pre><code class="hljs language-json"><span class="hljs-punctuation">{</span>
   <span class="hljs-attr">&quot;name&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;my-super-project&quot;</span><span class="hljs-punctuation">,</span>
@@ -126,13 +127,13 @@
 <span class="hljs-punctuation">}</span>
 </code></pre></div>
 <p>Comme tu l'as déjà vu, ce fichier contient des informations comme l'auteur du projet, le numéro de la version actuelle, la description, etc. Ici, nous allons nous concentrer sur certaines propriétés clés :</p>
-<h3>dependencies</h3>
+<h3 id="t-dependencies">dependencies</h3>
 <p>C'est là que nous spécifions quels paquets et quelles versions de ces paquets sont nécessaires à notre projet. Les paquets sont automatiquement ajoutés dans cette section lorsque tu fais <code>npm install &lt;some-package&gt;</code>.
 Regarde la vidéo ci-dessus sur le versionnement sémantique pour comprendre comment tu peux spécifier des plages de versions.</p>
-<h3>devDependencies</h3>
+<h3 id="t-devdependencies">devDependencies</h3>
 <p>Ici, tu spécifieras les paquets que tu utilises exclusivement lors du développement. Ces paquets ne seront pas nécessaires en production. Par exemple, les paquets de test, webpack, nodemon, etc.</p>
 <p>Les paquets sont automatiquement ajoutés dans cette section lorsque tu fais <code>npm install --save-dev &lt;some-package&gt;</code> ou <code>npm install -D &lt;some-package&gt;</code>.</p>
-<h3>scripts</h3>
+<h3 id="t-scripts">scripts</h3>
 <p>Ici tu peux définir les commandes que npm pourra exécuter avec <code>npm run &lt;nom-du-script&gt;</code>. Les scripts sont un bon moyen d'avoir des raccourcis et de documenter des tâches spéciales relatives au projet.</p>
 <a class="ressource" href="https://docs.npmjs.com/cli/v11/commands/npm-run-script" target="_blank" rel="noopener noreferrer">
   <div class="ressource__icone">↗</div>
@@ -152,7 +153,7 @@ Regarde la vidéo ci-dessus sur le versionnement sémantique pour comprendre com
     <div class="ressource__hote">npmjs.com</div>
   </div>
 </a>
-<h2>Le fichier package-lock.json</h2>
+<h2 id="t-le-fichier-package-lock-json">Le fichier package-lock.json</h2>
 <p>Ce fichier est destiné à préserver un comportement cohérent du module en &quot;verrouillant&quot; les versions des paquets entre différents environnements. Tu ne devrais jamais avoir à modifier ce fichier toi-même car NPM le met à jour automatiquement lorsque tu installes ou désinstalles quelque chose.</p>
 <a class="ressource" href="https://docs.npmjs.com/cli/v11/configuring-npm/package-lock-json" target="_blank" rel="noopener noreferrer">
   <div class="ressource__icone">↗</div>
@@ -175,7 +176,7 @@ Regarde la vidéo ci-dessus sur le versionnement sémantique pour comprendre com
 [] Vrai
 [x] Faux
 </code></pre></div>
-<h2>Auditer les paquets pour les vulnérabilités de sécurité</h2>
+<h2 id="t-auditer-les-paquets-pour-les-vulnerabilites-de-securite">Auditer les paquets pour les vulnérabilités de sécurité</h2>
 <p>Conscient des problèmes de sécurité dans son système de paquets, NPM a publié un outil pour analyser tes paquets et tester les failles de sécurité connues. Pour lancer la vérification, il suffit de taper ce qui suit à la racine de ton projet :</p>
 <div class="bloc-code"><pre><code class="hljs language-plaintext">npm audit
 </code></pre></div>
@@ -188,7 +189,7 @@ Regarde la vidéo ci-dessus sur le versionnement sémantique pour comprendre com
     <div class="ressource__hote">docs.npmjs.com</div>
   </div>
 </a>
-<h2>Mise à jour des paquets</h2>
+<h2 id="t-mise-a-jour-des-paquets">Mise à jour des paquets</h2>
 <p>La mise à jour des paquets peut être importante, car les mises à jour de sécurité sont publiées assez souvent et peuvent protéger ton application contre des attaques potentielles :</p>
 <div class="bloc-code"><pre><code class="hljs language-plaintext">npm update
 </code></pre></div>
@@ -202,7 +203,7 @@ Regarde la vidéo ci-dessus sur le versionnement sémantique pour comprendre com
     <div class="ressource__hote">docs.npmjs.com</div>
   </div>
 </a>
-<h2>Correction d'un paquet</h2>
+<h2 id="t-correction-d-un-paquet">Correction d'un paquet</h2>
 <p>À un moment donné dans ta carrière de développeur, tu rencontreras peut-être des bibliothèques présentant un bug.</p>
 <p>Si le bug est vraiment critique et empêche ton application de fonctionner correctement, si tu peux le corriger et si l'équipe à l'origine du paquet est trop lente pour le corriger elle-même ou accepter ta Pull Request, il sera peut-être judicieux de corriger le paquet que tu utilises.</p>
 <p>Pour plus de détails :</p>
@@ -215,7 +216,7 @@ Regarde la vidéo ci-dessus sur le versionnement sémantique pour comprendre com
     <div class="ressource__hote">npmjs.com</div>
   </div>
 </a>
-<h2>Le modèle de dépendance</h2>
+<h2 id="t-le-modele-de-dependance">Le modèle de dépendance</h2>
 <p>Tu sais que ton projet peut avoir des dépendances externes, mais as-tu réalisé que ces dépendances peuvent également avoir leurs propres dépendances, qui à leur tour ont leurs propres dépendances, et ainsi de suite ?</p>
 <p><img src="images/002-le-modele-de-dependance.jpg" alt="" loading="lazy"></p>
 <p>Comment NPM gère-t-il tout ce bazar ?
@@ -229,10 +230,10 @@ Voici un article très complet sur la façon dont NPM résout les dépendances :
     <div class="ressource__hote">lexi-lambda.github.io</div>
   </div>
 </a>
-<h2>Des alternatives à la CLI de NPM</h2>
+<h2 id="t-des-alternatives-a-la-cli-de-npm">Des alternatives à la CLI de NPM</h2>
 <p>NPM a été publié pour la première fois en 2010. Au fil des années, des alternatives à l'interface de ligne de commande officielle de NPM sont apparues.</p>
 <p>Ces alternatives ont pour but d'améliorer les performances, la sécurité et la stabilité par rapport à la CLI par défaut, tout en restant compatibles avec presque tous les paquets NPM existants.</p>
-<h3>Yarn</h3>
+<h3 id="t-yarn">Yarn</h3>
 <p>Yarn a été publié en 2016, soutenu par de grandes entreprises comme Facebook et Google.
 Tu peux l'installer avec NPM (ce qui est un peu bizarre, non ?) :</p>
 <div class="bloc-code"><pre><code class="hljs language-plaintext">npm install -g yarn
@@ -253,7 +254,7 @@ Tu peux l'installer avec NPM (ce qui est un peu bizarre, non ?) :</p>
     <div class="ressource__hote">yarnpkg.com</div>
   </div>
 </a>
-<h3>PNPM</h3>
+<h3 id="t-pnpm">PNPM</h3>
 <p>PNPM (Performant NPM) version 1 est sorti en 2017.
 Au moment de la rédaction de cette quête, c'est le gestionnaire de paquets le plus rapide en ville d'après ses <a href="https://pnpm.io/benchmarks" target="_blank" rel="noopener noreferrer">benchmarks</a>.
 L'autre avantage principal est que PNPM supporte les mêmes commandes que la CLI par défaut de NPM.</p>
@@ -313,7 +314,5 @@ L'autre avantage principal est que PNPM supporte les mêmes commandes que la CLI
   <p>Archive personnelle des cours suivis à la Wild Code School. Copie hors ligne à usage strictement privé.</p>
 </footer>
 
-<script src="../../assets/copie-code.js"></script>
-<script src="../../assets/progression.js"></script>
 </body>
 </html>

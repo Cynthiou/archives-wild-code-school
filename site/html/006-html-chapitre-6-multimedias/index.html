@@ -20,24 +20,25 @@
     <p class="quete__meta">Quête 6 sur 9 · 2 images archivées</p>
   </header>
   <div class="cours">
-<h2>Objectifs</h2>
+<h2 id="t-objectifs">Objectifs</h2>
 <ul>
 <li>Ajouter des images en HTML</li>
 <li>Les bonnes pratiques liées à l'utilisation d'images</li>
 <li>Ajouter des éléments multimédias tels que des audios et des vidéos en HTML</li>
 <li>Intégrer des documents tels que d'autres sites web</li>
 </ul>
-<h2>Pré-requis</h2>
+<h2 id="t-pre-requis">Pré-requis</h2>
 <ol class="etapes"><li class="etape"><div class="etape__puce">1</div><div class="etape__contenu"><h4 class="etape__titre">Valider la quête suivante</h4><div class="renvois"><div class="renvois__titre">Quêtes liées</div><ul><li><a href="../../html/001-html-chapitre-1-introduction-au-html/index.html">Quête 2113</a></li></ul></div>
 </div></li><li class="etape"><div class="etape__puce">2</div><div class="etape__contenu"><h4 class="etape__titre">Être à l'aise avec l'utilisation des attributs HTML</h4><div class="bloc-code"><div class="bloc-code__langue">html</div><pre><code class="hljs language-html"><span class="hljs-tag">&lt;<span class="hljs-name">img</span> <span class="hljs-attr">src</span>=<span class="hljs-string">&quot;https://placekitten.com/200/287&quot;</span> <span class="hljs-attr">alt</span>=<span class="hljs-string">&quot;A cute cat&quot;</span> /&gt;</span>
 </code></pre></div>
 </div></li></ol>
-<h2>Introduction</h2>
+<h2 id="t-introduction">Introduction</h2>
 <p>Précédemment, tu as vu les principes de bases du langage HTML.</p>
 <p>Dans cette quête, nous allons nous concentrer sur les éléments multimédias tels que les images, les vidéos, les fichiers audio et les documents intégrés.</p>
-<h2>Sommaire</h2>
-<h2>Ajouter des images en HTML</h2>
-<h3>La balise <img /></h3>
+<h2 id="t-sommaire">Sommaire</h2>
+<nav class="sommaire" aria-label="Sommaire de la quête"><ol class="sommaire__liste"><li><a href="#t-ajouter-des-images-en-html">Ajouter des images en HTML</a><ul><li><a href="#t-la-balise">La balise</a></li><li><a href="#t-illustrer-un-article-avec-une-legende">Illustrer un article avec une légende</a></li></ul></li><li><a href="#t-ajouter-un-fichier-video">Ajouter un fichier vidéo</a><ul><li><a href="#t-ajouter-du-texte-dans-les-videos">Ajouter du texte dans les vidéos</a></li></ul></li><li><a href="#t-ajouter-un-fichier-audio">Ajouter un fichier audio</a></li><li><a href="#t-les-iframes">Les iframes</a></li><li><a href="#t-recapitulatif">Récapitulatif</a></li><li><a href="#t-challenge">Challenge</a><ul><li><a href="#t-criteres-de-validation">Critères de validation</a></li></ul></li></ol></nav>
+<h2 id="t-ajouter-des-images-en-html">Ajouter des images en HTML</h2>
+<h3 id="t-la-balise">La balise <img /></h3>
 <p>Comme tu l'as vu dans les quêtes précédentes, tu peux créer des images en HTML grâce à la balise <code>&lt;img /&gt;</code>. Tu peux spécifier l'URL de l'image en utilisant l'attribut <code>src</code>. L'URL peut être :</p>
 <ul>
 <li>Absolue : URL complète comme <code>&quot;https://placekitten.com/408/287&quot;</code>,</li>
@@ -51,7 +52,7 @@
 <div class="bloc-code"><div class="bloc-code__langue">html</div><pre><code class="hljs language-html"><span class="hljs-tag">&lt;<span class="hljs-name">img</span> <span class="hljs-attr">src</span>=<span class="hljs-string">&quot;/images/my-favorite-cat.jpeg&quot;</span> /&gt;</span>
 <span class="hljs-tag">&lt;<span class="hljs-name">img</span> <span class="hljs-attr">src</span>=<span class="hljs-string">&quot;https://placekitten.com/408/287&quot;</span> /&gt;</span>
 </code></pre></div>
-<h4>Texte alternatif</h4>
+<h4 id="t-texte-alternatif">Texte alternatif</h4>
 <p>Tu dois toujours préciser un <strong>texte alternatif</strong> sur tes images : cela permet non seulement d'améliorer le référencement mais aussi l'accessibilité de ton contenu.</p>
 <p>Quelques bonnes pratiques pour le texte alternatif de tes images:</p>
 <ul>
@@ -75,7 +76,7 @@
 </ul>
 <p>Si l'image est décorative mais n'apporte pas d'information, tu peux utiliser un texte alternatif vide <code>alt=&quot;&quot;</code> ou évite tout simplement la balise <code>&lt;img /&gt;</code>.</p>
 <p>Les balises HTML existent pour représenter un contenu à lire sur une page. Si un élément n'est que décoratif, le CSS doit être privilégié (une image de fond sur un élément par exemple).</p>
-<h4>Largeur et hauteur</h4>
+<h4 id="t-largeur-et-hauteur">Largeur et hauteur</h4>
 <p>Tu peux donner une hauteur et une largeur à ton image avec les attributs <code>height</code> et <code>width</code>. Attention : si tu ne respectes pas le ratio d'origine de ton image, elle sera déformée.</p>
 <div class="bloc-code"><div class="bloc-code__langue">html</div><pre><code class="hljs language-html"><span class="hljs-tag">&lt;<span class="hljs-name">img</span> <span class="hljs-attr">src</span>=<span class="hljs-string">&quot;/images/john.jpeg&quot;</span> <span class="hljs-attr">height</span>=<span class="hljs-string">&quot;400&quot;</span> <span class="hljs-attr">width</span>=<span class="hljs-string">&quot;300&quot;</span> /&gt;</span>
 </code></pre></div>
@@ -84,7 +85,7 @@
 </code></pre></div>
 </div></div>
 <p>Garde en tête que le navigateur chargera l'image entière avant de la redimensionner : une image 4000 * 3000 pixels est beaucoup trop lourde pour afficher sur un téléphone portable de 360 pixels de large !</p>
-<h4>Comment redimensionner une image?</h4>
+<h4 id="t-comment-redimensionner-une-image">Comment redimensionner une image?</h4>
 <p>Voici des ressources qui peuvent t'aider si tu as besoin de redimensionner une image :</p>
 <p><strong>Mac:</strong></p>
 <a class="ressource" href="https://support.apple.com/guide/preview/resize-rotate-or-flip-an-image-prvw2015/mac" target="_blank" rel="noopener noreferrer">
@@ -116,7 +117,7 @@
     <div class="ressource__hote">itsfoss.com</div>
   </div>
 </a>
-<h3>Illustrer un article avec une légende</h3>
+<h3 id="t-illustrer-un-article-avec-une-legende">Illustrer un article avec une légende</h3>
 <p>Pour ajouter une illustration à un article avec une légende, tu peux utiliser les balises <code>&lt;figure&gt;</code> et <code>&lt;figcaption&gt;</code>.</p>
 <p>La balise <code>&lt;figure&gt;</code> représente un contenu annexe qui peut aider à la compréhension d'un article ou d'un site (du code, un graphique, une image, une illustration, un plan, etc..). Un peu comme dans certains livres (&quot;voir la figure 1&quot;).</p>
 <p>La balise <code>&lt;figcaption&gt;</code> permet d'ajouter une légende à ce contenu:</p>
@@ -143,7 +144,7 @@
     <span class="hljs-tag">&lt;<span class="hljs-name">rect</span> <span class="hljs-attr">width</span>=<span class="hljs-string">&quot;100%&quot;</span> <span class="hljs-attr">height</span>=<span class="hljs-string">&quot;100%&quot;</span> <span class="hljs-attr">fill</span>=<span class="hljs-string">&quot;blue&quot;</span> /&gt;</span>
 <span class="hljs-tag">&lt;/<span class="hljs-name">svg</span>&gt;</span>
 </code></pre></div>
-<h2>Ajouter un fichier vidéo</h2>
+<h2 id="t-ajouter-un-fichier-video">Ajouter un fichier vidéo</h2>
 <p>Pour ajouter un fichier vidéo sur une page web, utilise l'élément <code>&lt;video&gt;</code>. Tu peux utiliser l'attribut <code>src</code> pour spécifier la source de la vidéo et l'attribut <code>controls</code> (booléen) pour afficher (ou pas) le panneau de contrôle du lecteur vidéo.</p>
 <p>Pour des raisons d'accessibilité, tu dois <strong>toujours</strong> laisser la possibilité à tes utilisateurs de démarrer/arrêter la vidéo et d'augmenter ou baisser le volume.</p>
 <p>Tu peux spécifier un texte à l'intérieur de la balise <code>&lt;video&gt;</code>. Ce dernier sera visible si le navigateur ne supporte pas l'élément <code>&lt;video&gt;</code> :</p>
@@ -179,7 +180,7 @@
 <div class="encadre encadre--note encadre--arrow"><div class="encadre__corps"><p><strong>🎯 Á toi de jouer !</strong></p>
 <p>Dans le fichier index.html créé précédemment, ajoute une vidéo sur un des articles de blog, tu peux trouver pleins de vidéo gratuite et libre de droits sur le site de <a href="https://www.pexels.com/search/videos/cat" target="_blank" rel="noopener noreferrer">pexels</a></p>
 </div></div>
-<h3>Ajouter du texte dans les vidéos</h3>
+<h3 id="t-ajouter-du-texte-dans-les-videos">Ajouter du texte dans les vidéos</h3>
 <p>L'accessibilité est très importante dans le web. Pour rendre tes vidéos plus accessibles, tu peux ajouter du texte à tes vidéos avec la balise <code>&lt;track&gt;</code>.</p>
 <p>L'ajout du texte peut servir pour les personnes ayant des déficiences visuelles ou bien les personnes qui ne peuvent pas écouter le son de la vidéo à un instant T. Pour ça, tu peux ajouter des sous-titres avec l'attribut <code>kind=&quot;subtitles&quot;</code>.</p>
 <p>Tu peux ajouter également des légendes avec l'attribut <code>kind=&quot;captions&quot;</code> ainsi que des descriptions avec l'attribut <code>kind=&quot;descriptions&quot;</code>).</p>
@@ -213,14 +214,14 @@
 <div class="encadre encadre--note encadre--arrow"><div class="encadre__corps"><p><strong>🎯 Á toi de jouer !</strong></p>
 <p>À l'aide de l'outil <a href="https://www.vtt-creator.com/editor" target="_blank" rel="noopener noreferrer">vtt-creator</a>, ajoute des sous-titres sur ta vidéo. Si tu as une vidéo avec du son, c'est parfait. Sinon imagine quelque chose de sympa afin de pouvoir pratiquer.</p>
 </div></div>
-<h2>Ajouter un fichier audio</h2>
+<h2 id="t-ajouter-un-fichier-audio">Ajouter un fichier audio</h2>
 <p>Pour ajouter un fichier audio en HTML, tu peux utiliser la balise <code>&lt;audio&gt;</code> :</p>
 <div class="bloc-code"><div class="bloc-code__langue">html</div><pre><code class="hljs language-html"><span class="hljs-tag">&lt;<span class="hljs-name">audio</span> <span class="hljs-attr">src</span>=<span class="hljs-string">&quot;meow.mp3&quot;</span> <span class="hljs-attr">controls</span>&gt;</span>
  <span class="hljs-tag">&lt;<span class="hljs-name">p</span>&gt;</span>Votre navigateur ne prend pas en charge l&#x27;audio. Vous pouvez <span class="hljs-tag">&lt;<span class="hljs-name">a</span> <span class="hljs-attr">href</span>=<span class="hljs-string">&quot;meow.mp3&quot;</span>&gt;</span>télécharger l&#x27;audio<span class="hljs-tag">&lt;/<span class="hljs-name">a</span>&gt;</span> afin d&#x27;écouter l&#x27;extrait.<span class="hljs-tag">&lt;/<span class="hljs-name">p</span>&gt;</span>
 <span class="hljs-tag">&lt;/<span class="hljs-name">audio</span>&gt;</span>  
 </code></pre></div>
 <p>Comme pour la vidéo, tu peux utiliser les attributs <code>autoplay</code>, <code>loop</code> et <code>controls</code>.</p>
-<h2>Les iframes</h2>
+<h2 id="t-les-iframes">Les iframes</h2>
 <p>Les iframes sont des éléments qui permettent d'intégrer des pages web à l'intérieur de ces pages web.</p>
 <p>Cela peut s'avérer particulièrement pratique si tu veux, par exemple, intégrer une vidéo youtube à ta page web, ou bien un bloc de code fait sur Codesandbox par exemple.</p>
 <p>Par exemple, pour partager une vidéo youtube, tu peux utiliser le code suivant :</p>
@@ -248,7 +249,7 @@
 <p>N'intègre des iframes que de sites de confiances.</p>
 <p>L'attribut <code>sandbox</code> permet également d'améliorer la sécurité en  interdisant à l'iframe d’exécuter des scripts JS ou de soumettre des formulaires. Utilise le lorsque c'est possible.</p>
 </div></div>
-<h2>Récapitulatif</h2>
+<h2 id="t-recapitulatif">Récapitulatif</h2>
 <ul>
 <li>
 <p>Tu peux ajouter des images en HTML en utilisant la balise <img /></p>
@@ -272,9 +273,9 @@
 <p>La balise <code>&lt;iframe&gt;</code> permet d'intégrer des pages web à l'intérieur de sa page web. Ici, attention à l'aspect sécurité en t'assurant que le site proposé en iframe est sécurisé.</p>
 </li>
 </ul>
-<h2>Challenge</h2>
+<h2 id="t-challenge">Challenge</h2>
 <p>Mets en forme le travail que tu as réalisé durant cette quête et compare le résultat avec la solution qui est proposée !</p>
-<h3>Critères de validation</h3>
+<h3 id="t-criteres-de-validation">Critères de validation</h3>
 <ul>
 <li>[ ] Le site contient une vidéo avec des sous-titres</li>
 <li>[ ] Le site contient une vidéo youtube grâce à l'utilisation de la balise <code>&lt;iframe&gt;</code></li>
@@ -417,7 +418,5 @@
   <p>Archive personnelle des cours suivis à la Wild Code School. Copie hors ligne à usage strictement privé.</p>
 </footer>
 
-<script src="../../assets/copie-code.js"></script>
-<script src="../../assets/progression.js"></script>
 </body>
 </html>

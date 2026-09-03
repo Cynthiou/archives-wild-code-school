@@ -20,18 +20,19 @@
     <p class="quete__meta">Quête 1 sur 1</p>
   </header>
   <div class="cours">
-<h2>Objectifs</h2>
+<h2 id="t-objectifs">Objectifs</h2>
 <ul>
 <li>Naviguer dans les dossiers de ton ordinateur.</li>
 <li>Créer et gérer des fichiers et dossiers.</li>
 <li>Effectuer des tâches simples de manière efficace et uniforme, quel que soit ton système d'exploitation.</li>
 </ul>
-<h2>Introduction</h2>
+<h2 id="t-introduction">Introduction</h2>
 <p>Pourquoi le terminal ?</p>
 <p>Le terminal te permet de donner des instructions précises à ton ordinateur à l'aide de commandes. Cela t’évite les pièges des interfaces graphiques, souvent différentes d'un système à l'autre, et te permet de travailler de manière standardisée.</p>
 <p><strong>C'est fait pour toi !</strong> Si tu n’as jamais utilisé un terminal auparavant, cette quête te guidera pas à pas. Suis simplement les étapes, et n'hésite pas à demander de l'aide à un camarade ou à un formateur si besoin.</p>
-<h2>Sommaire</h2>
-<h2>Étape 1 : Ouvrir le terminal</h2>
+<h2 id="t-sommaire">Sommaire</h2>
+<nav class="sommaire" aria-label="Sommaire de la quête"><ol class="sommaire__liste"><li><a href="#t-etape-1-ouvrir-le-terminal">Étape 1 : Ouvrir le terminal</a></li><li><a href="#t-etape-2-premiers-pas-avec-les-commandes-de-base">Étape 2 : Premiers pas avec les commandes de base</a><ul><li><a href="#t-afficher-le-dossier-actuel">Afficher le dossier actuel</a></li><li><a href="#t-voir-le-contenu-d-un-dossier">Voir le contenu d’un dossier</a></li><li><a href="#t-se-deplacer-dans-un-dossier">Se déplacer dans un dossier</a></li></ul></li><li><a href="#t-etape-3-creer-et-gerer-des-fichiers">Étape 3 : Créer et gérer des fichiers</a><ul><li><a href="#t-creer-un-dossier">Créer un dossier</a></li><li><a href="#t-entrer-dans-un-dossier">Entrer dans un dossier</a></li><li><a href="#t-creer-un-fichier">Créer un fichier</a></li><li><a href="#t-modifier-un-fichier">Modifier un fichier</a></li></ul></li><li><a href="#t-etape-4-ouvrir-un-fichier-dans-le-navigateur">Étape 4 : Ouvrir un fichier dans le navigateur</a><ul><li><a href="#t-trouver-le-chemin-absolu">Trouver le chemin absolu</a></li><li><a href="#t-ouvrir-le-fichier">Ouvrir le fichier</a></li></ul></li><li><a href="#t-resoudre-les-erreurs">Résoudre les erreurs</a></li><li><a href="#t-etape-finale-defi-collaboratif">Étape finale : Défi collaboratif</a></li></ol></nav>
+<h2 id="t-etape-1-ouvrir-le-terminal">Étape 1 : Ouvrir le terminal</h2>
 <p>Apprenons à ouvrir le terminal sur ta machine.</p>
 <div class="onglets" data-onglets="3"><input type="radio" name="onglets-38" id="onglets-38-0" class="onglets__radio" checked><input type="radio" name="onglets-38" id="onglets-38-1" class="onglets__radio"><input type="radio" name="onglets-38" id="onglets-38-2" class="onglets__radio"><div class="onglets__barre"><label class="onglets__label" for="onglets-38-0">Linux</label><label class="onglets__label" for="onglets-38-1">macOS</label><label class="onglets__label" for="onglets-38-2">Windows</label></div><div class="onglets__panneaux"><div class="onglets__panneau"><ol>
 <li>Utilise le raccourci <strong>Ctrl + Alt + T</strong> (fonctionne sur la plupart des distributions).</li>
@@ -84,19 +85,19 @@ Sur un projet de groupe, avec des contributeurs pouvant avoir des OS différents
 <p><strong>Mini-challenge :</strong> Ouvre le terminal sur ta machine et tape la commande suivante pour afficher ton système d'exploitation :</p>
 <div class="bloc-code"><div class="bloc-code__langue">bash</div><pre><code class="hljs language-bash"><span class="hljs-built_in">uname</span> -a
 </code></pre></div>
-<h2>Étape 2 : Premiers pas avec les commandes de base</h2>
+<h2 id="t-etape-2-premiers-pas-avec-les-commandes-de-base">Étape 2 : Premiers pas avec les commandes de base</h2>
 <p>Voici quelques commandes simples pour explorer ton ordinateur.</p>
-<h3>Afficher le dossier actuel</h3>
+<h3 id="t-afficher-le-dossier-actuel">Afficher le dossier actuel</h3>
 <p>Tape :</p>
 <div class="bloc-code"><div class="bloc-code__langue">bash</div><pre><code class="hljs language-bash"><span class="hljs-built_in">pwd</span>
 </code></pre></div>
 <p>Cela montre où tu te trouves dans l’arborescence des fichiers.</p>
-<h3>Voir le contenu d’un dossier</h3>
+<h3 id="t-voir-le-contenu-d-un-dossier">Voir le contenu d’un dossier</h3>
 <p>Tape :</p>
 <div class="bloc-code"><div class="bloc-code__langue">bash</div><pre><code class="hljs language-bash"><span class="hljs-built_in">ls</span>
 </code></pre></div>
 <p>(Sur Windows sans WSL, utilise <code>dir</code>.)</p>
-<h3>Se déplacer dans un dossier</h3>
+<h3 id="t-se-deplacer-dans-un-dossier">Se déplacer dans un dossier</h3>
 <p>Tape :</p>
 <div class="bloc-code"><div class="bloc-code__langue">bash</div><pre><code class="hljs language-bash"><span class="hljs-built_in">cd</span> nom_du_dossier
 </code></pre></div>
@@ -107,8 +108,8 @@ Sur un projet de groupe, avec des contributeurs pouvant avoir des OS différents
 <div class="bloc-code"><div class="bloc-code__langue">bash</div><pre><code class="hljs language-bash"><span class="hljs-built_in">cd</span> ..
 </code></pre></div>
 <p><strong>Mini-challenge :</strong> Navigue jusqu’à ton dossier &quot;Documents&quot; ou équivalent, puis reviens au dossier précédent.</p>
-<h2>Étape 3 : Créer et gérer des fichiers</h2>
-<h3>Créer un dossier</h3>
+<h2 id="t-etape-3-creer-et-gerer-des-fichiers">Étape 3 : Créer et gérer des fichiers</h2>
+<h3 id="t-creer-un-dossier">Créer un dossier</h3>
 <p>Tape :</p>
 <div class="bloc-code"><div class="bloc-code__langue">bash</div><pre><code class="hljs language-bash"><span class="hljs-built_in">mkdir</span> MonSite
 </code></pre></div>
@@ -116,16 +117,16 @@ Sur un projet de groupe, avec des contributeurs pouvant avoir des OS différents
 <div class="encadre encadre--warning"><div class="encadre__titre">Attention</div><div class="encadre__corps"><p>La casse (minuscule ou majuscule, avec ou sans espace entre les mots...) est importante. Dans cet exemple, le dossier créé s'appelle <code>MonSite</code> avec un <code>M</code> et un <code>S</code> majuscules, et les 2 mots sont collés (pas d'espace entre les 2).</p>
 <p>Tu dois faire attention à suivre chaque détail pour éviter des erreurs.</p>
 </div></div>
-<h3>Entrer dans un dossier</h3>
+<h3 id="t-entrer-dans-un-dossier">Entrer dans un dossier</h3>
 <p>Tape :</p>
 <div class="bloc-code"><div class="bloc-code__langue">bash</div><pre><code class="hljs language-bash"><span class="hljs-built_in">cd</span> MonSite
 </code></pre></div>
-<h3>Créer un fichier</h3>
+<h3 id="t-creer-un-fichier">Créer un fichier</h3>
 <p>Tape :</p>
 <div class="bloc-code"><div class="bloc-code__langue">bash</div><pre><code class="hljs language-bash"><span class="hljs-built_in">touch</span> index.html
 </code></pre></div>
 <p>(Sur Windows sans WSL, utilise <code>echo &gt; index.html</code>.)</p>
-<h3>Modifier un fichier</h3>
+<h3 id="t-modifier-un-fichier">Modifier un fichier</h3>
 <p>Tape :</p>
 <div class="bloc-code"><div class="bloc-code__langue">bash</div><pre><code class="hljs language-bash">nano index.html
 </code></pre></div>
@@ -137,13 +138,13 @@ Sur un projet de groupe, avec des contributeurs pouvant avoir des OS différents
 </span></code></pre></div>
 <p>Ensuite, sauvegarde et quitte. Avec <code>nano</code>, fais <strong>Ctrl + O</strong>, puis <strong>Entrée</strong>, puis <strong>Ctrl + X</strong> (avec <code>vim</code>, <strong>Echap</strong>, puis <strong>:wq</strong> et <strong>Entrée</strong>).</p>
 <p><strong>Mini-challenge :</strong> Vérifie que le fichier <code>index.html</code> a bien été créé en listant le contenu du dossier avec <code>ls</code>.</p>
-<h2>Étape 4 : Ouvrir un fichier dans le navigateur</h2>
-<h3>Trouver le chemin absolu</h3>
+<h2 id="t-etape-4-ouvrir-un-fichier-dans-le-navigateur">Étape 4 : Ouvrir un fichier dans le navigateur</h2>
+<h3 id="t-trouver-le-chemin-absolu">Trouver le chemin absolu</h3>
 <p>Tape :</p>
 <div class="bloc-code"><div class="bloc-code__langue">bash</div><pre><code class="hljs language-bash"><span class="hljs-built_in">pwd</span>
 </code></pre></div>
 <p>Copie le chemin affiché.</p>
-<h3>Ouvrir le fichier</h3>
+<h3 id="t-ouvrir-le-fichier">Ouvrir le fichier</h3>
 <p>Ajoute le nom du fichier au chemin, puis ouvre-le dans ton navigateur. Par exemple :</p>
 <ul>
 <li>Sur Linux :
@@ -164,13 +165,13 @@ Sur un projet de groupe, avec des contributeurs pouvant avoir des OS différents
 </ul>
 <p><strong>Mini-challenge :</strong> Ouvre <code>index.html</code> dans ton navigateur et vérifie que &quot;Hello World&quot; s’affiche.</p>
 <hr>
-<h2>Résoudre les erreurs</h2>
+<h2 id="t-resoudre-les-erreurs">Résoudre les erreurs</h2>
 <p>Voici des solutions aux problèmes courants :</p>
 <ul>
 <li><strong>Commande non reconnue</strong> : Vérifie l’orthographe et si le terminal est ouvert au bon endroit.</li>
 <li><strong>Fichier introuvable</strong> : Assure-toi d’être dans le bon dossier en utilisant <code>pwd</code> et <code>ls</code>.</li>
 </ul>
-<h2>Étape finale : Défi collaboratif</h2>
+<h2 id="t-etape-finale-defi-collaboratif">Étape finale : Défi collaboratif</h2>
 <ul>
 <li><strong>Ta mission :</strong> Vérifie que ton fichier <code>index.html</code> fonctionne. Ensuite, trouve un camarade et teste son fichier.</li>
 <li>Si l’un de vous rencontre un problème, travaillez ensemble pour trouver une solution.</li>
@@ -190,7 +191,5 @@ Sur un projet de groupe, avec des contributeurs pouvant avoir des OS différents
   <p>Archive personnelle des cours suivis à la Wild Code School. Copie hors ligne à usage strictement privé.</p>
 </footer>
 
-<script src="../../assets/copie-code.js"></script>
-<script src="../../assets/progression.js"></script>
 </body>
 </html>

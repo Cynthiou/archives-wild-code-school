@@ -20,16 +20,17 @@
     <p class="quete__meta">Quête 4 sur 9 · 1 image archivée</p>
   </header>
   <div class="cours">
-<h2>Objectifs</h2>
+<h2 id="t-objectifs">Objectifs</h2>
 <ul>
 <li>Insérer du contenu dans une table</li>
 <li>Modifier du contenu</li>
 <li>Supprimer du contenu</li>
 </ul>
-<h2>Introduction</h2>
+<h2 id="t-introduction">Introduction</h2>
 <p>Avoir des données dans une base de données, c'est bien. Savoir comment ajouter, modifier et supprimer ces données, c'est encore mieux ! Tu vas découvrir comment manipuler tout cela grâce à de nouveaux <em>sortilèges</em> SQL.</p>
-<h2>Sommaire</h2>
-<h2>Comment ajouter des données ?</h2>
+<h2 id="t-sommaire">Sommaire</h2>
+<nav class="sommaire" aria-label="Sommaire de la quête"><ol class="sommaire__liste"><li><a href="#t-comment-ajouter-des-donnees">Comment ajouter des données ?</a></li><li><a href="#t-comment-modifier-des-donnees">Comment modifier des données ?</a></li><li><a href="#t-comment-supprimer-des-donnees">Comment supprimer des données ?</a></li><li><a href="#t-challenge">Challenge</a><ul><li><a href="#t-criteres-de-validation">Critères de validation</a></li></ul></li></ol></nav>
+<h2 id="t-comment-ajouter-des-donnees">Comment ajouter des données ?</h2>
 <p>Tu vas ajouter plusieurs données dans la table <code>school</code>. Pour cela, connecte-toi à MySQL dans ton terminal, toujours sur la base de données <code>wild_db_quest</code>.</p>
 <div class="encadre encadre--info"><div class="encadre__titre">Info</div><div class="encadre__corps"><p>Cette table  <code>school</code>, créée dans la première quête du parcours, contient les champs <code>name</code>, <code>capacity</code> et <code>country</code>, ainsi qu’un champ <code>id</code> auto-incrémenté comme clé primaire.</p>
 </div></div>
@@ -73,7 +74,7 @@
     <div class="ressource__hote">w3schools.com</div>
   </div>
 </a>
-<h2>Comment modifier des données ?</h2>
+<h2 id="t-comment-modifier-des-donnees">Comment modifier des données ?</h2>
 <p>Maintenant que tu sais insérer des données, tu vas apprendre comment les modifier.</p>
 <p>Cette fois-ci, le mot-clé qui va nous intéresser est <strong>UPDATE</strong>.</p>
 <p>Voici la syntaxe que prend une requête SQL de mise à jour :</p>
@@ -102,7 +103,7 @@
     <div class="ressource__hote">w3schools.com</div>
   </div>
 </a>
-<h2>Comment supprimer des données ?</h2>
+<h2 id="t-comment-supprimer-des-donnees">Comment supprimer des données ?</h2>
 <p>Le mot-clé qui va t’intéresser cette fois est <strong>DELETE</strong>.</p>
 <p>Voici la syntaxe que prend une requête SQL de suppression :</p>
 <div class="bloc-code"><div class="bloc-code__langue">sql</div><pre><code class="hljs language-sql"><span class="hljs-keyword">DELETE</span> <span class="hljs-keyword">FROM</span> <span class="hljs-operator">&lt;</span><span class="hljs-keyword">table</span><span class="hljs-operator">&gt;</span>
@@ -147,7 +148,7 @@
     <div class="ressource__hote">sql.sh</div>
   </div>
 </a>
-<h2>Challenge</h2>
+<h2 id="t-challenge">Challenge</h2>
 <p>Effectue les requêtes suivantes :</p>
 <ul>
 <li>Insère dans la table <code>school</code> les données suivantes :</li>
@@ -208,7 +209,7 @@
 <li>Affiche via une requête <code>SELECT</code> toutes les données de la table <code>school</code>.</li>
 </ul>
 <p>Poste tes requêtes et leurs résultats en solution.</p>
-<h3>Critères de validation</h3>
+<h3 id="t-criteres-de-validation">Critères de validation</h3>
 <ul>
 <li>La solution contient toutes les requêtes SQL : 1 requête d’insertion, 2 requêtes de modification, 1 requête de suppression et 1 sélection.</li>
 <li>Elle contient également le tableau des données finales de la table <code>school</code> (5 écoles restantes, avec les capacités et pays modifiés selon les consignes).</li>
@@ -308,7 +309,5 @@ Query OK, <span class="hljs-number">3</span> <span class="hljs-keyword">rows</sp
   <p>Archive personnelle des cours suivis à la Wild Code School. Copie hors ligne à usage strictement privé.</p>
 </footer>
 
-<script src="../../assets/copie-code.js"></script>
-<script src="../../assets/progression.js"></script>
 </body>
 </html>

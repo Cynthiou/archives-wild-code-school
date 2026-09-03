@@ -20,20 +20,21 @@
     <p class="quete__meta">Quête 1 sur 9 · 3 images archivées</p>
   </header>
   <div class="cours">
-<h2>Objectifs</h2>
+<h2 id="t-objectifs">Objectifs</h2>
 <ul>
 <li>Comprendre ce qu'est le HTML</li>
 <li>Connaitre les principales balises HTML</li>
 <li>Découvrir des bonnes pratiques pour créer une page HTML</li>
 </ul>
-<h2>Pré-requis</h2>
+<h2 id="t-pre-requis">Pré-requis</h2>
 <ol class="etapes"><li class="etape"><div class="etape__puce">1</div><div class="etape__contenu"><h4 class="etape__titre">Valider la quête suivante</h4><div class="renvois"><div class="renvois__titre">Quêtes liées</div><ul><li><a href="../../outils/001-installer-et-utiliser-visual-studio-code/index.html">Quête 2114</a></li></ul></div>
 </div></li></ol>
-<h2>Introduction</h2>
+<h2 id="t-introduction">Introduction</h2>
 <p>Le :def[HTML]{value=&quot;HyperText Markup Language&quot;} est un language de balisage utilisé pour créer des <strong>pages web</strong>.</p>
 <p>Dans cette quête nous verrons ce qu'est le HTML et comment l'utiliser efficacement pour créer tes premières pages web.</p>
-<h2>Sommaire</h2>
-<h2>Qu'est-ce que le HTML?</h2>
+<h2 id="t-sommaire">Sommaire</h2>
+<nav class="sommaire" aria-label="Sommaire de la quête"><ol class="sommaire__liste"><li><a href="#t-qu-est-ce-que-le-html">Qu'est-ce que le HTML?</a></li><li><a href="#t-imbriquer-des-elements">Imbriquer des éléments</a><ul><li><a href="#t-inline-vs-block">Inline vs block</a></li></ul></li><li><a href="#t-les-balises-auto-fermantes">Les balises "auto-fermantes"</a></li><li><a href="#t-les-attributs">Les attributs</a><ul><li><a href="#t-les-attributs-booleens">Les attributs booléens</a></li></ul></li><li><a href="#t-la-structure-d-un-document-html">La structure d'un document HTML</a><ul><li><a href="#t-liste-ordonnee-et-non-ordonnee">Liste ordonnée et non ordonnée</a></li><li><a href="#t-faire-des-liens-entre-les-documents">Faire des liens entre les documents</a></li></ul></li><li><a href="#t-ajouter-des-commentaires">Ajouter des commentaires</a></li><li><a href="#t-recapitulatif">Récapitulatif</a></li><li><a href="#t-challenge">Challenge</a><ul><li><a href="#t-criteres-de-validation">Critères de validation</a></li></ul></li></ol></nav>
+<h2 id="t-qu-est-ce-que-le-html">Qu'est-ce que le HTML?</h2>
 <p>Le HTML n'est pas un langage de programmation à proprement parler mais un language de <strong>balisage</strong>. Il permet de définir à l'aide de balises <strong>la structure</strong> d'une page web.</p>
 <p>Une page HTML se compose d'un certain nombre de <strong>balises</strong> qui permettent d'encadrer les éléments composant la page.</p>
 <p><img src="images/001-qu-est-ce-que-le-html.png" alt="" loading="lazy"></p>
@@ -51,7 +52,7 @@
 <p>Ouvre ton éditeur de code favori et crée un nouvel espace de travail. Crée ensuite un fichier <code>index.html</code> et ajoute un titre pour ton site web.</p>
 <p>Ouvre ensuite le fichier <code>index.html</code> dans ton navigateur pour voir le résultat.</p>
 </div></div>
-<h2>Imbriquer des éléments</h2>
+<h2 id="t-imbriquer-des-elements">Imbriquer des éléments</h2>
 <p>Les balises HTML peuvent contenir <strong>du texte</strong>, comme nous l'avons vu dans l'exemple précédent, mais aussi, <strong>d'autres balises</strong> !</p>
 <p>Par exemple, prenons la balise <code>&lt;p&gt;</code> qui permet de créer un paragraphe.</p>
 <p>Tu peux à l'intérieur d'un paragraphe donner de l'importance à une partie du texte en utilisant la balise <code>&lt;strong&gt;</code>.</p>
@@ -63,7 +64,7 @@
 <p>Ajoute une balise <code>&lt;p&gt;</code> dans ton <code>index.html</code> avec la description de ton site.</p>
 <p>Ajoute du texte important à l'intérieur de ton paragraphe.</p>
 </div></div>
-<h3>Inline vs block</h3>
+<h3 id="t-inline-vs-block">Inline vs block</h3>
 <p>Il y a deux catégories d'éléments en HTML : les éléments dits <strong>&quot;inline&quot; (en ligne)</strong> et les éléments de type <strong>&quot;block&quot;</strong>.</p>
 <p>Les balises <code>&lt;h1&gt;</code> et <code>&lt;p&gt;</code> sont des balises de type <code>block</code>, tandis que la balise <code>&lt;strong&gt;</code> est une balise de type <code>inline</code>.</p>
 <p>La différence est que <strong>les éléments de type blocks forment... un bloc sur la page</strong>. Cela veut dire que n'importe quel élément affiché à la suite d'un élément de type <code>block</code> sera automatiquement affiché sur la ligne suivante, l'élément bloc prend donc la <strong>totalité</strong> de la largeur de la page.</p>
@@ -76,7 +77,7 @@
 <p>Ajoute un texte sur lequel mettre de l'emphase dans le paragraphe que tu as crée précédemment : utilise pour ce nouveau texte la balise <code>&lt;em&gt;</code> (&quot;emphase&quot;).</p>
 <p>Tu peux constater que le titre <code>h2</code> va bien à la ligne tandis que le texte en emphase reste bien sur la même ligne que le reste du paragraphe.</p>
 </div></div>
-<h2>Les balises &quot;auto-fermantes&quot;</h2>
+<h2 id="t-les-balises-auto-fermantes">Les balises &quot;auto-fermantes&quot;</h2>
 <p>Certaines balises ne nécessitent pas d'avoir une balise fermante : ce sont des balises <strong>auto fermantes</strong>.</p>
 <p>C'est le cas, par exemple de la balise <code>&lt;img /&gt;</code>. C'est la balise que tu dois utiliser pour créer une image dans ton contenu HTML. Mais contrairement à ce que nous avons vu précédemment, tu n'inséreras rien entre deux balises.</p>
 <p>Tu dois donner à la balise image un attribut afin de spécifier l'url à laquelle se trouve ton image. Voyons plutôt :</p>
@@ -87,7 +88,7 @@
 <div class="encadre encadre--note encadre--arrow"><div class="encadre__corps"><p><strong>🎯 À toi de jouer !</strong></p>
 <p>Ajoute une image sur ta page web à l'aide de la balise <code>&lt;img /&gt;</code></p>
 </div></div>
-<h2>Les attributs</h2>
+<h2 id="t-les-attributs">Les attributs</h2>
 <p>Tu peux donner <strong>plusieurs attributs</strong> à un élément HTML. Par exemple, dans le cas des images, tu dois toujours t'assurer que l'image contient un attribut <code>alt</code> en plus de l'attribut <code>src</code>.</p>
 <p>L'attribut &quot;alt&quot; fournit un texte alternatif dans le cas où l'image ne pourrait pas être perçue (à cause d'une déficience visuelle, ou simplement à cause d'une mauvaise connexion internet). Tu peux ainsi fournir un élément lisible plutôt que du &quot;vide&quot;.</p>
 <p>Voyons un exemple :</p>
@@ -97,7 +98,7 @@
 <p>Ajoute un attribut <code>alt</code> à ton image avec une description.</p>
 <p>Tu peux aussi ajouter un attribut pour changer la largeur d'une image : l'attribut <code>width</code> dans lequel tu peux spécifier la largeur en pixel (px) (par exemple : &quot;300&quot;). Essaie de changer la largeur de l'image et regarde le résultat.</p>
 </div></div>
-<h3>Les attributs booléens</h3>
+<h3 id="t-les-attributs-booleens">Les attributs booléens</h3>
 <p>Certains attributs peuvent avoir une valeur de type booléens (true/false).</p>
 <p>Par exemple, tu peux désactiver un bouton tant que l'utilisateur n'a pas rempli un formulaire en utilisant l'attribut <code>disabled</code>.</p>
 <p>Par exemple :</p>
@@ -110,7 +111,7 @@
 <div class="encadre encadre--note encadre--arrow"><div class="encadre__corps"><p><strong>🎯 À toi de jouer !</strong></p>
 <p>Ajoute un bouton avec l'attribut &quot;disabled&quot; et observe le résultat dans ton navigateur.</p>
 </div></div>
-<h2>La structure d'un document HTML</h2>
+<h2 id="t-la-structure-d-un-document-html">La structure d'un document HTML</h2>
 <p>Jusqu'à maintenant, ton document HTML doit ressembler à quelque chose comme cela :</p>
 <div class="bloc-code"><div class="bloc-code__langue">html</div><pre><code class="hljs language-html"><span class="hljs-tag">&lt;<span class="hljs-name">h1</span>&gt;</span>Hello world!<span class="hljs-tag">&lt;/<span class="hljs-name">h1</span>&gt;</span>
 <span class="hljs-tag">&lt;<span class="hljs-name">h2</span>&gt;</span>Welcome here<span class="hljs-tag">&lt;/<span class="hljs-name">h2</span>&gt;</span>
@@ -164,7 +165,7 @@ Elle est utilisée pour définir l'encodage des caractères (ici UTF-8).</p>
 <p>Puis, pour t'exercer, crée un nouveau document que tu vas appeler <code>about.html</code>.</p>
 <p>Ensuite, crée la structure du document HTML et ajoute un titre (&quot;À propos&quot;) pour cette page. Tu peux laisser libre cours à ton imagination quant au contenu de ta page &quot;À propos&quot;.</p>
 </div></div>
-<h3>Liste ordonnée et non ordonnée</h3>
+<h3 id="t-liste-ordonnee-et-non-ordonnee">Liste ordonnée et non ordonnée</h3>
 <p>Sur notre nouvelle page &quot;À propos&quot;, tu peux ajouter la liste de tes compétences.</p>
 <p>Il existe deux types de liste en HTML :</p>
 <ul>
@@ -192,7 +193,7 @@ Elle est utilisée pour définir l'encodage des caractères (ici UTF-8).</p>
 <div class="encadre encadre--note encadre--arrow"><div class="encadre__corps"><p><strong>🎯 À toi de jouer !</strong></p>
 <p>Ajoute une liste non ordonnée avec tes skills, puis une liste ordonnée avec tes 3 plats favoris.</p>
 </div></div>
-<h3>Faire des liens entre les documents</h3>
+<h3 id="t-faire-des-liens-entre-les-documents">Faire des liens entre les documents</h3>
 <p>Maintenant que nous avons deux pages HTML (notre page d'accueil et la page à propos) il est temps de relier les deux pages entre elles.</p>
 <p>Pour cela tu peux utiliser la balise <code>&lt;a&gt;</code> (<strong>a</strong>nchor). Cette balise te permet de spécifier le lien grâce à l'attribut <code>href</code> avec une URL.</p>
 <p>Entre les balises <code>&lt;a href=&quot;...&quot;&gt;</code> et <code>&lt;/a&gt;</code>, tu peux ajouter du texte ou d'autres balises :</p>
@@ -202,7 +203,7 @@ Elle est utilisée pour définir l'encodage des caractères (ici UTF-8).</p>
 <div class="encadre encadre--note encadre--arrow"><div class="encadre__corps"><p><strong>🎯 À toi de jouer !</strong></p>
 <p>Ajoute un lien en bas de la page <code>about.html</code> redirigeant vers la page d'accueil et un lien sur <code>index.html</code> redirigeant vers la page <code>À propos</code>.</p>
 </div></div>
-<h2>Ajouter des commentaires</h2>
+<h2 id="t-ajouter-des-commentaires">Ajouter des commentaires</h2>
 <p>Tu peux commenter ton document HTML. Les commentaires permettent de mettre des notes sur ton code pour en expliquer les mécanismes ou faciliter la lecture.</p>
 <p>Les commentaires ne seront pas visibles sur la page web, mais ils seront consultables lors de la lecture du code.</p>
 <p>Voici comment écrire un commentaire en HTML :</p>
@@ -216,7 +217,7 @@ Elle est utilisée pour définir l'encodage des caractères (ici UTF-8).</p>
 <span class="hljs-tag">&lt;/<span class="hljs-name">head</span>&gt;</span>
 </code></pre></div>
 </div></div>
-<h2>Récapitulatif</h2>
+<h2 id="t-recapitulatif">Récapitulatif</h2>
 <ul>
 <li>
 <p>Le HTML5 est un langage de balisage utilisé pour créer des pages web. Il est interprété par notre navigateur pour afficher le contenu des pages.</p>
@@ -234,9 +235,9 @@ Elle est utilisée pour définir l'encodage des caractères (ici UTF-8).</p>
 <p>Un document HTML se compose toujours d'une partie <code>&lt;head&gt;</code> contenant des métadonnées <strong>non affichées</strong> sur la page web et d'une partie <code>&lt;body&gt;</code> contenant le corps du document.</p>
 </li>
 </ul>
-<h2>Challenge</h2>
+<h2 id="t-challenge">Challenge</h2>
 <p>Mets en forme le travail que tu as réalisé durant cette quête et compare le résultat avec la solution qui est proposée !</p>
-<h3>Critères de validation</h3>
+<h3 id="t-criteres-de-validation">Critères de validation</h3>
 <ul>
 <li>[ ] Les deux pages HTML respectent bien la structure des documents HTML</li>
 <li>[ ] Les deux pages HTML contiennent un titre (<code>&lt;title&gt;</code>) explicite</li>
@@ -323,7 +324,5 @@ Elle est utilisée pour définir l'encodage des caractères (ici UTF-8).</p>
   <p>Archive personnelle des cours suivis à la Wild Code School. Copie hors ligne à usage strictement privé.</p>
 </footer>
 
-<script src="../../assets/copie-code.js"></script>
-<script src="../../assets/progression.js"></script>
 </body>
 </html>

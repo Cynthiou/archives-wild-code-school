@@ -20,20 +20,21 @@
     <p class="quete__meta">Quête 3 sur 11 · 5 images archivées</p>
   </header>
   <div class="cours">
-<h2>Objectifs</h2>
+<h2 id="t-objectifs">Objectifs</h2>
 <ul>
 <li><strong>Stocker des informations</strong> dans la mémoire de ton ordinateur en utilisant des <strong>variables</strong>.</li>
 <li>Comprendre les différents types de variables.</li>
 </ul>
-<h2>Pré-requis</h2>
+<h2 id="t-pre-requis">Pré-requis</h2>
 <p>Avoir validé les quêtes suivantes :</p>
 <div class="renvois"><div class="renvois__titre">Quêtes liées</div><ul><li><a href="../../javascript/001-js-basics-01-qu-est-ce-que-javascript/index.html">Quête 1262</a></li><li><a href="../../javascript/002-js-basics-02-syntaxe-et-concepts-de-base/index.html">Quête 1267</a></li></ul></div>
-<h2>Introduction</h2>
+<h2 id="t-introduction">Introduction</h2>
 <p>Dans les précédentes quêtes, tu <strong>as découvert ce qu'était Javascript et ce à quoi la syntaxe ressemble</strong>. Maintenant. il est temps d'apprendre comment on peut <strong>stocker des informations</strong> dans la <strong>mémoire de l'ordinateur</strong> en utilisant les <strong>variables</strong> !
 C'est parti !</p>
 <p><img src="images/001-ram.webp" alt="RAM" loading="lazy"></p>
-<h2>Sommaire</h2>
-<h2>Une vaquoi ?</h2>
+<h2 id="t-sommaire">Sommaire</h2>
+<nav class="sommaire" aria-label="Sommaire de la quête"><ol class="sommaire__liste"><li><a href="#t-une-vaquoi">Une vaquoi ?</a></li><li><a href="#t-nommer-une-variable">Nommer une variable</a></li><li><a href="#t-assigner-une-nouvelle-valeur-a-une-variable">Assigner une nouvelle valeur à une variable</a></li><li><a href="#t-differents-types-de-variables">Différents types de variables</a><ul><li><a href="#t-let">Let</a></li><li><a href="#t-const">Const</a></li></ul></li><li><a href="#t-operateurs-d-increment">Opérateurs d'incrément</a></li><li><a href="#t-resume">Résumé</a></li><li><a href="#t-challenge">Challenge</a><ul><li><a href="#t-criteres-d-acceptation">Critères d'acceptation</a></li></ul></li></ol></nav>
+<h2 id="t-une-vaquoi">Une vaquoi ?</h2>
 <p><strong>Les variables permettent d'allouer un espace dans la mémoire vive, où on peut y stocker des données</strong>.
 Pour créer une variable, on va utiliser le <strong>mot-clé</strong> <code>let</code>, suivi du nom de la variable, puis du symbole <code>=</code> et enfin de la valeur que l'on souhaite lui assigner.</p>
 <div class="bloc-code"><div class="bloc-code__langue">javascript</div><pre><code class="hljs language-javascript"><span class="hljs-keyword">let</span> myName = <span class="hljs-string">&quot;Bob&quot;</span>;
@@ -53,7 +54,7 @@ On peut assigner à une variable, n'importe quel type de donnée ! String, Numbe
   <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(<span class="hljs-string">&quot;My name is Bob!&quot;</span>)
 };
 </code></pre></div>
-<h2>Nommer une variable</h2>
+<h2 id="t-nommer-une-variable">Nommer une variable</h2>
 <p>En JavaScript (et dans n'importe quel langage de programmation..!), on va chercher à nommer nos variables de la façon <strong>la plus claire possible</strong>. Ça ne va pas casser ton code, mais souviens-toi de ce qu'on disait dans les quêtes précédentes, on cherche à rendre notre code le <strong>plus lisible possible</strong> !</p>
 <div class="bloc-code"><div class="bloc-code__langue">javascript</div><pre><code class="hljs language-javascript"><span class="hljs-keyword">let</span> a = <span class="hljs-string">&quot;Bob&quot;</span>; <span class="hljs-comment">// ❌ Bad !</span>
 <span class="hljs-keyword">let</span> myName = <span class="hljs-string">&quot;Bob&quot;</span>; <span class="hljs-comment">// ✅ Good !</span>
@@ -69,7 +70,7 @@ let apple1;  ✅ good</p>
 <span class="hljs-keyword">let</span> userAge = <span class="hljs-number">26</span>;
 <span class="hljs-keyword">let</span> isLoggedIn = <span class="hljs-literal">false</span>;
 </code></pre></div>
-<h2>Assigner une nouvelle valeur à une variable</h2>
+<h2 id="t-assigner-une-nouvelle-valeur-a-une-variable">Assigner une nouvelle valeur à une variable</h2>
 <p>Il est possible de réassigner <strong>une nouvelle valeur à une variable</strong> après sa création.
 Par exemple, on peut réassigner à la variable <code>myName</code> une nouvelle valeur comme ceci:</p>
 <div class="bloc-code"><div class="bloc-code__langue">javascript</div><pre><code class="hljs language-javascript"><span class="hljs-keyword">let</span> myName = <span class="hljs-string">&quot;Bob&quot;</span>;
@@ -88,7 +89,7 @@ myName = <span class="hljs-string">&quot;Paul&quot;</span>;
 <p><strong>🔬 Fais une expérience</strong></p>
 <p>Ouvre la console Javascript de ton navigateur. Essaie de créer la variable <code>myName</code> et de lui assigner une chaîne de caractères avec ton nom, en utilisant le mot-clé <code>let</code>.</p>
 <p>Ensuite, assignes lui une nouvelle valeur.</p>
-<h2>Différents types de variables</h2>
+<h2 id="t-differents-types-de-variables">Différents types de variables</h2>
 <p><img src="images/004-floppies.png" alt="Floppies" loading="lazy">
 En JavaScript, <strong>il y a différents types de variables</strong>. Historiquement, il n'était possible de créer une variable qu'avec <code>var</code>. Mais <strong>depuis quelques années</strong> (on te laisse chercher depuis quand !), <strong>deux autres types de variables sont devenus les standards</strong>.
 Ils sont:</p>
@@ -97,14 +98,14 @@ Ils sont:</p>
 <li><code>let</code></li>
 </ul>
 <p>Tu devrais considérer le mot-clé <code>var</code> comme obsolète et éviter de l'utiliser.</p>
-<h3>Let</h3>
+<h3 id="t-let">Let</h3>
 <p><code>let</code> représente une variable que <strong>l'on peut ré-assigner</strong>.</p>
 <div class="bloc-code"><div class="bloc-code__langue">javascript</div><pre><code class="hljs language-javascript"><span class="hljs-keyword">let</span> myCity = <span class="hljs-string">&quot;Paris&quot;</span>;
 myCity = <span class="hljs-string">&quot;Berlin&quot;</span>;
 <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(myCity);
 <span class="hljs-comment">// Berlin</span>
 </code></pre></div>
-<h3>Const</h3>
+<h3 id="t-const">Const</h3>
 <p><code>const</code> représente une variable que l'on <strong>ne peut pas</strong> ré-assigner.
 Tu <strong>dois</strong> l'utiliser dès que tu sais que la variable ne doit pas être réassignée.</p>
 <p>Préfères utiliser <code>const</code> si tu as un doute.</p>
@@ -116,7 +117,7 @@ myName = <span class="hljs-string">&quot;John&quot;</span>;
 <p><strong>🔬 Fais une expérience</strong></p>
 <p>Ouvres la console de ton navigateur, et essaie de créer quelques variables en utilisant <code>const</code> et <code>let</code>.</p>
 <p><img src="https://media1.tenor.com/images/a06d2dfc9e6a651eaa133e7810b7578b/tenor.gif?itemid=16024432" alt="" loading="lazy"></p>
-<h2>Opérateurs d'incrément</h2>
+<h2 id="t-operateurs-d-increment">Opérateurs d'incrément</h2>
 <p>En JavaScript, tu peux utiliser différents opérateurs pour incrémenter une variable :</p>
 <ul>
 <li>l'opérateur d'incrément <code>++</code> pour augmenter la valeur de un : c'est un raccourci pour <code>+= 1</code> 👇</li>
@@ -149,7 +150,7 @@ hello += <span class="hljs-string">&quot;, World!&quot;</span>;
 <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(hello);
 <span class="hljs-comment">//  &quot;Hello, World!&quot;</span>
 </code></pre></div>
-<h2>Résumé</h2>
+<h2 id="t-resume">Résumé</h2>
 <ul>
 <li>En Javascript, on peut créer des variables qui pointent vers des valeurs.</li>
 <li>Il y a trois façons de créer des variables en JS
@@ -187,7 +188,7 @@ hello += <span class="hljs-string">&quot;, World!&quot;</span>;
 [x] currentYear += 1; 
 [] const newYear = currentYear+++;
 </code></pre></div>
-<h2>Challenge</h2>
+<h2 id="t-challenge">Challenge</h2>
 <p><img src="images/006-image.png" alt="image" loading="lazy"></p>
 <p>Dans ce défi rapide, tu devras renommer <strong>précautionneusement</strong> toutes les variables et choisir le bon mot-clé (let/const) pour effectuer les déclarations.</p>
 <p>Corrige ce code et poste ta version comme solution à ce défi quand tu as fini.</p>
@@ -214,7 +215,7 @@ following = <span class="hljs-number">200</span>; <span class="hljs-comment">// 
 
 <span class="hljs-comment">// 🏁 Exercise 02 - David is following one more account increment the total of following account</span>
 </code></pre></div>
-<h3>Critères d'acceptation</h3>
+<h3 id="t-criteres-d-acceptation">Critères d'acceptation</h3>
 <ul>
 <li>[ ] Les noms des variables sont clairs et compréhensibles</li>
 <li>[ ] Le nombre de &quot;following&quot; a été incrémenté en utilisant la bonne méthode</li>
@@ -244,7 +245,5 @@ following = <span class="hljs-number">200</span>; <span class="hljs-comment">// 
   <p>Archive personnelle des cours suivis à la Wild Code School. Copie hors ligne à usage strictement privé.</p>
 </footer>
 
-<script src="../../assets/copie-code.js"></script>
-<script src="../../assets/progression.js"></script>
 </body>
 </html>

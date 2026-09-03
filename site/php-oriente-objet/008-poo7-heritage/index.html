@@ -27,7 +27,7 @@
 <div class="encadre encadre--story"><div class="encadre__titre">Le récit</div><div class="encadre__corps"><p>Il est temps de passer à la branche <strong>poo7</strong> de ton Wild zoo. Dans cette quête, tu vas découvrir le concept d'héritage, très important en programmation orientée objet pour limiter la duplication du code et simplifier son évolution. Nous allons l'appliquer ici à la classification des animaux de ton zoo.</p>
 <p><img src="images/001-image.png" alt="image" loading="lazy"></p>
 </div></div>
-<h2>🤓 À la fin de cette quête, tu seras capable de :</h2>
+<h2 id="t-a-la-fin-de-cette-quete-tu-seras-capable-de">🤓 À la fin de cette quête, tu seras capable de :</h2>
 <ul>
 <li>✅ Comprendre le concept d'héritage</li>
 <li>✅ Créer et utiliser des classes filles</li>
@@ -136,7 +136,7 @@ Quelques règles à savoir :</p>
 <div class="bloc-code"><div class="bloc-code__langue">php</div><pre><code class="hljs language-php"><span class="hljs-variable">$lion</span> = <span class="hljs-keyword">new</span> <span class="hljs-title class_">Mammal</span>(<span class="hljs-string">&#x27;lion&#x27;</span>, <span class="hljs-number">4</span>);
 </code></pre></div>
 <p>Sur l'interface web, tu verras qu'une nouvelle indication apparaît en haut à droite de chaque animal. Elle t'indique les relations d'héritage de ton animal. Au niveau du lion, tu dois avoir <strong>Animal</strong> et <strong>Mammal</strong>, avec une flèche entre les deux symbolisant l'héritage.</p>
-<h2>Constructeur</h2>
+<h2 id="t-constructeur">Constructeur</h2>
 <p>Il est intéressant d'utiliser l'héritage si la classe fille possède une ou plusieurs caractéristiques plus spécifiques que la classe mère (qui doit être plus généraliste). Ici cela se traduit par exemple par le nombre de pattes qui est différent pour chaque classe fille. Pour modifier une propriété, tu es obligé de la réécrire dans la fille (par exemple <code>$pawNumber</code>). Les autres propriétés que tu ne réécris pas sont héritées automatiquement avec la même valeur que dans la classe mère. Tu peux en profiter pour changer la valeur par défaut des propriétés, ce qui nous arrange ici car nous partons du principe que tous les mammifères ont 4 pattes, tous les oiseaux 2 pattes, les poissons zéro, <em>etc.</em></p>
 <div class="bloc-code"><div class="bloc-code__langue">php</div><pre><code class="hljs language-php"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Mammal</span> <span class="hljs-keyword">extends</span> <span class="hljs-title">Animal</span>
 </span>{
@@ -154,7 +154,7 @@ Une classe fille hérite de toutes les méthodes de sa mère, <strong>constructe
 <div class="bloc-code"><div class="bloc-code__langue">php</div><pre><code class="hljs language-php"><span class="hljs-variable">$lion</span> = <span class="hljs-keyword">new</span> <span class="hljs-title class_">Mammal</span>(<span class="hljs-string">&#x27;lion&#x27;</span>);
 </code></pre></div>
 <p>Dans l'interface, tu vois que le nombre de patte du lion est toujours de 4 !</p>
-<h2>Protected</h2>
+<h2 id="t-protected">Protected</h2>
 <p>Dans une fille, tu peux ajouter de nouvelles propriétés et méthodes, mais également <strong>modifier le comportement</strong> par rapport à la mère.
 Pour les mammifères, tu veux que le texte de la méthode <code>speak()</code> soit un peu plus personnalisé, et change en &quot;Bienvenue humain, moi aussi je suis un mammifère et mon nom est <nom>&quot;.</p>
 <p>🖥️ Cela semble facile, il suffit de reprendre le code dans la classe <strong>Mammal</strong> pour le modifier.
@@ -192,7 +192,7 @@ Pourquoi, alors que tu as bien spécifié que <code>$carnivorous</code> valait &
 <li>L'éléphant et le lion utilisent tout deux la nouvelle phrase propre aux mammifères uniquement, contrairement au perroquet.
 Sur l'interface, tu dois voir le petit schéma des relations se mettre à jour.</li>
 </ul>
-<h2>Final</h2>
+<h2 id="t-final">Final</h2>
 <p><img src="images/002-image.png" alt="image" loading="lazy"></p>
 <p>Sur ce schéma issue de <a href="https://en.wikipedia.org/wiki/Mammal" target="_blank" rel="noopener noreferrer">Wikipédia</a> tu vois que la classification pour les mammifères est très complexe, et il y a une quinzaines d'embranchements avant d'arriver jusqu'aux félins. Il n'y a pas vraiment d'utilité de créer 15 classes entre <strong>Mammal</strong> et <strong>Felid</strong>, pour lesquelles les différences ne sont pas forcément pertinentes du point de vue d'un zoo. Il faut donc choisir le niveau de détail pertinent au problème. De même, il faut choisir jusqu'à quel niveau de précision l'on souhaite aller. Faut-il s’arrêter au <strong>Felid</strong>, où faut-il créer des classes filles pour les sous-types de félins ? Faut-il créer une classe pour chaque espèces ? Tous ces choix peuvent être pertinents, encore une fois c'est une question de logique métier. Le but pour le zoo est-il d'avoir une fiche d'identité pour chaque type animal (dans ce cas s'arrêter au <strong>Felid</strong>) et instancier un objet par espèce (lion, tigre, panthère...) est suffisant. Si l'objectif est par contre de recenser chaque animal du zoo, pousser jusqu'à l'espèce devient pertinent. En effet, il y aura plusieurs lions avec chacun un age, un genre, une taille différente...
 Nous allons faire le choix de rester au point du vue de la description d'une espèce dans sa globalité, donc nous allons nous arrêter au <strong>Felid</strong> qui semble un niveau de détail suffisant.</p>
@@ -208,7 +208,7 @@ Nous allons faire le choix de rester au point du vue de la description d'une esp
 </div></div>
 <p>Supprime la classe <strong>Lion</strong> et enlève le require.
 Actualise, le message d'erreur disparaît. Sur le schéma d'héritage du Lion, un 🚫 est apparue à côté de <strong>Felid</strong> pour spécifier que la classe n'est plus héritable.</p>
-<h2>Typage</h2>
+<h2 id="t-typage">Typage</h2>
 <p>Si on se place sur la classe <strong>Area</strong> cette fois, la méthode <code>addAmimal()</code> prend en paramètre un objet de type <strong>Animal</strong>. Or, ton lion dans la savane est de type Mammal maintenant ? Pourtant il n'y a pas d'erreur... C'est dû au fait qu'une classe fille hérite également de tous les types de ses ancêtres, ce qui te permet de typer dans une méthode avec un type générique (ici l'Animal) sans te soucier si l'objet passé sera de type <strong>Animal</strong> où l'un de ses descendant <strong>Mammal</strong>, <strong>Bird</strong>, <strong>Feline</strong>, etc. C'est le concept de <strong>polymorphisme</strong> en programmation orientée objet.</p>
 <h1>Challenge</h1>
 <ul>
@@ -250,7 +250,7 @@ Actualise, le message d'erreur disparaît. Sur le schéma d'héritage du Lion, u
 </blockquote>
 <p>Poste une capture d'écran de ton interface une fois les 10 animaux instanciés, l'encadré sur les classes parentes pour chaque animal, doit refléter les instructions ci-dessus.</p>
 <p>✨ <strong>Remarque :</strong> pour gagner du temps, tu n'es pas obligé de mettre les animaux dans les bonnes zones et de spécifier les tailles et niveaux de menace.</p>
-<h2>Validation</h2>
+<h2 id="t-validation">Validation</h2>
 <ul>
 <li>La capture contient bien les 10 animaux (éléphant, lion, tigre, zèbre, perroquet, alligator, python, scorpion, tarentule, abeille)</li>
 <li>Chacun hérite d'au moins une classe (pour l'éléphant et le perroquet), au plus de 3 autres classes (pour la tarentule)</li>
@@ -340,7 +340,5 @@ Actualise, le message d'erreur disparaît. Sur le schéma d'héritage du Lion, u
   <p>Archive personnelle des cours suivis à la Wild Code School. Copie hors ligne à usage strictement privé.</p>
 </footer>
 
-<script src="../../assets/copie-code.js"></script>
-<script src="../../assets/progression.js"></script>
 </body>
 </html>

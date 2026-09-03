@@ -30,8 +30,9 @@ Cela va se passer côté serveur avec PHP.</p>
 <li>✅ Récupérer ces données et les utiliser dans le contexte voulu</li>
 <li>✅ Afficher les données et mettre en place une protection contre les injections XSS (Cross-site scripting)</li>
 </ul>
-<h2>Sommaire</h2>
-<h2>Mise en place</h2>
+<h2 id="t-sommaire">Sommaire</h2>
+<nav class="sommaire" aria-label="Sommaire de la quête"><ol class="sommaire__liste"><li><a href="#t-mise-en-place">Mise en place</a></li><li><a href="#t-envoi-des-donnees-l-attribut-action">Envoi des données : l'attribut action</a></li><li><a href="#t-verbe-http-l-attribut-method">Verbe HTTP : l'attribut method</a><ul><li><a href="#t-la-methode-get">La méthode GET</a></li><li><a href="#t-la-methode-post">La méthode POST</a></li></ul></li><li><a href="#t-recuperation-des-donnees">Récupération des données</a><ul><li><a href="#t-get">GET</a></li><li><a href="#t-post">POST</a></li><li><a href="#t-aller-plus-loin">Aller plus loin</a></li></ul></li><li><a href="#t-traitement-des-donnees">Traitement des données</a></li><li><a href="#t-failles-xss-cross-site-scripting">Failles XSS : Cross-site scripting</a><ul><li><a href="#t-experience">🔬 Expérience</a></li><li><a href="#t-protection-en-php-htmlentities">Protection en PHP : htmlentities()</a></li></ul></li><li><a href="#t-exercice">🎯 Exercice</a></li></ol></nav>
+<h2 id="t-mise-en-place">Mise en place</h2>
 <p>Reprenons l'exemple donné à la fin de la quête traitant de la structure HTML d'un formulaire.</p>
 <div class="renvois"><div class="renvois__titre">Quêtes liées</div><ul><li><a href="../../php-avance/001-1-les-formulaires-en-php-structure-html/index.html">Quête 2943</a></li></ul></div>
 <p>À peu de choses près, voici ce que nous avions :</p>
@@ -46,13 +47,13 @@ Cela va se passer côté serveur avec PHP.</p>
 <span class="hljs-tag">&lt;/<span class="hljs-name">form</span>&gt;</span>
 </code></pre></div>
 <p>Parlons plus en détail des attributs <code>action</code>, <code>method</code> et de ce fameux <code>name</code> placé sur les champs du formulaire.</p>
-<h2>Envoi des données : l'attribut <em>action</em></h2>
+<h2 id="t-envoi-des-donnees-l-attribut-action">Envoi des données : l'attribut <em>action</em></h2>
 <p>Lorsque l'utilisateur soumet le formulaire, une <strong>requête HTTP</strong> est créée.</p>
 <p>Elle a pour destination le fichier défini dans l'attribut <code>action</code> de ta balise <code>&lt;form&gt;</code> et elle contient toutes les données saisies par l'utilisateur.</p>
 <p>Dans notre exemple, la redirection se fera donc vers le fichier se trouvant à l'adresse <strong>treatment.php</strong></p>
 <div class="encadre encadre--info"><div class="encadre__titre">Info</div><div class="encadre__corps"><p>Si jamais l'attribut <code>action</code> est vide ou non présent, alors la redirection se fera vers l'adresse courante, c'est-à-dire sur la même page que celle affichée dans le navigateur au moment de la soumission.</p>
 </div></div>
-<h2>Verbe HTTP : l'attribut <em>method</em></h2>
+<h2 id="t-verbe-http-l-attribut-method">Verbe HTTP : l'attribut <em>method</em></h2>
 <p>Pour un formulaire HTML, il existe deux méthodes de transmission de données : <strong>GET</strong> et <strong>POST</strong>. Nous l'avons évoqué dans une précédente quête, pour choisir l'une ou ou l'autre de ces deux méthodes, il faut utiliser l'attribut <code>method</code> de ta balise <code>form</code>.</p>
 <div class="bloc-code"><div class="bloc-code__langue">html</div><pre><code class="hljs language-html">  <span class="hljs-tag">&lt;<span class="hljs-name">form</span> <span class="hljs-attr">method</span>=<span class="hljs-string">&quot;post&quot;</span> <span class="hljs-attr">action</span>=<span class="hljs-string">&quot;treatment.php&quot;</span>&gt;</span>
 </code></pre></div>
@@ -60,7 +61,7 @@ Cela va se passer côté serveur avec PHP.</p>
 <div class="bloc-code"><div class="bloc-code__langue">html</div><pre><code class="hljs language-html">  <span class="hljs-tag">&lt;<span class="hljs-name">form</span> <span class="hljs-attr">method</span>=<span class="hljs-string">&quot;get&quot;</span> <span class="hljs-attr">action</span>=<span class="hljs-string">&quot;treatment.php&quot;</span>&gt;</span>
 </code></pre></div>
 <p>Quelle différence y a-t-il entre ces deux méthodes ?</p>
-<h3>La méthode GET</h3>
+<h3 id="t-la-methode-get">La méthode GET</h3>
 <ul>
 <li>Utilisée pour envoyer les données via l'URL.</li>
 <li>Les données sont visibles dans la barre d'adresse du navigateur.</li>
@@ -78,7 +79,7 @@ Cela va se passer côté serveur avec PHP.</p>
 <div class="encadre encadre--info"><div class="encadre__titre">Info</div><div class="encadre__corps"><p>Dernier point de détail, où est passé le <code>@</code> de l'adresse mail ?!?
 Il a été remplacé par <code>%40</code>. À l'origine, il n'est pas prévu qu'une URL comporte des caractères spéciaux. Certains caractères sont donc substitués par leur version encodée. C'est ainsi que les espaces, eux, sont remplacés par <code>%20</code> par la plupart des navigateurs. Ou par le signe &quot;+&quot; dans le cas de firefox. (Le signe &quot;plus&quot;, étant lui même remplacé par <code>%2</code> )</p>
 </div></div>
-<h3>La méthode POST</h3>
+<h3 id="t-la-methode-post">La méthode POST</h3>
 <ul>
 <li>Les données sont envoyées de manière invisible (dans le corps de la requête HTTP) et ne sont pas affichées dans l'URL.</li>
 <li>Adaptée pour des actions plus sensibles (formulaire d'inscription ou de connexion par exemple).
@@ -95,7 +96,7 @@ Si tu cliques sur la ligne <em>treatment.php</em> après avoir soumis le formula
 <p><img src="images/001-onglet-payload-de-l-inspecteur-avec-une-requete.png" alt="Onglet Payload de l'inspecteur avec une requête POST" loading="lazy"></p>
 <p>Bon, très bien, tu sais par où ça passe à présent et tu perçois un peu mieux la différence entre ces deux méthodes..</p>
 <p>Regardons à présent comment récupérer les données côté serveur.</p>
-<h2>Récupération des données</h2>
+<h2 id="t-recuperation-des-donnees">Récupération des données</h2>
 <p>À la réception de la <strong>requête HTTP</strong>, PHP va prendre ces données et les mettre dans des &quot;boîtes&quot; que tu vas pouvoir utiliser.
 En voici quelques-unes :</p>
 <ul>
@@ -116,7 +117,7 @@ Les <strong>superglobales</strong> sont des <strong>variables prédéfinies</str
   </div>
 </a>
 <p>Le point commun à toutes ces <strong>superglobale</strong> est leur type. Elles sont en effet toutes de type <em><strong>array</strong></em>, ce sont des tableaux.</p>
-<h3>GET</h3>
+<h3 id="t-get">GET</h3>
 <p>Pour récupérer les valeurs d'une requête HTTP envoyées avec une méthode <strong>GET</strong>, tu pourras par exemple utiliser la <strong>superglobale</strong> <code>$_GET</code> et parcourir ses index qui correspondent aux valeurs des attributs <code>name</code> des champs du formulaire.</p>
 <div class="bloc-code"><div class="bloc-code__langue">html</div><pre><code class="hljs language-html"><span class="hljs-comment">&lt;!-- index.html --&gt;</span>
 <span class="hljs-tag">&lt;<span class="hljs-name">input</span> <span class="hljs-attr">...</span> <span class="hljs-attr">name</span>=<span class="hljs-string">&quot;firstname&quot;</span>&gt;</span>
@@ -137,7 +138,7 @@ Les <strong>superglobales</strong> sont des <strong>variables prédéfinies</str
 <div class="bloc-code"><div class="bloc-code__langue">html</div><pre><code class="hljs language-html"><span class="hljs-tag">&lt;<span class="hljs-name">a</span> <span class="hljs-attr">href</span>=<span class="hljs-string">&quot;page.php?nom=John&amp;age=25&quot;</span>&gt;</span>Cliquez ici<span class="hljs-tag">&lt;/<span class="hljs-name">a</span>&gt;</span>
 </code></pre></div>
 </div></div>
-<h3>POST</h3>
+<h3 id="t-post">POST</h3>
 <p>Le formulaire a été soumis avec la méthode <strong>POST</strong> ?
 Aucun problème, cela fonctionne exactement pareil.
 Tu vas pouvoir récupérer les données grâce a la <strong>superglobale</strong> <code>$_POST</code> qui est donc aussi un tableau.</p>
@@ -161,7 +162,7 @@ Tu vas pouvoir récupérer les données grâce a la <strong>superglobale</strong
 <li>Utilise GET dans les autres cas, tels que les formulaires de recherche principalement.</li>
 </ul>
 </div></div>
-<h3>Aller plus loin</h3>
+<h3 id="t-aller-plus-loin">Aller plus loin</h3>
 <p>La requête HTTP est au cœur des préoccupations quotidiennes du développeur web.
 Découvre plus en détail les règles et les contraintes de ce protocole applicatif en consultant la ressource ci-dessous.</p>
 <div class="renvois"><div class="renvois__titre">Quêtes liées</div><ul><li>Quête 102 <span class="muet">(hors archive)</span></li></ul></div>
@@ -174,7 +175,7 @@ Découvre plus en détail les règles et les contraintes de ce protocole applica
     <div class="ressource__hote">w3schools.com</div>
   </div>
 </a>
-<h2>Traitement des données</h2>
+<h2 id="t-traitement-des-donnees">Traitement des données</h2>
 <p>Maintenant que nous avons récupéré nos données à l'endroit qui nous intéresse, qu'allons-nous en faire ?
 Cela va dépendre de ta logique métier et de l'utilisation de ton application web.
 Tu vas pouvoir les afficher, les manipuler, les stocker en BDD, les transférer par mail, etc.</p>
@@ -187,10 +188,10 @@ Tu vas pouvoir les afficher, les manipuler, les stocker en BDD, les transférer 
 Oui.
 Enfin presque.
 Nous verrons plus détail la manipulation, la sécurisation et la persistance des données dans une autre quête. Mais pour le moment, attardons-nous un instant sur une première faille de sécurité : les injections de scripts (XSS).</p>
-<h2>Failles XSS : Cross-site scripting</h2>
+<h2 id="t-failles-xss-cross-site-scripting">Failles XSS : Cross-site scripting</h2>
 <p>Les attaques XSS (Cross-Site Scripting) sont l'une des vulnérabilités les plus courantes sur le web. Elles surviennent lorsque des données non fiables sont insérées dans une page web sans être correctement échappées ou filtrées, permettant ainsi à un attaquant d'injecter et d'exécuter du code JavaScript malveillant côté client.
 Cela peut entraîner le vol de sessions utilisateur, la redirection vers des sites frauduleux, même la compromission du compte utilisateur ou toute autre modification de l'interface et de l'expérience utilisateur.</p>
-<h3>🔬 Expérience</h3>
+<h3 id="t-experience">🔬 Expérience</h3>
 <p>Avec ton navigateur, accède à la page contenant ton formulaire et insère ce code dans le champ <strong>Prénom</strong> :</p>
 <div class="bloc-code"><div class="bloc-code__langue">js</div><pre><code class="hljs language-js">&lt;script&gt;<span class="hljs-title function_">alert</span>(<span class="hljs-string">&#x27;Coucou, vous avez été piraté !&#x27;</span>)&lt;/script&gt;
 </code></pre></div>
@@ -199,7 +200,7 @@ Cela peut entraîner le vol de sessions utilisateur, la redirection vers des sit
 <img src="images/002-xss.png" alt="XSS" loading="lazy">
 Eh oui, le script est exécuté.
 Imagine les conséquences s'il s'agit d'un message enregistré en BDD (comme un commentaire de forum par exemple) puis affiché à tous les utilisateurs. L'utilisateur malveillant pourrait laisser libre court à toute sa créativité pour prendre le contrôle de l'interface grâce à cette formidable porte d'entrée.</p>
-<h3>Protection en PHP : htmlentities()</h3>
+<h3 id="t-protection-en-php-htmlentities">Protection en PHP : htmlentities()</h3>
 <p>Un bon moyen de se protéger est traduire tous les caractères utilisés pour générer du code HTML comme les chevrons <code>&lt;</code> et <code>&gt;</code>. Il existe une fonction PHP pour ça : <a href="https://www.php.net/manual/fr/function.htmlentities.php" target="_blank" rel="noopener noreferrer">htmlentities()</a>.</p>
 <p>En utilisant cette fonction partout où tu affiches des données provenant d'un utilisateur, tu protèges ton application, et donc tes utilisateurs, des injections XSS.
 Voici ce que cela donne :</p>
@@ -207,7 +208,7 @@ Voici ce que cela donne :</p>
 &lt;!-- ou avec la syntaxe courte de la fonction <span class="hljs-keyword">echo</span>() --&gt;
 &lt;p&gt;Bonjour <span class="hljs-meta">&lt;?=</span><span class="hljs-title function_ invoke__">htmlentities</span>(<span class="hljs-variable">$_POST</span>[<span class="hljs-string">&#x27;firstname&#x27;</span>])<span class="hljs-meta">?&gt;</span> !&lt;/p&gt;
 </code></pre></div>
-<h2>🎯 Exercice</h2>
+<h2 id="t-exercice">🎯 Exercice</h2>
 <p>Reprenons notre exemple précédent et affichons un message à l'utilisateur suite à la soumission du formulaire.</p>
 <ul>
 <li>Crée un fichier <code>index.html</code> qui contient un formulaire permettant à l'utilisateur de saisir les données suivantes :
@@ -292,7 +293,5 @@ Pour gérer l'<strong>objet du message</strong>, tu peux utiliser des champs <co
   <p>Archive personnelle des cours suivis à la Wild Code School. Copie hors ligne à usage strictement privé.</p>
 </footer>
 
-<script src="../../assets/copie-code.js"></script>
-<script src="../../assets/progression.js"></script>
 </body>
 </html>

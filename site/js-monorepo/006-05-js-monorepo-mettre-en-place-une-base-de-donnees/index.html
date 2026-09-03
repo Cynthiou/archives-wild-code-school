@@ -20,12 +20,12 @@
     <p class="quete__meta">Quête 6 sur 9 · 1 image archivée</p>
   </header>
   <div class="cours">
-<h2>Objectifs</h2>
+<h2 id="t-objectifs">Objectifs</h2>
 <ul>
 <li>Mettre en place ta base de données</li>
 <li>Automatiser des requêtes SQL avec un script JS</li>
 </ul>
-<h2>Pré-requis</h2>
+<h2 id="t-pre-requis">Pré-requis</h2>
 <ol class="etapes"><li class="etape"><div class="etape__puce">1</div><div class="etape__contenu"><h4 class="etape__titre">Valider les quêtes suivantes</h4><div class="renvois"><div class="renvois__titre">Quêtes liées</div><ul><li><a href="../../base-de-donnees/003-02-recuperer-des-informations-avec-select/index.html">Quête 484</a></li><li><a href="../../node-js/002-node-02-utiliser-un-fichier-env/index.html">Quête 1024</a></li></ul></div>
 </div></li><li class="etape"><div class="etape__puce">2</div><div class="etape__contenu"><h4 class="etape__titre">Être à l'aise avec la syntaxe SQL</h4><div class="bloc-code"><div class="bloc-code__langue">sql</div><pre><code class="hljs language-sql"><span class="hljs-keyword">CREATE</span> DATABASE hogwarts;
 USE hogwarts;
@@ -46,20 +46,21 @@ USE hogwarts;
 );
 </code></pre></div>
 </div></li></ol>
-<h2>Sommaire</h2>
-<h2>Introduction</h2>
+<h2 id="t-sommaire">Sommaire</h2>
+<nav class="sommaire" aria-label="Sommaire de la quête"><ol class="sommaire__liste"><li><a href="#t-introduction">Introduction</a></li><li><a href="#t-le-client-de-base-de-donnees">Le client de base de données</a><ul><li><a href="#t-encore-une-architecture-client-serveur">Encore une architecture client-serveur</a></li><li><a href="#t-mysql-cli">MySQL CLI</a></li></ul></li><li><a href="#t-un-client-mysql-en-javascript">Un client MySQL en JavaScript</a><ul><li><a href="#t-et-dans-le-monorepo">Et dans le Monorepo ?</a></li></ul></li><li><a href="#t-recapitulatif">Récapitulatif</a></li><li><a href="#t-challenge">Challenge</a><ul><li><a href="#t-criteres-de-validation">Critères de validation</a></li></ul></li></ol></nav>
+<h2 id="t-introduction">Introduction</h2>
 <p>Dans les épisodes précédents, tu as exploré le système de routing du Monorepo, et isolé les actions associées à chaque route. Dans cette quête, nous allons explorer la mise en place de la base de données.</p>
 <p>Nous allons commencer par revoir l'utilisation d'un client MySQL pour interagir avec une base de données.</p>
 <p>Une fois ces rappels passés, tu verras comment automatiser la création et la reproduction de ta base de données en JavaScript. Cette automatisation est essentielle pour garantir l'efficacité et la cohérence du processus, surtout lorsque tu travailles en équipe.</p>
 <p>Prêts à relever le défi ? Passons à la première partie : l'utilisation du client MySQL en ligne de commande.</p>
-<h2>Le client de base de données</h2>
+<h2 id="t-le-client-de-base-de-donnees">Le client de base de données</h2>
 <p>Dans cette première partie, nous revisiterons l'utilisation du client MySQL en ligne de commande (CLI) pour interagir avec un serveur de base de données MySQL. Avant de plonger dans les détails, tu dois bien comprendre la distinction entre un client de base de données et un serveur de base de données.</p>
-<h3>Encore une architecture client-serveur</h3>
+<h3 id="t-encore-une-architecture-client-serveur">Encore une architecture client-serveur</h3>
 <p>Le <strong>serveur de base de données</strong> est un logiciel qui <strong>gère l'accès aux données et effectue les opérations</strong> de stockage, de récupération et de gestion des données. Il est responsable de stocker et de gérer les bases de données, ainsi que <strong>d'exécuter les requêtes SQL envoyées par les clients</strong>. Par abus de langage, c'est lui que nous appelons couramment &quot;la base de données&quot;.</p>
 <p>Le <strong>client de base de données</strong> est une <strong>interface logicielle</strong> permettant aux utilisateurs d'interagir avec le serveur de base de données. Il permet <strong>d'envoyer des requêtes SQL au serveur</strong>, de récupérer les résultats et par l'intermédiaire du serveur de gérer les données. Les clients de base de données peuvent prendre différentes formes, notamment des interfaces en ligne de commande (comme MySQL CLI), des applications de bureau ou des applications web.</p>
 <div class="encadre encadre--note encadre--callout"><div class="encadre__corps"><p>Les <strong>données</strong> sont stockées <strong>sur le serveur</strong> de base de données. Un <strong>client</strong> de base de données comme MySQL CLI te permet d'<strong>envoyer une requête SQL</strong> à ton serveur de base de données pour qu'il te renvoie des données (par exemple des requêtes <code>SELECT</code>), ou qu'il les modifie (par exemple des requêtes <code>INSERT</code>, <code>UPDATE</code> ou <code>DELETE</code>).</p>
 </div></div>
-<h3>MySQL CLI</h3>
+<h3 id="t-mysql-cli">MySQL CLI</h3>
 <p>Ouvre un terminal, puis lance la commande <code>mysql</code> en remplaçant <code>NOMDETONUTILISATEUR</code> par le nom de ton utilisateur MySQL :</p>
 <div class="bloc-code"><div class="bloc-code__langue">sql</div><pre><code class="hljs language-sql">❯ mysql <span class="hljs-operator">-</span>u NOMDETONUTILISATEUR <span class="hljs-operator">-</span>p
 Enter password: 
@@ -147,7 +148,7 @@ Database Changed
 <p>La bonne pratique est de <strong>sauvegarder ces commandes dans un script</strong> que tu pourras exécuter facilement sur n'importe quelle machine. Cela garantit la reproductibilité et la cohérence de ta base de données, peu importe où tu te trouves ou qui d'autre travaille sur le projet.</p>
 <div class="encadre encadre--info"><div class="encadre__titre">Info</div><div class="encadre__corps"><p>Dans la prochaine partie, nous aborderons précisément cette automatisation à l'aide de JavaScript. Mais avant cela, assure-toi de bien comprendre les concepts présentés jusqu'à présent. Si nécessaire, n'hésite pas à relire attentivement les exemples et à expérimenter avec le client MySQL CLI.</p>
 </div></div>
-<h2>Un client MySQL en JavaScript</h2>
+<h2 id="t-un-client-mysql-en-javascript">Un client MySQL en JavaScript</h2>
 <p>Dans cette partie, nous aborderons l'automatisation du processus de création et de reproduction de notre base de données à l'aide de scripts Node.js. Cette approche nous permettra de rendre le processus plus efficace et reproductible, ce qui est particulièrement important lors du développement en équipe.</p>
 <p>Pour faire tes tests dans un &quot;bac à sable&quot;, initialise un nouveau projet Node. Ouvre un terminal et crée un nouveau dossier <code>mysql-sandbox</code>. Ensuite, initialise un nouveau projet Node en utilisant la commande <code>npm init</code> :</p>
 <div class="bloc-code"><div class="bloc-code__langue">bash</div><pre><code class="hljs language-bash"><span class="hljs-built_in">mkdir</span> mysql-sandbox
@@ -314,7 +315,7 @@ npm init -y
 <li>Tu peux sauvegarder toutes tes commandes dans un script JavaScript, en prenant soin de gérer tes informations sensibles (nom d'utilisateur, mot de passe...) avec des variables d'environnement.</li>
 </ul>
 </div></div>
-<h3>Et dans le Monorepo ?</h3>
+<h3 id="t-et-dans-le-monorepo">Et dans le Monorepo ?</h3>
 <p>Le Monorepo est un framework, un &quot;cadre&quot; dans lequel chaque chose est rangée à une place bien précise. Mais le cadre ne change pas ce que tu dois ranger : le code que tu as produit à l'étape précédente doit toujours exister quelque part sous une forme ou une autre.</p>
 <p>Reprends ton projet Wild Series, et ouvre le fichier <code>server/bin/migrate.ts</code> :</p>
 <div class="bloc-code"><div class="bloc-code__langue">typescript</div><pre><code class="hljs language-typescript"><span class="hljs-comment">// Load environment variables from .env file</span>
@@ -498,7 +499,7 @@ wildseries updated from &#x27;/home/my/wild-series/server/database/schema.sql&#x
 <p>Tu peux ajouter de nouvelles tables au schéma SQL : ce sera ton challenge pour cette quête.</p>
 <div class="encadre encadre--note encadre--callout"><div class="encadre__corps"><p>Si tu veux en savoir plus sur le module <code>node:fs</code> et la lecture de fichier, tu peux consulter le <a href="https://nodejs.org/en/learn/manipulating-files/reading-files-with-nodejs" target="_blank" rel="noopener noreferrer">site officiel</a>.</p>
 </div></div>
-<h2>Récapitulatif</h2>
+<h2 id="t-recapitulatif">Récapitulatif</h2>
 <p>Pour mettre en place ta base de données :</p>
 <ul>
 <li>La bonne pratique est d'automatiser le processus à l'aide de scripts, ce qui garantit la reproductibilité et la cohérence.</li>
@@ -506,7 +507,7 @@ wildseries updated from &#x27;/home/my/wild-series/server/database/schema.sql&#x
 <li>Tu peux gérer le schéma de ta base de données depuis le fichier <code>server/database/schema.sql</code>.</li>
 <li>Tu peux mettre ta base de données à partir de ton schéma avec la commande <code>npm run db:migrate</code>.</li>
 </ul>
-<h2>Challenge</h2>
+<h2 id="t-challenge">Challenge</h2>
 <p>Complète ton fichier <code>server/database/schema.sql</code> en ajoutant la création des tables <code>category</code> et <code>program</code>.</p>
 <div class="encadre encadre--warning"><div class="encadre__titre">Attention</div><div class="encadre__corps"><p>Ne supprime pas les tables existantes <code>user</code> et <code>item</code>, elles te seront utiles pour la suite.</p>
 </div></div>
@@ -554,7 +555,7 @@ wildseries updated from &#x27;/home/my/wild-series/server/database/schema.sql&#x
 </code></pre></div>
 <p>Lance la commande <code>npm run db:migrate</code> pour tester ton schéma.</p>
 <p>Pousse ton projet sur GitHub, et partage le lien de ton dépôt pour valider ta quête.</p>
-<h3>Critères de validation</h3>
+<h3 id="t-criteres-de-validation">Critères de validation</h3>
 <ul>
 <li>[ ] Le projet est disponible sur GitHub.</li>
 <li>[ ] Le fichier <code>server/.env.sample</code> est toujours présent.</li>
@@ -656,7 +657,5 @@ wildseries updated from &#x27;/home/my/wild-series/server/database/schema.sql&#x
   <p>Archive personnelle des cours suivis à la Wild Code School. Copie hors ligne à usage strictement privé.</p>
 </footer>
 
-<script src="../../assets/copie-code.js"></script>
-<script src="../../assets/progression.js"></script>
 </body>
 </html>

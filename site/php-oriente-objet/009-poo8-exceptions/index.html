@@ -31,7 +31,7 @@
 </code></pre>
 <p>Un dossier <em>vendor</em> (non versionné) va apparaître. Tu n'as normalement rien d'autre à faire, à partir de maintenant, si tu respectes bien la nomenclature pour les noms de tes <em>namespaces</em>, tu n'auras plus à t'occuper de faire des <code>require</code> :D</p>
 </div></div>
-<h2>🤓 À la fin de cette quête, tu seras capable de :</h2>
+<h2 id="t-a-la-fin-de-cette-quete-tu-seras-capable-de">🤓 À la fin de cette quête, tu seras capable de :</h2>
 <ul>
 <li>✅ Comprendre le concept d'exception</li>
 <li>✅ Lancer une exception</li>
@@ -126,7 +126,7 @@ Par contre si une erreur est levée, le block <code>catch</code> prend alors la
 <span class="hljs-variable">$lion</span>-&gt;<span class="hljs-title function_ invoke__">setThreatenedLevel</span>(<span class="hljs-string">&#x27;VU&#x27;</span>);
 </code></pre></div>
 <p>🖥️ La variable, si elle est définie, est gérée ensuite par l'interface pour s'afficher de la manière et à l'endroit souhaité par l'utilisateur de la classe. Actualise, tu vois le nouveau message s'afficher d'une toute autre manière.</p>
-<h2>Les différents types d'exception</h2>
+<h2 id="t-les-differents-types-d-exception">Les différents types d'exception</h2>
 <p>Nous avons vu la classe principale <strong>Exception</strong>. Mais qui dit classe, dit possibilité d'en hériter. PHP vient donc avec tout une hiérarchie de classe, étendant toutes <strong>Exception</strong> mais chacune appropriée à un type d'erreur spécifique. Il est également possible de définir ses propres classes d'exception si besoin.</p>
 <p>Voici un schéma reprenant les pricipales classes d'exception en PHP
 <img src="https://i.stack.imgur.com/qlTsJ.png" alt="" loading="lazy"></p>
@@ -169,7 +169,7 @@ Par contre si une erreur est levée, le block <code>catch</code> prend alors la
     <div class="ressource__hote">php.net</div>
   </div>
 </a>
-<h2>Challenge</h2>
+<h2 id="t-challenge">Challenge</h2>
 <p>Tu vas mettre en application les exceptions sur les niveaux de menace.</p>
 <ul>
 <li>Dans <code>setThreatenedLevel()</code> ajoute une <strong>UnexpectedValueException</strong> , qui sera lancée si le paramètre <code>$threatenedLevel</code> ne fait pas partie du tableau <code>THREATENED_LEVELS</code>.</li>
@@ -178,7 +178,7 @@ Par contre si une erreur est levée, le block <code>catch</code> prend alors la
 <li>Catch cette nouvelle exception pour l'afficher en tant que <code>$smallErrors</code> dans <em>index.php</em></li>
 <li>Poste le code de <code>setThreatenedLevel()</code> et de ton try/catch dans <em>index.php</em> pour l'elephant</li>
 </ul>
-<h2>Validation</h2>
+<h2 id="t-validation">Validation</h2>
 <ul>
 <li>Les deux exceptions sont lancées et attrapées, les messages d'erreurs s'affichent correctement en fonction de la situation (grosse erreur dans le premier cas, petite erreur si l'espèce est éteinte).</li>
 </ul>
@@ -228,7 +228,5 @@ try{
   <p>Archive personnelle des cours suivis à la Wild Code School. Copie hors ligne à usage strictement privé.</p>
 </footer>
 
-<script src="../../assets/copie-code.js"></script>
-<script src="../../assets/progression.js"></script>
 </body>
 </html>

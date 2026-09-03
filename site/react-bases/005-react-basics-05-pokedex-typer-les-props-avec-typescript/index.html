@@ -20,19 +20,20 @@
     <p class="quete__meta">Quête 5 sur 10 · 2 images archivées</p>
   </header>
   <div class="cours">
-<h2>Objectifs</h2>
+<h2 id="t-objectifs">Objectifs</h2>
 <ul>
 <li>Utiliser TypeScript pour typer les props de tes composants.</li>
 </ul>
-<h2>Pré-requis</h2>
+<h2 id="t-pre-requis">Pré-requis</h2>
 <ol class="etapes"><li class="etape"><div class="etape__puce">1</div><div class="etape__contenu"><h4 class="etape__titre">Valider les quêtes suivantes</h4><div class="renvois"><div class="renvois__titre">Quêtes liées</div><ul><li><a href="../../react-bases/001-react-basics-01-pokedex-introduction/index.html">Quête 2328</a></li><li><a href="../../react-bases/002-react-basics-02-pokedex-ton-premier-composant/index.html">Quête 2332</a></li><li><a href="../../react-bases/003-react-basics-03-pokedex-afficher-des-donnees-dans-un/index.html">Quête 2336</a></li><li><a href="../../react-bases/004-react-basics-04-pokedex-passer-des-props/index.html">Quête 2374</a></li></ul></div>
 </div></li></ol>
-<h2>Introduction</h2>
+<h2 id="t-introduction">Introduction</h2>
 <p>Dans les quêtes précédentes, nous avons vu comment créer et afficher des composants, comment afficher des données dans des composants, comment utiliser des expressions dans le JSX, et comment faire passer des props entre les composants.</p>
 <p>Depuis le début, ton projet intègre TypeScript. Pourtant tu n'as jamais eu à typer quoi que ce soit. TypeScript a &quot;deviné&quot; tout seul le typage à partir du contexte : c'est <a href="https://www.typescriptlang.org/docs/handbook/type-inference.html" target="_blank" rel="noopener noreferrer">l'inférence de type</a>. Le mécanisme fonctionne bien, mais ne peut pas tout deviner. Dans cette quête, tu vas apprendre à typer explicitement les props.</p>
 <p><img src="images/001-image.png" alt="image" loading="lazy"></p>
-<h2>Sommaire</h2>
-<h2>Une histoire de contrats</h2>
+<h2 id="t-sommaire">Sommaire</h2>
+<nav class="sommaire" aria-label="Sommaire de la quête"><ol class="sommaire__liste"><li><a href="#t-une-histoire-de-contrats">Une histoire de contrats</a></li><li><a href="#t-comment-ca-marche">Comment ça marche ?</a></li><li><a href="#t-recapitulatif">Récapitulatif</a></li><li><a href="#t-challenge">Challenge</a><ul><li><a href="#t-criteres-de-validation">Critères de validation</a></li></ul></li></ol></nav>
+<h2 id="t-une-histoire-de-contrats">Une histoire de contrats</h2>
 <p>Tu as peut-être déjà entendu parler <strong>d'interfaces</strong> en programmation, sans rentrer dans les <a href="https://en.wikipedia.org/wiki/Interface-based_programming" target="_blank" rel="noopener noreferrer">détails</a> de la programmation orienté objet, une interface en programmation est un contrat (un ensemble de conditions) que doivent remplir deux parties afin de pouvoir interagir ensemble.</p>
 <p>Comme dans le monde réel lorsque tu loues quelque chose : tu signes (et respectes !) un contrat qui te permet d'accéder à un bien ou à un service.</p>
 <p>Qu'est-ce que ces histoires de contrat ont à voir avec React alors !? TypeScript fournit un système d'interfaces !</p>
@@ -60,7 +61,7 @@
 </code></pre></div>
 <p>Imagine aussi que d'autres développeurs récupèrent tes composants : il serait facile pour eux de faire des erreurs s'ils ne savent pas exactement comment fonctionne ton composant.</p>
 <p>Il serait plus simple d'avoir un contrat qui décrit précisément quelles <code>props</code> sont attendues, de quels types, si elles sont obligatoires ou optionnelles, etc.</p>
-<h2>Comment ça marche ?</h2>
+<h2 id="t-comment-ca-marche">Comment ça marche ?</h2>
 <p>Prenons un premier exemple (tiré de la <a href="https://www.typescriptlang.org/docs/handbook/2/everyday-types.html#interfaces" target="_blank" rel="noopener noreferrer">doc officielle de TypeScript</a>) :</p>
 <div class="bloc-code"><div class="bloc-code__langue">js</div><pre><code class="hljs language-js"><span class="hljs-keyword">function</span> <span class="hljs-title function_">printCoord</span>(<span class="hljs-params">pt</span>) {
   <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(<span class="hljs-string">&quot;The coordinate&#x27;s x value is &quot;</span> + pt.<span class="hljs-property">x</span>);
@@ -170,7 +171,7 @@
 
 <span class="hljs-keyword">export</span> <span class="hljs-keyword">default</span> <span class="hljs-title class_">App</span>;
 </code></pre></div>
-<h2>Récapitulatif</h2>
+<h2 id="t-recapitulatif">Récapitulatif</h2>
 <p>Tu as vu comment typer les props avec TypeScript avec une interface. Tu peux utiliser des types primitifs pour tes props comme <code>number</code>, <code>string</code> <code>boolean</code>... Mais également des tableaux, des objets et bien plus encore :</p>
 <div class="bloc-code"><div class="bloc-code__langue">jsx</div><pre><code class="hljs language-jsx">interface <span class="hljs-title class_">SayHelloProps</span> {
   <span class="hljs-attr">name</span>: string;
@@ -193,7 +194,7 @@
 
 <span class="hljs-keyword">export</span> <span class="hljs-keyword">default</span> <span class="hljs-title class_">App</span>;
 </code></pre></div>
-<h2>Challenge</h2>
+<h2 id="t-challenge">Challenge</h2>
 <p>Dans ce challenge, tu vas mettre en place la validation des props avec TypeScript.</p>
 <ol class="etapes"><li class="etape"><div class="etape__puce">1</div><div class="etape__contenu"><h4 class="etape__titre">Crée une nouvelle branche</h4><p>Ouvre ton projet existant et crée une nouvelle branche appelée <code>props.2</code>. Cette branche sera utilisée pour développer les fonctionnalités liées à TypeScript. Assure-toi de partir de la branche <code>props.1</code>.</p>
 </div></li><li class="etape"><div class="etape__puce">2</div><div class="etape__contenu"><h4 class="etape__titre">Définis le type des props</h4><p>Dans ton composant <code>PokemonCard</code>, utilise une interface pour définir le type des props. Tu dois fournir une définition complète de la forme pour la prop <code>pokemon</code>.</p>
@@ -235,7 +236,7 @@
 </code></pre></div>
 <p>Si les données passées en props ne correspondent pas au type défini, tu devrais voir des avertissements dans ton IDE.</p>
 <p>Fournis le lien vers la branche <code>props.2</code> de ton dépôt GitHub pour valider cette étape.</p>
-<h3>Critères de validation</h3>
+<h3 id="t-criteres-de-validation">Critères de validation</h3>
 <ul>
 <li>Le composant <code>PokemonCard</code> définit les types de ses props.</li>
 <li>Le pokémon s'affiche correctement.</li>
@@ -284,7 +285,5 @@
   <p>Archive personnelle des cours suivis à la Wild Code School. Copie hors ligne à usage strictement privé.</p>
 </footer>
 
-<script src="../../assets/copie-code.js"></script>
-<script src="../../assets/progression.js"></script>
 </body>
 </html>

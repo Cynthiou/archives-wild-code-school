@@ -20,15 +20,15 @@
     <p class="quete__meta">Quête 3 sur 5 · 1 image archivée</p>
   </header>
   <div class="cours">
-<h2>Objectifs</h2>
+<h2 id="t-objectifs">Objectifs</h2>
 <ul>
 <li>Comprendre ce qu'est un <strong>linter</strong>.</li>
 <li>Installer et utiliser <strong>Biome</strong>.</li>
 </ul>
-<h2>Pré-requis</h2>
+<h2 id="t-pre-requis">Pré-requis</h2>
 <ol class="etapes"><li class="etape"><div class="etape__puce">1</div><div class="etape__contenu"><h4 class="etape__titre">Valider la quête suivante</h4><div class="renvois"><div class="renvois__titre">Quêtes liées</div><ul><li><a href="../../node-js/001-node-01-introduction-a-node-js-et-npm/index.html">Quête 1334</a></li></ul></div>
 </div></li></ol>
-<h2>Introduction</h2>
+<h2 id="t-introduction">Introduction</h2>
 <p>Les linters sont des outils d’analyse statique du code qui aident à détecter des erreurs, des incohérences de style et des problèmes potentiels avant l'exécution du programme. Ils sont particulièrement utiles pour garantir la qualité du code, améliorer la maintenabilité et assurer la cohérence entre les membres d'une équipe.</p>
 <p>Un linter permet :</p>
 <ul>
@@ -38,8 +38,9 @@
 <li>De <strong>faciliter la relecture de code</strong> : Il réduit les différences de style, permettant de se concentrer sur la logique métier.</li>
 </ul>
 <p>Traditionnellement, l'écosystème JavaScript et TypeScript repose sur <a href="https://eslint.org/" target="_blank" rel="noopener noreferrer">ESLint</a> pour l’analyse statique et <a href="https://prettier.io/" target="_blank" rel="noopener noreferrer">Prettier</a> pour le formatage automatique du code. Cependant, une alternative moderne émerge : <a href="https://biomejs.dev/" target="_blank" rel="noopener noreferrer">Biome</a>.</p>
-<h2>Sommaire</h2>
-<h2>Biome : Une alternative à ESLint + Prettier</h2>
+<h2 id="t-sommaire">Sommaire</h2>
+<nav class="sommaire" aria-label="Sommaire de la quête"><ol class="sommaire__liste"><li><a href="#t-biome-une-alternative-a-eslint-prettier">Biome : Une alternative à ESLint + Prettier</a></li><li><a href="#t-installation-et-configuration">Installation et configuration</a></li><li><a href="#t-utilisation">Utilisation</a><ul><li><a href="#t-verifier-un-fichier">Vérifier un fichier</a></li><li><a href="#t-corriger-automatiquement-les-erreurs">Corriger automatiquement les erreurs</a></li></ul></li><li><a href="#t-resume">Résumé</a></li></ol></nav>
+<h2 id="t-biome-une-alternative-a-eslint-prettier">Biome : Une alternative à ESLint + Prettier</h2>
 <p><strong>Biome</strong> est un outil unifié qui remplace <strong>ESLint, Prettier</strong> et d'autres outils d'analyse tout en étant extrêmement rapide et facile à configurer.</p>
 <p>Biome a plusieurs avantages :</p>
 <ul>
@@ -83,7 +84,7 @@
 <td>📦 Plusieurs packages</td>
 </tr>
 </tbody>
-</table></div><h2>Installation et configuration</h2>
+</table></div><h2 id="t-installation-et-configuration">Installation et configuration</h2>
 <ol class="etapes"><li class="etape"><div class="etape__puce">1</div><div class="etape__contenu"><h4 class="etape__titre">Initialise un projet node</h4><p>Crée un &quot;bac à sable&quot; pour expérimenter sans risques avec :</p>
 <div class="bloc-code"><div class="bloc-code__langue">bash</div><pre><code class="hljs language-bash"><span class="hljs-built_in">cd</span> ~ <span class="hljs-comment"># Se placer dans le répertoire utilisateur</span>
 <span class="hljs-built_in">mkdir</span> sandbox-biome
@@ -109,7 +110,7 @@ npm init -y
 </ol>
 <p><img src="images/001-installation-et-configuration.png" alt="" loading="lazy"></p>
 </div></li></ol>
-<h2>Utilisation</h2>
+<h2 id="t-utilisation">Utilisation</h2>
 <p>Pour tester, crée un fichier <code>index.js</code> dans ton projet node avec :</p>
 <div class="bloc-code"><div class="bloc-code__langue">javascript</div><pre><code class="hljs language-javascript"><span class="hljs-keyword">let</span> number = <span class="hljs-number">2</span>;
 
@@ -130,7 +131,7 @@ npm init -y
 <span class="hljs-title function_">doubleIt</span>(number);
 </code></pre></div>
 </div></div>
-<h3>Vérifier un fichier</h3>
+<h3 id="t-verifier-un-fichier">Vérifier un fichier</h3>
 <p>Lance la commande :</p>
 <div class="bloc-code"><div class="bloc-code__langue">bash</div><pre><code class="hljs language-bash">npx @biomejs/biome check index.js
 </code></pre></div>
@@ -159,12 +160,12 @@ npm init -y
   Found 1 warning.
 </code></pre></div>
 <p>Ici, tu dois remplacer le mot-clé <code>let</code> par <code>const</code>.</p>
-<h3>Corriger automatiquement les erreurs</h3>
+<h3 id="t-corriger-automatiquement-les-erreurs">Corriger automatiquement les erreurs</h3>
 <p>Utilise l'option <code>--write</code> pour appliquer les corrections :</p>
 <div class="bloc-code"><div class="bloc-code__langue">bash</div><pre><code class="hljs language-bash">npx @biomejs/biome check --write index.js
 </code></pre></div>
 <p>Biome corrigera toutes les erreurs qui peuvent l'être de manière sûre.</p>
-<h2>Résumé</h2>
+<h2 id="t-resume">Résumé</h2>
 <ul>
 <li><strong>Biome</strong> est un outil rapide et tout-en-un qui remplace <strong>ESLint + Prettier</strong>.</li>
 <li>Installe-le avec <code>npm install --save-dev --save-exact @biomejs/biome</code>.</li>
@@ -207,7 +208,5 @@ npm init -y
   <p>Archive personnelle des cours suivis à la Wild Code School. Copie hors ligne à usage strictement privé.</p>
 </footer>
 
-<script src="../../assets/copie-code.js"></script>
-<script src="../../assets/progression.js"></script>
 </body>
 </html>

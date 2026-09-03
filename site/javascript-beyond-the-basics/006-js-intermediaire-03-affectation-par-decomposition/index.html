@@ -28,8 +28,8 @@
 <h1>🤓 <strong>À la fin de cette quête, tu comprendras:</strong></h1>
 <p>✅ Qu'est-ce que la <strong>décomposition</strong> (destructuring) et comment l'utiliser
 ✅ Comment utiliser la syntaxe &quot;rest&quot; (<code>...</code>) dans la décomposition</p>
-<h2>🪓 Décomposer pour mieux régner</h2>
-<h3>Objets</h3>
+<h2 id="t-decomposer-pour-mieux-regner">🪓 Décomposer pour mieux régner</h2>
+<h3 id="t-objets">Objets</h3>
 <p>Des fois, il peut être pratique de déclarer des variables pointant une propriété d'un objet, comme ceci :</p>
 <div class="bloc-code"><div class="bloc-code__langue">js</div><pre><code class="hljs language-js"><span class="hljs-keyword">const</span> product = { <span class="hljs-attr">name</span>: <span class="hljs-string">&quot;socks&quot;</span>, <span class="hljs-attr">price</span>: <span class="hljs-number">5</span>, <span class="hljs-attr">color</span>: <span class="hljs-string">&quot;red&quot;</span> };
 <span class="hljs-keyword">const</span> name = product.<span class="hljs-property">name</span>;
@@ -45,7 +45,7 @@
 <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(<span class="hljs-string">`Those <span class="hljs-subst">${color}</span> <span class="hljs-subst">${name}</span> cost <span class="hljs-subst">${price}</span> euros`</span>);
 </code></pre></div>
 <p>Ici, on déclare <strong>des variables avec le même nom que les clés de l'objet</strong> sur lequel on vient extraire les informations.</p>
-<h3>Tableaux</h3>
+<h3 id="t-tableaux">Tableaux</h3>
 <p>Ce code est bien trop verbeux :</p>
 <div class="bloc-code"><div class="bloc-code__langue">javascript</div><pre><code class="hljs language-javascript"><span class="hljs-keyword">const</span> animals = [<span class="hljs-string">&quot;Hubert&quot;</span>, <span class="hljs-string">&quot;Rosemary&quot;</span>, <span class="hljs-string">&quot;Paul&quot;</span>];
 <span class="hljs-keyword">const</span> hamster = animals[<span class="hljs-number">0</span>]; 
@@ -67,7 +67,7 @@
 <p>La déstructuration de tableau crée automatiquement des variables qui correspondent à un ou plusieurs éléments d'un tableau.
 Dans cet exemple, tu peux voir que nous pouvons attribuer des variables (labels) spécifiques aux valeurs contenues dans les tableaux. le premier label entre les crochets désignera le premier élément du tableau, le deuxième désignera le second élément et ainsi de suite.</p>
 <p>Essaie par toi même !</p>
-<h3>🔬 Expérience</h3>
+<h3 id="t-experience">🔬 Expérience</h3>
 <p>Utilise la méthode de déstructuration pour créer des variables à partir d'un tableau.</p>
 <div class="bloc-code"><div class="bloc-code__langue">codesandbox</div><pre><code class="hljs language-codesandbox">https://codesandbox.io/s/destructuring-1-gq9d8
 </code></pre></div>
@@ -76,14 +76,14 @@ const [apple, ananas, kiwi, avocado, cherry, strawberry] = fruits;
 console.log(apple); // 🍏
 console.log(ananas); // 🍍
 </code></pre></div>
-<h2>☮️ syntaxe &quot;rest&quot;</h2>
-<h3>Objets</h3>
+<h2 id="t-syntaxe-rest">☮️ syntaxe &quot;rest&quot;</h2>
+<h3 id="t-objets-2">Objets</h3>
 <p>Un exemple vaut plus que 1000 mots:</p>
 <div class="bloc-code"><div class="bloc-code__langue">replit</div><pre><code class="hljs language-replit">https://replit.com/@PierreGenthon/destructuring-rest-operator
 </code></pre></div>
 <p>Comme tu peux le voir, l'opérateur <code>...</code> utilisé juste avant l'accolade fermante de la décomposition permet de désigner <strong>le reste des propriétés de l'objet</strong>.
 Autrement dit, le nom de variable suivant les <code>...</code> référencera <strong>un nouvel objet contenant les propriétés qui n'ont pas été citées dans les accolades de la décomposition</strong>.</p>
-<h3>Tableaux</h3>
+<h3 id="t-tableaux-2">Tableaux</h3>
 <p>L'opérateur &quot;rest&quot; (<code>...</code>) peut aussi symboliser ce qu'il reste d'un tableau. Par exemple, nous pourrions créer deux variables et ensuite une troisième qui contiendrait le reste du tableau :</p>
 <div class="bloc-code"><div class="bloc-code__langue">javascript</div><pre><code class="hljs language-javascript"><span class="hljs-keyword">const</span> animals = [<span class="hljs-string">&quot;Hubert&quot;</span>, <span class="hljs-string">&quot;Rosemary&quot;</span>, <span class="hljs-string">&quot;Paul&quot;</span>, <span class="hljs-string">&quot;Pierre&quot;</span>];
 <span class="hljs-keyword">const</span> [hamster, kiwi, ...others ] = animals;
@@ -92,7 +92,7 @@ Autrement dit, le nom de variable suivant les <code>...</code> référencera <st
 <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(kiwi); <span class="hljs-comment">// &quot;Rosemary&quot;</span>
 <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(others); <span class="hljs-comment">// [&quot;Paul&quot;, &quot;Pierre&quot;];</span>
 </code></pre></div>
-<h3>🔬 Expérience</h3>
+<h3 id="t-experience-2">🔬 Expérience</h3>
 <p>Crée deux variables pour les deux premiers fruits et utilise l'opérateur rest pour les dernier.</p>
 <div class="bloc-code"><div class="bloc-code__langue">codesandbox</div><pre><code class="hljs language-codesandbox">https://codesandbox.io/s/spread-operator-36832
 </code></pre></div>
@@ -132,7 +132,5 @@ console.log(otherFruits); // [&quot;🥝&quot;, &quot;🥑&quot;, &quot;🍒&quo
   <p>Archive personnelle des cours suivis à la Wild Code School. Copie hors ligne à usage strictement privé.</p>
 </footer>
 
-<script src="../../assets/copie-code.js"></script>
-<script src="../../assets/progression.js"></script>
 </body>
 </html>

@@ -20,12 +20,12 @@
     <p class="quete__meta">Quête 2 sur 9 · 3 images archivées</p>
   </header>
   <div class="cours">
-<h2>Objectifs</h2>
+<h2 id="t-objectifs">Objectifs</h2>
 <ul>
 <li>Utiliser au mieux la balise head.</li>
 <li>Comprendre à quoi servent les métadonnées.</li>
 </ul>
-<h2>Pré-requis</h2>
+<h2 id="t-pre-requis">Pré-requis</h2>
 <ol class="etapes"><li class="etape"><div class="etape__puce">1</div><div class="etape__contenu"><h4 class="etape__titre">Valider la quête suivante</h4><div class="renvois"><div class="renvois__titre">Quêtes liées</div><ul><li><a href="../../html/001-html-chapitre-1-introduction-au-html/index.html">Quête 2113</a></li></ul></div>
 </div></li><li class="etape"><div class="etape__puce">2</div><div class="etape__contenu"><h4 class="etape__titre">Connaitre la structure de base d'un document HTML</h4><div class="bloc-code"><div class="bloc-code__langue">html</div><pre><code class="hljs language-html"><span class="hljs-meta">&lt;!DOCTYPE <span class="hljs-keyword">html</span>&gt;</span>
 <span class="hljs-tag">&lt;<span class="hljs-name">html</span> <span class="hljs-attr">lang</span>=<span class="hljs-string">&quot;fr&quot;</span>&gt;</span>
@@ -39,11 +39,12 @@
 <span class="hljs-tag">&lt;/<span class="hljs-name">html</span>&gt;</span>
 </code></pre></div>
 </div></li></ol>
-<h2>Introduction</h2>
+<h2 id="t-introduction">Introduction</h2>
 <p>Précédemment, tu as vu les principes de bases du langage HTML.</p>
 <p>La balise <code>&lt;head&gt;</code> est la première partie d'un document : c'est la partie de la page qui n'est pas &quot;visible&quot;. Pourtant la balise <code>&lt;head&gt;</code> contient de nombreuses métadonnées qui sont très utiles au navigateur pour comprendre le contexte d'une page web.</p>
-<h2>Sommaire</h2>
-<h2>Dans la tête ?</h2>
+<h2 id="t-sommaire">Sommaire</h2>
+<nav class="sommaire" aria-label="Sommaire de la quête"><ol class="sommaire__liste"><li><a href="#t-dans-la-tete">Dans la tête ?</a><ul><li><a href="#t-un-titre">Un titre</a></li><li><a href="#t-les-metadonnees">Les métadonnées</a></li><li><a href="#t-la-favicone">La favicône</a></li></ul></li><li><a href="#t-recapitulatif">Récapitulatif</a></li><li><a href="#t-challenge">Challenge</a><ul><li><a href="#t-criteres-de-validation">Critères de validation</a></li></ul></li></ol></nav>
+<h2 id="t-dans-la-tete">Dans la tête ?</h2>
 <p>La balise <code>&lt;head&gt;</code> contiens des <strong>informations utiles</strong> à notre <strong>navigateur</strong>.</p>
 <p>Elle est située au début de notre document dans la balise <code>&lt;html&gt;</code> et avant la balise <code>&lt;body&gt;</code>.</p>
 <div class="bloc-code"><div class="bloc-code__langue">html</div><pre><code class="hljs language-html"><span class="hljs-meta">&lt;!DOCTYPE <span class="hljs-keyword">html</span>&gt;</span>
@@ -59,7 +60,7 @@
 <span class="hljs-tag">&lt;/<span class="hljs-name">html</span>&gt;</span>
 </code></pre></div>
 <p>Voyons en détail ce que doit contenir cette balise <code>&lt;head&gt;</code>.</p>
-<h3>Un titre</h3>
+<h3 id="t-un-titre">Un titre</h3>
 <p>La première chose que doit contenir ta balise <code>&lt;head&gt;</code>, c'est <strong>un titre</strong> avec la balise <code>&lt;title&gt;</code>.</p>
 <p>Le titre de la page <strong>ne s'affichera pas directement</strong> mais il sera visible sur les onglets et ce sera également le titre de notre page si un utilisateur met la page en favori.</p>
 <p><img src="images/001-capture-d-ecran-d-un-navigateur-avec-un-onglet.jpg" alt="Capture d'écran d'un navigateur avec un onglet entouré avec le titre de la page" loading="lazy"><em>Source:</em> <a href="https://www.myprograming.com/html-head-tag/" target="_blank" rel="noopener noreferrer">https://www.myprograming.com/html-head-tag/</a></p>
@@ -91,7 +92,7 @@
 <p>Ensuite, change le titre des pages que tu as créées dans le chapitre précédent en respectant les principes que tu as pu observer.</p>
 <p>Note en commentaire la raison pour laquelle tu as choisi chacun des titres.</p>
 </div></div>
-<h3>Les métadonnées</h3>
+<h3 id="t-les-metadonnees">Les métadonnées</h3>
 <p>La balise <code>&lt;meta&gt;</code> permet de transmettre des <strong>informations pour le navigateur</strong>.</p>
 <p>Par exemple, utilisée avec l'attribut <code>charset</code> que nous avons vu dans la quête précédente, il permet de <strong>définir le jeu de caractères</strong> (lettres et symboles) que tu veux utiliser pour ta page web.</p>
 <p>Le jeu de caractères <code>utf-8</code> permet d'utiliser tous les caractères de n'importe quelle langue.</p>
@@ -110,7 +111,7 @@
 <div class="encadre encadre--note encadre--arrow"><div class="encadre__corps"><p><strong>🎯 À toi de jouer !</strong></p>
 <p>Ajoute les métadonnées pour l'encodage des caractères (utf-8), l'auteur et la description de ta page.</p>
 </div></div>
-<h3>La favicône</h3>
+<h3 id="t-la-favicone">La favicône</h3>
 <p>Une favicône est une <strong>icône utilisée par le navigateur pour représenter le site web</strong>. Bien souvent,  c'est une déclinaison du logo spécifiquement crée pour cette utilisation.</p>
 <p><img src="images/003-capture-d-ecran-de-la-fenetre-du-navigateur.jpg" alt="Capture d'écran de la fenêtre du navigateur avec deux onglets et une favicône entouré sur chaque onglet" loading="lazy"></p>
 <p>Pour utiliser une favicône, tu dois créer une image au format <strong><code>.ico</code></strong>  dont la taille est de <strong>16x16.</strong></p>
@@ -127,7 +128,7 @@
 <div class="encadre encadre--note encadre--arrow"><div class="encadre__corps"><p><strong>🎯 À toi de jouer !</strong></p>
 <p>Ajoute une favicône dans ton dossier et ajoute la balise sur toutes les pages de ton projet.</p>
 </div></div>
-<h2>Récapitulatif</h2>
+<h2 id="t-recapitulatif">Récapitulatif</h2>
 <ul>
 <li>
 <p>La balise <code>&lt;head&gt;</code> contient de nombreuses métadonnées utiles pour le navigateur.</p>
@@ -142,9 +143,9 @@
 <p>La favicône est une petite icône qui s'affiche sur le navigateur, il est important de l'ajouter à l'aide de la balise <code>&lt;link&gt;</code></p>
 </li>
 </ul>
-<h2>Challenge</h2>
+<h2 id="t-challenge">Challenge</h2>
 <p>Mets en forme le travail que tu as réalisé durant cette quête et compare le résultat avec la solution qui est proposée !</p>
-<h3>Critères de validation</h3>
+<h3 id="t-criteres-de-validation">Critères de validation</h3>
 <ul>
 <li>[ ] Les pages contiennent un titre clair, respectant les principes évoqués dans la quête ainsi qu'un commentaire expliquant le choix réalisé.</li>
 <li>[ ] Toutes les balises <code>&lt;meta&gt;</code> sont présentes</li>
@@ -236,7 +237,5 @@
   <p>Archive personnelle des cours suivis à la Wild Code School. Copie hors ligne à usage strictement privé.</p>
 </footer>
 
-<script src="../../assets/copie-code.js"></script>
-<script src="../../assets/progression.js"></script>
 </body>
 </html>

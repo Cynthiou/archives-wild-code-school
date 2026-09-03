@@ -61,8 +61,8 @@ Attention, l'interface de Visual Studio évolue au fur et à mesure du temps, et
 <li>Extensions</li>
 </ul>
 <p>Voyons ces panneaux un peu plus en détail.</p>
-<h2>Explorer</h2>
-<h4>Choisir un dossier de travail</h4>
+<h2 id="t-explorer">Explorer</h2>
+<h4 id="t-choisir-un-dossier-de-travail">Choisir un dossier de travail</h4>
 <p>L'<em>explorer</em> te permet de créer de nouveau fichier et dossier au sein de ton <strong>dossier de travail.</strong>
 Mais avant de pouvoir créer des fichier et dossier, il te faut tout d'abord indiquer le dossier dans lequel tu souhaites travailler.</p>
 <div class="encadre encadre--warning"><div class="encadre__titre">Attention</div><div class="encadre__corps"><p>Lorsque tu travailles sur un projet, fais attention de toujours ouvrir directement le dossier du projet <strong>et non un dossier parent</strong>, c'est très important car sinon tu risques de rencontrer des problèmes lors de l'installation de librairies, l'utilisation de Git...</p>
@@ -70,20 +70,20 @@ Mais avant de pouvoir créer des fichier et dossier, il te faut tout d'abord ind
 <p>Commence par créer un dossier &quot;decouverte-vscode&quot; sur ton bureau. Pour l'ouvrir dans VSCode et explorer son contenu, clique sur &quot;Open Folder&quot;, puis sélectionne le dossier souhaité.
 <img src="images/002-image.png" alt="image" loading="lazy"></p>
 <p>À présent, tu peux constater que le panneau à gauche a changé pour afficher le dossier en cours.</p>
-<h4>Créer un nouveau fichier</h4>
+<h4 id="t-creer-un-nouveau-fichier">Créer un nouveau fichier</h4>
 <p>Pour créer un nouveau fichier, c'est très simple! Passe ta souris sur le panneau de gauche et tu devrais voir apparaître 4 icônes à côté du nom du dossier de travail.
 <img src="images/003-image.png" alt="image" loading="lazy"></p>
 <p>Clique sur la première icône pour créer un fichier. À présent, tu es invité à donner un nom à ton fichier, appelons-le <code>index.html</code>, appuie ensuite sur la touche entrée pour confirmer.</p>
 <p>À présent, tu peux voir que Visual Studio a ouvert un nouvel onglet sur ton espace de travail.
 <img src="images/004-image.png" alt="image" loading="lazy"></p>
-<h4>Écrire du code</h4>
+<h4 id="t-ecrire-du-code">Écrire du code</h4>
 <p>Commençons à présent à écrire du code pour découvrir les fonctionnalités de Visual Studio.</p>
 <p>Commençons à créer notre page HTML, dans l'éditeur crée une balise <code>&lt;html lang=&quot;fr&quot;&gt;</code>. Première bonne nouvelle, comme tu peux le constater, Visual Studio ferme automatiquement la balise HTML pour toi !! Impressionnant, n'est-ce pas ?</p>
 <p><img src="images/005-image.gif" alt="image" loading="lazy"></p>
 <p>À présent, à l'intérieur de la balise html ajoutons une balise <code>&lt;head&gt;</code> et à l'intérieur de la balise <code>&lt;head&gt;</code>, ajoutons une balise <code>&lt;title&gt;</code>.</p>
 <p>Ton code devrait à présent ressembler à ça:
 <code>&lt;html lang=&quot;fr&quot;&gt;&lt;head&gt;&lt;title&gt;&lt;/title&gt;&lt;/head&gt;&lt;/html&gt;</code></p>
-<h4>Formater le code</h4>
+<h4 id="t-formater-le-code">Formater le code</h4>
 <p>En HTML, afin d'améliorer la lisibilité des éléments, nous utilisons une technique appelée &quot;indentation&quot;, l'indentation consiste à ajouter des espaces blancs (ou des tabulations) afin d'améliorer la lisibilité des éléments.</p>
 <p>Les indentations sont effectués à chaque fois que nous créons une balise à l'intérieur d'une autre.</p>
 <p>Par exemple, le code précédent devrait ressembler à ça avec une bonne indentation:</p>
@@ -98,17 +98,17 @@ Mais avant de pouvoir créer des fichier et dossier, il te faut tout d'abord ind
 <p>Il est possible d'indenter son code à la main en utilisant la touche tabulation, mais Visual Studio propose une solution pour que le code soit formaté automatiquement.</p>
 <p>Pour cela, sélectionne tout le document et effectue un clic droit puis &quot;Format document&quot; ou &quot;Formatter le document&quot;. Le document devrait alors se réarranger tout seul.</p>
 <p><img src="images/006-image.gif" alt="image" loading="lazy"></p>
-<h4>Formater le code à chaque sauvegarde</h4>
+<h4 id="t-formater-le-code-a-chaque-sauvegarde">Formater le code à chaque sauvegarde</h4>
 <p>Il est possible de configurer ton éditeur de code pour que le code se formate automatiquement lorsque tu sauvegardes, pour cela, clique sur le menu &quot;Manage&quot; en bas du panneau de gauche et sélectionne l'option &quot;Settings&quot;.</p>
 <p>Cherche maintenant dans la barre de recherche &quot;format&quot; et active l'option &quot;format on save&quot;, ferme à présent l'onglet settings. Tu peux tester la fonctionnalité en créant une nouvelle balise sur ton document et en sauvegardant.</p>
 <p><img src="images/007-image.gif" alt="image" loading="lazy"></p>
 <p>À présent, ajoute une balise <code>&lt;body&gt;</code> après la balise <code>&lt;head&gt;</code>, et un <code>&lt;h1&gt;</code> avec le texte &quot;Hello world&quot; à l'intérieur. Sauvegarde ton document (ctrl ou cmd + s) et tu verras ton code s'indenter automatiquement!</p>
 <div class="encadre encadre--info"><div class="encadre__titre">Info</div><div class="encadre__corps"><p>Il est également possible de configurer un enregistrement automatique (c'est-à-dire que tu n'as plus à enregistrer manuellement, cela se fait automatiquement à chaque fois que tu modifies un caractère dans ton code). Tout ceci est affaire de goût, si tu souhaites l'activer, ouvre le menu File et coche &quot;Auto Save&quot;.</p>
 </div></div>
-<h4>Voir son code dans le navigateur</h4>
+<h4 id="t-voir-son-code-dans-le-navigateur">Voir son code dans le navigateur</h4>
 <p>Si tu souhaites voir le résultat de ton code dans ton navigateur, clique droit sur le nom du fichier HTML et sélectionne &quot;Open Containing Folder&quot;, &quot;reveal in finder&quot; ou &quot;reveal in explorer&quot;.</p>
 <p>Visual Studio Code va alors ouvrir le dossier dans lequel se trouve ton fichier, il ne te reste plus qu'à l'ouvrir avec ton navigateur web favori!</p>
-<h2>Search</h2>
+<h2 id="t-search">Search</h2>
 <p>Le deuxième panneau que nous avons est le panneau recherche. Dans ce panneau tu peux chercher du texte et le remplacer.</p>
 <p>Lorsque tu effectues des recherches dans Visual Studio Code, la recherche est effectuée dans <strong>tous les fichiers</strong> présents dans ton dossier de travail!</p>
 <p>Tape dans la barre de recherche &quot;Hello world&quot; et appuie sur la touche entrée, pour voir le résultat. Tu devrais voir que la phrase 'Hello World&quot; est présente dans un seul fichier, index.html</p>
@@ -116,7 +116,7 @@ Mais avant de pouvoir créer des fichier et dossier, il te faut tout d'abord ind
 <p><img src="images/008-image.gif" alt="image" loading="lazy"></p>
 <div class="encadre encadre--info"><div class="encadre__titre">Info</div><div class="encadre__corps"><p>La fonction rechercher/remplacer possède également des options complémentaires qui peuvent se révéler très pratiques (sensible ou non à la casse, préservation de la casse, recherche uniquement dans la sélection, <em>etc.</em>)</p>
 </div></div>
-<h4>Raccourcis clavier</h4>
+<h4 id="t-raccourcis-clavier">Raccourcis clavier</h4>
 <p>VS code possède un très grand nombre de raccourcis clavier(<a href="https://code.visualstudio.com/shortcuts/keyboard-shortcuts-windows.pdf" target="_blank" rel="noopener noreferrer">pour windows</a>, <a href="https://code.visualstudio.com/shortcuts/keyboard-shortcuts-linux.pdf" target="_blank" rel="noopener noreferrer">pour linux</a> ou <a href="https://code.visualstudio.com/shortcuts/keyboard-shortcuts-macos.pdf" target="_blank" rel="noopener noreferrer">pour mac</a>). Si cela peut paraître un peu intimidant, rassure toi, tu n'as pas à tous les apprendre. Cependant, connaître certains d'entre eux peux te permettre de gagner énormément en rapidité et productivité, c'est aussi là tout l'intérêt d'un IDE : te faire gagner du temps ! Tu peux aussi personnaliser tous les raccourcis si ceux par défaut ne te conviennent pas.</p>
 <a class="ressource" href="https://blog.webdevsimplified.com/2020-08/10-best-keyboard-shortcuts/" target="_blank" rel="noopener noreferrer">
   <div class="ressource__icone">↗</div>
@@ -127,11 +127,11 @@ Mais avant de pouvoir créer des fichier et dossier, il te faut tout d'abord ind
     <div class="ressource__hote">blog.webdevsimplified.com</div>
   </div>
 </a>
-<h2>Source Control</h2>
+<h2 id="t-source-control">Source Control</h2>
 <p>Le troisième panneau nous permet d'utiliser Git au sein de Visual Studio, nous verrons l'utilisation de Git et Github lors de prochaines quêtes.</p>
-<h2>Run and Debug Code</h2>
+<h2 id="t-run-and-debug-code">Run and Debug Code</h2>
 <p>Ce panneau te permet d'exécuter et de déboguer ton code, c'est un outil très puissant pour déboguer une application JavaScript, nous le verrons plus en détail dans une autre quête.</p>
-<h2>Extensions</h2>
+<h2 id="t-extensions">Extensions</h2>
 <p>Enfin, le dernier panneau te permet de télécharger des extensions pour Visual Studio Code, il en existe énormément avec toutes sortes de fonctionnalités, pour installer une extension, il te suffit de taper le nom de l'extension pour la chercher suivi de la touche entrée et de cliquer sur &quot;installer&quot;.</p>
 <p>Attention, l'installation d'extensions peut rendre ton éditeur de code plus lent en plus de surcharger ton interface, nous te conseillons donc de n'installer que celles qui te sont le plus utiles et de désinstaller les extensions que tu n'utilises plus.</p>
 <p>Voici une petite liste d'extensions très utilisées:</p>
@@ -177,7 +177,5 @@ Material icon theme ajoutera de belles icônes à côté de tes fichiers. Cela r
   <p>Archive personnelle des cours suivis à la Wild Code School. Copie hors ligne à usage strictement privé.</p>
 </footer>
 
-<script src="../../assets/copie-code.js"></script>
-<script src="../../assets/progression.js"></script>
 </body>
 </html>

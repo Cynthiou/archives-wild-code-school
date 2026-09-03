@@ -20,17 +20,18 @@
     <p class="quete__meta">Quête 1 sur 10 · 4 images archivées</p>
   </header>
   <div class="cours">
-<h2>Objectifs</h2>
+<h2 id="t-objectifs">Objectifs</h2>
 <ul>
 <li>Comprendre le rôle du CSS dans l'architecture d'une page web</li>
 <li>Savoir lier le CSS au HTML</li>
 <li>Utiliser les principaux sélecteurs CSS</li>
 <li>Comprendre la notion de spécificité</li>
 </ul>
-<h2>Introduction</h2>
+<h2 id="t-introduction">Introduction</h2>
 <p>Découvre le CSS (<em>Cascading Style Sheets</em>, ou <em>feuilles de style en cascade</em>), un langage indispensable pour créer le visuel d'une page web !</p>
-<h2>Sommaire</h2>
-<h2>Le CSS, qu'est-ce que c'est ?</h2>
+<h2 id="t-sommaire">Sommaire</h2>
+<nav class="sommaire" aria-label="Sommaire de la quête"><ol class="sommaire__liste"><li><a href="#t-le-css-qu-est-ce-que-c-est">Le CSS, qu'est-ce que c'est ?</a></li><li><a href="#t-comment-lier-css-avec-une-page-html">Comment lier CSS avec une page HTML ?</a><ul><li><a href="#t-index-html">index.html</a></li><li><a href="#t-style-css">style.css</a></li></ul></li><li><a href="#t-selecteurs-css">Sélecteurs CSS</a><ul><li><a href="#t-balises-classes-id">Balises, classes, id</a></li></ul></li><li><a href="#t-selecteurs-avances">Sélecteurs avancés</a></li><li><a href="#t-specificite">Spécificité</a><ul><li><a href="#t-cas-1-les-proprietes-ne-sont-pas-en-conflits">CAS 1. Les propriétés ne sont pas en conflits</a></li><li><a href="#t-cas-2-les-proprietes-rentrent-en-conflits">CAS 2. Les propriétés rentrent en conflits</a></li><li><a href="#t-cas-3-selecteurs-et-proprietes-en-conflits">CAS 3. Sélecteurs ET propriétés en conflits</a></li></ul></li><li><a href="#t-un-diner-presque-parfait">Un dîner presque parfait</a></li></ol></nav>
+<h2 id="t-le-css-qu-est-ce-que-c-est">Le CSS, qu'est-ce que c'est ?</h2>
 <p>Le <strong>CSS</strong> (<em>Cascading Style Sheets</em>, ou <em>feuilles de style en cascade</em>) est un langage apparu au milieu des années 1990, et qui n'a cessé d'évoluer depuis. Sur un site web, le but est de styliser les pages HTML (couleurs, typographie, positionnement, animations...).</p>
 <p><img src="images/001-html-vs-css.jpg" alt="HTML vs CSS" loading="lazy"> <a href="https://tutorial.techaltum.com/css.html" target="_blank" rel="noopener noreferrer">Source techaltum.com</a></p>
 <p>Voici une brève vidéo pour en avoir un aperçu.</p>
@@ -50,7 +51,7 @@
     <div class="ressource__hote">developer.mozilla.org</div>
   </div>
 </a>
-<h2>Comment lier CSS avec une page HTML ?</h2>
+<h2 id="t-comment-lier-css-avec-une-page-html">Comment lier CSS avec une page HTML ?</h2>
 <p>Tu viens de le voir, le CSS et le HTML fonctionnent main dans la main pour donner vie à une page web. Mais concrètement, comment les relie-t-on ?
 Pour décrire ce processus, on dit communément qu'on « appelle le CSS » à partir d'un fichier HTML.</p>
 <p>Trois possibilités s'offrent à toi :</p>
@@ -91,7 +92,7 @@ Pour décrire ce processus, on dit communément qu'on « appelle le CSS » à pa
 <li><strong>External stylesheet</strong> :</li>
 </ol>
 <p>Elle consiste à écrire ton CSS dans un/des fichier(s) séparé(s), puis à appeler ce(s) fichier(s) dans le <code>&lt;head&gt;</code> de ta page HTML, à l'aide de la balise <code>&lt;link&gt;</code>.</p>
-<h3>index.html</h3>
+<h3 id="t-index-html">index.html</h3>
 <div class="bloc-code"><div class="bloc-code__langue">cshtml</div><pre><code class="hljs language-cshtml">&lt;!DOCTYPE html&gt;
 &lt;html&gt;
   &lt;head&gt;
@@ -104,7 +105,7 @@ Pour décrire ce processus, on dit communément qu'on « appelle le CSS » à pa
   &lt;/body&gt;
 &lt;/html&gt;
 </code></pre></div>
-<h3>style.css</h3>
+<h3 id="t-style-css">style.css</h3>
 <div class="bloc-code"><div class="bloc-code__langue">css</div><pre><code class="hljs language-css"><span class="hljs-selector-tag">body</span> {
   <span class="hljs-attribute">background-color</span>: lightblue;
 }
@@ -117,8 +118,8 @@ Pour décrire ce processus, on dit communément qu'on « appelle le CSS » à pa
 <div class="encadre encadre--success"><div class="encadre__titre">Bravo</div><div class="encadre__corps"><p>Tu l'auras compris, cette dernière solution qui sépare réellement la structure (HTML) du style (CSS) est celle à privilégier.</p>
 </div></div>
 <hr>
-<h2>Sélecteurs CSS</h2>
-<h3>Balises, classes, id</h3>
+<h2 id="t-selecteurs-css">Sélecteurs CSS</h2>
+<h3 id="t-balises-classes-id">Balises, classes, id</h3>
 <p>Nous venons de voir comment lier un fichier CSS à un fichier HTML. Maintenant, voyons comment écrire du CSS afin d'appliquer le style aux endroits voulus.</p>
 <p>Commence par regarder cette explication rapide en vidéo (de 1 minute 34 à 2 minutes 48) !</p>
 <a class="video-lien" href="https://www.youtube.com/watch?v=mri5qNNX5WQ" target="_blank" rel="noopener noreferrer">
@@ -203,7 +204,7 @@ Pour décrire ce processus, on dit communément qu'on « appelle le CSS » à pa
     <div class="ressource__hote">css-tricks.com</div>
   </div>
 </a>
-<h2>Sélecteurs avancés</h2>
+<h2 id="t-selecteurs-avances">Sélecteurs avancés</h2>
 <p>Maintenant que tu as vu les trois principaux types de sélecteurs, voyons comment ils peuvent être combinés ensemble ou enrichis avec des <em>pseudo-classes</em> ou <em>pseudo-éléments</em>.
 Il existe un très (très) grand nombre de possibilités pour écrire un sélecteur, ce qui est très intéressant car tu vas pouvoir faire des sélections très fines. Par exemple, tu pourras si tu le souhaites sélectionner (et donc appliquer un style) sur toutes les lignes impaires des tableaux suivant un <code>&lt;h3&gt;</code> dans des sections ayant la classe &quot;my-section&quot;.</p>
 <p><img src="images/002-brain.gif" alt="brain" loading="lazy">
@@ -236,9 +237,9 @@ Il serait trop long de lister ici toutes les possibilités, mais tu vas pouvoir 
   </div>
 </a>
 <hr>
-<h2>Spécificité</h2>
+<h2 id="t-specificite">Spécificité</h2>
 <p>Comme tu viens de le voir, il y a de multiples manières de sélectionner des éléments sur une page. Mais que se passe t-il si un même élément est ciblé par plusieurs sélecteurs différents ? Deux cas se présentent :</p>
-<h3>CAS 1. Les propriétés ne sont pas en conflits</h3>
+<h3 id="t-cas-1-les-proprietes-ne-sont-pas-en-conflits">CAS 1. Les propriétés ne sont pas en conflits</h3>
 <p>Si les sélecteurs ciblant le même élément appliquent des propriétés <strong>différentes</strong>, celles-ci se <strong>cumulent</strong>.</p>
 <p>Par exemple sur une balise <code>&lt;figure class=&quot;card rounded&quot;&gt;</code> :</p>
 <div class="bloc-code"><div class="bloc-code__langue">css</div><pre><code class="hljs language-css"><span class="hljs-selector-tag">figure</span> {
@@ -255,7 +256,7 @@ Il serait trop long de lister ici toutes les possibilités, mais tu vas pouvoir 
 }
 </code></pre></div>
 <p>Les trois sélecteurs s'appliquent sur la même balise figure qui affichera donc un fond noir, du texte blanc de 20px et des coins arrondis.</p>
-<h3>CAS 2. Les propriétés rentrent en conflits</h3>
+<h3 id="t-cas-2-les-proprietes-rentrent-en-conflits">CAS 2. Les propriétés rentrent en conflits</h3>
 <p>Maintenant, si les propriétés de ces sélecteurs sont les mêmes, cela pose des problèmes. Heureusement, CSS possède des règles de priorité prédéfinies, qui permet de résoudre cette situation. C'est ce qu'on appelle la spécificité du sélecteur. Cependant, du fait du nombre de cas différents, ces règles sont assez complexes.</p>
 <p>Voici un petit schéma qui résume les principales règles.
 <img src="images/003-css-specificity.png" alt="CSS specificity" loading="lazy"> source <a href="https://wizardzines.com/comics/css-specificity/" target="_blank" rel="noopener noreferrer">https://wizardzines.com/comics/css-specificity/</a></p>
@@ -300,7 +301,7 @@ Il serait trop long de lister ici toutes les possibilités, mais tu vas pouvoir 
 <p>Dans cet exemple, ces quatre sélecteurs ciblent la même balise. Tout d'abord, les propriétés qui ne sont pas en conflit s'appliquent, ici le <code>background-color</code>. Le fond sera donc gris clair.</p>
 <p>Ensuite, pour le <code>font-size</code>, <code>body section</code> est plus spécifique que <code>section</code> seul, ce sera donc la taille de 16px qui s'appliquera.</p>
 <p>Pour la couleur, le sélecteur d'id <code>#section1</code> est plus spécifique que le sélecteur de classe <code>.my-section</code> lui même plus spécifique que le sélecteur de balise <code>section</code>, c'est donc la couleur rouge qui s'applique, les autres propriétés <code>color</code> étant ignorées.</p>
-<h3>CAS 3. Sélecteurs ET propriétés en conflits</h3>
+<h3 id="t-cas-3-selecteurs-et-proprietes-en-conflits">CAS 3. Sélecteurs ET propriétés en conflits</h3>
 <p>En réalité, il existe un dernier cas : que se passe t-il si deux sélecteurs de <strong>même</strong> spécificité ciblent un même élément ET rentrent en conflit sur une propriété ?
 La réponse est simple, dans ce cas, c'est la <strong>dernière</strong> propriété trouvée qui sera appliquée.</p>
 <p>Lorsque tu relies ton CSS à ton HTML, tu peux charger plusieurs fichiers.</p>
@@ -310,7 +311,7 @@ La réponse est simple, dans ce cas, c'est la <strong>dernière</strong> propri�
 </code></pre></div>
 <p>Il faut imaginer que ces trois fichiers sont fusionnés en un seul <strong>dans cet ordre</strong>. Donc si ce troisième type de conflit arrive entre des sélecteurs de ces trois fichiers, c'est toujours le dernier fichier appelé qui remportera. Attention cependant, l'ordre passe bien <strong>après</strong> les autres règles de spécificités.</p>
 <p>Il est donc important, lorsque tu travailles avec plusieurs fichier CSS, de toujours charger les fichiers les plus génériques en premiers et les plus spécifiques en derniers.</p>
-<h2>Un dîner <s>presque</s> parfait</h2>
+<h2 id="t-un-diner-presque-parfait">Un dîner <s>presque</s> parfait</h2>
 <p><img src="images/004-image.gif" alt="image" loading="lazy"></p>
 <p>Maintenant que tu as vu la théorie, exerce-toi avec les sélecteurs sur le site <a href="https://flukeout.github.io/" target="_blank" rel="noopener noreferrer">CSS Diner</a>. Réalise au minimum les exercices 1 à 14 inclus et essaie si tu le peux d'aller jusqu'au dernier !</p>
 <a class="ressource" href="https://flukeout.github.io/" target="_blank" rel="noopener noreferrer">
@@ -349,7 +350,5 @@ La réponse est simple, dans ce cas, c'est la <strong>dernière</strong> propri�
   <p>Archive personnelle des cours suivis à la Wild Code School. Copie hors ligne à usage strictement privé.</p>
 </footer>
 
-<script src="../../assets/copie-code.js"></script>
-<script src="../../assets/progression.js"></script>
 </body>
 </html>

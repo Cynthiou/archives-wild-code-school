@@ -100,7 +100,7 @@ Nous créons une fonction à chaque fois, même si c'est toujours la même.</p>
 <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(enemies);
 </code></pre></div>
 <p>Comme tu peux le constater, c'est beaucoup plus facile comme ça ! Ce que nous venons de créer s'appelle une fonction &quot;factory&quot; (<strong>factory</strong> signifie <strong>usine</strong> en anglais), tout simplement car elle produit de nouveaux objets !</p>
-<h3>🔬 Teste par toi-même</h3>
+<h3 id="t-teste-par-toi-meme">🔬 Teste par toi-même</h3>
 <p>Essaie maintenant de créer une nouvelle fonction produisant des héros !</p>
 <p>Les héros doivent avoir un nom, un niveau, une arme et une fonction pour dire bonjour qui renvoie une phrase avec leur nom.</p>
 <p>Crée ensuite deux héros en appelant cette fonction.</p>
@@ -158,7 +158,7 @@ console.log(john);
 <span class="hljs-comment">// Enemy {name: &quot;spider&quot;, level: 1, emoji: &quot;🕷&quot;, attackName: &quot;bites&quot;…}</span>
 </code></pre></div>
 <p>Plutôt cool, n'est-ce pas ?</p>
-<h3>🔬 Teste par toi-même</h3>
+<h3 id="t-teste-par-toi-meme-2">🔬 Teste par toi-même</h3>
 <p>Maintenant, crée le même type de fonction pour construire les héros.</p>
 <div class="bloc-code"><div class="bloc-code__langue">codesandbox</div><pre><code class="hljs language-codesandbox">https://codesandbox.io/s/class-oop-0dse2?file=/src/index.js
 </code></pre></div>
@@ -206,7 +206,7 @@ console.log(bob);
 <p>Ensuite, il suffit d'écrire tes méthodes dessus et <strong>voila !</strong></p>
 <div class="encadre encadre--info"><div class="encadre__titre">Info</div><div class="encadre__corps"><p>Si tu échanges avec des développeurs JS, il te diront probablement que JavaScript est en réalité un &quot;langage basé sur les prototypes&quot;. Aujourd'hui les classes viennent ajouter du <strong>&quot;sucre syntaxique&quot;</strong> au langage pour cacher une certaine complexité liée à l'utilisation des prototypes, mais en réalité JS fonctionne différemment &quot;sous le capot&quot;.</p>
 </div></div>
-<h3>🔬 Teste par toi-même :</h3>
+<h3 id="t-teste-par-toi-meme-3">🔬 Teste par toi-même :</h3>
 <p>Crée une classe pour nos héros.</p>
 <div class="bloc-code"><div class="bloc-code__langue">codesandbox</div><pre><code class="hljs language-codesandbox">https://codesandbox.io/s/class-oop-0dse2?file=/src/index.js
 </code></pre></div>
@@ -260,7 +260,7 @@ console.log(bob.sayHello());
 </code></pre></div>
 <p>Tu peux voir que dans le constructeur de <em>Enemy</em>, nous utilisons le mot clé <code>super</code>.</p>
 <p>Ce mot clé <code>super</code> suivi de parenthèses va simplement <strong>appeler le constructeur de la classe parente</strong> de <em>Enemy</em> (c'est-à-dire <em>Character</em>) pour initialiser les propriétés &quot;name&quot; et &quot;level&quot; sur l'ennemi en cours de construction.</p>
-<h3>🔬 Teste par toi-même :</h3>
+<h3 id="t-teste-par-toi-meme-4">🔬 Teste par toi-même :</h3>
 <p>En utilisant le même code, crée la classe des héros qui étend personnage.</p>
 <div class="bloc-code"><div class="bloc-code__langue">codesandbox</div><pre><code class="hljs language-codesandbox">https://codesandbox.io/s/suspicious-shadow-szb1s?file=/src/index.js
 </code></pre></div>
@@ -323,7 +323,5 @@ console.log(bob.sayHello());
   <p>Archive personnelle des cours suivis à la Wild Code School. Copie hors ligne à usage strictement privé.</p>
 </footer>
 
-<script src="../../assets/copie-code.js"></script>
-<script src="../../assets/progression.js"></script>
 </body>
 </html>

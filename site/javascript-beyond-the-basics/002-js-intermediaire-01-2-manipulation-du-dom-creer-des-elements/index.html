@@ -50,7 +50,7 @@ La méthode <code>appendChild</code> va <strong>ajouter l'élément passé</stro
 <div class="bloc-code"><div class="bloc-code__langue">javascript</div><pre><code class="hljs language-javascript"><span class="hljs-keyword">const</span> myDiv = <span class="hljs-variable language_">document</span>.<span class="hljs-title function_">querySelector</span>(<span class="hljs-string">&#x27;.myDiv&#x27;</span>);
 myDiv.<span class="hljs-title function_">appendChild</span>(myElement);
 </code></pre></div>
-<h3>🔬 Fais une expérience</h3>
+<h3 id="t-fais-une-experience">🔬 Fais une expérience</h3>
 <p>Dans cet exemple, une des images est manquante sur la deuxième carte.
 En utilisant ce que nous venons de voir, crée un nouvel élément image, et utilise appendChild pour l'ajouter au bas de la deuxième carte.</p>
 <div class="bloc-code"><div class="bloc-code__langue">js</div><pre><code class="hljs language-js">!--- index.<span class="hljs-property">js</span>
@@ -105,7 +105,7 @@ secondCard.appendChild(secondCat);
 Passe l'élément que tu veux déplacer comme paramètre; cela ne créera pas de copie mais déplacera l'élément.</p>
 <div class="bloc-code"><div class="bloc-code__langue">javascript</div><pre><code class="hljs language-javascript">newDiv.<span class="hljs-title function_">appendChild</span>(newCatImage);
 </code></pre></div>
-<h3>🔬 Fais une expérience</h3>
+<h3 id="t-fais-une-experience-2">🔬 Fais une expérience</h3>
 <p>Essaye de déplacer la position de l'élément du bas vers le haut.</p>
 <div class="bloc-code"><div class="bloc-code__langue">js</div><pre><code class="hljs language-js">!--- index.<span class="hljs-property">js</span>
 <span class="hljs-comment">// Your code here</span>
@@ -152,7 +152,7 @@ firstDiv.appendChild(secondCat);
 <p>Tu peux <strong>supprimer</strong> un élément du DOM en <strong>utilisant la propriété <code>remove</code>.</strong></p>
 <div class="bloc-code"><div class="bloc-code__langue">javascript</div><pre><code class="hljs language-javascript">myElement.<span class="hljs-title function_">remove</span>();
 </code></pre></div>
-<h3>🔬 Fais une expérience</h3>
+<h3 id="t-fais-une-experience-3">🔬 Fais une expérience</h3>
 <p>Cet exemple contient des photos de chats et de chiens... Mais ils ne sont pas amis les uns avec les autres...
 Supprime toutes les photos qui contiennent des chiens (ou des chats, à toi de voir).</p>
 <p>Pour cela utilise <code>document.querySelectorAll</code> et utilise une boucle <code>for</code> et appele la méthode <code>remove</code> sur chaque élément.</p>
@@ -202,7 +202,7 @@ Le <strong>nom de la propriété</strong> doit être écrit en utilisant le <str
 <div class="bloc-code"><div class="bloc-code__langue">javascript</div><pre><code class="hljs language-javascript">someDiv.<span class="hljs-property">style</span>.<span class="hljs-property">backgroundColor</span> = <span class="hljs-string">&quot;lightblue&quot;</span>;
 someText.<span class="hljs-property">style</span>.<span class="hljs-property">fontSize</span> = <span class="hljs-string">&quot;20px&quot;</span>;
 </code></pre></div>
-<h3>🔬 Fais une expérience</h3>
+<h3 id="t-fais-une-experience-4">🔬 Fais une expérience</h3>
 <p>Essaye de modifier le CSS sur cette page:</p>
 <ul>
 <li>La box devrait être <code>yellow</code>, avec une hauteur de 300px et une largeur de 400px</li>
@@ -263,7 +263,7 @@ box.style.width = '400px';
 element.<span class="hljs-property">classList</span>.<span class="hljs-title function_">remove</span>(<span class="hljs-string">&#x27;myClass&#x27;</span>);
 </code></pre></div>
 <p>Note que, dans ce cas, comme la nature de l'élément est spécifiée (<strong>classList</strong>), nous n'avons pas besoin d'utiliser le <code>.</code> avant le nom de la classe.</p>
-<h3>🔬 Fais une expérience</h3>
+<h3 id="t-fais-une-experience-5">🔬 Fais une expérience</h3>
 <p>Dans cette page, il y a déjà quelques petites boîtes, et elles ont une classe CSS spécifique <code>box</code>. Crée une nouvelle boîte avec <code>createElement</code>, ajoute à cet élément la classe <code>box</code>, puis ajoute-la à la div <code>container-boxes</code>.</p>
 <div class="bloc-code"><div class="bloc-code__langue">js</div><pre><code class="hljs language-js">!--- index.<span class="hljs-property">js</span>
 <span class="hljs-comment">// Your code here</span>
@@ -345,7 +345,5 @@ containerBox.appendChild(thirdBox);
   <p>Archive personnelle des cours suivis à la Wild Code School. Copie hors ligne à usage strictement privé.</p>
 </footer>
 
-<script src="../../assets/copie-code.js"></script>
-<script src="../../assets/progression.js"></script>
 </body>
 </html>

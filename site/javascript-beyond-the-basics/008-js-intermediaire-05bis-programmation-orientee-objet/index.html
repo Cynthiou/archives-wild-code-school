@@ -142,7 +142,7 @@ Le <strong>prototype</strong> est la <strong>boîte à outils</strong> d'un obje
 <p><img src="images/001-image.png" alt="image" loading="lazy"></p>
 <p>Lorsque tu appelles une méthode sur un objet, l'interpréteur JS va d'abord regarder si la <strong>méthode est disponible sur l'objet en lui même.</strong> Si ce n'est pas le cas, alors il va vérifier la propriété <code>__proto__</code> de l'instance pour voir si cette méthode est disponible sur le prototype.</p>
 <p>L'araignée hérite donc de la fonction &quot;attack&quot; <strong>par le biais du prototype</strong> lié à Enemy. <strong>C'est ce que nous appelons un héritage prototypique.</strong></p>
-<h3>🔬 Teste par toi-même</h3>
+<h3 id="t-teste-par-toi-meme">🔬 Teste par toi-même</h3>
 <p>Essaie de faire la même chose pour ton héros ! Mets la méthode &quot;sayHello&quot; dans le prototype afin de ne pas la recréer à chaque instanciation d'un héro.</p>
 <div class="bloc-code"><div class="bloc-code__langue">codesandbox</div><pre><code class="hljs language-codesandbox">https://codesandbox.io/s/class-oop-0dse2?file=/src/index.js
 </code></pre></div>
@@ -210,7 +210,5 @@ console.log(bob.sayHello());
   <p>Archive personnelle des cours suivis à la Wild Code School. Copie hors ligne à usage strictement privé.</p>
 </footer>
 
-<script src="../../assets/copie-code.js"></script>
-<script src="../../assets/progression.js"></script>
 </body>
 </html>

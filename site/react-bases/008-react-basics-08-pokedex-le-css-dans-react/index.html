@@ -20,20 +20,21 @@
     <p class="quete__meta">Quête 8 sur 10 · 4 images archivées</p>
   </header>
   <div class="cours">
-<h2>Objectifs</h2>
+<h2 id="t-objectifs">Objectifs</h2>
 <ul>
 <li>Appliquer du style CSS à des composants React</li>
 <li>Expérimenter plusieurs techniques</li>
 </ul>
-<h2>Pré-requis</h2>
+<h2 id="t-pre-requis">Pré-requis</h2>
 <ol class="etapes"><li class="etape"><div class="etape__puce">1</div><div class="etape__contenu"><h4 class="etape__titre">Valider les quêtes suivantes</h4><div class="renvois"><div class="renvois__titre">Quêtes liées</div><ul><li><a href="../../react-bases/001-react-basics-01-pokedex-introduction/index.html">Quête 2328</a></li><li><a href="../../react-bases/002-react-basics-02-pokedex-ton-premier-composant/index.html">Quête 2332</a></li><li><a href="../../react-bases/003-react-basics-03-pokedex-afficher-des-donnees-dans-un/index.html">Quête 2336</a></li><li><a href="../../react-bases/004-react-basics-04-pokedex-passer-des-props/index.html">Quête 2374</a></li><li><a href="../../react-bases/005-react-basics-05-pokedex-typer-les-props-avec-typescript/index.html">Quête 2375</a></li><li><a href="../../react-bases/006-react-basics-06-pokedex-utiliser-un-state/index.html">Quête 2376</a></li><li><a href="../../react-bases/007-react-basics-07-pokedex-repeter-un-bloc-d-affichage-avec-map/index.html">Quête 2378</a></li></ul></div>
 </div></li></ol>
-<h2>Introduction</h2>
+<h2 id="t-introduction">Introduction</h2>
 <p>Le style de notre application a un impact très important sur l'apparence des composants, l’interaction utilisateur et son ressenti. Nous allons aborder des premières méthodes simples pour styliser une application React.</p>
 <p>Il y a de multiples façons de styliser une application React, et nous allons en examiner seulement quelques-unes. Garde en tête qu'il n'y a pas de bonne ou de mauvaise façon de styliser : utilise la façon qui s'adapte le mieux à ton projet !</p>
 <p><img src="images/001-introduction.png" alt="" loading="lazy"></p>
-<h2>Sommaire</h2>
-<h2>Appliquer du CSS avec des classes</h2>
+<h2 id="t-sommaire">Sommaire</h2>
+<nav class="sommaire" aria-label="Sommaire de la quête"><ol class="sommaire__liste"><li><a href="#t-appliquer-du-css-avec-des-classes">Appliquer du CSS avec des classes</a></li><li><a href="#t-utiliser-l-attribut-style">Utiliser l'attribut "style"</a></li><li><a href="#t-utiliser-des-modules-css">Utiliser des modules CSS</a></li><li><a href="#t-what-else">What else ?</a></li></ol></nav>
+<h2 id="t-appliquer-du-css-avec-des-classes">Appliquer du CSS avec des classes</h2>
 <p>Dans React, tu peux spécifier une classe CSS sur un élément JSX avec la prop <code>className</code>. Cela fonctionne exactement comme l'attribut <code>class</code> en HTML.</p>
 <div class="encadre encadre--warning"><div class="encadre__titre">Attention</div><div class="encadre__corps"><p>Pourquoi ne pas utiliser <code>class</code> comme en HTML ? Parce que le mot <code>class</code> est déjà un mot-clé en JavaScript. Les personnes qui ont conçu React ont donc choisi d'utiliser <code>className</code> pour éviter de générer des erreurs.</p>
 </div></div>
@@ -142,7 +143,7 @@
 </code></pre></div>
 </div></details>
 </div></div>
-<h2>Utiliser l'attribut &quot;style&quot;</h2>
+<h2 id="t-utiliser-l-attribut-style">Utiliser l'attribut &quot;style&quot;</h2>
 <p>Tout comme en HTML, tu peux utiliser l'attribut <code>style</code> dans ton application React pour appliquer du CSS. Mais avec quelques légères différences : au lieu d'écrire le CSS &quot;inline&quot;, tu dois le passer sous la forme d'un objet. Dans cet objet, les noms des propriétés doivent être en <strong>camelCase</strong>, et les valeurs doivent être des chaines de caractères :</p>
 <div class="bloc-code"><div class="bloc-code__langue">jsx</div><pre><code class="hljs language-jsx"><span class="hljs-keyword">const</span> container = {
   <span class="hljs-attr">display</span>: <span class="hljs-string">&quot;flex&quot;</span>,
@@ -249,7 +250,7 @@
 </code></pre></div>
 </div></details>
 </div></div>
-<h2>Utiliser des modules CSS</h2>
+<h2 id="t-utiliser-des-modules-css">Utiliser des modules CSS</h2>
 <p><a href="https://github.com/css-modules/css-modules" target="_blank" rel="noopener noreferrer">Les Modules CSS</a> peuvent t'aider à déclarer tes classes CSS avec une portée locale pour un composant. Concrètement, cela signifie que les noms de classes vont être générés par un algorithme pour obtenir des noms uniques pour chaque composant. Cela permet d'éviter les conflits de noms de classes que tu pourrais répéter dans ton application (avoir plusieurs classes <code>.button</code> qui se contredisent par exemple).</p>
 <p>Un module est un fichier CSS normal. Par exemple, un fichier <code>MyComponent.module.css</code> :</p>
 <div class="bloc-code"><div class="bloc-code__langue">css</div><pre><code class="hljs language-css"><span class="hljs-selector-class">.container</span> {
@@ -364,7 +365,7 @@
 </code></pre></div>
 </div></details>
 </div></div>
-<h2>What else ?</h2>
+<h2 id="t-what-else">What else ?</h2>
 <p>Tu as vu dans cette quête des premiers outils pour appliquer du CSS dans ton application React. Rappelle toi qu'il existe beaucoup d'autres manières pour styler tes composants : cette quête est un point de départ qui couvre les plus simples, les méthodes qui n'impliquent pas d'installer des outils supplémentaires.</p>
 <p>Tu découvriras d'autres outils plus complexes dans la suite de ton parcours. Garde également un oeil sur des ressources comme le <a href="https://2024.stateofcss.com/en-US/tools/#css_in_js" target="_blank" rel="noopener noreferrer">State of CSS</a> pour rester à jour.</p>
 
@@ -387,7 +388,5 @@
   <p>Archive personnelle des cours suivis à la Wild Code School. Copie hors ligne à usage strictement privé.</p>
 </footer>
 
-<script src="../../assets/copie-code.js"></script>
-<script src="../../assets/progression.js"></script>
 </body>
 </html>

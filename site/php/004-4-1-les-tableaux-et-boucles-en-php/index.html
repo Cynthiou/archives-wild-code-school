@@ -30,7 +30,7 @@
 <p>Dans un second temps, tu vas découvrir les différentes façons de faire des boucles en PHP.
 Les boucles sont des structures de contrôle très utilisées car elles vont te permettre de faire le même traitement plusieurs fois... En boucle !</p>
 <p><img src="http://images.innoveduc.fr/php_proc_loop.jpg" alt="image" loading="lazy"></p>
-<h2>🤓 <strong>À la fin de cette quête, tu seras capable de:</strong></h2>
+<h2 id="t-a-la-fin-de-cette-quete-tu-seras-capable-de">🤓 <strong>À la fin de cette quête, tu seras capable de:</strong></h2>
 <ul>
 <li>✅ Découvrir les variables de type &quot;array&quot;</li>
 <li>✅ Apprendre à les déclarer et à les manipuler</li>
@@ -68,13 +68,13 @@ Attention également aux simples quotes, ces dernières sont présentes car les 
 <div class="bloc-code"><div class="bloc-code__langue">php</div><pre><code class="hljs language-php"><span class="hljs-variable">$elements</span> = [<span class="hljs-number">1</span>, <span class="hljs-string">&#x27;deux&#x27;</span>, <span class="hljs-literal">true</span>, [], <span class="hljs-number">1.8</span>];
 </code></pre></div>
 <p>Ici, la variable <code>$elements</code> est un tableau qui contient, successivement, les éléments de type int, string, boolean, array (et oui un tableau peut contenir un autre tableau) et float.</p>
-<h3>Le tableau indexé numériquement</h3>
+<h3 id="t-le-tableau-indexe-numeriquement">Le tableau indexé numériquement</h3>
 <p>Tu as vu comment stocker plusieurs informations au sein d'une seule et même variable, c'est génial, mais comment faire pour récupérer une valeur précise ?
 Heureusement, les index sont là. Dans cette étape, tu vas voir les index numériques.
 Lors de la déclaration d'un tableau, si tu ne précises pas les index, ces derniers seront par défaut numériques.
 Un tableau indexé numériquement est tout simplement une liste d'éléments repérés chacun par un index numérique unique. Ainsi, le premier élément du tableau correspondra à l'index 0, le deuxième à l'index 1, le troisième à l'index 2, etc.
 Tu noteras bien que la numérotation commence à 0 et non à 1 !</p>
-<h4>Accéder aux éléments d'un tableau</h4>
+<h4 id="t-acceder-aux-elements-d-un-tableau">Accéder aux éléments d'un tableau</h4>
 <p>Pour accéder à un élément du tableau, il suffit d'y faire référence grâce à son index.
 Reprenons notre exemple précédent, notre tableau d'armes :</p>
 <div class="bloc-code"><div class="bloc-code__langue">php</div><pre><code class="hljs language-php"><span class="hljs-variable">$weapons</span> = [<span class="hljs-string">&#x27;whip&#x27;</span>, <span class="hljs-string">&#x27;gun&#x27;</span>, <span class="hljs-string">&#x27;saber&#x27;</span>];
@@ -89,7 +89,7 @@ Tu peux maintenant afficher les différentes valeurs du tableau de la manière s
 <p><em>Représentation du tableau ci-dessus :</em></p>
 <p><img src="images/004-image.png" alt="image" loading="lazy"></p>
 <p>Attention, dans l'exemple précédent, le code <code>echo $weapons[3];</code> renverrait une erreur. En effet, tu ne peux accéder à l'index d'un tableau qui n'existe pas.</p>
-<h4>Ajouter des éléments à un tableau</h4>
+<h4 id="t-ajouter-des-elements-a-un-tableau">Ajouter des éléments à un tableau</h4>
 <p>Bien entendu, un tableau peut avoir un nombre illimité de valeurs. Tu peux initialiser un tableau avec certaines valeurs, et en ajouter de nouvelles au fur et à mesure de l'exécution de ton script.</p>
 <div class="bloc-code"><div class="bloc-code__langue">phpsandbox</div><pre><code class="hljs language-phpsandbox">https://phpsandbox.io/n/q41-array-dump-1-lk0iu?&amp;layout=Editor
 </code></pre></div>
@@ -111,7 +111,7 @@ Le tableau <code>$weapons</code> contient 3 éléments de type string avec, pour
     <div class="ressource__hote">php.net</div>
   </div>
 </a>
-<h3>Le tableau associatif</h3>
+<h3 id="t-le-tableau-associatif">Le tableau associatif</h3>
 <p>Juste avant, tu as vu que chaque valeur de ton tableau pouvait être identifiée numériquement. Il s'agit du comportement par défaut lorsque tu déclares un tableau avec uniquement tes valeurs à l'intérieur.</p>
 <p>Pour info, tu pourrais également déclarer ton tableau de valeurs ainsi :</p>
 <div class="bloc-code"><div class="bloc-code__langue">php</div><pre><code class="hljs language-php"><span class="hljs-variable">$weapons</span>[<span class="hljs-number">0</span>] = <span class="hljs-string">&#x27;whip&#x27;</span>;
@@ -156,7 +156,7 @@ Si tu rappelles le même élément en lui assignant une nouvelle valeur, la vale
     <div class="ressource__hote">php.net</div>
   </div>
 </a>
-<h3>Les fonctions utiles pour les tableaux</h3>
+<h3 id="t-les-fonctions-utiles-pour-les-tableaux">Les fonctions utiles pour les tableaux</h3>
 <p>De nombreuses fonctions en PHP nous permettent de travailler sur les tableaux, des fonctions de mesure, de navigation, d'itération, de tri, et bien plus encore.
 Ce sont des fonctions PHP dites <em>natives</em> car elles font partie du langage PHP.</p>
 <p>En voici quelques exemples:</p>
@@ -235,7 +235,7 @@ Permet de calculer la somme des valeurs d'un tableau.</li>
   </div>
 </a>
 <h1>Les boucles</h1>
-<h3>La boucle <code>for</code></h3>
+<h3 id="t-la-boucle-for">La boucle <code>for</code></h3>
 <p>La boucle <code>for</code> est la plus simple à mettre en place. Tu vas indiquer à PHP de boucler un certain nombre de fois. C'est toi qui définis ce nombre. La boucle <code>for</code> intègre un compteur.</p>
 <p>Sa notation est la suivante :</p>
 <div class="bloc-code"><div class="bloc-code__langue">php</div><pre><code class="hljs language-php"><span class="hljs-keyword">for</span> (debut; fin; pas) {
@@ -280,7 +280,7 @@ Permet de calculer la somme des valeurs d'un tableau.</li>
     <div class="ressource__hote">php.net</div>
   </div>
 </a>
-<h3>La boucle <code>while</code></h3>
+<h3 id="t-la-boucle-while">La boucle <code>while</code></h3>
 <div class="bloc-code"><div class="bloc-code__langue">php</div><pre><code class="hljs language-php"><span class="hljs-comment">// Exemple de boucle while</span>
 <span class="hljs-variable">$i</span> = <span class="hljs-number">0</span>;
 <span class="hljs-keyword">while</span> (<span class="hljs-variable">$i</span> &lt; <span class="hljs-number">10</span>) {
@@ -305,7 +305,7 @@ Le second est une boucle infinie. Étant donné que le <code>while</code> boucle
     <div class="ressource__hote">php.net</div>
   </div>
 </a>
-<h3>La boucle <code>foreach</code></h3>
+<h3 id="t-la-boucle-foreach">La boucle <code>foreach</code></h3>
 <p>Le <code>foreach</code> permet de boucler sur les tableaux.</p>
 <p>Il existe 2 façons de mettre en place un foreach :</p>
 <div class="bloc-code"><div class="bloc-code__langue">php</div><pre><code class="hljs language-php"><span class="hljs-variable">$movies</span> = [
@@ -399,14 +399,14 @@ En PHP, si tu n'as pas modifié la configuration de base, les scripts ont une du
 [x] $bob[&quot;age&quot;]
 </code></pre></div>
 <h1>💪 Challenge</h1>
-<h3>Créer la filmographie d'Indiana</h3>
+<h3 id="t-creer-la-filmographie-d-indiana">Créer la filmographie d'Indiana</h3>
 <ol>
 <li>Dans un fichier PHP, crée un tableau contenant 3 titres de films dans lesquels joue notre ami Indiana. Pour chaque film, associe son année de sortie (le titre du film sera la clé).</li>
 <li>Une fois le tableau créé, réalise une boucle pour afficher la liste des films contenus dans le tableau ainsi que leur année de sortie associée. <strong>Les films devront apparaître dans l'ordre décroissant de sortie</strong> (du plus récent au plus ancien). Regarde du côté des fonctions de tri.</li>
 </ol>
 <p>Pour chaque film, tu devras donc afficher: <code>2000 - movie_title</code>
 <code>2000</code> étant l'année de parution du film.</p>
-<h3>Critères de validation</h3>
+<h3 id="t-criteres-de-validation">Critères de validation</h3>
 <ul>
 <li>Le fichier contient un tableau associatif,</li>
 <li>Le tableau contient 3 films, avec, le titre comme clé et l'année de sortie comme valeur</li>
@@ -455,7 +455,5 @@ En PHP, si tu n'as pas modifié la configuration de base, les scripts ont une du
   <p>Archive personnelle des cours suivis à la Wild Code School. Copie hors ligne à usage strictement privé.</p>
 </footer>
 
-<script src="../../assets/copie-code.js"></script>
-<script src="../../assets/progression.js"></script>
 </body>
 </html>

@@ -20,18 +20,19 @@
     <p class="quete__meta">Quête 2 sur 9 · 1 image archivée</p>
   </header>
   <div class="cours">
-<h2>Objectifs</h2>
+<h2 id="t-objectifs">Objectifs</h2>
 <ul>
 <li>Comprendre ce qu'est une base de données</li>
 <li>Écrire tes premières requêtes SQL</li>
 <li>Créer ta première base de données</li>
 <li>Importer des données</li>
 </ul>
-<h2>Introduction</h2>
+<h2 id="t-introduction">Introduction</h2>
 <p>Bonjour, jeune sorcier. Tu vas apprendre ici de nouveaux <em>sortilèges</em> qui te permettront de créer, gérer et manipuler des données, autant de choses qu’il est indispensable de savoir faire dans le monde magique du développement web (et dans bien d'autres domaines).</p>
 <p>Les bases de données (BDD) vont te permettre de <strong>stocker</strong> des données, de manière <strong>structurée</strong> et organisée, et de les réutiliser facilement. Un registre d’élèves ou encore un livre de sorts sont en quelque sorte des bases de données.</p>
-<h2>Sommaire</h2>
-<h2>Un peu de vocabulaire</h2>
+<h2 id="t-sommaire">Sommaire</h2>
+<nav class="sommaire" aria-label="Sommaire de la quête"><ol class="sommaire__liste"><li><a href="#t-un-peu-de-vocabulaire">Un peu de vocabulaire</a></li><li><a href="#t-le-langage-sql">Le langage SQL</a></li><li><a href="#t-premieres-requetes-sql">Premières requêtes SQL</a></li><li><a href="#t-challenge">Challenge</a><ul><li><a href="#t-criteres-de-validation">Critères de validation</a></li></ul></li><li><a href="#t-creer-la-base-de-donnees">Créer la base de données</a></li><li><a href="#t-creer-la-table-wizard">Créer la table wizard</a></li><li><a href="#t-modifier-la-table-wizard">Modifier la table wizard</a></li><li><a href="#t-creer-la-table-school">Créer la table school</a></li><li><a href="#t-show-tables">SHOW TABLES</a></li><li><a href="#t-describe-wizard">DESCRIBE wizard</a></li><li><a href="#t-describe-school">DESCRIBE school</a></li></ol></nav>
+<h2 id="t-un-peu-de-vocabulaire">Un peu de vocabulaire</h2>
 <p>Cette première vidéo va te permettre de parler <em>le langage</em> base de données. Tu y découvriras une grande partie du vocabulaire utilisé dans le milieu.</p>
 <a class="ressource" href="https://www.youtube.com/watch?v=e8yuiYjRPbU" target="_blank" rel="noopener noreferrer">
   <div class="ressource__icone">↗</div>
@@ -89,7 +90,7 @@
     <div class="ressource__hote">youtube.com</div>
   </div>
 </a>
-<h2>Le langage SQL</h2>
+<h2 id="t-le-langage-sql">Le langage SQL</h2>
 <p>Maintenant que tu as une meilleure vision de ce qu’est une base de données, tu comprends qu’il y a deux parties :</p>
 <ul>
 <li>La structure des données (tables, champs, relations...) qui définissent comment les données vont être organisées.</li>
@@ -110,7 +111,7 @@
     <div class="video-lien__url">https://youtu.be/WolMLUXs_mY</div>
   </div>
 </a>
-<h2>Premières requêtes SQL</h2>
+<h2 id="t-premieres-requetes-sql">Premières requêtes SQL</h2>
 <p>Tu verras la partie <em>manipulation</em> de données dans de prochaines quêtes. Pour le moment, tu vas voir quelques requêtes basiques pour créer une base de données.</p>
 <p>Le SQL se compose de différentes commandes (tu peux les écrire en majuscules pour les faire ressortir) et de différents paramètres choisis par l’utilisateur (à garder en minuscules pour les différencier des commandes). Une requête SQL se termine par un point virgule. Voici donc une liste des premiers “sortilèges” que tu vas pouvoir lancer.</p>
 <ul>
@@ -210,7 +211,7 @@ Lors de la création d’une table, il faut également spécifier les champs qui
   </div>
 </a>
 <p><img src="images/001-premieres-requetes-sql.gif" alt="" loading="lazy"></p>
-<h2>Challenge</h2>
+<h2 id="t-challenge">Challenge</h2>
 <ol class="etapes"><li class="etape"><div class="etape__puce">1</div><div class="etape__contenu"><h4 class="etape__titre">Créer une base de donnée</h4><p>Crée une base de données <code>wild_db_quest</code> et place toi dessus.</p>
 </div></li><li class="etape"><div class="etape__puce">2</div><div class="etape__contenu"><h4 class="etape__titre">Créer une table</h4><p>Exécute le code SQL suivant :</p>
 <div class="bloc-code"><div class="bloc-code__langue">sql</div><pre><code class="hljs language-sql"><span class="hljs-keyword">CREATE TABLE</span> wizard (
@@ -237,18 +238,18 @@ Lors de la création d’une table, il faut également spécifier les champs qui
 <p>Exécute les commandes <code>SHOW TABLES</code> et fais un <code>DESCRIBE</code> sur les tables <code>wizard</code> et <code>school</code>.</p>
 <p>Dans ta console, copie les sorties des commandes <code>SHOW TABLES</code> et <code>DESCRIBE</code> et colle le texte en solution.</p>
 <p>À toi de jouer, jeune sorcier !</p>
-<h3>Critères de validation</h3>
+<h3 id="t-criteres-de-validation">Critères de validation</h3>
 <ul>
 <li>La commande SHOW TABLES montre que la base de données <code>wild_db_quest</code> existe et contient les deux tables <code>wizard</code> et <code>school</code>.</li>
 <li>La table <code>wizard</code> contient un champ <code>is_muggle</code> de type BOOL ou TINYINT(1) et NOT NULL.</li>
 <li>La table <code>school</code> contient les champs <code>id</code>, <code>name</code>, <code>capacity</code> et <code>country</code>, respectivement de type INT, VARCHAR(100), INT et VARCHAR(255).</li>
 <li>Le champ <code>id</code> de la table <code>school</code> est <strong>auto-incrémenté</strong> et est une <strong>clé primaire</strong>.</li>
 </ul>
-<h2>Créer la base de données</h2>
+<h2 id="t-creer-la-base-de-donnees">Créer la base de données</h2>
 <div class="bloc-code"><div class="bloc-code__langue">sql</div><pre><code class="hljs language-sql"><span class="hljs-keyword">CREATE</span> DATABASE wild_db_quest;
 USE wild_db_quest;
 </code></pre></div>
-<h2>Créer la table wizard</h2>
+<h2 id="t-creer-la-table-wizard">Créer la table wizard</h2>
 <div class="bloc-code"><div class="bloc-code__langue">sql</div><pre><code class="hljs language-sql"><span class="hljs-keyword">CREATE TABLE</span> wizard (
   id <span class="hljs-type">INT</span> <span class="hljs-keyword">NOT NULL</span> AUTO_INCREMENT,
   firstname <span class="hljs-type">VARCHAR</span>(<span class="hljs-number">100</span>) <span class="hljs-keyword">NOT NULL</span>,
@@ -259,11 +260,11 @@ USE wild_db_quest;
   <span class="hljs-keyword">PRIMARY KEY</span> (id)
 );
 </code></pre></div>
-<h2>Modifier la table wizard</h2>
+<h2 id="t-modifier-la-table-wizard">Modifier la table wizard</h2>
 <div class="bloc-code"><div class="bloc-code__langue">sql</div><pre><code class="hljs language-sql"><span class="hljs-keyword">ALTER TABLE</span> wizard
   <span class="hljs-keyword">ADD</span> is_muggle <span class="hljs-type">BOOLEAN</span> <span class="hljs-keyword">NOT NULL</span> <span class="hljs-keyword">DEFAULT</span> <span class="hljs-number">0</span>;
 </code></pre></div>
-<h2>Créer la table school</h2>
+<h2 id="t-creer-la-table-school">Créer la table school</h2>
 <div class="bloc-code"><div class="bloc-code__langue">sql</div><pre><code class="hljs language-sql"><span class="hljs-keyword">CREATE TABLE</span> school (
   id <span class="hljs-type">INT</span> <span class="hljs-keyword">NOT NULL</span> AUTO_INCREMENT,
   name <span class="hljs-type">VARCHAR</span>(<span class="hljs-number">100</span>) <span class="hljs-keyword">NOT NULL</span>,
@@ -272,7 +273,7 @@ USE wild_db_quest;
   <span class="hljs-keyword">PRIMARY KEY</span> (id)
 );
 </code></pre></div>
-<h2>SHOW TABLES</h2>
+<h2 id="t-show-tables">SHOW TABLES</h2>
 <div class="bloc-code"><pre><code class="hljs language-plaintext">+-------------------------+
 | Tables_in_wild_db_quest |
 +-------------------------+
@@ -280,7 +281,7 @@ USE wild_db_quest;
 | wizard                  |
 +-------------------------+
 </code></pre></div>
-<h2>DESCRIBE wizard</h2>
+<h2 id="t-describe-wizard">DESCRIBE wizard</h2>
 <div class="bloc-code"><pre><code class="hljs language-plaintext">+-------------+--------------+------+-----+---------+----------------+
 | Field       | Type         | Null | Key | Default | Extra          |
 +-------------+--------------+------+-----+---------+----------------+
@@ -293,7 +294,7 @@ USE wild_db_quest;
 | is_muggle   | tinyint(1)   | NO   |     | 0       |                |
 +-------------+--------------+------+-----+---------+----------------+
 </code></pre></div>
-<h2>DESCRIBE school</h2>
+<h2 id="t-describe-school">DESCRIBE school</h2>
 <div class="bloc-code"><pre><code class="hljs language-plaintext">+----------+--------------+------+-----+---------+----------------+
 | Field    | Type         | Null | Key | Default | Extra          |
 +----------+--------------+------+-----+---------+----------------+
@@ -341,7 +342,5 @@ USE wild_db_quest;
   <p>Archive personnelle des cours suivis à la Wild Code School. Copie hors ligne à usage strictement privé.</p>
 </footer>
 
-<script src="../../assets/copie-code.js"></script>
-<script src="../../assets/progression.js"></script>
 </body>
 </html>

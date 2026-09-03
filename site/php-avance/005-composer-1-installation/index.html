@@ -26,7 +26,7 @@
 <p>Il permet à ses utilisateurs de déclarer et d'installer les bibliothèques (<em>packages</em>) dont le projet principal a besoin. Ce type de gestionnaire de dépendances existe dans de nombreux langages, l'équivalent dans l'écosystème JS est par ex <strong>npm</strong>, <strong>yarn</strong>.
 Une bibliothèque est un ensemble de scripts écrits en <strong>PHP</strong> mettant à disposition des fonctions, constantes et classes afin de faciliter et d'accélérer les développements. Tu vas donc utiliser des morceaux de code écrits par d'autres, dans le but de résoudre certaines problématiques communes à de nombreux développeurs. Ainsi, tu n'auras pas à tout redévelopper par toi même en tentant de réinventer la roue ;-)</p>
 <p>Cette quête va t’apprendre à installer <strong>composer</strong> sur ta machine et à lancer ta première commande <strong>composer</strong>.</p>
-<h2>🤓 À la fin de cette quête, tu seras capable de :</h2>
+<h2 id="t-a-la-fin-de-cette-quete-tu-seras-capable-de">🤓 À la fin de cette quête, tu seras capable de :</h2>
 <p>✅ Installer <strong>composer</strong> sur ta machine
 ✅ Vérifier que <strong>composer</strong> est bien installé et afficher sa version</p>
 <div class="bloc-code"><div class="bloc-code__langue">title-magnify</div><pre><code class="hljs language-title-magnify">Installation
@@ -39,17 +39,17 @@ Une bibliothèque est un ensemble de scripts écrits en <strong>PHP</strong> met
 <div class="encadre encadre--warning"><div class="encadre__titre">Attention</div><div class="encadre__corps"><p><strong>Pour le moment ne l'installe pas encore !</strong>
 Cela fera parti de ton challenge. Pour le moment, contente toi de lire les instructions et comprendre les différentes étapes.</p>
 </div></div>
-<h3>Installation locale</h3>
+<h3 id="t-installation-locale">Installation locale</h3>
 <p>Tout d'abord ouvre un terminal et rends toi dans le dossier de ton projet.</p>
-<h4>Linux / Windows / MacOS</h4>
+<h4 id="t-linux-windows-macos">Linux / Windows / MacOS</h4>
 <p>Exécute les commandes suivantes (<em>une par une</em>) afin de télécharger <strong>composer</strong> dans le dossier de ton projet :</p>
 <div class="bloc-code"><div class="bloc-code__langue">bash</div><pre><code class="hljs language-bash">php -r <span class="hljs-string">&quot;copy(&#x27;https://getcomposer.org/installer&#x27;, &#x27;composer-setup.php&#x27;);&quot;</span>
 php composer-setup.php --filename=composer
 php -r <span class="hljs-string">&quot;unlink(&#x27;composer-setup.php&#x27;);&quot;</span>
 </code></pre></div>
 <p>Une fois ces commandes exécutées, tu devrais voir un fichier nommé <strong>composer</strong> à la racine de ton projet.</p>
-<h3>Installation globale (que nous utiliserons)</h3>
-<h4>Linux / MacOS</h4>
+<h3 id="t-installation-globale-que-nous-utiliserons">Installation globale (que nous utiliserons)</h3>
+<h4 id="t-linux-macos">Linux / MacOS</h4>
 <p>Tout d'abord, suis les instructions de la section <strong>Installation locale</strong>.
 Déplace ensuite le fichier <strong>composer</strong> que tu as téléchargé précédemment dans n'importe quel dossier situé dans ton <strong>PATH</strong> avec la commande suivante :</p>
 <div class="bloc-code"><div class="bloc-code__langue">bash</div><pre><code class="hljs language-bash"><span class="hljs-built_in">sudo</span> <span class="hljs-built_in">mv</span> composer /usr/local/bin
@@ -58,7 +58,7 @@ Déplace ensuite le fichier <strong>composer</strong> que tu as téléchargé pr
 <p>Sur certaines versions de MacOS le dossier /usr n'existe pas. Si tu reçois une erreur de type &quot;/usr/local/bin/composer: No such file or directory&quot;, tu dois créer le dossier /usr/local/bin toi-même :
 mkdir -p /usr/local/bin</p>
 </div></div>
-<h4>Windows</h4>
+<h4 id="t-windows">Windows</h4>
 <p>Télécharge le fichier suivant : <a href="https://getcomposer.org/Composer-Setup.exe" target="_blank" rel="noopener noreferrer">Composer-Setup.exe</a>
 Une fois téléchargé, exécutes-le et clique sur <strong>suivant</strong> à chaque étape de l'installation.</p>
 <div class="bloc-code"><div class="bloc-code__langue">title-magnify</div><pre><code class="hljs language-title-magnify">Pour aller plus loin
@@ -73,7 +73,7 @@ Une fois téléchargé, exécutes-le et clique sur <strong>suivant</strong> à c
   </div>
 </a>
 <h1>💪 Challenge</h1>
-<h2>Installe composer globalement et vérifies son installation</h2>
+<h2 id="t-installe-composer-globalement-et-verifies-son-installation">Installe composer globalement et vérifies son installation</h2>
 <p>Tout d'abord suis les étapes de la section <strong>Installation globale</strong>.</p>
 <p>Si tu as ouvert un terminal, <strong>ferme ce dernier</strong> et ouvres-en un nouveau.</p>
 <p>Vérifie ensuite la version de <strong>composer</strong> en lançant la commande suivante :</p>
@@ -107,7 +107,5 @@ Une fois téléchargé, exécutes-le et clique sur <strong>suivant</strong> à c
   <p>Archive personnelle des cours suivis à la Wild Code School. Copie hors ligne à usage strictement privé.</p>
 </footer>
 
-<script src="../../assets/copie-code.js"></script>
-<script src="../../assets/progression.js"></script>
 </body>
 </html>

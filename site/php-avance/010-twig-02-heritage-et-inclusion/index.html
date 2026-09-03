@@ -29,7 +29,7 @@ Introduction
 <h1>TWIG</h1>
 <p><img src="images/001-image.png" alt="image" loading="lazy"></p>
 <p>Parmi ses fonctionnalités, le moteur de template Twig permet de gérer la structure des pages. Bien utiliser son moteur te permettra de développer des applications maintenables et évolutives.</p>
-<h2>🤓 À la fin de cette quête, tu seras capable de :</h2>
+<h2 id="t-a-la-fin-de-cette-quete-tu-seras-capable-de">🤓 À la fin de cette quête, tu seras capable de :</h2>
 <ul>
 <li>✅ Utiliser l'héritage dans Twig</li>
 <li>✅ Inclure des composants de template</li>
@@ -37,7 +37,7 @@ Introduction
 <h1>Le principe d'héritage</h1>
 <p>Comme en Programmation Orientée Objet, Twig inclut un système d'héritage de template dans son moteur.
 Cette fonctionnalité sera incontournable pour tout projet multipages afin de te permettre de créer un squelette de base à ton application. L'idée est la suivante: des templates &quot;enfants&quot; vont pouvoir hériter de ce qui a déjà été défini dans les templates &quot;parents&quot;, à savoir le code HTML déjà écrit !</p>
-<h3>Création du squelette</h3>
+<h3 id="t-creation-du-squelette">Création du squelette</h3>
 <p>Que pourrait contenir ce squelette ?
 Tout ce que tu as besoin de répéter sur chaque page HTML !
 Soit par exemple :</p>
@@ -86,7 +86,7 @@ Voici comment l'indiquer dans notre exemple</p>
 </span></code></pre></div>
 <p>Tu as remarqué que nous avons ajouté <code>{% block content %}{% endblock %}</code> entre les deux balises <code>body</code>. C'est donc dans ces <em>blocks</em> qu'il sera possible d'écrire du code si tu hérites de ce squelette.
 Le mot <em>content</em> a été choisi arbitrairement, tu aurais pu l'appeler <em>body</em> ou autre mot approprié.</p>
-<h3>Héritage du squelette</h3>
+<h3 id="t-heritage-du-squelette">Héritage du squelette</h3>
 <p>Maintenant que tu as un squelette utilisable, tu vas pouvoir en hériter dans un autre fichier.</p>
 <div class="bloc-code"><div class="bloc-code__langue">twig</div><pre><code class="hljs language-twig"><span class="hljs-comment">{# hello.html.twig #}</span><span class="language-xml">
 </span><span class="hljs-template-tag">{%</span> <span class="hljs-name">extends</span> <span class="hljs-string">&#x27;layout.html.twig&#x27;</span> <span class="hljs-template-tag">%}</span><span class="language-xml">
@@ -101,7 +101,7 @@ Ensuite, tu as la possibilité d'utiliser les blocs mis à ta disposition par le
 Par cette manipulation, tu as en réalité généré un fichier HTML complet qui sera servi sur le navigateur de l'utilisateur final.</p>
 <div class="encadre encadre--warning"><div class="encadre__titre">Attention</div><div class="encadre__corps"><p>En héritant d'un layout, il est obligatoire d'insérer le contenu uniquement à l'intérieur d'un élément block. Dans le cas contraire, le moteur de template ne saura pas où afficher le contenu et lancera une erreur.</p>
 </div></div>
-<h3>Allons plus loin dans l'héritage</h3>
+<h3 id="t-allons-plus-loin-dans-l-heritage">Allons plus loin dans l'héritage</h3>
 <p>Avec l'exemple que tu viens de voir, nous rencontrons des limites :</p>
 <p>&quot;Comment puis-je alors avoir un title différent pour chacune de mes pages ?&quot;</p>
 <p>Deux solutions.</p>
@@ -234,7 +234,7 @@ Une bonne pratique consiste à nommer ces composants en préfixant avec un under
 </span></code></pre></div>
 <p>Dans cet exemple, nous supposons que notre contrôleur nous aura envoyé un tableau <code>activities</code>. Ainsi une card sera affichée pour chaque activité.</p>
 <h1>💪 Challenge</h1>
-<h3>Héritage et inclusion</h3>
+<h3 id="t-heritage-et-inclusion">Héritage et inclusion</h3>
 <div class="encadre encadre--info"><div class="encadre__titre">Info</div><div class="encadre__corps"><p>Pour ce challenge tu repartiras du dépôt Github que tu as déjà utilisé lors de la quête précédente : <a href="https://github.com/WildCodeSchool/quest-twig" target="_blank" rel="noopener noreferrer">https://github.com/WildCodeSchool/quest-twig</a></p>
 </div></div>
 <ul>
@@ -266,7 +266,7 @@ Une bonne pratique consiste à nommer ces composants en préfixant avec un under
 <li>Créé un composant pour une navbar (ne t’embête pas avec la mise en forme pour cette quête) et inclus le dans ton fichier <em>layout.html.twig</em></li>
 <li>Envoie le résultat sur ton dépôt GitHub et poste le lien en solution</li>
 </ul>
-<h3>Critères de validation</h3>
+<h3 id="t-criteres-de-validation">Critères de validation</h3>
 <ul>
 <li>
 <p>Pour corriger, clone le projet et pense à lancer un <code>composer install</code>. Le dossier <code>vendor</code> ne doit pas être inclus dans le versionnage sous git.</p>
@@ -303,7 +303,5 @@ Une bonne pratique consiste à nommer ces composants en préfixant avec un under
   <p>Archive personnelle des cours suivis à la Wild Code School. Copie hors ligne à usage strictement privé.</p>
 </footer>
 
-<script src="../../assets/copie-code.js"></script>
-<script src="../../assets/progression.js"></script>
 </body>
 </html>

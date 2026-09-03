@@ -20,17 +20,18 @@
     <p class="quete__meta">Quête 5 sur 10 · 14 images archivées</p>
   </header>
   <div class="cours">
-<h2>Objectifs</h2>
+<h2 id="t-objectifs">Objectifs</h2>
 <ul>
 <li>De comprendre en profondeur la notion de grille</li>
 <li>De créer une superbe mise en page CSS avec Grid</li>
 </ul>
-<h2>Introduction</h2>
+<h2 id="t-introduction">Introduction</h2>
 <p>Le module <em>CSS Grid layout</em> est un outil puissant permettant de faire de la mise en page via une grille à deux dimensions.
 Dans cette quête, tu vas découvrir comment utiliser cette technique plutôt récente dans la spécification CSS.</p>
 <p><img src="images/001-illustration-grid.jpg" alt="Illustration grid" loading="lazy"></p>
-<h2>Sommaire</h2>
-<h2>Anatomie de la grille</h2>
+<h2 id="t-sommaire">Sommaire</h2>
+<nav class="sommaire" aria-label="Sommaire de la quête"><ol class="sommaire__liste"><li><a href="#t-anatomie-de-la-grille">Anatomie de la grille</a></li><li><a href="#t-le-conteneur-de-grille">Le conteneur de grille</a></li><li><a href="#t-mind-the-gap">"Mind the gap"</a></li><li><a href="#t-fractions">"Fractions"</a></li><li><a href="#t-auto-filling">Auto-filling</a></li><li><a href="#t-definir-la-position-de-chaque-element">Définir la position de chaque élément</a></li><li><a href="#t-minimum-et-maximum">Minimum et maximum</a></li><li><a href="#t-ressources">Ressources</a></li><li><a href="#t-challenge">Challenge</a><ul><li><a href="#t-precisions-et-indices">Précisions et indices</a></li></ul></li><li><a href="#t-une-solution-possible">Une solution possible.</a></li></ol></nav>
+<h2 id="t-anatomie-de-la-grille">Anatomie de la grille</h2>
 <p>Une grille est constituée :</p>
 <ul>
 <li>de lignes (<strong>Grid lines</strong>) : elles peuvent être horizontales ou verticales et sont numérotées en commençant à l'index 1. Elles sont représentées en pointillés sur le schéma suivant ;</li>
@@ -39,7 +40,7 @@ Dans cette quête, tu vas découvrir comment utiliser cette technique plutôt r�
 <li>d'aires (<strong>Grid area</strong>) : une ou plusieurs cellules adjacentes formant un rectangle.</li>
 </ul>
 <p><img src="images/002-grid-concept.svg" alt="Grid concept" loading="lazy"><em>Source:</em> <a href="https://webkit.org/blog/7434/css-grid-layout-a-new-layout-module-for-the-web/" target="_blank" rel="noopener noreferrer">https://webkit.org/blog/7434/css-grid-layout-a-new-layout-module-for-the-web/</a></p>
-<h2>Le conteneur de grille</h2>
+<h2 id="t-le-conteneur-de-grille">Le conteneur de grille</h2>
 <p>La première chose dont nous avons besoin est un <strong>conteneur</strong> qui contrôlera comment les éléments enfants seront disposés (c'est l'équivalent du conteneur flex avec le module Flexbox).</p>
 <div class="bloc-code"><div class="bloc-code__langue">css</div><pre><code class="hljs language-css"><span class="hljs-selector-class">.bloc-container</span> {
   <span class="hljs-attribute">display</span>: grid;
@@ -79,7 +80,7 @@ On a juste à l'écrire comme tu l'as énoncé !</p>
 <span class="hljs-attribute">grid-template-rows</span>: <span class="hljs-number">100px</span> <span class="hljs-number">300px</span>;
 </code></pre></div>
 <p><img src="images/005-example-grid.png" alt="Example grid " loading="lazy"></p>
-<h2>&quot;Mind the gap&quot;</h2>
+<h2 id="t-mind-the-gap">&quot;Mind the gap&quot;</h2>
 <p>On aimerait bien mettre un peu d'espace entre les éléments de la grille. Qu'a cela ne tienne, on peut utiliser la propriété <code>gap</code> !</p>
 <div class="bloc-code"><div class="bloc-code__langue">css</div><pre><code class="hljs language-css"><span class="hljs-attribute">gap</span>: <span class="hljs-number">20px</span>
 </code></pre></div>
@@ -141,7 +142,7 @@ Il y aura aussi <strong>3 lignes de 200px chacune</strong>. Les éléments de la
 }
 </code></pre></div>
 </div></details>
-<h2>&quot;Fractions&quot;</h2>
+<h2 id="t-fractions">&quot;Fractions&quot;</h2>
 <p>Tout à l'heure, on a utilisé l'unité <code>px</code> pour définir les dimensions de notre grille, mais on peut aussi utiliser l'unité <code>fr</code>, diminutif de <em>&quot;fraction&quot;</em>.
 Par exemple, si on veut faire en sorte que chaque colonne prennent 1/3 de la largeur disponible, on pourra écrire :</p>
 <div class="bloc-code"><div class="bloc-code__langue">css</div><pre><code class="hljs language-css"><span class="hljs-attribute">grid-template-columns</span>: <span class="hljs-number">1</span>fr <span class="hljs-number">1</span>fr <span class="hljs-number">1</span>fr;
@@ -205,7 +206,7 @@ Par exemple, si on veut faire en sorte que chaque colonne prennent 1/3 de la lar
 }
 </code></pre></div>
 </div></details>
-<h2>Auto-filling</h2>
+<h2 id="t-auto-filling">Auto-filling</h2>
 <p>On peut aller un peu plus loin et utiliser la fonction <code>auto-fill</code> :</p>
 <div class="bloc-code"><div class="bloc-code__langue">css</div><pre><code class="hljs language-css"><span class="hljs-selector-class">.grid</span> {
   <span class="hljs-attribute">display</span>: grid;
@@ -257,7 +258,7 @@ Par exemple, si on veut faire en sorte que chaque colonne prennent 1/3 de la lar
 !--- index.<span class="hljs-property">js</span>
 <span class="hljs-keyword">import</span> <span class="hljs-string">&quot;./style.css&quot;</span>;
 </code></pre></div>
-<h2>Définir la position de chaque élément</h2>
+<h2 id="t-definir-la-position-de-chaque-element">Définir la position de chaque élément</h2>
 <p>Une autre manière de définir la disposition des éléments d'une grille est de <strong>donner la position de départ et d'arrivée de chaque élément par rapport aux lignes</strong>.</p>
 <p>Par exemple :</p>
 <div class="bloc-code"><div class="bloc-code__langue">css</div><pre><code class="hljs language-css"><span class="hljs-selector-class">.element-1</span> {
@@ -327,7 +328,7 @@ Par exemple, si on veut faire en sorte que chaque colonne prennent 1/3 de la lar
 }
 </code></pre></div>
 </div></details>
-<h2>Minimum et maximum</h2>
+<h2 id="t-minimum-et-maximum">Minimum et maximum</h2>
 <p>Pour chaque piste, on peut aussi définir la taille minimale et maximale.</p>
 <div class="bloc-code"><div class="bloc-code__langue">css</div><pre><code class="hljs language-css"><span class="hljs-selector-class">.bloc-container</span> {
   <span class="hljs-attribute">display</span>: grid;
@@ -388,7 +389,7 @@ Par exemple, si on veut faire en sorte que chaque colonne prennent 1/3 de la lar
 <p><strong>🔬 Experience</strong></p>
 <p>Essaie d'enlever du texte ou de mettre ce dernier sur la seconde ligne et tu verras que la taille de la piste s'adapte au contenu.
 Tu peux aussi jouer avec la largeur de la fenêtre pour voir que la piste s'adapte.</p>
-<h2>Ressources</h2>
+<h2 id="t-ressources">Ressources</h2>
 <p>Regardes cette vidéo qui présente des exemples concrets d'utilisation du module <em>CSS Grid</em> et qui te permettra de découvrir quelques propriétés supplémentaires.</p>
 <a class="video-lien" href="https://www.youtube.com/watch?v=705XCEruZFs" target="_blank" rel="noopener noreferrer">
   <div class="video-lien__play">▶</div>
@@ -414,10 +415,10 @@ Tu peux aussi jouer avec la largeur de la fenêtre pour voir que la piste s'adap
     <div class="ressource__hote">cssgridgarden.com</div>
   </div>
 </a>
-<h2>Challenge</h2>
+<h2 id="t-challenge">Challenge</h2>
 <p>À partir de tout ce que tu as appris jusqu'ici (y compris grâce aux autres quêtes), essaie de reproduire la mise en forme ci-dessous en utilisant le <strong>display grid</strong> au moins une fois.</p>
 <p><img src="images/014-grid-section.png" alt="Grid section" loading="lazy"></p>
-<h3>Précisions et indices</h3>
+<h3 id="t-precisions-et-indices">Précisions et indices</h3>
 <ul>
 <li>La page est sur fond gris.</li>
 <li>Le contenu principal est sur fond blanc et centré horizontalement dans la fenêtre de ton navigateur.</li>
@@ -425,7 +426,7 @@ Tu peux aussi jouer avec la largeur de la fenêtre pour voir que la piste s'adap
 <li>Chaque article est constitué d'un titre et d'un paragraphe.</li>
 <li>Le code pour le violet : #A306B6.</li>
 </ul>
-<details class="solution"><summary>Voir la solution</summary><div class="solution__corps"><h2>Une solution possible.</h2>
+<details class="solution"><summary>Voir la solution</summary><div class="solution__corps"><h2 id="t-une-solution-possible">Une solution possible.</h2>
 <p>Consulte les onglets <code>index.html</code> et <code>style.css</code> ci-dessous pour voir la solution qui t'est proposée.
 Tu peux aussi ouvrir le code avec CodeSandbox pour plus de lisibilité.</p>
 <div class="bloc-code"><div class="bloc-code__langue">js</div><pre><code class="hljs language-js">
@@ -524,7 +525,5 @@ import &quot;./style.css&quot;;
   <p>Archive personnelle des cours suivis à la Wild Code School. Copie hors ligne à usage strictement privé.</p>
 </footer>
 
-<script src="../../assets/copie-code.js"></script>
-<script src="../../assets/progression.js"></script>
 </body>
 </html>

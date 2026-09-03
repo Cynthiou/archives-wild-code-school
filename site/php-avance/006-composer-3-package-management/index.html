@@ -27,7 +27,7 @@
 <p>Sur la quête &quot;Composer 2 - PSR-4 &amp; Autoload&quot;, tu as vu comment utiliser l’<em>autoloader</em> de Composer avec tes propres classes.
 La vocation première de Composer est d’être un gestionnaire de dépendances, c’est ce que tu vas utiliser dans cette quête.
 Tu vas voir comment installer une bibliothèque externe à ton projet et utiliser l’<em>autoloader</em> pour la charger.</p>
-<h2>🤓 À la fin de cette quête, tu seras capable de :</h2>
+<h2 id="t-a-la-fin-de-cette-quete-tu-seras-capable-de">🤓 À la fin de cette quête, tu seras capable de :</h2>
 <ul>
 <li>✅ Rechercher un package</li>
 <li>✅ Installer un package dans ton projet</li>
@@ -115,12 +115,12 @@ Il te suffit de suivre les indications de ton terminal. Composer t'informe des a
 <p>Le fichier <em>composer.lock</em> est directement lié au fichier <em>composer.json</em> que tu as vu plus haut.
 À la fin de l'installation d'une librairie, Composer t'indique <code>Writing lock file</code>.
 Cela signifie que <code>Composer</code> va soit créer le fichier <em>composer.lock</em>, soit le mettre à jour s'il existe déjà.</p>
-<h3>composer.lock VS composer.json</h3>
+<h3 id="t-composer-lock-vs-composer-json">composer.lock VS composer.json</h3>
 <p>Le fichier <em>composer.json</em> contient des informations sur le projet, la liste des dépendances qu'il utilise, les versions de ces dépendances ainsi que les règles pour les mettre à jour.</p>
 <p>Le fichier <em>composer.lock</em>, quant à lui, contient la liste de toutes les dépendances (dont les dépendances de dépendances) ainsi que les <strong>versions précises</strong> installées.</p>
 <p>Cela peut sembler une petite différence mais c'est en fait très différent car chaque mise à jour d'une dépendance peut entraîner un bug ou une incompatibilité.</p>
 <p>Il faut impérativement versionner ton fichier <em>composer.lock</em> (en plus du fichier <em>composer.json</em>) pour s'assurer que tous les développeurs utilisent les mêmes versions de dépendances.</p>
-<h3>install VS update</h3>
+<h3 id="t-install-vs-update">install VS update</h3>
 <p>De la même manière qu'il existe deux fichiers <em>composer.lock</em> et <em>composer.json</em>, il existe deux commandes pour les manipuler.</p>
 <div class="bloc-code"><div class="bloc-code__langue">sh</div><pre><code class="hljs language-sh">composer update
 
@@ -161,7 +161,7 @@ La commande <code>update</code> va, elle, lire le fichier <em>composer.json</em>
   </div>
 </a>
 <h1>💪 Challenge</h1>
-<h3>Installer et utiliser un <em>package</em> externe</h3>
+<h3 id="t-installer-et-utiliser-un-package-externe">Installer et utiliser un <em>package</em> externe</h3>
 <p>Un peu de fun pour ce challenge, tu vas utiliser un package inutile mais parfait pour t'entraîner !</p>
 <p><a href="https://packagist.org/packages/gipetto/cowsay" target="_blank" rel="noopener noreferrer">https://packagist.org/packages/gipetto/cowsay</a></p>
 <p>Ce package te permettra de faire parler une vache dans ton terminal.</p>
@@ -181,7 +181,7 @@ require 'vendor/autoload.php';
 <li>Enfin, execute ce code dans ton terminal ! <code>php index.php</code></li>
 </ul>
 <p>Et si tu le souhaites, trouve le moyen de faire tirer la langue à la vache :)</p>
-<h3>Critères de validation</h3>
+<h3 id="t-criteres-de-validation">Critères de validation</h3>
 <ul>
 <li>Ton code est sur un repo personnel sur Github.</li>
 <li>Lorsqu'on execute le fichier index.php la vache apparaît</li>
@@ -207,7 +207,5 @@ require 'vendor/autoload.php';
   <p>Archive personnelle des cours suivis à la Wild Code School. Copie hors ligne à usage strictement privé.</p>
 </footer>
 
-<script src="../../assets/copie-code.js"></script>
-<script src="../../assets/progression.js"></script>
 </body>
 </html>

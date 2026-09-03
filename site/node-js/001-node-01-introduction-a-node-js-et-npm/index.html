@@ -20,14 +20,14 @@
     <p class="quete__meta">Quête 1 sur 5 · 6 images archivées</p>
   </header>
   <div class="cours">
-<h2>Objectifs</h2>
+<h2 id="t-objectifs">Objectifs</h2>
 <ul>
 <li>Comprendre ce qu'est Node.js et pourquoi l'utiliser.</li>
 <li>Installer Node.js.</li>
 <li>Découvrir ce que sont les paquets/modules et leurs avantages</li>
 <li>Utiliser NPM de manière basique afin d'utiliser une dépendance externe dans une application.</li>
 </ul>
-<h2>Introduction</h2>
+<h2 id="t-introduction">Introduction</h2>
 <p>Node.js (parfois appelé simplement Node) est un environnement d'exécution JavaScript développé par Ryan Dahl en 2009.</p>
 <p>Node permet d'<strong>exécuter du JavaScript en dehors d'un <a href="https://en.wikipedia.org/wiki/Web_browser" title="Web browser" target="_blank" rel="noopener noreferrer">navigateur web</a></strong>, ce qui permet aux développeurs de <strong>programmer des applications JavaScript tournant dans presque tous les environnements</strong> (serveurs, objets connectés, robots, etc.).</p>
 <p>Grâce à une collection de &quot;modules&quot; gérant des fonctionnalités de base (gestion des requêtes HTTP, accès au système de fichiers, etc.), nous pouvons écrire toutes sortes d'applications avec <a href="https://en.wikipedia.org/wiki/JavaScript" title="JavaScript" target="_blank" rel="noopener noreferrer">JavaScript</a> et Node, telles que :</p>
@@ -47,8 +47,9 @@
 <li><strong>Large communauté</strong> : De nombreux développeurs contribuent activement à l'évolution de Node.js et à la création de nouveaux modules.</li>
 </ul>
 <p><img src="images/001-introduction.jpg" alt="" loading="lazy"></p>
-<h2>Sommaire</h2>
-<h2>Installation</h2>
+<h2 id="t-sommaire">Sommaire</h2>
+<nav class="sommaire" aria-label="Sommaire de la quête"><ol class="sommaire__liste"><li><a href="#t-installation">Installation</a></li><li><a href="#t-cas-pratique">Cas pratique</a></li><li><a href="#t-modules">Modules</a><ul><li><a href="#t-commonjs-require-module-exports">CommonJS (require / module.exports)</a></li><li><a href="#t-es-modules-import-export">ES Modules (import / export)</a></li></ul></li><li><a href="#t-npm-node-package-manager">NPM : Node Package Manager</a><ul><li><a href="#t-pourquoi-utiliser-des-paquets">Pourquoi utiliser des paquets ?</a></li><li><a href="#t-initialisation-d-un-projet-avec-npm">Initialisation d'un projet avec NPM</a></li><li><a href="#t-installation-d-un-package">Installation d'un package</a></li><li><a href="#t-utilisation-d-un-package">Utilisation d'un package</a></li><li><a href="#t-desinstallation-d-un-package">Désinstallation d'un package</a></li><li><a href="#t-le-fichier-gitignore">Le fichier .gitignore</a></li></ul></li><li><a href="#t-resume">Résumé</a></li></ol></nav>
+<h2 id="t-installation">Installation</h2>
 <p>Pour installer node, suis ce lien vers le site officiel :</p>
 <a class="ressource" href="https://nodejs.org/fr/download/" target="_blank" rel="noopener noreferrer">
   <div class="ressource__icone">↗</div>
@@ -66,7 +67,7 @@
 <div class="bloc-code"><div class="bloc-code__langue">bash</div><pre><code class="hljs language-bash">node -v   <span class="hljs-comment"># Vérifie la version de Node.js</span>
 npm -v    <span class="hljs-comment"># Vérifie la version de NPM</span>
 </code></pre></div>
-<h2>Cas pratique</h2>
+<h2 id="t-cas-pratique">Cas pratique</h2>
 <p>Crée un fichier nommé <strong>index.js</strong> dans ton répertoire utilisateur et crée 3 variables :</p>
 <ol>
 <li>Une de type <strong>string</strong> avec ton <strong>nom</strong></li>
@@ -88,7 +89,7 @@ node index.js
 <p>Node exécute ton code JavaScript en dehors du navigateur !</p>
 <div class="encadre encadre--warning"><div class="encadre__titre">Attention</div><div class="encadre__corps"><p>Tu peux écrire autant de JavaScript que tu veux mais <strong>souviens-toi que tu ne peux pas manipuler le DOM ici</strong>.</p>
 </div></div>
-<h2>Modules</h2>
+<h2 id="t-modules">Modules</h2>
 <p>Les <strong>modules</strong> en Node.js sont des blocs de code réutilisables qui permettent d'organiser et de structurer une application. Ils peuvent être :</p>
 <ul>
 <li><strong>Internes (built-in)</strong> : déjà inclus dans Node.js (par exemple <code>fs</code> pour gérer les fichiers).</li>
@@ -102,7 +103,7 @@ node index.js
 <li><strong>ES Modules (<code>import/export</code>)</strong> : recommandé pour les nouveaux projets.</li>
 </ol>
 <p>Nous allons voir les deux méthodes.</p>
-<h3>CommonJS (<code>require</code> / <code>module.exports</code>)</h3>
+<h3 id="t-commonjs-require-module-exports">CommonJS (<code>require</code> / <code>module.exports</code>)</h3>
 <p>À côté de ton fichier <code>index.js</code>, crée un fichier <code>userInformation.js</code> avec ce contenu :</p>
 <div class="bloc-code"><div class="bloc-code__langue">javascript</div><pre><code class="hljs language-javascript"><span class="hljs-keyword">const</span> name = <span class="hljs-string">&quot;J. Doe&quot;</span>;
 <span class="hljs-keyword">const</span> age = <span class="hljs-number">26</span>;
@@ -119,7 +120,7 @@ node index.js
 <p>Exécute à nouveau :</p>
 <div class="bloc-code"><div class="bloc-code__langue">bash</div><pre><code class="hljs language-bash">node index.js
 </code></pre></div>
-<h3>ES Modules (<code>import</code> / <code>export</code>)</h3>
+<h3 id="t-es-modules-import-export">ES Modules (<code>import</code> / <code>export</code>)</h3>
 <p>Modifie <code>userInformation.js</code> ainsi :</p>
 <div class="bloc-code"><div class="bloc-code__langue">javascript</div><pre><code class="hljs language-javascript"><span class="hljs-keyword">export</span> <span class="hljs-keyword">const</span> name = <span class="hljs-string">&quot;J. Doe&quot;</span>;
 <span class="hljs-keyword">export</span> <span class="hljs-keyword">const</span> age = <span class="hljs-number">26</span>;
@@ -138,11 +139,11 @@ node index.js
 <div class="encadre encadre--warning"><div class="encadre__titre">Attention</div><div class="encadre__corps"><p>Tu ne dois pas mélanger les syntaxes : si tu fais du <code>module.exports</code>, tu dois l'utiliser avec <code>require</code>. Et si tu utiles <code>export</code>, tu dois le coupler avec <code>import</code>.</p>
 <p>Durant la formation, nous utiliserons principalement <code>export</code> et <code>import</code> puisque c'est la norme recommandée pour des nouveaux projets. Cela reste important de savoir qu'une autre syntaxe existe.</p>
 </div></div>
-<h2>NPM : Node Package Manager</h2>
+<h2 id="t-npm-node-package-manager">NPM : Node Package Manager</h2>
 <p>NPM (Node Package Manager) est un outil essentiel en Node.js qui permet de gérer facilement des <strong>paquets</strong> (ou modules) externes. Ces paquets sont des morceaux de code réutilisables qui ajoutent des fonctionnalités à ton application (par exemple, mettre en forme du texte dans le terminal, faire des requêtes HTTP, etc.).</p>
-<h3>Pourquoi utiliser des paquets ?</h3>
+<h3 id="t-pourquoi-utiliser-des-paquets">Pourquoi utiliser des paquets ?</h3>
 <p>Les paquets permettent de ne pas &quot;réinventer la roue&quot;. Par exemple, si tu veux ajouter des couleurs à tes messages dans le terminal, tu peux utiliser un paquet déjà existant (comme <code>chalk</code>) au lieu de tout coder toi-même.</p>
-<h3>Initialisation d'un projet avec NPM</h3>
+<h3 id="t-initialisation-d-un-projet-avec-npm">Initialisation d'un projet avec NPM</h3>
 <p>Avant d'installer un paquet, initialise un projet avec :</p>
 <div class="bloc-code"><div class="bloc-code__langue">bash</div><pre><code class="hljs language-bash"><span class="hljs-built_in">cd</span> ~ <span class="hljs-comment"># Se placer dans le répertoire utilisateur</span>
 <span class="hljs-built_in">mkdir</span> sandbox-npm
@@ -150,12 +151,12 @@ node index.js
 npm init -y
 </code></pre></div>
 <p>La commande <code>npm init</code> crée un fichier <code>package.json</code> qui contient des informations sur ton projet : nom, version, scripts, etc.</p>
-<h3>Installation d'un package</h3>
+<h3 id="t-installation-d-un-package">Installation d'un package</h3>
 <p>Pour installer un paquet localement (par exemple, <code>chalk</code> pour colorer le texte dans le terminal) :</p>
 <div class="bloc-code"><div class="bloc-code__langue">bash</div><pre><code class="hljs language-bash">npm install chalk
 </code></pre></div>
 <p>Cela crée un dossier <code>node_modules</code> où sont stockées les dépendances, et ajoute <code>chalk</code> à <code>package.json</code> sous <code>dependencies</code>.</p>
-<h3>Utilisation d'un package</h3>
+<h3 id="t-utilisation-d-un-package">Utilisation d'un package</h3>
 <p>Après installation, importe le paquet dans ton fichier JavaScript. Exemple avec <code>chalk</code> (dans un fichier <code>index.js</code> dans ton projet <code>sandbox-npm</code>) :</p>
 <div class="bloc-code"><div class="bloc-code__langue">js</div><pre><code class="hljs language-js"><span class="hljs-keyword">import</span> chalk <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;chalk&#x27;</span>;
 
@@ -197,12 +198,12 @@ To eliminate this warning, add &quot;type&quot;: &quot;module&quot; to /home/rom
 <div class="bloc-code"><div class="bloc-code__langue">bash</div><pre><code class="hljs language-bash">node index.js
 </code></pre></div>
 <p>Plus d'erreur :)</p>
-<h3>Désinstallation d'un package</h3>
+<h3 id="t-desinstallation-d-un-package">Désinstallation d'un package</h3>
 <p>Pour supprimer un paquet :</p>
 <div class="bloc-code"><div class="bloc-code__langue">bash</div><pre><code class="hljs language-bash">npm uninstall chalk
 </code></pre></div>
 <p>Cela le retire aussi de <code>package.json</code>.</p>
-<h3>Le fichier <code>.gitignore</code></h3>
+<h3 id="t-le-fichier-gitignore">Le fichier <code>.gitignore</code></h3>
 <p>Ne versionne <strong>jamais</strong> le dossier <code>node_modules</code> car il contient tous les fichiers des dépendances, ce qui peut peser très lourd. Ajoute cette ligne dans un fichier <code>.gitignore</code> à la racine de ton projet :</p>
 <div class="bloc-code"><pre><code class="hljs language-plaintext">node_modules/
 </code></pre></div>
@@ -214,7 +215,7 @@ git commit -m <span class="hljs-string">&quot;un-version node_modules 😅&quot;
 git push <span class="hljs-comment"># send the modifications </span>
 </code></pre></div>
 </div></details>
-<h2>Résumé</h2>
+<h2 id="t-resume">Résumé</h2>
 <ul>
 <li>Node.js est un <strong>environnement d'exécution JavaScript</strong> permettant d'exécuter du JS en dehors du navigateur.</li>
 <li>Il est performant, asynchrone et dispose d'un écosystème riche via <strong>NPM</strong>.</li>
@@ -281,7 +282,5 @@ git push <span class="hljs-comment"># send the modifications </span>
   <p>Archive personnelle des cours suivis à la Wild Code School. Copie hors ligne à usage strictement privé.</p>
 </footer>
 
-<script src="../../assets/copie-code.js"></script>
-<script src="../../assets/progression.js"></script>
 </body>
 </html>

@@ -38,7 +38,7 @@
 <p>Dans un souci de séparation et d’architecture du code, nous avons besoin dorénavant de bien compartimenter notre code.</p>
 <p>Pour réaliser cela, des moteurs de templates ont été créés. Twig (développé par l’équipe de Symfony) est aujourd’hui l’un des plus populaires. </p>
 <p>Un moteur de template est un outil qui va vous permettre de simplifier la syntaxe de la partie front de votre site. Dans notre cas, il va permettre la séparation entre le HTML et le PHP.</p>
-<h2>🤓 À la fin de cette quête, tu seras capable de :</h2>
+<h2 id="t-a-la-fin-de-cette-quete-tu-seras-capable-de">🤓 À la fin de cette quête, tu seras capable de :</h2>
 <ul>
 <li>✅ Comprendre le fonctionnement d'un moteur de <em>templates</em></li>
 <li>✅ Utiliser Twig</li>
@@ -82,7 +82,7 @@
     <div class="ressource__hote">eilgin.github.io</div>
   </div>
 </a>
-<h3>Intégrer Twig dans un projet PHP</h3>
+<h3 id="t-integrer-twig-dans-un-projet-php">Intégrer Twig dans un projet PHP</h3>
 <p>Bien qu'initialement créé pour être utilisé dans un projet Symfony, Twig, comme beaucoup d'autres <em>composants</em> ou <em>librairies,</em> peut être installé indépendamment et utilisé dans tout type de projet. Cela signifie que tu peux utiliser les capacités de Twig dans un projet qui n'implémente aucun <em>framework</em>.</p>
 <div class="encadre encadre--info"><div class="encadre__titre">Info</div><div class="encadre__corps"><p>Avant de commencer, tu vas récupérer du code depuis un dépôt Github pour réaliser cette quête.
 Rend-toi sur <a href="https://github.com/WildCodeSchool/quest-twig" target="_blank" rel="noopener noreferrer">https://github.com/WildCodeSchool/quest-twig</a> et clic sur &quot;Use this template&quot; afin d'obtenir un nouveau <em>repository</em> personnel.
@@ -134,7 +134,7 @@ Et voilà tu as à présent un micro projet qui intègre le moteur Twig.</p>
 <p>Le fichier de vue ne sera plus un fichier <em>.php</em> mais un fichier d'extension <em><strong>.html.twig</strong></em>. C'est une convention. Tu pourrais mettre n'importe quelle extension, tant que Twig arrive à accéder à ton fichier, il le lira et interprètera le contenu.</p>
 </div></div>
 <h1>Utiliser Twig</h1>
-<h3>La syntaxe de base de Twig</h3>
+<h3 id="t-la-syntaxe-de-base-de-twig">La syntaxe de base de Twig</h3>
 <p>Commence par regarder cette nouvelle vidéo pour en apprendre davantage sur la syntaxe de base de Twig (déclaration de variables, <code>if</code>, <code>for</code>), <em>etc.</em></p>
 <a class="video-lien" href="https://www.youtube.com/watch?v=mimZikLd6NA" target="_blank" rel="noopener noreferrer">
   <div class="video-lien__play">▶</div>
@@ -144,7 +144,7 @@ Et voilà tu as à présent un micro projet qui intègre le moteur Twig.</p>
   </div>
 </a>
 <p>N'hésite pas à parcourir également la <a href="https://twig.symfony.com/doc/3.x/" target="_blank" rel="noopener noreferrer">documentation officielle</a> qui reprend les syntaxes des structures de contrôle, mais également les nombreux filtres existants qui te feront gagner beaucoup de temps.</p>
-<h3>Composition d'une page</h3>
+<h3 id="t-composition-d-une-page">Composition d'une page</h3>
 <div class="encadre encadre--warning"><div class="encadre__titre">Attention</div><div class="encadre__corps"><p>Avant de commencer à coder, lis bien les explications ci-dessous 👇</p>
 </div></div>
 <p>Afin de créer un template Twig, tu peux partir d'une page contenant une structure HTML basique.
@@ -176,7 +176,7 @@ Tout ça, tu viens de le voir dans la vidéo juste avant.</p>
 <span class="hljs-tag">&lt;/<span class="hljs-name">html</span>&gt;</span>
 </span></code></pre></div>
 <p>Ainsi la page affichera : <strong>&quot;Hello Wilder !&quot;</strong> Tu remarques que la méthode <code>render()</code> de Twig ne fait que te renvoyer une (longue) chaîne de caractères contenant le HTML à afficher sur la page. Il faut donc bien penser à l'afficher via un <code>echo</code>.</p>
-<h3>Le debug</h3>
+<h3 id="t-le-debug">Le debug</h3>
 <p>Twig nous apporte un outil améliorant considérablement la façon dont nous allons débugger notre code.
 Il s'agit de la méthode <code>dump()</code>, qui s'utilise comme un <code>var_dump</code>, mais dans une page Twig.
 Cette extension n'est pas installée par défaut dans Twig, mais nous l'avons ajouter dans le fichier de configuration de Twig (cf. <code>config/twig.php</code> :  <code>$twig-&gt;addExtension(new DebugExtension());</code>)</p>
@@ -187,7 +187,7 @@ Cette extension n'est pas installée par défaut dans Twig, mais nous l'avons aj
 <p>L'affichage obtenu est particulièrement utile quand il s'agit d'examiner un objet ou un tableau.</p>
 <p>Pour plus d'informations =&gt; <a href="https://twig.symfony.com/doc/3.x/functions/dump.html" target="_blank" rel="noopener noreferrer">documentation !</a>.</p>
 <h1>💪 Challenge</h1>
-<h3>Mise en place de Twig</h3>
+<h3 id="t-mise-en-place-de-twig">Mise en place de Twig</h3>
 <div class="encadre encadre--info"><div class="encadre__titre">Info</div><div class="encadre__corps"><p>N'hésite pas à t'aider du code présenté précédemment pour avancer sur ce challenge</p>
 </div></div>
 <ul>
@@ -203,7 +203,7 @@ Cette extension n'est pas installée par défaut dans Twig, mais nous l'avons aj
 <li>Puis sous la liste des produits, affiche le resultat d'un <code>dump()</code> du tableau de produit que tu as envoyé à ta page Twig.</li>
 <li>Envoie le résultat sur un dépôt GitHub et poste le lien en solution</li>
 </ul>
-<h3>Critères de validation</h3>
+<h3 id="t-criteres-de-validation">Critères de validation</h3>
 <ul>
 <li>Pour corriger, clone le projet et pense à lancer un <code>composer install</code>.</li>
 <li>Il y a un fichier Twig <code>products.html.twig</code> dans le dossier de <em>src/View</em>.</li>
@@ -239,7 +239,5 @@ Cette extension n'est pas installée par défaut dans Twig, mais nous l'avons aj
   <p>Archive personnelle des cours suivis à la Wild Code School. Copie hors ligne à usage strictement privé.</p>
 </footer>
 
-<script src="../../assets/copie-code.js"></script>
-<script src="../../assets/progression.js"></script>
 </body>
 </html>

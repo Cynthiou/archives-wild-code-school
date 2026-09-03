@@ -85,7 +85,7 @@ Tu peux trouver toutes les propriétés et méthodes disponibles pour l'élémen
 Par exemple, nous pourrions changer la source de l'image en utilisant la propriété <code>src</code> de l'élément image.</p>
 <div class="bloc-code"><div class="bloc-code__langue">javascript</div><pre><code class="hljs language-javascript">myImg.<span class="hljs-property">src</span> = <span class="hljs-string">&quot;https://placecats.com/200/286&quot;</span>;
 </code></pre></div>
-<h3>🔬Fais une expérience</h3>
+<h3 id="t-fais-une-experience">🔬Fais une expérience</h3>
 <p>Nous venons de voir comment sélectionner un élément du DOM et modifier l'une de ses propriétés.
 Dans l'exemple suivant, ton but est de sélectionner l'élément du DOM <code>img-cat</code> et de changer le src de l'image par autre chose.</p>
 <div class="bloc-code"><div class="bloc-code__langue">js</div><pre><code class="hljs language-js">!--- index.<span class="hljs-property">html</span>
@@ -120,13 +120,13 @@ catImage.<span class="hljs-property">src</span> = <span class="hljs-string">&quo
 </code></pre></div>
 </div></details>
 <p><strong>Bien joué !</strong></p>
-<h4>InnerHTML</h4>
+<h4 id="t-innerhtml">InnerHTML</h4>
 <p>La <strong>méthode innerHTML est utilisée pour modifier le contenu d'une balise HTML.</strong></p>
 <div class="bloc-code"><div class="bloc-code__langue">javascript</div><pre><code class="hljs language-javascript"><span class="hljs-keyword">const</span> title = <span class="hljs-variable language_">document</span>.<span class="hljs-title function_">querySelector</span>(<span class="hljs-string">&#x27;.title&#x27;</span>);
 title.<span class="hljs-property">innerHTML</span> = <span class="hljs-string">&quot;Hello, Bob!&quot;</span>;
 </code></pre></div>
 <p>Dans cet exemple, nous sélectionnons le h1 avec la classe title, et nous changeons le contenu par Hello, Bob !</p>
-<h3>🔬Fais une expérience</h3>
+<h3 id="t-fais-une-experience-2">🔬Fais une expérience</h3>
 <p>Maintenant que tu sais comment demander à l'utilisateur de taper du texte (<a href="https://developer.mozilla.org/fr/docs/Web/API/Window/prompt" target="_blank" rel="noopener noreferrer">prompt</a>), modifier le contenu d'une balise de titre et utiliser <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Template_literals" target="_blank" rel="noopener noreferrer">template strings</a> (<code>`Hi, I'm, ${name}`</code>); essaye d'écrire un code qui demande à l'utilisateur de taper son nom (dans la zone d'invite) et d'afficher &quot;Hello&quot; + son nom sur la page.</p>
 <div class="bloc-code"><div class="bloc-code__langue">js</div><pre><code class="hljs language-js">!--- index.<span class="hljs-property">html</span>
 &lt;!<span class="hljs-variable constant_">DOCTYPE</span> html&gt;
@@ -158,12 +158,12 @@ title.<span class="hljs-property">innerHTML</span> = <span class="hljs-string">&
 title.<span class="hljs-property">innerHTML</span> = <span class="hljs-string">`Hello, <span class="hljs-subst">${userName}</span>`</span>;
 </code></pre></div>
 </div></details>
-<h2>D'autres méthodes de sélection des éléments</h2>
+<h2 id="t-d-autres-methodes-de-selection-des-elements">D'autres méthodes de sélection des éléments</h2>
 <p>Tu peux également utiliser <code>document.getElementById</code> ou <code>document.getElementByTagName</code> pour sélectionner des éléments HTML, ils sont également pris en charge par les anciens navigateurs tels qu'Internet Explorer 6 - 7 (ce qui n'est pas le cas de querySelector).</p>
 <div class="bloc-code"><div class="bloc-code__langue">javascript</div><pre><code class="hljs language-javascript"><span class="hljs-keyword">const</span> title = <span class="hljs-variable language_">document</span>.<span class="hljs-title function_">getElementById</span>(<span class="hljs-string">&#x27;title&#x27;</span>);
 <span class="hljs-keyword">const</span> heading = <span class="hljs-variable language_">document</span>.<span class="hljs-title function_">getElementsByTagName</span>(<span class="hljs-string">&#x27;h1&#x27;</span>);
 </code></pre></div>
-<h3>🔬Fais une expérience :</h3>
+<h3 id="t-fais-une-experience-3">🔬Fais une expérience :</h3>
 <p>En utilisant la <a href="https://developer.mozilla.org/en-US/docs/Web/API/HTMLImageElement" target="_blank" rel="noopener noreferrer">documentation</a>, modifie ces propriétés sur les images :</p>
 <ul>
 <li>La largeur devrait être égale à 500</li>
@@ -207,7 +207,7 @@ bearImg.<span class="hljs-property">alt</span> = <span class="hljs-string">&quot
 </code></pre></div>
 <div class="encadre encadre--warning"><div class="encadre__titre">Attention</div><div class="encadre__corps"><p>La valeur retournée est de type <a href="https://developer.mozilla.org/fr/docs/Web/API/HTMLCollection" target="_blank" rel="noopener noreferrer">HTMLCollection</a>. C'est une structure de données qui ressemble aux tableaux. Tu peux utiliser les <code>[]</code> pour accéder à un élément par exemple : <code>allHeadings[0]</code>. Mais d'autres fonctionnalités des tableaux ne sont pas disponibles sur une <code>HTMLCollection</code>, comme les les méthodes <code>push</code> ou <code>pop</code>. Quand tu essaies de travailler sur une collection, vérifie dans la documentation que ce que tu veux faire existe bien.</p>
 </div></div>
-<h3>🔬Fais une expérience</h3>
+<h3 id="t-fais-une-experience-4">🔬Fais une expérience</h3>
 <p>Dans cet exemple, il y a cinq balises d'image avec la même image. Dans le fichier JS, tu as un tableau avec cinq images différentes d'ours.</p>
 <p>Essaye de sélectionner les 5 <code>img</code> en utilisant <code>querySelectorAll</code>, puis crée une boucle for pour remplacer la propriété src <code>img</code> par les images du tableau.</p>
 <div class="bloc-code"><div class="bloc-code__langue">js</div><pre><code class="hljs language-js">!--- index.<span class="hljs-property">html</span>
@@ -299,7 +299,5 @@ bearImg.<span class="hljs-property">alt</span> = <span class="hljs-string">&quot
   <p>Archive personnelle des cours suivis à la Wild Code School. Copie hors ligne à usage strictement privé.</p>
 </footer>
 
-<script src="../../assets/copie-code.js"></script>
-<script src="../../assets/progression.js"></script>
 </body>
 </html>

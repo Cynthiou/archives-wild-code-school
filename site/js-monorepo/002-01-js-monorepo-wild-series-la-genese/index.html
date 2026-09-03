@@ -20,24 +20,25 @@
     <p class="quete__meta">Quête 2 sur 9 · 9 images archivées</p>
   </header>
   <div class="cours">
-<h2>Objectifs</h2>
+<h2 id="t-objectifs">Objectifs</h2>
 <ul>
 <li>Comprendre et analyser les spécifications techniques et fonctionnelles</li>
 <li>Concevoir un wireframe</li>
 <li>Créer un styleguide</li>
 </ul>
-<h2>Pré-requis</h2>
+<h2 id="t-pre-requis">Pré-requis</h2>
 <ol class="etapes"><li class="etape"><div class="etape__puce">1</div><div class="etape__contenu"><h4 class="etape__titre">Valider les quêtes suivantes</h4><div class="renvois"><div class="renvois__titre">Quêtes liées</div><ul><li><a href="../../scrum/001-introduction-a-la-methodologie-agile-et-scrum/index.html">Quête 1301</a></li><li>Quête 504 <span class="muet">(hors archive)</span></li></ul></div>
 </div></li><li class="etape"><div class="etape__puce">2</div><div class="etape__contenu"><h4 class="etape__titre">Savoir te repérer sur un &quot;scrum board&quot;</h4><p><img src="images/001-exemple-de-scrum-board.png" alt="exemple de scrum board" loading="lazy"></p>
 </div></li><li class="etape"><div class="etape__puce">3</div><div class="etape__contenu"><h4 class="etape__titre">Identifier les entités et leurs relations sur un MCD</h4><p><img src="images/002-exemple-de-mcd.png" alt="exemple de mcd" loading="lazy"></p>
 </div></li></ol>
-<h2>Sommaire</h2>
-<h2>Introduction</h2>
+<h2 id="t-sommaire">Sommaire</h2>
+<nav class="sommaire" aria-label="Sommaire de la quête"><ol class="sommaire__liste"><li><a href="#t-introduction">Introduction</a></li><li><a href="#t-kick-off-meeting">Kick-off meeting</a></li><li><a href="#t-specifications-fonctionnelles">Spécifications fonctionnelles</a><ul><li><a href="#t-wild-series-ce-qui-est-attendu">Wild Series, ce qui est attendu</a></li><li><a href="#t-les-principales-fonctionnalites">Les principales fonctionnalités</a></li><li><a href="#t-parcours-utilisateur-arborescence">Parcours utilisateur (arborescence) :</a></li></ul></li><li><a href="#t-specifications-techniques">Spécifications techniques</a><ul><li><a href="#t-la-stack-technique">La stack technique</a></li><li><a href="#t-user-stories-et-wireframes">User stories et wireframes</a></li><li><a href="#t-modelisation-de-la-base-de-donnees">Modélisation de la base de données</a></li></ul></li><li><a href="#t-challenge">Challenge</a><ul><li><a href="#t-homepage-wireframe-style-guide">Homepage Wireframe & Style Guide</a></li><li><a href="#t-criteres-de-validation">Critères de validation</a></li></ul></li></ol></nav>
+<h2 id="t-introduction">Introduction</h2>
 <p>Cette quête est le point de départ d'un long parcours avec beaucoup d'Express. Ce parcours te guidera dans le développement d'un projet fil rouge : l'application web <em>Wild Series</em>.</p>
 <div class="encadre encadre--note encadre--callout"><div class="encadre__corps"><p>Démarrer un nouveau projet ne veut pas dire foncer tête baissée dans le code ! 🐑</p>
 <p>Tu le sais déjà, tout projet doit démarrer par une <strong>phase de conception</strong>.</p>
 </div></div>
-<h2>Kick-off meeting</h2>
+<h2 id="t-kick-off-meeting">Kick-off meeting</h2>
 <p>Ça y est ! Tu es dev web ! Et aujourd'hui, tu assistes au <em>kick-off</em> du nouveau projet d’application web présenté par le <em>product owner</em>.</p>
 <p><img src="images/003-kick-off-meeting.jpg" alt="" loading="lazy"></p>
 <div class="encadre encadre--info"><div class="encadre__titre">Info</div><div class="encadre__corps"><p><em>Si tu ne connais pas <a href="https://www.commitstrip.com/fr/?" target="_blank" rel="noopener noreferrer">CommitStrip</a>, ces planches humoristiques sont malheureusement souvent assez proches de la réalité</em> 😂.</p>
@@ -59,7 +60,7 @@
     <div class="ressource__hote">manager-go.com</div>
   </div>
 </a>
-<h2>Spécifications fonctionnelles</h2>
+<h2 id="t-specifications-fonctionnelles">Spécifications fonctionnelles</h2>
 <p><img src="images/004-specifications-fonctionnelles.jpg" alt="" loading="lazy"></p>
 <p>Les spécifications fonctionnelles décrivent les fonctionnalités de l’application. Elles sont rédigées avant le développement de l’application pour un projet en cycle en V et prendront corps tout au long de son déroulement en gestion de projet agile.</p>
 <p>Dans le cadre d’une gestion de projet en cascade ou cycle en V, le périmètre fonctionnel est parfaitement cadré dès le début.</p>
@@ -73,17 +74,17 @@
     <div class="ressource__hote">docs.google.com</div>
   </div>
 </a>
-<h3><em>Wild Series</em>, ce qui est attendu</h3>
+<h3 id="t-wild-series-ce-qui-est-attendu"><em>Wild Series</em>, ce qui est attendu</h3>
 <p>✔️ Création d’une application web responsive et dynamique.</p>
-<h3>Les principales fonctionnalités</h3>
+<h3 id="t-les-principales-fonctionnalites">Les principales fonctionnalités</h3>
 <p>✔️ Pouvoir afficher les séries par catégorie
 ✔️ Pouvoir afficher la distribution artistique des séries
 ✔️ Pouvoir ajouter des séries en favori
 ✔️ Pouvoir administrer tout le contenu du site
 ✔️ Pouvoir gérer les comptes utilisateurs</p>
-<h3>Parcours utilisateur (arborescence) :</h3>
+<h3 id="t-parcours-utilisateur-arborescence">Parcours utilisateur (arborescence) :</h3>
 <p><img src="images/005-parcours-utilisateur-arborescence.png" alt="" loading="lazy"></p>
-<h2>Spécifications techniques</h2>
+<h2 id="t-specifications-techniques">Spécifications techniques</h2>
 <p><img src="images/006-specifications-techniques.jpg" alt="" loading="lazy"></p>
 <p>Les spécifications techniques abordent les aspects techniques de l’application.
 Elles sont rédigées par des profils techniques (devs, tech lead, etc.), après avoir pris connaissance des spécifications fonctionnelles de l’application.</p>
@@ -97,13 +98,13 @@ Elles sont rédigées par des profils techniques (devs, tech lead, etc.), après
     <div class="ressource__hote">docs.google.com</div>
   </div>
 </a>
-<h3>La stack technique</h3>
+<h3 id="t-la-stack-technique">La stack technique</h3>
 <ul>
 <li>Côté Serveur : Express</li>
 <li>Côté client : React</li>
 <li>Côté style : CSS Modules (tu peux aussi donner une chance à <a href="https://picocss.com/" target="_blank" rel="noopener noreferrer">pico.css</a> qui est un bon outil d'apprentissage).</li>
 </ul>
-<h3>User stories et wireframes</h3>
+<h3 id="t-user-stories-et-wireframes">User stories et wireframes</h3>
 <p>Voici le <em>scrum board</em> réalisé suite aux <em>users stories</em>. Nous l’utiliserons tout le long de nos quêtes <em>Wild Series</em> :</p>
 <div class="colonnes"><div class="colonne"><p><strong>User stories</strong> 📋</p>
 <div class="encadre encadre--note encadre--callout"><div class="encadre__corps"><p>en tant que contributeur, je souhaite ajouter une série</p>
@@ -126,7 +127,7 @@ Elles sont rédigées par des profils techniques (devs, tech lead, etc.), après
 <p>Tu le retrouveras mis à jour au début de chaque quête.</p>
 <p>Et ci-dessous, le wireframe fourni directement par le client.</p>
 <p><img src="images/007-user-stories-et-wireframes.png" alt="" loading="lazy"></p>
-<h3>Modélisation de la base de données</h3>
+<h3 id="t-modelisation-de-la-base-de-donnees">Modélisation de la base de données</h3>
 <p>Tu as de la chance : pour ce qui est de la base de données, tu n’as pas trop à te creuser la tête. L’équipe d’architectes DB de la Wild Code School a pris le temps de te soumettre une ébauche de schéma.</p>
 <p>Attention, le visuel ci-dessous n’est pas contractuel !</p>
 <p>Comme tu le sais déjà, une base de données, c’est vivant ! Ça peut évoluer au cours du temps selon les besoins. Mais cela te permet d’avoir un aperçu de ce dans quoi tu t’embarques :</p>
@@ -134,8 +135,8 @@ Elles sont rédigées par des profils techniques (devs, tech lead, etc.), après
 <div class="encadre encadre--warning"><div class="encadre__titre">Attention</div><div class="encadre__corps"><p>Comme pour le scrum board, tu n'as pas forcément besoin que le schéma soit complet dès le départ : il évoluera. Tu as besoin du strict nécessaire pour démarrer. Au début d'un projet, concentre toi toujours sur la ressource centrale de ton application (dans le cas présent, les séries et l'entité <code>progam</code>).</p>
 <p><img src="images/009-modelisation-de-la-base-de-donnees.png" alt="" loading="lazy"></p>
 </div></div>
-<h2>Challenge</h2>
-<h3>Homepage <em>Wireframe</em> &amp; <em>Style Guide</em></h3>
+<h2 id="t-challenge">Challenge</h2>
+<h3 id="t-homepage-wireframe-style-guide">Homepage <em>Wireframe</em> &amp; <em>Style Guide</em></h3>
 <p>Pour ce projet, les <em>user stories</em> et le <em>wireframe</em> principal sont déjà réalisés.</p>
 <p>Mais le wireframe n'est que la première étape dans le cycle &quot;wireframe &gt; maquette &gt; prototype&quot;.</p>
 <p>Bien que le <em>wireframe</em> de base soit fourni, tu dois encore :</p>
@@ -158,7 +159,7 @@ Elles sont rédigées par des profils techniques (devs, tech lead, etc.), après
 <p>Pour exemple, voici ce à quoi peut ressembler un <a href="http://hugeinc.github.io/styleguide/demo/" target="_blank" rel="noopener noreferrer">StyleGuide</a>.</p>
 <div class="encadre encadre--warning"><div class="encadre__titre">Attention</div><div class="encadre__corps"><p>Bien que cette ressource t'amène vers un dépôt Github te permettant de générer ton propre styleguide nous n'attendons pas de toi que tu le réutilises. Seulement que tu t'en inspires pour présenter les élèvements essentiels de ta charte graphique !</p>
 </div></div>
-<h3>Critères de validation</h3>
+<h3 id="t-criteres-de-validation">Critères de validation</h3>
 <ul>
 <li>Le lien vers le <em>wireframe</em> de la page d’accueil est disponible</li>
 <li>Le <em>styleguide</em> comporte a minima une palette de couleurs et une typographie et est fourni avec le wireframe.</li>
@@ -189,6 +190,5 @@ Elles sont rédigées par des profils techniques (devs, tech lead, etc.), après
   <p>Archive personnelle des cours suivis à la Wild Code School. Copie hors ligne à usage strictement privé.</p>
 </footer>
 
-<script src="../../assets/progression.js"></script>
 </body>
 </html>

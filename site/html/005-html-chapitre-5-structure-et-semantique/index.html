@@ -20,27 +20,28 @@
     <p class="quete__meta">Quête 5 sur 9 · 2 images archivées</p>
   </header>
   <div class="cours">
-<h2>Objectifs</h2>
+<h2 id="t-objectifs">Objectifs</h2>
 <ul>
 <li>Structurer tes pages web</li>
 <li>Utiliser des balises sémantiques</li>
 </ul>
-<h2>Pré-requis</h2>
+<h2 id="t-pre-requis">Pré-requis</h2>
 <ol class="etapes"><li class="etape"><div class="etape__puce">1</div><div class="etape__contenu"><h4 class="etape__titre">Valider la quête suivante</h4><div class="renvois"><div class="renvois__titre">Quêtes liées</div><ul><li><a href="../../html/001-html-chapitre-1-introduction-au-html/index.html">Quête 2113</a></li></ul></div>
 </div></li><li class="etape"><div class="etape__puce">2</div><div class="etape__contenu"><h4 class="etape__titre">Être à l'aise avec l'imbrication de balises HTML</h4><div class="bloc-code"><div class="bloc-code__langue">html</div><pre><code class="hljs language-html"><span class="hljs-tag">&lt;<span class="hljs-name">p</span>&gt;</span>Bienvenue sur mon incroyable <span class="hljs-tag">&lt;<span class="hljs-name">strong</span>&gt;</span>site web<span class="hljs-tag">&lt;/<span class="hljs-name">strong</span>&gt;</span> !<span class="hljs-tag">&lt;/<span class="hljs-name">p</span>&gt;</span>
 </code></pre></div>
 </div></li></ol>
-<h2>Introduction</h2>
+<h2 id="t-introduction">Introduction</h2>
 <p>Précédemment, tu as vu les principes de bases du langage HTML.</p>
 <p>Dans cette quête nous allons nous concentrer sur l'organisation et la structure des pages avec des balises sémantiques.</p>
-<h2>Sommaire</h2>
-<h2>La structure d'une page HTML</h2>
+<h2 id="t-sommaire">Sommaire</h2>
+<nav class="sommaire" aria-label="Sommaire de la quête"><ol class="sommaire__liste"><li><a href="#t-la-structure-d-une-page-html">La structure d'une page HTML</a></li><li><a href="#t-la-balise">La balise</a></li><li><a href="#t-la-balise-2">La balise</a></li><li><a href="#t-la-balise-3">La balise</a></li><li><a href="#t-la-balise-4">La balise</a></li><li><a href="#t-la-balise-5">La balise</a></li><li><a href="#t-la-balise-6">La balise</a></li><li><a href="#t-la-balise-7">La balise</a></li><li><a href="#t-quand-tout-le-reste-a-echoue">Quand tout le reste a échoué</a><ul><li><a href="#t-saut-de-ligne">Saut de ligne</a></li><li><a href="#t-separateurs">Séparateurs</a></li><li><a href="#t-les-balises-et">Les balises et</a></li></ul></li><li><a href="#t-recapitulatif">Récapitulatif</a></li><li><a href="#t-challenge">Challenge</a><ul><li><a href="#t-criteres-de-validation">Critères de validation</a></li></ul></li></ol></nav>
+<h2 id="t-la-structure-d-une-page-html">La structure d'une page HTML</h2>
 <p>As-tu déjà remarqué que la plupart des sites internet suivent plus ou moins une structure similaire ?</p>
 <p>La plupart des sites sont composés de plusieurs &quot;zones&quot;, comme l'en tête (en anglais &quot;Header&quot;) la navigation, le pied de page (&quot;Footer&quot;), différentes sections, des articles, etc.</p>
 <p><img src="images/001-image.png" alt="image" loading="lazy"></p>
 <p>Utiliser des balises sémantiques pour rendre la structure lisible par des programmes est encore une fois très important pour le référencement et l'accessibilité.</p>
 <p>Les balises que tu vas voir dans cette quête n'ont pas d'impact sur la manière dont les éléments s'affichent. Comme nous l'avons vu, le HTML nous permet de décrire la structure d'une page : nous verrons bientôt comment nous pouvons styliser les éléments grâce au CSS.</p>
-<h2>La balise <header></h2>
+<h2 id="t-la-balise">La balise <header></h2>
 <p>La balise <code>&lt;header&gt;</code> est une balise que tu peux utiliser pour spécifier l'en-tête d'une page, d'un article ou d'une section.</p>
 <div class="encadre encadre--warning"><div class="encadre__titre">Attention</div><div class="encadre__corps"><p>Tu dois bien faire la différence entre la balise <code>&lt;head&gt;</code> et la balise <code>&lt;header&gt;</code> : les 2 correspondent à la notion &quot;d'en-tête&quot;. La balise <code>&lt;head&gt;</code> représente l'en-tête du document : elle contient des informations techniques pour le navigateur. La balise <code>&lt;header&gt;</code> représente un en-tête dans la page : elle contient du contenu visible sur la page, comme sur du <a href="https://fr.wikipedia.org/wiki/Papier_%C3%A0_en-t%C3%AAte" target="_blank" rel="noopener noreferrer">papier à en-tête</a>.</p>
 <p><img src="images/002-papier-a-en-tete-de-wood-industry-huber-de.jpg" alt="Papier à en-tête de Wood Industry Huber de Bozen, Italie, 1918" loading="lazy"></p>
@@ -76,7 +77,7 @@
 <div class="encadre encadre--note encadre--arrow"><div class="encadre__corps"><p><strong>🎯 À toi de jouer !</strong></p>
 <p>Utilise le document HTML <code>index.html</code> créé dans les quêtes précédentes et ajoute la balise <code>&lt;header&gt;</code> dans l'en-tête de ta page web (pour le moment, laisse la balise vide).</p>
 </div></div>
-<h2>La balise <nav></h2>
+<h2 id="t-la-balise-2">La balise <nav></h2>
 <p>La plupart des sites internet (si ce n'est la totalité) possède une navigation. La navigation permet aux utilisateurs de naviguer entre les différentes pages de ton site et est représentée en HTML grâce à la balise <code>&lt;nav&gt;</code>. Tu peux intégrer ta <code>&lt;nav&gt;</code> dans le <code>&lt;header&gt;</code> ou la placer comme un bloc indépendant :</p>
 <div class="bloc-code"><div class="bloc-code__langue">html</div><pre><code class="hljs language-html"><span class="hljs-tag">&lt;<span class="hljs-name">nav</span>&gt;</span>
 <span class="hljs-tag">&lt;/<span class="hljs-name">nav</span>&gt;</span>
@@ -102,7 +103,7 @@
 <li>Contact (redirige vers &quot;contact.html&quot;)</li>
 </ul>
 </div></div>
-<h2>La balise <main></h2>
+<h2 id="t-la-balise-3">La balise <main></h2>
 <p>La balise <code>&lt;main&gt;</code> est utilisé pour représenter le contenu principal d'une page web : c'est typiquement le contenu qui change d'une page à l'autre d'un même site. Par opposition, le <code>&lt;header&gt;</code> et la <code>nav</code> sont des parties qui restent les mêmes.</p>
 <p>Une page ne doit avoir qu'une seule balise <code>&lt;main&gt;</code> :</p>
 <div class="bloc-code"><div class="bloc-code__langue">html</div><pre><code class="hljs language-html"><span class="hljs-tag">&lt;<span class="hljs-name">main</span>&gt;</span>
@@ -120,7 +121,7 @@
 </code></pre></div>
 <p>La balise main contient généralement d'autres balises comme la balise <code>&lt;article&gt;</code> pour des compositions et <code>&lt;section&gt;</code> pour délimiter chaque section du site web.</p>
 <p>Voyons-les plus en détail.</p>
-<h2>La balise <article></h2>
+<h2 id="t-la-balise-4">La balise <article></h2>
 <p>La balise <code>&lt;article&gt;</code> est un <em>conteneur</em> : littéralement un élément qui contient du contenu. Par exemple un article de blog, un message sur un forum, une fiche produit, etc.</p>
 <p>Une page HTML peut contenir plusieurs <code>&lt;article&gt;</code>. Chaque <code>&lt;article&gt;</code> doit pouvoir être sorti du contexte de la page et avoir du sens seul : c'est la caractéristique des articles. Comme un article que tu pourrais découper dans un journal pour le garder en souvenir.</p>
 <div class="bloc-code"><div class="bloc-code__langue">html</div><pre><code class="hljs language-html"><span class="hljs-tag">&lt;<span class="hljs-name">main</span>&gt;</span>
@@ -151,7 +152,7 @@
     <span class="hljs-tag">&lt;/<span class="hljs-name">article</span>&gt;</span>
 <span class="hljs-tag">&lt;/<span class="hljs-name">main</span>&gt;</span>
 </code></pre></div>
-<h2>La balise <section></h2>
+<h2 id="t-la-balise-5">La balise <section></h2>
 <p>La balise <code>&lt;section&gt;</code> est un conteneur, comme la balise <code>&lt;article&gt;</code>. La différence est qu'une section n'est pas indépendante des autres sections autour. Pour reprendre l'image du journal, la section &quot;sport&quot; a du sens par ce qu'il existe une section &quot;faits divers&quot; à côté : s'il n'y avait qu'une section, ce ne serait pas nécessaire d'utiliser une balise <code>&lt;section&gt;</code>.</p>
 <p>Attention à ne pas confondre <code>&lt;article&gt;</code> et <code>&lt;section&gt;</code>,</p>
 <div class="encadre encadre--note encadre--arrow"><div class="encadre__corps"><p><strong>🎯 À toi de jouer !</strong></p>
@@ -160,7 +161,7 @@
 <p>À l'intérieur de la section blog, ajoute deux articles avec chacun un header avec un titre et un paragraphe.</p>
 <p>Si tu n'as pas d'inspiration pour le texte, tu peux utiliser du faux texte comme le <a href="https://fr.wikipedia.org/wiki/Lorem_ipsum" target="_blank" rel="noopener noreferrer">Lorem Ipsum</a>.</p>
 </div></div>
-<h2>La balise <aside></h2>
+<h2 id="t-la-balise-6">La balise <aside></h2>
 <p>La balise <code>&lt;aside&gt;</code> représente une partie d'une page, d'un article ou d'une section qui donne des informations complémentaires sur la page, l'article ou la section.</p>
 <p>Il s'agit souvent de contenu facultatif. Il est utilisé par exemple pour :</p>
 <ul>
@@ -202,7 +203,7 @@
 <div class="encadre encadre--note encadre--arrow"><div class="encadre__corps"><p><strong>🎯 À toi de jouer !</strong></p>
 <p>Ajoute un <code>&lt;aside&gt;</code> dans tes deux articles avec un commentaire.</p>
 </div></div>
-<h2>La balise <footer></h2>
+<h2 id="t-la-balise-7">La balise <footer></h2>
 <p>La balise <code>&lt;footer&gt;</code> est utilisée pour le pied de page, généralement pour des informations sur la page comme une mention de copyright ou des liens vers des pages supplémentaires :</p>
 <div class="bloc-code"><div class="bloc-code__langue">html</div><pre><code class="hljs language-html"><span class="hljs-tag">&lt;<span class="hljs-name">footer</span>&gt;</span>
     <span class="hljs-tag">&lt;<span class="hljs-name">nav</span>&gt;</span>
@@ -228,8 +229,8 @@
 <div class="encadre encadre--note encadre--arrow"><div class="encadre__corps"><p><strong>🎯 À toi de jouer !</strong></p>
 <p>Ajoute un pied de page à ta page <code>index.html</code> avec les différents liens de ton site internet ainsi que les informations de contact suivi du Copyright.</p>
 </div></div>
-<h2>Quand tout le reste a échoué</h2>
-<h3>Saut de ligne</h3>
+<h2 id="t-quand-tout-le-reste-a-echoue">Quand tout le reste a échoué</h2>
+<h3 id="t-saut-de-ligne">Saut de ligne</h3>
 <p>Tu peux effectuer un saut de ligne en HTML avec la balise <code>&lt;br&gt;</code>. Attention, la balise <code>&lt;br&gt;</code> doit être utilisée pour des retours à la ligne <strong>à l'intérieur d'un paragraphe</strong> ou d'une balise <code>&lt;address&gt;</code>. À l'intérieur d'un paragraphe, elle est utilisée pour la présentation d'un poème par exemple. Elle ne doit pas être utilisée pour mettre de l'espace <strong>entre</strong> les paragraphes. Pour cela tu utiliseras des propriétés CSS.</p>
 <div class="bloc-code"><div class="bloc-code__langue">html</div><pre><code class="hljs language-html"><span class="hljs-tag">&lt;<span class="hljs-name">h3</span>&gt;</span>le petit chat<span class="hljs-tag">&lt;/<span class="hljs-name">h3</span>&gt;</span>
 <span class="hljs-tag">&lt;<span class="hljs-name">p</span>&gt;</span>J&#x27;aime beaucoup mon petit chat,<span class="hljs-tag">&lt;<span class="hljs-name">br</span>&gt;</span>
@@ -238,7 +239,7 @@ Mais moins que vous il est ingrat,<span class="hljs-tag">&lt;<span class="hljs-n
 Méchant, hypocrite et le reste !
 <span class="hljs-tag">&lt;/<span class="hljs-name">p</span>&gt;</span>
 </code></pre></div>
-<h3>Séparateurs</h3>
+<h3 id="t-separateurs">Séparateurs</h3>
 <p>Tu peux mettre un séparateur avec la balise <code>&lt;hr&gt;</code> pour marquer un changement de thématique :</p>
 <div class="bloc-code"><div class="bloc-code__langue">html</div><pre><code class="hljs language-html"><span class="hljs-tag">&lt;<span class="hljs-name">h2</span>&gt;</span>Poèmes sur les chats<span class="hljs-tag">&lt;/<span class="hljs-name">h2</span>&gt;</span>
 
@@ -260,12 +261,12 @@ Combien cheminaient vers Chatham ?<span class="hljs-tag">&lt;/<span class="hljs-
 
 <span class="hljs-tag">&lt;<span class="hljs-name">h2</span>&gt;</span>Quelles sont les caractéristiques des chats ?<span class="hljs-tag">&lt;/<span class="hljs-name">h2</span>&gt;</span>
 </code></pre></div>
-<h3>Les balises <div> et <span></h3>
+<h3 id="t-les-balises-et">Les balises <div> et <span></h3>
 <p>La balise <code>&lt;div&gt;</code> est un conteneur de type <strong>block</strong> et <code>&lt;span&gt;</code> est un conteneur de type <strong>inline</strong>.</p>
 <p>Nous avons déjà vu plusieurs conteneurs comme <code>&lt;header&gt;</code>, <code>&lt;footer&gt;</code>, <code>&lt;article&gt;</code>, etc.</p>
 <p>À la différence de ces <em>conteneurs sémantiques</em> qui ont une <strong>sémantique forte</strong>, les balises <code>&lt;span&gt;</code> et <code>&lt;div&gt;</code> ne donnent aucune information quant au type de contenu qu'elles contiennent.</p>
 <p>Elles doivent être utilisées lorsqu'aucun élément avec une sémantique plus forte n'est adapté au contenu. La balise <code>&lt;div&gt;</code> pour délimiter une <strong>div</strong>ision, une partie d'un tout. La balise <code>&lt;span&gt;</code> pour délimiter une portion de contenu en ligne.</p>
-<h2>Récapitulatif</h2>
+<h2 id="t-recapitulatif">Récapitulatif</h2>
 <ul>
 <li>
 <p>En HTML, tu dois respecter la structure et la sémantique de tes pages.</p>
@@ -292,10 +293,10 @@ Combien cheminaient vers Chatham ?<span class="hljs-tag">&lt;/<span class="hljs-
 <p>La balise <code>&lt;footer&gt;</code> sert à déclarer un pied de page, de section ou d'article.</p>
 </li>
 </ul>
-<h2>Challenge</h2>
+<h2 id="t-challenge">Challenge</h2>
 <p>Mets en forme le travail que tu as réalisé durant cette quête et compare le résultat avec la solution qui est proposée !</p>
 <p>Tu peux effacer le contenu que nous avons fait dans les précédentes quêtes pour plus de clarté.</p>
-<h3>Critères de validation</h3>
+<h3 id="t-criteres-de-validation">Critères de validation</h3>
 <ul>
 <li>[ ] La page web respecte les principes de structure et de sémantique découverts dans la quête</li>
 <li>[ ] La page contient un header avec une navigation contenant une liste de liens</li>
@@ -404,7 +405,5 @@ Combien cheminaient vers Chatham ?<span class="hljs-tag">&lt;/<span class="hljs-
   <p>Archive personnelle des cours suivis à la Wild Code School. Copie hors ligne à usage strictement privé.</p>
 </footer>
 
-<script src="../../assets/copie-code.js"></script>
-<script src="../../assets/progression.js"></script>
 </body>
 </html>

@@ -20,13 +20,13 @@
     <p class="quete__meta">Quête 3 sur 9 · 2 images archivées</p>
   </header>
   <div class="cours">
-<h2>Objectifs</h2>
+<h2 id="t-objectifs">Objectifs</h2>
 <ul>
 <li>Créer un projet &quot;Monorepo JS&quot;</li>
 <li>Lancer les applications clientes et serveur en parallèle</li>
 <li>Créer une première route dans l'application Express</li>
 </ul>
-<h2>Pré-requis</h2>
+<h2 id="t-pre-requis">Pré-requis</h2>
 <ol class="etapes"><li class="etape"><div class="etape__puce">1</div><div class="etape__contenu"><h4 class="etape__titre">Valider les quêtes suivantes</h4><div class="renvois"><div class="renvois__titre">Quêtes liées</div><ul><li><a href="../../js-monorepo/001-00-js-monorepo-introduction/index.html">Quête 1549</a></li><li><a href="../../js-monorepo/002-01-js-monorepo-wild-series-la-genese/index.html">Quête 588</a></li></ul></div>
 </div></li><li class="etape"><div class="etape__puce">2</div><div class="etape__contenu"><h4 class="etape__titre">Avoir compris l'architecture globale du &quot;JS Monorepo&quot;</h4><div class="encadre encadre--note encadre--story"><div class="encadre__corps"><p>[...] voici l'essentiel :</p>
 <ul>
@@ -45,8 +45,9 @@
 app.<span class="hljs-title function_">get</span>(<span class="hljs-string">&quot;/&quot;</span>, sayHello);
 </code></pre></div>
 </div></li></ol>
-<h2>Sommaire</h2>
-<h2>Introduction</h2>
+<h2 id="t-sommaire">Sommaire</h2>
+<nav class="sommaire" aria-label="Sommaire de la quête"><ol class="sommaire__liste"><li><a href="#t-introduction">Introduction</a></li><li><a href="#t-creer-un-projet-monorepo-js">Créer un projet "Monorepo JS"</a></li><li><a href="#t-lancer-les-applications-cliente-et-serveur">Lancer les applications cliente et serveur</a><ul><li><a href="#t-mais-comment-ca-marche">Mais comment ça marche ?</a></li></ul></li><li><a href="#t-monorepo-cote-express">Monorepo, côté Express</a><ul><li><a href="#t-le-fichier-main-ts-du-serveur-bis">Le fichier main.ts du serveur (bis)</a></li><li><a href="#t-les-variables-d-environnement">Les variables d'environnement</a></li></ul></li><li><a href="#t-resume">Résumé</a></li><li><a href="#t-challenge">Challenge</a><ul><li><a href="#t-criteres-de-validation">Critères de validation</a></li></ul></li></ol></nav>
+<h2 id="t-introduction">Introduction</h2>
 <p>Ça y est, après la phase de conception, tu vas enfin pouvoir commencer à entrer dans le code !</p>
 <p>Pour commencer simplement, tu vas créer un projet vierge, le configurer et le versionner. C’est ce même projet que tu dois réutiliser à chaque nouvelle quête du parcours Wild Series pour qu’il soit finalisé à la fin de ta formation !</p>
 <div class="colonnes"><div class="colonne"><p><strong>User stories</strong> 📋</p>
@@ -66,7 +67,7 @@ app.<span class="hljs-title function_">get</span>(<span class="hljs-string">&quo
 </div><div class="colonne"><p><strong>In review</strong> 🧐</p>
 </div><div class="colonne"><p><strong>Done</strong> ✅</p>
 </div></div>
-<h2>Créer un projet &quot;Monorepo JS&quot;</h2>
+<h2 id="t-creer-un-projet-monorepo-js">Créer un projet &quot;Monorepo JS&quot;</h2>
 <p>L'outil te met à disposition une commande pour créer un projet :</p>
 <div class="bloc-code"><div class="bloc-code__langue">bash</div><pre><code class="hljs language-bash">npm create @this-is-to-learn/js-monorepo@latest my-project
 </code></pre></div>
@@ -81,7 +82,7 @@ app.<span class="hljs-title function_">get</span>(<span class="hljs-string">&quo
 <p>Et lance l'installation des dépendances :</p>
 <div class="bloc-code"><div class="bloc-code__langue">bash</div><pre><code class="hljs language-bash">npm install
 </code></pre></div>
-<h2>Lancer les applications cliente et serveur</h2>
+<h2 id="t-lancer-les-applications-cliente-et-serveur">Lancer les applications cliente et serveur</h2>
 <p>Pour lancer les applications cliente et serveur en parallèle, tu peux utiliser la commande suivante :</p>
 <div class="bloc-code"><div class="bloc-code__langue">bash</div><pre><code class="hljs language-bash">npm run dev
 </code></pre></div>
@@ -92,7 +93,7 @@ app.<span class="hljs-title function_">get</span>(<span class="hljs-string">&quo
 <div class="bloc-code"><div class="bloc-code__langue">bash</div><pre><code class="hljs language-bash">npm run dev:client
 npm run dev:server
 </code></pre></div>
-<h3>Mais comment ça marche ?</h3>
+<h3 id="t-mais-comment-ca-marche">Mais comment ça marche ?</h3>
 <p>La commande <code>npm run dev</code> correspond à un script, défini dans le fichier <code>package.json</code> à la racine du projet :</p>
 <div class="bloc-code"><div class="bloc-code__langue">json</div><pre><code class="hljs language-json">  <span class="hljs-attr">&quot;scripts&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-punctuation">{</span>
     <span class="hljs-attr">&quot;build&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;npm run build --workspaces --if-present&quot;</span><span class="hljs-punctuation">,</span>
@@ -127,7 +128,7 @@ npm run dev:server
 </ul>
 <p>Tu as créé ton premier projet &quot;Monorepo JS&quot; et tu as lancé le client et le serveur en parallèle 🎉</p>
 <p>Tu peux déjà voir l'application React dans ton navigateur en ouvrant l'adresse <code>http://localhost:3000</code>.</p>
-<h2>Monorepo, côté Express</h2>
+<h2 id="t-monorepo-cote-express">Monorepo, côté Express</h2>
 <div class="encadre encadre--note encadre--callout"><div class="encadre__corps"><p>Tu as déjà eu un aperçu dans une précédente quête, dans la partie &quot;Visite guidée&quot; :</p>
 <div class="renvois"><div class="renvois__titre">Quêtes liées</div><ul><li><a href="../../js-monorepo/001-00-js-monorepo-introduction/index.html">Quête 1549</a></li></ul></div>
 <p>N'hésite pas à le relire si tu en resens le besoin.</p>
@@ -152,7 +153,7 @@ npm run dev:server
 └── .<span class="hljs-property">env</span>.<span class="hljs-property">sample</span>
 </code></pre></div>
 <p>Comme tu peux le voir, le dossier <code>server</code> contient plusieurs dossiers et fichiers. Pour l'instant, Ouvrons à nouveau le fichier <code>src/main.ts</code> qui est le point d'entrée de l'application Express.</p>
-<h3>Le fichier main.ts du serveur (bis)</h3>
+<h3 id="t-le-fichier-main-ts-du-serveur-bis">Le fichier main.ts du serveur (bis)</h3>
 <p>Voici le code exact que tu devrais trouver dans <code>server/src/main.ts</code> :</p>
 <div class="bloc-code"><div class="bloc-code__langue">typescript</div><pre><code class="hljs language-typescript"><span class="hljs-comment">// Load environment variables from .env file</span>
 <span class="hljs-keyword">import</span> <span class="hljs-string">&quot;dotenv/config&quot;</span>;
@@ -203,7 +204,7 @@ app
 </code></pre></div>
 <p>La première ligne charge les variables d'environnement depuis le fichier <code>.env</code> situé à la racine du dossier <code>server</code>. La deuxième ligne récupère depuis les variables d'environnement le port sur lequel le serveur doit écouter.</p>
 </div></div>
-<h3>Les variables d'environnement</h3>
+<h3 id="t-les-variables-d-environnement">Les variables d'environnement</h3>
 <p>Les variables d'environnement sont des variables qui modifient l'environnement d'exécution d'une application.</p>
 <div class="encadre encadre--note encadre--quote"><div class="encadre__corps"><p>Mais à quoi servent ces variables d'environnement ?</p>
 </div></div>
@@ -239,7 +240,7 @@ PROJECT_NAME_SPECIFIC_NAME=YOUR_SPECIFIC_VALUE
 <div class="bloc-code"><div class="bloc-code__langue">bash</div><pre><code class="hljs language-bash">npm run dev
 </code></pre></div>
 </div></div>
-<h2>Résumé</h2>
+<h2 id="t-resume">Résumé</h2>
 <p>Pour créer et utiliser un nouveau projet &quot;Monorepo JS&quot;, tu dois respecter les étapes suivantes :</p>
 <ul>
 <li>Créer le projet avec la commande <code>npm create @this-is-to-learn/js-monorepo@latest my-project</code> où <code>my-project</code> est le nom de ton projet.</li>
@@ -249,7 +250,7 @@ PROJECT_NAME_SPECIFIC_NAME=YOUR_SPECIFIC_VALUE
 <li>Créer un fichier <code>.env</code> à la racine du dossier <code>client</code> et y ajouter les variables d'environnement nécessaires.</li>
 <li>Lancer les applications React et Express en parallèle avec la commande <code>npm run dev</code>.</li>
 </ul>
-<h2>Challenge</h2>
+<h2 id="t-challenge">Challenge</h2>
 <p>Crée ton projet <code>wild-series</code>. Crée les fichiers <code>.env</code> et définis les variables d'environnement nécessaires.</p>
 <p>Pour l'instant, si tu ouvres l'adresse <code>http://localhost:3310/</code> dans ton navigateur, tu auras une erreur 404 avec un message du genre <code>Cannot GET /</code>. Dans le fichier <code>server/src/main.ts</code>, ajoute une nouvelle route <code>GET /</code> pour afficher un texte de bienvenue <code>&quot;Welcome to Wild Series !&quot;</code>.</p>
 <div class="encadre encadre--note encadre--arrow"><div class="encadre__corps"><p>Un peu d'aide avec TypeScript ?</p>
@@ -263,7 +264,7 @@ PROJECT_NAME_SPECIFIC_NAME=YOUR_SPECIFIC_VALUE
 </div></details>
 </div></div>
 <p>Pousse ton projet sur GitHub, et partage le lien de ton dépôt pour valider ta quête.</p>
-<h3>Critères de validation</h3>
+<h3 id="t-criteres-de-validation">Critères de validation</h3>
 <ul>
 <li>[ ] Le projet est disponible sur GitHub.</li>
 <li>[ ] Les fichiers <code>.env</code> ne sont pas pushés.</li>
@@ -327,7 +328,5 @@ app
   <p>Archive personnelle des cours suivis à la Wild Code School. Copie hors ligne à usage strictement privé.</p>
 </footer>
 
-<script src="../../assets/copie-code.js"></script>
-<script src="../../assets/progression.js"></script>
 </body>
 </html>

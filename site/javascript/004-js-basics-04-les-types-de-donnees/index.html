@@ -20,21 +20,22 @@
     <p class="quete__meta">Quête 4 sur 11 · 4 images archivées</p>
   </header>
   <div class="cours">
-<h2>Objectifs</h2>
+<h2 id="t-objectifs">Objectifs</h2>
 <ul>
 <li>Vérifier le type d'une expression</li>
 </ul>
-<h2>Pré-requis</h2>
+<h2 id="t-pre-requis">Pré-requis</h2>
 <p>Avoir validé les quêtes suivantes :</p>
 <div class="renvois"><div class="renvois__titre">Quêtes liées</div><ul><li><a href="../../javascript/001-js-basics-01-qu-est-ce-que-javascript/index.html">Quête 1262</a></li><li><a href="../../javascript/002-js-basics-02-syntaxe-et-concepts-de-base/index.html">Quête 1267</a></li><li><a href="../../javascript/003-js-basics-03-les-variables/index.html">Quête 1268</a></li></ul></div>
-<h2>Introduction</h2>
+<h2 id="t-introduction">Introduction</h2>
 <p>Dans les quêtes précédentes, tu as <strong>découvert ce qu'est Javascript et à quoi ressemble la syntaxe</strong>. Tu as également appris comment <strong>créer des variables</strong>.</p>
 <p>Dans cette quête, tu apprendras les différents types de valeurs qui peuvent être utilisés en Javascript.
 Pour l'instant, nous n'avons utilisé que des <strong>chaînes et des nombres</strong>, mais il existe de nombreux autres types de données.</p>
 <p>C'est parti !</p>
 <p><img src="images/001-feuilles.png" alt="Feuilles" loading="lazy"></p>
-<h2>Sommaire</h2>
-<h2>L'opérateur &quot;typeof&quot;</h2>
+<h2 id="t-sommaire">Sommaire</h2>
+<nav class="sommaire" aria-label="Sommaire de la quête"><ol class="sommaire__liste"><li><a href="#t-l-operateur-typeof">L'opérateur "typeof"</a></li><li><a href="#t-deux-categories-de-types-de-donnees">Deux catégories de types de données</a><ul><li><a href="#t-les-types-primitifs">Les types primitifs</a></li><li><a href="#t-types-complexes-non-primitifs">Types complexes (non-primitifs)</a></li></ul></li><li><a href="#t-resume">Résumé</a></li></ol></nav>
+<h2 id="t-l-operateur-typeof">L'opérateur &quot;typeof&quot;</h2>
 <p>En javascript, on peut utiliser un <strong>opérateur</strong> appelé &quot;typeof&quot; pour <strong>voir</strong> le <strong>type de données</strong> d'une valeur.
 Pour ce faire, on peut simplement <strong>écrire</strong> <code>typeof</code> suivi de la valeur que nous voulons vérifier.</p>
 <p><img src="images/002-telescope.png" alt="Télescope" loading="lazy"></p>
@@ -42,10 +43,10 @@ Pour ce faire, on peut simplement <strong>écrire</strong> <code>typeof</code> 
 <div class="bloc-code"><div class="bloc-code__langue">javascript</div><pre><code class="hljs language-javascript"><span class="hljs-keyword">typeof</span> <span class="hljs-number">1</span>;
 </code></pre></div>
 <p>Tu verras apparaître résultat <code>&quot;number&quot;</code> car la valeur <code>1</code> est bien un nombre.</p>
-<h2>Deux catégories de types de données</h2>
+<h2 id="t-deux-categories-de-types-de-donnees">Deux catégories de types de données</h2>
 <p>En Javascript, il existe <strong>sept</strong> types de données différents. Ils sont classés en deux catégories :
 <strong>Primitifs</strong> et <strong>non-primitifs</strong>.</p>
-<h3>Les types primitifs</h3>
+<h3 id="t-les-types-primitifs">Les types primitifs</h3>
 <p>Une <strong>valeur primitive</strong> est une valeur qui <strong>ne peut pas changer</strong> (on dit généralement que ces valeurs sont <strong>immutables</strong>, qu'elles ne peuvent pas muter).</p>
 <p>Pense aux nombres. Tu peux écrire un code comme celui-ci :</p>
 <div class="bloc-code"><div class="bloc-code__langue">javascript</div><pre><code class="hljs language-javascript"><span class="hljs-keyword">let</span> a = <span class="hljs-number">1</span>;
@@ -100,7 +101,7 @@ a = <span class="hljs-number">2</span>;
 <span class="hljs-comment">// ReferenceError: nothing is not defined</span>
 </code></pre></div>
 <p>Comme tu peux le voir, <strong>même si le message d'erreur dit &quot;non défini&quot;, ce qui peut prêter à confusion</strong>, ce n'est pas la même chose que <code>undefined</code>. <code>ReferenceError</code> est une erreur fatale ☠️ qui <strong>provoque l'arrêt de l'exécution du Javascript</strong>.</p>
-<h3>Types complexes (non-primitifs)</h3>
+<h3 id="t-types-complexes-non-primitifs">Types complexes (non-primitifs)</h3>
 <p><img src="images/004-non-primitives.png" alt="Non-primitives" loading="lazy"></p>
 <p>Les valeurs non primitives sont des valeurs qui <strong>peuvent changer</strong> (on dit qu'elles sont <strong>mutables</strong>).</p>
 <p><strong>Functions</strong></p>
@@ -143,7 +144,7 @@ person.<span class="hljs-title function_">sayHello</span>();
 </code></pre></div>
 <p><strong>🔬 Fais une expérience</strong></p>
 <p>Ouvre la console de ton navigateur et utilise l'opérateur <code>typeof</code> sur plusieurs valeurs différentes pour observer le résultat.</p>
-<h2>Résumé</h2>
+<h2 id="t-resume">Résumé</h2>
 <p>En Javascript, les types de données sont divisés en deux catégories : les types dits &quot;primitifs&quot; et les types &quot;complexes&quot; (non-primitifs) :</p>
 <ul>
 <li>Les types de données primitifs (immutables) :
@@ -188,7 +189,5 @@ person.<span class="hljs-title function_">sayHello</span>();
   <p>Archive personnelle des cours suivis à la Wild Code School. Copie hors ligne à usage strictement privé.</p>
 </footer>
 
-<script src="../../assets/copie-code.js"></script>
-<script src="../../assets/progression.js"></script>
 </body>
 </html>

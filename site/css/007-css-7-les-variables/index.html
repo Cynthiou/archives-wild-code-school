@@ -20,15 +20,16 @@
     <p class="quete__meta">Quête 7 sur 10</p>
   </header>
   <div class="cours">
-<h2>Objectifs</h2>
+<h2 id="t-objectifs">Objectifs</h2>
 <ul>
 <li>Définir des variables CSS</li>
 <li>Les utiliser en suivant les bonnes pratiques actuelles</li>
 </ul>
-<h2>Introduction</h2>
+<h2 id="t-introduction">Introduction</h2>
 <p>DRY (Don't Repeat Yourself) est un concept clé en programmation. Le CSS n'échappe pas à la règle. Pour éviter ces répétitions, un mécanisme de variable a été mis en place récemment en CSS.</p>
-<h2>Sommaire</h2>
-<h2>Définition des variables CSS</h2>
+<h2 id="t-sommaire">Sommaire</h2>
+<nav class="sommaire" aria-label="Sommaire de la quête"><ol class="sommaire__liste"><li><a href="#t-definition-des-variables-css">Définition des variables CSS</a></li><li><a href="#t-interet-des-variables-css">Intérêt des variables CSS</a></li><li><a href="#t-quand-utiliser-les-variables-css">Quand utiliser les variables CSS ?</a></li><li><a href="#t-nommage-des-variables">Nommage des variables</a></li><li><a href="#t-experimentation">Expérimentation</a></li></ol></nav>
+<h2 id="t-definition-des-variables-css">Définition des variables CSS</h2>
 <p>Les variables CSS (tu rencontreras également le terme de propriétés personnalisées ou <em>custom properties</em>) sont relativement proches des variables que tu pourras trouver dans n'importe quel autre langage. Tu vas pouvoir choisir un nom pour ta variable et lui attribuer une valeur.</p>
 <p>Pour commencer, regarde cette vidéo de seulement 100 secondes qui te donnera les bases pour comprendre ce que sont les variables CSS.</p>
 <a class="video-lien" href="https://www.youtube.com/watch?v=NtRmIp4eMjs" target="_blank" rel="noopener noreferrer">
@@ -66,7 +67,7 @@
     <span class="hljs-attr">--increment</span>: <span class="hljs-built_in">calc</span>(<span class="hljs-built_in">var</span>(--increment) + <span class="hljs-number">1</span>);
 }
 </code></pre></div>
-<h2>Intérêt des variables CSS</h2>
+<h2 id="t-interet-des-variables-css">Intérêt des variables CSS</h2>
 <p>L'utilisation des variables n'a rien d'obligatoire, mais elles vont grandement te faciliter la maintenance de ton site.
 Imagine un site où la charte graphique est le rose et le vert (il en faut pour tous les goûts) et qu'un jour ton client retrouve la raison et te demande une charte différente, avec par exemple du bleu et du violet. Si tu as codé ton site sans variable, il faudra que tu changes les couleurs (et toutes leurs variantes) dans tous tes fichiers CSS, ce qui va être long, complexe et source d'erreur.
 Si tu as pris le temps de définir des variables CSS, il te suffira de modifier les quelques valeurs dans ton sélecteur <code>:root</code> et le nouveau style sera directement appliqué.
@@ -94,7 +95,7 @@ D'autre part, la lisibilité du site sera grandement améliorée. Voici un exemp
 }
 </code></pre></div>
 <p>dans le second cas, le code est beaucoup plus lisible et maintenable sur le long terme, notamment lorsque tu travailles avec d'autres développeurs.</p>
-<h2>Quand utiliser les variables CSS ?</h2>
+<h2 id="t-quand-utiliser-les-variables-css">Quand utiliser les variables CSS ?</h2>
 <p>Utilises-en le plus possible ! Commence par gérer toutes tes couleurs via des variables. Cela te permet de mieux t'y retrouver et de faciliter les changements de charte graphique.</p>
 <p>Mais une charte ne se limite pas aux simples couleurs. Tu peux également utiliser les variables dans bien d'autres situations, quelques exemples :</p>
 <ul>
@@ -113,7 +114,7 @@ D'autre part, la lisibilité du site sera grandement améliorée. Voici un exemp
     <div class="ressource__hote">css-irl.info</div>
   </div>
 </a>
-<h2>Nommage des variables</h2>
+<h2 id="t-nommage-des-variables">Nommage des variables</h2>
 <p>Comme dans n'importe quel langage, le bon nommage des variables est très important. Tu dois respecter quelques règles :</p>
 <ul>
 <li>en anglais</li>
@@ -142,7 +143,7 @@ D'autre part, la lisibilité du site sera grandement améliorée. Voici un exemp
 <div class="encadre encadre--info"><div class="encadre__titre">Info</div><div class="encadre__corps"><h1>Remarque</h1>
 <p>En graphisme web, il est recommandé de ne pas utiliser directement le blanc et le noir, mais plutôt des variantes très claires (presque blanc) et très foncées (presque noir) de ta couleur principale.</p>
 </div></div>
-<h2>Expérimentation</h2>
+<h2 id="t-experimentation">Expérimentation</h2>
 <p>Regarde la <em>sandbox</em> ci-dessous. Une page simple est réalisée (navbar, titre, paragraphe, lien), mais sans aucune utilisation de variables CSS.</p>
 <ul>
 <li>Tout en conservant exactement la même mise en page, modifie le code afin d'ajouter des variables pour toutes les propriétés où cela pourrait être nécessaire (et pas seulement les couleurs).</li>
@@ -315,7 +316,5 @@ a:any-link {
   <p>Archive personnelle des cours suivis à la Wild Code School. Copie hors ligne à usage strictement privé.</p>
 </footer>
 
-<script src="../../assets/copie-code.js"></script>
-<script src="../../assets/progression.js"></script>
 </body>
 </html>

@@ -20,20 +20,21 @@
     <p class="quete__meta">Quête 6 sur 10 · 1 image archivée</p>
   </header>
   <div class="cours">
-<h2>Objectifs</h2>
+<h2 id="t-objectifs">Objectifs</h2>
 <ul>
 <li>Comprendre la notion de state dans React</li>
 <li>Apprendre à utiliser un state dans un composant.</li>
 </ul>
-<h2>Pré-requis</h2>
+<h2 id="t-pre-requis">Pré-requis</h2>
 <ol class="etapes"><li class="etape"><div class="etape__puce">1</div><div class="etape__contenu"><h4 class="etape__titre">Valider les quêtes suivantes</h4><div class="renvois"><div class="renvois__titre">Quêtes liées</div><ul><li><a href="../../react-bases/001-react-basics-01-pokedex-introduction/index.html">Quête 2328</a></li><li><a href="../../react-bases/002-react-basics-02-pokedex-ton-premier-composant/index.html">Quête 2332</a></li><li><a href="../../react-bases/003-react-basics-03-pokedex-afficher-des-donnees-dans-un/index.html">Quête 2336</a></li><li><a href="../../react-bases/004-react-basics-04-pokedex-passer-des-props/index.html">Quête 2374</a></li><li><a href="../../react-bases/005-react-basics-05-pokedex-typer-les-props-avec-typescript/index.html">Quête 2375</a></li></ul></div>
 </div></li></ol>
-<h2>Introduction</h2>
+<h2 id="t-introduction">Introduction</h2>
 <p>Dans les quêtes précédentes, nous avons vu comment créer des composants, utiliser les props et les typer avec Typescript.</p>
 <p>Nous allons maintenant découvrir ce qu'est le state dans React.</p>
 <p><img src="images/001-introduction.jpg" alt="" loading="lazy"></p>
-<h2>Sommaire</h2>
-<h2>Le state</h2>
+<h2 id="t-sommaire">Sommaire</h2>
+<nav class="sommaire" aria-label="Sommaire de la quête"><ol class="sommaire__liste"><li><a href="#t-le-state">Le state</a><ul><li><a href="#t-comment-utiliser-le-state">Comment utiliser le state ?</a></li><li><a href="#t-primitive-non-primitive">Primitive / Non Primitive</a></li></ul></li><li><a href="#t-challenge">Challenge</a><ul><li><a href="#t-criteres-de-validation">Critères de validation</a></li></ul></li></ol></nav>
+<h2 id="t-le-state">Le state</h2>
 <p>Nous avons vu au travers des quêtes précédentes comment récupérer des valeurs venant de l'extérieur d'un composant grâce aux <code>props</code>. Nous allons maintenant voir comment gérer des valeurs dynamiques à l'intérieur d'un composant grâce au state.</p>
 <p>Dans React, un &quot;state&quot; est géré avec des fonctions de type &quot;hook&quot; : ce sont des fonctions dont le nom commence par <code>use</code>. Dans le cas d'un state, tu vas &quot;prévenir&quot; React que tu veux utiliser un état à l'intérieur de ton composant avec le hook <code>useState</code> (littéralement, &quot;utiliser un état&quot;). Comment ça se présente ?</p>
 <p>Regardons déjà ce que nous retourne ce fameux hook <code>useState</code> :</p>
@@ -78,7 +79,7 @@
 <span class="hljs-keyword">export</span> <span class="hljs-keyword">default</span> <span class="hljs-title class_">App</span>;
 </code></pre></div>
 <p>Dans la suite de cette quête, nous allons utiliser cet exemple pour compter un nombre de clics.</p>
-<h3>Comment utiliser le state ?</h3>
+<h3 id="t-comment-utiliser-le-state">Comment utiliser le state ?</h3>
 <p>Avant de commencer, nous allons utiliser une notion que nous verrons plus en détail dans la suite du parcours : les <strong>event listeners</strong>.</p>
 <p>En React pour placer un <strong>event listener</strong> sur un bouton par exemple, tu peux procéder comme suit :</p>
 <div class="bloc-code"><div class="bloc-code__langue">jsx</div><pre><code class="hljs language-jsx"><span class="hljs-keyword">function</span> <span class="hljs-title function_">App</span>(<span class="hljs-params"></span>) {
@@ -164,7 +165,7 @@ btn.<span class="hljs-title function_">addEventListener</span>(<span class="hljs
 <p>Dans cet exemple, lorsque tu cliques sur le bouton, le compteur est incrémenté de 1. Et... L'affichage se met automatiquement à jour !</p>
 <div class="encadre encadre--note encadre--arrow"><div class="encadre__corps"><p>C'est là tout l'intérêt du state : lorsque tu modifies un state avec son <em>setter</em>, alors ton composant est rendu à nouveau : tout le code qui se trouve à l'intérieur est re-exécuté et l'affichage est mis à jour avec le nouveau JSX retourné.</p>
 </div></div>
-<h3>Primitive / Non Primitive</h3>
+<h3 id="t-primitive-non-primitive">Primitive / Non Primitive</h3>
 <p>Nous avons vu précédemment comment mettre à jour un state avec des valeurs primitives (des nombres). Qu'en-est-il des valeurs non primitives comme les <em>objets</em> ?</p>
 <p>Eh bien souviens-toi qu'une variable ne contient pas réellement l'objet, mais plutôt une référence vers celui-ci. Nous devons donc produire un nouvel objet pour rendre la modification &quot;visible&quot;, comme suit :</p>
 <div class="bloc-code"><div class="bloc-code__langue">jsx</div><pre><code class="hljs language-jsx"><span class="hljs-keyword">import</span> { useState } <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;react&quot;</span>;
@@ -228,7 +229,7 @@ btn.<span class="hljs-title function_">addEventListener</span>(<span class="hljs
     <div class="ressource__hote">react.dev</div>
   </div>
 </a>
-<h2>Challenge</h2>
+<h2 id="t-challenge">Challenge</h2>
 <p>Dans ce challenge, tu vas mettre en place un state <code>pokemonName</code> dans <code>App</code> et ajouter des boutons pour changer le Pokémon affiché.</p>
 <ol class="etapes"><li class="etape"><div class="etape__puce">1</div><div class="etape__contenu"><h4 class="etape__titre">Crée une nouvelle branche</h4><p>Ouvre ton projet existant et crée une nouvelle branche appelée <code>state.1</code>. Cette branche sera utilisée pour développer les fonctionnalités liées à la gestion de l'état (state). Assure-toi de partir de la branche <code>props.2</code>.</p>
 </div></li><li class="etape"><div class="etape__puce">2</div><div class="etape__contenu"><h4 class="etape__titre">Crée un state pokemonName</h4><p>Dans le composant <code>App</code>, crée un state <code>pokemonName</code> en utilisant un état (useState). Initialise ce state à <code>&quot;bulbasaur&quot;</code>.</p>
@@ -269,7 +270,7 @@ btn.<span class="hljs-title function_">addEventListener</span>(<span class="hljs
 </div></li></ol>
 <p>Assure-toi que les boutons fonctionnent correctement et mettent à jour le Pokémon affiché en fonction de <code>pokemonName</code>.</p>
 <p>Fournis le lien vers la branche <code>state.1</code> de ton dépôt GitHub pour valider cette étape.</p>
-<h3>Critères de validation</h3>
+<h3 id="t-criteres-de-validation">Critères de validation</h3>
 <ul>
 <li>Le composant <code>App</code> affiche des boutons &quot;bulbasaur&quot; et &quot;mew&quot;.</li>
 <li>Les boutons &quot;bulbasaur&quot; et &quot;mew&quot; permettent de choisir le pokémon affiché.</li>
@@ -344,7 +345,5 @@ btn.<span class="hljs-title function_">addEventListener</span>(<span class="hljs
   <p>Archive personnelle des cours suivis à la Wild Code School. Copie hors ligne à usage strictement privé.</p>
 </footer>
 
-<script src="../../assets/copie-code.js"></script>
-<script src="../../assets/progression.js"></script>
 </body>
 </html>

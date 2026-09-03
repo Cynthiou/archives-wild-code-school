@@ -20,18 +20,19 @@
     <p class="quete__meta">Quête 9 sur 10 · 3 images archivées</p>
   </header>
   <div class="cours">
-<h2>Objectifs</h2>
+<h2 id="t-objectifs">Objectifs</h2>
 <ul>
 <li>Faire communiquer plusieurs composants entre eux avec un même state.</li>
 </ul>
-<h2>Pré-requis</h2>
+<h2 id="t-pre-requis">Pré-requis</h2>
 <ol class="etapes"><li class="etape"><div class="etape__puce">1</div><div class="etape__contenu"><h4 class="etape__titre">Valider les quêtes suivantes</h4><div class="renvois"><div class="renvois__titre">Quêtes liées</div><ul><li><a href="../../react-bases/001-react-basics-01-pokedex-introduction/index.html">Quête 2328</a></li><li><a href="../../react-bases/002-react-basics-02-pokedex-ton-premier-composant/index.html">Quête 2332</a></li><li><a href="../../react-bases/003-react-basics-03-pokedex-afficher-des-donnees-dans-un/index.html">Quête 2336</a></li><li><a href="../../react-bases/004-react-basics-04-pokedex-passer-des-props/index.html">Quête 2374</a></li><li><a href="../../react-bases/005-react-basics-05-pokedex-typer-les-props-avec-typescript/index.html">Quête 2375</a></li><li><a href="../../react-bases/006-react-basics-06-pokedex-utiliser-un-state/index.html">Quête 2376</a></li><li><a href="../../react-bases/007-react-basics-07-pokedex-repeter-un-bloc-d-affichage-avec-map/index.html">Quête 2378</a></li></ul></div>
 </div></li></ol>
-<h2>Introduction</h2>
+<h2 id="t-introduction">Introduction</h2>
 <p>Dans les quêtes précédentes, nous avons vu comment utiliser les composants, les props et le state.</p>
 <p><img src="images/001-introduction.jpg" alt="" loading="lazy"></p>
-<h2>Sommaire</h2>
-<h2>Un problème de communication.</h2>
+<h2 id="t-sommaire">Sommaire</h2>
+<nav class="sommaire" aria-label="Sommaire de la quête"><ol class="sommaire__liste"><li><a href="#t-un-probleme-de-communication">Un problème de communication.</a></li><li><a href="#t-encore-et-toujours-la-hierarchie">Encore et toujours la hiérarchie !</a></li><li><a href="#t-challenge">Challenge</a><ul><li><a href="#t-criteres-de-validation">Critères de validation</a></li></ul></li></ol></nav>
+<h2 id="t-un-probleme-de-communication">Un problème de communication.</h2>
 <p>Prenons comme exemple cette architecture d'application :</p>
 <p><img src="images/002-un-probleme-de-communication.jpg" alt="" loading="lazy"></p>
 <p>Ici, nous avons un composant <code>InputMessage</code> et un composant <code>DisplayMessage</code> affichés dans <code>App</code>. Le composant <code>InputMessage</code> affiche un input de type text contrôlé par son state <code>message</code>.</p>
@@ -72,7 +73,7 @@
 <span class="hljs-keyword">export</span> <span class="hljs-keyword">default</span> <span class="hljs-title class_">DisplayMessage</span>;
 </code></pre></div>
 <p>Maintenant, je souhaite afficher le message dans le composant <code>DisplayMessage</code> : comment faire ?</p>
-<h2>Encore et toujours la hiérarchie !</h2>
+<h2 id="t-encore-et-toujours-la-hierarchie">Encore et toujours la hiérarchie !</h2>
 <p>Afin de faire communiquer entre eux deux composants, tu dois faire remonter le state au premier ancêtre commun !</p>
 <p>Explications :</p>
 <p>Si tu reprends notre schéma, le state <code>message</code> est déclaré dans le composant <code>InputMessage</code>. Tu ne peux pas y accéder dans le composant <code>DisplayMessage</code>. Pour régler le problème, tu peux faire remonter le state <code>message</code> dans le composant <code>App</code>, puis faire redescendre le state dans <code>InputMessage</code> et dans <code>DisplayMessage</code> grâce aux props.</p>
@@ -119,7 +120,7 @@
 <li>Nous passons <code>message</code> en props au composant <code>DisplayMessage</code> pour lui permettre d'afficher la valeur du state.</li>
 </ul>
 <p>Tu peux tester par toi-même : si tu modifies le contenu de l'input, alors ces modifications s'afficheront également dans le paragraphe juste en dessous !</p>
-<h2>Challenge</h2>
+<h2 id="t-challenge">Challenge</h2>
 <p>Dans ce challenge, tu vas créer un nouveau composant <code>NavBar</code> qui contiendra les boutons de navigation et tu partagera le state de ton <code>App</code> avec ce composant en utilisant les props.</p>
 <ol class="etapes"><li class="etape"><div class="etape__puce">1</div><div class="etape__contenu"><h4 class="etape__titre">Crée une nouvelle branche</h4><p>Ouvre ton projet existant et crée une nouvelle branche appelée <code>state.2</code>. Cette branche sera utilisée pour développer les fonctionnalités liées au partage de state. Assure-toi de partir de la branche <code>rendering-list.1</code>.</p>
 </div></li><li class="etape"><div class="etape__puce">2</div><div class="etape__contenu"><h4 class="etape__titre">Crée le composant NavBar</h4><p>Dans le répertoire <code>components</code> de ton projet, crée un nouveau composant appelé <code>NavBar.tsx</code>. Ce composant sera responsable de l'affichage des boutons de navigation (mais plus tard : pour le mettre en place, un <code>hello, world!</code> fait l'affaire).</p>
@@ -222,7 +223,7 @@ interface <span class="hljs-title class_">NavBarProps</span> {
 </div></li></ol>
 <p>Assure-toi que les boutons fonctionnent correctement avec le composant <code>NavBar</code>.</p>
 <p>Fournis le lien vers la branche <code>state.2</code> de ton dépôt GitHub pour valider cette étape.</p>
-<h3>Critères de validation</h3>
+<h3 id="t-criteres-de-validation">Critères de validation</h3>
 <ul>
 <li>L'application contient un composant <code>NavBar</code> qui affiche les boutons de navigation.</li>
 <li>Les boutons sont fonctionnels.</li>
@@ -328,7 +329,5 @@ interface <span class="hljs-title class_">NavBarProps</span> {
   <p>Archive personnelle des cours suivis à la Wild Code School. Copie hors ligne à usage strictement privé.</p>
 </footer>
 
-<script src="../../assets/copie-code.js"></script>
-<script src="../../assets/progression.js"></script>
 </body>
 </html>

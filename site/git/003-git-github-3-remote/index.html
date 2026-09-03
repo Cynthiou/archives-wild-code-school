@@ -28,13 +28,13 @@
 <p>Jusqu'à présent, tu as créé un fichier et apporté des modifications que tu as enregistrées localement avec git. En d'autres termes, ton chef-d'œuvre de programmation est, pour le moment, seulement accessible par le biais de ton ordinateur.</p>
 <div class="encadre encadre--info"><div class="encadre__titre">Info</div><div class="encadre__corps"><p>En 2020, Git, Github ainsi que d'autres acteurs du monde informatique ont décidé de remplacer tous les termes pouvant être associés à de la discrimination raciale de leurs terminologies : <em>master, whitelist/blacklist, etc</em>. Il est donc possible dans certaines ressources que le mot &quot;master&quot;, soit utilisé au lieu de &quot;main&quot;. Cela ne change rien au fonctionnement. Cela demande juste un peu de gymnastique cérébrale. 🤸</p>
 </div></div>
-<h2>🤓 Objectifs :</h2>
+<h2 id="t-objectifs">🤓 Objectifs :</h2>
 <ul>
 <li>✅ Découvrir et comprendre le concept de dépôt distant (remote repository)</li>
 <li>✅ Relier un dépôt distant à son dépôt local</li>
 <li>✅ Connaître et comprendre les commandes de base liées aux dépôts distants telles que : clone, remote, push, pull, fetch, merge</li>
 </ul>
-<h2>👀 Contenu de la quête :</h2>
+<h2 id="t-contenu-de-la-quete">👀 Contenu de la quête :</h2>
 <ul>
 <li>Le dépôt distant</li>
 <li>La connexion SSH</li>
@@ -63,11 +63,11 @@
 <p>GitHub a récemment modifié sa politique concernant les questions de sécurité. Ainsi, depuis le 13 août 2021, il est obligatoire d'utiliser une authentification de type &quot;SSH&quot; lors de l'utilisation de git en coordination avec GitHub.</p>
 <p>SSH (Secure Shell) est un protocole permettant par exemple d'ouvrir un shell à distance (mais pas seulement) avec de forts objectifs de sécurité. Parmi ces objectifs, SSH assure une authentification par clés cryptographique.
 La page WikipediA sur <a href="https://fr.wikipedia.org/wiki/Secure_Shell" target="_blank" rel="noopener noreferrer">SSH</a> permet d'en savoir un peu plus sur ce protocole.</p>
-<h2>Création de clés SSH dans GitHub</h2>
+<h2 id="t-creation-de-cles-ssh-dans-github">Création de clés SSH dans GitHub</h2>
 <p>Pour cela, tu dois donc en premier lieu créer une paire de clés SSH. Tu peux le faire &quot;à la main&quot;, mais pour simplifier la configuration, Github te propose une solution pratique, via l'utilisation de Github CLI (un outil en ligne de commande propre à Github, à ne pas confondre avec git !). Github CLI permet de faire beaucoup de chose depuis ton terminal, notamment de configurer la clé SSH.</p>
 <div class="encadre encadre--warning"><div class="encadre__titre">Attention</div><div class="encadre__corps"><p>Attention de bien suivre les étapes en fonction de votre système d'exploitation.</p>
 </div></div>
-<h3>Installation de Github CLI</h3>
+<h3 id="t-installation-de-github-cli">Installation de Github CLI</h3>
 <div class="onglets" data-onglets="3"><input type="radio" name="onglets-7" id="onglets-7-0" class="onglets__radio" checked><input type="radio" name="onglets-7" id="onglets-7-1" class="onglets__radio"><input type="radio" name="onglets-7" id="onglets-7-2" class="onglets__radio"><div class="onglets__barre"><label class="onglets__label" for="onglets-7-0">Ubuntu</label><label class="onglets__label" for="onglets-7-1">Mac OS</label><label class="onglets__label" for="onglets-7-2">Windows</label></div><div class="onglets__panneaux"><div class="onglets__panneau"><p>Tape simplement cette commande</p>
 <div class="bloc-code"><div class="bloc-code__langue">sh</div><pre><code class="hljs language-sh"><span class="hljs-built_in">sudo</span> apt install gh
 </code></pre></div>
@@ -77,7 +77,7 @@ La page WikipediA sur <a href="https://fr.wikipedia.org/wiki/Secure_Shell" targe
 </div><div class="onglets__panneau"><p>Va sur la page <a href="https://github.com/cli/cli/releases/" target="_blank" rel="noopener noreferrer">https://github.com/cli/cli/releases/</a></p>
 <p>Dans la catégoie &quot;Assets&quot;, télécharge le &quot;windows amd64 installer&quot; (tu devras peut-être cliquer sur &quot;Afficher tous les assets&quot; pour le trouver) et exécute le.</p>
 </div></div></div>
-<h3>Configuration de la clé SSH via github CLI</h3>
+<h3 id="t-configuration-de-la-cle-ssh-via-github-cli">Configuration de la clé SSH via github CLI</h3>
 <p>Suit uniquement l'étape 2 (<strong>Step 2 - Authentication</strong>) de la documentation ci-dessous (la partie 1 traite de l'installation mais tu viens déjà de le faire).</p>
 <a class="ressource" href="https://blog.devgenius.io/getting-started-with-the-github-cli-2a723585e368#552e" target="_blank" rel="noopener noreferrer">
   <div class="ressource__icone">↗</div>
@@ -240,7 +240,5 @@ git merge origin/main
   <p>Archive personnelle des cours suivis à la Wild Code School. Copie hors ligne à usage strictement privé.</p>
 </footer>
 
-<script src="../../assets/copie-code.js"></script>
-<script src="../../assets/progression.js"></script>
 </body>
 </html>

@@ -20,11 +20,11 @@
     <p class="quete__meta">Quête 4 sur 10 · 2 images archivées</p>
   </header>
   <div class="cours">
-<h2>Objectifs</h2>
+<h2 id="t-objectifs">Objectifs</h2>
 <ul>
 <li>Passer des données d'un composant à un autre grâce aux props</li>
 </ul>
-<h2>Pré-requis</h2>
+<h2 id="t-pre-requis">Pré-requis</h2>
 <ol class="etapes"><li class="etape"><div class="etape__puce">1</div><div class="etape__contenu"><h4 class="etape__titre">Valider les quêtes suivantes</h4><div class="renvois"><div class="renvois__titre">Quêtes liées</div><ul><li><a href="../../react-bases/001-react-basics-01-pokedex-introduction/index.html">Quête 2328</a></li><li><a href="../../react-bases/002-react-basics-02-pokedex-ton-premier-composant/index.html">Quête 2332</a></li><li><a href="../../react-bases/003-react-basics-03-pokedex-afficher-des-donnees-dans-un/index.html">Quête 2336</a></li></ul></div>
 </div></li></ol>
 <div class="encadre encadre--warning"><div class="encadre__titre">Attention</div><div class="encadre__corps"><p>Avant de commencer cette quête, modifie le fichier <code>tsconfig.app.json</code> de ton projet pokedex. Tu dois supprimer les lignes qui commencent par <code>-</code>, et ajouter les lignes qui commencent par <code>+</code> :</p>
@@ -57,17 +57,18 @@
 </code></pre></div>
 <p>Les notions abordées dans cette quête vont déclencher des nouveaux messages de Typescript. Pour faire les choses une étape à la fois, nous les désactivons pour l'instant et nous les traiterons dans la quête suivante.</p>
 </div></div>
-<h2>Introduction</h2>
+<h2 id="t-introduction">Introduction</h2>
 <p>Dans les quêtes précédentes, nous avons vu comment créer et afficher des composants, comment afficher des données dans des composants, ainsi que comment utiliser des expressions dans le JSX.</p>
 <p>Dans cette quête, tu vas découvrir comment passer des valeurs d'un composant à un autre.</p>
 <p><img src="images/001-introduction.png" alt="" loading="lazy"></p>
-<h2>Sommaire</h2>
-<h2>Une histoire d'arborescence</h2>
+<h2 id="t-sommaire">Sommaire</h2>
+<nav class="sommaire" aria-label="Sommaire de la quête"><ol class="sommaire__liste"><li><a href="#t-une-histoire-d-arborescence">Une histoire d'arborescence</a></li><li><a href="#t-comment-proceder">Comment procéder ?</a><ul><li><a href="#t-quelles-valeurs-je-peux-faire-passer-en-props">Quelles valeurs je peux faire passer en props ?</a></li><li><a href="#t-rendre-les-choses-plus-lisibles">Rendre les choses plus lisibles</a></li></ul></li><li><a href="#t-recapitulatif">Récapitulatif</a></li><li><a href="#t-challenge">Challenge</a><ul><li><a href="#t-criteres-de-validation">Critères de validation</a></li></ul></li></ol></nav>
+<h2 id="t-une-histoire-d-arborescence">Une histoire d'arborescence</h2>
 <p>Si tu te souviens bien, dans les quêtes précédentes, nous avons vu la hiérarchie des composants dans React. Les <code>props</code> dans React permettent de faire passer des informations d'un composant à un autre. Mais attention : les <code>props</code> peuvent être transmises <strong>uniquement</strong> d'un composant <strong>parent</strong> vers un composant <strong>enfant</strong>.</p>
 <p>Regarde ce schéma :</p>
 <p><img src="images/002-app-est-parent-des-2-composants-card-et-chaque.jpg" alt="App est parent des 2 composants Card et chaque composant Card est parent d'un composant Button" loading="lazy"></p>
 <p>Tu peux voir que <code>App</code> peut transmettre des <code>props</code> à chacun de ses composants <code>Card</code>. Chaque composant <code>Card</code> peut lui-même transmettre des <code>props</code> à son composant <code>Button</code>.</p>
-<h2>Comment procéder ?</h2>
+<h2 id="t-comment-proceder">Comment procéder ?</h2>
 <p>Garde en tête que les composants React sont des fonctions. Tu peux imaginer le code suivant en JavaScript &quot;vanilla&quot; :</p>
 <div class="bloc-code"><div class="bloc-code__langue">js</div><pre><code class="hljs language-js">!--- <span class="hljs-title class_">App</span>.<span class="hljs-property">js</span>
 <span class="hljs-keyword">import</span> <span class="hljs-title class_">SayHello</span> <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;./SayHello&quot;</span>;
@@ -173,7 +174,7 @@
 <div class="encadre encadre--note encadre--arrow"><div class="encadre__corps"><p>Tu peux voir que la syntaxe est différente pour <code>name</code> et pour <code>age</code>. Les chaînes de caractères peuvent être passées dans les <code>props</code> avec des <code>&quot;&quot;</code> comme les attributs HTML. C'est le cas pour <code>name=&quot;Alice&quot;</code>.</p>
 <p>Pour toutes les autres valeurs (nombre, objet, variable...), tu dois utiliser des <code>{}</code> pour entourer ta valeur JavaScript. C'est le cas pour <code>age={25}</code>.</p>
 </div></div>
-<h3>Quelles valeurs je peux faire passer en props ?</h3>
+<h3 id="t-quelles-valeurs-je-peux-faire-passer-en-props">Quelles valeurs je peux faire passer en props ?</h3>
 <p>Dans react, tu peux passer n'importe quel type de valeur en props à tes composants. Des types primitifs (string, number, boolean...) et non primitifs (function, object) :</p>
 <div class="bloc-code"><div class="bloc-code__langue">jsx</div><pre><code class="hljs language-jsx">!--- <span class="hljs-title class_">App</span>.<span class="hljs-property">js</span>
 <span class="hljs-keyword">import</span> <span class="hljs-title class_">Cart</span> <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;./Cart&quot;</span>
@@ -204,7 +205,7 @@
 </code></pre></div>
 <div class="encadre encadre--warning"><div class="encadre__titre">Attention</div><div class="encadre__corps"><p>Attention cependant à la façon dont tu passes tes <code>props</code>. Seules les chaînes de caractères statiques comme <code>&quot;Hello wilder !&quot;</code> peuvent être passées entre guillemets. Expressions, variables, fonctions et même les template strings doivent être passées entre accolades.</p>
 </div></div>
-<h3>Rendre les choses plus lisibles</h3>
+<h3 id="t-rendre-les-choses-plus-lisibles">Rendre les choses plus lisibles</h3>
 <p>Une dernière chose : tu peux déstructurer l'objet <code>props</code> dans le composant qui l'utilise.</p>
 <p>Reprenons notre composant <code>Cart</code> qui actuellement ressemble à ceci :</p>
 <div class="bloc-code"><div class="bloc-code__langue">jsx</div><pre><code class="hljs language-jsx"><span class="hljs-keyword">function</span> <span class="hljs-title function_">Cart</span>(<span class="hljs-params">props</span>) {
@@ -230,14 +231,14 @@
 <span class="hljs-keyword">export</span> <span class="hljs-keyword">default</span> <span class="hljs-title class_">Cart</span>;
 </code></pre></div>
 <p>C'est cette syntaxe nous utiliserons par défaut.</p>
-<h2>Récapitulatif</h2>
+<h2 id="t-recapitulatif">Récapitulatif</h2>
 <ul>
 <li>Les <code>props</code> sont toujours passées d'un composant parent vers un composant enfant.</li>
 <li>Le mot-clé <code>props</code> est une convention pour l'objet en paramètre d'une fonction composant.</li>
 <li>Les <code>props</code> peuvent être de n'importe quel type.</li>
 <li>Les <code>props</code> sont <strong>toujours</strong> en lecture seul.</li>
 </ul>
-<h2>Challenge</h2>
+<h2 id="t-challenge">Challenge</h2>
 <p>Dans ce challenge, tu vas utiliser le système de props pour transmettre des données entre tes composants <code>App</code> et <code>PokemonCard</code>.</p>
 <div class="encadre encadre--warning"><div class="encadre__titre">Attention</div><div class="encadre__corps"><p>Rappel : avant de commencer ce challenge, tu dois modifier le fichier <code>tsconfig.app.json</code> de ton projet pokedex. Ton fichier doit contenir la règle <code>&quot;noImplicitAny&quot;: false</code> :</p>
 <div class="bloc-code"><div class="bloc-code__langue">diff</div><pre><code class="hljs language-diff">{
@@ -329,7 +330,7 @@
 </div></li></ol>
 <p>Assure-toi que ton composant <code>PokemonCard</code> utilise l'objet <code>pokemon</code> des <code>props</code> pour recevoir les données du Pokémon et que tout fonctionne correctement.</p>
 <p>Fournis le lien vers la branche <code>props.1</code> de ton dépôt GitHub pour valider cette étape.</p>
-<h3>Critères de validation</h3>
+<h3 id="t-criteres-de-validation">Critères de validation</h3>
 <ul>
 <li>Le composant <code>PokemonCard</code> attend une <code>prop</code> <code>pokemon</code>.</li>
 <li>Le composant <code>App</code> envoie les données d'un pokémon au composant <code>PokemonCard</code> via une <code>prop</code> <code>pokemon</code>.</li>
@@ -406,7 +407,5 @@
   <p>Archive personnelle des cours suivis à la Wild Code School. Copie hors ligne à usage strictement privé.</p>
 </footer>
 
-<script src="../../assets/copie-code.js"></script>
-<script src="../../assets/progression.js"></script>
 </body>
 </html>

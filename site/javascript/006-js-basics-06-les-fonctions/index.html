@@ -20,15 +20,15 @@
     <p class="quete__meta">Quête 6 sur 11 · 5 images archivées</p>
   </header>
   <div class="cours">
-<h2>Objectifs</h2>
+<h2 id="t-objectifs">Objectifs</h2>
 <ul>
 <li>Écrire et exécuter des fonctions en JS</li>
 <li>Éviter de te répéter (<strong>D.R.Y : Don't Repeat Yourself</strong>)</li>
 </ul>
-<h2>Pré-requis</h2>
+<h2 id="t-pre-requis">Pré-requis</h2>
 <p>Avoir validé les quêtes suivantes :</p>
 <div class="renvois"><div class="renvois__titre">Quêtes liées</div><ul><li><a href="../../javascript/001-js-basics-01-qu-est-ce-que-javascript/index.html">Quête 1262</a></li><li><a href="../../javascript/002-js-basics-02-syntaxe-et-concepts-de-base/index.html">Quête 1267</a></li><li><a href="../../javascript/003-js-basics-03-les-variables/index.html">Quête 1268</a></li><li><a href="../../javascript/004-js-basics-04-les-types-de-donnees/index.html">Quête 1269</a></li><li><a href="../../javascript/005-js-basics-05-les-instructions-conditionnelles/index.html">Quête 1270</a></li></ul></div>
-<h2>Introduction</h2>
+<h2 id="t-introduction">Introduction</h2>
 <p>Dans les quêtes précédentes, tu as <strong>découvert ce qu'est JavaScript et à quoi ressemble la syntaxe</strong>.
 Tu as également appris à <strong>créer des variables</strong>, manipuler différents <strong>types de données</strong> et écrire des <strong>conditions</strong>. Cette quête va introduire le (vaste) sujet des fonctions en Javascript.</p>
 <p>Voici un des grands principes du développement :</p>
@@ -41,8 +41,9 @@ Ce sont des <strong>blocs de code</strong> que l'on peut <strong>exécuter</stro
 <p>En fait, <strong>tu as déjà utilisé des fonctions</strong>. Rappelle-toi des quêtes précédentes avec <code>console.log</code> et <code>prompt</code> ! Maintenant, il est temps d'apprendre à créer tes propres fonctions.</p>
 <p><strong>C'est parti !</strong></p>
 <p><img src="images/002-function-photo.png" alt="Function photo" loading="lazy"></p>
-<h2>Sommaire</h2>
-<h2>Créer une fonction</h2>
+<h2 id="t-sommaire">Sommaire</h2>
+<nav class="sommaire" aria-label="Sommaire de la quête"><ol class="sommaire__liste"><li><a href="#t-creer-une-fonction">Créer une fonction</a></li><li><a href="#t-parametres-arguments-d-une-fonction">Paramètres/Arguments d'une fonction</a><ul><li><a href="#t-parametre-par-defaut">Paramètre par défaut</a></li></ul></li><li><a href="#t-return">Return</a></li><li><a href="#t-portee-scope-contexte">Portée (scope) / Contexte</a></li><li><a href="#t-fonctions-flechees">Fonctions fléchées</a></li><li><a href="#t-ressources">Ressources</a></li></ol></nav>
+<h2 id="t-creer-une-fonction">Créer une fonction</h2>
 <p><img src="images/003-lego.png" alt="Lego" loading="lazy"></p>
 <p>Pour <strong>déclarer une fonction</strong>, tu peux utiliser le mot clé <code>function</code> suivi du nom de la fonction.</p>
 <div class="bloc-code"><div class="bloc-code__langue">javascript</div><pre><code class="hljs language-javascript"><span class="hljs-keyword">function</span> <span class="hljs-title function_">helloWorld</span> (<span class="hljs-params"></span>){
@@ -57,7 +58,7 @@ Ce sont des <strong>blocs de code</strong> que l'on peut <strong>exécuter</stro
 </code></pre></div>
 <div class="encadre encadre--info"><div class="encadre__titre">Info</div><div class="encadre__corps"><p>Clique sur le bouton &quot;play&quot; pour exécuter le code. Tu peux également modifier le code pour tester les choses par toi-même :)</p>
 </div></div>
-<h2>Paramètres/Arguments d'une fonction</h2>
+<h2 id="t-parametres-arguments-d-une-fonction">Paramètres/Arguments d'une fonction</h2>
 <p>Une fonction peut accepter un ou plusieurs <strong>paramètres</strong>.</p>
 <p>Les paramètres sont des <strong>données</strong> que la fonction va prendre en entrée. Ces données seront donc disponibles <strong>dans le contexte de la fonction</strong> afin que cette dernière puisse les manipuler.</p>
 <p>Voici un exemple :</p>
@@ -75,7 +76,7 @@ Tu dois différencier le paramètre (la variable <code>name</code>) et l'argumen
 <div class="encadre encadre--info"><div class="encadre__titre">Info</div><div class="encadre__corps"><p>Clique sur le bouton &quot;play&quot; pour exécuter le code. Tu dois également modifier le code pour tester les choses par toi-même :)</p>
 </div></div>
 <p>Essaie <strong>d'appeler la fonction</strong> plusieurs fois avec des paramètres différents pour voir ce qu'il se passe.</p>
-<h3>Paramètre par défaut</h3>
+<h3 id="t-parametre-par-defaut">Paramètre par défaut</h3>
 <p>Tu peux définir des valeurs par défaut pour les paramètres de tes fonctions.</p>
 <p>De cette façon, si aucun argument n'est donné à la fonction lors de son appel, une valeur par défaut sera utilisée. C'est un bon moyen de se protéger des erreurs.</p>
 <div class="bloc-code"><div class="bloc-code__langue">javascript</div><pre><code class="hljs language-javascript"><span class="hljs-keyword">function</span> <span class="hljs-title function_">sayHello</span>(<span class="hljs-params">name = <span class="hljs-string">&quot;World&quot;</span></span>) {
@@ -88,7 +89,7 @@ Tu dois différencier le paramètre (la variable <code>name</code>) et l'argumen
 <span class="hljs-title function_">sayHello</span>(<span class="hljs-string">&quot;Bob&quot;</span>);
 <span class="hljs-comment">// Hello, Bob!</span>
 </code></pre></div>
-<h2>Return</h2>
+<h2 id="t-return">Return</h2>
 <p>Tu viens de voir que les paramètres d'une fonction représentent <strong>ses entrées</strong>.
 Mais une fonction peut également produire <strong>une sortie</strong> qu'on appelle <strong>valeur de retour</strong>.</p>
 <div class="bloc-code"><div class="bloc-code__langue">replit</div><pre><code class="hljs language-replit">https://repl.it/@LonardFlachs/YellowishMeanLocations
@@ -122,7 +123,7 @@ Cette fonction va retourner <code>true</code> ou bien <code>false</code> selon l
 <p>Pour tester la fonction, tu vois 2 variables <code>userName</code> et <code>userPassword</code> qui seront initialisées par l'utilisateur, via <code>prompt</code>.</p>
 <p>Le code vérifie ensuite si la valeur de retour de la fonction login appelée avec les arguments <code>userName</code> et <code>userPassword</code> est <code>true</code>.
 Si c'est le cas, on affiche <code>&quot;Welcome !&quot;</code>, sinon on affiche <code>&quot;Wrong credentials...&quot;</code>.</p>
-<h2>Portée (scope) / Contexte</h2>
+<h2 id="t-portee-scope-contexte">Portée (scope) / Contexte</h2>
 <p>En Javascript, dès que l'on écrit du code, <strong>le contexte est très important</strong>.
 Tu ne peux pas utiliser une variable déclarée dans une fonction en dehors de cette fonction.</p>
 <div class="bloc-code"><div class="bloc-code__langue">javascript</div><pre><code class="hljs language-javascript"><span class="hljs-keyword">function</span> <span class="hljs-title function_">sayMyName</span>(<span class="hljs-params"></span>) {
@@ -143,7 +144,7 @@ Tu ne peux pas utiliser une variable déclarée dans une fonction en dehors de c
 <p>Par exemple, ici la variable <code>name</code> sera disponible uniquement dans le contexte de <code>sayMyName</code>, pas dans le contexte global.</p>
 <p>La fonction s'exécutera donc dans <strong>son propre contexte</strong> et aura <strong>son propre espace mémoire</strong>.</p>
 <p>Sachant tout cela, nous pouvons créer et appeler des fonctions dans nos projets, mais nous devons tenir compte du contexte.</p>
-<h2>Fonctions fléchées</h2>
+<h2 id="t-fonctions-flechees">Fonctions fléchées</h2>
 <p><img src="images/005-image.png" alt="image" loading="lazy"></p>
 <p>Les fonctions fléchées sont une autre façon de créer des fonctions. Voici à quoi ressemble la syntaxe :</p>
 <div class="bloc-code"><div class="bloc-code__langue">javascript</div><pre><code class="hljs language-javascript"><span class="hljs-keyword">const</span> <span class="hljs-title function_">myFunction</span> = (<span class="hljs-params">arg1, arg2</span>) =&gt; {
@@ -173,7 +174,7 @@ Tu ne peux pas utiliser une variable déclarée dans une fonction en dehors de c
 <span class="hljs-comment">// also equivalent to</span>
 <span class="hljs-keyword">const</span> <span class="hljs-title function_">sum</span> = (<span class="hljs-params">a, b</span>) =&gt; a + b;
 </code></pre></div>
-<h2>Ressources</h2>
+<h2 id="t-ressources">Ressources</h2>
 <a class="ressource" href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Functions" target="_blank" rel="noopener noreferrer">
   <div class="ressource__icone">↗</div>
   <div class="ressource__texte">
@@ -228,7 +229,5 @@ Tu ne peux pas utiliser une variable déclarée dans une fonction en dehors de c
   <p>Archive personnelle des cours suivis à la Wild Code School. Copie hors ligne à usage strictement privé.</p>
 </footer>
 
-<script src="../../assets/copie-code.js"></script>
-<script src="../../assets/progression.js"></script>
 </body>
 </html>

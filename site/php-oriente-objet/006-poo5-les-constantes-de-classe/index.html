@@ -29,14 +29,14 @@ Dans cette quête tu vas découvrir un nouvel élément de ta classe, les consta
 </div></div>
 <div class="encadre encadre--warning"><div class="encadre__titre">Attention</div><div class="encadre__corps"><p>Tu as sans doute déjà vu la notion de constante en PHP, avec le mot clé <code>define()</code>. Ces constantes sont ensuites accessibles partout dans ton script. Cependant, l'objet de cette quête - même s'il y a de forte similitude - porte sur les constantes <strong>de classe</strong>, en POO. Il ne faut donc pas confondre les deux ;-).</p>
 </div></div>
-<h2>🤓 À la fin de cette quête, tu seras capable de :</h2>
+<h2 id="t-a-la-fin-de-cette-quete-tu-seras-capable-de">🤓 À la fin de cette quête, tu seras capable de :</h2>
 <ul>
 <li>✅ Faire la différence entre variables et constantes</li>
 <li>✅ Créer une constante de classe</li>
 <li>✅ Utiliser une constante de classe</li>
 </ul>
 <h1>Définition</h1>
-<h2>Constante vs Variable</h2>
+<h2 id="t-constante-vs-variable">Constante vs Variable</h2>
 <p>Dans une classe, tu as déjà vu les propriétés et les méthodes. Un troisième élément peut y-être défini, les <strong>constantes</strong>.
 À la différence d'une propriété (appelée aussi variable de classe) dont la valeur peut changer d'une instance à l'autre, une constante de classe est un élément <strong>dont la valeur est immuable</strong>, elle sera la même pour tous les objets d'une même classe.</p>
 <p>Comme nous l'avons vu précédemment, chaque instance d'une classe possède des propriétés identiques, mais des valeurs différentes pour ces propriétés. Le nom du lion n'est pas le même que celui du perroquet, de même que sa taille, <em>etc.</em></p>
@@ -44,7 +44,7 @@ Dans cette quête tu vas découvrir un nouvel élément de ta classe, les consta
 <p><strong>La propriété est propre à l'instance, tandis que la constante est propre à la classe !</strong> Pour chaque animal créé, un mètre fera toujours 100cm !</p>
 <p><img src="images/001-animal-sizes.jpg" alt="animal sizes" loading="lazy">
 Dans d'autres contextes, une constante pourrait être la température du zéro absolu, la valeur de pi, le rayon de la terre, la vitesse de la lumière, le nombre de carte dans un jeu de tarot, un tableau contenant les lettres de l'alphabet latin, <em>etc.</em></p>
-<h2>Syntaxe pour créer une constante</h2>
+<h2 id="t-syntaxe-pour-creer-une-constante">Syntaxe pour créer une constante</h2>
 <p>Pour ajouter une constante à une classe, tu vas utiliser le mot clé <code>const</code> suivi du nom de la constante en majuscule (les mots séparés par des <em>underscores</em>). Attention, contrairement aux variables, il n'y a pas de dollar avant un nom de constante.
 La constante peut avoir une visibilité pour déterminer si elle est visible ou non depuis l'extérieur. Puisqu'une constante n'est pas modifiable, sauf cas particulier elle est généralement définie en <code>public</code>.
 Généralement, dans ta classe, pour faciliter la lisibilité, tu organiseras les éléments dans cet ordre de haut en bas : constantes, propriétés, méthodes (avec le constructeur en premier s'il y a lieu)</p>
@@ -70,14 +70,14 @@ Généralement, dans ta classe, pour faciliter la lisibilité, tu organiseras le
     <span class="hljs-comment">// ....</span>
 }
 </code></pre></div>
-<h3>Depuis l'extérieur d'une classe</h3>
+<h3 id="t-depuis-l-exterieur-d-une-classe">Depuis l'extérieur d'une classe</h3>
 <p>Pour utiliser une propriété depuis l'extérieur, tu utilises la syntaxe <code>$objet-&gt;propertyName</code>, car la propriété est propre à l'objet.
 Pour la constante, ça n'aurait pas de sens puisqu'elle est liée directement à la classe. Pour y accéder, il faut utiliser la syntaxe <code>ClassName::CONSTANT_NAME</code>.</p>
 <p>🖥️ Dans <em>index.php</em>, affiche la constante avec :</p>
 <div class="bloc-code"><div class="bloc-code__langue">php</div><pre><code class="hljs language-php"><span class="hljs-title function_ invoke__">var_dump</span>(<span class="hljs-title class_">Animal</span>::<span class="hljs-variable constant_">CENTIMETERS_IN_METER</span>);
 </code></pre></div>
 <p>Ce n'est plus une flèche <code>-&gt;</code> qui est utilisée pour la constante, mais un double deux points <code>::</code> (aussi appelé <a href="https://www.php.net/manual/fr/language.oop5.paamayim-nekudotayim.php" target="_blank" rel="noopener noreferrer">opérateur de résolution de portée</a>). La flèche est donc pour ce qui a trait à l'objet, le <code>::</code> pour ce qui a trait à la classe.</p>
-<h3>Depuis l'intérieur d'une classe</h3>
+<h3 id="t-depuis-l-interieur-d-une-classe">Depuis l'intérieur d'une classe</h3>
 <p>Depuis l'intérieur d'une classe, pour une propriété tu utilises la syntaxe <code>$this-&gt;propertyName</code>, où <code>$this</code> représente l'objet en cours d'exécution.</p>
 <p>Pour une classe, tu peux toujours utiliser <code>ClassName::CONSTANT_NAME</code>, mais il y a un mot-clé qui permet à une classe de faire référence à elle-même, c'est <code>self</code>. Ainsi à l'intérieur d'elle-même, tu feras plutôt <code>self::CONSTANT_NAME</code>.</p>
 <h1>Quand utiliser des constantes</h1>
@@ -126,7 +126,7 @@ Cependant, il reste le premier &quot;100&quot; écrit &quot;en dur&quot;, direct
 </code></pre></div>
 <p>Bravo ! Le code est maintenant plus compréhensible car les valeurs utilisées sont correctement nommées.</p>
 <h1>💪 Challenge</h1>
-<h3>Niveaux de menace</h3>
+<h3 id="t-niveaux-de-menace">Niveaux de menace</h3>
 <p><img src="images/002-iucn.png" alt="iucn" loading="lazy">
 La propriété <code>$threatenedLevel</code> est de type <code>string</code>. Elle attend une des valeurs de la <em>red list</em> de l'IUCN. Cependant, à l'heure actuelle rien ne t'empêche d'y mettre n'importe quelle donnée.</p>
 <ul>
@@ -147,7 +147,7 @@ La propriété <code>$threatenedLevel</code> est de type <code>string</code>. El
 HINT : Utilise la fonction <code>in_array()</code> de PHP</li>
 <li>Poste le code de ta méthode <code>setThreatenedLevel()</code> en solution</li>
 </ul>
-<h3>Critères de validation</h3>
+<h3 id="t-criteres-de-validation">Critères de validation</h3>
 <ul>
 <li>La constante de classe est correctement définie dans la classe <strong>Animal</strong></li>
 <li>Elle contient un tableau reprenant les niveaux de menace de la <em>red list</em> (NE, DD, LC, NT, VU, EN, CR, EW, EX)</li>
@@ -186,7 +186,5 @@ HINT : Utilise la fonction <code>in_array()</code> de PHP</li>
   <p>Archive personnelle des cours suivis à la Wild Code School. Copie hors ligne à usage strictement privé.</p>
 </footer>
 
-<script src="../../assets/copie-code.js"></script>
-<script src="../../assets/progression.js"></script>
 </body>
 </html>

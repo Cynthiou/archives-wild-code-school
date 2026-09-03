@@ -20,20 +20,21 @@
     <p class="quete__meta">Quête 3 sur 10 · 2 images archivées</p>
   </header>
   <div class="cours">
-<h2>Objectifs</h2>
+<h2 id="t-objectifs">Objectifs</h2>
 <ul>
 <li>Afficher des données dans un composant React</li>
 <li>Afficher/masquer une partie du JSX en fonction d'une condition</li>
 </ul>
-<h2>Pré-requis</h2>
+<h2 id="t-pre-requis">Pré-requis</h2>
 <ol class="etapes"><li class="etape"><div class="etape__puce">1</div><div class="etape__contenu"><h4 class="etape__titre">Valider les quêtes suivantes</h4><div class="renvois"><div class="renvois__titre">Quêtes liées</div><ul><li><a href="../../react-bases/001-react-basics-01-pokedex-introduction/index.html">Quête 2328</a></li><li><a href="../../react-bases/002-react-basics-02-pokedex-ton-premier-composant/index.html">Quête 2332</a></li></ul></div>
 </div></li></ol>
-<h2>Introduction</h2>
+<h2 id="t-introduction">Introduction</h2>
 <p>Dans la quête précédente, nous avons vu comment créer, exporter et importer un composant.</p>
 <p>Nous allons maintenant découvrir comment afficher des données dans un composant et comment afficher ou masquer conditionnellement du JSX.</p>
 <p><img src="images/001-introduction.png" alt="" loading="lazy"></p>
-<h2>Sommaire</h2>
-<h2>Petit retour sur le JSX</h2>
+<h2 id="t-sommaire">Sommaire</h2>
+<nav class="sommaire" aria-label="Sommaire de la quête"><ol class="sommaire__liste"><li><a href="#t-petit-retour-sur-le-jsx">Petit retour sur le JSX</a><ul><li><a href="#t-expressions-vs-instructions">Expressions VS Instructions</a></li><li><a href="#t-demonstration">Démonstration</a></li></ul></li><li><a href="#t-challenge">Challenge</a><ul><li><a href="#t-criteres-de-validation">Critères de validation</a></li></ul></li></ol></nav>
+<h2 id="t-petit-retour-sur-le-jsx">Petit retour sur le JSX</h2>
 <p>Comme nous l'avons dit dans la quête précédente, JSX te permet de mettre du balisage dans du JavaScript. Dans ce balisage, les accolades te permettent de &quot;revenir&quot; en JavaScript afin d'intégrer une variable de ton code et l'afficher :</p>
 <div class="bloc-code"><div class="bloc-code__langue">jsx</div><pre><code class="hljs language-jsx"><span class="hljs-keyword">function</span> <span class="hljs-title function_">SayHello</span>(<span class="hljs-params"></span>) {
   <span class="hljs-keyword">const</span> message = <span class="hljs-string">&quot;Hello !&quot;</span>;
@@ -59,7 +60,7 @@
 </div></div>
 <div class="encadre encadre--info"><div class="encadre__titre">Info</div><div class="encadre__corps"><p>Ce qui est important de retenir ici c'est que lorsque que tu écris du code JavaScript entre accolades <code>{}</code> dans du JSX, celui-ci va être interprété.</p>
 </div></div>
-<h3>Expressions VS Instructions</h3>
+<h3 id="t-expressions-vs-instructions">Expressions VS Instructions</h3>
 <p>En JavaScript, tu dois bien distinguer les <em>expressions</em> qui retournent une valeur des <em>instructions</em> qui peuvent servir à tester des valeurs comme un <code>if</code> ou bien à répéter d'autres instructions comme un <code>for</code>.</p>
 <p>Pour plus de détails, tu peux regarder la vidéo ci-dessous :</p>
 <a class="video-lien" href="https://www.youtube.com/watch?v=WVyCrI1cHi8" target="_blank" rel="noopener noreferrer">
@@ -70,7 +71,7 @@
   </div>
 </a>
 <p>Maintenant que nous distinguons bien la différence entre <em>expressions</em> et <em>instructions</em>, et bien, tu dois retenir que dans le <strong>JSX</strong>, tu peux uniquement utiliser des <strong>expressions</strong> !</p>
-<h3>Démonstration</h3>
+<h3 id="t-demonstration">Démonstration</h3>
 <p>Prenons un exemple. Si en fonction d'un mot particulier nous souhaitons afficher une icône correspondante dans du JSX nous procéderions comme suit :</p>
 <div class="bloc-code"><div class="bloc-code__langue">jsx</div><pre><code class="hljs language-jsx"><span class="hljs-keyword">function</span> <span class="hljs-title function_">WeatherIcon</span>(<span class="hljs-params"></span>) {
   <span class="hljs-keyword">const</span> weather = <span class="hljs-string">&quot;sunny&quot;</span>;
@@ -106,7 +107,7 @@ Change la valeur de la variable <code>weather</code> (<code>&quot;rainy&quot;</c
 </code></pre></div>
 <p>Ici, nous avons utilisé une fonction comme expression pour gérer la logique en dehors du JSX. L'appel de fonction <code>printIcon(weather)</code> est une expression et retourne une valeur primitive : elle peut être utilisée à l'intérieur du JSX.</p>
 <p>Tu peux t'amuser à changer la valeur de la variable <code>weather</code> pour voir les icônes changer.</p>
-<h2>Challenge</h2>
+<h2 id="t-challenge">Challenge</h2>
 <p>Dans ce challenge, tu vas rendre ton composant <code>PokemonCard</code> dynamique en utilisant des données d'une variable plutôt que des données &quot;en dur&quot;.</p>
 <ol class="etapes"><li class="etape"><div class="etape__puce">1</div><div class="etape__contenu"><h4 class="etape__titre">Crée une nouvelle branche</h4><p>Ouvre ton projet existant et crée une nouvelle branche appelée <code>components.2</code>. Cette branche sera utilisée pour développer les fonctionnalités du composant <code>PokemonCard</code>. Assure-toi de partir de la branche <code>components.1</code>.</p>
 </div></li><li class="etape"><div class="etape__puce">2</div><div class="etape__contenu"><h4 class="etape__titre">Ajoute des données Pokémon</h4><p>Dans le fichier <code>PokemonCard.tsx</code>, en dehors de la fonction <code>PokemonCard</code>, ajoute la déclaration suivante :</p>
@@ -215,7 +216,7 @@ Change la valeur de la variable <code>weather</code> (<code>&quot;rainy&quot;</c
 </div></li></ol>
 <p>Assure-toi que ton composant <code>PokemonCard</code> est dynamique et s'adapte aux données des Pokémons dans <code>pokemonList</code>.</p>
 <p>Fournis le lien vers la branche <code>components.2</code> de ton dépôt GitHub pour valider cette étape.</p>
-<h3>Critères de validation</h3>
+<h3 id="t-criteres-de-validation">Critères de validation</h3>
 <ul>
 <li>[ ] Le code est disponible sur GitHub et peut-être cloné.</li>
 <li>[ ] Le pokémon <em>bulbasaur</em> continue de s'afficher normalement lorsque la variable <code>pokemon</code> contient le premier pokémon du tableau. Le nom du pokémon est utilisé en texte alternatif de l'image et dans la <code>figcaption</code> de la figure.</li>
@@ -276,7 +277,5 @@ Change la valeur de la variable <code>weather</code> (<code>&quot;rainy&quot;</c
   <p>Archive personnelle des cours suivis à la Wild Code School. Copie hors ligne à usage strictement privé.</p>
 </footer>
 
-<script src="../../assets/copie-code.js"></script>
-<script src="../../assets/progression.js"></script>
 </body>
 </html>

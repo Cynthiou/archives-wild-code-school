@@ -25,7 +25,7 @@
 <div class="bloc-code"><div class="bloc-code__langue">title-book</div><pre><code class="hljs language-title-book">Introduction
 </code></pre></div>
 <p>Dans cette quête, tu vas découvrir comment PHP, un langage de script côté serveur, peut être utilisé pour générer du contenu HTML dynamique. Cette compétence est essentielle dans le développement web pour créer des sites interactifs et personnalisés.</p>
-<h2>🤓 À la fin de cette quête, tu seras capable de :</h2>
+<h2 id="t-a-la-fin-de-cette-quete-tu-seras-capable-de">🤓 À la fin de cette quête, tu seras capable de :</h2>
 <ul>
 <li>✅ Lancer un serveur de développement PHP,</li>
 </ul>
@@ -82,7 +82,7 @@
 </blockquote>
 <p>Super ! Tu vas pouvoir maintenant optimiser ton code pour le rendre dynamique.</p>
 <h1>Afficher du contenu HTML dynamique dans le navigateur</h1>
-<h2>Afficher la valeur d'une variable</h2>
+<h2 id="t-afficher-la-valeur-d-une-variable">Afficher la valeur d'une variable</h2>
 <p>Si tu regardes bien ton code, tu peux remarquer que le nom du journal est répété plusieurs fois sur la page, au niveau des balises <code>title</code>, <code>h1</code> et <code>footer</code> : pas très DRY tout ça :disappointed_relieved:. Imagine que le nom du journal change : il te faudrait modifier à la main chaque balise, une opération qui peut être longue et risquée.</p>
 <p>Pour faciliter la maintenance de ton code, nous allons afficher le nom du journal à l'aide d'une variable.</p>
 <p>Pour cela, tu vas insérer du PHP en utilisant les balises <code>&lt;?php</code> et <code>?&gt;</code>.</p>
@@ -148,7 +148,7 @@ La fonction <code>echo</code> sert à afficher du texte comme contenu d'une bali
 <div class="bloc-code"><div class="bloc-code__langue">php</div><pre><code class="hljs language-php">&lt;title&gt;<span class="hljs-meta">&lt;?=</span> <span class="hljs-variable">$name</span>; <span class="hljs-meta">?&gt;</span> | Le site de news des Wilders&lt;/title&gt;
 </code></pre></div>
 </div></div>
-<h2>Afficher la valeur retournée par une fonction</h2>
+<h2 id="t-afficher-la-valeur-retournee-par-une-fonction">Afficher la valeur retournée par une fonction</h2>
 <p>Dans le code présenté, tu constates aussi que l'année est écrite en dur :</p>
 <div class="bloc-code"><div class="bloc-code__langue">php</div><pre><code class="hljs language-php">   &lt;footer&gt;
        &lt;p&gt;&amp;copy; <span class="hljs-number">2024</span> - <span class="hljs-meta">&lt;?=</span> <span class="hljs-variable">$name</span>; <span class="hljs-meta">?&gt;</span>&lt;/p&gt;
@@ -336,7 +336,5 @@ $articles = [
   <p>Archive personnelle des cours suivis à la Wild Code School. Copie hors ligne à usage strictement privé.</p>
 </footer>
 
-<script src="../../assets/copie-code.js"></script>
-<script src="../../assets/progression.js"></script>
 </body>
 </html>

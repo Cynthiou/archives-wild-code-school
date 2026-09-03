@@ -20,14 +20,14 @@
     <p class="quete__meta">Quête 3 sur 4</p>
   </header>
   <div class="cours">
-<h4>Introduction</h4>
+<h4 id="t-introduction">Introduction</h4>
 <p>Un site Web ou une application Web contient presque toujours des formulaires.</p>
 <p>Dans cette quête, Tu vas d'abord avoir un aperçu du fonctionnement des formulaires dans une page HTML classique. Puis tu découvriras deux façons de gérer les champs de formulaire, en tant que &quot;composants contrôlés&quot; ou &quot;composants non contrôlés&quot;.</p>
 <p>Allons-y ! 🚀</p>
-<h4>🤓 À la fin de cette quête, tu pourras :</h4>
+<h4 id="t-a-la-fin-de-cette-quete-tu-pourras">🤓 À la fin de cette quête, tu pourras :</h4>
 <p>✅ Observer le comportement d'un champ de saisie HTML et de son équivalent React.
 ✅ Comprendre les concepts de <em>composants non contrôlés</em> et <em>composants contrôlés</em>.</p>
-<h3>📋 Rappels sur les formulaires HTML</h3>
+<h3 id="t-rappels-sur-les-formulaires-html">📋 Rappels sur les formulaires HTML</h3>
 <p>Dans un formulaire HTML classique, il est fréquent de spécifier certains <em>attributs</em> dans les champs <code>&lt;input&gt;</code>,<code>&lt;select&gt;</code>, <code>&lt;textarea&gt;</code>. Tu te souviens sans doute de l'attribut <code>id</code> qui permettait de lier le champ à un <code>&lt;label&gt;</code>.</p>
 <p>En plus des attributs comme <code>type</code> et <code>placeholder</code>, <em>etc.</em>, il y a deux attributs qui ont une fonction spéciale : <code>name</code> et <code>value</code>.</p>
 <p>Ces deux attributs sont utilisés ensemble lors de la soumission d'un formulaire. Nous approfondirons un peu plus ce sujet dans une quête ultérieure, mais en attendant, rappelle-toi que les données transmises à un serveur, lors de la soumission d'un formulaire, sont constituées de <em>paires clé-valeur</em>.</p>
@@ -44,7 +44,7 @@
 !--- index.<span class="hljs-property">js</span>
 <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(<span class="hljs-string">&quot;go to index.html&quot;</span>);
 </code></pre></div>
-<h3>✍️ Champs de formulaire dans React</h3>
+<h3 id="t-champs-de-formulaire-dans-react">✍️ Champs de formulaire dans React</h3>
 <p>Avant de plonger dans les détails des champs contrôlés et non contrôlés, regarde le code suivant, qui montre un exemple de chacun.</p>
 <div class="bloc-code"><div class="bloc-code__langue">jsx</div><pre><code class="hljs language-jsx"><span class="hljs-keyword">export</span> <span class="hljs-keyword">default</span> <span class="hljs-keyword">function</span> <span class="hljs-title function_">App</span>(<span class="hljs-params"></span>) {
   <span class="hljs-keyword">return</span> (
@@ -66,7 +66,7 @@
 <li>Avec React, le champ ne peut être modifié que si aucun attribut <code>value</code> ne lui est donné.</li>
 </ul>
 <p>Tu comprendras pourquoi dans les étapes suivantes !</p>
-<h3>Champ non contrôlé</h3>
+<h3 id="t-champ-non-controle">Champ non contrôlé</h3>
 <p>Le code ci-dessous montre l'équivalent React du formulaire HTML de la première étape. Nous avons ajouté un code de gestion d'événement.</p>
 <p>Note qu'aucun attribut <code>value</code> n'a été défini dans le champ <code>&lt;input&gt;</code>. Dans la terminologie de React, nous appelons cela un champ ou un composant <em>non contrôlé</em>.</p>
 <div class="bloc-code"><div class="bloc-code__langue">jsx</div><pre><code class="hljs language-jsx"><span class="hljs-keyword">function</span> <span class="hljs-title function_">App</span>(<span class="hljs-params"></span>) {
@@ -101,7 +101,7 @@
 <p>Dans les composants non contrôlés, les données sont gérées par le DOM lui-même</p>
 </blockquote>
 <p>En d'autres termes, les <em>champs non contrôlés</em> gèrent leur propre valeur, sans que React n'interfère. De ce point de vue, ils sont très similaires aux champs de formulaire HTML classiques.</p>
-<h4>Limitations des composants non contrôlés</h4>
+<h4 id="t-limitations-des-composants-non-controles">Limitations des composants non contrôlés</h4>
 <p>L'un des points importants mentionnés dans la quête précédente est que <strong>React rafraîchit l'affichage d'un composant lorsque son <code>state</code> change</strong>.</p>
 <p>Le composant non contrôlé ci-dessus pose ce problème : la valeur n'est pas stockée au niveau du state. Il n'est donc pas possible pour React de mettre à jour l'interface, ce qui serait utile en termes d'UX.</p>
 <p>Il est utile que les problèmes soient signalés au fur et à mesure qu'ils surviennent, plutôt que d'attendre que le formulaire ait été soumis ! Afin d'obtenir la même chose avec React, nous utiliserions le &quot;rendu conditionnel&quot;, pour afficher des marqueurs visuels, selon que l'entrée est correcte ou non.</p>
@@ -112,11 +112,11 @@
 </blockquote>
 <p>En effet, de nombreux tutoriels (écrits ou vidéo) destinés aux débutants font la démonstration de composants non contrôlés. <strong>Même pour apprendre</strong> nous déconseillons leur utilisation : il nous semble plus important de pratiquer la manipulation de state <em>dès le tout début</em> de ton apprentissage de React.</p>
 <p>Si on te les montre quand même, c'est pour faciliter la compréhension des composants <em>contrôlés</em>, en comparant les deux approches !</p>
-<h3>Champ contrôlé</h3>
+<h3 id="t-champ-controle">Champ contrôlé</h3>
 <blockquote>
 <p>Un champ <code>input</code> est dit <em>contrôlé</em> lorsque la valeur de son attribut <code>value</code> est fournie par le composant qui l'affiche : généralement, cette valeur provient du <code>state</code> du composant.</p>
 </blockquote>
-<h3>Injecter une valeur dans le champ <code>input</code></h3>
+<h3 id="t-injecter-une-valeur-dans-le-champ-input">Injecter une valeur dans le champ <code>input</code></h3>
 <p>Prenons l'exemple ci-dessus ; ajoute un attribut <code>value=&quot;Homer&quot;</code> dans le champ <code>input</code> puis observe ce qui se passe, à la fois sur l'écran et dans la console.</p>
 <p>Deux remarques :</p>
 <ul>
@@ -166,7 +166,5 @@
   <p>Archive personnelle des cours suivis à la Wild Code School. Copie hors ligne à usage strictement privé.</p>
 </footer>
 
-<script src="../../assets/copie-code.js"></script>
-<script src="../../assets/progression.js"></script>
 </body>
 </html>

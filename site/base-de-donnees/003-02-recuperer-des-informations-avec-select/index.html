@@ -20,17 +20,18 @@
     <p class="quete__meta">Quête 3 sur 9 · 4 images archivées</p>
   </header>
   <div class="cours">
-<h2>Objectifs</h2>
+<h2 id="t-objectifs">Objectifs</h2>
 <ul>
 <li>Connexion à la base de données, importation de données</li>
 <li>Récupération des données avec SELECT</li>
 <li>Utilisation de différentes clauses pour filtrer et trier les résultats</li>
 </ul>
-<h2>Introduction</h2>
+<h2 id="t-introduction">Introduction</h2>
 <p>Une base de données permet de stocker toutes sortes d'informations (texte, nombres, dates, booléens, etc...) utiles à tes applications. Tu vas découvrir comment interagir avec cette base de données et notamment récupérer les informations dont tu as besoin.</p>
 <p>Prêt pour une nouvelle leçon de sorcellerie ?</p>
-<h2>Sommaire</h2>
-<h2>Comment récupérer des données ?</h2>
+<h2 id="t-sommaire">Sommaire</h2>
+<nav class="sommaire" aria-label="Sommaire de la quête"><ol class="sommaire__liste"><li><a href="#t-comment-recuperer-des-donnees">Comment récupérer des données ?</a></li><li><a href="#t-la-clause-where">La clause WHERE</a></li><li><a href="#t-order-limit">ORDER / LIMIT</a></li><li><a href="#t-un-peu-de-tri">Un peu de tri</a></li><li><a href="#t-challenge">Challenge</a><ul><li><a href="#t-criteres-de-validation">Critères de validation</a></li></ul></li></ol></nav>
+<h2 id="t-comment-recuperer-des-donnees">Comment récupérer des données ?</h2>
 <p>Précédemment, tu as vu comment créer et se connecter à une base de données, ainsi que la création de tables. Tu vas maintenant voir comment récupérer des données déjà présentes (tu verras plus en détail comment <em>ajouter</em> des données dans une future quête). Pour le moment, exécute la requête suivante dans ta base <code>wild_db_quest</code> précédemment créée :</p>
 <div class="bloc-code"><div class="bloc-code__langue">sql</div><pre><code class="hljs language-sql"><span class="hljs-keyword">INSERT INTO</span> wild_db_quest.wizard
   (firstname, lastname, birthday, birth_place, biography, is_muggle)
@@ -112,7 +113,7 @@
     <div class="ressource__hote">sql.sh</div>
   </div>
 </a>
-<h2>La clause WHERE</h2>
+<h2 id="t-la-clause-where">La clause WHERE</h2>
 <p>Pour récupérer uniquement les prénoms et dates de naissance des membres de cette famille, tu feras :</p>
 <div class="bloc-code"><div class="bloc-code__langue">sql</div><pre><code class="hljs language-sql"><span class="hljs-keyword">SELECT</span> firstname, birthday <span class="hljs-keyword">FROM</span> wizard <span class="hljs-keyword">WHERE</span> lastname<span class="hljs-operator">=</span><span class="hljs-string">&#x27;Weasley&#x27;</span>;
 </code></pre></div>
@@ -153,7 +154,7 @@ birthday <span class="hljs-keyword">BETWEEN</span> <span class="hljs-string">&#x
     <div class="ressource__hote">sql.sh</div>
   </div>
 </a>
-<h2>ORDER / LIMIT</h2>
+<h2 id="t-order-limit">ORDER / LIMIT</h2>
 <p>C’est là que la clause <code>LIMIT</code> entre en scène. Sa syntaxe est :</p>
 <div class="bloc-code"><div class="bloc-code__langue">sql</div><pre><code class="hljs language-sql"><span class="hljs-keyword">SELECT</span> <span class="hljs-operator">&lt;</span>champs<span class="hljs-operator">&gt;</span> <span class="hljs-keyword">FROM</span> <span class="hljs-operator">&lt;</span><span class="hljs-keyword">table</span><span class="hljs-operator">&gt;</span> LIMIT <span class="hljs-operator">&lt;</span>nb_results<span class="hljs-operator">&gt;</span>;
 </code></pre></div>
@@ -174,7 +175,7 @@ birthday <span class="hljs-keyword">BETWEEN</span> <span class="hljs-string">&#x
     <div class="ressource__hote">sql.sh</div>
   </div>
 </a>
-<h2>Un peu de tri</h2>
+<h2 id="t-un-peu-de-tri">Un peu de tri</h2>
 <div class="bloc-code"><div class="bloc-code__langue">sql</div><pre><code class="hljs language-sql"><span class="hljs-keyword">SELECT</span> firstname, lastname <span class="hljs-keyword">FROM</span> wizard <span class="hljs-keyword">ORDER</span> <span class="hljs-keyword">BY</span> lastname <span class="hljs-keyword">ASC</span>, birthday <span class="hljs-keyword">DESC</span>;
 </code></pre></div>
 <p>Cette requête te renverra tous les sorciers, classés par ordre alphabétique de nom, PUIS du plus jeune au plus vieux pour les membres d’une même famille. Note également que tu n’es pas obligé d’afficher les champs servant à trier (ici tu ne récupères pas la date de naissance, mais elle te sert tout de même à trier les résultats)</p>
@@ -198,7 +199,7 @@ birthday <span class="hljs-keyword">BETWEEN</span> <span class="hljs-string">&#x
     <div class="ressource__hote">sql.sh</div>
   </div>
 </a>
-<h2>Challenge</h2>
+<h2 id="t-challenge">Challenge</h2>
 <p>Trouve les requêtes SQL pour :</p>
 <ul>
 <li>Récupère tous les champs pour les sorciers nés entre 1975 et 1985.</li>
@@ -207,7 +208,7 @@ birthday <span class="hljs-keyword">BETWEEN</span> <span class="hljs-string">&#x
 <li>Le prénom, nom et date de naissance du plus vieux sorcier (doit fonctionner quelque soit le contenu de la table).</li>
 </ul>
 <p>Poste tes 4 requêtes SQL et leurs résultat en solution.</p>
-<h3>Critères de validation</h3>
+<h3 id="t-criteres-de-validation">Critères de validation</h3>
 <ul>
 <li>Les 4 requêtes SQL et les résultats correspondent aux critères données.</li>
 </ul>
@@ -323,7 +324,5 @@ limit <span class="hljs-number">1</span>;
   <p>Archive personnelle des cours suivis à la Wild Code School. Copie hors ligne à usage strictement privé.</p>
 </footer>
 
-<script src="../../assets/copie-code.js"></script>
-<script src="../../assets/progression.js"></script>
 </body>
 </html>

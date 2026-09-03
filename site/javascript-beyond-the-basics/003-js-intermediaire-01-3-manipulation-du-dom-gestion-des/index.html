@@ -39,7 +39,7 @@
   someDiv.<span class="hljs-property">style</span>.<span class="hljs-property">backgroundColor</span> = <span class="hljs-string">&quot;red&quot;</span>;
 };
 </code></pre></div>
-<h2>AddEventListener</h2>
+<h2 id="t-addeventlistener">AddEventListener</h2>
 <p>Nous pouvons également utiliser une méthode appelée <code>addEventListener</code>.</p>
 <p><code>addEventListener</code> est une méthode qui accepte comme premier paramètre le type d'événement, et le second est  <strong>une fonction de rappel (<em>callback function</em>).</strong></p>
 <div class="bloc-code"><div class="bloc-code__langue">javascript</div><pre><code class="hljs language-javascript">someDiv.<span class="hljs-title function_">addEventListener</span>(<span class="hljs-string">&#x27;click&#x27;</span>, <span class="hljs-keyword">function</span> (<span class="hljs-params"></span>) {
@@ -56,7 +56,7 @@
 <li>mouseleave</li>
 <li>...</li>
 </ul>
-<h3>🔬 Fais une expérience:</h3>
+<h3 id="t-fais-une-experience">🔬 Fais une expérience:</h3>
 <p>Essaye de modifier quelques éléments de ce code.</p>
 <ul>
 <li>Lorsque l'utilisateur clique sur l'image, cela doit changer la source de l'image (<code>src</code>) et le texte de la propriété <code>alt</code></li>
@@ -118,7 +118,7 @@ form.<span class="hljs-property">onsubmit</span> = <span class="hljs-keyword">fu
   <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(<span class="hljs-string">`Hello, <span class="hljs-subst">${firstName.value}</span> <span class="hljs-subst">${lastName.value}</span>`</span>);
 };
 </code></pre></div>
-<h3>🔬Fais une expérience :</h3>
+<h3 id="t-fais-une-experience-2">🔬Fais une expérience :</h3>
 <p>C'est à ton tour maintenant, voici un formulaire où l'utilisateur peut taper la tâche qu'il doit faire.
 Lorsque l'utilisateur clique sur le bouton, un nouvel élément <code>li</code> doit être ajouté à la <code>todolist</code>.</p>
 <p>Celui-ci est un peu plus difficile, on va donc te donner ce que tu dois faire étape par étape (essaie de le faire par toi-même, regarde les étapes si tu n'y arrive pas) :</p>
@@ -161,7 +161,7 @@ form.onsubmit = function (event) {
 C'est utile, par exemple, dans le cas où tu veux créer un menu déroulant. Lorsque l'utilisateur clique dessus, cela supprime ou ajoute la classe <code>visible</code>.</p>
 <div class="bloc-code"><div class="bloc-code__langue">javascript</div><pre><code class="hljs language-javascript">element.<span class="hljs-property">classList</span>.<span class="hljs-title function_">toggle</span>(<span class="hljs-string">&quot;mystyle&quot;</span>);
 </code></pre></div>
-<h3>🔬 Fais une expérience :</h3>
+<h3 id="t-fais-une-experience-3">🔬 Fais une expérience :</h3>
 <p>Dans cet exemple, nous avons un bouton et une liste d'animaux emoji. Cette liste a la propriété <code>display: none</code>.
 L'ajout de la classe visible sur l'élément la transformera en <code>display : block</code>.</p>
 <p>En utilisant ce que nous avons appris, crée un <code>listener</code> sur le bouton; au clic, ajoute ou supprime la classe <code>visible</code> sur l'élément qui porte la classe <code>dropdown-menu-content</code> (en utilisant la méthode <code>toggle</code>).</p>
@@ -179,7 +179,7 @@ dropdownBtn.addEventListener(&quot;click&quot;, function () {
   dropdownMenu.classList.toggle(&quot;visible&quot;);
 });
 </code></pre></div>
-<h2>Obtenir des informations sur l'événement</h2>
+<h2 id="t-obtenir-des-informations-sur-l-evenement">Obtenir des informations sur l'événement</h2>
 <p>Comme tu l'as vu tout à l'heure, la fonction de rappel que tu donnes à un <strong>addEventListener</strong> peut accepter un paramètre; ce paramètre est l'<strong>objet <code>event</code>.</strong></p>
 <p>L'objet <code>event</code> contient beaucoup de propriétés et de méthodes concernant l'événement qui vient de se produire.</p>
 <div class="bloc-code"><div class="bloc-code__langue">javascript</div><pre><code class="hljs language-javascript"><span class="hljs-keyword">const</span> title = <span class="hljs-variable language_">document</span>.<span class="hljs-title function_">querySelector</span>(<span class="hljs-string">&quot;.title&quot;</span>);
@@ -197,7 +197,7 @@ title.<span class="hljs-title function_">addEventListener</span>(<span class="hl
 <p>Tu devrais voir l'objet <code>event</code>.</p>
 <p>Si tu cliques sur le bouton, tu devrais voir toutes les différentes propriétés attachées à cet objet.</p>
 <p>Par exemple, nous avons accès à la position de la souris sur l'écran avec <code>clientX</code> et <code>clientY</code>.</p>
-<h3>🔬Fais une expérience :</h3>
+<h3 id="t-fais-une-experience-4">🔬Fais une expérience :</h3>
 <p>Utilise tes connaissances en matière de DOM pour afficher et mettre à jour la position de la souris chaque fois que l'utilisateur déplace la souris sur l'écran.
 Tu dois utiliser <code>innerHTML</code> et un template string pour modifier le texte de <code>title-cursor-position</code>.</p>
 <div class="bloc-code"><div class="bloc-code__langue">codesandbox</div><pre><code class="hljs language-codesandbox">https://codesandbox.io/s/hungry-mclean-qmbgj-2-qmbgj?from-embed
@@ -255,7 +255,5 @@ document.body.addEventListener(&quot;mousemove&quot;, function (event) {
   <p>Archive personnelle des cours suivis à la Wild Code School. Copie hors ligne à usage strictement privé.</p>
 </footer>
 
-<script src="../../assets/copie-code.js"></script>
-<script src="../../assets/progression.js"></script>
 </body>
 </html>

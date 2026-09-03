@@ -20,21 +20,22 @@
     <p class="quete__meta">Quête 1 sur 4 · 2 images archivées</p>
   </header>
   <div class="cours">
-<h2>Objectifs</h2>
+<h2 id="t-objectifs">Objectifs</h2>
 <ul>
 <li>Développer une application pour afficher des informations sur les employés d'une entreprise.</li>
 <li>Récupérer les données des employés via une API avec fetch.</li>
 <li>Afficher les données dans une application.</li>
 </ul>
-<h2>Introduction</h2>
+<h2 id="t-introduction">Introduction</h2>
 <p>Dans cette quête, nous allons voir comment nous pouvons utiliser des informations provenant d'une API dans notre application React. Jusqu'à présent, nous avons utilisé des données &quot;codées en dur&quot; pour apprendre les bases de React. Avec une API, nous aurons accès à des données réelles !</p>
 <p>Dans cette quête, tu verras comment injecter des données récupérées d'une API dans des composants React !</p>
 <p><strong>C'est parti !</strong> 🚀</p>
 <p><img src="images/001-introduction.avif" alt="" loading="lazy"></p>
-<h2>Sommaire</h2>
-<h2>Affichage d'un employé</h2>
+<h2 id="t-sommaire">Sommaire</h2>
+<nav class="sommaire" aria-label="Sommaire de la quête"><ol class="sommaire__liste"><li><a href="#t-affichage-d-un-employe">Affichage d'un employé</a><ul><li><a href="#t-affichage-des-donnees-d-un-employe">Affichage des données d'un employé</a></li><li><a href="#t-integration-du-composant-dans-l-application">Intégration du composant dans l'application</a></li><li><a href="#t-ajout-de-donnees-de-test">Ajout de données de test</a></li></ul></li><li><a href="#t-stocker-des-donnees-recuperees-a-partir-d-une-api">Stocker des données récupérées à partir d'une API</a><ul><li><a href="#t-ou-les-donnees-seront-elles-stockees">Où les données seront-elles stockées ?</a></li><li><a href="#t-consommation-d-une-api-avec-react">Consommation d'une API avec React</a></li><li><a href="#t-passer-la-valeur-depuis-le-state-comme-props">Passer la valeur depuis le state comme props</a></li><li><a href="#t-ajout-d-un-bouton-pour-envoyer-la-demande-d-api">Ajout d'un bouton pour envoyer la demande d'API</a></li><li><a href="#t-creation-de-la-fonction">Création de la fonction</a></li><li><a href="#t-extraction-des-donnees-pertinentes-dans-la-reponse">Extraction des données pertinentes dans la réponse</a></li></ul></li><li><a href="#t-challenge">Challenge</a><ul><li><a href="#t-criteres-de-validation">Critères de validation</a></li></ul></li></ol></nav>
+<h2 id="t-affichage-d-un-employe">Affichage d'un employé</h2>
 <p>Commence par créer une nouvelle application React, que tu peux nommer <code>fetch-employees</code>.</p>
-<h3>Affichage des données d'un employé</h3>
+<h3 id="t-affichage-des-donnees-d-un-employe">Affichage des données d'un employé</h3>
 <p>Créé un composant <code>EmployeeCard</code> dans ton application. Le but de ce composant est uniquement d'afficher des choses :</p>
 <div class="bloc-code"><div class="bloc-code__langue">jsx</div><pre><code class="hljs language-jsx"><span class="hljs-comment">// src/components/EmployeeCard.tsx</span>
 interface <span class="hljs-title class_">EmployeeCardProps</span> {
@@ -70,11 +71,11 @@ interface <span class="hljs-title class_">EmployeeCardProps</span> {
 <li>et qu'il contient les clés <code>key1</code>, <code>key2</code>, <code>key3</code>.</li>
 </ul>
 <p>Dans ce cas, nous savons que <code>props</code> contient une seule clé <code>employee</code>, donc nous pouvons <em>déstructurer</em> les props. <code>employee</code> a la valeur qui aurait normalement été écrite comme <code>props.employee</code>. Tu trouveras un autre exemple dans la ressource suivante, dans la section <a href="https://simonsmith.io/destructuring-objects-as-function-parameters-in-es6#extracting-values-from-a-configuration-object" target="_blank" rel="noopener noreferrer">Extracting values from a configuration object</a>. Cet exemple réduit les répétitions dans le JSX/TSX.</p>
-<h3>Intégration du composant dans l'application</h3>
+<h3 id="t-integration-du-composant-dans-l-application">Intégration du composant dans l'application</h3>
 <p>Dans le fichier <code>App.tsx</code>, commence par importer le composant <code>EmployeeCard</code> :</p>
 <div class="bloc-code"><div class="bloc-code__langue">javascript</div><pre><code class="hljs language-javascript"><span class="hljs-keyword">import</span> <span class="hljs-title class_">EmployeeCard</span> <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;./components/EmployeeCard&#x27;</span>;
 </code></pre></div>
-<h3>Ajout de données de test</h3>
+<h3 id="t-ajout-de-donnees-de-test">Ajout de données de test</h3>
 <p>Maintenant, tu as besoin d'un employé &quot;test&quot; pour voir si ton premier composant s'affiche correctement ! Déclare un objet employé (insère le code sous les lignes d'importation que tu viens d'ajouter) :</p>
 <div class="bloc-code"><div class="bloc-code__langue">javascript</div><pre><code class="hljs language-javascript"><span class="hljs-keyword">const</span> sampleEmployee = {
   <span class="hljs-attr">name</span>: {
@@ -108,12 +109,12 @@ interface <span class="hljs-title class_">EmployeeCardProps</span> {
     <div class="ressource__hote">wesbos.com</div>
   </div>
 </a>
-<h2>Stocker des données récupérées à partir d'une API</h2>
+<h2 id="t-stocker-des-donnees-recuperees-a-partir-d-une-api">Stocker des données récupérées à partir d'une API</h2>
 <p>Nous voulons consommer une API pour obtenir les données d'un employé, au lieu des données factices de <code>sampleEmployee</code>. Le terme &quot;consommer&quot; signifie utiliser ou demander une API.</p>
 <p>L'API que tu vas utiliser est <a href="https://randomuser.me/" target="_blank" rel="noopener noreferrer">Random User</a> qui génère des profils aléatoires très pratiques à des fins de test.</p>
 <p>Après avoir visité la page d'accueil, qui pointe vers la documentation, colle l'URL suivante dans ton navigateur : <a href="https://randomuser.me/api?nat=en" target="_blank" rel="noopener noreferrer">https://randomuser.me/api?nat=en</a>. Il s'agit de l'URL que tu vas demander. Elle renvoie des données au format JSON.</p>
 <p>Pour récupérer ces données avec du code, tu peux utiliser <code>fetch</code> fourni nativement par les navigateurs, ou une bibliothèque tierce telle que Axios.</p>
-<h3>Où les données seront-elles stockées ?</h3>
+<h3 id="t-ou-les-donnees-seront-elles-stockees">Où les données seront-elles stockées ?</h3>
 <p>Les données dynamiques d'une application sont stockées dans l'état d'un composant, ou réparties dans les états respectifs de plusieurs composants. Ici, nous n'avons qu'une seule variable (l'objet représentant un employé), mais deux composants : <code>App</code> et <code>EmployeeCard</code>. Dans lequel d'entre eux devons-nous stocker les données ?</p>
 <p>La façon d'appeler <code>EmployeeCard</code> depuis <code>App</code> te donne un indice : <code>employee</code> est transmis à <code>EmployeeCard</code> via des props, depuis <code>App</code>. Ainsi, les données de l'employé seront stockées dans l'état de <code>App</code>. <code>EmployeeCard</code> doit rester un &quot;dumb component&quot;, c'est à dire que son seul but est d'afficher les données qui lui sont fournies.</p>
 <p>Cet exemple &quot;simple&quot; est représentatif de la manière dont les informations circulent dans une application React : de haut en bas. Nous parlons d'un flux de données unidirectionnel, comme l'explique <a href="https://flaviocopes.com/react-unidirectional-data-flow/" target="_blank" rel="noopener noreferrer">cette ressource</a>.</p>
@@ -121,7 +122,7 @@ interface <span class="hljs-title class_">EmployeeCardProps</span> {
 <blockquote>
 <p>Essaie de le faire toi-même, ou vérifie la solution donnée à l'étape suivante si tu bloques.</p>
 </blockquote>
-<h3>Consommation d'une API avec React</h3>
+<h3 id="t-consommation-d-une-api-avec-react">Consommation d'une API avec React</h3>
 <p>Le composant <code>App</code> dans lequel nous avons supprimé (presque) tout le JSX retourné peut maintenant initialiser l'état :</p>
 <div class="bloc-code"><div class="bloc-code__langue">jsx</div><pre><code class="hljs language-jsx"><span class="hljs-keyword">function</span> <span class="hljs-title function_">App</span>(<span class="hljs-params"></span>) {
   <span class="hljs-keyword">const</span> [employee, setEmployee] = <span class="hljs-title function_">useState</span>(sampleEmployee);
@@ -134,16 +135,16 @@ interface <span class="hljs-title class_">EmployeeCardProps</span> {
 }
 </code></pre></div>
 <p>Nous aurions pu donner une valeur de <code>null</code> à <code>employee</code> comme valeur initiale à l'état. Cela aurait signifié qu'au début de l'application, les données n'auraient pas encore été disponibles. Ici, le fait d'avoir conservé <code>sampleEmployee</code> permet de toujours afficher un employé, même si un appel d'API n'a pas encore été effectué.</p>
-<h3>Passer la valeur depuis le state comme props</h3>
+<h3 id="t-passer-la-valeur-depuis-le-state-comme-props">Passer la valeur depuis le state comme props</h3>
 <p>Maintenant que nous avons initialisé le state avec une valeur <code>employee</code>, nous allons passer ce state à <code>EmployeeCard</code> au lieu de <code>sampleEmployee</code>. A ce stade, cela ne changera rien à l'affichage :</p>
 <div class="bloc-code"><div class="bloc-code__langue">jsx</div><pre><code class="hljs language-jsx">&lt;<span class="hljs-title class_">EmployeeCard</span> employee={employee} /&gt;
 </code></pre></div>
-<h3>Ajout d'un bouton pour envoyer la demande d'API</h3>
+<h3 id="t-ajout-d-un-bouton-pour-envoyer-la-demande-d-api">Ajout d'un bouton pour envoyer la demande d'API</h3>
 <p>Dans <code>App</code>, sous <code>EmployeeCard</code>, ajoute ce bouton, qui déclenchera une requête lorsqu'il sera cliqué :</p>
 <div class="bloc-code"><div class="bloc-code__langue">jsx</div><pre><code class="hljs language-jsx">&lt;button type=<span class="hljs-string">&quot;button&quot;</span> onClick={getEmployee}&gt;<span class="hljs-title class_">Get</span> employee&lt;/button&gt;
 </code></pre></div>
 <p>Note que la valeur de <code>onClick</code> est une fonction (dont le nom est <code>getEmployee</code>) qui n'existe pas encore : tu vas corriger cela dès maintenant.</p>
-<h3>Création de la fonction</h3>
+<h3 id="t-creation-de-la-fonction">Création de la fonction</h3>
 <p>Dans le composant <code>App</code>, tu dois maintenant écrire la fonction <code>getEmployee</code>, qui fera l'appel à l'API Random User. Pour effectuer cet appel, tu peux utiliser <code>fetch</code>. Dans <code>App</code>, écris la fonction avant le retour JSX :</p>
 <div class="bloc-code"><div class="bloc-code__langue">javascript</div><pre><code class="hljs language-javascript"><span class="hljs-keyword">const</span> <span class="hljs-title function_">getEmployee</span> = (<span class="hljs-params"></span>) =&gt; {
   <span class="hljs-comment">// Send the request</span>
@@ -162,7 +163,7 @@ interface <span class="hljs-title class_">EmployeeCardProps</span> {
 <li>Les <code>data</code> seront alors disponibles. La valeur de <code>employee</code> est alors remplacée dans l'état par <code>data.results[0]</code>.</li>
 </ul>
 <p>Ce <code>data.results[0]</code> est digne d'attention : l'étape suivante montre le lien entre la <em>structure</em> des données reçues, et l'extraction des informations nécessaires dans notre code.</p>
-<h3>Extraction des données pertinentes dans la réponse</h3>
+<h3 id="t-extraction-des-donnees-pertinentes-dans-la-reponse">Extraction des données pertinentes dans la réponse</h3>
 <p>Comprendre <em>comment les données circulent dans une application</em> est l'un des aspects les plus difficiles dans du code, surtout lorsque tu es encore en apprentissage.</p>
 <p>Tu dois visualiser la structure des <code>data</code> qui parviennent à l'application dans le dernier <code>.then</code>. Dans un cas comme celui-ci, n'hésite pas :</p>
 <ul>
@@ -193,7 +194,7 @@ interface <span class="hljs-title class_">EmployeeCardProps</span> {
     <div class="ressource__hote">randomuser.me</div>
   </div>
 </a>
-<h2>Challenge</h2>
+<h2 id="t-challenge">Challenge</h2>
 <p>Poste l'application complète et fonctionnelle à partir des étapes de la quête :</p>
 <ul>
 <li>Utilise l'API <a href="https://randomuser.me/documentation" target="_blank" rel="noopener noreferrer">Random User</a>. Tu devras utiliser un state dans ton application avec un profil copié initialement depuis l'API.</li>
@@ -201,7 +202,7 @@ interface <span class="hljs-title class_">EmployeeCardProps</span> {
 <li>Fais attention à la <em>structure</em> des données reçues : reçois-tu un tableau ? Un objet ? Le code <code>data.results[0]</code> que nous avons utilisé précédemment devrait t'aider (pense à la destructuration) !</li>
 <li>Poste le lien vers un dépôt GitHub avec ton code en solution.</li>
 </ul>
-<h3>Critères de validation</h3>
+<h3 id="t-criteres-de-validation">Critères de validation</h3>
 <ul>
 <li>[ ] L'application affiche un profil.</li>
 <li>[ ] Le prénom, le nom, la photo et l'adresse mail du profil sont affichés.</li>
@@ -232,7 +233,5 @@ interface <span class="hljs-title class_">EmployeeCardProps</span> {
   <p>Archive personnelle des cours suivis à la Wild Code School. Copie hors ligne à usage strictement privé.</p>
 </footer>
 
-<script src="../../assets/copie-code.js"></script>
-<script src="../../assets/progression.js"></script>
 </body>
 </html>

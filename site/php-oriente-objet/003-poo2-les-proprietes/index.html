@@ -28,7 +28,7 @@
 <p>🖥️ Le projet Wildzoo distant contient 10 branches (une par quête de cette série sur la POO). A chaque nouvelle quête tu dois basculer vers une nouvelle branche correspondant au numéro de la quête. Pour rappel, tu peux trouver le <a href="https://github.com/WildCodeSchool/php-wildzoo" target="_blank" rel="noopener noreferrer">dépôt Wildzoo ici</a></p>
 <p>Si ce n'est pas fait, effectue bien un <code>git add</code> et <code>git commit</code> sur ta branche en cours (POO1) pour valider les changement (sinon tu ne pourras pas changer de branche).
 Ensuite, tu vas basculer sur la branche <strong>poo2</strong>. Pour cela, commence par lancer la commande <code>git fetch origin</code> qui va récupérer les branches distantes (tu les vois en faisant un <code>git branch -a</code>). Ensuite déplace toi vers la branche poo2 via un <code>git switch poo2</code> et le tour est joué.</p>
-<h2>🤓 À la fin de cette quête, tu seras capable de :</h2>
+<h2 id="t-a-la-fin-de-cette-quete-tu-seras-capable-de">🤓 À la fin de cette quête, tu seras capable de :</h2>
 <ul>
 <li>✅ Créer une propriété,</li>
 <li>✅ Lire une propriété,</li>
@@ -51,7 +51,7 @@ Ensuite, tu vas basculer sur la branche <strong>poo2</strong>. Pour cela, commen
 <div class="encadre encadre--warning"><div class="encadre__titre">Attention</div><div class="encadre__corps"><p>Petite subtilité de PHP, si tu ne types pas les propriétés, la valeur par défaut devient <code>null</code> et non plus <code>uninitialized</code>. Si tu essaies par la suite d'afficher une propriété <code>uninitialized</code> tu auras une erreur, tandis qu'une propriété non typé (donc à null) afficherait par défaut une chaîne vide. Mais cela ne devrait pas t'arriver puisque nous allons toujours typer nos propriétés.</p>
 </div></div>
 <p>🖥️ Si tu regardes l'interface web, tu vois que les valeurs sous le nom sont <em>undefined</em>.</p>
-<h2>Affecter une valeur par défaut</h2>
+<h2 id="t-affecter-une-valeur-par-defaut">Affecter une valeur par défaut</h2>
 <p>La première manière d'affecter une valeur à une propriété est de le faire dès sa définition. C'est intéressant pour donner une valeur &quot;par défaut&quot; mais ce n'est pas toujours pertinent. Donner un <code>$name</code> par défaut n'a pas grand intérêt, mais nous pouvons partir du principe que les animaux sont végétariens par défaut. On leur donnera une taille arbitraire de 100 par défaut pour le moment.</p>
 <div class="bloc-code"><div class="bloc-code__langue">php</div><pre><code class="hljs language-php"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Animal</span>
 </span>{
@@ -62,7 +62,7 @@ Ensuite, tu vas basculer sur la branche <strong>poo2</strong>. Pour cela, commen
 }
 </code></pre></div>
 <p>🖥️ Si tu regardes l'interface web, tu vois que les valeurs par défaut s'affichent bien pour la taille et le régime alimentaire.</p>
-<h2>Affecter une valeur depuis l'extérieur de la classe</h2>
+<h2 id="t-affecter-une-valeur-depuis-l-exterieur-de-la-classe">Affecter une valeur depuis l'extérieur de la classe</h2>
 <p>Nous allons maintenant créer nos premiers animaux ! Une araignée est différent d'un dauphin ou d'un éléphant. Nous allons nous placer dans le fichier <em>index.php</em> et créer pour le moment un lion et un perroquet. Commence par renommer les variables <code>$animal1</code> en <code>$lion</code> et <code>$animal2</code> en <code>$parrot</code>, pour plus de lisibilité. Tu dois les modifier dans le tableau <code>$animals</code> également.</p>
 <p>Maintenant, tu vas pouvoir modifier une valeur depuis l'objet en suivant cette syntaxe :</p>
 <div class="bloc-code"><div class="bloc-code__langue">php</div><pre><code class="hljs language-php"><span class="hljs-variable">$lion</span>-&gt;name = <span class="hljs-string">&#x27;lion&#x27;</span>;
@@ -81,13 +81,13 @@ Et fais très attention, si dans la classe,  les propriétés sont préfixées d
 <p>🖥️ Essaie maintenant de modifier la <code>size</code> du lion à 50 depuis <em>index.php</em>. Sur l'interface, tu dois constater que la taille de l'image s'adapte en conséquence.</p>
 <p>🖥️ Fais maintenant la même chose pour le perroquet (parrot), et au moins un troisième animal de ton choix (en fonction des images disponibles). Pense à bien mettre à jour le tableau <code>$animals</code> en fonction.</p>
 <h1>💪 Challenge</h1>
-<h2>Créer une propriété</h2>
+<h2 id="t-creer-une-propriete">Créer une propriété</h2>
 <p>Tu peux être amené à ajouter de nouvelles propriétés à ta classe, si ton projet se complexifie. Un zoo sert notamment à accueillir des espèces en danger. Nous voulons donc ajouter le niveau de menace de l'animal. Pour cela, si tu veux des données réalistes, tu peux te baser sur le <a href="https://www.iucnredlist.org" target="_blank" rel="noopener noreferrer">site de l'IUCN</a> qui recense justement les espèces en danger, en se basant sur différents niveaux de menace, de non concerné (Least Concern ou LC) à éteinds (Extinct ou EX).</p>
 <p><a href="https://nc.iucnredlist.org/redlist/content/images/content_categories_chart_global_v3.jpg" target="_blank" rel="noopener noreferrer">UICN list</a></p>
 <p>🖥️ À toi de créer la propriété (threatenedLevel) qui sera un <code>string</code> et attendra l'une des valeurs de la liste en abrégé (EX, EW, CR, EN, VU, NT, LC, DD ou NE). Par défaut, la valeur sera 'NE' (Not Evaluated).</p>
 <p>Modifie ensuite le niveau de menace pour les animaux que tu as créés dans <em>index.php</em>, puis vérifie que l'icône correspondante apparaît bien sur l'interface web. Par exemple, le lion est <a href="https://www.iucnredlist.org/species/15951/115130419" target="_blank" rel="noopener noreferrer">vulnérable</a>.</p>
 <p>Poste une capture d'écran de la page web, montrant tes animaux.</p>
-<h3>Critères de validation</h3>
+<h3 id="t-criteres-de-validation">Critères de validation</h3>
 <ul>
 <li>Les animaux créés apparaissent bien tous, avec leur image, au nombre de trois minimum, dont le lion et le perroquet.</li>
 <li>Les différentes informations sur ces animaux sont affichées (pour les 5 propriétés, y compris le niveau de menace). Il n'y a plus d'information &quot;undefined&quot;.</li>
@@ -112,7 +112,5 @@ Et fais très attention, si dans la classe,  les propriétés sont préfixées d
   <p>Archive personnelle des cours suivis à la Wild Code School. Copie hors ligne à usage strictement privé.</p>
 </footer>
 
-<script src="../../assets/copie-code.js"></script>
-<script src="../../assets/progression.js"></script>
 </body>
 </html>

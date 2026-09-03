@@ -20,21 +20,22 @@
     <p class="quete__meta">Quête 10 sur 11 · 6 images archivées</p>
   </header>
   <div class="cours">
-<h2>Objectifs</h2>
+<h2 id="t-objectifs">Objectifs</h2>
 <ul>
 <li>Créer des boucles en JavaScript</li>
 <li>Parcourir des tableaux</li>
 </ul>
-<h2>Pré-requis</h2>
+<h2 id="t-pre-requis">Pré-requis</h2>
 <p>Avoir validé les quêtes suivantes :</p>
 <div class="renvois"><div class="renvois__titre">Quêtes liées</div><ul><li><a href="../../javascript/001-js-basics-01-qu-est-ce-que-javascript/index.html">Quête 1262</a></li><li><a href="../../javascript/002-js-basics-02-syntaxe-et-concepts-de-base/index.html">Quête 1267</a></li><li><a href="../../javascript/003-js-basics-03-les-variables/index.html">Quête 1268</a></li><li><a href="../../javascript/004-js-basics-04-les-types-de-donnees/index.html">Quête 1269</a></li><li><a href="../../javascript/005-js-basics-05-les-instructions-conditionnelles/index.html">Quête 1270</a></li><li><a href="../../javascript/006-js-basics-06-les-fonctions/index.html">Quête 1278</a></li><li><a href="../../javascript/008-js-basics-07-les-tableaux/index.html">Quête 1281</a></li></ul></div>
-<h2>Introduction</h2>
+<h2 id="t-introduction">Introduction</h2>
 <p>Comme mentionné dans les quêtes précédentes, l'un des grands principes en développement est de ne pas se répéter (en anglais &quot;D.R.Y.&quot;, comme <strong>D</strong>on't <strong>R</strong>epeat <strong>Y</strong>ourself).
 Pour éviter d'écrire le même code encore et encore, nous pouvons utiliser quelque chose appelé <strong>boucle</strong>.</p>
 <p><strong>Commençons!</strong></p>
 <p><img src="images/001-escaliers.png" alt="Escaliers" loading="lazy"></p>
-<h2>Sommaire</h2>
-<h2>Qu'est-ce qu'une boucle ?</h2>
+<h2 id="t-sommaire">Sommaire</h2>
+<nav class="sommaire" aria-label="Sommaire de la quête"><ol class="sommaire__liste"><li><a href="#t-qu-est-ce-qu-une-boucle">Qu'est-ce qu'une boucle ?</a></li><li><a href="#t-differents-types-de-boucles">Différents types de boucles</a><ul><li><a href="#t-la-boucle-for">La boucle "for"</a></li><li><a href="#t-parcourir-un-tableau">Parcourir un tableau</a></li></ul></li><li><a href="#t-les-boucles-while-et-do-while">Les boucles "while" et "do...while"</a><ul><li><a href="#t-while">While</a></li><li><a href="#t-do-while">Do...While</a></li></ul></li><li><a href="#t-que-faire-en-cas-de-boucle-infinie">Que faire en cas de boucle infinie ?</a></li><li><a href="#t-portee-scope-contexte">Portée (scope) / Contexte</a></li><li><a href="#t-resume">Résumé</a></li><li><a href="#t-challenge">Challenge</a><ul><li><a href="#t-criteres-d-acceptation">Critères d'acceptation</a></li></ul></li></ol></nav>
+<h2 id="t-qu-est-ce-qu-une-boucle">Qu'est-ce qu'une boucle ?</h2>
 <p><img src="images/002-la-boucle-de-la-course.png" alt="La boucle de la course" loading="lazy"></p>
 <p>Une boucle est un moyen d'exécuter le même code plusieurs fois jusqu'à ce qu'une certaine condition soit remplie.</p>
 <p>Par exemple, imagine une voiture sur une piste de course, la voiture doit faire <strong>x fois le tour</strong> de la piste avant d'atteindre la fin du parcours.</p>
@@ -51,9 +52,9 @@ Turn number 3
 Turn number 4
 */</span>
 </code></pre></div>
-<h2>Différents types de boucles</h2>
+<h2 id="t-differents-types-de-boucles">Différents types de boucles</h2>
 <p><img src="images/003-image.png" alt="image" loading="lazy"></p>
-<h3>La boucle &quot;for&quot;</h3>
+<h3 id="t-la-boucle-for">La boucle &quot;for&quot;</h3>
 <p><img src="images/004-boucle-for.png" alt="Boucle for" loading="lazy"></p>
 <p><code>for</code> nécessite 3 paramètres pour fonctionner:</p>
 <ul>
@@ -92,7 +93,7 @@ Turn number 4
 }
 </code></pre></div>
 </div></details>
-<h3>Parcourir un tableau</h3>
+<h3 id="t-parcourir-un-tableau">Parcourir un tableau</h3>
 <p>Tu peux utiliser une boucle pour parcourir un tableau :</p>
 <div class="bloc-code"><div class="bloc-code__langue">javascript</div><pre><code class="hljs language-javascript"><span class="hljs-keyword">const</span> fruits = [<span class="hljs-string">&quot;Apple&quot;</span>, <span class="hljs-string">&quot;Peach&quot;</span>, <span class="hljs-string">&quot;Banana&quot;</span>];
 
@@ -115,10 +116,10 @@ Essaye de parcourir avec une boucle le tableau suivant et d'afficher chaque él�
 }
 </code></pre></div>
 </div></details>
-<h2>Les boucles &quot;while&quot; et &quot;do...while&quot;</h2>
+<h2 id="t-les-boucles-while-et-do-while">Les boucles &quot;while&quot; et &quot;do...while&quot;</h2>
 <p>Nous avons vu la boucle <code>for</code>. Il existe d'autres façons de créer des boucles.</p>
 <p><img src="images/005-image.png" alt="image" loading="lazy"></p>
-<h3>While</h3>
+<h3 id="t-while">While</h3>
 <p>Pour utiliser une boucle <code>while</code>, tu dois <strong>créer l'itérateur avant la déclaration de la boucle.</strong></p>
 <p>Passe la condition que tu veux remplir (c'est à dire <code>i &lt; 5</code>) dans les parenthèses <code>()</code>.</p>
 <p>Avec une boucle <strong>while</strong> et <strong>do...while,</strong> il faut faire attention de ne pas oublier d'incrémenter (augmenter) la valeur de <code>i</code>.
@@ -143,11 +144,11 @@ Si <code>i</code> n'augmente pas, il n'atteint jamais 5, donc la boucle continue
 }
 </code></pre></div>
 </div></details>
-<h3>Do...While</h3>
+<h3 id="t-do-while">Do...While</h3>
 <p><strong><code>do...while</code> est similaire à <code>while</code></strong> mais l'action est exécutée avant de vérifier la condition (la boucle fait donc toujours au moins un tour).</p>
 <div class="bloc-code"><div class="bloc-code__langue">replit</div><pre><code class="hljs language-replit">https://repl.it/@WildCodeSchool/ShadowyTalkativeOutput
 </code></pre></div>
-<h2>Que faire en cas de boucle infinie ?</h2>
+<h2 id="t-que-faire-en-cas-de-boucle-infinie">Que faire en cas de boucle infinie ?</h2>
 <p><img src="images/006-image.jpg" alt="image" loading="lazy">
 Si tu as lancé une boucle infinie par erreur, ferme immédiatement l'onglet de ton navigateur pour y mettre fin.</p>
 <p>Tu peux également utiliser le <strong>gestionnaire de tâches chrome</strong> pour <strong>finir le processus</strong> ou utiliser le <strong>débogueur du navigateur</strong>.</p>
@@ -166,7 +167,7 @@ Si tu as lancé une boucle infinie par erreur, ferme immédiatement l'onglet de 
     <div class="video-lien__url">https://youtu.be/haFYwEBjaTo</div>
   </div>
 </a>
-<h2>Portée (scope) / Contexte</h2>
+<h2 id="t-portee-scope-contexte">Portée (scope) / Contexte</h2>
 <p>En Javascript, dès que l'on écrit du code, <strong>le contexte est très important</strong> : <strong>on ne peut pas utiliser une variable déclarée à l'intérieur d'une boucle en dehors de cette dernière</strong>.</p>
 <p>Les accolades  <code>{ }</code> définissent un contexte local.</p>
 <p>Exemple 1 :</p>
@@ -197,13 +198,13 @@ Si tu as lancé une boucle infinie par erreur, ferme immédiatement l'onglet de 
     <div class="video-lien__url">https://www.youtube.com/watch?v=iJKkZA215tQ</div>
   </div>
 </a>
-<h2>Résumé</h2>
+<h2 id="t-resume">Résumé</h2>
 <ul>
 <li>On peut utiliser des <strong>boucles</strong> en Javascript pour <strong>répéter l'exécution d'un bloc de code plusieurs fois</strong></li>
 <li>Il y a différentes boucles, &quot;for&quot; est la plus utilisée mais il y a aussi &quot;while&quot; et &quot;do...while&quot;.</li>
 <li>Faire des erreurs dans tes boucles <strong>peut entraîner une boucle infinie</strong> qui peut faire planter ton programme.</li>
 </ul>
-<h2>Challenge</h2>
+<h2 id="t-challenge">Challenge</h2>
 <p>Es-tu prêt à relever un défi ?</p>
 <p>Ton objectif est de décoder un message en utilisant les boucles :</p>
 <div class="bloc-code"><div class="bloc-code__langue">javascript</div><pre><code class="hljs language-javascript"><span class="hljs-comment">// Use a loop to remove the &#x27;X&#x27; and use console.log to reveal the message </span>
@@ -211,7 +212,7 @@ Si tu as lancé une boucle infinie par erreur, ferme immédiatement l'onglet de 
 </code></pre></div>
 <p>Ici, nous avons un tableau avec beaucoup de string différentes. Ta mission est d'utiliser une boucle pour ignorer la lettre <strong>&quot;X&quot;</strong> (en utilisant une condition) et <code>console.log</code> pour révéler le message.</p>
 <p>Poste ton code en solution.</p>
-<h3>Critères d'acceptation</h3>
+<h3 id="t-criteres-d-acceptation">Critères d'acceptation</h3>
 <ul>
 <li>[ ] Le message secret est décodé</li>
 </ul>
@@ -235,7 +236,5 @@ Si tu as lancé une boucle infinie par erreur, ferme immédiatement l'onglet de 
   <p>Archive personnelle des cours suivis à la Wild Code School. Copie hors ligne à usage strictement privé.</p>
 </footer>
 
-<script src="../../assets/copie-code.js"></script>
-<script src="../../assets/progression.js"></script>
 </body>
 </html>

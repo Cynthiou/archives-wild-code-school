@@ -20,24 +20,25 @@
     <p class="quete__meta">Quête 7 sur 11 · 1 image archivée</p>
   </header>
   <div class="cours">
-<h2>Objectifs</h2>
+<h2 id="t-objectifs">Objectifs</h2>
 <ul>
 <li>Écrire et exécuter des fonctions anonymes en JavaScript</li>
 <li>Comprendre la notion de <strong>fonction de rappel</strong> (callback)</li>
 <li>Utiliser <strong>des fonctions d'ordre supérieur</strong> pour la programmation fonctionnelle</li>
 </ul>
-<h2>Pré-requis</h2>
+<h2 id="t-pre-requis">Pré-requis</h2>
 <p>Avoir validé la quête suivante :</p>
 <div class="renvois"><div class="renvois__titre">Quêtes liées</div><ul><li><a href="../../javascript/006-js-basics-06-les-fonctions/index.html">Quête 1278</a></li></ul></div>
-<h2>Introduction</h2>
+<h2 id="t-introduction">Introduction</h2>
 <p>Dans les quêtes précédentes, <strong>tu as découvert pourquoi nous utilisons des fonctions en Javascript et à quoi ressemble leur syntaxe(s)</strong>.
 En apprenant le Javascript, tu rencontreras probablement les termes de <strong>fonction d'ordre supérieur</strong>.
 A ce stade, tu as probablement déjà utilisé des fonctions d'ordre supérieur sans même t'en apercevoir. Par exemple en enregistrant un écouteur d'événement de clic sur un élément du DOM ;-)</p>
 <p>Cette quête vise à te familiariser avec des concepts de <strong>programmation fonctionnelle</strong>, une façon particulière de programmer centrée sur les fonctions.
 Si tu t'intéresses à des bibliothèques comme React, tu découvriras que cette dernière tend largement à suivre ce paradigme. C'est donc une lecture qui pourra t'être utile !</p>
 <p><strong>C'est parti !</strong></p>
-<h2>Sommaire</h2>
-<h2>Fonction Anonyme ?</h2>
+<h2 id="t-sommaire">Sommaire</h2>
+<nav class="sommaire" aria-label="Sommaire de la quête"><ol class="sommaire__liste"><li><a href="#t-fonction-anonyme">Fonction Anonyme ?</a></li><li><a href="#t-fonctions-de-rappel-et-fonctions-d-ordre-superieur-higher">Fonctions de rappel et fonctions d'ordre supérieur (Higher-Order Function)</a><ul><li><a href="#t-avez-vous-dit-retourner-une-function">Avez-vous dit "retourner une function" ?</a></li></ul></li><li><a href="#t-challenge">Challenge</a><ul><li><a href="#t-criteres-d-acceptation">Critères d'acceptation</a></li></ul></li></ol></nav>
+<h2 id="t-fonction-anonyme">Fonction Anonyme ?</h2>
 <p>Nous pouvons créer des fonctions sans aucun label, on les appelle des fonctions anonymes.</p>
 <div class="bloc-code"><div class="bloc-code__langue">javascript</div><pre><code class="hljs language-javascript"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>) {
   <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(<span class="hljs-string">&quot;I&#x27;m an anonymous function&quot;</span>);
@@ -61,7 +62,7 @@ Si tu t'intéresses à des bibliothèques comme React, tu découvriras que cette
 <span class="hljs-comment">// Hello, World!</span>
 </code></pre></div>
 <p>Il n'est pas important de se souvenir de tout cela, mais pour l'instant, garde à l'esprit qu'une <strong>fonction anonyme est une fonction qui n'a pas de label, donc pas de nom</strong>.</p>
-<h2>Fonctions de rappel et fonctions d'ordre supérieur (Higher-Order Function)</h2>
+<h2 id="t-fonctions-de-rappel-et-fonctions-d-ordre-superieur-higher">Fonctions de rappel et fonctions d'ordre supérieur (Higher-Order Function)</h2>
 <p>Une <strong>fonction d'ordre supérieur</strong> est une <strong>fonction qui accepte une autre fonction en argument</strong> ou qui retourne elle-même une fonction.</p>
 <p>Une <strong>fonction de rappel</strong> (callback) est une fonction passée en paramètre d'une autre fonction.</p>
 <p>Regardons un exemple concret. Suppose que dans une application on ait trois fonctions : une pour dire &quot;Hello&quot;, une pour dire &quot;Welcome&quot; et une qui demande son nom à l'utilisateur (avec <code>prompt</code>) :</p>
@@ -153,7 +154,7 @@ De cette manière, quand on appellera <code>askUserName</code>, on pourra donner
 <span class="hljs-comment">// &quot;The result is 10&quot;</span>
 </code></pre></div>
 </div></details>
-<h3>Avez-vous dit &quot;retourner une function&quot; ?</h3>
+<h3 id="t-avez-vous-dit-retourner-une-function">Avez-vous dit &quot;retourner une function&quot; ?</h3>
 <p>Oui.
 <img src="images/001-image.jpg" alt="image" loading="lazy"></p>
 <p>Imagine que tu souhaites générer des identifiants uniques. En d'autres termes, tu voudrais obtenir un nombre différent à chaque fois que tu appelles une fonction donnée.</p>
@@ -191,7 +192,7 @@ Bien, tu pourrais écrire quelque chose comme ça :</p>
 [x] En stockant une fonction anonyme dans une variable
 [x] En la faisant passer comme argument d'une fonction d'ordre supérieur, la fonction d'ordre supérieur pourrait rappeler cette fonction anonyme
 </code></pre></div>
-<h2>Challenge</h2>
+<h2 id="t-challenge">Challenge</h2>
 <p>À partir d'un tableau contenant des noms de personnes tu dois :</p>
 <ul>
 <li>Créer une fonction <code>changeName</code> qui prend en paramètre un nom comme <code>anTHoNY</code> et retourne la chaine de caractères avec la casse corrigée (<code>Anthony</code>).</li>
@@ -206,7 +207,7 @@ Bien, tu pourrais écrire quelque chose comme ça :</p>
 
 <span class="hljs-keyword">const</span> people = [<span class="hljs-string">&#x27;JoHn&#x27;</span>, <span class="hljs-string">&#x27;ChrISTiana&#x27;</span>, <span class="hljs-string">&#x27;anThoNY&#x27;</span>, <span class="hljs-string">&#x27;MARia&#x27;</span>, <span class="hljs-string">&#x27;jaMeS&#x27;</span>, <span class="hljs-string">&#x27;MIChaEl&#x27;</span>, <span class="hljs-string">&#x27;jeNNIFeR&#x27;</span>];
 </code></pre></div>
-<h3>Critères d'acceptation</h3>
+<h3 id="t-criteres-d-acceptation">Critères d'acceptation</h3>
 <ul>
 <li>[ ] Toutes les instructions sont respectées</li>
 </ul>
@@ -230,7 +231,5 @@ Bien, tu pourrais écrire quelque chose comme ça :</p>
   <p>Archive personnelle des cours suivis à la Wild Code School. Copie hors ligne à usage strictement privé.</p>
 </footer>
 
-<script src="../../assets/copie-code.js"></script>
-<script src="../../assets/progression.js"></script>
 </body>
 </html>

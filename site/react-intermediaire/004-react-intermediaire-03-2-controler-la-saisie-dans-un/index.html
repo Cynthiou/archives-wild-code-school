@@ -20,14 +20,14 @@
     <p class="quete__meta">Quête 4 sur 4 · 2 images archivées</p>
   </header>
   <div class="cours">
-<h4>Introduction</h4>
+<h4 id="t-introduction">Introduction</h4>
 <p>Dans la quête précédente, tu as vu les concepts de composants <em>Contrôlés</em> et <em>Non contrôlés</em>.</p>
 <p>Nous allons poursuivre en voyant comment nous pouvons utiliser ces concepts avec des données dynamiques que nous recevons de l'entrée du formulaire.</p>
 <p>Allons-y ! 🚀</p>
 <p><img src="images/001-image.avif" alt="image" loading="lazy"></p>
-<h4>🤓 À la fin de cette quête, tu seras en mesure de :</h4>
+<h4 id="t-a-la-fin-de-cette-quete-tu-seras-en-mesure-de">🤓 À la fin de cette quête, tu seras en mesure de :</h4>
 <p>✅ Mettre à jour le state de ton composant en fonction de ce qui est saisi dans un formulaire par l'utilisateur.</p>
-<h3>Changer la valeur dans le state</h3>
+<h3 id="t-changer-la-valeur-dans-le-state">Changer la valeur dans le state</h3>
 <p>Commençons par un exemple avec une liste de composants et un formulaire :</p>
 <div class="bloc-code"><div class="bloc-code__langue">jsx</div><pre><code class="hljs language-jsx">!--- <span class="hljs-title class_">App</span>.<span class="hljs-property">js</span>
 <span class="hljs-keyword">import</span> <span class="hljs-title class_">QuoteList</span> <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;./components/QuoteList&quot;</span>;
@@ -269,7 +269,7 @@
 <li>La <code>value</code> du champ est définie par une valeur provenant du state du composant.</li>
 <li>Lorsqu'une modification est effectuée dans le champ, elle est prise en compte pour modifier la valeur du state.</li>
 </ul>
-<h3>Le gestionnaire d'événements dans des fonctions</h3>
+<h3 id="t-le-gestionnaire-d-evenements-dans-des-fonctions">Le gestionnaire d'événements dans des fonctions</h3>
 <p>Dans les projets React, tu verras qu'écrire l'<em>event listener</em> à l'intérieur des accolades derrière <code>onChange</code> a tendance à rendre notre code moins lisible, d'autant plus que les <em>event listeners</em> contiennent souvent plus de lignes que cet exemple.</p>
 <p>C'est pourquoi ils sont souvent écrits dans des fonctions séparées...</p>
 <div class="bloc-code"><div class="bloc-code__langue">jsx</div><pre><code class="hljs language-jsx"><span class="hljs-keyword">function</span> <span class="hljs-title function_">QuoteForm</span>(<span class="hljs-params"></span>) {
@@ -296,9 +296,9 @@
   );
 }
 </code></pre></div>
-<h3>Dernière étape</h3>
+<h3 id="t-derniere-etape">Dernière étape</h3>
 <p>Dernière étape ! Maintenant que tu as déplacé le code des <em>event listenenrs</em> hors du JSX, tu seras plus à l'aise pour enrichir leur code.</p>
-<h4>Limitation de la saisie à 30 caractères</h4>
+<h4 id="t-limitation-de-la-saisie-a-30-caracteres">Limitation de la saisie à 30 caractères</h4>
 <p>Pour faire quelque chose dans l'esprit du formulaire d'inscription de GitHub, ou du champ de saisie d'un tweet de Twitter, nous allons limiter la saisie dans l'<code>input</code> à 30 caractères, et afficher un indicateur, permettant à l'utilisateur de savoir combien de caractères supplémentaires peuvent être tapés.</p>
 <p>Afin de pouvoir récupérer facilement la longueur maximale, déclare-la comme une constante, juste au-dessus de la déclaration de la fonction <code>QuoteForm</code> :</p>
 <div class="bloc-code"><div class="bloc-code__langue">javascript</div><pre><code class="hljs language-javascript"><span class="hljs-keyword">const</span> <span class="hljs-variable constant_">MAX_LENGTH</span> = <span class="hljs-number">30</span>; <span class="hljs-comment">// Feel free to change the value</span>
@@ -319,7 +319,7 @@ const handleChange = (event) =&gt; {
   }
 };
 </code></pre></div>
-<h4>Ajout d'un repère visuel</h4>
+<h4 id="t-ajout-d-un-repere-visuel">Ajout d'un repère visuel</h4>
 <p>En plus d'empêcher la poursuite de la saisie au-delà d'un seuil maximal, deux indicateurs visuels peuvent être ajoutés :</p>
 <ul>
 <li>une classe CSS pour entourer le champ d'une bordure verte ou rouge, selon que le maximum est atteint ou non.</li>
@@ -602,7 +602,7 @@ En fonction de la réponse, une classe ou une autre sera attribuée à l'attribu
 }
 </code></pre></div>
 <h1>💪 Challenge</h1>
-<h3>Synchronisation de l'affichage avec l'input</h3>
+<h3 id="t-synchronisation-de-l-affichage-avec-l-input">Synchronisation de l'affichage avec l'input</h3>
 <p>Tu vas construire un formulaire qui affichera le contenu saisi dans l'input, à l'intérieur d'un élément <code>&lt;h1&gt;</code>.</p>
 <ul>
 <li>Pour soumettre ce défi, tu dois faire un fork de ce template :</li>
@@ -673,7 +673,5 @@ En fonction de la réponse, une classe ou une autre sera attribuée à l'attribu
   <p>Archive personnelle des cours suivis à la Wild Code School. Copie hors ligne à usage strictement privé.</p>
 </footer>
 
-<script src="../../assets/copie-code.js"></script>
-<script src="../../assets/progression.js"></script>
 </body>
 </html>

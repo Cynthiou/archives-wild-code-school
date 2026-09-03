@@ -25,13 +25,14 @@
 <p>Dans une page web, un des premiers moyens de capter les interactions de l'utilisateur est d'utiliser les formulaires.
 Qu'il s'agisse de se connecter, enregistrer un nouvel article sur un blog ou encore effectuer une réservation, l'utilisateur devra passer par un formulaire.</p>
 <p>Aujourd'hui, tu vas t’atteler à la tâche assez classique et récurrente : créer un formulaire de contact.</p>
-<h2>🤓 <strong>À la fin de cette quête, tu seras en mesure de :</strong></h2>
+<h2 id="t-a-la-fin-de-cette-quete-tu-seras-en-mesure-de">🤓 <strong>À la fin de cette quête, tu seras en mesure de :</strong></h2>
 <ul>
 <li>✅ Connaître les composantes d'un formulaire en HTML</li>
 <li>✅ Mettre en place ton premier formulaire</li>
 </ul>
-<h2>Sommaire</h2>
-<h2>La balise <form></h2>
+<h2 id="t-sommaire">Sommaire</h2>
+<nav class="sommaire" aria-label="Sommaire de la quête"><ol class="sommaire__liste"><li><a href="#t-la-balise">La balise</a></li><li><a href="#t-les-champs">Les champs</a><ul><li><a href="#t-les-types-de-champ">Les types de champ</a></li></ul></li><li><a href="#t-les-labels">Les labels</a></li><li><a href="#t-le-bouton-de-soumission">Le bouton de soumission</a><ul><li><a href="#t-exemple-d-un-formulaire-fonctionnel">Exemple d'un formulaire fonctionnel</a></li></ul></li></ol></nav>
+<h2 id="t-la-balise">La balise <form></h2>
 <p>Commençons par une petite mise en <em>form</em> !</p>
 <p><img src="images/001-echauffement.jpg" alt="echauffement" loading="lazy"></p>
 <p>Un formulaire, c'est avant tout du code HTML. On pourrait définir cela par une interface qui va nous permettre de collecter des données auprès des utilisateurs.</p>
@@ -50,7 +51,7 @@ Cette balise va te permettre de définir le bloc de formulaire dans lequel tu aj
     <div class="ressource__hote">developer.mozilla.org</div>
   </div>
 </a>
-<h2>Les champs</h2>
+<h2 id="t-les-champs">Les champs</h2>
 <p>Il existe une multitude de types de champs. Ils doivent être soigneusement choisis lors de l'intégration selon la saisie attendue de l'utilisateur.
 Le client web pourra ainsi traiter correctement et distinctement des saisies de textes classiques (un prénom ou un nom), des saisies de textes personnalisées (téléphone, email, nombre, date, …), un choix parmi des éléments à sélectionner dans des listes (une ville, une année de naissance), etc.</p>
 <p>Chaque champ va donc pouvoir être personnalisé grâce à sa balise mais également à ses <strong>attributs</strong>, eux aussi, spécifiques.</p>
@@ -64,10 +65,10 @@ Le client web pourra ainsi traiter correctement et distinctement des saisies de 
   </div>
 </a>
 <p>Parmi les attributs des champs de formulaires, le plus important est le <code>name</code>. On en reparlera plus en détail dans la quête concernant la récupération des données.</p>
-<h3>Les types de champ</h3>
+<h3 id="t-les-types-de-champ">Les types de champ</h3>
 <p>N'hésite pas également à consulter cette quête si ce n'est pas déjà fait. On y aborde notamment et plus en détail les différents types possibles pour les <code>&lt;input&gt;</code>.</p>
 <div class="renvois"><div class="renvois__titre">Quêtes liées</div><ul><li><a href="../../html/007-html-chapitre-7-les-formulaires/index.html">Quête 2136</a></li></ul></div>
-<h2>Les labels</h2>
+<h2 id="t-les-labels">Les labels</h2>
 <p>Pour indiquer aux utilisateurs quelle information est attendue, il est indispensable d'ajouter une étiquette à chaque champ de formulaire.</p>
 <p>Pour cela, on utilise une autre balise : la balise <code>&lt;label&gt;</code>. Celle ci s'écrit de cette manière :</p>
 <div class="bloc-code"><div class="bloc-code__langue">html</div><pre><code class="hljs language-html"><span class="hljs-tag">&lt;<span class="hljs-name">label</span> <span class="hljs-attr">for</span>=<span class="hljs-string">&quot;firstname&quot;</span>&gt;</span>What&#x27;s your firstname?<span class="hljs-tag">&lt;/<span class="hljs-name">label</span>&gt;</span>
@@ -87,7 +88,7 @@ Si on souhaite compléter l'exemple, voici ce que ça donnerait :</p>
 <span class="hljs-tag">&lt;/<span class="hljs-name">label</span>&gt;</span>
 </code></pre></div>
 <p>Ici le champ <code>&lt;input&gt;</code> a été placé à l'intérieur de la balise <code>&lt;label&gt;</code> produisant les mêmes avantages qu'avec l'exemple précédent.</p>
-<h2>Le bouton de soumission</h2>
+<h2 id="t-le-bouton-de-soumission">Le bouton de soumission</h2>
 <p>Il nous reste un dernier élément à voir ensemble afin de compléter la structure HTML de notre formulaire.
 Que serait un formulaire sans bouton de validation ?</p>
 <p>Il y a deux manières d'intégrer un bouton de validation.</p>
@@ -102,7 +103,7 @@ Que serait un formulaire sans bouton de validation ?</p>
 <li>Celle-ci est sans doute plus polyvalente et personnalisable en terme de mise en page et de contenu.</li>
 <li>Enfin, la balise <code>input</code> se trouvera forcément à l'intérieur de votre balise <code>form</code>, tandis que la balise <code>button</code> peut être à l'extérieur si on y ajoute <strong>l'attribut</strong> <code>form</code> pour la relier au formulaire par son <code>id</code>.</li>
 </ul>
-<h3>Exemple d'un formulaire fonctionnel</h3>
+<h3 id="t-exemple-d-un-formulaire-fonctionnel">Exemple d'un formulaire fonctionnel</h3>
 <div class="bloc-code"><div class="bloc-code__langue">html</div><pre><code class="hljs language-html"><span class="hljs-tag">&lt;<span class="hljs-name">form</span> <span class="hljs-attr">id</span>=<span class="hljs-string">&quot;myForm&quot;</span> <span class="hljs-attr">action</span>=<span class="hljs-string">&quot;treatment.php&quot;</span> <span class="hljs-attr">method</span>=<span class="hljs-string">&quot;post&quot;</span>&gt;</span>
     <span class="hljs-comment">&lt;!-- Champs du formulaire --&gt;</span>
     <span class="hljs-tag">&lt;<span class="hljs-name">label</span> <span class="hljs-attr">for</span>=<span class="hljs-string">&quot;firstname&quot;</span>&gt;</span>Prénom<span class="hljs-tag">&lt;/<span class="hljs-name">label</span>&gt;</span>
@@ -142,7 +143,5 @@ Regardons le champ <strong>Email</strong>. On y trouve les attributs suivants :<
   <p>Archive personnelle des cours suivis à la Wild Code School. Copie hors ligne à usage strictement privé.</p>
 </footer>
 
-<script src="../../assets/copie-code.js"></script>
-<script src="../../assets/progression.js"></script>
 </body>
 </html>

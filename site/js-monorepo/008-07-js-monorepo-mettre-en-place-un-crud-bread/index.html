@@ -20,14 +20,14 @@
     <p class="quete__meta">Quête 8 sur 9 · 1 image archivée</p>
   </header>
   <div class="cours">
-<h2>Objectifs</h2>
+<h2 id="t-objectifs">Objectifs</h2>
 <ul>
 <li>Apprendre les conventions et bonnes pratiques REST</li>
 <li>Mettre en place un CRUD / BREAD complet</li>
 <li>Communiquer avec une application serveur depuis une application cliente</li>
 <li>Étudier et utiliser un code existant</li>
 </ul>
-<h2>Pré-requis</h2>
+<h2 id="t-pre-requis">Pré-requis</h2>
 <ol class="etapes"><li class="etape"><div class="etape__puce">1</div><div class="etape__contenu"><h4 class="etape__titre">Valider les quêtes suivantes</h4><div class="renvois"><div class="renvois__titre">Quêtes liées</div><ul><li><a href="../../js-monorepo/007-06-js-monorepo-creer-ton-premier-repository/index.html">Quête 824</a></li><li><a href="../../base-de-donnees/008-05-les-jointures/index.html">Quête 519</a></li><li><a href="../../base-de-donnees/009-06-sql-group-by/index.html">Quête 520</a></li></ul></div>
 </div></li><li class="etape"><div class="etape__puce">2</div><div class="etape__contenu"><h4 class="etape__titre">Identifier les informations principales d'une requête HTTP</h4><p>Exemple de requête HTTP :</p>
 <div class="bloc-code"><pre><code class="hljs language-plaintext">POST /categories
@@ -75,11 +75,12 @@ Cache-Control: no-cache
 </tr>
 </tbody>
 </table></div></div></li></ol>
-<h2>Sommaire</h2>
-<h2>Introduction</h2>
+<h2 id="t-sommaire">Sommaire</h2>
+<nav class="sommaire" aria-label="Sommaire de la quête"><ol class="sommaire__liste"><li><a href="#t-introduction">Introduction</a></li><li><a href="#t-qu-est-ce-que-rest">Qu'est-ce que REST ?</a><ul><li><a href="#t-les-operations-crud-bread">Les opérations CRUD / BREAD</a></li><li><a href="#t-table-de-correspondance-entre-bread-et-http-et-sql">Table de correspondance entre BREAD et HTTP (et SQL)</a></li></ul></li><li><a href="#t-avant-d-aller-plus-loin">Avant d'aller plus loin</a><ul><li><a href="#t-comment-utiliser-cette-quete">Comment utiliser cette quête ?</a></li><li><a href="#t-le-depot-fourni-pour-cette-quete">Le dépôt fourni pour cette quête</a></li></ul></li><li><a href="#t-b-r-e-a-d">B, R, E, A, D</a><ul><li><a href="#t-browse">Browse</a></li><li><a href="#t-read">Read</a></li><li><a href="#t-edit">Edit</a></li><li><a href="#t-add">Add</a></li><li><a href="#t-destroy">Destroy</a></li></ul></li><li><a href="#t-recapitulatif">Récapitulatif</a></li><li><a href="#t-challenge">Challenge</a></li></ol></nav>
+<h2 id="t-introduction">Introduction</h2>
 <p>Dans les quêtes précédentes, tu as mis en place une application serveur, et appris à communiquer avec une base de données.</p>
 <p>Dans cette quête, tu vas mettre en place un CRUD (<strong>C</strong>reate, <strong>R</strong>ead, <strong>U</strong>pdate, <strong>D</strong>elete) complet, aussi appelé BREAD (<strong>B</strong>rowse, <strong>R</strong>ead, <strong>E</strong>dit, <strong>A</strong>dd, <strong>D</strong>estroy), pour gérer les données de ton application. Tu vas également apprendre à communiquer avec une application serveur depuis une application cliente en suivant les principes REST.</p>
-<h2>Qu'est-ce que REST ?</h2>
+<h2 id="t-qu-est-ce-que-rest">Qu'est-ce que REST ?</h2>
 <p>REST (<strong>RE</strong>presentational <strong>S</strong>tate <strong>T</strong>ransfer) est une architecture qui repose sur un ensemble de contraintes pour construire des services web. Les services RESTful utilisent les protocoles HTTP pour effectuer des opérations sur les ressources d'un serveur web.</p>
 <p>Les bonnes pratiques REST :</p>
 <ul>
@@ -88,10 +89,10 @@ Cache-Control: no-cache
 <li>Statuts de <strong>réponse HTTP</strong> : Utiliser les codes de statut HTTP pour indiquer le résultat des opérations (200 pour OK, 201 pour Created, 204 pour No Content, etc.).</li>
 <li>Utiliser des <strong>formats standardisés</strong> : JSON est couramment utilisé pour représenter les données des requêtes et des réponses.</li>
 </ul>
-<h3>Les opérations CRUD / BREAD</h3>
+<h3 id="t-les-operations-crud-bread">Les opérations CRUD / BREAD</h3>
 <p>Les opérations CRUD (Create, Read, Update, Delete) correspondent aux actions de base que tu peux effectuer sur les données d'une application. Dans le cadre de cette quête, nous allons étendre ce concept avec BREAD (Browse, Read, Edit, Add, Destroy), qui est une version plus parlante des mêmes opérations.</p>
 <p>C'est un moyen mnémotechnique de retenir les opérations les plus courantes : une &quot;checklist&quot; à vérifier pour chaque ressource. Chaque ressource est identifiée par une URL et les opérations sur ces ressources sont effectuées en utilisant les méthodes HTTP.</p>
-<h3>Table de correspondance entre BREAD et HTTP (et SQL)</h3>
+<h3 id="t-table-de-correspondance-entre-bread-et-http-et-sql">Table de correspondance entre BREAD et HTTP (et SQL)</h3>
 <p>Pour une ressource &quot;item&quot; :</p>
 <div class="table-wrap"><table><thead>
 <tr>
@@ -155,8 +156,8 @@ Cache-Control: no-cache
 <div class="encadre encadre--note encadre--callout"><div class="encadre__corps"><p>Ces détails sont repris sur la page <a href="https://www.restapitutorial.com/introduction/httpmethods" target="_blank" rel="noopener noreferrer">Using HTTP Methods for RESTful Services</a>.</p>
 <p>Pour aller plus loin sur REST, tu peux aussi consulter le site <a href="https://restfulapi.net/" target="_blank" rel="noopener noreferrer">https://restfulapi.net/</a>.</p>
 </div></div>
-<h2>Avant d'aller plus loin</h2>
-<h3>Comment utiliser cette quête ?</h3>
+<h2 id="t-avant-d-aller-plus-loin">Avant d'aller plus loin</h2>
+<h3 id="t-comment-utiliser-cette-quete">Comment utiliser cette quête ?</h3>
 <p>Tu vas récupérer un dépôt avec un CRUD / BREAD complet (serveur et client) sur les catégories :</p>
 <ul>
 <li>Lister les catégories (Browse)</li>
@@ -169,7 +170,7 @@ Cache-Control: no-cache
 <p>Si tu préfères expérimenter de ton côté ou explorer le code du dépôt fourni en autonomie, tu peux prendre comme référence la <a href="#table-de-correspondance-entre-bread-et-http-et-sql">Table de correspondance entre BREAD et HTTP (et SQL)</a> pour implémenter ton propre BREAD des catégories.</p>
 <div class="encadre encadre--warning"><div class="encadre__titre">Attention</div><div class="encadre__corps"><p>Attention : une étape indispensable pour faire communiquer ton client et ton serveur est d'activer le parsing du JSON dans la requête. Si tu ne suis pas toutes les étapes de la quête, lis attentivement les commentaires dans <code>server/src/app.ts</code> pour avoir des indications sur ce que tu dois faire.</p>
 </div></div>
-<h3>Le dépôt fourni pour cette quête</h3>
+<h3 id="t-le-depot-fourni-pour-cette-quete">Le dépôt fourni pour cette quête</h3>
 <p>Pour cette quête, un dépôt de démonstration est disponible : il contient une application serveur prête à l'emploi. Ce dépôt contient également le code client qui interagira avec le serveur. Pour le cloner, ouvre un terminal puis exécute la commande :</p>
 <div class="bloc-code"><div class="bloc-code__langue">bash</div><pre><code class="hljs language-bash">git <span class="hljs-built_in">clone</span> git@github.com:WildCodeSchool/quest-js-wild-series.git
 </code></pre></div>
@@ -181,7 +182,7 @@ npm install
 <div class="bloc-code"><div class="bloc-code__langue">bash</div><pre><code class="hljs language-bash">npm run db:migrate
 </code></pre></div>
 <p>Tu peux maintenant démarrer les applications avec la commande <code>npm run dev</code> et tester l'application <code>client</code> en ouvrant la page <a href="http://localhost:3000" target="_blank" rel="noopener noreferrer">http://localhost:3000</a>.</p>
-<h2>B, R, E, A, D</h2>
+<h2 id="t-b-r-e-a-d">B, R, E, A, D</h2>
 <p>Chacune des parties suivantes détaille l'implémentation d'une méthode. Le schéma est toujours le même :</p>
 <ul>
 <li>Côté client :
@@ -214,7 +215,7 @@ npm install
 </ul>
 </div></div>
 <p>L'opération <em>Add</em> inclue des détails supplémentaires sur l'activation du parsing du JSON dans <code>server/src/app.ts</code> : tu devrais commencer par cette opération. Libre à toi ensuite de piocher l'opération BREAD que tu veux dérouler.</p>
-<h3>Browse</h3>
+<h3 id="t-browse">Browse</h3>
 <div class="table-wrap"><table><thead>
 <tr>
 <th>Nom de l'opération</th>
@@ -298,7 +299,7 @@ npm install
 }
 </code></pre></div>
 </div></li></ol>
-<h3>Read</h3>
+<h3 id="t-read">Read</h3>
 <div class="table-wrap"><table><thead>
 <tr>
 <th>Nom de l'opération</th>
@@ -484,7 +485,7 @@ npm install
   category.id
 </code></pre></div>
 </div></li></ol>
-<h3>Edit</h3>
+<h3 id="t-edit">Edit</h3>
 <div class="table-wrap"><table><thead>
 <tr>
 <th>Nom de l'opération</th>
@@ -604,7 +605,7 @@ npm install
 </code></pre></div>
 <p>Note le <code>&lt;Result&gt;</code> derrière <code>databaseClient.query</code> : il est en phase la requête UPDATE qui produit un résultat (dont le nombre de lignes affectées : <code>result.affectedRows</code>) et pas des &quot;rows&quot; comme une requête SELECT.</p>
 </div></li></ol>
-<h3>Add</h3>
+<h3 id="t-add">Add</h3>
 <div class="table-wrap"><table><thead>
 <tr>
 <th>Nom de l'opération</th>
@@ -712,7 +713,7 @@ npm install
 </code></pre></div>
 <p>Note le <code>&lt;Result&gt;</code> derrière <code>databaseClient.query</code> : il est en phase la requête UPDATE qui produit un résultat (dont l'id généré lors de l'insertion : <code>result.insertId</code>) et pas des &quot;rows&quot; comme une requête SELECT.</p>
 </div></li></ol>
-<h3>Destroy</h3>
+<h3 id="t-destroy">Destroy</h3>
 <div class="table-wrap"><table><thead>
 <tr>
 <th>Nom de l'opération</th>
@@ -799,7 +800,7 @@ npm install
 </code></pre></div>
 <p>Note le <code>&lt;Result&gt;</code> derrière <code>databaseClient.query</code> : il est en phase la requête UPDATE qui produit un résultat (dont le nombre de lignes affectées : <code>result.affectedRows</code>) et pas des &quot;rows&quot; comme une requête SELECT.</p>
 </div></li></ol>
-<h2>Récapitulatif</h2>
+<h2 id="t-recapitulatif">Récapitulatif</h2>
 <p>À ce stade, nous avons un CRUD / BREAD complet pour gérer les catégories de notre application. Tu as appris les conventions REST, activé le parsing de JSON, et vu l'implémentation de chaque opération avec une communication entre le client et le serveur.</p>
 <p>Voici un récapitulatif des opérations effectuées :</p>
 <ul>
@@ -810,7 +811,7 @@ npm install
 <li><strong>Destroy</strong> : Supprimer une ressource existante.</li>
 </ul>
 <p>En t'appuyant sur les exemples fournis, tu devrais être capable de mettre en place un CRUD / BREAD fonctionnel pour gérer chaque ressource de ton application.</p>
-<h2>Challenge</h2>
+<h2 id="t-challenge">Challenge</h2>
 <p>Implémente les mêmes fonctionnalités BREAD pour une autre ressource de ton projet Wild Series : les <code>programs</code>. Assure-toi de bien suivre les conventions REST et d'appliquer les bonnes pratiques vues dans cette quête.</p>
 
   </div>
@@ -832,7 +833,5 @@ npm install
   <p>Archive personnelle des cours suivis à la Wild Code School. Copie hors ligne à usage strictement privé.</p>
 </footer>
 
-<script src="../../assets/copie-code.js"></script>
-<script src="../../assets/progression.js"></script>
 </body>
 </html>

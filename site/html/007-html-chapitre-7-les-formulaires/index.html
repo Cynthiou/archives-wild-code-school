@@ -20,26 +20,27 @@
     <p class="quete__meta">Quête 7 sur 9 · 13 images archivées</p>
   </header>
   <div class="cours">
-<h2>Pré-requis</h2>
+<h2 id="t-pre-requis">Pré-requis</h2>
 <ol class="etapes"><li class="etape"><div class="etape__puce">1</div><div class="etape__contenu"><h4 class="etape__titre">Valider la quête suivante</h4><div class="renvois"><div class="renvois__titre">Quêtes liées</div><ul><li><a href="../../html/001-html-chapitre-1-introduction-au-html/index.html">Quête 2113</a></li></ul></div>
 </div></li><li class="etape"><div class="etape__puce">2</div><div class="etape__contenu"><h4 class="etape__titre">Être à l'aise avec l'imbrication de balises HTML</h4><div class="bloc-code"><div class="bloc-code__langue">html</div><pre><code class="hljs language-html"><span class="hljs-tag">&lt;<span class="hljs-name">p</span>&gt;</span>Bienvenue sur mon incroyable <span class="hljs-tag">&lt;<span class="hljs-name">strong</span>&gt;</span>site web<span class="hljs-tag">&lt;/<span class="hljs-name">strong</span>&gt;</span> !<span class="hljs-tag">&lt;/<span class="hljs-name">p</span>&gt;</span>
 </code></pre></div>
 </div></li><li class="etape"><div class="etape__puce">3</div><div class="etape__contenu"><h4 class="etape__titre">Être à l'aise avec l'utilisation des attributs HTML</h4><div class="bloc-code"><div class="bloc-code__langue">html</div><pre><code class="hljs language-html"><span class="hljs-tag">&lt;<span class="hljs-name">img</span> <span class="hljs-attr">src</span>=<span class="hljs-string">&quot;https://placekitten.com/200/287&quot;</span> <span class="hljs-attr">alt</span>=<span class="hljs-string">&quot;A cute cat&quot;</span> /&gt;</span>
 </code></pre></div>
 </div></li></ol>
-<h2>Introduction</h2>
+<h2 id="t-introduction">Introduction</h2>
 <p>Précédemment, tu as vu les principes de bases du langage HTML.</p>
 <p>Dans cette quête, nous allons apprendre comment réaliser des formulaires en HTML afin de pouvoir recueillir des informations de l'utilisateur.</p>
-<h2>Objectifs</h2>
+<h2 id="t-objectifs">Objectifs</h2>
 <ul>
 <li>Créer des formulaires en HTML</li>
 </ul>
-<h2>Sommaire</h2>
-<h2>Qu'est ce qu'un formulaire ?</h2>
+<h2 id="t-sommaire">Sommaire</h2>
+<nav class="sommaire" aria-label="Sommaire de la quête"><ol class="sommaire__liste"><li><a href="#t-qu-est-ce-qu-un-formulaire">Qu'est ce qu'un formulaire ?</a><ul><li><a href="#t-la-balise">La balise</a></li><li><a href="#t-ajouter-un-champ-de-saisie">Ajouter un champ de saisie</a></li><li><a href="#t-bouton-de-soumission">Bouton de soumission</a></li></ul></li><li><a href="#t-les-types-de-champs-simples">Les types de champs "simples"</a><ul><li><a href="#t-text">Text</a></li><li><a href="#t-email">Email</a></li><li><a href="#t-date">Date</a></li><li><a href="#t-number">Number</a></li><li><a href="#t-password">Password</a></li></ul></li><li><a href="#t-autres-types-de-champs">Autres types de champs</a><ul><li><a href="#t-case-a-cocher">Case à cocher</a></li><li><a href="#t-boutons-radio">Boutons radio</a></li><li><a href="#t-jauge">Jauge</a></li><li><a href="#t-autres">Autres</a></li></ul></li><li><a href="#t-les-listes-deroulantes">Les listes déroulantes</a></li><li><a href="#t-les-zones-de-texte-multilignes">Les zones de texte multilignes</a></li><li><a href="#t-recapitulatif">Récapitulatif</a></li><li><a href="#t-challenge">Challenge</a><ul><li><a href="#t-criteres-de-validation">Critères de validation</a></li></ul></li></ol></nav>
+<h2 id="t-qu-est-ce-qu-un-formulaire">Qu'est ce qu'un formulaire ?</h2>
 <p>Un formulaire HTML permet de récolter des informations de la part d'un utilisateur afin qu'il puisse envoyer des données/interagir avec le site web.</p>
 <p>Comme toujours, tu dois faire attention à l'accessibilité de tes formulaires afin de les rendre simple à comprendre et à utiliser.</p>
 <p><img src="images/001-image.gif" alt="image" loading="lazy"></p>
-<h3>La balise <form></h3>
+<h3 id="t-la-balise">La balise <form></h3>
 <p>Pour déclarer un formulaire, tu dois toujours commencer par la balise <code>&lt;form&gt;</code>.</p>
 <p><code>&lt;form&gt;</code> est le conteneur dans lequel tu ajoutes les différentes composantes de ton formulaire.</p>
 <p><code>&lt;form&gt;</code> est généralement utilisé avec les attributs <code>action</code> et <code>method</code>.</p>
@@ -53,7 +54,7 @@
 </code></pre></div>
 <div class="encadre encadre--info"><div class="encadre__titre">Info</div><div class="encadre__corps"><p>Étant donné que nous n'avons pour le moment aucun serveur où envoyer les données, nous laisserons les attributs <code>action</code> et <code>method</code> vides dans les prochains exemples.</p>
 </div></div>
-<h3>Ajouter un champ de saisie</h3>
+<h3 id="t-ajouter-un-champ-de-saisie">Ajouter un champ de saisie</h3>
 <p>Pour ajouter un champ de saisie dans ton formulaire, tu dois utiliser la balise <code>&lt;input&gt;</code>.</p>
 <p>La balise <code>&lt;input&gt;</code> permet de créer différent types de champs : tu peux spécifier celui que tu veux avec l'attribut <code>type</code>. Par exemple, <code>type=&quot;text&quot;</code> pour un champ texte :</p>
 <p><img src="images/002-image.jpg" alt="image" loading="lazy"></p>
@@ -78,7 +79,7 @@
 <p>À l'intérieur du <code>&lt;body&gt;</code> tu peux ajouter la navigation et le pied de page que nous avons fait précédemment et à l'intérieur de la balise <code>&lt;main&gt;</code> ajoute un titre de niveau 1 &quot;Me contacter&quot;. Ajoute ensuite une balise <code>&lt;form&gt;</code> avec deux champs textes (n'oublie pas les labels) pour demander à l'utilisateur son prénom et son nom de famille.</p>
 <p>Tu peux contenir chaque <code>&lt;input&gt;</code> avec son <code>&lt;label&gt;</code> dans une balise <code>&lt;p&gt;</code>.</p>
 </div></div>
-<h3>Bouton de soumission</h3>
+<h3 id="t-bouton-de-soumission">Bouton de soumission</h3>
 <p>Enfin, tu peux utiliser une balise <code>&lt;button&gt;</code> avec le type <code>submit</code> pour compléter ton formulaire :</p>
 <div class="bloc-code"><div class="bloc-code__langue">html</div><pre><code class="hljs language-html"><span class="hljs-tag">&lt;<span class="hljs-name">button</span> <span class="hljs-attr">type</span>=<span class="hljs-string">&quot;submit&quot;</span>&gt;</span>Valider mon inscription<span class="hljs-tag">&lt;/<span class="hljs-name">button</span>&gt;</span>
 </code></pre></div>
@@ -87,27 +88,27 @@
 </code></pre></div>
 <p>Cependant, la balise <code>&lt;button&gt;</code> te laisse plus de libertés : tu peux par exemple mettre une image dans ton bouton.</p>
 </div></div>
-<h2>Les types de champs &quot;simples&quot;</h2>
-<h3>Text</h3>
+<h2 id="t-les-types-de-champs-simples">Les types de champs &quot;simples&quot;</h2>
+<h3 id="t-text">Text</h3>
 <p>Le type <code>&quot;text&quot;</code> permet d'afficher un champ texte sur une seule ligne.</p>
 <p>Tu peux l'utiliser pour les champs textes qui ne sont pas des emails ou des mots de passe.</p>
 <p><img src="images/003-image.jpg" alt="image" loading="lazy"></p>
-<h3>Email</h3>
+<h3 id="t-email">Email</h3>
 <p>Le type <code>&quot;email&quot;</code> permet d'ajouter un champ email :</p>
 <div class="bloc-code"><div class="bloc-code__langue">html</div><pre><code class="hljs language-html"><span class="hljs-tag">&lt;<span class="hljs-name">label</span>&gt;</span>Quel est votre email: <span class="hljs-tag">&lt;<span class="hljs-name">input</span> <span class="hljs-attr">type</span>=<span class="hljs-string">&quot;email&quot;</span> <span class="hljs-attr">required</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">label</span>&gt;</span>
 </code></pre></div>
 <p><img src="images/004-image.png" alt="image" loading="lazy"></p>
-<h3>Date</h3>
+<h3 id="t-date">Date</h3>
 <p>Le type <code>&quot;date&quot;</code> permet d'ajouter un sélecteur de date :</p>
 <div class="bloc-code"><div class="bloc-code__langue">html</div><pre><code class="hljs language-html"><span class="hljs-tag">&lt;<span class="hljs-name">label</span>&gt;</span>Quelle est votre date de naissance: <span class="hljs-tag">&lt;<span class="hljs-name">input</span> <span class="hljs-attr">type</span>=<span class="hljs-string">&quot;date&quot;</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">label</span>&gt;</span>
 </code></pre></div>
 <p><img src="images/005-image.png" alt="image" loading="lazy"></p>
-<h3>Number</h3>
+<h3 id="t-number">Number</h3>
 <p>Le type <code>&quot;number&quot;</code> permet de sélectionner un nombre :</p>
 <div class="bloc-code"><div class="bloc-code__langue">html</div><pre><code class="hljs language-html"><span class="hljs-tag">&lt;<span class="hljs-name">label</span>&gt;</span>Nombre de personnes: <span class="hljs-tag">&lt;<span class="hljs-name">input</span> <span class="hljs-attr">type</span>=<span class="hljs-string">&quot;number&quot;</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">label</span>&gt;</span>
 </code></pre></div>
 <p><img src="images/006-image.png" alt="image" loading="lazy"></p>
-<h3>Password</h3>
+<h3 id="t-password">Password</h3>
 <p>Le type <code>&quot;password&quot;</code> permet de taper un mot de passe, les caractères seront donc masqués :</p>
 <div class="bloc-code"><div class="bloc-code__langue">html</div><pre><code class="hljs language-html"><span class="hljs-tag">&lt;<span class="hljs-name">label</span>&gt;</span>Password: <span class="hljs-tag">&lt;<span class="hljs-name">input</span> <span class="hljs-attr">type</span>=<span class="hljs-string">&quot;password&quot;</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">label</span>&gt;</span>
 </code></pre></div>
@@ -115,8 +116,8 @@
 <div class="encadre encadre--note encadre--arrow"><div class="encadre__corps"><p><strong>🎯 À toi de jouer !</strong></p>
 <p>Ajoute un champ email et date de naissance sur ton formulaire de contact. Pense à bien ajouter la balise <code>&lt;label&gt;</code>.</p>
 </div></div>
-<h2>Autres types de champs</h2>
-<h3>Case à cocher</h3>
+<h2 id="t-autres-types-de-champs">Autres types de champs</h2>
+<h3 id="t-case-a-cocher">Case à cocher</h3>
 <p>Le type <code>&quot;checkbox&quot;</code> permet d'afficher une case à cocher sur la page. Tu peux utiliser l'attribut <code>checked</code> pour définir l'état initial de la checkbox :</p>
 <div class="bloc-code"><div class="bloc-code__langue">html</div><pre><code class="hljs language-html"><span class="hljs-tag">&lt;<span class="hljs-name">label</span>&gt;</span>S&#x27;inscrire à la newsletter <span class="hljs-tag">&lt;<span class="hljs-name">input</span> <span class="hljs-attr">type</span>=<span class="hljs-string">&quot;checkbox&quot;</span> <span class="hljs-attr">checked</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">label</span>&gt;</span>
 </code></pre></div>
@@ -134,7 +135,7 @@
 <span class="hljs-tag">&lt;/<span class="hljs-name">fieldset</span>&gt;</span>
 </code></pre></div>
 <p><img src="images/009-image.png" alt="image" loading="lazy"></p>
-<h3>Boutons radio</h3>
+<h3 id="t-boutons-radio">Boutons radio</h3>
 <p>Le type <code>&quot;radio&quot;</code> permet d'afficher une sélection d'éléments et de laisser l'utilisateur choisir une option dans la liste.</p>
 <p>De la même manière, tu peux utiliser la balise <code>&lt;fieldset&gt;</code> pour regrouper les éléments :</p>
 <div class="bloc-code"><div class="bloc-code__langue">html</div><pre><code class="hljs language-html"><span class="hljs-tag">&lt;<span class="hljs-name">fieldset</span>&gt;</span>
@@ -151,14 +152,14 @@
 <span class="hljs-tag">&lt;/<span class="hljs-name">fieldset</span>&gt;</span>
 </code></pre></div>
 <p><img src="images/010-image.png" alt="image" loading="lazy"></p>
-<h3>Jauge</h3>
+<h3 id="t-jauge">Jauge</h3>
 <p>Le type <code>&quot;range&quot;</code> affiche un sélecteur permettant à l'utilisateur de choisir une valeur numérique entre un minimum et un maximum :</p>
 <div class="bloc-code"><div class="bloc-code__langue">html</div><pre><code class="hljs language-html"><span class="hljs-tag">&lt;<span class="hljs-name">input</span> <span class="hljs-attr">type</span>=<span class="hljs-string">&quot;range&quot;</span> <span class="hljs-attr">id</span>=<span class="hljs-string">&quot;volume&quot;</span> <span class="hljs-attr">name</span>=<span class="hljs-string">&quot;volume&quot;</span> <span class="hljs-attr">min</span>=<span class="hljs-string">&quot;0&quot;</span> <span class="hljs-attr">max</span>=<span class="hljs-string">&quot;11&quot;</span>&gt;</span>
 <span class="hljs-tag">&lt;<span class="hljs-name">label</span> <span class="hljs-attr">for</span>=<span class="hljs-string">&quot;volume&quot;</span>&gt;</span>Volume<span class="hljs-tag">&lt;/<span class="hljs-name">label</span>&gt;</span>
 </code></pre></div>
 <p><img src="images/011-image.png" alt="image" loading="lazy"></p>
 <p>Dans cet example, l'utilisateur peut définir le volume entre 0 et 11 en déplaçant le curseur.</p>
-<h3>Autres</h3>
+<h3 id="t-autres">Autres</h3>
 <p>Les types que nous avons vus sont les principaux types pour la balise <code>&lt;input&gt;</code>. Si tu souhaites en voir davantage, n'hésite pas à consulter la documentation du site MDN.</p>
 <a class="ressource" href="https://developer.mozilla.org/fr/docs/Web/HTML/Element/input" target="_blank" rel="noopener noreferrer">
   <div class="ressource__icone">↗</div>
@@ -172,7 +173,7 @@
 <p>Ajoute une checkbox pour que l'utilisateur choisisse s'il veut aussi s'inscrire à la newsletter. Ajoute également des boutons radios (groupés avec un fieldset et une legende) pour que l'utilisateur choisisse quel genre de musique il aime.</p>
 <p>Ajoute ensuite un bouton &quot;submit&quot; afin que l'utilisateur puisse valider le formulaire.</p>
 </div></div>
-<h2>Les listes déroulantes</h2>
+<h2 id="t-les-listes-deroulantes">Les listes déroulantes</h2>
 <p>Tu peux créer des menus déroulants pour tes formulaire à l'aide de la balise <code>&lt;select&gt;</code>.</p>
 <p>À l'intérieur de la balise <code>&lt;select&gt;</code>, ajoute une balise <code>&lt;option&gt;</code> pour chaque choix que tu veux proposer.</p>
 <p>Le texte contenu dans la balise <code>&lt;option&gt;</code> sera affiché à l'utilisateur. Tu peux ajouter un attribut <code>value</code> à chaque option pour fournir une &quot;représentation machine&quot; : la valeur de l'attribut <code>value</code> sera utilisée par le programme qui traitera ton formulaire :</p>
@@ -189,7 +190,7 @@
 <p>Ajoute un menu déroulant à la suite de la date de naissance pour que les utilisateurs puissent choisir la raison de leur message.</p>
 <p>Par exemple, &quot;Information sur mes prestations&quot;, &quot;Problème avec mon site internet&quot;, etc...</p>
 </div></div>
-<h2>Les zones de texte multilignes</h2>
+<h2 id="t-les-zones-de-texte-multilignes">Les zones de texte multilignes</h2>
 <p>La balise <code>&lt;textarea&gt;</code> ajoute une zone de texte multilignes. Elle est généralement utilisée pour que l'utilisateur tape un message ou du texte long.</p>
 <p>Tu peux définir le nombre de lignes et de colonnes avec les attributs <code>rows</code> et <code>cols</code>. Tu peux également fixer la longueur maximum du texte avec <code>maxlength</code>, et le retour à la ligne automatique avec <code>wrap</code> :</p>
 <div class="bloc-code"><div class="bloc-code__langue">html</div><pre><code class="hljs language-html"><span class="hljs-tag">&lt;<span class="hljs-name">label</span>&gt;</span>Ecrivez votre message:
@@ -200,7 +201,7 @@
 <div class="encadre encadre--note encadre--arrow"><div class="encadre__corps"><p><strong>🎯 À toi de jouer !</strong></p>
 <p>Ajoute une balise <code>&lt;textarea&gt;</code> avant le bouton &quot;submit&quot; pour que les utilisateurs puissent écrire leur message.</p>
 </div></div>
-<h2>Récapitulatif</h2>
+<h2 id="t-recapitulatif">Récapitulatif</h2>
 <ul>
 <li>
 <p>Tu peux créer des formulaires en HTML en utilisant la balise <code>&lt;form&gt;</code></p>
@@ -212,9 +213,9 @@
 <p>Chaque champ d'un formulaire doit être labélisé pour des raisons d'accessibilité</p>
 </li>
 </ul>
-<h2>Challenge</h2>
+<h2 id="t-challenge">Challenge</h2>
 <p>Mets en forme le travail que tu as réalisé durant cette quête et compare le résultat avec la solution qui est proposée !</p>
-<h3>Critères de validation</h3>
+<h3 id="t-criteres-de-validation">Critères de validation</h3>
 <ul>
 <li>[ ] Le site contient un formulaire avec deux champs textes (nom et prénom), un champ email, un champ date de naissance, une checkbox, un textarea, un menu déroulant et un bouton d'envoi</li>
 <li>[ ] Chaque champ a son label</li>
@@ -323,7 +324,5 @@
   <p>Archive personnelle des cours suivis à la Wild Code School. Copie hors ligne à usage strictement privé.</p>
 </footer>
 
-<script src="../../assets/copie-code.js"></script>
-<script src="../../assets/progression.js"></script>
 </body>
 </html>

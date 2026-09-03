@@ -20,24 +20,25 @@
     <p class="quete__meta">Quête 4 sur 9</p>
   </header>
   <div class="cours">
-<h2>Objectifs</h2>
+<h2 id="t-objectifs">Objectifs</h2>
 <ul>
 <li>Utiliser correctement les liens hypertextes en HTML</li>
 </ul>
-<h2>Pré-requis</h2>
+<h2 id="t-pre-requis">Pré-requis</h2>
 <ol class="etapes"><li class="etape"><div class="etape__puce">1</div><div class="etape__contenu"><h4 class="etape__titre">Valider la quête suivante</h4><div class="renvois"><div class="renvois__titre">Quêtes liées</div><ul><li><a href="../../html/001-html-chapitre-1-introduction-au-html/index.html">Quête 2113</a></li></ul></div>
 </div></li><li class="etape"><div class="etape__puce">2</div><div class="etape__contenu"><h4 class="etape__titre">Être à l'aise avec l'utilisation des attributs HTML</h4><div class="bloc-code"><div class="bloc-code__langue">html</div><pre><code class="hljs language-html"><span class="hljs-tag">&lt;<span class="hljs-name">img</span> <span class="hljs-attr">src</span>=<span class="hljs-string">&quot;https://placekitten.com/200/287&quot;</span> <span class="hljs-attr">alt</span>=<span class="hljs-string">&quot;A cute cat&quot;</span> /&gt;</span>
 </code></pre></div>
 </div></li></ol>
-<h2>Introduction</h2>
+<h2 id="t-introduction">Introduction</h2>
 <p>Précédemment, tu as vu les principes de bases du langage HTML.</p>
 <p>Dans cette quête nous allons voir un peu plus en détail comment fonctionnent les liens hypertextes pour naviguer entre plusieurs pages web.</p>
-<h2>Sommaire</h2>
-<h2>Qu'est-ce qu'un lien hypertexte ?</h2>
+<h2 id="t-sommaire">Sommaire</h2>
+<nav class="sommaire" aria-label="Sommaire de la quête"><ol class="sommaire__liste"><li><a href="#t-qu-est-ce-qu-un-lien-hypertexte">Qu'est-ce qu'un lien hypertexte ?</a></li><li><a href="#t-la-balise">La balise</a><ul><li><a href="#t-liens-d-ancrage">Liens d'ancrage</a></li><li><a href="#t-envoyer-un-email-ou-rediriger-vers-un-client-d-appel">Envoyer un email ou rediriger vers un client d'appel téléphonique</a></li><li><a href="#t-title">Title</a></li><li><a href="#t-target">Target</a></li><li><a href="#t-download">Download</a></li></ul></li><li><a href="#t-bonnes-pratiques">Bonnes pratiques</a></li><li><a href="#t-resume">Résumé</a></li><li><a href="#t-challenge">Challenge</a><ul><li><a href="#t-criteres-de-validation">Critères de validation</a></li></ul></li></ol></nav>
+<h2 id="t-qu-est-ce-qu-un-lien-hypertexte">Qu'est-ce qu'un lien hypertexte ?</h2>
 <p>Un lien hypertexte est un lien qui permet de naviguer d'une page à une autre, en cliquant dessus.</p>
 <p>Les liens hypertextes sont tout ce qui a fait du HTML une révolution à l'époque de sa création dans les années 1990. Le terme &quot;hypertexte&quot; a été introduit par Ted Nelson en 1965, et l'idée est bien plus ancienne encore. Mais le web en est la réalisation la plus aboutie. N'importe quel document du web peut être lié à un autre, quel que soit l'endroit où ces documents sont stockés.</p>
 <p>Un lien hypertexte peut rediriger vers un contenu externe (via une url) ou un contenu interne (via un chemin d'accès).</p>
-<h2>La balise <a></h2>
+<h2 id="t-la-balise">La balise <a></h2>
 <p>Les liens hypertextes sont créés avec la balise <code>&lt;a&gt;</code>. Tu peux spécifier ensuite la destination grâce à l'attribut &quot;href&quot; comme suit :</p>
 <div class="bloc-code"><div class="bloc-code__langue">html</div><pre><code class="hljs language-html"><span class="hljs-tag">&lt;<span class="hljs-name">p</span>&gt;</span>Retourner sur la <span class="hljs-tag">&lt;<span class="hljs-name">a</span> <span class="hljs-attr">href</span>=<span class="hljs-string">&quot;home.html&quot;</span>&gt;</span>page d&#x27;accueil<span class="hljs-tag">&lt;/<span class="hljs-name">a</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">p</span>&gt;</span>
 <span class="hljs-tag">&lt;<span class="hljs-name">p</span>&gt;</span>Visiter notre <span class="hljs-tag">&lt;<span class="hljs-name">a</span> <span class="hljs-attr">href</span>=<span class="hljs-string">&quot;https://facebook.com/wildcodeschool&quot;</span>&gt;</span>page facebook<span class="hljs-tag">&lt;/<span class="hljs-name">a</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">p</span>&gt;</span>
@@ -52,7 +53,7 @@
 <div class="bloc-code"><div class="bloc-code__langue">html</div><pre><code class="hljs language-html"><span class="hljs-tag">&lt;<span class="hljs-name">p</span>&gt;</span>Retourner sur la <span class="hljs-tag">&lt;<span class="hljs-name">a</span> <span class="hljs-attr">href</span>=<span class="hljs-string">&quot;../home.html&quot;</span>&gt;</span>page d&#x27;accueil<span class="hljs-tag">&lt;/<span class="hljs-name">a</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">p</span>&gt;</span>
 <span class="hljs-tag">&lt;<span class="hljs-name">p</span>&gt;</span>Consulter <span class="hljs-tag">&lt;<span class="hljs-name">a</span> <span class="hljs-attr">href</span>=<span class="hljs-string">&quot;../assets/cv.pdf&quot;</span>&gt;</span>Mon CV<span class="hljs-tag">&lt;/<span class="hljs-name">a</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">p</span>&gt;</span>
 </code></pre></div>
-<h3>Liens d'ancrage</h3>
+<h3 id="t-liens-d-ancrage">Liens d'ancrage</h3>
 <p>Tu peux créer des liens qui redirigent vers une partie de la page.</p>
 <p>Pour cela tu dois ajouter un id sur l'élément vers lequel tu veux pointer :</p>
 <div class="bloc-code"><div class="bloc-code__langue">html</div><pre><code class="hljs language-html"><span class="hljs-tag">&lt;<span class="hljs-name">h2</span> <span class="hljs-attr">id</span>=<span class="hljs-string">&quot;citation&quot;</span>&gt;</span>Citation sur les chats<span class="hljs-tag">&lt;/<span class="hljs-name">h2</span>&gt;</span>
@@ -60,7 +61,7 @@
 <p>Et mettre un lien dans la page avec dans l'attribut <code>href</code> le symbole &quot;#&quot; suivi du nom de l'id :</p>
 <div class="bloc-code"><div class="bloc-code__langue">html</div><pre><code class="hljs language-html"><span class="hljs-tag">&lt;<span class="hljs-name">a</span> <span class="hljs-attr">href</span>=<span class="hljs-string">&quot;#citation&quot;</span>&gt;</span>Voir notre dernière citation sur les chats<span class="hljs-tag">&lt;/<span class="hljs-name">a</span>&gt;</span>
 </code></pre></div>
-<h3>Envoyer un email ou rediriger vers un client d'appel téléphonique</h3>
+<h3 id="t-envoyer-un-email-ou-rediriger-vers-un-client-d-appel">Envoyer un email ou rediriger vers un client d'appel téléphonique</h3>
 <p>Tu peux utiliser dans l'attribut <code>href</code> le protocole <code>mailto</code>. Ce protocole indique au navigateur que le lien pointe vers une adresse mail :</p>
 <div class="bloc-code"><div class="bloc-code__langue">html</div><pre><code class="hljs language-html"><span class="hljs-tag">&lt;<span class="hljs-name">p</span>&gt;</span><span class="hljs-tag">&lt;<span class="hljs-name">a</span> <span class="hljs-attr">href</span>=<span class="hljs-string">&quot;mailto:bob.smith@gmail.com&quot;</span>&gt;</span>M&#x27;envoyer un email<span class="hljs-tag">&lt;/<span class="hljs-name">a</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">p</span>&gt;</span>
 </code></pre></div>
@@ -69,25 +70,25 @@
 <div class="bloc-code"><div class="bloc-code__langue">html</div><pre><code class="hljs language-html"><span class="hljs-tag">&lt;<span class="hljs-name">p</span>&gt;</span><span class="hljs-tag">&lt;<span class="hljs-name">a</span> <span class="hljs-attr">href</span>=<span class="hljs-string">&quot;tel:+3361020304&quot;</span>&gt;</span>Me contacter par Téléphone<span class="hljs-tag">&lt;/<span class="hljs-name">a</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">p</span>&gt;</span>
 </code></pre></div>
 <p>Cette fonctionnalité est particulièrement utile quand la page est affichée sur un téléphone : elle permet d'appeler le numéro pointé d'un simple clic.</p>
-<h3>Title</h3>
+<h3 id="t-title">Title</h3>
 <p>Tu peux donner un titre à tes liens avec l'attribut <code>title</code>.</p>
 <p>Donner un titre au lien est une excellente pratique pour l'accessibilité car il permet de donner plus de contexte aux utilisateurs de lecteurs d'écrans.</p>
 <p>L'information sera également visible lorsque tes utilisateurs passeront leurs curseurs sur le lien.</p>
 <div class="bloc-code"><div class="bloc-code__langue">html</div><pre><code class="hljs language-html"><span class="hljs-tag">&lt;<span class="hljs-name">p</span>&gt;</span>Visiter notre <span class="hljs-tag">&lt;<span class="hljs-name">a</span> <span class="hljs-attr">href</span>=<span class="hljs-string">&quot;https://facebook.com/wildcodeschool&quot;</span> <span class="hljs-attr">title</span>=<span class="hljs-string">&quot;Retrouvez toute l&#x27;actualité de la Wild Code School et les derners événements sur notre page Facebook&quot;</span>&gt;</span>page facebook<span class="hljs-tag">&lt;/<span class="hljs-name">a</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">p</span>&gt;</span>
 </code></pre></div>
-<h3>Target</h3>
+<h3 id="t-target">Target</h3>
 <p>Tu peux spécifier comment ouvrir le lien grâce à l'attribut <code>target</code>.</p>
 <p>Par exemple, en donnant la valeur <code>_blank</code>, la page s'ouvrira dans un nouvel onglet (par défaut la page s'ouvrira dans le même onglet que la page du lien) :</p>
 <div class="bloc-code"><div class="bloc-code__langue">html</div><pre><code class="hljs language-html"><span class="hljs-tag">&lt;<span class="hljs-name">p</span>&gt;</span>Visiter <span class="hljs-tag">&lt;<span class="hljs-name">a</span> <span class="hljs-attr">href</span>=<span class="hljs-string">&quot;https://facebook.com/wildcodeschool&quot;</span> <span class="hljs-attr">target</span>=<span class="hljs-string">&quot;_blank&quot;</span>&gt;</span>notre page facebook<span class="hljs-tag">&lt;/<span class="hljs-name">a</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">p</span>&gt;</span>
 </code></pre></div>
-<h3>Download</h3>
+<h3 id="t-download">Download</h3>
 <p>Lorsque ton lien contient une ressource à télécharger, tu peux donner un nom de fichier d'enregistrement par défaut avec l'attribut <code>download</code> :</p>
 <div class="bloc-code"><div class="bloc-code__langue">html</div><pre><code class="hljs language-html"><span class="hljs-tag">&lt;<span class="hljs-name">p</span>&gt;</span>Télécharger<span class="hljs-tag">&lt;<span class="hljs-name">a</span> <span class="hljs-attr">href</span>=<span class="hljs-string">&quot;../assets/cv.pdf&quot;</span> <span class="hljs-attr">download</span>=<span class="hljs-string">&quot;cv-bob-smith.pdf&quot;</span>&gt;</span>Mon CV<span class="hljs-tag">&lt;/<span class="hljs-name">a</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">p</span>&gt;</span>
 </code></pre></div>
-<h2>Bonnes pratiques</h2>
+<h2 id="t-bonnes-pratiques">Bonnes pratiques</h2>
 <p>Le texte de tes liens doit toujours être <strong>clair</strong>. Le texte est utilisé par les moteurs de recherches pour détecter les liens, et les utilisateurs de lecteurs d'écran sautent souvent de lien en lien : ils entendent donc parfois le nom des liens sans le contexte de la phrase.</p>
 <p>Par exemple dans la phrase &quot;Cliquez ici pour accéder à notre page facebook&quot; il est plus judicieux de mettre le lien sur &quot;notre page facebook&quot; que sur &quot;Cliquez ici&quot;.</p>
-<h2>Résumé</h2>
+<h2 id="t-resume">Résumé</h2>
 <ul>
 <li>
 <p>Les liens hypertextes permettent de lier des pages les unes aux autres afin de permettre aux utilisateurs de naviguer entre les différentes pages.</p>
@@ -105,7 +106,7 @@
 <p>Tu dois toujours être explicite dans le texte de tes liens.</p>
 </li>
 </ul>
-<h2>Challenge</h2>
+<h2 id="t-challenge">Challenge</h2>
 <p>Crée une nouvelle page HTML pour pratiquer les liens. Cette page devra contenir:</p>
 <ul>
 <li>Une liste non ordonnée avec
@@ -119,7 +120,7 @@
 <li>Un lien d'ancrage en bas de la page pour retourner au début de la page.</li>
 </ul>
 <p>Les liens doivent avoir des titres et être explicites.</p>
-<h3>Critères de validation</h3>
+<h3 id="t-criteres-de-validation">Critères de validation</h3>
 <ul>
 <li>[ ] La structure de base du document HTML est respectée</li>
 <li>[ ] Les liens sont clairs et explicites</li>
@@ -300,7 +301,5 @@
   <p>Archive personnelle des cours suivis à la Wild Code School. Copie hors ligne à usage strictement privé.</p>
 </footer>
 
-<script src="../../assets/copie-code.js"></script>
-<script src="../../assets/progression.js"></script>
 </body>
 </html>

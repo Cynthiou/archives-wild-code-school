@@ -20,21 +20,22 @@
     <p class="quete__meta">Quête 3 sur 9 · 1 image archivée</p>
   </header>
   <div class="cours">
-<h2>Objectifs</h2>
+<h2 id="t-objectifs">Objectifs</h2>
 <ul>
 <li>Maitriser le texte en HTML.</li>
 <li>Utiliser correctement les balises de titre.</li>
 <li>Donner du sens et de la sémantique à ton texte.</li>
 </ul>
-<h2>Pré-requis</h2>
+<h2 id="t-pre-requis">Pré-requis</h2>
 <ol class="etapes"><li class="etape"><div class="etape__puce">1</div><div class="etape__contenu"><h4 class="etape__titre">Valider la quête suivante</h4><div class="renvois"><div class="renvois__titre">Quêtes liées</div><ul><li><a href="../../html/001-html-chapitre-1-introduction-au-html/index.html">Quête 2113</a></li></ul></div>
 </div></li><li class="etape"><div class="etape__puce">2</div><div class="etape__contenu"><h4 class="etape__titre">Être à l'aise avec la syntaxe des balises HTML</h4><p><img src="images/001-illustration-d-un-element-html-un-element-html.png" alt="Illustration d'un élément HTML. Un élément HTML se compose d'un contenu situé entre deux balises" loading="lazy"></p>
 </div></li></ol>
-<h2>Introduction</h2>
+<h2 id="t-introduction">Introduction</h2>
 <p>Précédemment, tu as vu les principes de bases du langage HTML.</p>
 <p>Dans cette quête nous allons aller plus en profondeur sur le texte en HTML. Nous verrons comment utiliser des balises pour lui donner du sens, comment structurer des <strong>titres</strong>, des <strong>citations</strong> et pleins de nouvelles balises qui vont améliorer la sémantique de tes pages web !</p>
-<h2>Sommaire</h2>
-<h2>Les balises de titrages</h2>
+<h2 id="t-sommaire">Sommaire</h2>
+<nav class="sommaire" aria-label="Sommaire de la quête"><ol class="sommaire__liste"><li><a href="#t-les-balises-de-titrages">Les balises de titrages</a></li><li><a href="#t-mettre-en-avant-du-texte">Mettre en avant du texte</a><ul><li><a href="#t-emphase">Emphase</a></li><li><a href="#t-importance">Importance</a></li><li><a href="#t-gras-italique-et-soulignement">Gras, Italique et soulignement</a></li></ul></li><li><a href="#t-bloc-de-citation">Bloc de citation</a></li><li><a href="#t-abreviations">Abréviations</a></li><li><a href="#t-extrait-de-code">Extrait de code</a></li><li><a href="#t-recapitulatif">Récapitulatif</a></li><li><a href="#t-challenge">Challenge</a><ul><li><a href="#t-criteres-de-validation">Critères de validation</a></li></ul></li></ol></nav>
+<h2 id="t-les-balises-de-titrages">Les balises de titrages</h2>
 <p>Nous l'avons vu dans les quêtes précédentes, il existe <strong>6 balises de titrages différentes</strong> : de <code>&lt;h1&gt;</code> à <code>&lt;h6&gt;</code>.</p>
 <p>Ces balises sont utiles pour définir si l'élément est <strong>un titre, un sous-titre, ou un sous sous-titre, etc, etc...</strong></p>
 <div class="bloc-code"><div class="bloc-code__langue">html</div><pre><code class="hljs language-html"><span class="hljs-comment">&lt;!-- Titre principal de la page --&gt;</span>
@@ -83,10 +84,10 @@ Les chats ont une excellente vision nocturne, et ils sont très sensibles aux mo
 </code></pre></div>
 <p>N'oublie pas de créer un nouveau document HTML, d'ajouter la structure, et de bien remplir la balise <code>&lt;head&gt;</code> comme nous l'avons vu précédemment.</p>
 </div></div>
-<h2>Mettre en avant du texte</h2>
+<h2 id="t-mettre-en-avant-du-texte">Mettre en avant du texte</h2>
 <p>Tu peux utiliser plusieurs balises pour mettre en évidence du texte, <strong>en fonction de la manière dont tu veux mettre le texte en avant</strong>.</p>
 <p>Voyons quelques exemples concrets.</p>
-<h3>Emphase</h3>
+<h3 id="t-emphase">Emphase</h3>
 <p>La balise <code>&lt;em&gt;</code> est utilisée pour marquer <strong>l'emphase d'un texte</strong>.</p>
 <p>Par exemple dans la phrase :</p>
 <div class="encadre encadre--note encadre--story"><div class="encadre__corps"><p>Les chats sont les membres de la famille des <em>félins</em>, et ils partagent de nombreuses caractéristiques avec leurs cousins ​​les lions, les tigres et les panthères.</p>
@@ -94,7 +95,7 @@ Les chats ont une excellente vision nocturne, et ils sont très sensibles aux mo
 <p>Le mot &quot;félins&quot; est marqué avec insistance, et tu peux le mettre en avant avec la balise <code>&lt;em&gt;</code>. Le texte s'affichera <strong>en italique</strong> sur la plupart des navigateurs, et sera lu par les lecteurs d'écran comme un élément remarquable.</p>
 <div class="bloc-code"><div class="bloc-code__langue">html</div><pre><code class="hljs language-html">Les chats sont les membres de la famille des <span class="hljs-tag">&lt;<span class="hljs-name">em</span>&gt;</span>félins<span class="hljs-tag">&lt;/<span class="hljs-name">em</span>&gt;</span>, et ils partagent de nombreuses caractéristiques avec leurs cousins ​​les lions, les tigres et les panthères.
 </code></pre></div>
-<h3>Importance</h3>
+<h3 id="t-importance">Importance</h3>
 <p>Lorsqu'un texte est <strong>important</strong>, tu peux utiliser la balise <code>&lt;strong&gt;</code> pour le mettre en avant.</p>
 <p>Par exemple dans la phrase :</p>
 <div class="encadre encadre--note encadre--story"><div class="encadre__corps"><p>Les <strong>chats</strong> sont les membres de la famille des félins, et ils partagent de nombreuses caractéristiques avec leurs cousins ​​les lions, les tigres et les panthères.</p>
@@ -105,12 +106,12 @@ Les chats ont une excellente vision nocturne, et ils sont très sensibles aux mo
 <div class="encadre encadre--note encadre--arrow"><div class="encadre__corps"><p><strong>🎯 À toi de jouer !</strong></p>
 <p>Reprends le document que tu as créé avec le texte sur les chats, et ajoute de l'emphase et de l'importance sur les passages pertinants.</p>
 </div></div>
-<h3>Gras, Italique et soulignement</h3>
+<h3 id="t-gras-italique-et-soulignement">Gras, Italique et soulignement</h3>
 <p>Tu as peut-être déjà vu ou tu verras peut-être à l'avenir les balises <code>&lt;b&gt;</code>,  <code>&lt;i&gt;</code> ou <code>&lt;u&gt;</code>, pour mettre du texte en gras, en italique ou souligner du texte.</p>
 <p>Ces balises <strong>doivent être évitées</strong> pour des raisons d'accessibilité et de référencement car elles ne donnent aucune sémantique. Elles changent <strong>uniquement le style des éléments.</strong></p>
 <p>Si tu veux afficher du texte en gras, italique ou souligné pour des questions esthétiques, tu dois passer par du CSS (que nous verrons dans de prochaines quêtes).</p>
 <p>Également, le texte souligné est associé à des liens hypertextes. Tu dois donc éviter d'utiliser cette balise pour souligner du texte, car tes utilisateurs pourraient penser qu'il s'agit d'un lien.</p>
-<h2>Bloc de citation</h2>
+<h2 id="t-bloc-de-citation">Bloc de citation</h2>
 <p>Tu peux réaliser des blocs de citations en HTML en utilisant la balise <code>&lt;blockquote&gt;</code>.</p>
 <p>Tu peux ajouter l'attribut <code>cite</code> avec en valeur le lien de la source de la citation :</p>
 <div class="bloc-code"><div class="bloc-code__langue">html</div><pre><code class="hljs language-html"><span class="hljs-tag">&lt;<span class="hljs-name">blockquote</span> <span class="hljs-attr">cite</span>=<span class="hljs-string">&quot;https://fr.wikipedia.org/wiki/Chat&quot;</span>&gt;</span>
@@ -120,14 +121,14 @@ Les chats ont une excellente vision nocturne, et ils sont très sensibles aux mo
 <div class="encadre encadre--note encadre--arrow"><div class="encadre__corps"><p><strong>🎯  À toi de jouer !</strong></p>
 <p>Cherche une citation sur internet et ajoute la sur ta page.</p>
 </div></div>
-<h2>Abréviations</h2>
+<h2 id="t-abreviations">Abréviations</h2>
 <p>Tu peux indiquer des abréviations en HTML en utilisant la balise <code>&lt;abbr&gt;</code> :</p>
 <div class="bloc-code"><div class="bloc-code__langue">html</div><pre><code class="hljs language-html"><span class="hljs-tag">&lt;<span class="hljs-name">abbr</span> <span class="hljs-attr">title</span>=<span class="hljs-string">&quot;World Wide Web&quot;</span>&gt;</span>WWW<span class="hljs-tag">&lt;/<span class="hljs-name">abbr</span>&gt;</span>
 </code></pre></div>
 <div class="encadre encadre--note encadre--arrow"><div class="encadre__corps"><p><strong>🎯  À toi de jouer !</strong></p>
 <p>Ajoute les abréviations sur &quot;km&quot; et &quot;h&quot; dans la phrase &quot;Ils sont également très flexibles, et ils peuvent se contorsionner pour atteindre des endroits inaccessibles. Les chats sont capables de sauter jusqu'à cinq fois leur hauteur, et ils peuvent courir à des vitesses allant jusqu'à 45 km/h.&quot;</p>
 </div></div>
-<h2>Extrait de code</h2>
+<h2 id="t-extrait-de-code">Extrait de code</h2>
 <p>Tu peux indiquer qu'un bloc contient du code dans un langage de programmation avec la balise <code>&lt;pre&gt;</code> suivi de la balise <code>&lt;code&gt;</code>.</p>
 <p>La balise <code>&lt;pre&gt;</code> est utilisée pour les textes dont le formatage typographique affecte le sens du contenu, comme des poèmes, de l'art ASCII, des transcriptions et, bien sûr, des exemples de code informatique.</p>
 <p><strong>Attention:</strong> Si tu essaies d'écrire du code HTML dans ton document HTML, ton navigateur va l'interpréter comme du code HTML.</p>
@@ -143,7 +144,7 @@ Les chats ont une excellente vision nocturne, et ils sont très sensibles aux mo
 <div class="encadre encadre--note encadre--arrow"><div class="encadre__corps"><p><strong>🎯 À toi de jouer !</strong></p>
 <p>Ajoute un bloc de code à la fin de ton article pour essayer ces balises.</p>
 </div></div>
-<h2>Récapitulatif</h2>
+<h2 id="t-recapitulatif">Récapitulatif</h2>
 <ul>
 <li>
 <p>En HTML, la sémantique est très importante : utiliser la bonne balise est nécessaire pour des raisons d'accessibilités et de SEO.</p>
@@ -155,9 +156,9 @@ Les chats ont une excellente vision nocturne, et ils sont très sensibles aux mo
 <p>Tu peux mettre en avant du texte en utilisant les balises <code>&lt;em&gt;</code> ou <code>&lt;strong&gt;</code>. En revanche, tu ne dois pas utiliser les balises <code>&lt;b&gt;</code> <code>&lt;i&gt;</code> et <code>&lt;u&gt;</code> puisqu'elles ne donnent aucune sémantique au texte.</p>
 </li>
 </ul>
-<h2>Challenge</h2>
+<h2 id="t-challenge">Challenge</h2>
 <p>Mets en forme le travail que tu as réalisé durant cette quête et compare le résultat avec la solution qui est proposée !</p>
-<h3>Critères de validation</h3>
+<h3 id="t-criteres-de-validation">Critères de validation</h3>
 <ul>
 <li>[ ] Les titres respectent les principes hiérarchiques</li>
 <li>[ ] Le texte de chaque paragraphe est dans une balise <code>&lt;p&gt;</code></li>
@@ -265,7 +266,5 @@ Les chats ont une excellente vision nocturne, et ils sont très sensibles aux mo
   <p>Archive personnelle des cours suivis à la Wild Code School. Copie hors ligne à usage strictement privé.</p>
 </footer>
 
-<script src="../../assets/copie-code.js"></script>
-<script src="../../assets/progression.js"></script>
 </body>
 </html>

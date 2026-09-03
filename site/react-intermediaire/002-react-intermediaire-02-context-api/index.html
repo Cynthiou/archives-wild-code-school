@@ -20,24 +20,24 @@
     <p class="quete__meta">Quête 2 sur 4 · 3 images archivées</p>
   </header>
   <div class="cours">
-<h4>Introduction</h4>
+<h4 id="t-introduction">Introduction</h4>
 <p>Dans cette quête, nous allons introduire le concept de Context API dans React. Comme il est indiqué dans la <a href="https://react.dev/learn/passing-data-deeply-with-context" target="_blank" rel="noopener noreferrer">documentation officielle</a>:</p>
 <div class="encadre encadre--story"><div class="encadre__titre">Le récit</div><div class="encadre__corps"><p>Habituellement, vous transmettrez des informations d'un composant parent à un composant enfant via des props. Mais transmettre des props peut devenir verbeux et peu pratique si vous devez les transmettre via de nombreux composants entre des grand-parents et leurs petits enfants, ou si de nombreux composants de votre application ont besoin des mêmes informations. Le contexte permet au composant parent de rendre certaines informations disponibles à n'importe quel composant de l'arborescence située en dessous, quelle que soit sa profondeur, sans les transmettre explicitement via les props.</p>
 </div></div>
 <p><strong>C'est parti!</strong> 🚀</p>
 <p><img src="images/001-image.avif" alt="image" loading="lazy"></p>
-<h4>🤓 À la fin de cette quête, tu pourras :</h4>
+<h4 id="t-a-la-fin-de-cette-quete-tu-pourras">🤓 À la fin de cette quête, tu pourras :</h4>
 <p>✅ comprendre quand utiliser un contexte
 ✅ créer un contexte
 ✅ lire les informations d'un contexte</p>
-<h3>🤷 Pourquoi utiliser un contexte ?</h3>
+<h3 id="t-pourquoi-utiliser-un-contexte">🤷 Pourquoi utiliser un contexte ?</h3>
 <p>Un concept courant dans React est connu sous le nom de <strong>prop-drilling</strong> : transmettre les props à travers plusieurs niveaux dans la hiérarchie des composants. Certains composants peuvent même ne pas utiliser le prop reçu : ils la transmettent simplement à un enfant dans l'arborescence des composants. Regardons le schéma suivant :</p>
 <p><img src="images/002-image.png" alt="image" loading="lazy"></p>
 <p>En utilisant un contexte, tu peux stocker un state dans un espace &quot;global&quot;. Ce state va être accessible depuis n'importe quel composant connaissant ton contexte, comme indiqué sur le diagramme suivant :</p>
 <p><img src="images/003-image.png" alt="image" loading="lazy"></p>
-<h3>Comment utiliser l'API de contexte ?</h3>
+<h3 id="t-comment-utiliser-l-api-de-contexte">Comment utiliser l'API de contexte ?</h3>
 <p>Créons une application React qui affichera une liste de films. Nous allons diviser cela en 2 parties : créer un contexte et consommer ses données.</p>
-<h4>Créer un contexte</h4>
+<h4 id="t-creer-un-contexte">Créer un contexte</h4>
 <p>Voyons d'abord comment créer un contexte. Ce contexte permettra de mettre à disposition des valeurs globales :</p>
 <div class="bloc-code"><div class="bloc-code__langue">jsx</div><pre><code class="hljs language-jsx"><span class="hljs-comment">// contexts/MovieContext.js</span>
 <span class="hljs-keyword">import</span> { createContext } <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;react&quot;</span>;
@@ -46,7 +46,7 @@
 
 <span class="hljs-keyword">export</span> <span class="hljs-keyword">default</span> <span class="hljs-title class_">MovieContext</span>;
 </code></pre></div>
-<h4>Fournir un contexte</h4>
+<h4 id="t-fournir-un-contexte">Fournir un contexte</h4>
 <p>Ensuite, nous récupérons un utilisons le contexte comme un <code>Provider</code>, qui recevra la valeur que nous voulons partager. Le contexte sera disponible pour tous les composants contenus dans le <code>Provider</code> (enfants, petits-enfants...) :</p>
 <div class="bloc-code"><div class="bloc-code__langue">jsx</div><pre><code class="hljs language-jsx"><span class="hljs-comment">// App.js</span>
 <span class="hljs-keyword">import</span> { useState } <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;react&quot;</span>;
@@ -82,7 +82,7 @@
 
 <span class="hljs-keyword">export</span> <span class="hljs-keyword">default</span> <span class="hljs-title class_">App</span>;
 </code></pre></div>
-<h4>Consommer un contexte</h4>
+<h4 id="t-consommer-un-contexte">Consommer un contexte</h4>
 <p>Maintenant, sur le composant où nous souhaitons récupérer le tableau <code>movies</code>, importons le hook <code>useContext</code> pour prévenir que nous allons utiliser un contexte (à donner en paramètre) :</p>
 <div class="bloc-code"><div class="bloc-code__langue">jsx</div><pre><code class="hljs language-jsx"><span class="hljs-comment">// components/MovieList.js</span>
 <span class="hljs-keyword">import</span> { useContext } <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;react&#x27;</span>;
@@ -164,7 +164,7 @@
 
 <span class="hljs-keyword">export</span> <span class="hljs-keyword">default</span> <span class="hljs-title class_">MovieContext</span>;
 </code></pre></div>
-<h4>💻 Changer l'état dans le contexte</h4>
+<h4 id="t-changer-l-etat-dans-le-contexte">💻 Changer l'état dans le contexte</h4>
 <p>Tu viens de voir comment envoyer un state dans un contexte. Mais le contenu d'un state est sensé varier en fonction des interactions de l'utilisateur.</p>
 <p>Tout comme tu as envoyé la valeur de <code>movies</code> par le <code>Provider</code>, il est possible d'envoyer la fonction <code>setMovies</code> :</p>
 <div class="bloc-code"><div class="bloc-code__langue">jsx</div><pre><code class="hljs language-jsx"><span class="hljs-keyword">return</span> (
@@ -256,7 +256,7 @@
 
 <span class="hljs-keyword">export</span> <span class="hljs-keyword">default</span> <span class="hljs-title class_">MovieContext</span>;
 </code></pre></div>
-<h3>💪 Challenge</h3>
+<h3 id="t-challenge">💪 Challenge</h3>
 <p>Dans ce défi, tu vas réaliser une application simple qui changera le statut de l'utilisateur en un clic !</p>
 <ul>
 <li>fork le code suivant ;</li>
@@ -311,7 +311,7 @@ button {
 
 <span class="hljs-keyword">export</span> <span class="hljs-keyword">default</span> <span class="hljs-title class_">UserContext</span>;
 </code></pre></div>
-<h4>🧐 Critères de validation</h4>
+<h4 id="t-criteres-de-validation">🧐 Critères de validation</h4>
 <ul>
 <li>[ ] <code>setIsOnline</code> est passé via le <code>Provider</code> du contexte <code>UserContext</code> dans <code>UserProfile.js</code> et appelé lorsque le bouton est cliqué</li>
 <li>[ ] lorsqu'il est cliqué, le bouton doit basculer entre &quot;en ligne&quot; et &quot;hors ligne&quot;</li>
@@ -342,7 +342,5 @@ button {
   <p>Archive personnelle des cours suivis à la Wild Code School. Copie hors ligne à usage strictement privé.</p>
 </footer>
 
-<script src="../../assets/copie-code.js"></script>
-<script src="../../assets/progression.js"></script>
 </body>
 </html>
