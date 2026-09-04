@@ -58,6 +58,32 @@ tard chez un hébergeur : il marchera sans rien changer.
 
 ---
 
+---
+
+## Ton archive en ligne
+
+Le site est aussi publie sur Internet, a cette adresse :
+
+**https://archives-wild-code-school.pages.dev**
+
+Elle fonctionne depuis n'importe quel telephone ou ordinateur, sans rien installer.
+Tu peux la donner telle quelle a tes collegues de promo.
+
+### La mettre a jour
+
+L'hebergeur (Cloudflare Pages) surveille ton depot GitHub. Des que tu envoies une
+modification, il reconstruit le site tout seul en une minute :
+
+```bash
+npm start
+git add -A
+git commit -m "mise a jour de l'archive"
+git push
+```
+
+Rien d'autre a faire : l'adresse ne change jamais.
+
+
 ## Les autres commandes
 
 | Commande | À quoi ça sert |
