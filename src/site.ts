@@ -92,6 +92,8 @@ ${corps}
   <p>Archive personnelle des cours suivis à la Wild Code School. Copie hors ligne à usage strictement privé.</p>
 </footer>
 ${scripts}
+<script src="${racine}assets/copie-code.js"></script>
+<script src="${racine}assets/progression.js"></script>
 </body>
 </html>`;
 }

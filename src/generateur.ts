@@ -172,12 +172,16 @@ export async function genererSite(options: {
     `Index de recherche : ${idx.entrees} quêtes, ${Math.round(idx.octets / 1024)} Ko`,
   );
 
-  // --- Feuille de style -----------------------------------------------------
+  // --- Feuille de style et scripts d'interface -------------------------------
+  // progression.js : boutons « terminé » / « favori », barres de progression et
+  // filtres. copie-code.js : bouton « Copier » sur les blocs de code.
   await fs.mkdir(path.join(lieux.site, "assets"), { recursive: true });
-  await fs.copyFile(
-    path.join(racineOutil, "site-assets", "style.css"),
-    path.join(lieux.site, "assets", "style.css"),
-  );
+  for (const fichier of ["style.css", "progression.js", "copie-code.js"]) {
+    await fs.copyFile(
+      path.join(racineOutil, "site-assets", fichier),
+      path.join(lieux.site, "assets", fichier),
+    );
+  }
 
   return { pages, themes: categories.length, diagrammes, indexRecherche: idx.entrees, sommaires };
 }
